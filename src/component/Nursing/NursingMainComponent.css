@@ -1,0 +1,288 @@
+.out-patient-container {
+    background-color: #e0f7fa;
+    padding: 20px;
+  }
+  
+  .tabs, .sub-tabs {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .tab-button, .sub-tab {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .tab-button.active, .sub-tab.active {
+    background-color: #0056b3;
+  }
+  
+  .search-and-filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .search-input, .department-input {
+    padding: 8px;
+    margin-right: 10px;
+    width: 300px;
+  }
+  
+  .search-button {
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .action-buttons {
+    margin-bottom: 10px;
+  }
+  
+  .action-button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .patients-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .patients-table th, .patients-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .patients-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .patients-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .patients-table tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .nursing-tabs-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .nursing-tabs-nav li {
+    margin-right: 10px;
+  }
+  
+  .nursing-tabs-nav a {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: #3598dc;
+   
+    display: block;
+  }
+  
+  .nursing-tabs-nav a.active, .nursing-tabs-nav a:hover {
+    background-color: #3598dc;
+    color: white;
+  }
+  
+  .nursing-sub-tabs-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .nursing-sub-tabs-nav li {
+    margin-right: 10px;
+  }
+  
+  .nursing-sub-tabs-nav a {
+    text-decoration: none;
+    padding: 10px 20px;
+    color: black;
+   font-weight: bold;
+    display: block;
+  }
+  
+  .nursing-sub-tabs-nav a.active, .nursing-sub-tabs-nav a:hover {
+    text-decoration: underline;
+    text-decoration-color: #3598dc;
+    transition: width 0.3s ease-in-out;
+  }
+
+  /* OutPatient_PastDays.css */
+
+.OutPatient_PastDays-tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  padding: 20px;
+  background-color: #e6f7ff;
+}
+
+.OutPatient_PastDays-Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.OutPatient_PastDays-searchInput {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.OutPatient_PastDays-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.OutPatient_PastDays-results {
+  margin-right: 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+.OutPatient_PastDays-patientsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.OutPatient_PastDays-patientsTable th, .OutPatient_PastDays-patientsTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.OutPatient_PastDays-patientsTable th {
+  background-color: #f4f4f4;
+}
+
+.OutPatient_PastDays-tableRow:hover {
+  background-color: #f1f1f1;
+}
+
+.OutPatient_PastDays-btn {
+  padding: 5px 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.OutPatient_PastDays-consumption {
+  background-color: #4CAF50;
+}
+
+.OutPatient_PastDays-wardRequest {
+  background-color: #f44336;
+}
+
+.OutPatient_PastDays-transfer {
+  background-color: #2196F3;
+}
+
+.OutPatient_PastDays-vitals {
+  background-color: #ff9800;
+}
+
+.OutPatient_PastDays-pagination-btn {
+  border: 1px solid #ddd;
+  background-color: #2196F3;
+  cursor: pointer;
+}
+
+
+.OutPatient_PastDays-pagination-info {
+  margin: 0 15px;
+}
+
+.OutPatient_PastDays-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Filter options container */
+.opd-triage-page .filter-options {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.opd-triage-page .filter-options label {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  font-size: 14px;
+}
+
+/* Date filter container */
+.date-filter {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.date-filter label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* Styling for date input fields */
+.date-filter input[type="date"] {
+  margin-left: 5px;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.date-filter label{
+  margin-left: 15px;
+}
+
+/* Styling for date input fields */
+.filter-options input[type="radio"] {
+  margin-left: 5px;
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Styling for the OK button */
+ .date-filter button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+ .date-filter button:hover {
+  background-color: #45a049;
+}
+  

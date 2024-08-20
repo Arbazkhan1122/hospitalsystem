@@ -1,0 +1,142 @@
+.sam-Coll-list-requisition {
+    background-color: #CAF2FF;
+    padding: 0px 10px 0px 10px;
+    font-family: Arial, sans-serif;
+    height: 500px;
+  }
+  
+  .sampCollec-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 20px; */
+  }
+  
+  .samCollec-samples-collected {
+    background-color: #26c281;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    padding: 10px ;
+    cursor: pointer;
+  }
+  
+  .sampCollect-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 20px; */
+  }
+  
+  .sampCollect-date-range {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sampCollect-date-range span {
+    margin: 0 10px;
+  }
+  
+  .samCollec-ok-button {
+    background-color: #26c281;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+.sam-Coll-search-bar{
+  margin-left: -15px;
+}  
+  .sam-Coll-search-bar input {
+    /* margin-top: 10px; */
+    /* padding: 5px; */
+    width: 200px;
+  }
+  .sam-Coll-search-bar i{
+    position: relative;
+    color:gray;
+    top: 3px;
+  left: 205px;
+  }
+  
+  .samCollect-results-info {
+    display: flex;
+    align-items: center;
+    /* padding-top: 10px; */
+  }
+  .samCollect-results-info span {
+    /* display: flex;
+    align-items: center; */
+    /* padding-top: 10px; */
+    color: #008CBA;
+    font-size: 14px;
+  }
+
+  
+  .samCollec-print-button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .samCollec-requisition-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .samCollec-requisition-table th, .samCollec-requisition-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .samCollec-requisition-table th {
+    background-color: #F3F3F3;
+    font-size: 12px;
+    color: #383737;
+  }
+  
+  .no-data {
+    background-color: #fff9c4;
+    text-align: center;
+  }
+  
+  .sampCollect-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .sampCollect-pagination button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 5px;
+  }
+  
+  .sampCollect-pagination span {
+    margin: 0 10px;
+    color: gray;
+    font-size: 12px;
+  }
+  .sam-Coll-search-N-result{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .table-N-paginationDiv{
+    background-color: #f8f2f2;
+  }

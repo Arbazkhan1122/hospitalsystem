@@ -1,0 +1,208 @@
+.manage_ot_checklist_main {
+    background-color: #e3f2fd;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .manage_ot_checklist_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .manage_ot_checklist_tablehead, .manage_ot_checklist_tabledata {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .manage_ot_checklist_tabledata {
+    background-color: white;
+  }
+  
+  .manage_ot_checklist_tablehead {
+    background-color: #f2f2f2;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .manage_ot_checklist_search_bar input[type="text"] {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .manage_ot_checklist_filter_button {
+    background-color: white;
+    color: gray;
+    font-size: 20px;
+    padding: 4px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .manage_ot_checklist_filter_button:hover {
+    background-color: #45a049;
+  }
+  
+  .manage_ot_checklist_pagination {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .manage_ot_checklist_pagination button {
+    background-color: #ddd;
+    color: black;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 4px;
+  }
+  
+  .manage_ot_checklist_pagination button:hover {
+    background-color: #ccc;
+  }
+  
+  .manage_ot_checklist_edit_button {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .manage_ot_checklist_container {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    justify-content: flex-end;
+  }
+  
+  .manage_ot_checklist_input {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .manage_ot_checklist_input label {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+  
+  .manage_ot_checklist_input input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 30px;
+  }
+  
+  .manage_ot_checklist_checkbox {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 20px;
+  }
+  
+  .manage_ot_checklist_buttons {
+    display: flex;
+    gap: 10px;
+    margin-right: 10px;
+  }
+  
+  .manage_ot_checklist_save, .manage_ot_checklist_clear {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .manage_ot_checklist_save {
+    background-color: green;
+  }
+  
+  .manage_ot_checklist_clear {
+    background-color: orange;
+  }
+  
+  .manage_ot_checklist_save:hover, .manage_ot_checklist_clear:hover {
+    background-color: blue;
+  }
+  
+
+
+  .ot_checklist_main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    /* background-color: #f5f5f5; */
+  }
+  
+  .ot_checklist_section1, .ot_checklist_section2 {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .ot_checklist_input {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+  
+  .ot_checklist_input label {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 3;
+  }
+  
+  .ot_checklist_input input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px;
+    height: 30px;
+    
+  }
+  
+  .ot_checklist_dropdown {
+    display: flex;
+    flex-direction: row;
+    line-height: 5;
+    gap: 5px;
+  }
+  
+  .ot_checklist_dropdown label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .ot_checklist_dropdown select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+  }
+  
+  .ot_checklist_checkbox {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .ot_checklist_checkbox label {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  

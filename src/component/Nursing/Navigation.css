@@ -1,0 +1,50 @@
+/* src/styles/Navigation.css */
+
+.nursing-tabs-nav {
+    background-color: #f0f8ff; /* Light blue background color */
+    border-bottom: 1px solid #ccc; /* Light gray bottom border */
+    /* padding: 10px 20px;  */
+    display: flex;
+    /* justify-content: space-around;  */
+}
+
+.nursing-nav-link {
+    color: #000; /* Black font color */
+    text-decoration: none; /* No underline by default */
+    font-weight: normal; /* Normal font weight */
+    font-size: 16px; /* Font size */
+    /* padding: 5px 10px;  */
+    position: relative;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.nursing-nav-link:hover {
+    font-weight: bold; /* Bold text on hover */
+    color: #2d68ea; /* Dark blue color on hover */
+}
+
+.nursing-nav-link:hover::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #2d68ea; /* Dark blue underline on hover */
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease; /* Smooth transition for underline */
+}
+
+.nursing-nav-link.active {
+    font-weight: bold; /* Bold text for active link */
+    color: #2d68ea; /* Dark blue color for active link */
+}
+
+.nursing-nav-link.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #2d68ea; /* Dark blue underline for active link */
+    bottom: 0;
+    left: 0;
+}

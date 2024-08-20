@@ -1,0 +1,116 @@
+.patient-dashboard {
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background-color: #0066cc;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-button {
+  background-color: #ffcc00;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.main-content {
+  display: flex;
+}
+
+aside.patient-info {
+  background-color: #0066cc;
+  color: white;
+  padding: 20px;
+  width: 250px;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.ipd-tag {
+  background-color: #ffcc00;
+  color: black;
+  padding: 2px 5px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+main {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.right-panel {
+  width: 300px;
+  padding: 20px;
+}
+
+section {
+  background-color: #f0f0f0;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+.add-button, .show-graph, .add-vitals, .new-complaint {
+  background-color: #6600cc;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.no-records {
+  background-color: #e6ffe6;
+  padding: 10px;
+  color: #006600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.complaint {
+  background-color: white;
+  padding: 5px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-complaint {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: red;
+}

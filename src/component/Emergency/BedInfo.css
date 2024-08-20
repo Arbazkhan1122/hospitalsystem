@@ -1,0 +1,36 @@
+.ward-occupancy {
+    font-family: Arial, sans-serif;
+    background-color: #e6f7ff;
+    padding: 20px;
+  }
+  
+  .occupancy-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+  }
+  
+  .occupancy-table th,
+  .occupancy-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .occupancy-table th {
+    background-color: #4a90e2;
+    color: white;
+  }
+  
+  .occupancy-table tr.even {
+    background-color: #f8f8f8;
+  }
+  
+  .occupancy-table tr.odd {
+    background-color: #e6f7ff;
+  }
+  
+  .occupancy-table tr.total-row {
+    font-weight: bold;
+    background-color:#e6f7ff;
+}

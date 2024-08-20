@@ -1,0 +1,128 @@
+/* Manage Templates Styles */
+.template-users-container {
+    background-color: #d4f1f9;
+    padding: 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.template-users-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.template-users-add-user-button {
+    background-color: #5b73e8;
+    color: white;
+    border: none;
+    padding: 6px 12px; /* Adjusted padding */
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.manage-users-search-input {
+    padding: 6px; /* Adjusted padding */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 180px; /* Adjusted width */
+}
+
+.template-user-span {
+    color: #0F63AF;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+.template-user-tab {
+    background-color: white;
+}
+
+.template-users-users-table {
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.template-users-users-table th,
+.template-users-users-table td {
+    border: 1px solid #e0e0e0;
+    padding: 8px; /* Adjusted padding */
+    text-align: left;
+    font-size: 13px; /* Adjusted font size */
+}
+
+.template-users-users-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Hover effect for table rows */
+.template-users-users-table tbody tr:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+}
+
+.template-users-action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.template-users-action-button {
+    background-color: #5b73e8;
+    color: white;
+    border: none;
+    padding: 4px 8px; /* Adjusted padding */
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px; /* Adjusted font size */
+}
+
+/* Pagination Styles */
+.template-users-pagination {
+    margin-top: 15px; /* Adjusted margin */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.template-users-pagination-controls button {
+    margin: 0 4px; /* Adjusted margin */
+    padding: 4px 8px; /* Adjusted padding */
+    background-color: #5b73e8;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px; /* Adjusted font size */
+}
+
+.template-users-pagination span {
+    margin: 0 8px; /* Adjusted margin */
+    font-size: 13px; /* Adjusted font size */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .template-users-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .template-users-add-user-button {
+        margin-bottom: 8px; /* Adjusted margin */
+    }
+
+    .manage-users-search-input {
+        width: 100%;
+    }
+
+    .template-users-users-table th,
+    .template-users-users-table td {
+        font-size: 12px; /* Adjusted font size */
+    }
+}

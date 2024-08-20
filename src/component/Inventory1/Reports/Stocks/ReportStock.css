@@ -1,0 +1,35 @@
+.report-grid {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    row-gap: 20px;
+  }
+  
+  .report-item {
+    background-color: #eaf4fe;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .report-icon {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .report-text h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .report-text p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+  }
+  

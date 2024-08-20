@@ -1,0 +1,68 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #bdefff;
+  }
+  
+  .counter-selection {
+    padding: 20px;
+  }
+  
+  .counter-selection h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .counter-selection h3 i {
+    margin-right: 10px;
+    color: #3b5998;
+  }
+  
+  .counter-options {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .counter-option {
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    cursor: pointer;
+    color: red;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .counter-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .counter-option i {
+    font-size: 36px;
+    color: #779be9;
+    margin-bottom: 10px;
+  }
+  
+  .counter-option h3 {
+    font-size: 18px;
+    color: #5470eb;
+    margin-bottom: 5px;
+  }
+  
+  .counter-option p {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  @media (max-width: 768px) {
+    .counter-options {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

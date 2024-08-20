@@ -1,0 +1,124 @@
+.manage-reaction-container {
+    background-color: #d4f1f9;
+    padding: 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.manage-reaction-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.manage-reaction-add-button {
+    background-color: #5b73e8;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.manage-reaction-search-input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 180px;
+}
+
+.manage-reaction-span {
+    text-align: right;
+    color: #0F63AF;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.manage-reaction-tab {
+    background-color: white;
+}
+
+.manage-reaction-users-table {
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.manage-reaction-users-table th,
+.manage-reaction-users-table td {
+    border: 1px solid #e0e0e0;
+    padding: 8px;
+    text-align: left;
+    font-size: 13px;
+}
+
+.manage-reaction-users-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    color: #333;
+}
+
+.manage-reaction-users-table tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+.manage-reaction-action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.manage-reaction-action-button {
+    background-color: #5b73e8;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.manage-reaction-pagination {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-reaction-pagination-controls button {
+    margin: 0 4px;
+    padding: 4px 8px;
+    background-color: #5b73e8;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.manage-reaction-pagination span {
+    margin: 0 8px;
+    font-size: 13px;
+}
+
+@media (max-width: 768px) {
+    .manage-reaction-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .manage-reaction-add-button {
+        margin-bottom: 8px;
+    }
+
+    .manage-reaction-search-input {
+        width: 100%;
+    }
+
+    .manage-reaction-users-table th,
+    .manage-reaction-users-table td {
+        font-size: 12px;
+    }
+}

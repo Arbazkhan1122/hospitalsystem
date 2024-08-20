@@ -1,0 +1,158 @@
+/* Modal Container */
+.emp-modal-dialog {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 600px;
+  width: 30%;
+  margin: 0;
+  z-index: 1050;
+}
+
+/* Modal Header */
+.emp-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+}
+
+.emp-modal-title {
+  font-size: 18px;
+  color: #333;
+}
+
+.add-employee-role-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff0000;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* Modal Body */
+
+
+/* Modal Backdrop */
+.add-employee-role .modal-backdrop {
+  opacity: 0.5 !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .emp-modal-dialog {
+    margin: 0;
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    max-width: none;
+  }
+
+  .emp-modal-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .add-employee-role-btn {
+    position: static;
+    margin-top: 10px;
+  }
+}
+/*  */
+
+/* src/AddEmployeeRole.css */
+
+/* Modal Dialog */
+.add-employee-role .modal-dialog {
+  max-width: 500px;
+  margin: 1.75rem auto;
+}
+
+.emp-modal-dialog {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Modal Header */
+.emp-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.emp-modal-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.add-employee-role-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #000;
+}
+
+/* Modal Body */
+.emp-modal-body {
+  padding: 1rem;
+}
+
+.emp-form-label {
+  font-weight: 500;
+}
+
+.emp-form-labels {
+  font-weight: 400;
+}
+
+.emp-text-danger {
+  color: #dc3545;
+}
+
+/* Form Controls */
+.emp-form-control {
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.emp-form-group {
+  margin-bottom: 1rem;
+}
+
+.emp-form-check-input {
+  margin-right: 0.5rem;
+}
+
+/* Submit Button */
+.add-employee-btn {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.add-employee-btn:hover {
+  background-color: #0056b3;
+  transition: background-color 0.3s ease;
+}

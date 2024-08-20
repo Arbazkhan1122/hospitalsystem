@@ -1,0 +1,138 @@
+.sales-container {
+    font-family: Arial, sans-serif;
+    background-color: #e6f7ff;
+    padding: 20px;
+  }
+  
+  .header .tabs {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  .tab {
+    padding: 10px;
+    cursor: pointer;
+    border-right: 1px solid #ccc;
+  }
+  
+  .tab.active {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .patient-info,
+  .hospital-info,
+  .medicine-info,
+  .invoice-summary,
+  .payment-section,
+  .history-section {
+    margin-bottom: 20px;
+  }
+  
+  .patient-info,
+  .hospital-info,
+  .medicine-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f8ff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .patient-info label,
+  .hospital-info div,
+  .medicine-info label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .patient-info input,
+  .hospital-info input,
+  .medicine-info input,
+  .hospital-info select,
+  .medicine-info select {
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    flex-grow: 1;
+  }
+  
+  .add-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .invoice-summary table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .invoice-summary th,
+  .invoice-summary td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  .payment-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #f0f8ff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .payment-summary,
+  .payment-actions {
+    flex-grow: 1;
+  }
+  
+  .payment-actions {
+    text-align: right;
+  }
+  
+  .print-button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .discard-button {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .history-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .invoice-history,
+  .credit-limits {
+    background-color: #f0f8ff;
+    padding: 10px;
+    border-radius: 5px;
+    width: 48%;
+  }
+  
+  .invoice-history h4,
+  .credit-limits h4 {
+    margin-bottom: 10px;
+  }
+  

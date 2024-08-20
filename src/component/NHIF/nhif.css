@@ -1,0 +1,65 @@
+/* Main container for the NHIF component */
+.nhif-container {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header styles */
+.nhif-header {
+    background-color: #007bff; /* Primary blue color */
+    padding: 10px 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation bar styles */
+.nhif-header-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nhif-header-nav li {
+    margin: 0 15px;
+}
+
+.nhif-header-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nhif-header-nav a:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Active link styling */
+.nhif-header-nav a.active {
+    background-color: #0056b3; /* Active state color */
+}
+
+/* Content area below the navigation bar */
+.nhif-content {
+    padding: 20px;
+}
+
+/* Responsive styling for mobile devices */
+@media (max-width: 768px) {
+    .nhif-header-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nhif-header-nav li {
+        margin: 10px 0;
+    }
+}

@@ -1,0 +1,143 @@
+/* Requisition.css */
+.requisition-content {
+    margin-bottom: 20px;
+}
+.Requisition-content{
+    width: 98%;
+}
+
+.direct-dispatch {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #ffcc00;
+    border: none;
+    cursor: pointer;
+}
+
+.status-filter {
+    margin-bottom: 20px;
+}
+
+.status-filter span {
+    margin-right: 10px;
+}
+
+.status-filter label {
+    margin-right: 10px;
+}
+
+.date-range {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.date-range label {
+    margin-right: 10px;
+}
+
+.date-range button {
+    margin-right: 10px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+.star {
+    background-color: #ffcc00;
+}
+
+.minus {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+.ok {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+
+.search-bar button {
+    padding: 10px;
+    border: none;
+    background-color: #2196F3;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+}
+
+.results {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.results span {
+    margin-right: 10px;
+}
+
+.results button {
+    padding: 10px;
+    border: none;
+    background-color: #2196F3;
+    color: #fff;
+    cursor: pointer;
+}
+
+.requisition-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: fixed; /* Ensures table doesn't overflow */
+}
+
+thead {
+    background-color: #2196F3;
+    color: #fff;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+    word-wrap: break-word; /* Prevents text overflow in cells */
+}
+
+.requisition-pagination{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Ensure the elements wrap on smaller screens */
+    margin-top: 20px;
+}
+.requisition-pagination-div
+{
+    width: 50%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+
+}
+.requisition-pagination-div button
+{
+    background: #2196F3;
+    border: none;
+    padding: 5px 7px;
+    color: white;
+}

@@ -1,0 +1,231 @@
+/* Styles for the page */
+.manage-ward-substore-page {
+  padding: 20px;
+  background-color: #e3f2fd;
+}
+/* .manage-ward-modal-container{
+  background-color: #3598dc;
+} */
+
+/* Table container */
+.manage-ward--substore-table-container {
+  margin-top: 20px;
+  background-color: #e3f2fd;
+}
+
+/* Header section for the add button and search info */
+.manage-ward-substore-manage-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ward-manage-add-substore-btn {
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  padding: 6px 12px; /* Reduced padding */
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+.ward-manage-substore-search-input {
+  margin-bottom: 15px;
+  padding: 5px;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Table styles */
+.manage-ward-substore-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.manage-ward-substore-table th,
+.manage-ward-substore-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.manage-ward-substore-table th {
+  background-color: #f5f5f5;
+}
+
+/* Edit button */
+.manage-ward-store-edit-btn {
+  background-color: #0F63AF;
+  color: white;
+  border: none;
+  padding: 4px 8px; /* Reduced padding */
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px; /* Reduced font size */
+
+}
+
+/* Pagination styles */
+.manage-ward-store-pagination {
+  margin-top: 15px; /* Reduced margin */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.manage-ward-store-pagination-btn {
+  margin: 0 4px; /* Reduced margin */
+    padding: 4px 8px; /* Reduced padding */
+    background-color: #0F63AF;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px; /* Reduced font size */
+
+}
+
+/* Modal styles */
+.manage-ward-modal {
+  top: 0; /* Make sure modal is positioned at the top of the viewport */
+  margin: 0;
+}
+
+.manage-ward-modal-header {
+  /* background-color: #007bff; */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.manage-ward-modal-container {
+  padding: 20px;
+  background-color: white;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 800px;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1050;
+}
+
+.manage-ward-modal-body {
+  padding: 20px;
+}
+
+/* .manage-ward-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+} */
+.ward-manage-substore-results-info{
+  color: #0F63AF;
+    font-size: 16px;
+justify-content: flex-start;
+}
+/* Container for the entire modal */
+.manage-ward-modal-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 800px;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1050;
+}
+
+/* Header section of the modal */
+.manage-ward-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+.manage-ward-modal-header h2 {
+  font-size: 16px;
+  margin: 0;
+  color: black;
+}
+
+.manage-ward-modal-header h3 {
+  font-size: 16px;
+  margin: 0;
+  color: black;
+}
+
+/* Close button in the modal header */
+.manage-ward-close-button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #888;
+}
+
+.manage-ward-close-button:hover {
+  color: #333;
+}
+
+/* Modal body where the table resides */
+.manage-ward-modal-body {
+  padding: 20px 0;
+}
+
+/* Table styling within the modal */
+.manage-ward-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.manage-ward-table th,
+.manage-ward-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.manage-ward-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Modal footer with the update button */
+.manage-ward-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.manage-ward-update-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.manage-ward-update-button:hover {
+  background-color: #218838;
+}

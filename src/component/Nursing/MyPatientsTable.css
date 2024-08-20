@@ -1,0 +1,33 @@
+.MyPatientsTable-tableContainer {
+    padding: 20px;
+    background-color: #e6f7ff;
+  }
+  
+  .MyPatientsTable-patientsTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .MyPatientsTable-patientsTable th,
+  .MyPatientsTable-patientsTable td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  .Actions-actions {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .Actions-btn {
+    padding: 5px 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .Actions-btn:hover {
+    background-color: #0056b3;
+  }

@@ -1,0 +1,33 @@
+/* src/navbar.css */
+.utlt-header {
+    background-color: #3598dc; /* Background color for the navbar */
+    padding: 0px 15px; /* Padding around the navbar */
+  }
+  
+  .utlt-nav-links {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .utlt-nav-links a {
+    color: white; /* Text color for links */
+    text-decoration: none; /* Remove underline from links */
+    padding: 10px 15px; /* Padding around links */
+    font-size: 16px; /* Font size for links */
+    border-radius: 4px; /* Rounded corners for links */
+    transition: background-color 0.3s; /* Smooth background color transition */
+  }
+  
+  .utlt-nav-links a.active  {
+    background-color: #2874f0; /* Background color for active link */
+    color: #fff; /* Text color for active link */
+  }
+  
+  .utlt-nav-links a:hover {
+    background-color: #1a6bb6; /* Background color on hover */
+    color: #fff; /* Text color on hover */
+  }
+  

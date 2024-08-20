@@ -1,0 +1,163 @@
+/* Manage Department Styles */
+.manage-department-page {
+  background-color: #e3f2fd;
+  padding: 15px; /* Add padding to avoid content touching edges */
+  overflow-x: auto; /* Handle horizontal overflow if needed */
+}
+
+.manage-department-table-container {
+  background-color: #e3f2fd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  overflow-x: auto; /* Add horizontal scrollbar if content overflows */
+}
+
+.manage-department-manage-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px; /* Reduced margin */
+}
+
+.manage-add-department-btn {
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  padding: 6px 12px; /* Reduced padding */
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.manage-department-search-input {
+  padding: 6px; /* Reduced padding */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 180px; /* Reduced width */
+}
+
+.manage-department-table {
+  width: 100%;
+  background-color: white;
+  border-collapse: collapse;
+  overflow-x: auto; /* Add horizontal scrollbar for the table */
+}
+
+.manage-department-table th, .manage-department-table td {
+  border: 1px solid #e0e0e0;
+  padding: 8px; /* Reduced padding */
+  text-align: left;
+  font-size: 13px; /* Reduced font size */
+}
+
+.manage-department-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Hover effect for table rows */
+.manage-department-table tbody tr:hover {
+  background-color: #f0f0f0; /* Light gray background on hover */
+}
+
+.manage-department-edit-btn {
+  background-color: #0F63AF;
+  color: white;
+  border: none;
+  padding: 4px 8px; /* Reduced padding */
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px; /* Reduced font size */
+}
+
+.manage-department-pagination {
+  margin-top: 15px; /* Reduced margin */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.manage-department-pagination-btn {
+  margin: 0 4px; /* Reduced margin */
+  padding: 4px 8px; /* Reduced padding */
+  background-color: #0F63AF;
+  color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px; /* Reduced font size */
+}
+
+.manage-department-pagination span {
+  margin: 0 8px; /* Reduced margin */
+  font-size: 13px; /* Reduced font size */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .manage-department-manage-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .manage-add-department-btn {
+    margin-bottom: 8px; /* Reduced margin */
+  }
+
+  .manage-department-search-input {
+    width: 100%;
+  }
+
+  .manage-department-table th, .manage-department-table td {
+    font-size: 12px; /* Font size remains the same */
+  }
+
+  .manage-department-results-info {
+    font-size: 14px; /* Adjust font size for better readability */
+  }
+}
+
+@media (max-width: 480px) {
+  .manage-department-search-input {
+    width: 100%; /* Full width on very small screens */
+  }
+
+  .manage-department-table th, .manage-department-table td {
+    font-size: 11px; /* Further reduced font size */
+  }
+
+  .manage-department-results-info {
+    font-size: 12px; /* Adjust font size for better readability */
+  }
+}
+
+/* Modal Styles */
+.update-manage-modal-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw; /* Ensure modal fits within viewport width */
+  width: 100%; /* Full width for smaller screens */
+  overflow: hidden; /* Prevent scrollbars in modal */
+}
+
+.update-manage-modal .modal-body {
+  padding: 20px;
+  overflow-y: auto; /* Add vertical scrollbar if content overflows */
+}
+
+.update-manage-modal .modal-footer {
+  /* background-color: #f7f7f7; */
+  border-top: 1px solid #ddd;
+}
+
+.update-manage-modal .modal-header .close {
+  font-size: 16px;
+  line-height: 1;
+  position: absolute; /* Adjust positioning */
+  top: 10px;
+  right: 10px; /* Position close button to the top right */
+  cursor: pointer;
+}

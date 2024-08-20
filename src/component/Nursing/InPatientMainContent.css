@@ -1,0 +1,28 @@
+.inpatient-component-container {
+    display: flex;
+    gap: 10px; /* Optional: Adjust spacing between buttons */
+}
+
+.inpatient-component-tab {
+    background-color: transparent;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative; /* Necessary for the underline effect */
+    text-decoration: none; /* Remove default underline */
+    transition: color 0.3s, text-decoration-color 0.3s;
+}
+
+.inpatient-component-tab:hover,
+.inpatient-component-tab.active {
+    /* text-decoration: underline;  */
+    text-decoration-color: #2d68ea; /* Set underline color */
+}
+
+.inpatient-component-tab.active {
+    color: white; /* Text color for active tab */
+    background-color: #2d68ea; /* Background color for active tab */
+    border-radius: 5px; /* Optional: adds rounded corners */
+}

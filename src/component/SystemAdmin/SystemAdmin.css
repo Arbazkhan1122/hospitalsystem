@@ -1,0 +1,22 @@
+.button-panel {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    background-color: lightgray;
+    border: none;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button.active {
+    background-color:#0d6efd ;/* Set the background color to blue for the active button */
+    color: white;
+  }
+  
+  .button:hover {
+    background-color: darkgray; /* Optional: Add hover effect for buttons */
+  }

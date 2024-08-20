@@ -1,0 +1,50 @@
+/* Header styling */
+.mkrt_ref-header {
+    background-color: white; /* White background for the navbar */
+    padding: 0px 10px; /* Padding around the navbar */
+    border-bottom: 2px solid #f0f0f0; /* Subtle border at the bottom */
+   
+  }
+  
+
+  .mkrt_ref-header-nav {
+    display: flex;
+    justify-content: space-around; 
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
+  }
+  
+
+  .mkrt_ref-header-button {
+    color: #007bff; /* Blue text color for links */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px; /* Padding for spacing */
+    font-size: 16px; /* Consistent font size */
+    border-radius: 4px; /* Slightly rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+    font-size: 20px;
+  }
+  
+  /* Hover and active state styling */
+  .mkrt_ref-header-button:hover,
+  .mkrt_ref-header-button.active {
+    color: #fff; /* White text on hover/active */
+    background-color: #007bff; /* Blue background on hover/active */
+  }
+  
+  /* Main content area styling */
+  .mkrt_ref-main-content {
+    padding: 20px; /* Padding around the content */
+    background-color: #f4f4f4; /* Light background color */
+    min-height: 100vh; /* Ensure full-height content area */
+  }
+  
+  /* General body styling (if needed) */
+  body {
+    font-family: Arial, sans-serif; /* Font family for the entire page */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light background color for the page */
+  }
+  

@@ -1,0 +1,114 @@
+.sam-Coll-list-requisition {
+    background-color: #CAF2FF;
+    padding: 0px 15px 0px 10px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .sampCollec-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 20px; */
+  }
+  
+  .samples-collected {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .date-range {
+    display: flex;
+    align-items: center;
+  }
+  
+  .date-range span {
+    margin: 0 10px;
+  }
+  
+  .ok-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .sam-Coll-search-bar input {
+    padding: 5px;
+    width: 200px;
+  }
+  .sam-Coll-search-bar i{
+    position: relative;
+    top: 3px;
+  left: 205px;
+  }
+  
+  .results-info {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+  }
+  
+  .print-button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .requisition-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .requisition-table th, .requisition-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .requisition-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .no-data {
+    background-color: #fff9c4;
+    text-align: center;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .pagination button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 5px;
+  }
+  
+  .pagination span {
+    margin: 0 10px;
+  }
+  .sam-Coll-search-N-result{
+    display: flex;
+    justify-content: space-between;
+  }

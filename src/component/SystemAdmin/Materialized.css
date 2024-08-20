@@ -1,0 +1,133 @@
+.materialized-sales-view {
+  background-color: #e6f2ff;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.date-range {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.date-input {
+  margin-right: 10px;
+}
+
+.date-input label {
+  margin-right: 5px;
+}
+
+.date-input input {
+  padding: 5px;
+}
+
+.star-button, .minus-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  margin-right: 5px;
+}
+
+.show-report-button {
+  background-color: #7986cb;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.search-bar {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.search-bar input {
+  flex-grow: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.search-bar .search-button {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-left: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.results-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.results-info button {
+  background-color: #90caf9;
+  border: none;
+  color: white;
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Make the table responsive */
+.sales-table-container {
+  overflow-x: auto;
+}
+
+.sales-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  table-layout: fixed; /* Fixed table layout */
+}
+
+.sales-table th, .sales-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  font-size: 14px;
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+}
+
+.sales-table th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+}
+
+.sales-table .no-rows {
+  background-color: #fff9c4;
+  text-align: center;
+  padding: 10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination .page-btn {
+  background-color: #90caf9;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination span {
+  margin: 0 10px;
+}

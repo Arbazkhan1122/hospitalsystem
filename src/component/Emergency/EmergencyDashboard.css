@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.emergency-dashboard {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.card {
+  flex: 1;
+  margin: 0 10px;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* Add box-shadow for a slight depth effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blue-card {
+  background: linear-gradient(135deg, #1890ff 0%, #40a9ff 100%);
+}
+
+.red-card {
+  background: linear-gradient(135deg, #ff7875 0%, #ff4d4f 100%);
+}
+
+.green-card {
+  background: linear-gradient(135deg, #52c41a 0%, #4caf50 100%);
+}
+
+.dashboard-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.dashboard-number {
+  font-size: 48px;
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+.dashboard-subtitle {
+  font-size: 14px;
+}

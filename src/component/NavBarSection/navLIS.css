@@ -1,0 +1,104 @@
+.lis-N-imu-btn{
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid #cfcdcd;
+    height: 37px;
+    /* justify-content:space-between; */
+  }
+  .lis-page {
+      background-color: #e6f7ff;
+      padding: 1px 1px  1px 20px;
+      font-family: Arial, sans-serif;
+    }
+    
+    .tabs {
+      margin-bottom: 20px;
+    }
+    
+    .tab {
+      padding: 10px 20px;
+      border: none;
+      /* background-color: #f0f0f0; */
+      cursor: pointer;
+    }
+    
+    .tab.active {
+      /* background-color: #007bff; */
+      color: black;
+      font-weight: bold;
+    }
+    
+    .filters {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0px 10px 0 10px;
+      margin-bottom: 20px;
+    }
+   
+    .navLIS -show-data-btn {
+      height: 30px;
+      border-radius: 5px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    
+    
+    
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    
+    .data-table th, .data-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    
+    .data-table th {
+      background-color: #f2f2f2;
+    }
+    
+    .pagination {
+      text-align: right;
+    }
+    
+    .pagination button {
+      margin-left: 10px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    
+    .nav-note-search-n-filter{
+      display: flex;
+      justify-content: space-between;
+    }
+    .navNot-search-input {
+      padding: 5px;
+      width: 200px;
+      border: 1px solid black;
+      border-radius: 15px;
+    }
+  .navNot-search-bar{
+    position: relative;
+    margin-bottom: 10px;
+    /* padding-left: -10px; */
+    /* opacity: 0; */
+    /* animation: slideIn 1s forwards 0.8s; */
+  }
+  .navNot-search-bar i{
+    position: absolute;
+    top: 8px;
+    left: 180px;
+    /* display: flex;
+    justify-content: ; */
+    color: gray;
+  }
+  .navNote-sms-content{
+    margin-top: 15px;
+  }

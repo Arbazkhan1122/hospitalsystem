@@ -1,0 +1,95 @@
+/* OpdTriagePage.css */
+
+.opd-triage-page {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .vitals-list,
+  .add-new-vitals,
+  .chief-complaint,
+  .allergy-list {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .vitals-list ul,
+  .add-new-vitals form,
+  .chief-complaint,
+  .allergy-list table {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .vitals-actions button,
+  .add-new-allergy {
+    margin-right: 10px;
+  }
+  
+  footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  footer button {
+    margin-right: 10px;
+  }
+  
+  .allergy-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .allergy-list table, th, td {
+    border: 1px solid #ccc;
+  }
+  
+  .allergy-list th, td {
+    padding: 8px;
+    text-align: left;
+  }
+  
+ .allergy-list th {
+    background-color: #f2f2f2;
+  }
+  
+ .triage-container button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .triage-container button:hover {
+    background-color: #45a049;
+  }
+  
+  .new-vitals-button {
+    float: right;
+  }
+  .custom-modal .modal-dialog {
+    max-width: 80%; /* Adjust this value as needed */
+    width: 100%;
+    margin: auto;
+  }
+  
+  @media (max-width: 768px) {
+    .custom-modal .modal-dialog {
+      max-width: 90%; /* Adjust for smaller screens */
+    }
+  }
+  

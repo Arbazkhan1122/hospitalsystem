@@ -1,0 +1,188 @@
+.patient-list {
+    background-color: #e6f7ff;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .patient-name-input, .filter-dropdown {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .new-registration-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .search-bar {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+  }
+  
+  .search-icon {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-left: none;
+    padding: 10px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+  }
+  
+  .results-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .print-btn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .patient-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+  }
+  
+  .patient-table th, .patient-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .patient-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .no-data {
+    text-align: center;
+    background-color: #fff9e6;
+    color: #8c6d1f;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-btn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    margin: 0 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pagination-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .header-icon {
+    margin-left: 5px; /* Adds space between the text and the icon */
+    cursor: pointer;
+  }
+  
+  .header-icon:hover {
+    color: #007bff; /* Change the icon color on hover */
+  }
+  
+
+  .dropdown-menu {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .dropdown-item {
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+
+  .dropdown-menu {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .dropdown-textbox {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .dropdown-item {
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px; /* Reduced padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 150px; /* Set a specific width */
+  }
+  
+  .dropdown-container {
+    width: 100%; /* Keeps it responsive */
+    padding: 3px; /* Reduced padding */
+    margin-bottom: 5px; /* Reduced margin */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .dropdown-textbox {
+    width: 100%; /* Keeps it responsive */
+    padding: 3px; /* Reduced padding */
+    margin-bottom: 5px; /* Reduced margin */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  

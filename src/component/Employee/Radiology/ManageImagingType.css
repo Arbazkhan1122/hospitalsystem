@@ -1,0 +1,212 @@
+/* Container styling */
+.manage-imaging-type-container {
+    background-color: #e3f2fd; /* Light blue background */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px; 
+    box-sizing: border-box;
+}
+
+/* Button styling */
+.manage-imaging-type-btn {
+    background-color: #6200ea; /* Purple color */
+    color: white;
+    border: none;
+    padding: 6px 12px; /* Reduced padding */
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.manage-imaging-type-btn:hover {
+    background-color: #4a00b3; /* Darker purple on hover */
+}
+
+/* Search bar styling */
+.manage-imaging-type-search-bar {
+    margin-bottom: 15px;
+    padding: 6px; /* Reduced padding */
+    width: 180px; /* Reduced width */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Table styling */
+.manage-imaging-type-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.manage-imaging-type-table th, .manage-imaging-type-table td {
+    padding: 8px; /* Reduced padding */
+    text-align: left;
+    border: 1px solid #e0e0e0;
+    font-size: 13px; /* Reduced font size */
+}
+
+.manage-imaging-type-table th {
+    background-color: #f5f5f5; /* Light gray background for table headers */
+    font-weight: bold;
+    color: #333;
+}
+
+/* Hover effect for table rows */
+.manage-imaging-type-table tbody tr:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+}
+
+/* Edit button styling */
+.manage-imaging-type-edit-button {
+    background-color: #0F63AF; /* Blue color */
+    color: white;
+    border: none;
+    padding: 4px 8px; /* Reduced padding */
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px; /* Reduced font size */
+}
+
+.manage-imaging-type-edit-button:hover {
+    background-color: #0d5ca6; /* Darker blue on hover */
+}
+
+/* Pagination styling */
+.manage-imaging-type-pagination {
+    margin-top: 15px; /* Reduced margin */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manage-imaging-type-pagination-buttons button {
+    margin: 0 4px; /* Reduced margin */
+    padding: 4px 8px; /* Reduced padding */
+    background-color: #0F63AF; /* Blue color */
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px; /* Reduced font size */
+}
+
+.manage-imaging-type-pagination span {
+    margin: 0 8px; /* Reduced margin */
+    font-size: 13px; /* Reduced font size */
+}
+
+/* Results info styling */
+.manage-imaging-type-results-info {
+    color: #0F63AF;
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .manage-imaging-type-btn {
+        margin-bottom: 8px; /* Reduced margin */
+    }
+
+    .manage-imaging-type-search-bar {
+        width: 100%;
+    }
+
+    .manage-imaging-type-table th, .manage-imaging-type-table td {
+        font-size: 12px; /* Font size remains the same */
+    }
+}
+.manage-type{
+    background-color: white;
+}
+/*  */
+.manage-add-employee-role {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width: 500px; /* Adjust based on your design */
+    z-index: 1050;
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  
+  .manage-modal-dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* height: 100vh; */
+  }
+  
+  .manage-modal-modal-header {
+    display: flex;
+    font-size: 16px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    /* background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6; */
+  }
+  
+  .manage-modal-modal-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .manage-modal-employee-role-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .manage-modal-modal-body {
+    padding: 15px;
+  }
+  
+  .manage-modal-form-label {
+    font-size: 16px;
+    
+    margin-bottom: 5px;
+  }
+  
+  .manage-modal-text-danger {
+    color: red;
+  }
+  
+  .manage-modal-form-control {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+  }
+  
+  .manage-modal-form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .manage-modal-form-check-input {
+    margin-left: 10px;
+    width: 30px;
+    width: 10px;
+  }
+  
+  .manage-modal-employee-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .manage-modal-employee-btn:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,0 +1,236 @@
+
+
+  .ssu-patient-list {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .ssuPatient-bttn{
+    background-color: #008CBA;
+    color: white;
+    font-size: 12px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 8px;
+  }
+  
+  .ssu-patient-list h2 {
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .socialService-content {
+    background-color: #e6f3ff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  
+  .socialService-top-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .socialService-register-button {
+    background-color: #4CAF50;
+    border-radius:5px ;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .socialService-edit-patient input {
+    padding: 5px;
+    margin-left: 10px;
+    width: 200px;
+  }
+  .socialService-patient-status{
+    display: flex;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .socialService-patient-status label {
+    margin-right: 10px;
+    
+    /* display: flex; */
+    /* justify-content: right; */
+  }
+  
+  .socialService-search-bar {
+    display: flex;
+    margin-bottom: 10px;
+    width: 300px;
+
+
+  }
+  
+  .socialService-search-bar input {
+    flex-grow: 1;
+    padding: 5px;
+    width: 200px;
+  }
+  
+  .search-button {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .socialService-results-info {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  .socialService-results-info span{
+color: #008CBA;  
+font-size: 12px;
+}
+
+  
+  .socialService-print-button {
+    background-color: #008CBA;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 12px;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .no-data {
+    text-align: center;
+    padding: 20px;
+    background-color: #FFE6A0;
+  }
+  
+ 
+  .socialService-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .socialService-pagination button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin:20px  0 0 5px;
+    border-radius: 5px;
+  }
+  
+  .socialService-pagination span {
+    margin: 0 10px;
+    color: gray;
+    font-size: 12px;
+    margin-top: 20px;
+  }
+  .socialService-search-N-result{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  .socialService-patient-status-main{
+    display: flex;
+    justify-content: right;
+  }
+  .socialService-table-N-bttns{
+    background-color: white;
+  }
+
+
+  /* @media print {
+    .ssuPatient-bttn, 
+    .socialService-top-controls, 
+    .socialService-patient-status-main,
+    .socialService-pagination {
+      display: none;
+    }
+  
+}
+ */
+/* Customize more styles for print view */
+@media print {
+    body * {
+      visibility: hidden;
+    }
+  
+    .socialService-table-N-bttns,
+    .socialService-table-N-bttns * {
+      visibility: visible;
+    }
+  
+    .socialService-table-N-bttns {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+
+  /* Popup Background */
+.socialService-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  /* Popup Inner Content */
+  .socialService-popup-inner {
+    background: #fff;
+    /* padding: 20px; */
+    border-radius: 5px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80%;
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  /* Close Button */
+  .close-socialService-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #f00;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 50%;
+  }
+  

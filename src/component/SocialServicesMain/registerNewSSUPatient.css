@@ -1,0 +1,74 @@
+.patient-registration {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  h2 {
+    background-color: #003366;
+    color: white;
+    padding: 10px;
+    margin: -20px -20px 20px -20px;
+  }
+  
+  .section {
+    background-color: #e6e6e6;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    margin-top: 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+  }
+  
+  input, select {
+    margin-top: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .age-input {
+    width: 60%;
+    display: inline-block;
+  }
+  
+  .mandatory-note {
+    color: red;
+    font-size: 0.9em;
+  }
+  
+  .form-actions {
+    text-align: right;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .register-btn {
+    background-color: #4CAF50;
+  }
+  
+  .close-btn {
+    background-color: #f44336;
+  }

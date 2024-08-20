@@ -1,0 +1,24 @@
+/* Layout.css */
+
+.hrmsLayout {
+ display: flex;
+}
+
+.hrmsLayoutMainContent {
+   flex: 1;
+transition: all 0.3s ease;
+}
+
+/* .hrmsLayoutMainContentClosed {
+  margin-left: 4rem;
+} */
+
+/* .hrmsLayoutMainContentOpen {
+  margin-left: 12rem;
+} */
+
+.hrmsLayoutMainPadding {
+ padding: 1rem;
+ height: 80%;
+ overflow-y: scroll;
+}

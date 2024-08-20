@@ -1,0 +1,186 @@
+/* src/ManageDepartment.css */
+
+/* General Styles */
+.manage-substore-page {
+  background-color: #e3f2fd;
+  padding: 15px;
+}
+
+.manage-substore-table-container {
+  background-color: #e3f2fd;
+  border-radius: 5px;
+}
+
+.manage-substore-manage-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px; /* Reduced margin */
+}
+
+.manage-add-substore-btn {
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  padding: 6px 12px; /* Reduced padding */
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.manage-substore-search-input {
+  padding: 6px; /* Reduced padding */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 180px; /* Reduced width */
+}
+
+.manage-substore-table {
+  width: 100%;
+  background-color: white;
+  border-collapse: collapse;
+}
+
+.manage-substore-table th, .manage-substore-table td {
+  border: 1px solid #e0e0e0;
+  padding: 8px; /* Reduced padding */
+  text-align: left;
+  font-size: 13px; /* Reduced font size */
+}
+
+.manage-substore-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Hover effect for table rows */
+.manage-substore-table tbody tr:hover {
+  background-color: #f0f0f0; /* Light gray background on hover */
+}
+
+.manage-store-edit-btn {
+  background-color: #0F63AF;
+  color: white;
+  border: none;
+  padding: 4px 8px; /* Reduced padding */
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px; /* Reduced font size */
+}
+
+.manage-store-pagination {
+  margin-top: 15px; /* Reduced margin */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.manage-store-pagination-btn {
+  margin: 0 4px; /* Reduced margin */
+  padding: 4px 8px; /* Reduced padding */
+  background-color: #0F63AF;
+  color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 13px; /* Reduced font size */
+}
+
+.manage-store-pagination span {
+  margin: 0 8px; /* Reduced margin */
+  font-size: 13px; /* Reduced font size */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .manage-substore-manage-section {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .manage-add-substore-btn {
+      margin-bottom: 8px; /* Reduced margin */
+  }
+
+  .manage-substore-search-input {
+      width: 100%;
+  }
+
+  .manage-substore-table th, .manage-substore-table td {
+      font-size: 12px; /* Font size remains the same */
+  }
+}
+
+.manage-substore-results-info {
+  color: #0F63AF;
+  font-size: 16px;
+}
+
+/* Modal Styles */
+.update-substore-modal-container {
+  position: fixed;
+  top: 1%; /* Adjust to bring the modal closer to the top */
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1050; /* Ensure the modal is above other content */
+  width: 90%; /* Adjust the width as needed */
+  max-width: 600px;
+  max-height: 90vh; /* Ensure the modal doesn't exceed the viewport height */
+  overflow-y: auto; /* Enable scrolling if content is too long */
+  background-color: #ffffff; /* Set background color */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.update-substore-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.update-substore-modal-header h2 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.update-substore-close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color:red;
+  transition: color 0.3s ease;
+}
+
+.update-substore-close-btn:hover {
+  color: #333;
+}
+
+.update-substore-input-field,
+.update-substore-textarea-field {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.update-substore-update-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.update-substore-update-btn:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,84 @@
+/* WriteOffItemsList.css */
+.writeOffList-content{
+    width: 98%;
+}
+
+.search-bar {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+
+.search-bar input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+
+.search-bar button {
+    padding: 10px;
+    border: none;
+    background-color: #2196F3;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+}
+
+.writeOffList-results {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-bottom: 20px;
+}
+
+.writeOffList-results span {
+    margin-right: 10px;
+}
+
+.writeOffList-results button {
+    padding: 10px;
+    border: none;
+    background-color: #2196F3;
+    color: #fff;
+    cursor: pointer;
+}
+
+.write-off-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+.write-off-list-table th,
+.write-off-list-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.writeOffList-pagination {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Ensure the elements wrap on smaller screens */
+    margin-top: 20px;
+}
+.writeOffList-pagination-div
+{
+    width: 50%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+
+}
+.writeOffList-pagination-div button
+{
+    background: #2196F3;
+    border: none;
+    padding: 5px 7px;
+    color: white;
+}

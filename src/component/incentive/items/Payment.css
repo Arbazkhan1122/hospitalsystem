@@ -1,0 +1,81 @@
+.payment {
+    background-color: #e6f7ff;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .payment__nav {
+    display: flex;
+    margin-bottom: 20px;
+    overflow-x: auto;
+  }
+  
+  .payment__nav-button {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .payment__nav-button--active {
+    border-bottom: 2px solid #1890ff;
+    color: #1890ff;
+  }
+  
+  .payment__title {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .payment__icon {
+    margin-right: 10px;
+    color: #1890ff;
+  }
+  
+  .payment__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .payment__date-range, .payment__doctor-search {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .payment__label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  .payment__input {
+    margin-top: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .payment__search-button {
+    background-color: #1890ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .payment__content {
+      flex-direction: column;
+    }
+    
+    .payment__date-range, .payment__doctor-search {
+      width: 100%;
+    }
+  }
+  

@@ -1,0 +1,94 @@
+.inventory-navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0; /* Prevents shrinking of the navbar */
+}
+
+.inventory-home-button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 10px;
+  flex-shrink: 0; /* Ensures the button doesn't shrink */
+}
+
+.inventory-nav-links {
+  display: flex;
+  flex-shrink: 0; /* Prevents shrinking of the navigation links */
+}
+
+.inventory-nav-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #4a90e2;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+.inventory-nav-links button {
+  background: none;
+  border: none;
+  color: #4a90e2;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 10px;
+  padding: 0;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+.inventory-active-inventory {
+  margin-left: auto;
+  background-color: #4a90e2;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  flex-shrink: 0; /* Prevents shrinking of the active inventory */
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+.inventory-active-inventory .arrow {
+  margin-left: 5px;
+}
+
+.inventory-main-content {
+  flex-grow: 1;
+  background-color: #e6f7ff;
+  overflow-y: auto; /* Enables vertical scrolling if content overflows */
+  overflow-x: hidden; /* Prevents horizontal overflow */
+  padding: 20px; /* Adds padding to avoid content sticking to the edges */
+  box-sizing: border-box; /* Ensures padding is included in the element's width and height */
+}
+
+/* Additional styles to prevent inner components from causing overflow */
+.inventory-inner-component {
+  max-width: 100%; /* Ensures components do not exceed the width of their container */
+  overflow-x: auto; /* Enables horizontal scrolling if necessary */
+  box-sizing: border-box; /* Includes padding and borders in the width and height */
+}
+
+/* Example inner component overflow handling */
+.inventory-table-wrapper {
+  width: 100%;
+  overflow-x: auto; /* Allows tables to scroll horizontally if needed */
+  margin-bottom: 20px; /* Adds space below tables */
+}
+
+.inventory-table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.inventory-table-wrapper th, .inventory-table-wrapper td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  white-space: nowrap; /* Prevents cell content from wrapping */
+}

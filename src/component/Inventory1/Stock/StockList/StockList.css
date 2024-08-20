@@ -1,0 +1,156 @@
+/* StockList.css */
+.stock-list {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.filters label {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 250px;
+}
+
+.filters select,
+.filters input[type="checkbox"] {
+    margin-left: 10px;
+    width: 100%;
+    max-width: 150px;
+}
+
+.legends {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 250px;
+}
+
+.legends .zero-quantity {
+    color: red;
+    font-weight: bold;
+}
+
+.legends .below-min-stock {
+    color: #b6a3a3;
+    font-weight: bold;
+}
+
+.search-export {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-export input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 250px;
+    box-sizing: border-box;
+}
+
+.search-export button {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    box-sizing: border-box;
+}
+
+.search-export .export {
+    background-color: #42a5f5;
+    color: white;
+}
+
+.search-export .print {
+    background-color: #ffeb3b;
+    color: #000;
+}
+
+.stock-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.stock-table th,
+.stock-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.stock-table th {
+    background-color: #42a5f5;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+.view-button,
+.manage-button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    background-color: #42a5f5;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #42a5f5;
+    color: #fff;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filters,
+    .search-export {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filters label,
+    .legends,
+    .search-export input[type="text"],
+    .search-export button {
+        width: 100%;
+        max-width: none;
+    }
+}
+

@@ -1,0 +1,100 @@
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #5a67d8;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+}
+
+.close-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.form {
+    padding: 20px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    min-width: 150px;
+    margin-right: 10px;
+}
+
+.form-group input, 
+.form-group select {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.required {
+    color: red;
+}
+
+.form-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-left, .form-right {
+    width: 48%;
+}
+
+.age-group {
+    display: flex;
+    align-items: center;
+}
+
+.age-group input {
+    max-width: 70px;
+    margin-right: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.add-button {
+    background-color: #38a169;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-button {
+    background-color: #38a169;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-button:hover, .register-button:hover {
+    background-color: #2f855a;
+}

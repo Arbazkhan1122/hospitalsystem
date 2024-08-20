@@ -1,0 +1,33 @@
+import React, { useState } from 'react'
+
+// import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NursingMainComponent from '../Nursing/NursingMainComponent';
+import Inpatient from '../Nursing/InPatientMainContent';
+import OutPatient from '../Nursing/NursingMainComponent';
+import Layout from '../Nursing/Layout';
+import MyPatientsTable from '../Nursing/MyPatientsTable';
+import Nephrology from '../Nursing/Nephrology';
+import RequisitionList from '../Nursing/RequisitionList';
+import DischargeSummary from '../Nursing/DischargeSummary';
+
+function App() {
+
+  return (
+    <>
+            <Layout>
+                <Routes>
+                  <Route path='/' element={<NursingMainComponent/>}></Route>
+                  <Route path="/Inpatient" element={<Inpatient />} />
+                  <Route path='/MyPatients'element={<MyPatientsTable/>}></Route>
+                  <Route path='/Outpatient' element={<OutPatient/>}></Route>
+                  <Route path='/Nephrology' element={<Nephrology/>}></Route>
+                  <Route path='/RequisitionList' element={<RequisitionList/>}></Route>
+                  <Route path='/DischargeSummary' element={<DischargeSummary/>}></Route>
+                  </Routes>
+            </Layout>
+    </>
+  )
+}
+
+export default App

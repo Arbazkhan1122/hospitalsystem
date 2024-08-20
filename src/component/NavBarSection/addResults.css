@@ -1,0 +1,148 @@
+/* components/WorkList.css */
+.work-list {
+    background-color: #e6f3ff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .date-range, .category-select {
+    display: flex;
+    align-items: center;
+  }
+  
+  .load-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .work-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .work-table th, .work-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .work-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+
+  
+  
+  
+  /* --------------------------------------------------------------------------------------------------------- */
+  
+  
+  /* .work-list {
+    background-color: #e0f7fa;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .date-filter, .category-dropdown {
+    display: flex;
+    gap: 10px;
+  }
+  
+  label {
+    font-size: 14px;
+  }
+  
+  select {
+    padding: 5px;
+  }
+  
+  .load-button {
+    background-color: #32CD32;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .table-container {
+    margin-top: 20px;
+  }
+  
+  .search-bar {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .loading {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffcc00;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+  }
+  
+  .print-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+   */

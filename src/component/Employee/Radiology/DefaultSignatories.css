@@ -1,0 +1,72 @@
+.default-signatories-container {
+    background-color: #d4f1f9;
+    padding: 10px;
+
+    border-radius: 5px;
+    width: 100%;
+  height: 100vh; /* Takes up the full height of the window */
+  
+  }
+  
+  .default-signatories-header {
+    margin-bottom: 30px;
+    margin-left: 10px;
+    top: 0;
+  }
+  .default-signatories-header h3 {
+    font-size: 16px;
+    margin: 0;
+    color: #333;
+    padding-bottom: 5px; /* Add space between the text and border */
+    border-bottom: 1px solid white;
+  }
+  
+  .default-signatories-list {
+    display: flex;
+    font-size: 16px;
+    gap: 30px;
+    margin-left: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .default-signatories-item {
+    display: flex;
+    align-items: center;
+    /* font-weight: bold; */
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .default-signatories-item input {
+    margin-right: 10px;
+    transform: scale(1.2); /* Make the checkbox slightly larger */
+  }
+  
+  .default-signatories-button-container {
+    display: flex;
+    justify-content: center; /* Centers the button horizontally */
+    margin-top: 20px; /* Add space above the button if needed */
+  }
+  
+  .default-signatories-update-button {
+    background-color: #5b73e8;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .default-signatories-update-button:hover {
+    background-color: #4a62c8;
+  }
+  
+  .default-signatories-container h3,
+  .default-signatories-item {
+    font-family: Arial, sans-serif;
+  }
+  
+  
