@@ -1,0 +1,114 @@
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e6f3ff;
+  }
+  
+  .queueInformation {
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+  }
+  
+  .queueInformation-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .queueInformation-doctor-select {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.queueInformation-doctor-select select {
+      padding: 5px;
+      width: 180px;
+    margin: 0 8px;
+  }
+  
+  .queueInformation-proceed-btn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+  }
+  
+ 
+  
+  main {
+    flex-grow: 1;
+  }
+  
+  .queueInformation-banner {
+    background-color: #3b5998;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    font-weight: bold;
+  }
+  .queueInformation-main-div{
+    padding: 10px;
+    background-color: white;
+    margin:0 10px 10px 10px;
+    border-radius: 5px;
+  }
+  
+  .queueInformation-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .queueInformation-logo img {
+    margin-right: 10px;
+  }
+
+  .queueInformation-tbl-div{
+    margin: 10px;
+  }
+  
+  .queueInformation-table  {
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+  }
+  
+  .queueInformation-table th {
+    /* margin-top: 10px; */
+    text-align: left;
+    padding: 10px;
+    border-radius: 5px;
+    border-bottom: 1px solid #ddd;
+  }
+  .queueInformation-tr th{
+    background-color: #f3f3f3;
+    color: #5a5858;
+  }
+  
+  .queueInformation-footer {
+    background-color: #fd6c1e;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin: 0 10px 0 10px;
+    gap: 20px;
+    font-weight: bold;
+    /* border: 1px solid red; */
+    /* font-size: 100px; */
+  }
+  
+  .queueInformation-footer-icons {
+    display: flex;
+    gap: 20px;
+  }
+  .queueInformation-footer-icons marquee{
+   color: red;
+    gap: 20px;
+  }

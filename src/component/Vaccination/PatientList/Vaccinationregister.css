@@ -1,0 +1,117 @@
+/* VaccinationRegister.css */
+.vaccinationRegister__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  padding: 50px;
+}
+
+.vaccinationRegister__popup {
+  background-color: white;
+  padding: 20px;
+  /* border-radius: 5px; */
+  /* width: 100%; */
+  position: relative;
+}
+
+.vaccinationRegister__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.vaccinationRegister__closeButton {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+}
+
+.vaccinationRegister__form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.vaccinationRegister__formGroup {
+  display: flex;
+  align-items: center;
+}
+
+.vaccinationRegister__formGroup label {
+  width: 30%;
+  min-width: 150px; /* Adjust as necessary */
+  margin-bottom: 5px;
+  font-size: 14px;
+  /* font-weight: bold; */
+}
+
+.vaccinationRegister__formGroup input,
+.vaccinationRegister__formGroup select {
+  width: 70%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.vaccinationRegister__ageInput {
+  display: flex;
+  gap: 10px;
+}
+
+.vaccinationRegister__ageInput input {
+  width: 50px;
+}
+
+.vaccinationRegister__formActions {
+  grid-column: span 2;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.vaccinationRegister__formActions button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.vaccinationRegister__formActions button:first-child {
+  background-color: #ccc;
+}
+
+.vaccinationRegister__formActions button:last-child {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.vaccinationRegister__note {
+  grid-column: span 2;
+  margin-top: 0px;
+  color: green;
+}
+
+.vaccinationRegister__openButton {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

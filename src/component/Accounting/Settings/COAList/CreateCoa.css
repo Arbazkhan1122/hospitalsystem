@@ -1,0 +1,87 @@
+/* CreateLedgerPopup.css */
+
+.cc-popup-overlay {
+  position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.cc-popup-content {
+  position: relative;
+  background-color: #f0f0f0;
+  padding: 0 20px;
+  border-radius: 5px;
+  /* overflow-y: auto; */
+  width: 600px;
+  height: 250px;
+}
+
+.cc-popup-content h2 {
+  color: #4a4af4;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.cc-form-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.cc-form-group {
+  flex: 1;
+  display: flex;
+  margin-right: 10px;
+}
+
+.cc-form-group label {
+  white-space: nowrap;
+  margin-bottom: 5px;
+  width: 250px;
+}
+
+.cc-button-row {
+  text-align: right;
+}
+
+.cc-save-btn {
+  background-color: #4a4af4;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 10px;
+  float: left;
+}
+
+.cc-close-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 8px 12px;
+  font-size: 16px;
+}
+.cc-form-group input,.cc-form-group select{
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 30px !important;
+}
+/* .cc-ledger-input{
+  border: none;
+  background-color: transparent;
+  outline: none;
+} */

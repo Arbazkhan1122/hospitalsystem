@@ -1,0 +1,26 @@
+
+.wardInformation-container {
+    font-family: Arial, sans-serif;
+    /* max-width: 800px; */
+    width: auto;
+    height: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #dff0ff;
+  }
+  .wardInformation-heading h3{
+    color: #532c7b;
+  }
+  
+    
+    
+    .wardInformation-total-row {
+      font-weight: bold;
+    }
+  
+  .wardInformation-wardNameColumn{
+    font-weight: bold;
+    color: #007bff;
+  }
+
+ 

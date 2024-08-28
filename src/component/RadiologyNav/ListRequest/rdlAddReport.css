@@ -1,0 +1,109 @@
+.add-report-form {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+  }
+  
+  .add-report-form h2 {
+    background-color: #003366;
+    color: white;
+    padding: 10px;
+    margin: -20px -20px 20px -20px;
+  }
+  
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .info-row span {
+    flex: 1;
+  }
+  
+  .info-row input[type="text"] {
+    width: 100%;
+    padding: 5px;
+  }
+  
+  .link {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 0.9em;
+  }
+  
+  .text-editor {
+    margin-top: 20px;
+  }
+  
+  .toolbar {
+    background-color: #f0f0f0;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .add-report-form textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+  }
+  
+  .signature-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .signature-box {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 0 5px;
+    text-align: center;
+  }
+  
+  .signature-box.active {
+    background-color: #e6f3ff;
+  }
+  
+  .form-actions {
+    margin-top: 20px;
+  }
+  
+  .select-signatories, .upload-images {
+    margin-bottom: 10px;
+  }
+  
+  select, .file-upload-btn {
+    padding: 5px;
+    margin-left: 10px;
+  }
+  
+  .file-upload-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .submit-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .save-btn, .submit-print-btn {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .save-btn {
+    background-color: #4CAF50;
+  }
+  
+  .submit-print-btn {
+    background-color: #008CBA;
+  }

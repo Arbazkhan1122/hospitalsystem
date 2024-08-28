@@ -1,0 +1,244 @@
+
+.goods-receipt-form-com {
+  position: relative;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  max-width: 1200px; /* Set maximum width to prevent exceeding */
+    width: 100%; /* Ensure it takes up full width up to max-width */
+  margin: 0 auto;
+}
+
+.goods-receipt-form-com h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.goods-receipt-form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.goods-receipt-form-group {
+  display: flex;
+  flex-direction: column;
+  width: 23%;
+}
+
+.goods-receipt-form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.goods-receipt-form-group input,
+.goods-receipt-form-group select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.goods-receipt-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.goods-receipt-table thead {
+  background-color: #f2f2f2;
+}
+
+.goods-receipt-table th,
+.goods-receipt-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.goods-receipt-add-item-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+
+.goods-receipt-totals-column {
+  width: 32%;
+}
+
+.goods-receipt-total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.goods-receipt-total-row label {
+  margin-right: 10px;
+}
+
+.goods-receipt-total-row input {
+  width: 60%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.goods-receipt-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.goods-receipt-print-btn,
+.goods-receipt-discard-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.goods-receipt-print-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.goods-receipt-discard-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.goods-receipt-totals-column {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Align items to the right */
+}
+
+.goods-receipt-total-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.goods-receipt-total-row label {
+  margin-right: 10px;
+  flex: 1;
+  text-align: right; /* Align label text to the right */
+}
+
+.goods-receipt-total-row input {
+  width: 60%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: right; /* Align input text to the right */
+}
+
+.goods-receipt-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+/*  */
+.goods-receipt-totals-section {
+  /* display: flex; */
+  justify-content: flex-end; /* Aligns all columns to the right */
+}
+
+.goods-receipt-totals-column {
+  width: 32%;
+  margin-left: 20px; /* Optional spacing between columns */
+}
+
+.goods-receipt-total-row {
+  /* display: flex; */
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.goods-receipt-label {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.goods-receipt-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 60%; /* Adjusts the width of input for better alignment */
+  text-align: right; /* Aligns text inside the input to the right */
+}
+
+.goods-receipt-span {
+  font-style: italic;
+  color: #666;
+  text-align: right;
+}
+
+.goods-receipt-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+.goods-receipt-close-btn:hover {
+  color: #000;
+}
+
+.goods-receipt-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+.goods-receipt-close-btn:hover {
+  color: #000;
+}
+
+/* Additional styles for your form remain unchanged */
+.input-container-question-box {
+  position: relative;
+  margin-left: 20px;
+  margin-top: 23px;
+}
+
+.input-container-question-box input {
+  width: 20%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.input-container-question-box .question-icon {
+  /* position: absolute; */
+  /* right: -10px; */
+  margin-left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #555;
+  cursor: pointer;
+}
+
+.input-container-question-box .question-icon:hover {
+  color: #000;
+}
+/*  */

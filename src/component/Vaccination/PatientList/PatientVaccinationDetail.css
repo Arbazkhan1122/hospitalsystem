@@ -1,0 +1,115 @@
+.PatientVaccinationDetail-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    padding: 50px;
+  }
+  
+  .PatientVaccinationDetail-popup {
+    background-color: rgb(243, 242, 242);
+    padding: 20px;
+    border-radius: 5px;
+    /* overflow-y: auto; */
+    position: relative;
+  }
+  
+  .PatientVaccinationDetail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .PatientVaccinationDetail-closeBtn {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    /* z-index: 15550; */
+    cursor: pointer;
+  }
+  
+  .PatientVaccinationDetail-patientInfo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .PatientVaccinationDetail-patientInfo span {
+    font-size: 14px;
+  }
+  
+  .PatientVaccinationDetail-fiscalYear {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .PatientVaccinationDetail-updateBtn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .PatientVaccinationDetail-newVaccine {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .PatientVaccinationDetail-newVaccine input,.PatientVaccinationDetail-newVaccine select,  .PatientVaccinationDetail-fiscalYear input,.PatientVaccinationDetail-fiscalYear select{
+    border: 1px solid #c2cad8;
+    border-radius: 3px !important;
+    height: 30px !important;
+    width: 150px;
+    margin: 0 5px;
+    font-size: 14px;
+  }
+  .PatientVaccinationDetail-formGroup {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    align-items: center;
+    /* flex-direction: column; */
+  }
+  
+  .PatientVaccinationDetail-addBtn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .PatientVaccinationDetail-vaccinesList h3 {
+    background-color: #035e7d;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  .PatientVaccinationDetail-cancelBtn{
+    background-color: #4c4faf;
+    color: white;
+    border: none;
+    margin-left: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }

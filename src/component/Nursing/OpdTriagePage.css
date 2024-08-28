@@ -1,95 +1,175 @@
 /* OpdTriagePage.css */
 
-.opd-triage-page {
-    margin: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .vitals-list,
-  .add-new-vitals,
-  .chief-complaint,
-  .allergy-list {
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
-  
-  .vitals-list ul,
-  .add-new-vitals form,
-  .chief-complaint,
-  .allergy-list table {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .vitals-actions button,
-  .add-new-allergy {
-    margin-right: 10px;
-  }
-  
-  footer {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  footer button {
-    margin-right: 10px;
-  }
-  
-  .allergy-list table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .allergy-list table, th, td {
-    border: 1px solid #ccc;
-  }
-  
-  .allergy-list th, td {
-    padding: 8px;
-    text-align: left;
-  }
-  
- .allergy-list th {
-    background-color: #f2f2f2;
-  }
-  
- .triage-container button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .triage-container button:hover {
-    background-color: #45a049;
-  }
-  
-  .new-vitals-button {
-    float: right;
-  }
-  .custom-modal .modal-dialog {
-    max-width: 80%; /* Adjust this value as needed */
-    width: 100%;
-    margin: auto;
-  }
-  
-  @media (max-width: 768px) {
-    .custom-modal .modal-dialog {
-      max-width: 90%; /* Adjust for smaller screens */
-    }
-  }
-  
+/* Modal Customization */
+.custom-modal .modal-dialog {
+  max-width: 90%;
+  margin: 1.75rem auto;
+}
+
+.triage-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Header styling */
+.triage-container header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.triage-container main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.vitals-list,
+.add-new-vitals,
+.AllergyComponent,
+.chief-complaint,
+.allergy-list {
+  width: 48%;
+  margin-bottom: 20px;
+}
+
+.vitals-list table,
+.allergy-list table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.vitals-list th,
+.allergy-list th,
+.vitals-list td,
+.allergy-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.vitals-list th,
+.allergy-list th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Form styling */
+.add-new-vitals input,
+.AllergyComponent input,
+.AllergyComponent select,
+.AllergyComponent textarea,
+.chief-complaint textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.blood-pressure {
+  display: flex;
+  justify-content: space-between;
+}
+
+.blood-pressure input {
+  width: 48%;
+}
+
+/* Button styling */
+.triage-container button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.triage-container button:hover {
+  background-color: #45a049;
+}
+
+.btnFooter {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btnFooter:hover {
+  background-color: #45a049;
+}
+
+
+.discard-button {
+  background-color: #f44336;
+}
+
+.add-triage-button,
+.discard-button {
+  width: 48%;
+  margin: 10px auto;
+}
+
+.triage-container footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+/* OpdTriagePage.css */
+
+.vertical-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.vertical-table th,
+.vertical-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.vertical-table th {
+  background-color: #f2f2f2;
+  width: 30%; /* Adjust width of the label column */
+  font-weight: bold;
+}
+
+.vertical-table td {
+  width: 70%; /* Adjust width of the data column */
+}
+
+.vitals-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.vitals-actions button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.vitals-actions button:hover {
+  background-color: #45a049;
+}
+

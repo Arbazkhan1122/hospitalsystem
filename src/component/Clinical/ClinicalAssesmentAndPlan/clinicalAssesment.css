@@ -1,0 +1,137 @@
+/* ClinicalAssessment.css */
+.ClinicalAssessment {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #e6f3ff;
+  }
+  
+  .ClinicalAssessment-header {
+    color: #ffffff;
+    background-color: #4a90e2;
+    padding: 10px;
+    margin-top: 0;
+  }
+  
+  .ClinicalAssessment-patientInfo {
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    
+    .ClinicalAssessment-searchInput {
+        border: 1px solid #c2cad8;
+        border-radius: 3px !important;
+        height: 30px !important;
+        width: 250px;
+        margin: 5px;
+        font-size: 14px;
+    }
+    
+    .ClinicalAssessment-patientDetails {
+      background-color: #ffffff;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
+    margin-top: 10px;
+  }
+  .ClinicalAssessment-patientDetails p{
+    padding: 0;
+    margin: 2px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .ClinicalAssessment-mainsection{
+    display: flex;
+    gap: 10px;
+  }
+  .ClinicalAssessment-displayName,.ClinicalAssesment-tablesection{
+    width: 100%;
+    overflow: hidden;
+  }
+  .ClinicalAssessment-displayName textarea {
+    width: 100%;
+    margin-bottom: 20px;
+    resize: none;
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+    overflow: hidden; /* Prevent overflow within the input field */
+  }
+  
+  .ClinicalAssessment-investigation,
+  .ClinicalAssessment-medication {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.ClinicalAssessment-investigation h2,
+.ClinicalAssessment-medication h2{
+      font-size: 14px;
+  }
+  
+  .ClinicalAssessment-tabs {
+    display: flex;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .ClinicalAssessment-tab {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .ClinicalAssessment-tab.active {
+    background-color: #4a90e2;
+    color: #ffffff;
+  }
+  
+  .ClinicalAssessment-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .ClinicalAssessment-table th,
+  .ClinicalAssessment-table td {
+    border: 1px solid #ddd;
+    font-size: 14px;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .ClinicalAssessment-table th {
+    background-color: #b6e098;
+  }
+  
+  .ClinicalAssessment-followUp {
+    margin-bottom: 20px;
+  }
+  
+  .ClinicalAssessment-followUp input {
+    border: 1px solid #c2cad8;
+    border-radius: 3px !important;
+    height: 30px !important;
+    width: 250px;
+    margin: 5px;
+    font-size: 14px;
+  }
+  
+  .ClinicalAssessment-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .ClinicalAssessment-button {
+    padding: 5px 20px;
+    background-color: #6a5acd;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .ClinicalAssessment-button:hover {
+    background-color: #483d8b;
+  }

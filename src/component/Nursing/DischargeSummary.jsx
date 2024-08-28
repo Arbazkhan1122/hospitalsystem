@@ -2,16 +2,27 @@
 import React, { useState } from 'react';
 import '../Nursing/InPatientMainContent.css';
 import { useNavigate } from 'react-router-dom';
+import DischargeFromNurse from './DistchargeFromNurse';
 
 function MainContent() {
 
     const [activeTab, setActiveTab] = useState('Discharged Patients'); // Default tab
+    const [isdischarge,isSetDischarge ]=useState(false);
     
     const navigate = useNavigate();
     const handleTabClick = (tabName) => {
         setActiveTab(tabName);
        
     };
+    const openDischargeModal=()=>{
+        isSetDischarge(true);
+    }
+    const closeDischargeModal=()=>{
+        isSetDischarge(false);
+    }
+
+
+ 
     return (
         <>
         <div className="discharge-summary-component-container">
@@ -69,7 +80,7 @@ function MainContent() {
                   <td>paid</td>
                  
                   <div className="Actions-actions">
-                      <button className="Actions-btn Actions-consumption">Add</button>
+                      <button className="Actions-btn Actions-consumption" onClick={openDischargeModal}>Addddddddd</button>
                      
                   </div>
                </tr>
@@ -137,6 +148,13 @@ function MainContent() {
            ) 
 
         }
+        {
+            isdischarge &&
+            <DischargeFromNurse closeModal={closeDischargeModal} show={openDischargeModal}/>
+            
+
+        }
+         
 
 
     </>

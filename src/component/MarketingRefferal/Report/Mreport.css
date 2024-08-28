@@ -51,7 +51,7 @@
     border-collapse: collapse;
   }
   
-  .mkrtref_report_table_head th {
+  .mkrtref_report_table_head-th {
     background-color: #f0f0f0;
     text-align: left;
     padding: 10px;
@@ -60,8 +60,9 @@
   
   .mkrtref_report_no_data {
     text-align: center;
-    padding: 20px;
+    padding: 8px;
     color: #999;
+    border: 1px solid #ddd;
   }
   
   .mkrtref_report_pagination {

@@ -1,0 +1,183 @@
+.patient-queue-management-container {
+  background-color: #ccefff;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  }
+  /* .queue-management-content{
+    width: auto;
+    height: 100%;
+  } */
+  
+  .patient-queue-management-header {
+    background-color: white;
+  }
+  
+  .queue-management-header {
+    padding: 10px;
+    font-size: 16px;
+    text-align: left;
+  }
+  
+  .queue-management-header-button {
+    background-color: #005eb8;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .queue-management-content {
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
+  .queue-management-title {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #004080;
+    font-weight: bold;
+  }
+  
+  .queue-management-form-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .queue-management-form-group {
+    margin-right: 20px;
+  }
+  
+  .queue-management-form-group label {
+    color: #004080;
+    font-size: 16px;
+    margin-right: 5px;
+  }
+  
+  .queue-management-select-doctor {
+    padding: 5px;
+    margin-left: 40px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    min-width: 200px;
+  }
+  
+  .queue-management-form-group.status-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .queue-management-status-options {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .queue-management-status-options input {
+    margin-right: 5px;
+  }
+  
+  .queue-management-load-data-button {
+    background-color: #5d9cec;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .queue-management-load-data-button:hover {
+    background-color: #4a8cd4;
+  }
+  
+  .queue-management-table-section {
+    margin-top: 20px;
+  }
+  
+  .queue-management-search-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+  }
+  
+  .queue-management-search-container input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 200px;
+  }
+  
+  .queue-management-search-button {
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+    background-color: transparent; /* Remove background */
+    color: #005eb8; /* Icon color (optional) */
+    cursor: pointer;
+    margin-left: -40px;
+  }
+  
+  .queue-management-table-section table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .queue-management-table-section th, 
+  .queue-management-table-section td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+  }
+  .queue-managemnt-table{
+    width: 100%;
+    background-color: white;
+  }
+
+.queue-mana-table{
+    background-color: white;
+}
+
+
+  .queue-management-table-section thead th {
+    background-color: #f5f5f5;
+  }
+  
+  .queue-management-no-data {
+    text-align: center;
+    background-color: #fff3cd;
+    color: #856404;
+  }
+  
+  .queue-management-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .queue-management-pagination span {
+    margin: 0 10px;
+    font-size: 14px;
+  }
+  
+  .queue-management-pagination-button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    background-color: #90caf9;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .queue-management-results-info {
+    color: #0F63AF;
+    font-size: 16px;
+    display: flex;
+    justify-content: flex-end; /* Aligns the text to the left */
+}

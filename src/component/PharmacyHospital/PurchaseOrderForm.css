@@ -1,0 +1,137 @@
+/* Container for the form */
+.purchase-order-form-component {
+    font-size: 16px; /* Consistent font size */
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    max-width: 1200px; /* Set maximum width to prevent exceeding */
+    width: 100%; /* Ensure it takes up full width up to max-width */
+    margin: 0 auto; /* Center the component horizontally */
+    box-sizing: border-box; /* Include padding in width calculation */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  
+  /* Header styling */
+  .purchase-order-header {
+    font-size: 16px;
+  }
+  
+  /* Form row styling */
+  .purchase-order-form-form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+  
+  /* Form group styling */
+  .purchase-order-form-form-group {
+    margin-right: 15px;
+    flex: 1;
+  }
+  
+  .purchase-order-form-form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Input and textarea styling */
+  input, textarea, select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  textarea.purchase-order-textare {
+    resize: vertical;
+  }
+  
+  /* Table styling */
+  .purchase-order-form-items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .purchase-order-form-items-table th, .purchase-order-form-items-table td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .purchase-order-form-items-table th {
+    background: #e9ecef;
+  }
+  
+  /* Summary section styling */
+  .purchase-order-form-summary-section {
+    margin-bottom: 20px;
+  }
+  
+  .purchase-order-form-summary-item-com {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .purchase-order-form-summary-item-com label {
+    flex: 0 0 70%; /* Takes up 70% of the width */
+    margin-right: 10px;
+    text-align: right; /* Align label to the right */
+  }
+  
+  .purchase-order-form-summary-item-com input {
+    width: 30%; /* Takes up 30% of the width */
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .purchase-order-form-summary-item-com-in-words {
+    margin-top: 10px;
+    color: #333; /* Dark gray color */
+    font-size: 16px; /* Adjust font size */
+    margin-right: auto; /* Pushes buttons to the right */
+  }
+  
+  .purchase-order-com-buttons {
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+    gap: 10px; /* Adjust gap between buttons as needed */
+    margin-top: 20px; /* Add some spacing from the content above */
+  }
+  
+  /* Button styling */
+  .purchase-btn-order {
+    background-color: #4caf50; /* Green background color */
+    color: white;
+    border: none;
+    height: 30px;
+    padding: 0 20px; /* Adjust padding to maintain height */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 30px; /* Vertically center text */
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .purchase-btn-order:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+  }
+  
+  /* Close button styling */
+  .purchase-order-close-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #ff0000;
+    z-index: 9999; /* Ensure the button stays on top of other content */
+  }
+  

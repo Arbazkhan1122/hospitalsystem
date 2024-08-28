@@ -1,0 +1,74 @@
+.Consultant {
+    padding:0 20px;
+  }
+  
+  .Consultant-form {
+    margin-top: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .form-group label {
+    margin-right: 10px;
+  }
+  
+  .search-group {
+    display: flex;
+    margin-bottom: 10px;
+  }
+  
+  .search-group input {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  
+  .search-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .checkbox-group label {
+    margin-right: 20px;
+  }
+  
+  .Consultant-table {
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+  
+  .Consultant-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .Consultant-table th, .Consultant-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .Consultant-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .Consultant-table tr.even {
+    background-color: #f9f9f9;
+  }
+  
+  .Consultant-table tr.odd {
+    background-color: #ffffff;
+  }
+  
+  .Consultant-save-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }

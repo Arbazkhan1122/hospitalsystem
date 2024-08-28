@@ -1,0 +1,49 @@
+
+  .radiologyNav-bar {
+      background-color: white;
+      font-family: Arial, sans-serif;
+
+      /* padding: 10px; */
+      /* border: 1px solid #007bff; */
+  
+    }
+    
+    .radiologyNav-bar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 0px 10px 0px;
+      display: flex;
+      gap: 10px;
+      justify-content: left;
+  
+    }
+    
+    .radiologyNav-bar li {
+      margin: 0 0px;
+      
+    }
+    
+    .radiologyNav-bar a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 5px 5px;
+      border-radius: 5px;
+  
+    }
+    
+    .radiologyNav-bar a:hover {
+      background-color: #0056b3;
+      color: white;
+      border: 1px solid gray;
+  
+      
+    }
+    
+    .radiologyNav-bar .active {
+      background-color: #0056b3;
+      color: white;
+  
+    }
+    

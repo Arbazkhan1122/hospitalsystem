@@ -28,9 +28,15 @@
   }
   
   .search-input, .department-input {
-    padding: 8px;
-    margin-right: 10px;
+  
     width: 300px;
+
+
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 10px;
   }
   
   .search-button {
@@ -40,18 +46,21 @@
     border: none;
     cursor: pointer;
   }
-  
-  .action-buttons {
+  .nurse-action-buttons {
     margin-bottom: 10px;
+   
   }
   
-  .action-button {
+  .nurse-action-button {
     margin-right: 10px;
-    padding: 10px 20px;
+    padding: 5px 10px;
     background-color: #28a745;
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 8px;
+    margin-left: 10px;
+
   }
   
   .patients-table {
@@ -205,7 +214,7 @@
 
 .OutPatient_PastDays-pagination-btn {
   border: 1px solid #ddd;
-  background-color: #2196F3;
+  background-color: #0772bc;
   cursor: pointer;
 }
 
@@ -285,4 +294,36 @@
  .date-filter button:hover {
   background-color: #45a049;
 }
-  
+
+
+.Out-patient-container {
+  display: flex;
+  gap: 10px; /* Optional: Adjust spacing between buttons */
+}
+
+.Outpatient-component-tab {
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 5px 8px;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative; /* Necessary for the underline effect */
+  text-decoration: none; /* Remove default underline */
+  transition: color 0.3s, text-decoration-color 0.3s;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border-radius: 8px;
+}
+
+.Outpatient-component-tab:hover,
+.Outpatient-component-tab.active {
+  /* text-decoration: underline;  */
+  text-decoration-color: #2d68ea; /* Set underline color */
+}
+
+.Outpatient-component-tab.active {
+  color: white; /* Text color for active tab */
+  background-color: #2d68ea; /* Background color for active tab */
+  border-radius: 5px; /* Optional: adds rounded corners */
+}

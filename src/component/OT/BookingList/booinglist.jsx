@@ -1,20 +1,13 @@
-import React, { useState } from 'react';
-import './bookinglist.css'
-import { FaSearch ,FaRedo, FaPlus } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import './bookinglist.css';
+import { FaSearch, FaRedo, FaPlus } from 'react-icons/fa';
 import moment from 'moment';
+import axios from 'axios';
 import { Button } from 'react-bootstrap';
 
-
-
-
-
 function BookingList() {
-
-    const [modalVisible, setModalVisible] = useState(false);
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-
-
+  const [modalVisible, setModalVisible] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [patientName, setPatientName] = useState('');
   const [otDate, setOtDate] = useState('');
   const [otTime, setOtTime] = useState('');
@@ -27,11 +20,23 @@ function BookingList() {
   const [machineName, setMachineName] = useState('');
   const [remarks, setRemarks] = useState('');
   const [personnelInvolvements, setPersonnelInvolvements] = useState([]);
+  const [otPatientList, setOtPatientList] = useState([]);
   const [showSchemeReturnEntryModal, setShowSchemeReturnEntryModal] = useState(false);
   const [showReceipt, setShowReceipt] = useState(false);
   const [receiptNo, setReceiptNo] = useState(null);
   const [printSchemeRefund, setPrintSchemeRefund] = useState(false);
 
+  // Fetch OT bookings from backend
+  useEffect(() => {
+  axios.get('http://localhost:1414/api/ot-bookings')
+    .then(response => {
+      console.log(response.data); // Log the response data
+      setOtPatientList(response.data);
+    })
+    .catch(error => {
+      console.error('There was an error fetching the OT bookings!', error);
+    });
+}, []);
 
   const openSchemeReturnEntryModal = () => {
     setShowSchemeReturnEntryModal(true);
@@ -55,9 +60,8 @@ function BookingList() {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can add your form submission logic here
-    console.log('Form submitted');
-    console.log({
+
+    const newBooking = {
       patientName,
       otDate,
       otTime,
@@ -70,16 +74,19 @@ function BookingList() {
       machineName,
       remarks,
       personnelInvolvements,
-    });
+    };
+
+    axios.post('http://localhost:1414/api/ot-bookings', newBooking)
+      .then(response => {
+        console.log('Booking created:', response.data);
+        setOtPatientList([...otPatientList, response.data]);
+        closeSchemeReturnEntryModal();
+      })
+      .catch(error => {
+        console.error('There was an error creating the booking!', error);
+      });
   };
 
-  const otPatientList = [
-    { id: 1, name: "Patient A", age: 45 },
-    { id: 2, name: "Patient B", age: 60 },
-    // ... other patient data
-  ];
-
-  // Handle input changes
   const handlePatientNameChange = (e) => setPatientName(e.target.value);
   const handleOtDateChange = (e) => setOtDate(e.target.value);
   const handleOtTimeChange = (e) => setOtTime(e.target.value);
@@ -92,18 +99,13 @@ function BookingList() {
   const handleMachineNameChange = (e) => setMachineName(e.target.value);
   const handleRemarksChange = (e) => setRemarks(e.target.value);
 
-  // Handle personnel involvement actions
- 
-
   const handleRemovePersonnel = (index) => {
     const newPersonnel = personnelInvolvements.filter((_, i) => i !== index);
     setPersonnelInvolvements(newPersonnel);
   };
 
-  
   const closeModal = () => {
     setModalVisible(false);
-    console.log('Modal closed');
   };
 
   const addPersonnelInvolvement = () => {
@@ -115,101 +117,75 @@ function BookingList() {
   };
 
   const confirmAction = () => {
-    // Add your logic here for what should happen when "Confirm" is clicked
     console.log("OT Booking confirmed!");
     setIsPopupOpen(false);
   };
+
   return (
     <div className="utltlist">
       <div className='booklist-nav-content'>
-      <div className="bookinglist-modelbtn">
-        <button className="bookinglist-btn btn btn-success" onClick={openSchemeReturnEntryModal}>
-        <FaPlus style={{ color: 'white', fontSize: '18px', marginRight:"5px" , lineHeight:"2"}} />New OT Booking
-      </button>
+        <div className="bookinglist-modelbtn">
+          <button className="bookinglist-btn btn btn-success" onClick={openSchemeReturnEntryModal}>
+            <FaPlus style={{ color: 'white', fontSize: '18px', marginRight:"5px", lineHeight:"2" }} />New OT Booking
+          </button>
         </div>
         <div className="bookedlistcheckbox-container">
-      {/* First Div: Checkbox with Label */}
-      <div>
-        <input
-          type="checkbox"
-          id="dateFilter"
-          className="bookedlistcheckbox-checkbox"
-        />
-        <label htmlFor="dateFilter" className="bookedlistcheckbox-label">
-          Date Filter
-        </label>
-      </div>
-
-      {/* Second Div: Label with Dropdown */}
-      <div>
-        <label htmlFor="statusFilter" className="bookedlistdropdown-label">
-          Status:
-        </label>
-        <select id="statusFilter" name="statusFilter" className="bookedlistdropdown-select">
-          <option value="all">All</option>
-          <option value="booked">Booked</option>
-          <option value="canceled">Canceled</option>
-          <option value="concluded">Concluded</option>
-        </select>
-      </div>
-
-      {/* Load Button with Icon */}
-      <button className="bookedlistbutton-button">
-        <FaRedo className="bookedlistbutton-icon" />
-        Load
-      </button>
-    </div>
-        
-      </div>
-        
-        <div className="utlt-search-bar">
-        <input
-          type="text"
-          placeholder="Search by patient name"
-         
-          className="inputsearchbar"
-        />
-         <button className='utltlistsearchbar'> <FaSearch style={{ color: 'gray', fontSize: '18px' }} /></button>
-      </div>
-
-     
-      <table className="utlt-table">
-  <thead>
-    <tr>
-      <th>Hospital No</th>
-      <th>Patient Name</th>
-      <th>Age/Sex</th>
-      <th>Booked For Date and Time</th>
-      <th>Diagnosis</th>
-      <th>Anesthesia</th>
-      <th>Status</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    {otPatientList.map((patient) => (
-      <tr key={patient.id}>
-        <td>{patient.hospitalNo}</td>
-        <td>{patient.name}</td>
-        <td>{patient.ageSex}</td>
-        <td>{moment(patient.bookedForDateTime).format("YYYY-MM-DD HH:mm")}</td>
-        <td>{patient.diagnosis}</td>
-        <td>{patient.anesthesia}</td>
-        <td>{patient.status}</td>
-        <td>
-          <button
-            className="booklist-action-btn"
-            onClick={() => handleAction(patient.id)}
-          >
-            Action
+          <div>
+            <input type="checkbox" id="dateFilter" className="bookedlistcheckbox-checkbox" />
+            <label htmlFor="dateFilter" className="bookedlistcheckbox-label">Date Filter</label>
+          </div>
+          <div>
+            <label htmlFor="statusFilter" className="bookedlistdropdown-label">Status:</label>
+            <select id="statusFilter" name="statusFilter" className="bookedlistdropdown-select">
+              <option value="all">All</option>
+              <option value="booked">Booked</option>
+              <option value="canceled">Canceled</option>
+              <option value="concluded">Concluded</option>
+            </select>
+          </div>
+          <button className="bookedlistbutton-button">
+            <FaRedo className="bookedlistbutton-icon" />
+            Load
           </button>
-        </td>
-      </tr>
-    ))}
-  </tbody>
-</table>
-
-<div className="utlt-pagination">
+        </div>
+      </div>
+      <div className="utlt-search-bar">
+        <input type="text" placeholder="Search by patient name" className="inputsearchbar" />
+        <button className='utltlistsearchbar'> <FaSearch style={{ color: 'gray', fontSize: '18px' }} /></button>
+      </div>
+      <table className="utlt-table">
+        <thead>
+          <tr>
+            <th>Hospital No</th>
+            <th>Patient Name</th>
+            <th>Age/Sex</th>
+            <th>Booked For Date and Time</th>
+            <th>Diagnosis</th>
+            <th>Anesthesia</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+{Array.isArray(otPatientList) && otPatientList.map((patient) => (
+            <tr key={patient.id}>
+              <td>{patient.hospitalNo}</td>
+              <td>{patient.patientName}</td>
+              <td>{patient.ageSex}</td>
+              <td>{moment(patient.bookedForDateTime).format("YYYY-MM-DD HH:mm")}</td>
+              <td>{patient.diagnosis}</td>
+              <td>{patient.procedure}</td>
+              <td>{patient.useAnaesthesia}</td>
+              <td>
+                <button className="booklist-action-btn" onClick={() => handleAction(patient.id)}>
+                  Action
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="utlt-pagination">
         <Button>First</Button>
         <Button>Previous</Button>
         <span>Page 1 of 4</span>

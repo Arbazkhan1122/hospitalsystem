@@ -3,8 +3,8 @@ import Sidebar from "./Sidebar";
 import Header from "./Header";
 import Home from "../pages/Home";
 import './Layout.css';
-import AppointmentBookingList from "../../component/AppointmentRouting";
-import AppointmentRouting from "../../component/AppointmentRouting";
+import AppointmentBookingList from "../../component/Appointment/AppointmentRouting";
+import AppointmentRouting from "../../component/Appointment/AppointmentRouting";
 import AppRoutes from "../../component/Employee/AppRoutes";
 import Inventory from "../../component/Inventory1/Inventory";
 import Incentive from "../../component/incentive/items/Incentive";
@@ -23,6 +23,19 @@ import Otmain from "../../component/OT/otmain";
 import Nhif from "../../component/NHIF/nhif";
 import HomePage from "../../component/admission/mainadmissionpage/homepage";
 import Mkrtrefrrance from "../../component/MarketingRefferal/mrktreferrance";
+import Clinical from "../../component/Clinical/Clinical";
+import Vaccination from "../../component/Vaccination/Vaccination";
+import FixedAssetReport from "../../component/FixedAssests/FixedAssetsReport/FixedAssetsReport";
+import FixedAssets from "../../component/FixedAssests/FixedAssests";
+import Cssd from "../../component/CSSD/Cssd";
+import AccountComponent from "../../component/Accounting/AccountingComponent";
+import PatientQueue from "../../component/QueueMngmt/PatientQueue";
+import MaternityHeader from "../../component/Maternity/MaternityHeader";
+import AppConfig from "../../component/Maternity/AppConfig";
+import HelpDeskNav from "../../component/HelpD/helpDeskNav";
+import HelpDeskRouting from "../../component/HelpD/HelpDeskRouting";
+import RadiologyRouting from "../../component/RadiologyNav/RadiologyRouting";
+import PharmacyRouting from "../../component/PharmacyHospital/PharmacyRouting";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -44,6 +57,16 @@ const Layout = () => {
   const [showNhif,setShowNhif]=useState(false)
   const [showADT,setShowATD]=useState(false)
   const [showMKT,setShowMKT]=useState(false)
+  const [showClinical,setShowClinical]=useState(false)
+  const [showVaccination ,setShowVaccination]=useState(false)
+  const [showFixAssets,setShowFixAssets]=useState(false)
+  const [showCSSD,setShowCSSD]=useState(false)
+  const [showAccounting,setShowAccounting]=useState(false)
+  const [showQueuemgnt,setShowQueuemgnt]=useState(false)
+  const [showMaternity,setShowMaternity]=useState(false)
+  const [showHelpDesk,setShowHelpDesk]=useState(false)
+  const [showRadiology,setShowRadiology]=useState(false)
+  const [showPharmacy,setShowPharmacy]=useState(false)
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -63,6 +86,16 @@ const Layout = () => {
     setShowNhif(false)
     setShowATD(false)
     setShowMKT(false)
+    setShowClinical(false)
+    setShowVaccination(false)
+    setShowFixAssets(false)
+    setShowCSSD(false)
+    setShowAccounting(false)
+    setShowQueuemgnt(false)
+    setShowMaternity(false)
+    setShowHelpDesk(false)
+    setShowRadiology(false)
+    setShowPharmacy(false)
   }
 
   const toggelAppointment = () => {
@@ -139,7 +172,46 @@ const Layout = () => {
     resetAllToggles()
     setShowMKT(!showMKT)
   }
-    
+  const toggelClinical=()=>{
+    resetAllToggles();
+    setShowClinical(!showClinical)
+  }
+  const toggelVaccination=()=>{
+    resetAllToggles()
+    setShowVaccination(!showVaccination)
+  }
+  const toggelFixAssests=()=>{
+    resetAllToggles() 
+    setShowFixAssets(!showFixAssets)
+  }
+  const toggelCSSD=()=>{
+    resetAllToggles()
+    setShowCSSD(!showCSSD)
+  }
+  const toggelAccounting=()=>{
+    resetAllToggles()
+    setShowAccounting(!showAccounting)
+  }
+  const toggelQueuemgnt=()=>{
+    resetAllToggles()
+    setShowQueuemgnt(!showQueuemgnt)
+  }
+  const toggelMaternity=()=>{
+    resetAllToggles()
+    setShowMaternity(!showMaternity)
+  }
+  const toggelHelpDesk=()=>{
+    resetAllToggles()
+    setShowHelpDesk(!showHelpDesk)
+  }
+  const toggelRadiology=()=>{
+    resetAllToggles()
+    setShowRadiology(!showRadiology)
+  }
+  const toggelPharmacy=()=>{
+    resetAllToggles()
+    setShowPharmacy(!showPharmacy)
+  }
 
   return (
     <div className="hrmsLayout">
@@ -162,6 +234,16 @@ const Layout = () => {
         onNhif={toggelNhif}
         onADT={toggelADT}
         onMKT={toggelMKT}
+        onClinical={toggelClinical}
+        onVaccination={toggelVaccination}
+        onFixAssests={toggelFixAssests}
+        onCSSD={toggelCSSD}
+        onAccounting={toggelAccounting}
+        onQueueManagement={toggelQueuemgnt}
+        onMaternity={toggelMaternity}
+        onHelpdesk={toggelHelpDesk}
+        onRadiology={toggelRadiology}
+        onPharmacy={toggelPharmacy}
         isOpen={isOpen} 
         setIsOpen={setIsOpen} 
       />
@@ -186,6 +268,16 @@ const Layout = () => {
           {showNhif && <Nhif/>}
           {showADT && <HomePage/>}
           {showMKT && <Mkrtrefrrance/>}
+          {showClinical && <Clinical/>}
+          {showVaccination && <Vaccination/>}
+          {showFixAssets && <FixedAssets/>}
+          {showCSSD && <Cssd/>}
+          {showAccounting && <AccountComponent/>}
+          {showQueuemgnt && <PatientQueue/>}
+          {showMaternity && <AppConfig/>}
+          {showHelpDesk && <HelpDeskRouting/>}
+          {showRadiology && <RadiologyRouting/>}
+          {showPharmacy && <PharmacyRouting/>}
         </main>
       </div>
     </div>

@@ -1,0 +1,65 @@
+.inventory-substore {
+    background-color: #e1f5fe;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.header label {
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.header input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.header select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+table .has-code {
+    background-color: #fff;
+}
+
+table .no-code {
+    background-color: #fff;
+}
+
+.save-btn {
+    background-color: #2196f3;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background-color: #1976d2;
+}

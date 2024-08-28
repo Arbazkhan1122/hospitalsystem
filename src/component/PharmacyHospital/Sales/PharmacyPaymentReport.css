@@ -1,0 +1,85 @@
+.pharmacy-payment-report-container {
+  background-color: #e6f3ff;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.pharmacy-payment-report-container h2 {
+  color: #0066cc;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.pharmacy-payment-report-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.pharmacy-payment-date-range {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.pharmacy-payment-date-range label {
+  margin-right: 10px;
+}
+
+.pharmacy-payment-date-range input[type="date"] {
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.pharmacy-payment-star-btn, .pharmacy-payment-minus-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  margin-left: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.pharmacy-payment-show-report-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pharmacy-payment-filters {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.pharmacy-payment-filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.pharmacy-payment-filter-group label {
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #004d80;
+}
+
+.pharmacy-payment-filter-group select, 
+.pharmacy-payment-filter-group input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 200px;
+}
+
+.pharmacy-payment-filter-group input::placeholder {
+  color: #999;
+}

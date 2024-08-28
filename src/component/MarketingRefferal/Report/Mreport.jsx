@@ -1,7 +1,24 @@
-import React from 'react';
-import './Mreport.css'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './Mreport.css';
 
 const Mreport = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch data from API
+    axios.get('http://localhost:5000/api.MktReport/fetch-all-MktReport')
+      .then(response => {
+        setData(response.data); // Assuming response.data is an array of reports
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div className="mkrtref_report_main">
       <h1 className="mkrtref_report_title">Marketing Referral Detail Report</h1>
@@ -32,29 +49,46 @@ const Mreport = () => {
         <table className="mkrtref_report_table">
           <thead className="mkrtref_report_table_head">
             <tr>
-              <th>Referring Party</th>
-              <th>Party Group</th>
-              <th>Area Code</th>
-              <th>Referring Organization</th>
-              <th>Invoice Net Amount</th>
-              <th>Referral Amount</th>
+              <th className='mkrtref_report_table_head-th'>Referring Party</th>
+              <th className='mkrtref_report_table_head-th'>Party Group</th>
+              <th className='mkrtref_report_table_head-th'>Area Code</th>
+              <th className='mkrtref_report_table_head-th'>Referring Organization</th>
+              <th className='mkrtref_report_table_head-th'>Invoice Net Amount</th>
+              <th className='mkrtref_report_table_head-th'>Referral Amount</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td colSpan="6" className="mkrtref_report_no_data">No Rows To Show</td>
-            </tr>
+            {loading ? (
+              <tr>
+                <td colSpan="6" className="mkrtref_report_no_data">Loading...</td>
+              </tr>
+            ) : data.length === 0 ? (
+              <tr>
+                <td colSpan="6" className="mkrtref_report_no_data">No Rows To Show</td>
+              </tr>
+            ) : (
+              data.map((item, index) => (
+                <tr key={index}>
+                  <td className="mkrtref_report_no_data">{item.reffeingParty}</td>
+                  <td className="mkrtref_report_no_data">{item.partyGroup}</td>
+                  <td className="mkrtref_report_no_data">{item.areaCode}</td>
+                  <td className="mkrtref_report_no_data">{item.refferingOrganisation}</td>
+                  <td className="mkrtref_report_no_data">{item.invoiceNetAmt}</td>
+                  <td className="mkrtref_report_no_data">{item.refferalAmt}</td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
       
       {/* Pagination */}
       <div className="mkrtref_report_pagination">
-        <span>Showing 0 / 0 results</span>
+        <span>Showing {data.length} results</span>
         <div className="mkrtref_report_pagination_controls">
           <button>First</button>
           <button>Previous</button>
-          <span>Page 0 of 0</span>
+          <span>Page 1 of 1</span>
           <button>Next</button>
           <button>Last</button>
         </div>

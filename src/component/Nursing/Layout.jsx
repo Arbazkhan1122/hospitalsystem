@@ -5,7 +5,7 @@ import '../Nursing/Layout.css';
 
 function Layout({ children }) {
     return (
-        <div className="Nursing-layout">
+        <div className="layout">
             <Navigation />
             <main>{children}</main>
         </div>

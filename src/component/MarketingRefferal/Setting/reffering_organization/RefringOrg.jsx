@@ -1,57 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { FaPlus, FaSearch } from 'react-icons/fa';
-import './refring_org.css'
+import './refring_org.css';
 
-const RefringOrg= () => {
+const RefringOrg = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [orgs] = useState([
-    {
-      orgName: 'Org 1',
-      address: '123 Main St',
-      contactNo: '123-456-7890',
-      contactPerson: 'John Doe',
-      isActive: true,
-    },
-    {
-      orgName: 'Org 2',
-      address: '456 Elm St',
-      contactNo: '987-654-3210',
-      contactPerson: 'Jane Smith',
-      isActive: false,
-    }
-    // Add more organization data as needed
-  ]);
+  const [orgs, setOrgs] = useState([]);
 
-  const filteredOrgs = orgs.filter(org => 
-    org.orgName.toLowerCase().includes(searchTerm.toLowerCase())
+  useEffect(() => {
+    // Fetch organizations from API
+    axios.get('http://localhost:5000/api/organizations/fetch-all-transaction')
+      .then(response => {
+        setOrgs(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the organizations!', error);
+      });
+  }, []);
+
+  const filteredOrgs = orgs.filter(org =>
+    org.organizationName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const handleDeactivate = (index) => {
+  const handleDeactivate = (id) => {
     const confirmation = window.confirm("Are you sure you want to deactivate this organization?");
     if (confirmation) {
-      setOrgs(prevOrgs =>
-        prevOrgs.map((org, i) =>
-          i === index ? { ...org, isActive: false } : org
-        )
-      );
+      // Update organization status to inactive
+      axios.put(`http://localhost:5000/api/organizations/deactivate/${id}`)
+        .then(() => {
+          setOrgs(prevOrgs =>
+            prevOrgs.map(org =>
+              org.id === id ? { ...org, isActive: false } : org
+            )
+          );
+        })
+        .catch(error => {
+          console.error('There was an error updating the organization status!', error);
+        });
     }
   };
 
-  const handleActivate = (index) => {
+  const handleActivate = (id) => {
     const confirmation = window.confirm("Are you sure you want to activate this organization?");
     if (confirmation) {
-      setOrgs(prevOrgs =>
-        prevOrgs.map((org, i) =>
-          i === index ? { ...org, isActive: true } : org
-        )
-      );
+      // Update organization status to active
+      axios.put(`http://localhost:5000/api/organizations/activate/${id}`)
+        .then(() => {
+          setOrgs(prevOrgs =>
+            prevOrgs.map(org =>
+              org.id === id ? { ...org, isActive: true } : org
+            )
+          );
+        })
+        .catch(error => {
+          console.error('There was an error updating the organization status!', error);
+        });
     }
   };
+
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -70,13 +81,11 @@ const RefringOrg= () => {
     <div className="reffering_org_main">
       <div className="reffering_org_container">
         <div className="reffering_org_new_org">
-        <button className="reffering_org_new_org_button" onClick={handleOpenModal}>
+          <button className="reffering_org_new_org_button" onClick={handleOpenModal}>
             <FaPlus className="reffering_org_button_icon" />
             Add Referring Organization
           </button>
         </div>
-        
-        
       </div>
 
       <div className="reffering_org_filter_content">
@@ -94,7 +103,6 @@ const RefringOrg= () => {
           <div>
             <label>Showing {filteredOrgs.length} results</label>
           </div>
-          
         </div>
       </div>
 
@@ -110,9 +118,9 @@ const RefringOrg= () => {
           </tr>
         </thead>
         <tbody>
-          {filteredOrgs.map((org, index) => (
-            <tr key={index}>
-              <td className="reffering_org_tabledata">{org.orgName}</td>
+          {filteredOrgs.map((org) => (
+            <tr key={org.id}>
+              <td className="reffering_org_tabledata">{org.organizationName}</td>
               <td className="reffering_org_tabledata">{org.address}</td>
               <td className="reffering_org_tabledata">{org.contactNo}</td>
               <td className="reffering_org_tabledata">{org.contactPerson}</td>
@@ -120,22 +128,22 @@ const RefringOrg= () => {
               <td className="reffering_org_tabledata">
                 {org.isActive ? (
                   <>
-                    <button 
-                      onClick={() => handleDeactivate(index)} 
+                    <button
+                      onClick={() => handleDeactivate(org.id)}
                       className="reffering_org_active_button active"
                     >
                       Deactivate
                     </button>
-                    <button 
-                      onClick={() => alert("Edit functionality goes here!")} 
+                    <button
+                      onClick={() => alert("Edit functionality goes here!")}
                       className="reffering_org_edit_button"
                     >
                       Edit
                     </button>
                   </>
                 ) : (
-                  <button 
-                    onClick={() => handleActivate(index)} 
+                  <button
+                    onClick={() => handleActivate(org.id)}
                     className="reffering_org_active_button inactive"
                   >
                     Activate
@@ -186,7 +194,8 @@ const RefringOrg= () => {
             </div>
           </div>
         </div>
-      )}    </div>
+      )}
+    </div>
   );
 };
 

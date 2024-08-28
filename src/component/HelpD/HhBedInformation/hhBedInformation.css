@@ -1,0 +1,148 @@
+
+.bedInformation-container {
+    font-family: Arial, sans-serif;
+    /* max-width: 800px; */
+    width: auto;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #dff0ff;
+  }
+  
+  .bedInformation-stats-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .stat-card {
+    width: 30%;
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+  }
+  
+  .stat-card h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .stat-card .number {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .total { 
+background-color: #007bff;
+display: flex;
+justify-content: space-between;
+align-items: first baseline; 
+height: 90px;
+}
+  .available { 
+    background-color: #007bff;
+display: flex;
+justify-content: space-between;
+align-items: first baseline; 
+background-color: #20c997; 
+height: 90px;
+
+}
+  .occupied {
+    background-color: #007bff;
+display: flex;
+justify-content: space-between;
+align-items: first baseline; 
+ background-color: #fd7e14;
+ height: 90px;
+ 
+}
+  
+  .bedInformation-table-container {
+    background-color: white;
+    padding: 20px;
+    width: 70%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .bedInformation-table-container h4 {
+    color: #20c997;
+    margin-bottom: 15px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .bedInformation-total-row {
+    font-weight: bold;
+  }
+  
+  .bedInformation-button-container {
+    margin-top: 15px;
+    text-align: right;
+  }
+  
+  button {
+    padding: 8px 15px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .bedInformation-print-btn {
+    background-color: #0254ac;
+    color: white;
+    font-size: 12px;
+font-weight: bold;
+  }
+  
+  .bedInformation-export-btn {
+    background-color: #0254ac;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    /* gap: 10px; */
+  }
+  .wardNameColumn{
+    font-weight: bold;
+    color: #007bff;
+  }
+
+  /* Hide everything except the table during print */
+@media print {
+    body * {
+      visibility: hidden;
+    }
+    
+    .bedInformation-table-container,
+    .bedInformation-table-container * {
+      visibility: visible;
+    }
+  
+    .bedInformation-table-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  
+    .bedInformation-button-container {
+      display: none;
+    }
+  }
+  
