@@ -36,6 +36,9 @@ import HelpDeskNav from "../../component/HelpD/helpDeskNav";
 import HelpDeskRouting from "../../component/HelpD/HelpDeskRouting";
 import RadiologyRouting from "../../component/RadiologyNav/RadiologyRouting";
 import PharmacyRouting from "../../component/PharmacyHospital/PharmacyRouting";
+import PatientRouting from "../../component/Patient/PatientRouting";
+import NavigationBar from "../../component/Verification/NavigationBar";
+import VerificationRouting from "../../component/Verification/VerificationRouting";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -67,6 +70,8 @@ const Layout = () => {
   const [showHelpDesk,setShowHelpDesk]=useState(false)
   const [showRadiology,setShowRadiology]=useState(false)
   const [showPharmacy,setShowPharmacy]=useState(false)
+  const [showPatient,setShowPatient]=useState(false)
+  const [showVerification,setShowVerification]=useState(false)
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -96,6 +101,9 @@ const Layout = () => {
     setShowHelpDesk(false)
     setShowRadiology(false)
     setShowPharmacy(false)
+    setShowPatient(false)
+    setShowDynamicReport(false)
+    setShowVerification(false)
   }
 
   const toggelAppointment = () => {
@@ -212,6 +220,14 @@ const Layout = () => {
     resetAllToggles()
     setShowPharmacy(!showPharmacy)
   }
+  const toggelPatient=()=>{
+    resetAllToggles()
+    setShowPatient(!showPatient)
+  }
+  const toggelVerification=()=>{
+    resetAllToggles()
+    setShowVerification(!showVerification)
+  }
 
   return (
     <div className="hrmsLayout">
@@ -244,6 +260,8 @@ const Layout = () => {
         onHelpdesk={toggelHelpDesk}
         onRadiology={toggelRadiology}
         onPharmacy={toggelPharmacy}
+        onPatient={toggelPatient}
+        onVerification={toggelVerification}
         isOpen={isOpen} 
         setIsOpen={setIsOpen} 
       />
@@ -278,6 +296,8 @@ const Layout = () => {
           {showHelpDesk && <HelpDeskRouting/>}
           {showRadiology && <RadiologyRouting/>}
           {showPharmacy && <PharmacyRouting/>}
+          {showPatient && <PatientRouting/>}
+          {showVerification && <VerificationRouting/>}
         </main>
       </div>
     </div>

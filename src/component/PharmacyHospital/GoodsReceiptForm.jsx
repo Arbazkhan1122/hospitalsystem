@@ -1,13 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './GoodsReceiptForm.css';
 import AddSupplierForm from './AddSupplierForm';
 import AddGRItemForm from './AddGRItemForm';
+import axios from 'axios';
 
 const GoodsReceiptForm = () => {
   const [isFormOpen, setIsFormOpen] = useState(true);
   const [itemCount, setItemCount] = useState(0);
   const [isAddSupplierModalOpen, setIsAddSupplierModalOpen] = useState(false);
   const [isAddGRItemFormOpen, setIsAddGRItemFormOpen] = useState(false);
+  const [goodsReceipt, setGoodsReceipt] = useState({});
+  const [itemToUpdate, setItemToUpdate] = useState(null);
+  const [items, setItems] = useState([]);
+  const [suppliers, setSuppliers] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:1415/api/good-receipts/good-receipts')
+      .then(response => {
+        setGoodsReceipt(response.data);
+        setItems(response.data.items || []);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+
+    axios.get('http://localhost:1415/api/suppliers')
+      .then(response => {
+        setSuppliers(response.data);
+      })
+      .catch(error => console.error('Error fetching suppliers:', error));
+  }, []);
 
   const handleClose = () => {
     setIsFormOpen(false);
@@ -22,11 +42,71 @@ const GoodsReceiptForm = () => {
   };
 
   const handleOpenAddGRItemForm = () => {
+    setItemToUpdate(null); // Clear itemToUpdate when adding a new item
     setIsAddGRItemFormOpen(true);
   };
 
   const handleCloseAddGRItemForm = () => {
     setIsAddGRItemFormOpen(false);
+  };
+
+  const handleAddItem = (item) => {
+  console.log('Adding item:', item); // Debugging line
+  axios.post('http://localhost:1415/api/add-items', item)
+    .then(response => {
+      console.log('Item added:', response.data);
+      setItems(prevItems => [...prevItems, response.data]);
+      setItemCount(prevCount => prevCount + 1);
+    })
+    .catch(error => console.error('Error adding item:', error));
+};
+
+  const handleUpdateItem = (itemId, updatedItem) => {
+    axios.put(`http://localhost:1415/api/add-items/${itemId}`, updatedItem)
+      .then(response => {
+        setItems(prevItems => prevItems.map(item => 
+          item.id === itemId ? response.data : item
+        ));
+      })
+      .catch(error => console.error('Error updating item:', error));
+  };
+
+  const handleDeleteItem = (itemId) => {
+    axios.delete(`http://localhost:1415/api/add-items/${itemId}`)
+      .then(() => {
+        setItems(prevItems => prevItems.filter(item => item.id !== itemId));
+        setItemCount(prevCount => prevCount - 1);
+      })
+      .catch(error => console.error('Error deleting item:', error));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = {
+      supplierBillDate: event.target.supplierBillDate.value,
+      goodsReceiptDate: event.target.goodsReceiptDate.value,
+      supplier: { id: event.target.supplier.value },
+      invoiceNumber: event.target.invoiceNumber.value,
+      paymentMode: event.target.paymentMode.value,
+      creditPeriod: event.target.creditPeriod.value,
+      remarks: event.target.remarks.value,
+      taxableSubTotal: event.target.taxableSubTotal.value,
+      nonTaxableSubTotal: event.target.nonTaxableSubTotal.value,
+      subTotal: event.target.subTotal.value,
+      discountPercent: event.target.discountPercent.value,
+      discountAmount: event.target.discountAmount.value,
+      vatPercent: event.target.vatPercent.value,
+      vatTotal: event.target.vatTotal.value,
+      ccCharge: event.target.ccCharge.value,
+      adjustment: event.target.adjustment.value,
+      totalAmount: event.target.totalAmount.value,
+      items: items
+    };
+    axios.post('http://localhost:1415/api/good-receipts', formData)
+      .then(response => {
+        console.log('Good receipt added:', response.data);
+      })
+      .catch(error => console.error('Error adding good receipt:', error));
   };
 
   if (!isFormOpen) {
@@ -37,41 +117,47 @@ const GoodsReceiptForm = () => {
     <div className="goods-receipt-form-com">
       <button className="goods-receipt-close-btn" onClick={handleClose}>×</button>
       <h2>Add Good Receipt</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="goods-receipt-form-row">
           <div className="goods-receipt-form-group">
             <label>Supplier Bill Date:</label>
-            <input type="date" defaultValue="2024-08-24" />
+            <input type="date" name="supplierBillDate" defaultValue="2024-08-24" />
           </div>
           <div className="goods-receipt-form-group">
             <label>Goods Receipt Date:</label>
-            <input type="date" defaultValue="2024-08-24" />
+            <input type="date" name="goodsReceiptDate" defaultValue="2024-08-24" />
           </div>
         </div>
         <div className="goods-receipt-form-row">
           <div className="goods-receipt-form-group">
             <label>Supplier Name*:</label>
-            <select>
-              <option>Select Supplier</option>
+            <select name="supplier">
+              <option value="">Select Supplier</option>
+              {suppliers.map(supplier => (
+                <option key={supplier.id} value={supplier.id}>
+                  {supplier.supplierName}
+                </option>
+              ))}
             </select>
           </div>
           <div className="input-container-question-box">
-            <input type="text" />
+            <input type="text" name="supplierName" />
             <span className="question-icon" onClick={handleOpenSupplierModal}>?</span>
           </div>
           <div className="goods-receipt-form-group">
             <label>Invoice*:</label>
-            <input type="text" placeholder="Invoice No" />
+            <input type="text" name="invoiceNumber" placeholder="Invoice No" />
           </div>
           <div className="goods-receipt-form-group">
             <label>Payment Mode*:</label>
-            <select>
+            <select name="paymentMode">
               <option>Credit</option>
+              <option>Cash</option> {/* Add more payment modes as needed */}
             </select>
           </div>
           <div className="goods-receipt-form-group">
             <label>Credit Period:</label>
-            <input type="number" defaultValue="0" />
+            <input type="number" name="creditPeriod" defaultValue="0" />
           </div>
         </div>
         <table className='goods-receipt-table'>
@@ -97,82 +183,101 @@ const GoodsReceiptForm = () => {
             </tr>
           </thead>
           <tbody>
-            {/* Table rows would be dynamically added here */}
+            {items.map(item => (
+              <tr key={item.id}>
+                <td>{item.genericName}</td>
+                <td>{item.itemName}</td>
+                <td>{item.batchNumber}</td>
+                <td>{item.rackNumber}</td>
+                <td>{item.expiryDate}</td>
+                <td>{item.itemQuantity}</td>
+                <td>{item.freeQuantity}</td>
+                <td>{item.totalQuantity}</td>
+                <td>{item.rate}</td>
+                <td>{item.marginPercentage}</td>
+                <td>{item.salePrice}</td>
+                <td>{item.freeAmount}</td>
+                <td>{item.ccChargePercentage}</td>
+                <td>{item.subTotal}</td>
+                <td>{item.discountAmount}</td>
+                <td>{item.vatAmount}</td>
+                <td>{item.totalAmount}</td>
+                <td>
+                  <button onClick={() => handleUpdateItem(item.id, item)}>Update</button>
+                </td>
+                <td>
+                  <button onClick={() => handleDeleteItem(item.id)}>Delete</button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
         <button
-          type="button"
-          className="goods-receipt-add-item-btn"
-          onClick={handleOpenAddGRItemForm}
-        >
-          + Add New Item
-        </button>
+  type="button"
+  className="goods-receipt-add-item-btn"
+  onClick={handleOpenAddGRItemForm}
+>
+  + Add New Item
+</button>
+
         <p>Items Count: {itemCount}</p>
         <div className="goods-receipt-totals-section">
           <div className="goods-receipt-totals-column">
             <div className="goods-receipt-total-row">
               <label>Taxable Sub Total:</label>
-              <input type="number" defaultValue="0" readOnly />
+              <input type="number" name="taxableSubTotal" defaultValue="0" readOnly />
             </div>
             <div className="goods-receipt-total-row">
               <label>Non-Taxable Sub Total:</label>
-              <input type="number" defaultValue="0" readOnly />
+              <input type="number" name="nonTaxableSubTotal" defaultValue="0" readOnly />
             </div>
             <div className="goods-receipt-total-row">
               <label>Sub Total:</label>
-              <input type="number" defaultValue="0" readOnly />
+              <input type="number" name="subTotal" defaultValue="0" readOnly />
             </div>
             <div className="goods-receipt-total-row">
               <label>Discount Percent:</label>
-              <input type="number" defaultValue="0" />
+              <input type="number" name="discountPercent" defaultValue="0" />
             </div>
-          </div>
-          <div className="goods-receipt-totals-column">
             <div className="goods-receipt-total-row">
               <label>Discount Amount:</label>
-              <input type="number" defaultValue="0" readOnly />
+              <input type="number" name="discountAmount" defaultValue="0" readOnly />
             </div>
             <div className="goods-receipt-total-row">
-              <label>VAT%:</label>
-              <input type="number" defaultValue="0" />
+              <label>VAT Percent:</label>
+              <input type="number" name="vatPercent" defaultValue="0" />
             </div>
             <div className="goods-receipt-total-row">
               <label>VAT Total:</label>
-              <input type="number" defaultValue="0" readOnly />
+              <input type="number" name="vatTotal" defaultValue="0" readOnly />
             </div>
             <div className="goods-receipt-total-row">
               <label>CC Charge:</label>
-              <input type="number" defaultValue="0" readOnly />
+              <input type="number" name="ccCharge" defaultValue="0" />
             </div>
-          </div>
-          <div className="goods-receipt-totals-column">
             <div className="goods-receipt-total-row">
               <label>Adjustment:</label>
-              <input type="number" defaultValue="0" />
+              <input type="number" name="adjustment" defaultValue="0" />
             </div>
             <div className="goods-receipt-total-row">
               <label>Total Amount:</label>
-              <input type="number" defaultValue="0" readOnly />
-            </div>
-            <div className="goods-receipt-total-row">
-              <label>Remarks:</label>
-              <input type="text" />
-            </div>
-            <div className="goods-receipt-total-row">
-              <label>In Words:</label>
-              <span>Only.</span>
+              <input type="number" name="totalAmount" defaultValue="0" readOnly />
             </div>
           </div>
         </div>
         <div className="goods-receipt-form-actions">
-          <button className="goods-receipt-print-btn">Print Receipt</button>
-          <button className="goods-receipt-discard-btn">Discard</button>
+          <button className="goods-receipt-print-btn" type="button">Print Receipt</button>
+          <button className="goods-receipt-discard-btn" type="button">Discard</button>
         </div>
       </form>
       {isAddSupplierModalOpen && <AddSupplierForm onClose={handleCloseSupplierModal} />}
-      {isAddGRItemFormOpen && (
-        <AddGRItemForm onClose={handleCloseAddGRItemForm} />
-      )}
+      {isAddGRItemFormOpen && <AddGRItemForm
+  isOpen={isAddGRItemFormOpen}
+  onClose={handleCloseAddGRItemForm}
+  addItem={handleAddItem}
+  updateItem={handleUpdateItem}
+  itemToUpdate={itemToUpdate}
+/>}
     </div>
   );
 };

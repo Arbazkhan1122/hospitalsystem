@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './PaymentComponent.css';
 
 function PaymentComponent({ patient }) {
@@ -6,26 +6,30 @@ function PaymentComponent({ patient }) {
   const [paidAmount, setPaidAmount] = useState("");
   const [inWords, setInWords] = useState("");
   const [remarks, setRemarks] = useState("");
-  const [paymentHistory, setPaymentHistory] = useState([
-    {
-      type: 'MaternityAllowance',
-      date: '2024-08-13',
-      amount: '1000',
-      user: 'Mr. admin admin',
-      remarks: 'sdfghjkl'
-    },
-    {
-      type: 'MaternityAllowanceReturn',
-      date: '2024-08-13',
-      amount: '1000',
-      user: 'Mr. admin admin',
-      remarks: 'fdghjkl'
-    }
-  ]);
+  const [paymentHistory, setPaymentHistory] = useState([]);
+
+  useEffect(() => {
+    // Fetch payment history data from the API
+    const fetchPaymentHistory = async () => {
+      try {
+        const response = await fetch("http://localhost:1415/api/payments/fetch-all-data");
+        if (response.ok) {
+          const data = await response.json();
+          setPaymentHistory(data);
+        } else {
+          console.error("Failed to fetch payment history");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchPaymentHistory();
+  }, []);
 
   if (!patient) return null; // Ensure there's a patient object before rendering
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newEntry = {
@@ -36,11 +40,43 @@ function PaymentComponent({ patient }) {
       remarks
     };
 
-    setPaymentHistory([newEntry, ...paymentHistory]);
-    // Clear the form fields
-    setPaidAmount("");
-    setInWords("");
-    setRemarks("");
+    // Prepare the payload to send to the API
+    const payload = {
+      patientName: "Philip Juma",
+      ageSex: "34Y / Male",
+      hospitalNo: "2406003702",
+      dischargeDate: "2024-08-12",
+      paymentReturn,
+      paidAmount,
+      inWords,
+      remarks
+    };
+
+    try {
+      // Make an API call to add the payment
+      const response = await fetch("http://localhost:1415/api/payments/addPayment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      // Check if the response is okay
+      if (response.ok) {
+        const result = await response.json();
+        setPaymentHistory([newEntry, ...paymentHistory]);
+
+        // Clear the form fields
+        setPaidAmount("");
+        setInWords("");
+        setRemarks("");
+      } else {
+        console.error("Failed to add payment");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
@@ -141,18 +177,15 @@ function PaymentComponent({ patient }) {
             ))}
           </tbody>
           <div className="mat-pagination">
-  {/* <span className="pagination-info">1 to {paymentHistory.length} of {paymentHistory.length}</span> */}
-  <div className="mat-pagination-buttons">
-    <button className="pagination-button">First</button>
-    <button className="pagination-button">Previous</button>
-    <span className="pagination-page-info">Page 1 of 1</span>
-    <button className="pagination-button">Next</button>
-    <button className="pagination-button">Last</button>
-  </div>
-</div>
-
+            <div className="mat-pagination-buttons">
+              <button className="pagination-button">First</button>
+              <button className="pagination-button">Previous</button>
+              <span className="pagination-page-info">Page 1 of 1</span>
+              <button className="pagination-button">Next</button>
+              <button className="pagination-button">Last</button>
+            </div>
+          </div>
         </table>
-       
       </div>
     </div>
   );

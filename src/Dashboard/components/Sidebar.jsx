@@ -6,7 +6,7 @@ import './Sidebar.css';
 import hospitallogo from "../Images/hospital.png";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,onIncentive,onLaboratory,onUtilites,onEmergency,onSystemAdmin,onSocialService,onDisprensary,onDynamicReport,onReport,onNurse,onDoctor,onOperationTheater,onNhif,onADT,onMKT,onClinical,onVaccination,onFixAssests,onCSSD,onAccounting,onQueueManagement,onMaternity,onHelpdesk,onRadiology,onPharmacy}) => {
+const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,onIncentive,onLaboratory,onUtilites,onEmergency,onSystemAdmin,onSocialService,onDisprensary,onDynamicReport,onReport,onNurse,onDoctor,onOperationTheater,onNhif,onADT,onMKT,onClinical,onVaccination,onFixAssests,onCSSD,onAccounting,onQueueManagement,onMaternity,onHelpdesk,onRadiology,onPharmacy,onPatient,onVerification}) => {
   const [openMenus, setOpenMenus] = useState({});
   const [activeLink, setActiveLink] = useState(null);
 
@@ -142,6 +142,17 @@ const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,
     handleLinkClick("pharmacy");
     onPharmacy()
   }
+
+  const handlepatientClick=()=>{
+    handleLinkClick("patient");
+    onPatient()
+  }
+  const handleverificationClick=()=>{
+    handleLinkClick("verification");
+    onVerification()
+  }
+
+
   return (
     <div className={`custom-sidebar ${isOpen ? '' : 'custom-sidebar-closed'}`}>
       <button className="custom-toggle-button" onClick={toggleSidebar}>
@@ -232,13 +243,54 @@ const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,
           )}
         </li>
 
+  <li className={`custom-nav-item ${activeLink === "verification-submenu1" || activeLink === "verification-submenu2" ? "custom-nav-item-active" : ""}`}>
+          <div className="custom-nav-link-content" onClick={handleverificationClick}>
+            <span><TbUsers /></span>
+            {isOpen && <span className="custom-nav-link-text">Verification</span>}
+            <span className="custom-dropdown-icon">
+              {openMenus.verification ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.verification && isOpen && (
+            <ul className="custom-submenu">
+              <li onClick={() => handleItemClick("verification", "submenu1")} className={activeLink === "verification-submenu1" ? "custom-submenu-active" : ""}>
+               <Link to="/Inventory">Inventory</Link> 
+
+              </li>
+              <li onClick={() => handleItemClick("patient", "submenu2")} className={activeLink === "patient-submenu2" ? "custom-submenu-active" : ""}>
+                <Link to="/Pharmacy">Pharmacy</Link> 
+
+              </li>
+            </ul>
+          )}
+        </li>
 
 
 
 
 
+ 
+          <li className={`custom-nav-item ${activeLink === "patient-submenu1" || activeLink === "patient-submenu2" ? "custom-nav-item-active" : ""}`}>
+          <div className="custom-nav-link-content" onClick={handlepatientClick}>
+            <span><TbUsers /></span>
+            {isOpen && <span className="custom-nav-link-text">Patient</span>}
+            <span className="custom-dropdown-icon">
+              {openMenus.patient ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.patient && isOpen && (
+            <ul className="custom-submenu">
+              <li onClick={() => handleItemClick("patient", "submenu1")} className={activeLink === "patient-submenu1" ? "custom-submenu-active" : ""}>
+               <Link to="/SearchPatient">Search Patient</Link> 
 
+              </li>
+              <li onClick={() => handleItemClick("patient", "submenu2")} className={activeLink === "patient-submenu2" ? "custom-submenu-active" : ""}>
+                <Link to="/RegisterPatient">Register Patient</Link> 
 
+              </li>
+            </ul>
+          )}
+        </li>
 
 
 

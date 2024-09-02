@@ -1,0 +1,86 @@
+.dashboard-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #e6f7ff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #0056b3;
+    padding: 10px;
+}
+
+.nav-button {
+    background-color: white;
+    color: #0056b3;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.date-range-picker {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.date-range-picker label {
+    margin-right: 10px;
+}
+
+.date-range-picker input {
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #007bb5;
+}
+
+.date-picker-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 22%;
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.stat-info p {
+    margin: 0;
+}
+
+.charts-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.chart {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 30%;
+}

@@ -1,0 +1,76 @@
+/* InsurancePage.css */
+
+.insurance-page {
+    background-color: #e6f3ff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .insurance-page h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .insurance-page form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  
+  .insurance-page form > div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .insurance-page label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .insurance-page input,
+  .insurance-page select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .insurance-page input:focus,
+  .insurance-page select:focus {
+    outline: none;
+    border-color: #4a90e2;
+  }
+  
+  .insurance-page input::placeholder {
+    color: #999;
+  }
+  
+  .insurance-page .error-message {
+    color: #ff0000;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  
+  .add-insurance-btn {
+    grid-column: 1 / -1;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  .add-insurance-btn:hover {
+    background-color: #3a7bc8;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .insurance-page form {
+      grid-template-columns: 1fr;
+    }
+  }

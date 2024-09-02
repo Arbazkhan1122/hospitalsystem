@@ -17,7 +17,7 @@ const MaternityHeader = () => {
         to="/patient-form" 
         className={`maternity-header-button ${location.pathname === '/patient-form' ? 'active' : ''}`}
       >
-        Patient
+        Payments
       </Link>
       <Link 
         to="/reports" 

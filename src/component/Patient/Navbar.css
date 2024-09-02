@@ -1,0 +1,46 @@
+.patient-actions-container {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background-color: #f0f8ff; /* Light blue background */
+}
+
+.patient-actions-container a {
+  text-decoration: none; /* Remove underline from links */
+}
+
+.patient-action-button, .home-button {
+  background-color: #4285f4; /* Blue color */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.home-button {
+  width: 40px;
+  height: 40px;
+  padding: 0; /* Center the icon in the button */
+}
+
+.patient-action-button i, .home-button i {
+  font-size: 18px;
+}
+
+.patient-action-button:hover, .home-button:hover {
+  background-color: #3074d2; /* Darker blue on hover */
+}
+
+.patient-action-button.selected, .home-button.selected {
+  background-color:  #27ae60; /* Highlight with different color when selected */
+}
+
+.patient-action-button.selected:hover, .home-button.selected:hover {
+  background-color: #27ae60;/* Darker shade when selected and hovered */
+}

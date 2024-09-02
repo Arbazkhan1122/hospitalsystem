@@ -1,0 +1,108 @@
+.guarantor-page {
+  font-family: Arial, sans-serif;
+  background-color: #e6f3f7;
+  padding: 20px;
+}
+
+.guarantor-page-form-columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.guarantor-page-left-column,
+.guarantor-page-right-column {
+  width: 48%;
+}
+
+.guarantor-page-form-group {
+  display: flex;
+  align-items: left!important;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.guarantor-page-form-group label {
+  width: 20%;
+  font-weight: bold;
+  
+}
+
+.guarantor-page-form-group input[type="text"],
+.guarantor-page-form-group input[type="tel"],
+.guarantor-page-form-group input[type="date"],
+.guarantor-page-form-group select {
+  width: calc(100% - 110px); /* Adjusted width for text inputs */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 3px;
+}
+
+.guarantor-page-radio-group {
+  display: flex;
+  align-items: left;
+  margin-top: 3px;
+  margin-right: 40%;
+}
+
+.guarantor-page-radio-group label {
+  display: block;
+  margin-right: 30px; /* Space between gender options */
+  display: flex;
+  
+}
+
+.guarantor-page-radio-group input {
+  margin-right: 5px; /* Space between radio button and text */
+}
+
+.guarantor-page-or-text {
+  margin: 0 10px;
+}
+
+.guarantor-page-self-checkbox {
+  display: inline-block;
+}
+
+.guarantor-page-save-button {
+  background-color: #6c63ff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.guarantor-page-relationpatient{
+
+ 
+    display: flex;
+    align-items: left!important;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  
+
+}
+
+.guarantor-page-relationpatient label{
+
+font-weight: bold;
+  padding-right: 4%;;
+
+
+}
+
+.guarantor-page-relationpatient input{
+
+ 
+  width: calc(100% - 10px); /* Adjusted width for text inputs */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 3px;
+  padding-left: 25px;
+
+}
+

@@ -1,0 +1,157 @@
+   /* RequisitionPage container */
+.requisitionPageContainer {
+  background-color: #d1ecf7;
+  padding: 10px;
+}
+
+/* Tab menu */
+.requisitionTabMenu {
+  display: flex;
+  background-color: #eaf4fd;
+  padding: 10px;
+  border-bottom: 2px solid #007bff;
+}
+
+.requisitionTabButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.requisitionTabButtonActive {
+  background-color: #0056b3;
+}
+
+.requisitionTabButton:hover {
+  background-color: #0056b3;
+}
+
+/* Filter section */
+.requisitionFilterSection {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e1f5fe;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.requisitionCheckboxLabel {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.requisitionDatePickerContainer {
+  display: flex;
+  align-items: center;
+}
+
+.requisitionDateInput {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.requisitionOkButton {
+  background-color: #28a745;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Status section */
+.requisitionStatusSection {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  background-color: #b3e5fc;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.requisitionRadioButtons label {
+  margin-right: 20px;
+  font-size: 16px;
+}
+
+.requisitionDropdownContainer {
+  display: flex;
+  align-items: center;
+}
+
+.requisitionDropdown {
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Table section */
+.requisitionTableContainer {
+  margin-top: 20px;
+  background-color: #eaf4fd;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.requisitionDataTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.requisitionDataTable th, .requisitionDataTable td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.requisitionNoRows {
+  text-align: center;
+  color: #ff5722;
+  padding: 20px;
+}
+
+.requisitionPagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.requisitionPaginationButton {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  margin: 0 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.requisitionPaginationButton:hover {
+  background-color: #0056b3;
+}
+
+@media screen and (max-width: 768px) {
+  .requisitionTabMenu, .requisitionFilterSection, .requisitionStatusSection {
+    flex-direction: column;
+  }
+
+  .requisitionDatePickerContainer, .requisitionDropdownContainer {
+    margin-top: 10px;
+  }
+
+  .requisitionDataTable {
+    font-size: 14px;
+  }
+}

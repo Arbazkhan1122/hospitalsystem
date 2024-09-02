@@ -1,0 +1,69 @@
+ /* Container for navigation */
+.navigationBarContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #d1ecf7;
+  padding: 10px;
+}
+
+/* Tab menu styling */
+.navigationBarTabMenu {
+  display: flex;
+  background-color: #eaf4fd;
+  padding: 10px;
+  border-bottom: 2px solid #007bff;
+}
+
+.navigationBarTabButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.navigationBarActive {
+  background-color: #0056b3;
+}
+
+.navigationBarTabButton:hover {
+  background-color: #0056b3;
+}
+
+/* Action buttons styling */
+.navigationBarActionButtons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  background-color: #b3e5fc;
+  padding: 10px;
+}
+
+.navigationBarActionButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  flex: 1;
+  margin: 0 5px;
+}
+
+.navigationBarActionButton:hover {
+  background-color: #0056b3;
+}
+
+@media screen and (max-width: 768px) {
+  .navigationBarActionButtons {
+    flex-direction: column;
+  }
+
+  .navigationBarActionButton {
+    margin: 5px 0;
+  }
+}

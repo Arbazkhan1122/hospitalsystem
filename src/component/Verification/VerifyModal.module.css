@@ -1,0 +1,78 @@
+   .verifyModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.verifyModalContainer {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+}
+  
+.verifyModalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.verifyModalContent {
+    margin-top: 10px;
+}
+  
+.verifyDataTable {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+  
+.verifyDataTable th, .verifyDataTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+  
+.verifyRemarksSection {
+    margin-top: 20px;
+}
+  
+.verifyRemarksInput {
+    width: 100%;
+    height: 60px;
+    padding: 8px;
+}
+  
+.verifyModalFooter {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+  
+.verifyApproveButton, .verifyRejectButton {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+  
+.verifyApproveButton {
+    background-color: #4CAF50;
+    color: white;
+}
+  
+.verifyRejectButton {
+    background-color: #f44336;
+    color: white;
+}
+  
+.verifyCloseButton {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}

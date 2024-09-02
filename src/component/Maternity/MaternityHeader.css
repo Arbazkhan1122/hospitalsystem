@@ -1,5 +1,6 @@
 /* Styles for the header container */
 .maternity-header {
+  
   width: 100%; /* Make the header full width */
   z-index: 1000; /* Ensure the header stays on top of other elements */
   background-color: white; /* Background color to distinguish the header */

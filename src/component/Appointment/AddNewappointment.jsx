@@ -31,7 +31,7 @@ const AddNewAppointmentForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const apiUrl = 'http://192.168.1.40:1415/api/appointments/save-new-appointment';
+        const apiUrl = 'http://localhost:1415/api/appointments/save-new-appointment';
 
         try {
             const response = await fetch(apiUrl, {

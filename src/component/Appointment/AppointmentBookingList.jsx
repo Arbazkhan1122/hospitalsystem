@@ -7,7 +7,7 @@ const AppointmentBookingList = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://192.168.1.40:1415/api/appointments')
+    fetch('http://localhost:1415/api/appointments')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -32,10 +32,10 @@ const AppointmentBookingList = () => {
         <td className={`appointments__status--${appointment.status}`}>{appointment.status}</td>
         <td>{appointment.appointmentDate}</td>
         <td>{appointment.appointmentTime}</td>
-        <td>{appointment.id}</td>
+        <td>{appointment.appointmentId}</td>
         <td>{`${appointment.firstName} ${appointment.middleName} ${appointment.lastName}`}</td>
         <td>{appointment.contactNumber}</td>
-        <td>{appointment.doctor}</td>
+        <td>{appointment.employee}</td>
         <td>{appointment.visitType}</td>
         <td>
           <button className="appointments__action-btn">
