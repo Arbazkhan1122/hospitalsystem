@@ -54,6 +54,58 @@ function FinalizedItemList() {
     setIsDropdownOpen(false);
   };
 
+  // Dummy data for finalized items
+  const finalizedItems = [
+    {
+      requestDate: "2024-08-01",
+      itemName: "Syringe",
+      code: "MED001",
+      tagNumber: "TG1234",
+      requestFrom: "Emergency Department",
+      requestedBy: "Dr. Smith",
+      disinfectant: "Alcohol",
+      disinfectedDate: "2024-08-02",
+      disinfectedBy: "Nurse Nancy",
+      action: "Approved",
+    },
+    {
+      requestDate: "2024-08-03",
+      itemName: "Gloves",
+      code: "MED002",
+      tagNumber: "TG1235",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Brown",
+      disinfectant: "UV Sterilization",
+      disinfectedDate: "2024-08-04",
+      disinfectedBy: "Nurse Karen",
+      action: "Approved",
+    },
+    {
+      requestDate: "2024-08-05",
+      itemName: "Scalpel",
+      code: "MED003",
+      tagNumber: "TG1236",
+      requestFrom: "ICU",
+      requestedBy: "Dr. Wilson",
+      disinfectant: "Chemical Solution",
+      disinfectedDate: "2024-08-06",
+      disinfectedBy: "Nurse Lisa",
+      action: "Pending",
+    },
+    {
+      requestDate: "2024-08-07",
+      itemName: "Stethoscope",
+      code: "MED004",
+      tagNumber: "TG1237",
+      requestFrom: "Pediatrics",
+      requestedBy: "Dr. Adams",
+      disinfectant: "Alcohol",
+      disinfectedDate: "2024-08-08",
+      disinfectedBy: "Nurse Ben",
+      action: "Approved",
+    },
+  ];
+
   return (
     <div className="FinalizedItem-main">
       <form className="FinalizedItem-form">
@@ -101,7 +153,7 @@ function FinalizedItemList() {
           <i className="fas fa-search"></i>
         </div>
         <div className="FinalizedItem-results">
-          <span>Showing 0 / 0 results</span>
+          <span>Showing {finalizedItems.length} / {finalizedItems.length} results</span>
           <button className="FinalizedItem-export-btn">Export</button>
           <button className="FinalizedItem-print-btn">Print</button>
         </div>
@@ -139,11 +191,20 @@ function FinalizedItemList() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td colSpan="10" className="FinalizedItem-no-rows">
-              No Rows To Show
-            </td>
-          </tr>
+          {finalizedItems.map((item, index) => (
+            <tr key={index}>
+              <td>{item.requestDate}</td>
+              <td>{item.itemName}</td>
+              <td>{item.code}</td>
+              <td>{item.tagNumber}</td>
+              <td>{item.requestFrom}</td>
+              <td>{item.requestedBy}</td>
+              <td>{item.disinfectant}</td>
+              <td>{item.disinfectedDate}</td>
+              <td>{item.disinfectedBy}</td>
+              <td>{item.action}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

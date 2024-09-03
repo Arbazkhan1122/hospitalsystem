@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './SearchPatient.css';
 
 function SearchPatient() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [hospitalNo, setHospitalNo] = useState('');
   const [patients, setPatients] = useState([]);
   const [filteredPatients, setFilteredPatients] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const patientsPerPage = 5;
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch patients from the API when the component mounts
-    axios.get('http://localhost:8989/api/patients/getAllPatients')
+    axios.get('http://localhost:1415/api/patients/getAllPatients')
       .then(response => {
         setPatients(response.data);
-        console.log(response.data);
-        
       })
       .catch(error => {
         console.error('There was an error fetching the patient data!', error);
@@ -50,9 +49,8 @@ function SearchPatient() {
     window.print();
   };
 
-  const handleEdit = (hospitalNo) => {
-    // Use navigate or history for redirection
-    // navigate(`/register-patient/${hospitalNo}`);
+  const handleEdit = (patient) => {    
+    navigate(`/RegisterPatient#basic-info/${patient?.patientId}`, { state: { patient } });
   };
 
   return (
@@ -68,15 +66,6 @@ function SearchPatient() {
             />
             <i className="fas fa-search"></i>
           </div>
-          <div className="input-wrapper">
-            <input
-              type="text"
-              placeholder="Enter Hospital No"
-              value={hospitalNo}
-              onChange={(e) => setHospitalNo(e.target.value)}
-            />
-            <i className="fas fa-search"></i>
-          </div>
         </div>
         <div className="results-and-print">
           <span className="results-text">Showing {displayedPatients.length} / {filteredPatients.length} results</span>
@@ -87,7 +76,7 @@ function SearchPatient() {
       <table className="patients-table">
         <thead>
           <tr>
-            <th>Hospital Number</th>
+            <th>Serial No</th>
             <th>Patient Name</th>
             <th>Age/Sex</th>
             <th>Address</th>
@@ -96,17 +85,15 @@ function SearchPatient() {
           </tr>
         </thead>
         <tbody>
-          {patients.map((patient, index) => (
+          {displayedPatients.map((patient, index) => (
             <tr key={index}>
-              <td>{patient.hospitalNo}</td>
+              <td>{startIndex + index + 1}</td>
               <td>{patient.firstName} {patient.lastName}</td>
               <td>{patient.age} / {patient.gender}</td>
               <td>{patient.address}</td>
               <td>{patient.phoneNumber}</td>
               <td>
-                <button onClick={() => handleEdit(patient.hospitalNo)} className="action-btn edit">Edit</button>
-                <button className="action-btn history">History</button>
-                <button className="action-btn more">More</button>
+                <button onClick={() => handleEdit(patient)} className="action-btn edit">Edit</button>
               </td>
             </tr>
           ))}

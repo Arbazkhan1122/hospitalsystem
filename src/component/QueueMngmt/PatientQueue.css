@@ -181,3 +181,16 @@
     display: flex;
     justify-content: flex-end; /* Aligns the text to the left */
 }
+.patientQueueDataBTN{
+  background-color: rgb(128, 210, 5);
+  display: flex;
+  margin: 5px;
+  padding: 0 10px;
+}
+.patientQueueDataBTN-disabled{
+  background-color: rgb(128, 210, 5);
+  display: flex;
+  margin: 5px;
+  padding: 0 10px;
+  cursor: not-allowed;
+}

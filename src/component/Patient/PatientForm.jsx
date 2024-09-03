@@ -3,29 +3,32 @@ import React, { useState } from 'react';
 const PatientForm = () => {
   const [patient, setPatient] = useState({
     salutation: '',
-    firstName: '',
-    middleName: '',
-    lastName: '',
-    dateOfBirth: '',
-    age: 0,
-    phoneNumber: '',
-    landlineNumber: '',
-    country: 'Kenya',
-    passportNumber: '',
-    county: '',
-    address: '',
-    bloodGroup: '',
-    gender: '',
-    religion: '',
-    maritalStatus: '',
-    notifications: false,
-    employerInfo: '',
-    previousLastName: '',
-    occupation: '',
-    email: '',
-    race: '',
-    kraPin: '',
-    dialysisPatient: false,
+  firstName: '',
+  middleName: '',
+  lastName: '',
+  dateOfBirth: '',
+  age: 0,
+  phoneNumber: '',
+  landlineNumber:'',
+  country:'',
+  passportNumber: '',
+  state: '',
+  address: '',
+  bloodGroup: '',
+  gender: '',
+  religion:'',
+  maritalStatus: '',
+  notifications: false,
+  employerInfo: '',
+  previousLastName: '',
+  occupation: '',
+  email: '',
+  race: '',
+  pinCode: '',
+  dialysisPatient: false,
+  hospitalNo: '',
+  isIPD: false,
+   
   });
 
   const handleChange = (e) => {
@@ -73,8 +76,8 @@ const PatientForm = () => {
       <label>Passport Number:</label>
       <input type="text" name="passportNumber" value={patient.passportNumber} onChange={handleChange} />
 
-      <label>County:</label>
-      <input type="text" name="county" value={patient.county} onChange={handleChange} required />
+      <label>State:</label>
+      <input type="text" name="state" value={patient.state} onChange={handleChange} required />
 
       <label>Address:</label>
       <input type="text" name="address" value={patient.address} onChange={handleChange} />

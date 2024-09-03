@@ -10,9 +10,6 @@
     cursor: pointer;
 }
 .FinalizedItem-main {
-      
-    /* background-color: white; */
-    padding: 20px;
     border-radius: 5px;
   }
   
@@ -102,6 +99,10 @@
   .FinalizedItem-table td {
     border: 1px solid #ccc;
     padding: 8px;
+   
+  }
+  .FinalizedItem-table td{
+    background-color: white;
     font-size: 14px;
   }
   
@@ -110,7 +111,9 @@
     position: relative;
     user-select: none; /* Disable text selection in header */
     white-space: nowrap; /* Prevent text from wrapping */
-  }
+    font-size: 20px;
+    font-weight: 700;
+    }
   
   .FinalizedItem-table th .header-content {
     display: flex;

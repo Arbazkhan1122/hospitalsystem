@@ -54,14 +54,14 @@ const AppointmentRouting = () => {
         >
           Online Appointment
         </NavLink>
-        {/* <NavLink 
+        <NavLink 
           to="/ssf-claim" 
           className={({ isActive }) => 
             isActive ? "appointment-booking-list-nav-link active" : "appointment-booking-list-nav-link"
           }
         >
           SSF Claim
-        </NavLink> */}
+        </NavLink>
         
         
        

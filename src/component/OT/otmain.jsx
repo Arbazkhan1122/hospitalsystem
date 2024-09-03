@@ -13,14 +13,15 @@ const Otmain = () => {
      
       <div className="app-container">
         <Routes>
-          <Route path="/bookingList" element={<BookingList/>} />
-          <Route path="/setting/*" element={<Setting/>} />
+          <Route path="/" element={<BookingList/>} />
+          <Route path="setting/*" element={<Setting/>} />
           {/* <Route path="/Change_Visitscheme" element={<Change_Visitscheme/>} /> */}
         
          
         </Routes>
       </div>
-    </>
+      </>
+    
   );
 };
 

@@ -1,19 +1,81 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import axios from 'axios';
 import './PatientQueue.css';
 
 const PatientQueue = () => {
   const [data, setData] = useState([]);
-  const [selectedDoctor, setSelectedDoctor] = useState('');
+  const [selectedDoctor, setSelectedDoctor] = useState();
+  const [doctors, setDoctors] = useState([]);
+  const[doctorid,setDoctorid] = useState([])
   const [showTable, setShowTable] = useState(false);
+  const [searchText, setSearchText] = useState('');
+  const [selectedStatus, setSelectedStatus] = useState('all');
+
+  useEffect(() => {
+    fetch('http://localhost:1415/api/queues/employee/role')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        
+        // Assuming the API returns an array of doctors with 'salutation', 'firstname', and 'lastname' fields
+        const formattedDoctors = data.map((doctor) => ({
+          id: doctor.employeeId,
+          name: `${doctor.salutation} ${doctor.firstName} ${doctor.lastName}`,
+        }));
+        setDoctors(formattedDoctors);
+      })
+      .catch((error) => console.error('Error fetching doctors:', error));
+  }, []);
+console.log(selectedDoctor);
 
   const handleLoadData = () => {
     if (selectedDoctor) {
-      setShowTable(true);
-      // Load data logic can be added here if needed.
+      const selectedDoctorId = selectedDoctor; // Now this is the employeeId
+
+      if (selectedDoctorId) {
+        fetch(`http://localhost:1415/api/queues/employee/${selectedDoctorId}`)
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            
+            setData(data);
+            setShowTable(true);
+          })
+          .catch((error) => console.error('Error fetching patient data:', error));
+      }
     } else {
       setShowTable(false);
     }
   };
+
+  const filteredData = data
+  .filter((row) => 
+    (selectedStatus === 'all' || row.status === selectedStatus) 
+  );
+
+  const handleStatusChange = (patientData, newStatus) => {
+    const updatedData = {
+      ...patientData,
+      status: newStatus, // Set the new status
+    };
+
+    // Make a PUT request to update the status
+    axios.put(`http://localhost:1415/api/queues/update/${patientData.patientQueueId}`, updatedData)
+      .then((response) => {
+        console.log('Data updated successfully', response.data);
+        // Update the local state to reflect the changes
+        setData((prevData) =>
+          prevData.map((item) =>
+            item.patientQueueId === patientData.patientQueueId ? { ...item, status: newStatus } : item
+          )
+        );
+      })
+      .catch((error) => {
+        console.error('Error updating data:', error);
+      });
+  };
+
+
 
   return (
     <div className="patient-queue-management-container">
@@ -27,7 +89,7 @@ const PatientQueue = () => {
           <span role="img" aria-label="user">👤</span> Patient Queue List
         </h2>
         <div className="queue-management-form-container">
-          <div className="queue-management-form-group">
+        <div className="queue-management-form-group">
             <label>Doctor :</label>
             <select
               className="queue-management-select-doctor"
@@ -35,40 +97,48 @@ const PatientQueue = () => {
               onChange={(e) => setSelectedDoctor(e.target.value)}
             >
               <option value="">Select Doctor</option>
-              <option>Dr. PHRM Anonymous Doctor</option>
-              <option>Dr. VICTOR OCHIENG OKECH</option>
-              <option>Mr. DENNIS MURANGIRI NJUE</option>
-              <option>Mr. КЕРНА OPIYO ODINDO</option>
-              <option>Mrs. BRENDA MWANIA WANJIRU</option>
-              <option>Mr. COLLINS GIKUNGU</option>
-              <option>MAINA</option>
-              <option>Mrs. CAROLINE wanjiru WANJIKU</option>
-              <option>Mrs. BERTHA WANGARI WAIRIUKO</option>
-              <option>Mrs. BEATRICE WANGAI MUKOLWE</option>
-              <option>Dr. ANN NJOKI THIONGO</option>
-              <option>Mr. COLLINS KIPKEMEI</option>
-              <option>Dr. Pooja Mishra</option>
-              <option>Dr. Amit Shah</option>
-              <option>Mr. Account Trial</option>
-              <option>Dr. Harry Potter</option>
-              <option>Dr. Baus Wringley</option>
-              <option>INNOCENT TENGO</option>
-              <option>Dr. Emmanuel Bassy</option>
-              <option>Hannah Benta</option>
-              <option>Prof. Dr. Hannah Benta</option>
-              <option>Prof. Dr. Suresh Singh Singh</option>
+              {/* Populate doctors list dynamically */}
+              {doctors.map((doctor) => (
+                <option key={doctor.id} value={doctor.id}>
+                  {doctor.name}
+                </option>
+              ))}
             </select>
           </div>
-          <div className="queue-management-form-group status-group">
+           <div className="queue-management-form-group status-group">
             <label>Status :</label>
             <div className="queue-management-status-options">
-              <input type="radio" id="all" name="status" defaultChecked />
+              <input 
+                type="radio" 
+                id="all" 
+                name="status" 
+                checked={selectedStatus === 'all'}
+                onChange={() => setSelectedStatus('all')}
+              />
               <label htmlFor="all">All</label>
-              <input type="radio" id="pending" name="status" />
+              <input 
+                type="radio" 
+                id="pending" 
+                name="status" 
+                checked={selectedStatus === 'pending'}
+                onChange={() => setSelectedStatus('pending')}
+              />
               <label htmlFor="pending">Pending</label>
-              <input type="radio" id="completed" name="status" />
+              <input 
+                type="radio" 
+                id="completed" 
+                name="status" 
+                checked={selectedStatus === 'completed'}
+                onChange={() => setSelectedStatus('completed')}
+              />
               <label htmlFor="completed">Completed</label>
-              <input type="radio" id="skipped" name="status" />
+              <input 
+                type="radio" 
+                id="skipped" 
+                name="status" 
+                checked={selectedStatus === 'skipped'}
+                onChange={() => setSelectedStatus('skipped')}
+              />
               <label htmlFor="skipped">Skipped</label>
             </div>
           </div>
@@ -83,6 +153,7 @@ const PatientQueue = () => {
         {showTable && (
           <div className="queue-management-table-section">
             <div className="queue-management-search-container">
+            Showing {filteredData.length} results
               <input type="text" placeholder="Search" />
               <button className="queue-management-search-button">🔍</button>
             </div>
@@ -93,7 +164,6 @@ const PatientQueue = () => {
                 <thead>
                   <tr>
                     <th>Date</th>
-                    <th>Hospital No.</th>
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Age</th>
@@ -101,31 +171,46 @@ const PatientQueue = () => {
                     <th>Doctor</th>
                     <th>Visit Type</th>
                     <th>Appt. Type</th>
-                    <th>Day</th>
+                    {/* <th>Day</th> */}
                     <th>Queue No.</th>
+                    <th>Status</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {data.length === 0 ? (
+                {filteredData.length === 0? (
                     <tr>
                       <td colSpan="12" className="queue-management-no-data">No Rows To Show</td>
                     </tr>
                   ) : (
-                    data.map((row, index) => (
+                    filteredData.map((row, index) => (
                       <tr key={index}>
                         <td>{row.date}</td>
-                        <td>{row.hospitalNo}</td>
                         <td>{row.name}</td>
                         <td>{row.phone}</td>
-                        <td>{row.age}</td>
+                        <td>{row.ageSex}</td>
                         <td>{row.department}</td>
-                        <td>{row.doctor}</td>
+                        <td>{row.newPatientVisitDTO?.employeeDTO?.salutation+" "+row.newPatientVisitDTO?.employeeDTO?.firstName +" "+ row.newPatientVisitDTO?.employeeDTO?.lastName}</td>
                         <td>{row.visitType}</td>
-                        <td>{row.apptType}</td>
-                        <td>{row.day}</td>
-                        <td>{row.queueNo}</td>
-                        <td>{row.actions}</td>
+                        <td>{row.appointmentType}</td>
+                        {/* <td>{row.day}</td> */}
+                        <td>{row.queueNumber}</td>
+                        <td>{row.status}</td>
+                        <td>
+                          {row.status?.toLowerCase()==="pending"?(
+                            <>
+                              <button className='patientQueueDataBTN' onClick={() => handleStatusChange(row, 'completed')}>Complete</button>
+                          <button className='patientQueueDataBTN' onClick={() => handleStatusChange(row, 'skipped')}>Skipped</button>
+                            </>
+                          ):(
+                            <>
+                             <button className='patientQueueDataBTN-disabled' disabled="true" onClick={() => handleStatusChange(row, 'completed')}>Complete</button>
+                          <button className='patientQueueDataBTN-disabled' disabled="true" onClick={() => handleStatusChange(row, 'skipped')}>Skipped</button>
+                            </>
+                          )}
+
+                      
+                        </td>
                       </tr>
                     ))
                   )}

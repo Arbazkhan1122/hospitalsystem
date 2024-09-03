@@ -1,25 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './GaurantorPage.css';
 
-const GuarantorPage = ({sendguarantordata}) => {
-  const [guarantorData, setGuarantorData] = useState({
+const GuarantorPage = ({sendguarantordata,guarantorData}) => {
+  const [guarantorDataPatient, setGuarantorDataPatient] = useState({
     relationWithPatient: '',
-    Self: false,
-    PatientName: '',
+    self: 'No',
+    guarantorName: '',
     gender: '',
     phoneNumber: '',
     dateOfBirth: '',
     street1: '',
     street2: '',
-    // country: '',
-    county: '',
+    state: '',
     city: '',
     zipCode: ''
   });
-
+  useEffect(()=>{
+    setGuarantorDataPatient({
+      relationWithPatient: guarantorData?.relationWithPatient || '',
+      self: guarantorData?.self || '',
+      guarantorName: guarantorData?.PatientName ||'',
+      gender:  guarantorData?.gender ||'' ,
+      phoneNumber:  guarantorData?.phoneNumber ||'',
+      dateOfBirth:  guarantorData?.dateOfBirth ||'',
+      street1:  guarantorData?.street1 ||'',
+      street2:  guarantorData?.street2 ||'',
+      state: guarantorData?.state ||'',
+      city:  guarantorData?.city ||'',
+      zipCode:  guarantorData?.zipCode ||''
+    })
+  },[guarantorData])
+  
+  
+  
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setGuarantorData(prevState => ({
+    setGuarantorDataPatient(prevState => ({
       ...prevState,
       [name]: type === 'checkbox' ? checked : value
     }));
@@ -28,7 +44,7 @@ const GuarantorPage = ({sendguarantordata}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    sendguarantordata(guarantorData);
+    sendguarantordata(guarantorDataPatient);
     alert("Guarantor Data Saved Successfully ")
   };
 
@@ -43,7 +59,7 @@ const GuarantorPage = ({sendguarantordata}) => {
               <input 
                 type="text" 
                 name="relationWithPatient" 
-                value={guarantorData.relationWithPatient} 
+                value={guarantorDataPatient?.relationWithPatient} 
                 onChange={handleChange} 
                 required 
               />
@@ -51,8 +67,9 @@ const GuarantorPage = ({sendguarantordata}) => {
               <label className="guarantor-page-self-checkbox">
                 <input 
                   type="checkbox" 
-                  name="Self" 
-                  checked={guarantorData.Self} 
+                  name="self" 
+                  value={"Yes"}
+                  checked={guarantorDataPatient.self} 
                   onChange={handleChange} 
                 />
                 SELF
@@ -62,8 +79,8 @@ const GuarantorPage = ({sendguarantordata}) => {
               <label>Name*:</label>
               <input 
                 type="text" 
-                name="PatientName" 
-                value={guarantorData.PatientName} 
+                name="guarantorName" 
+                value={guarantorDataPatient.guarantorName} 
                 onChange={handleChange} 
                 required 
               />
@@ -76,7 +93,7 @@ const GuarantorPage = ({sendguarantordata}) => {
                     type="radio" 
                     name="gender" 
                     value="Male" 
-                    checked={guarantorData.gender === "Male"} 
+                    checked={guarantorDataPatient.gender === "Male"} 
                     onChange={handleChange} 
                   /> Male
                 </label>
@@ -85,7 +102,7 @@ const GuarantorPage = ({sendguarantordata}) => {
                     type="radio" 
                     name="gender" 
                     value="Female" 
-                    checked={guarantorData.gender === "Female"} 
+                    checked={guarantorDataPatient.gender === "Female"} 
                     onChange={handleChange} 
                   /> Female
                 </label>
@@ -94,7 +111,7 @@ const GuarantorPage = ({sendguarantordata}) => {
                     type="radio" 
                     name="gender" 
                     value="Other" 
-                    checked={guarantorData.gender === "Other"} 
+                    checked={guarantorDataPatient.gender === "Other"} 
                     onChange={handleChange} 
                   /> Other
                 </label>
@@ -105,7 +122,7 @@ const GuarantorPage = ({sendguarantordata}) => {
               <input 
                 type="tel" 
                 name="phoneNumber" 
-                value={guarantorData.phoneNumber} 
+                value={guarantorDataPatient.phoneNumber} 
                 onChange={handleChange} 
               />
             </div>
@@ -114,7 +131,7 @@ const GuarantorPage = ({sendguarantordata}) => {
               <input 
                 type="date" 
                 name="dateOfBirth" 
-                value={guarantorData.dateOfBirth} 
+                value={guarantorDataPatient.dateOfBirth} 
                 onChange={handleChange} 
               />
             </div>
@@ -126,7 +143,7 @@ const GuarantorPage = ({sendguarantordata}) => {
               <input 
                 type="text" 
                 name="street1" 
-                value={guarantorData.street1} 
+                value={guarantorDataPatient.street1} 
                 onChange={handleChange} 
               />
             </div>
@@ -135,7 +152,7 @@ const GuarantorPage = ({sendguarantordata}) => {
               <input 
                 type="text" 
                 name="street2" 
-                value={guarantorData.street2} 
+                value={guarantorDataPatient.street2} 
                 onChange={handleChange} 
               />
             </div>
@@ -147,7 +164,7 @@ const GuarantorPage = ({sendguarantordata}) => {
             </div> */}
             <div className="guarantor-page-form-group">
               <label>Country:</label>
-              <select name="county" value={guarantorData.county} onChange={handleChange}>
+              <select name="state" value={guarantorDataPatient.state} onChange={handleChange}>
                 <option value="">Select Country</option>
                 <option value="India">India</option>
                 <option value="Kenya">Kenya</option>
@@ -160,7 +177,7 @@ const GuarantorPage = ({sendguarantordata}) => {
               <input 
                 type="text" 
                 name="city" 
-                value={guarantorData.city} 
+                value={guarantorDataPatient.city} 
                 onChange={handleChange} 
               />
             </div>
@@ -169,7 +186,7 @@ const GuarantorPage = ({sendguarantordata}) => {
               <input 
                 type="text" 
                 name="zipCode" 
-                value={guarantorData.zipCode} 
+                value={guarantorDataPatient.zipCode} 
                 onChange={handleChange} 
               />
             </div>

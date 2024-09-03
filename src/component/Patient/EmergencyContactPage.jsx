@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './EmergencyContactPage.css';
 
-function EmergencyContactPage({sendemergencycontactdata}) {
-  const [contactType, setContactType] = useState({
+function EmergencyContactPage({ sendemergencycontactdata, emergencyData }) {
+  const [type, setContactType] = useState({
     kin: false,
     emergencyContact: false,
     both: false
   });
+  
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [relationship, setRelationship] = useState('');
   const [comments, setComments] = useState('');
+
+  useEffect(() => {
+    if (emergencyData) {
+      setContactType({
+        kin: emergencyData?.type === 'kin',
+        emergencyContact: emergencyData?.type === 'emergencyContact',
+        both: emergencyData?.type === 'both',
+      });
+      setFirstName(emergencyData?.firstName || '');
+      setLastName(emergencyData?.lastName || '');
+      setPhoneNumber(emergencyData?.phoneNumber || '');
+      setRelationship(emergencyData?.relationship || '');
+      setComments(emergencyData?.comments || '');
+    }
+  }, [emergencyData]);
 
   const handleTypeChange = (type) => {
     setContactType({
@@ -24,9 +40,8 @@ function EmergencyContactPage({sendemergencycontactdata}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Prepare the data object to send to the API
     const contactData = {
-      contactType: contactType.both ? 'both' : contactType.kin ? 'kin' : 'emergencyContact',
+      type: type.both ? 'both' : type.kin ? 'kin' : 'emergencyContact',
       firstName,
       lastName,
       phoneNumber,
@@ -34,8 +49,8 @@ function EmergencyContactPage({sendemergencycontactdata}) {
       comments
     };
 
-    sendemergencycontactdata(contactData)
-    alert("Emergency Contact Details Saved Successfully ")
+    sendemergencycontactdata(contactData);
+    alert("Emergency Contact Details Saved Successfully");
   };
 
   return (
@@ -48,21 +63,21 @@ function EmergencyContactPage({sendemergencycontactdata}) {
             <label>
               <input 
                 type="checkbox" 
-                checked={contactType.kin} 
+                checked={type.kin} 
                 onChange={() => handleTypeChange('kin')}
               /> KIN
             </label>
             <label>
               <input 
                 type="checkbox" 
-                checked={contactType.emergencyContact} 
+                checked={type.emergencyContact} 
                 onChange={() => handleTypeChange('emergencyContact')}
               /> Emergency Contact
             </label>
             <label>
               <input 
                 type="checkbox" 
-                checked={contactType.both} 
+                checked={type.both} 
                 onChange={() => handleTypeChange('both')}
               /> Both
             </label>
@@ -121,7 +136,7 @@ function EmergencyContactPage({sendemergencycontactdata}) {
             placeholder="Comments"
           />
         </div>
-        <button type="submit" className="emergency-contact-add-btn">Add</button>
+        <button type="submit" className="emergency-contact-add-btn">Save</button>
       </form>
     </div>
   );

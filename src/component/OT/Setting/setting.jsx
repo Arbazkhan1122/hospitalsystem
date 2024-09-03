@@ -3,7 +3,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import Ot_machine from './settingsubfils/ot_machine/ot_machine';
 import Ot_personnelType from './settingsubfils/ot_PersonnelType/Ot_personal_type';
 import ManageOtChecklist from './settingsubfils/Manage_ot_checklist/manage_checklist';
-import '../Setting/setting.css';
+import './setting.css';
 
 const Setting = ({ onNavClick }) => {
   const [activeNav, setActiveNav] = useState(null);

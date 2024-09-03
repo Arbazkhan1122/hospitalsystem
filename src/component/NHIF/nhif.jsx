@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
-import PatientList from '../NHIF/NHIFsubfiles/PatientList/PatientList';
-import VisitList from '../NHIF/NHIFsubfiles/VisitList/VisitList';
-import IPD_billing from '../NHIF/NHIFsubfiles/IPDBilling/IpD_Billing';
-import Report from '../NHIF/NHIFsubfiles/report/report';
+import PatientList from './NHIFsubfiles/PatientList/PatientList';
+import VisitList from './NHIFsubfiles/VisitList/VisitList';
+import IPD_billing from './NHIFsubfiles/IPDBilling/IpD_Billing';
+import Report from './NHIFsubfiles/report/report';
 import './nhif.css'; 
 
 const Nhif = () => {
@@ -31,13 +31,13 @@ const Nhif = () => {
       </header>
       <div>
         <Routes>
-          <Route path="/PatientList" element={<PatientList />} />
-          <Route path="/VisitList" element={<VisitList />} />
-           <Route path="/IPD_billing" element={<IPD_billing />} />
-          <Route path="/Report" element={<Report />} /> 
+          <Route path="PatientList" element={<PatientList />} />
+          <Route path="VisitList" element={<VisitList />} />
+           <Route path="IPD_billing" element={<IPD_billing />} />
+          <Route path="Report" element={<Report />} /> 
         </Routes>
       </div>
-      
+     
     </>
   );
 };

@@ -1,28 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './InsurancePage.css';
 
-function InsurancePage({sendinsurancedata}) {
-  const [insuranceProvider, setInsuranceProvider] = useState('NHIF');
-  const [insuranceName, setInsuranceName] = useState('');
-  const [cardNumber, setCardNumber] = useState('');
-  const [insuranceNumber, setInsuranceNumber] = useState('');
-  const [facilityCode, setFacilityCode] = useState('');
-  const [initialBalance, setInitialBalance] = useState('0');
+function InsurancePage({ sendinsurancedata, insuranceData }) {
+  const [insuranceDataPatient, setInsuranceDataPatient] = useState({
+    insuranceProvider: 'NHIF',
+    insuranceName: '',
+    cardNo: '',
+    insuranceNo: '',
+    facilityCode: '',
+    initialBalance: '0',
+  });
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    // Only update the state if the incoming insuranceData is different from the current state
+    if (insuranceData && (
+      insuranceData.insuranceProvider !== insuranceDataPatient.insuranceProvider ||
+      insuranceData.insuranceName !== insuranceDataPatient.insuranceName ||
+      insuranceData.cardNo !== insuranceDataPatient.cardNo ||
+      insuranceData.insuranceNo !== insuranceDataPatient.insuranceNo ||
+      insuranceData.facilityCode !== insuranceDataPatient.facilityCode ||
+      insuranceData.initialBalance !== insuranceDataPatient.initialBalance
+    )) {
+      setInsuranceDataPatient({
+        insuranceProvider: insuranceData.insuranceProvider || 'NHIF',
+        insuranceName: insuranceData.insuranceName || '',
+        cardNo: insuranceData.cardNo || '',
+        insuranceNo: insuranceData.insuranceNo || '',
+        facilityCode: insuranceData.facilityCode || '',
+        initialBalance: insuranceData.initialBalance || '0',
+      });
+    }
+  }, [insuranceData]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInsuranceDataPatient(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Create the data object to send to the API
-    const insuranceData = {
-      insuranceProvider,
-      insuranceName,
-      cardNumber,
-      insuranceNumber,
-      facilityCode,
-      initialBalance
-    };
-
-    sendinsurancedata(insuranceData);
+    sendinsurancedata(insuranceDataPatient); // Send the correct state object
+    alert("Insurance Information Saved Successfully");
   };
 
   return (
@@ -33,8 +54,9 @@ function InsurancePage({sendinsurancedata}) {
           <label htmlFor="insuranceProvider">Insurance Provider*:</label>
           <select
             id="insuranceProvider"
-            value={insuranceProvider}
-            onChange={(e) => setInsuranceProvider(e.target.value)}
+            name="insuranceProvider"
+            value={insuranceDataPatient.insuranceProvider}
+            onChange={handleChange}
             required
           >
             <option value="NHIF">NHIF</option>
@@ -46,29 +68,32 @@ function InsurancePage({sendinsurancedata}) {
           <input
             type="text"
             id="insuranceName"
-            value={insuranceName}
-            onChange={(e) => setInsuranceName(e.target.value)}
+            name="insuranceName"
+            value={insuranceDataPatient.insuranceName}
+            onChange={handleChange}
             placeholder="Insurance name"
           />
         </div>
         <div>
-          <label htmlFor="cardNumber">Card Number (ID No)*:</label>
+          <label htmlFor="cardNo">Card Number (ID No)*:</label>
           <input
             type="text"
-            id="cardNumber"
-            value={cardNumber}
-            onChange={(e) => setCardNumber(e.target.value)}
+            id="cardNo"
+            name="cardNo"
+            value={insuranceDataPatient.cardNo}
+            onChange={handleChange}
             placeholder="Card number (ID No)"
             required
           />
         </div>
         <div>
-          <label htmlFor="insuranceNumber">Insurance Number (Member No)*:</label>
+          <label htmlFor="insuranceNo">Insurance Number (Member No)*:</label>
           <input
             type="text"
-            id="insuranceNumber"
-            value={insuranceNumber}
-            onChange={(e) => setInsuranceNumber(e.target.value)}
+            id="insuranceNo"
+            name="insuranceNo"
+            value={insuranceDataPatient.insuranceNo}
+            onChange={handleChange}
             placeholder="Insurance number (Member No)"
             required
           />
@@ -78,8 +103,9 @@ function InsurancePage({sendinsurancedata}) {
           <input
             type="text"
             id="facilityCode"
-            value={facilityCode}
-            onChange={(e) => setFacilityCode(e.target.value)}
+            name="facilityCode"
+            value={insuranceDataPatient.facilityCode}
+            onChange={handleChange}
             placeholder="Facility Code"
             required
           />
@@ -89,8 +115,9 @@ function InsurancePage({sendinsurancedata}) {
           <input
             type="number"
             id="initialBalance"
-            value={initialBalance}
-            onChange={(e) => setInitialBalance(e.target.value)}
+            name="initialBalance"
+            value={insuranceDataPatient.initialBalance}
+            onChange={handleChange}
             required
           />
         </div>

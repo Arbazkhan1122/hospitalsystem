@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./Integratedreport.css";
 
 function IntegratedReport() {
@@ -9,6 +9,70 @@ function IntegratedReport() {
   const [toDate, setToDate] = useState("2024-08-12");
   const [disinfectionMethod, setDisinfectionMethod] = useState("All");
   const [substore, setSubstore] = useState("All stores");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const dummyData = [
+    {
+      requestDate: "2024-08-01",
+      itemName: "Surgical Kit",
+      code: "SK001",
+      tagNumber: "T12345",
+      requestFrom: "Brain Operation Store",
+      requestedBy: "Dr. Smith",
+      disinfectant: "AutoClave",
+      disinfectedDate: "2024-08-02",
+      disinfectedBy: "Technician A",
+    },
+    {
+      requestDate: "2024-08-05",
+      itemName: "IV Fluids",
+      code: "IVF002",
+      tagNumber: "T12346",
+      requestFrom: "ICU sub store",
+      requestedBy: "Nurse John",
+      disinfectant: "Chemical Disinfection",
+      disinfectedDate: "2024-08-06",
+      disinfectedBy: "Technician B",
+    },
+    {
+      requestDate: "2024-08-10",
+      itemName: "Catheter",
+      code: "CT003",
+      tagNumber: "T12347",
+      requestFrom: "Female ward Substore",
+      requestedBy: "Dr. Jane",
+      disinfectant: "Microwave",
+      disinfectedDate: "2024-08-11",
+      disinfectedBy: "Technician C",
+    },
+    {
+      requestDate: "2024-08-08",
+      itemName: "Syringe",
+      code: "SY004",
+      tagNumber: "T12348",
+      requestFrom: "Accounts",
+      requestedBy: "Pharmacist Doe",
+      disinfectant: "AutoClave",
+      disinfectedDate: "2024-08-09",
+      disinfectedBy: "Technician D",
+    },
+  ];
+
+  useEffect(() => {
+    filterData();
+  }, [disinfectionMethod, substore]);
+
+  const filterData = () => {
+    const filteredData = dummyData.filter((item) => {
+      const matchesDisinfectionMethod =
+        disinfectionMethod === "All" ||
+        item.disinfectant === disinfectionMethod;
+      const matchesSubstore =
+        substore === "All stores" || item.requestFrom === substore;
+      return matchesDisinfectionMethod && matchesSubstore;
+    });
+    setSearchResults(filteredData);
+  };
 
   const startResizing = (index) => (e) => {
     e.preventDefault();
@@ -137,7 +201,7 @@ function IntegratedReport() {
           <i className="fas fa-search"></i>
         </div>
         <div className="IntegratedCssdReport-results">
-          <span>Showing 0 / 0 results</span>
+          <span>Showing {searchResults.length} / {dummyData.length} results</span>
           <button className="IntegratedCssdReport-export-btn">Export</button>
           <button className="IntegratedCssdReport-print-btn">Print</button>
         </div>
@@ -175,11 +239,26 @@ function IntegratedReport() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td colSpan="10" className="IntegratedCssdReport-no-rows">
-              No Rows To Show
-            </td>
-          </tr>
+          {searchResults.length > 0 ? (
+            searchResults.map((item, index) => (
+              <tr key={index}>
+                <td>{item.requestDate}</td>
+                <td>{item.itemName}</td>
+                <td>{item.code}</td>
+                <td>{item.tagNumber}</td>
+                <td>{item.requestFrom}</td>
+                <td>{item.requestedBy}</td>
+                <td>{item.disinfectant}</td>
+                <td>{item.disinfectedDate}</td>
+                <td>{item.disinfectedBy}</td>
+                <td>Action</td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="10">No data available</td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>

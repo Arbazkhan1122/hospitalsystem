@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 // import PatientForm1 from './Patient/PatientForm1';
 import {Routes,Route,BrowserRouter} from 'react-router-dom';
-import Navbar from '../Patient/Navbar';
-import PatientRegistration from '../Patient/PatientRegistration';
-import SearchPatient from '../Patient/SearchPatient';
-import RegisterPatient from '../Patient/RegisterPatient';
-import Dashborad from '../Patient/Dashborad';
+import Navbar from './Navbar';
+import PatientRegistration from './PatientRegistration';
+import SearchPatient from './SearchPatient';
+import RegisterPatient from './RegisterPatient';
+import Dashborad from './Dashborad';
 
 
 function PatientRouting() {

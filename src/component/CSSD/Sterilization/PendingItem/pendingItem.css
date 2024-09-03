@@ -10,9 +10,6 @@
     cursor: pointer;
 }
 .pendingItem-main {
-      
-    /* background-color: white; */
-    padding: 20px;
     border-radius: 5px;
   }
   
@@ -104,12 +101,16 @@
     padding: 8px;
     font-size: 14px;
   }
-  
+  .pendingItem-table td{
+    background-color: white;
+
+  }
   .pendingItem-table th {
     text-align: left;
     position: relative;
     user-select: none; /* Disable text selection in header */
     white-space: nowrap; /* Prevent text from wrapping */
+    font-size: 16px;
   }
   
   .pendingItem-table th .header-content {
@@ -174,4 +175,51 @@
   .pendingItem-dropdown div:hover {
     background-color: #f2f2f2;
   }
+
+  /* Overlay for Modal */
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal Content Box */
+.custom-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px; /* Width of the modal */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center align text */
+}
+
+/* Modal Buttons */
+.custom-modal-buttons {
+  display: flex;
+  justify-content: space-around; /* Space between buttons */
+  margin-top: 20px;
+}
+
+.custom-modal-close-btn,
+.custom-modal-confirm-btn {
+  background-color: #3598dc; /* Button color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;   
+}
+
+.custom-modal-close-btn:hover,
+.custom-modal-confirm-btn:hover {
+  background-color: #2a7ab6; /* Hover color */
+}
+
   

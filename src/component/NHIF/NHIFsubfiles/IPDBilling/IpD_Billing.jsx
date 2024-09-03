@@ -1,11 +1,77 @@
 import React, { useState } from 'react';
-import { FaSearch } from 'react-icons/fa';
-import { FaUser, FaSync } from 'react-icons/fa';
-import '../IPDBilling/IPD_Billing.css'; // Make sure to create and use the corresponding CSS file
+import { FaSearch, FaUser, FaSync } from 'react-icons/fa';
+import './IPD_Billing.css'; // Make sure to create and use the corresponding CSS file
 
 function IPD_billing() {
     const [searchTerm, setSearchTerm] = useState('');
-    const [patients, setPatients] = useState([]);
+    const [patients, setPatients] = useState([
+        {
+            date: '2024-08-20',
+            time: '10:00 AM',
+            hospitalNo: 'H001',
+            name: 'John Doe',
+            ageSex: '30/M',
+            nhifNo: 'HIF123456',
+            department: 'Cardiology',
+            claimCode: 'CLM0001',
+            visitType: 'Follow-up',
+            apptType: 'In-Person',
+            daysPassed: 5,
+        },
+        {
+            date: '2024-08-18',
+            time: '02:00 PM',
+            hospitalNo: 'H002',
+            name: 'Jane Smith',
+            ageSex: '28/F',
+            nhifNo: 'HIF654321',
+            department: 'Pediatrics',
+            claimCode: 'CLM0002',
+            visitType: 'Initial',
+            apptType: 'Virtual',
+            daysPassed: 7,
+        },
+        {
+            date: '2024-08-15',
+            time: '09:30 AM',
+            hospitalNo: 'H003',
+            name: 'Alice Johnson',
+            ageSex: '45/F',
+            nhifNo: 'HIF789012',
+            department: 'Orthopedics',
+            claimCode: 'CLM0003',
+            visitType: 'Follow-up',
+            apptType: 'In-Person',
+            daysPassed: 12,
+        },
+        {
+            date: '2024-08-10',
+            time: '11:00 AM',
+            hospitalNo: 'H004',
+            name: 'Bob Brown',
+            ageSex: '60/M',
+            nhifNo: 'HIF345678',
+            department: 'Neurology',
+            claimCode: 'CLM0004',
+            visitType: 'Initial',
+            apptType: 'Virtual',
+            daysPassed: 20,
+        },
+        {
+            date: '2024-08-05',
+            time: '03:00 PM',
+            hospitalNo: 'H005',
+            name: 'Carol White',
+            ageSex: '37/F',
+            nhifNo: 'HIF901234',
+            department: 'Gynecology',
+            claimCode: 'CLM0005',
+            visitType: 'Follow-up',
+            apptType: 'In-Person',
+            daysPassed: 25,
+        },
+        // Add more entries as needed
+    ]);
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -24,14 +90,13 @@ function IPD_billing() {
             <div className="ipd_billing_container">
                 <div className="ipd_billing_new_patient">
                     <FaUser style={{ color: 'blue', fontSize: '24px', marginRight: '10px' }} />
-                    <p className='Admitted_Patient_List'>  Admitted Patient List</p>
+                    <p className='Admitted_Patient_List'>Admitted Patient List</p>
                 </div>
-
             </div>
             
-            <div className="ipd_billing_new_patient">
+            {/* <div className="ipd_billing_new_patient">
                 <p>* Follow-up is valid up to 14 days of last visit with the same doctor</p>
-            </div>
+            </div> */}
 
             <div className='ipd_billing_filter_content'>
                 <div className="ipd_billing_search_bar">
@@ -41,13 +106,13 @@ function IPD_billing() {
                         value={searchTerm}
                         onChange={handleSearchChange}
                     />
-                    <button className="ipd_billing_filter_button" style={{ height: "30px", padding: "8px", marginLeft: "-50px", fontSize: "18px" }}>
+                    {/* <button className="ipd_billing_filter_button" style={{ height: "30px", padding: "8px", marginLeft: "-50px", fontSize: "18px" }}>
                         <FaSearch />
-                    </button>
+                    </button> */}
                 </div>
-                <div>
-                    <label>Showing 0/0 results</label>
-                </div>
+                {/* <div>
+                    <label>Showing {filteredPatients.length}/{patients.length} results</label>
+                </div> */}
                 <div>
                     <button className='ipd_billing_filter_button'>Print</button>
                 </div>
@@ -61,7 +126,7 @@ function IPD_billing() {
                         <th className='ipd_billing_tablehead'>Hospital No</th>
                         <th className='ipd_billing_tablehead'>Name</th>
                         <th className='ipd_billing_tablehead'>Age/Sex</th>
-                        <th className='ipd_billing_tablehead'>NHIF No</th>
+                        <th className='ipd_billing_tablehead'>HIF No</th>
                         <th className='ipd_billing_tablehead'>Department</th>
                         <th className='ipd_billing_tablehead'>Claim Code</th>
                         <th className='ipd_billing_tablehead'>Visit Type</th>
@@ -95,7 +160,7 @@ function IPD_billing() {
             <div className="ipd_billing_pagination">
                 <button>First</button>
                 <button>Previous</button>
-                <span>Page 1 of 4</span>
+                <span>Page 1 of 1</span>
                 <button>Next</button>
                 <button>Last</button>
             </div>

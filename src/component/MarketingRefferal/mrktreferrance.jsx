@@ -8,7 +8,7 @@ import './mrktrefference.css'; // Ensure the CSS file is correctly named and lin
 const Mkrtrefrrance = () => {
   return (
     <>
-      <BrowserRouter>
+      
         <header className="mkrt_ref-header">
           <nav>
             <ul className="mkrt_ref-header-nav">
@@ -25,7 +25,7 @@ const Mkrtrefrrance = () => {
             <Route path="Mreport" element={<Mreport />} />
           </Routes>
         </div>
-      </BrowserRouter>
+     
     </>
   );
 };

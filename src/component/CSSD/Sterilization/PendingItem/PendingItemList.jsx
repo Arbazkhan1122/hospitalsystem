@@ -7,6 +7,52 @@ function PendingItemList() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [fromDate, setFromDate] = useState("2024-08-12");
   const [toDate, setToDate] = useState("2024-08-12");
+  const [isModalOpen, setIsModalOpen] = useState(false); // State for Modal visibility
+  const [selectedItem, setSelectedItem] = useState(null)
+
+  // Dummy data for the hospital table
+  const dummyData = [
+    {
+      requestDate: "2024-08-10",
+      itemName: "Syringes Pack",
+      code: "SP123",
+      tagNumber: "TAG001",
+      requestFrom: "Emergency Department",
+      requestedBy: "Dr. John Smith",
+    },
+    {
+      requestDate: "2024-08-11",
+      itemName: "MRI Machine Maintenance",
+      code: "MRI456",
+      tagNumber: "TAG002",
+      requestFrom: "Radiology",
+      requestedBy: "Sarah Connor",
+    },
+    {
+      requestDate: "2024-08-12",
+      itemName: "IV Fluids",
+      code: "IV789",
+      tagNumber: "TAG003",
+      requestFrom: "ICU",
+      requestedBy: "Dr. Emma Williams",
+    },
+    {
+      requestDate: "2024-08-13",
+      itemName: "Blood Pressure Monitors",
+      code: "BP101",
+      tagNumber: "TAG004",
+      requestFrom: "Cardiology",
+      requestedBy: "Nurse James Doe",
+    },
+    {
+      requestDate: "2024-08-14",
+      itemName: "Surgical Gloves",
+      code: "SG202",
+      tagNumber: "TAG005",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Emily Johnson",
+    },
+  ];
 
   const startResizing = (index) => (e) => {
     e.preventDefault();
@@ -53,6 +99,17 @@ function PendingItemList() {
     setToDate(currentDate.toISOString().split("T")[0]);
     setIsDropdownOpen(false);
   };
+
+  const handleViewClick = (item) => {
+    setSelectedItem(item); // Set the selected item details
+    setIsModalOpen(true); // Open the modal
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedItem(null); // Clear selected item on close
+  };
+
 
   return (
     <div className="pendingItem-main">
@@ -101,7 +158,9 @@ function PendingItemList() {
           <i className="fas fa-search"></i>
         </div>
         <div className="pendingItem-results">
-          <span>Showing 0 / 0 results</span>
+          <span>
+            Showing {dummyData.length} / {dummyData.length} results
+          </span>
           <button className="pendingItem-export-btn">Export</button>
           <button className="pendingItem-print-btn">Print</button>
         </div>
@@ -136,13 +195,53 @@ function PendingItemList() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td colSpan="7" className="pendingItem-no-rows">
-              No Rows To Show
-            </td>
-          </tr>
+          {dummyData.map((item, index) => (
+            <tr key={index}>
+              <td>{item.requestDate}</td>
+              <td>{item.itemName}</td>
+              <td>{item.code}</td>
+              <td>{item.tagNumber}</td>
+              <td>{item.requestFrom}</td>
+              <td>{item.requestedBy}</td>
+              <td>
+              <button
+                  className="pendingItem-action-btn"
+                  onClick={() => handleViewClick(item)}
+                >
+                  View
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
+
+      {isModalOpen && (
+        <div className="custom-modal-overlay">
+          <div className="custom-modal-content">
+            <h3>Item Details</h3>
+            {selectedItem && (
+              <>
+                <p>
+                  <strong>Item Name:</strong> {selectedItem.itemName}
+                </p>
+                <p>
+                  <strong>Requested By:</strong> {selectedItem.requestedBy}
+                </p>
+                {/* Add more details as needed */}
+              </>
+            )}
+            <div className="custom-modal-buttons">
+              <button onClick={handleCloseModal} className="custom-modal-close-btn">
+                Close
+              </button>
+              <button onClick={handleCloseModal} className="custom-modal-confirm-btn">
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

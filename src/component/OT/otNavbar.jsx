@@ -9,16 +9,16 @@ const Navbar = ({ handleNavigation }) => {
     <header className="ot_setting-header">
       <nav className="ot_setting-nav-links">
         <Link 
-          to="/bookingList" 
-          className={`ot_setting-header-button ${location.pathname === '/bookingList' ? 'active' : ''}`}
-         
+          to="/" 
+          className={`ot_setting-header-button ${location.pathname === '/' ? 'active' : ''}`}
+          
         >
           Booing List
         </Link>
         <Link 
           to="/Setting" 
           className={`ot_setting-header-button ${location.pathname === '/Setting' ? 'active' : ''}`}
-         
+          
         >
           Setting
         </Link>

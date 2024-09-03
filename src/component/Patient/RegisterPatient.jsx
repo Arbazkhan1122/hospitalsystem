@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import Navbar from './Navbar'; // Ensure this path is correct
+import React, { useState, useEffect, useRef } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import './RegisterPatient.css'; // Add your CSS for styling
 import PatientRegistration from './PatientRegistration';
 import AddressPage from './AddressPage';
@@ -8,20 +8,73 @@ import InsurancePage from './InsurancePage'; // Import the new InsurancePage com
 import EmergencyContactPage from './EmergencyContactPage';
 
 function RegisterPatient() {
-  const [activeTab, setActiveTab] = useState('');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('basic-info');
   const [isCameraOpen, setIsCameraOpen] = useState(false);
+  const[patientIds,setPatientIds]=useState(null);
   const [imageSrc, setImageSrc] = useState(null);
+  const [isEditMode, setIsEditMode] = useState(false);
+    const [formData, setFormData] = useState({
+      patientData: {},
+      addressData: {},
+      guarantorData: {},
+      insuranceData: {},
+      emergencyContactData: {},
+    });
+
+  const {id}=useParams();
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-  const [formData, setFormData] = useState({
-    patientData: {},
-    addressData: {},
-    guarantorData: {},
-    insuranceData: {},
-    emergencyContactData: {},
-  });
 
-  console.log(formData);
+  useEffect(() => {
+    const id = location?.state?.patient?.patientId;
+    setPatientIds(id);
+  
+    if (location?.state && location?.state?.patient) {
+      const patient = location.state.patient;
+      setFormData({
+        patientData: {
+          address: patient.address || '',
+          age: patient.age || '',
+          bloodGroup: patient.bloodGroup || '',
+          country: patient.country || '',
+          dateOfBirth: patient.dateOfBirth || '',
+          dialysisPatient: patient.dialysisPatient || false,
+          email: patient.email || '',
+          emergencyContactDTO: patient.emergencyContactDTO || {},
+          employerInfo: patient.employerInfo || '',
+          firstName: patient.firstName || '',
+          gender: patient.gender || '',
+          guarantorDTO: patient.guarantorDTO || {},
+          hospitalNo: patient.hospitalNo || '',
+          insuranceDTO: patient.insuranceDTO || {},
+          ipd: patient.ipd || false,
+          landlineNumber: patient.landlineNumber || '',
+          lastName: patient.lastName || '',
+          maritalStatus: patient.maritalStatus || '',
+          middleName: patient.middleName || '',
+          notifications: patient.notifications || false,
+          occupation: patient.occupation || '',
+          passportNumber: patient.passportNumber || '',
+          phoneNumber: patient.phoneNumber || '',
+          pinCode: patient.pinCode || '',
+          previousLastName: patient.previousLastName || '',
+          race: patient.race || '',
+          religion: patient.religion || '',
+          salutation: patient.salutation || '',
+          state: patient.state || '',
+        },
+        addressData: patient.addressDTO || {},
+        guarantorData: patient.guarantorDTO || {},
+        insuranceData: patient.insuranceDTO || {},
+        emergencyContactData: patient.emergencyContactDTO || {},
+      });
+      setIsEditMode(true);
+      setActiveTab('basic-info'); // Set the active tab based on the incoming data
+    }
+  }, [location?.state]);
+  
 
   const openCamera = () => {
     navigator.mediaDevices.getUserMedia({ video: true })
@@ -53,42 +106,97 @@ function RegisterPatient() {
     }
   };
 
-  const handlePatientdata = (data) => {
+  const handlePatientData = (data) => {
     setFormData(prevState => ({
       ...prevState,
       patientData: data,
     }));
   };
 
-  const handleAddressdata = (data) => {
+  const handleAddressData = (data) => {
     setFormData(prevState => ({
       ...prevState,
       addressData: data,
     }));
   };
 
-  const handleGuarantordata = (data) => {
+  const handleGuarantorData = (data) => {
     setFormData(prevState => ({
       ...prevState,
       guarantorData: data,
     }));
   };
 
-  const handleInsurancedata = (data) => {
+  const handleInsuranceData = (data) => {
     setFormData(prevState => ({
       ...prevState,
       insuranceData: data,
     }));
   };
 
-  const handleEmergencyContactdata = (data) => {
+  const handleEmergencyContactData = (data) => {
     setFormData(prevState => ({
       ...prevState,
       emergencyContactData: data,
     }));
   };
 
-  console.log(formData);
+  // useEffect(()=>{
+  //   if(patientIds!=null){
+  //     fetchPatientdata()
+  //   }
+  // },[])
+
+  // const fetchPatientdata = () => {
+  //   fetch(`http://192.168.1.40:1415/api/patients/${patientIds}`)
+  //     .then(response => response.json())
+  //     .then(res => {
+  //       // Assuming `res` is the patient data object
+  //       setFormData({
+  //         patientData: {
+  //           address: res.address || '',
+  //           age: res.age || '',
+  //           bloodGroup: res.bloodGroup || '',
+  //           country: res.country || '',
+  //           dateOfBirth: res.dateOfBirth || '',
+  //           dialysisPatient: res.dialysisPatient || false,
+  //           email: res.email || '',
+  //           emergencyContactDTO: res.emergencyContactDTO || {},
+  //           employerInfo: res.employerInfo || '',
+  //           firstName: res.firstName || '',
+  //           gender: res.gender || '',
+  //           guarantorDTO: res.guarantorDTO || {},
+  //           hospitalNo: res.hospitalNo || '',
+  //           insuranceDTO: res.insuranceDTO || {},
+  //           ipd: res.ipd || false,
+  //           landlineNumber: res.landlineNumber || '',
+  //           lastName: res.lastName || '',
+  //           maritalStatus: res.maritalStatus || '',
+  //           middleName: res.middleName || '',
+  //           notifications: res.notifications || false,
+  //           occupation: res.occupation || '',
+  //           passportNumber: res.passportNumber || '',
+  //           phoneNumber: res.phoneNumber || '',
+  //           pinCode: res.pinCode || '',
+  //           previousLastName: res.previousLastName || '',
+  //           race: res.race || '',
+  //           religion: res.religion || '',
+  //           salutation: res.salutation || '',
+  //           state: res.state || '',
+  //         },
+  //         addressData: res.addressDTO || {},
+  //         guarantorData: res.guarantorDTO || {},
+  //         insuranceData: res.insuranceDTO || {},
+  //         emergencyContactData: res.emergencyContactDTO || {},
+  //       });
+  //       console.log(res);
+        
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching patient data:', error);
+  //     });
+  // };
+  
 
   const handleRegisterPatient = async () => {
     // Check if all tabs have data (optional validation)
@@ -101,17 +209,20 @@ function RegisterPatient() {
     // Combine all form data
     const dataToSubmit = {
       ...patientData,
-      addresses: addressData,
-      guarantor: guarantorData,
-      insurance: insuranceData,
-      emergencyContact: emergencyContactData
+      addressDTO: addressData,
+      guarantorDTO: guarantorData,
+      insuranceDTO: insuranceData,
+      emergencyContactDTO: emergencyContactData,
+      isIPD:true
     };
-    console.log(dataToSubmit);
 
     try {
-      // Replace this URL with your backend API endpoint
-      const response = await fetch('http://localhost:8989/api/patients/add', {
-        method: 'POST',
+      const url = isEditMode 
+        ? `http://localhost:1415/api/patients/${patientData.id}` // Adjust the endpoint for update
+        : 'http://localhost:1415/api/patients/add'; // Endpoint for adding new patient
+
+      const response = await fetch(url, {
+        method: isEditMode ? 'PUT' : 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -124,8 +235,8 @@ function RegisterPatient() {
 
       const result = await response.json();
 
-      alert('Patient registered successfully');
-      console.log('Patient registered successfully:', result);
+      alert(isEditMode ? 'Patient data updated successfully' : 'Patient registered successfully');
+      console.log('Operation successful:', result);
 
       // Optionally reset form data or redirect the user
       setFormData({
@@ -135,31 +246,65 @@ function RegisterPatient() {
         insuranceData: {},
         emergencyContactData: {}
       });
-      setActiveTab(''); // Optionally reset active tab
+      setActiveTab('basic-info'); // Optionally reset active tab to default
+      navigate('/'); // Redirect to the home page or wherever appropriate
 
     } catch (error) {
-      console.error('Error registering patient:', error);
-      alert('An error occurred while registering the patient. Please try again.');
+      console.error('Error handling patient data:', error);
+      alert('An error occurred. Please try again.');
     }
   };
 
   return (
     <div className="register-patient">
       <div className="menu">
-        <a href="#basic-info" className="menu-item" onClick={() => setActiveTab('basic-info')}>Basic Information</a>
-        <a href="#address" className="menu-item" onClick={() => setActiveTab('address')}>Address</a>
-        <a href="#guarantor" className="menu-item" onClick={() => setActiveTab('guarantor')}>Guarantor</a>
-        <a href="#insurance" className="menu-item" onClick={() => setActiveTab('insurance')}>Insurance</a>
-        <a href="#emergency-contact" className="menu-item" onClick={() => setActiveTab('emergency-contact')}>Kin/Emergency Contact</a>
-        <a href="#" className="register-button" onClick={handleRegisterPatient}>Register Patient</a>
+      <a 
+    href={patientIds ? `#basic-info/${patientIds}` : '#basic-info'} 
+    className={`menu-item ${activeTab === 'basic-info' ? 'active' : ''}`} 
+    onClick={() => setActiveTab('basic-info')}
+  >
+    Basic Information
+  </a>
+  <a 
+    href={patientIds ? `#address/${patientIds}` : '#address'} 
+    className={`menu-item ${activeTab === 'address' ? 'active' : ''}`} 
+    onClick={() => setActiveTab('address')}
+  >
+    Address
+  </a>
+  <a 
+    href={patientIds ? `#guarantor/${patientIds}` : '#guarantor'} 
+    className={`menu-item ${activeTab === 'guarantor' ? 'active' : ''}`} 
+    onClick={() => setActiveTab('guarantor')}
+  >
+    Guarantor
+  </a>
+  <a 
+    href={patientIds ? `#insurance/${patientIds}` : '#insurance'} 
+    className={`menu-item ${activeTab === 'insurance' ? 'active' : ''}`} 
+    onClick={() => setActiveTab('insurance')}
+  >
+    Insurance
+  </a>
+  <a 
+    href={patientIds ? `#emergency-contact/${patientIds}` : '#emergency-contact'} 
+    className={`menu-item ${activeTab === 'emergency-contact' ? 'active' : ''}`} 
+    onClick={() => setActiveTab('emergency-contact')}
+  >
+    Kin/Emergency Contact
+  </a>
+        <a href="#" className="register-button" onClick={handleRegisterPatient}>
+          {isEditMode ? 'Update Patient' : 'Register Patient'}
+        </a>
       </div>
 
       <div className="register-patient-content">
-        {activeTab === 'basic-info' && <PatientRegistration sendpatientdata={handlePatientdata} />}
-        {activeTab === 'address' && <AddressPage sendaddressdata={handleAddressdata} />}
-        {activeTab === 'guarantor' && <GuarantorPage sendguarantordata={handleGuarantordata} />}
-        {activeTab === 'insurance' && <InsurancePage sendinsurancedata={handleInsurancedata} />}
-        {activeTab === 'emergency-contact' && <EmergencyContactPage sendemergencycontactdata={handleEmergencyContactdata} />}
+        {activeTab === 'basic-info' && <PatientRegistration sendpatientdata={handlePatientData}  patientData={formData.patientData} />}
+        {activeTab === 'address' && <AddressPage sendaddressdata={handleAddressData} addressData={formData.addressData} />}
+        {activeTab === 'guarantor' && <GuarantorPage sendguarantordata={handleGuarantorData} guarantorData={formData.guarantorData} />}
+        {activeTab === 'insurance' && <InsurancePage sendinsurancedata={handleInsuranceData} insuranceData={formData.insuranceData} />}
+        {activeTab === 'emergency-contact' && <EmergencyContactPage sendemergencycontactdata={handleEmergencyContactData} emergencyData={formData.emergencyContactData} />}
+
         {isCameraOpen && (
           <div className="register-patient-camera-container">
             <video ref={videoRef} autoPlay></video>

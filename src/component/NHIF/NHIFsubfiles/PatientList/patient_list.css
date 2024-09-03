@@ -39,7 +39,8 @@
   .patient_list_search_bar {
     display: flex;
     align-items: center;
-  }
+    width: 100%;
+    justify-content: space-between;}
   
   .patient_list_search_bar input[type="text"] {
     width: 300px;
@@ -85,6 +86,7 @@
 .patient-list-filter-content{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 
 }
 

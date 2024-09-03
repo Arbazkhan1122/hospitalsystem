@@ -134,14 +134,19 @@
   .IntegratedCssdReport-table td {
     border: 1px solid #ccc;
     padding: 8px;
+    
+  }
+  .IntegratedCssdReport-table td {
+    background-color: white;
     font-size: 14px;
   }
-  
   .IntegratedCssdReport-table th {
     text-align: left;
     position: relative;
     user-select: none; /* Disable text selection in header */
     white-space: nowrap; /* Prevent text from wrapping */
+    font-size: 16px;
+    font-weight: 700;
   }
   
   .IntegratedCssdReport-table th .header-content {
