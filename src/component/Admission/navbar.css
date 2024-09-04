@@ -1,0 +1,67 @@
+.header {
+  background-color: white;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #3598dc;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 10px 15px;
+  position: relative;
+}
+
+.nav-links a:hover {
+  background-color: #3598dc;
+  color: white;
+  border-radius: 5px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #3598dc;
+  left: 0;
+  bottom: 0;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* navbar.css */
+.adt-header-button {
+  font-size: 16px; /* Ensure font-size is consistent */
+  text-decoration: none; /* Remove default link underline */
+  color: #333; /* Dark text color */
+  padding: 10px 15px; /* Padding around each link */
+  margin-right: 20px; /* Add right margin for spacing */
+  transition: color 0.3s, background-color 0.3s; /* Smooth transition for hover effects */
+  border-radius: 5px; /* Rounded corners for links */
+}
+
+.adt-header-button:hover,
+.adt-header-button.active {
+  color: #fff; /* White text for hover and active link */
+  background-color: #007bff; /* Blue background for hover and active link */
+}
+

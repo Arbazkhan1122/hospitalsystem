@@ -19,7 +19,7 @@ const GoodReceiptComponent = () => {
 
   const fetchGoodReceipts = async () => {
     try {
-      const response = await axios.get('http://localhost:1415/api/good-receipts/good-receipts'); // Adjust URL to your backend endpoint
+      const response = await axios.get('http://localhost:8888/api/good-receipts/good-receipts'); // Adjust URL to your backend endpoint
       setGoodReceipts(response.data);
     } catch (error) {
       console.error('Error fetching good receipts:', error);

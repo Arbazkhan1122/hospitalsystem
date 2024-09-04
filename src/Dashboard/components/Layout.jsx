@@ -21,7 +21,7 @@ import NursingMainRouting from "../../component/Nursing/NursingMainRouting"
 import DoctorDashBoard from "../../component/DashBoards/DoctorDashBoard"
 import Otmain from "../../component/OT/otmain";
 import Nhif from "../../component/NHIF/nhif";
-import HomePage from "../../component/admission/mainadmissionpage/homepage";
+import HomePage from "../../component/Admission/adt-main";
 import Mkrtrefrrance from "../../component/MarketingRefferal/mrktreferrance";
 import Clinical from "../../component/Clinical/Clinical";
 import Vaccination from "../../component/Vaccination/Vaccination";
