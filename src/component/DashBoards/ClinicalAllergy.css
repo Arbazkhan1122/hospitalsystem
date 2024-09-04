@@ -1,0 +1,60 @@
+.allergy-container {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .allergy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .allergy-header h2 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .add-new-btn {
+    background-color: #9370db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .allergy-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+  }
+  
+  .allergy-table th,
+  .allergy-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .allergy-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .allergy-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .edit-btn {
+    background-color: transparent;
+    color: #4169e1;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: underline;
+  }

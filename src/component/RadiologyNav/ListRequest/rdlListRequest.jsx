@@ -1,18 +1,64 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import "../ListRequest/rdlListRequest.css";
-import AddReportForm from './rdlAddReport';
-import RDLAddScanDoneDetails from './rdlScanDone';
+import AddReportForm from "./rdlAddReport";
+import RDLAddScanDoneDetails from "./rdlScanDone";
 
 function RDLListRequest() {
   const [showAddReport, setShowAddReport] = useState(false);
   const [showScanDone, setShowScanDone] = useState(false);
+  const [imagingRequests, setImagingRequests] = useState([]);
+  const [selectedRequest, setSelectedRequest] = useState(null);
+  const [selectedFilter, setSelectedFilter] = useState("--All--");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleAddReportClick = () => {
+  useEffect(() => {
+    // Fetch imaging requests and patients data
+    fetch("http://localhost:8888/api/patient-imaging-requisitions/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setImagingRequests(data);
+        console.log(data);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+  const updateStatus = (id, filmTypeId, quantity, status, scannedOn) => {
+    fetch(
+      `http://localhost:8888/api/patient-imaging-requisitions/update-film-type-and-quantity?filmTypeId=${filmTypeId}&quantity=${quantity}&imagingId=${id}&status=${status}&scannedOn=${scannedOn}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Update local state to reflect changes
+        setImagingRequests((prevRequests) =>
+          prevRequests.map((request) =>
+            request.imagingId === id ? { ...request, ...data } : request
+          )
+        );
+        setShowScanDone(false);
+      })
+      .catch((error) => {
+        console.error("Error updating status:", error);
+      });
+  };
+
+  const handleAddReportClick = (request) => {
+    setSelectedRequest(request);
     setShowAddReport(true);
   };
 
-  const handleScanDoneClick = () => {
+  const handleScanDoneClick = (request) => {
+    setSelectedRequest(request);
     setShowScanDone(true);
   };
 
@@ -21,14 +67,46 @@ function RDLListRequest() {
     setShowScanDone(false);
   };
 
+  const handleFilterChange = (e) => {
+    setSelectedFilter(e.target.value);
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value.toLowerCase());
+  };
+
+  const applyFilters = () => {
+    return imagingRequests.filter((request) => {
+      const matchesFilter =
+        selectedFilter === "--All--" ||
+        request.imagingTypeDTO?.imagingTypeName.toUpperCase() ===
+          selectedFilter;
+      const matchesSearch =
+        request.patientDTO?.firstName.toLowerCase().includes(searchQuery) ||
+        request.patientDTO?.lastName.toLowerCase().includes(searchQuery) ||
+        request.prescriberDTO?.employeeName
+          .toLowerCase()
+          .includes(searchQuery) ||
+        request.imagingItemDTO?.imagingItemName
+          .toLowerCase()
+          .includes(searchQuery);
+
+      return matchesFilter && matchesSearch;
+    });
+  };
+
+  const filteredRequests = applyFilters().filter(
+    (request) => request.status?.toLowerCase() !== "completed"
+  );
+
   return (
     <div className="rDLListRequest-active-imaging-request">
-      <header>
+      <header className="rDLListRequest-header">
         <h4>* ACTIVE IMAGING REQUEST</h4>
         <div className="rDLListRequest-filter">
           <label>
             Filter
-            <select defaultValue="--All--">
+            <select value={selectedFilter} onChange={handleFilterChange}>
               <option>--All--</option>
               <option>CT-SCAN</option>
               <option>USG</option>
@@ -55,78 +133,116 @@ function RDLListRequest() {
       <div className="rDLListRequest-search-N-results">
         <div className="rDLListRequest-search-bar">
           <i className="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search" />
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={handleSearchChange}
+          />
         </div>
         <div className="rDLListRequest-results-info">
-          Showing 2 / 2 results
+          {filteredRequests.length > 0
+            ? `Showing ${filteredRequests.length} result(s)`
+            : "No rows to show"}
         </div>
       </div>
       <div className="rDLListRequest-table-N-paginat">
         <table>
           <thead>
             <tr>
-              <th>Requested On ↓</th>
-              <th>Hospital Number</th>
+              <th>Id</th>
               <th>Patient Name</th>
               <th>Age/Sex</th>
               <th>Prescriber</th>
               <th>Type</th>
               <th>Imaging Name</th>
-              <th>Insurance</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>2024-08-16</td>
-              <td>2408003817</td>
-              <td>Sachin Ramesh</td>
-              <td>50Y / M</td>
-              <td>Dr. Pooja Mishra</td>
-              <td>X-RAY</td>
-              <td>USG Chest</td>
-              <td></td>
-              <td>
-                <button
-                  className="action-button add-report"
-                  onClick={handleAddReportClick}
-                >
-                  Add Report
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>2024-08-16</td>
-              <td>2408003817</td>
-              <td>Sachin Ramesh</td>
-              <td>50Y / M</td>
-              <td>Dr. Pooja Mishra</td>
-              <td>CT-SCAN</td>
-              <td>CT-Neck</td>
-              <td></td>
-              <td>
-                <button
-                  className="action-button scan-done"
-                  onClick={handleScanDoneClick}
-                >
-                  Scan Done
-                </button>
-              </td>
-            </tr>
+            {filteredRequests.length > 0 ? (
+              filteredRequests.map((request, index) => (
+                <tr key={request.imagingId}>
+                  <td>{index + 1}</td>
+                  <td>{request.patientDTO?.firstName}</td>
+                  <td>{request.patientDTO?.age}</td>
+                  <td>{request.prescriberDTO?.employeeName || "self"}</td>
+                  <td>{request.imagingTypeDTO?.imagingTypeName}</td>
+                  <td>{request.imagingItemDTO?.imagingItemName}</td>
+                  <td>
+                    {request.status?.toLowerCase() === "pending" && (
+                      <button
+                        className="rDLListRequest-action-button scan-done"
+                        onClick={() => handleScanDoneClick(request)}
+                      >
+                        Scan Done
+                      </button>
+                    )}
+                    {request.status?.toLowerCase() === "active" && (
+                      <button
+                        className="rDLListRequest-action-button add-report"
+                        onClick={() => handleAddReportClick(request)}
+                      >
+                        Add Report
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="7" className="rDLListRequest-no-rows">
+                  No rows to show
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
-        <div className="rDLListRequest-pagination">
-          <span>0 to 0 of 0</span>
-          <button>First</button>
-          <button>Previous</button>
-          <span>Page 0 of 0</span>
-          <button>Next</button>
-          <button>Last</button>
-        </div>
       </div>
 
-      {showAddReport && <AddReportForm />}
-      {showScanDone && <RDLAddScanDoneDetails onClose={closePopups} />}
+      {/* AddReportForm as a modal */}
+      {showAddReport && (
+        <div className="rDLListRequest-modal-overlay">
+          <div className="rDLListRequest-modal-content">
+            <button
+              className="rDLListRequest-close-modal"
+              onClick={closePopups}
+            >
+              &times;
+            </button>
+            <AddReportForm
+              onClose={closePopups}
+              selectedRequest={selectedRequest}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* ScanDoneDetails as a modal */}
+      {showScanDone && (
+        <div className="rDLListRequest-modal-overlay">
+          <div className="rDLListRequest-modal-content">
+            <button
+              className="rDLListRequest-close-modal"
+              onClick={closePopups}
+            >
+              &times;
+            </button>
+            <RDLAddScanDoneDetails
+              onClose={closePopups}
+              onUpdateStatus={(scannedOn, filmType, quantity, remarks) => {
+                updateStatus(
+                  selectedRequest.imagingId,
+                  filmType,
+                  quantity,
+                  "active",
+                  scannedOn
+                );
+              }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

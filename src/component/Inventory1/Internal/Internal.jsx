@@ -26,7 +26,7 @@ const Internal = () => {
 
   return (
     <div>
-      <div className="internal-tabs">
+      <div className="inventory-internal-tabs">
         {tabs.map((tab) => (
           <button
             key={tab.name}
@@ -37,7 +37,7 @@ const Internal = () => {
           </button>
         ))}
       </div>
-      <div className="content">
+      <div className="inventory-internal-tabs-content">
         <Routes>
           <Route path="requisition" element={<Requisition />} />
           <Route path="writeOff" element={<WriteOff />} />

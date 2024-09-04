@@ -12,14 +12,14 @@ const GoodsReceiptList = () => {
 
   return (
     <div className="goods-receipt-list">
-      <div className="filters">
+      <div className="goods-receipt-filters">
         <label>
           From:
           <input
             type="date"
             value={dateFrom}
             onChange={handleDateFromChange}
-            className="date-input"
+            className="goods-receipt-date-input"
           />
         </label>
         <label>
@@ -28,12 +28,12 @@ const GoodsReceiptList = () => {
             type="date"
             value={dateTo}
             onChange={handleDateToChange}
-            className="date-input"
+            className="goods-receipt-date-input"
           />
         </label>
-        <button className="ok-button">OK</button>
+        <button className="goods-receipt-ok-button">OK</button>
       </div>
-      <div className="search-export">
+      <div className="goods-receipt-search-export">
         <div>
           <input
             type="text"
@@ -42,14 +42,16 @@ const GoodsReceiptList = () => {
             onChange={handleSearchChange}
             aria-label="Search"
           />
-          <button aria-label="Search Button">🔍</button>
+         
         </div>
+       
         <div>
-          <button className="export" aria-label="Export Data">Export</button>
-          <button className="print" aria-label="Print Data">Print</button>
+          <button className="goods-receipt-export-btn" aria-label="Export Data">Export</button>
+          <button className="goods-receipt-print" aria-label="Print Data">Print</button>
         </div>
       </div>
-      <table className="receipt-table">
+      <div className='good-receipt-ta'>
+      <table className="goods-receipt-receipt-table">
         <thead>
           <tr>
             <th>GR No.</th>
@@ -67,17 +69,18 @@ const GoodsReceiptList = () => {
         </thead>
         <tbody>
           <tr>
-            <td colSpan="11" className="no-rows">No Rows To Show</td>
+            <td colSpan="11" className="goods-receipt-no-rows">No Rows To Show</td>
           </tr>
         </tbody>
       </table>
-      <div className="pagination">
+      <div className="goods-receipt-pagination">
         <span>0 to 0 of 0</span>
         <button disabled>First</button>
         <button disabled>Previous</button>
         <span>Page 0 of 0</span>
         <button disabled>Next</button>
         <button disabled>Last</button>
+      </div>
       </div>
     </div>
   );

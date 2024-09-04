@@ -1,4 +1,4 @@
-.out-patient {
+.OutPatient-out-patient {
   font-family: Arial, sans-serif;
   max-width: 1200px;
   margin: 0 auto;
@@ -6,12 +6,12 @@
   background-color: #e6f3ff;
 }
 
-nav {
+.OutPatient-nav {
   display: flex;
   margin-bottom: 10px;
 }
 
-nav button {
+.OutPatient-nav button {
   padding: 10px 20px;
   border: none;
   background-color: #4a90e2;
@@ -19,35 +19,35 @@ nav button {
   cursor: pointer;
 }
 
-nav button.active {
+.OutPatient-nav button.OutPatient-active {
   background-color: #2171cd;
 }
 
-.sub-nav {
+.OutPatient-sub-nav {
   display: flex;
   margin-bottom: 10px;
 }
 
-.sub-nav button {
+.OutPatient-sub-nav button {
   padding: 5px 10px;
   border: none;
   background-color: #f0f0f0;
   cursor: pointer;
 }
 
-.sub-nav button.active {
+.OutPatient-sub-nav button.OutPatient-active {
   background-color: #4a90e2;
   color: white;
 }
 
-.actions {
+.OutPatient-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.actions button {
+.OutPatient-actions button {
   padding: 5px 10px;
   background-color: #4a90e2;
   color: white;
@@ -55,48 +55,48 @@ nav button.active {
   cursor: pointer;
 }
 
-.filters {
+.OutPatient-filters {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.date-picker, .search {
+.OutPatient-date-picker, .OutPatient-search {
   display: flex;
   align-items: center;
 }
 
-table {
+.OutPatient-table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
 }
 
-th, td {
+.OutPatient-th, .OutPatient-td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
 }
 
-th {
+.OutPatient-th {
   background-color: #f2f2f2;
 }
 
-.no-data {
+.OutPatient-no-data {
   text-align: center;
   padding: 20px;
   background-color: #fff9e6;
 }
 
-.pagination {
+.OutPatient-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
 }
 
-.pagination button {
+.OutPatient-pagination button {
   margin: 0 5px;
   padding: 5px 10px;
   background-color: #4a90e2;

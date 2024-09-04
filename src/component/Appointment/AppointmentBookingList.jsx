@@ -9,7 +9,7 @@ const AppointmentBookingList = () => {
 
 
   useEffect(() => {
-    fetch('http://localhost:1415/api/appointments/fetch-all-appointment')
+    fetch('http://192.168.1.34:1415/api/appointments/fetch-all-appointment')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

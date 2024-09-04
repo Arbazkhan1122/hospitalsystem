@@ -3,35 +3,35 @@ import './InpatientPage.css';
 
 const InPatientPage = ({ patient }) => { // Accept the patient prop
   return (
-    <div className="patient-orders">
-      <header className="header">
-        <div className="logo">
+    <div className="InpatientPage-patient-orders">
+      <header className="InpatientPage-header">
+        <div className="InpatientPage-logo">
           <img src="path_to_logo" alt="Sasa Health" />
           Sasa Health
         </div>
-        <button className="home-button">🏠 Home</button>
+        <button className="InpatientPage-home-button">🏠 Home</button>
       </header>
       
-      <div className="content">
-        <aside className="sidebar">
-          <div className="patient-info">
-            <div className="patient-avatar"></div>
-            <div className="patient-details">
+      <div className="InpatientPage-content">
+        <aside className="InpatientPage-sidebar">
+          <div className="InpatientPage-patient-info">
+            <div className="InpatientPage-patient-avatar"></div>
+            <div className="InpatientPage-patient-details">
               <h2>{patient.name}</h2> {/* Display selected patient data */}
               <p>{patient.ageSex}</p>
               <p>Hospital No: {patient.hospitalNo}</p>
               <p>Ward/Bed: {patient.wardBed}</p>
               <p>Attending: {patient.providerName}</p>
             </div>
-            <div className="ipd-tag">IPD</div>
+            <div className="InpatientPage-ipd-tag">IPD</div>
           </div>
           {/* Navigation menu */}
         </aside>
         
-        <main className="main-content">
-          <section className="active-orders">
+        <main className="InpatientPage-main-content">
+          <section className="InpatientPage-active-orders">
             <h3>🔔 Active Orders</h3>
-            <table className="orders-table">
+            <table className="InpatientPage-orders-table">
               <thead>
                 <tr>
                   <th>Type</th>
@@ -69,16 +69,16 @@ const InPatientPage = ({ patient }) => { // Accept the patient prop
               </tbody>
             
             </table>
-            <button className="print-medication">Print Medication</button>
+            <button className="InpatientPage-print-medication">Print Medication</button>
           </section>
           
-          <section className="new-orders">
+          <section className="InpatientPage-new-orders">
             <h3>+ New Orders</h3>
-            <div className="order-input">
-              <select className="order-type">
+            <div className="InpatientPage-order-input">
+              <select className="InpatientPage-order-type">
                 <option value="">Select order type</option>
               </select>
-              <input type="text" className="search-order" placeholder="search order items" />
+              <input type="text" className="InpatientPage-search-order" placeholder="search order items" />
             </div>
           </section>
         </main>

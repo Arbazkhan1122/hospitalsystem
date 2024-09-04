@@ -1,0 +1,152 @@
+.requisition-details-container {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dotted #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .logo-title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 24px;
+    color: #007bff;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .header-info {
+    text-align: right;
+    font-size: 12px;
+  }
+  
+  .contact-info {
+    margin-bottom: 5px;
+  }
+  
+  .requisition-table {
+    margin-bottom: 20px;
+  }
+  
+  .table-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  th {
+    background-color: #f0f0f0;
+  }
+  
+  .requisition-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
+  
+  .status-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .step {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #888;
+    margin: 0 10px;
+  }
+  
+  .completed {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .active {
+    background-color: #dc3545;
+    color: white;
+    
+  }
+
+  .dispatch{
+    background-color: #28a745;
+    color: white;
+    
+  }
+
+  .receive{
+    background-color: #2eace2;
+    color: white;
+
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .edit-button, .withdraw-button, .print-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .edit-button {
+    background-color: #ffc107;
+    color: #fff;
+  }
+  
+  .withdraw-button {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 0px 8px;
+  }
+  
+  .print-button {
+    background-color: #28a745;
+    color: #fff;
+  }
+  

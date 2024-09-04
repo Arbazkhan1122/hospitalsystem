@@ -39,6 +39,7 @@ import PharmacyRouting from "../../component/PharmacyHospital/PharmacyRouting";
 import PatientRouting from "../../component/Patient/PatientRouting";
 import NavigationBar from "../../component/Verification/NavigationBar";
 import VerificationRouting from "../../component/Verification/VerificationRouting";
+import SubstoreRouting from "../../component/SubStoreMainPage/SubstoreRouting";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -72,6 +73,7 @@ const Layout = () => {
   const [showPharmacy,setShowPharmacy]=useState(false)
   const [showPatient,setShowPatient]=useState(false)
   const [showVerification,setShowVerification]=useState(false)
+  const [showSubStore,setShowSubStore]=useState(false)
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -104,6 +106,7 @@ const Layout = () => {
     setShowPatient(false)
     setShowDynamicReport(false)
     setShowVerification(false)
+    setShowSubStore(false)
   }
 
   const toggelAppointment = () => {
@@ -228,7 +231,10 @@ const Layout = () => {
     resetAllToggles()
     setShowVerification(!showVerification)
   }
-
+  const toggelSubstore=()=>{
+    resetAllToggles()
+    setShowSubStore(!showSubStore)
+  }
   return (
     <div className="hrmsLayout">
       <Sidebar 
@@ -262,6 +268,7 @@ const Layout = () => {
         onPharmacy={toggelPharmacy}
         onPatient={toggelPatient}
         onVerification={toggelVerification}
+        onSubstoreClick={toggelSubstore}
         isOpen={isOpen} 
         setIsOpen={setIsOpen} 
       />
@@ -298,6 +305,7 @@ const Layout = () => {
           {showPharmacy && <PharmacyRouting/>}
           {showPatient && <PatientRouting/>}
           {showVerification && <VerificationRouting/>}
+          {showSubStore && <SubstoreRouting/>}
         </main>
       </div>
     </div>

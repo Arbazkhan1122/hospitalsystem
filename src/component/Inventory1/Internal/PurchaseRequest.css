@@ -1,138 +1,227 @@
+/* PurchaseRequest.css */
+
+/* General Styles */
 .purchase-request-content {
-    margin-bottom: 20px;
-}
-.perchase-content
-{
-    width: 98%;
+  padding: 20px;
 }
 
-.create-purchase-request {
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #ffcc00;
-    border: none;
-    cursor: pointer;
+.purchase-request-header {
+  font-size: 16px;
+  /* margin-bottom: 20px; */
 }
 
-.date-range {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    flex-wrap: wrap; /* Ensure the elements wrap on smaller screens */
+.purchase-request-create-purchase-form {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
-.date-range label,
-.date-range button {
-    margin-bottom: 10px; /* Space between elements */
+.purchase-request-create-purchase-form label {
+  display: block;
+  margin: 10px 0 5px;
 }
 
-.date-range button {
-    padding: 10px;
-    cursor: pointer;
-    border: none;
+.purchase-request-pur-subContent {
+  display: flex;
+  align-items: center;
 }
 
-.star {
-    background-color: #ffcc00;
+.purchase-request-pur-subButton,
+.purchase-request-create-purchase-request {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
 }
 
-.minus {
-    background-color: #ff0000;
-    color: #fff;
+.purchase-request-create-purchase-request:hover,
+.purchase-request-pur-subButton:hover {
+  background-color: #0056b3;
 }
 
-.ok {
-    background-color: #4caf50;
-    color: #fff;
+.purchase-request-request-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  cursor: pointer;
 }
 
-.search-bar {
-    display: flex;
-    margin-bottom: 20px;
+.purchase-request-discard-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  cursor: pointer;
 }
 
-.search-bar input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-    min-width: 200px; /* Prevent the input from becoming too small */
+.purchase-request-request-button:hover {
+  background-color: #218838;
 }
 
-.search-bar button {
-    padding: 10px;
-    border: none;
-    background-color: #2196F3;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 0 4px 4px 0;
+.purchase-request-discard-button:hover {
+  background-color: #c82333;
 }
 
-.purchase-results {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    flex-wrap: wrap; /* Ensure the elements wrap on smaller screens */
+.purchase-request-date-range {
+  margin: 20px 0;
 }
 
-.purchase-results span {
-    margin-right: 10px;
+.purchase-request-date-range label {
+  margin-right: 10px;
 }
 
-.perchase-results button {
-    padding: 10px;
-    border: none;
-    background-color: #2196F3;
-    color: #fff;
-    cursor: pointer;
-    flex: 1 1 auto; /* Make button flexible */
+.purchase-request-search-bar {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
 }
 
-.purchase-request-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    table-layout: fixed;
-    overflow-x: auto; /* Allow horizontal scrolling if needed */
+.purchase-request-search-bar input {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+  flex: 1;
 }
 
-thead {
-    background-color: #2196F3;
-    color: #fff;
+.purchase-request-search-bar button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
-th, td {
-    padding: 10px;
-    text-align: left;
-    border: 1px solid #ccc;
-    word-wrap: break-word;
-    min-width: 100px; /* Prevent columns from shrinking too much */
+.purchase-request-search-bar button:hover {
+  background-color: #0056b3;
 }
 
-.perchase-pagination{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap; /* Ensure the elements wrap on smaller screens */
-    margin-top: 20px;
-}
-.perchase-pagination-div
-{
-    width: 50%;
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2px;
-
-}
-.perchase-pagination-div button
-{
-    background: #2196F3;
-    border: none;
-    padding: 5px 7px;
-    color: white;
+.purchase-request-purchase-results {
+  margin: 20px 0;
 }
 
+.purchase-request-purchase-results button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.purchase-request-purchase-results button:hover {
+  background-color: #0056b3;
+}
+
+.purchase-request-purchase-request-table,
+.purchase-request-purchase-request-form-table {
+  width: 100%;
+  border-collapse: collapse;
+  /* margin: 20px 0; */
+}
+
+.purchase-request-purchase-request-table th,
+.purchase-request-purchase-request-form-table th {
+  background-color: #007bff;
+  color: white;
+  /* padding: 10px; */
+  text-align: left;
+}
+
+.purchase-request-purchase-request-table td,
+.purchase-request-purchase-request-form-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.purchase-request-purchase-pagination {
+  margin: 20px 0;
+}
+
+.purchase-request-purchase-pagination-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.purchase-request-purchase-pagination-div button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.purchase-request-purchase-pagination-div button:hover {
+  background-color: #0056b3;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.modal-header {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.modal-footer {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.modal-close {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: #c82333;
+}
+
+.modal-footer button {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.modal-footer button:hover {
+  background: #0056b3;
+}

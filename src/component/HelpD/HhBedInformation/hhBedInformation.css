@@ -14,7 +14,7 @@
     margin-bottom: 20px;
   }
   
-  .stat-card {
+  .hhBedInformation-stat-card {
     width: 30%;
     padding: 15px;
     border-radius: 8px;
@@ -22,38 +22,38 @@
     text-align: center;
   }
   
-  .stat-card h2 {
+  .hhBedInformation-stat-card h2 {
     font-size: 16px;
     margin-bottom: 10px;
   }
   
-  .stat-card .number {
+  .hhBedInformation-stat-card .hhBedInformation-number {
     font-size: 24px;
     font-weight: bold;
   }
   
   .total { 
-background-color: #007bff;
+background-color: #1481D5;
 display: flex;
 justify-content: space-between;
 align-items: first baseline; 
 height: 90px;
 }
   .available { 
-    background-color: #007bff;
+    /* background-color: #007bff; */
 display: flex;
 justify-content: space-between;
 align-items: first baseline; 
-background-color: #20c997; 
+background-color: #44B6AE; 
 height: 90px;
 
 }
   .occupied {
-    background-color: #007bff;
+    /* background-color: #007bff; */
 display: flex;
 justify-content: space-between;
 align-items: first baseline; 
- background-color: #fd7e14;
+ background-color: #F3695B;
  height: 90px;
  
 }
@@ -61,7 +61,7 @@ align-items: first baseline;
   .bedInformation-table-container {
     background-color: white;
     padding: 20px;
-    width: 70%;
+    width: 60%;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
@@ -71,19 +71,20 @@ align-items: first baseline;
     margin-bottom: 15px;
   }
   
-  table {
+  .bedInformation-table-container table {
     width: 100%;
     border-collapse: collapse;
+    font-size: 12px;
   }
   
-  th, td {
+  .bedInformation-table-container th, .bedInformation-table-container td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
   }
   
-  th {
-    background-color: #007bff;
+  .bedInformation-table-container th {
+    background-color: #599BE0;
     color: white;
   }
   
@@ -96,29 +97,30 @@ align-items: first baseline;
     text-align: right;
   }
   
-  button {
+  .bedInformation-button-container button {
     padding: 8px 15px;
     margin-left: 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-bottom: 2px;
   }
   
   .bedInformation-print-btn {
-    background-color: #0254ac;
+    background-color: #5867DD;
     color: white;
     font-size: 12px;
 font-weight: bold;
   }
   
   .bedInformation-export-btn {
-    background-color: #0254ac;
+    background-color: #5867DD;
     color: white;
     font-size: 12px;
     font-weight: bold;
     /* gap: 10px; */
   }
-  .wardNameColumn{
+  .hhBedInformation-wardNameColumn{
     font-weight: bold;
     color: #007bff;
   }

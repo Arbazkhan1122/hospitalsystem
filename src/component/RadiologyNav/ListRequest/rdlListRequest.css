@@ -3,20 +3,20 @@
 
   .rDLListRequest-active-imaging-request {
     font-family: Arial, sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    /* max-width: 1200px; */
+    /* margin: 0 auto; */
+    padding: 10px;
     background-color: #cee6ff;
   }
   
-  .rDLListRequest-active-imaging-request header {
+  .rDLListRequest-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
   }
   
-  .rDLListRequest-active-imaging-request h4 {
+  .rDLListRequest-header h4 {
     color: #3f8fdf;
     margin: 0;
   }
@@ -87,7 +87,7 @@ font-weight: bold;
     position: relative;
     color:gray;
     top: 7px;
-  left: 205px;
+  left: 170px;
   }
   
   .search-bar button {
@@ -104,13 +104,13 @@ font-weight: bold;
     font-weight: bold;
   }
   
-  .rDLListRequest-active-imaging-request table {
+  .rDLListRequest-table-N-paginat table {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
   }
   
- .rDLListRequest-active-imaging-request th, .rDLListRequest-active-imaging-request td {
+  .rDLListRequest-table-N-paginat th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
@@ -118,15 +118,16 @@ font-weight: bold;
     color: rgb(70, 69, 69);
   }
   
-  .rDLListRequest-active-imaging-request th {
+  .rDLListRequest-table-N-paginat th {
+    /* background-color: red; */
     background-color: #f2f2f2;
   }
   
-  .rDLListRequest-active-imaging-request tr:nth-child(even) {
+  .rDLListRequest-table-N-paginat tr:nth-child(even) {
     background-color: #f9f9f9;
   }
   
-  .action-button {
+  .rDLListRequest-action-button {
     padding: 5px 10px;
     color: white;
     border: none;
@@ -135,15 +136,15 @@ font-weight: bold;
     border-radius: 13px;
   }
   
-  .add-report {
+  .rDLListRequest-add-report {
     background-color: #008CBA;
   }
   
-  .scan-done {
+  .rDLListRequest-scan-done {
     background-color: #008CBA;
   }
   
-  .pagination {
+  .rDLListRequest-pagination {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -195,7 +196,7 @@ font-weight: bold;
   }
 
   /* src/components/Modal.css */
-.rDLListRequest-active-imaging-request .modal-overlay {
+/* .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -208,7 +209,7 @@ font-weight: bold;
     z-index: 1000;
   }
   
-  .rDLListRequest-active-imaging-request .modal-content {
+  .modal-content {
     background: white;
     padding: 20px;
     border-radius: 8px;
@@ -227,4 +228,6 @@ font-weight: bold;
     font-size: 24px;
     cursor: pointer;
   }
-  
+   */
+
+

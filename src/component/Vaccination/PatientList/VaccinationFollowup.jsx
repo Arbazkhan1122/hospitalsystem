@@ -14,10 +14,14 @@ const VaccinationFollowup = ({ patient, onClose, onSave }) => {
           <table className="vaccination-followup-table">
             <tbody>
               <tr>
-                <td>Hospital No: {patient?.hospitalNo}</td>
+                {/* <td>Hospital No: {patient?.hospitalNo}</td> */}
                 <td>Patient Name: {patient?.babyName}</td>
-                <td>Age Sex: {patient?.ageSex}</td>
-                <td>Vacc. Reg No: {patient?.vaccRegNo}</td>
+                <td>
+                  Age Sex: {patient?.age} {patient?.ageUnit} {" / "}
+                  {patient?.gender}
+                </td>
+                <td></td>
+                {/* <td>Vacc. Reg No: {patient?.vaccRegNo}</td> */}
               </tr>
               <tr>
                 <td>Mother Name: {patient?.motherName}</td>
@@ -30,9 +34,6 @@ const VaccinationFollowup = ({ patient, onClose, onSave }) => {
                   </span>
                 </td>
               </tr>
-              {/* <tr>
-                <td colSpan="4">Followup Date: {patient?.followupDate}</td>
-              </tr> */}
             </tbody>
           </table>
         </div>

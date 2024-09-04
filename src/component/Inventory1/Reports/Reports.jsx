@@ -22,7 +22,7 @@ const Report = () => {
 
     return (
         <div>
-            <div className="report-tabs">
+            <div className="report-report-tabs">
                 {tabs.map((tab) => (
                     <button
                         key={tab.name}
@@ -33,7 +33,7 @@ const Report = () => {
                     </button>
                 ))}
             </div>
-            <div className="content">
+            <div className="report-report-content">
                 <Routes>
                     <Route path="purchase" element={<Purchase/>} />
                     <Route path="stock/*" element={<ReportStock />} />

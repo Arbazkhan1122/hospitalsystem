@@ -1,51 +1,131 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import "../ListReports/rdlListReports.css";
+import * as XLSX from "xlsx"; // Import xlsx library
+import RadiologyReportPopup from "./RadiologyReportPopup";
 
 function RDLListReports() {
   const [showAddReport, setShowAddReport] = useState(false);
-  const [showScanDone, setShowScanDone] = useState(false);
+  const [selectedRequest, setSelectedRequest] = useState(null);
+  const [reportsData, setReportsData] = useState([]);
+  const [filteredReportsData, setFilteredReportsData] = useState([]);
+  const [filter, setFilter] = useState("--All--");
 
-  const handleAddReportClick = () => {
+  // Fetch radiology report data and patient data from the APIs
+  useEffect(() => {
+    fetch("http://localhost:8888/api/patient-imaging-requisitions/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setReportsData(data);
+        setFilteredReportsData(data); // Initialize filtered data
+      })
+      .catch((error) => console.error("Error fetching reports data:", error));
+  }, []);
+
+  useEffect(() => {
+    // Apply the filter whenever the filter state changes
+    if (filter === "--All--") {
+      setFilteredReportsData(reportsData);
+    } else {
+      const filteredData = reportsData.filter(
+        (report) =>
+          report.imagingTypeDTO?.imagingTypeName.toUpperCase() === filter
+      );
+      setFilteredReportsData(filteredData);
+    }
+  }, [filter, reportsData]);
+
+  const handleViewClick = (report) => {
+    setSelectedRequest(report);
     setShowAddReport(true);
-  };
-
-  const handleScanDoneClick = () => {
-    setShowScanDone(true);
   };
 
   const closePopups = () => {
     setShowAddReport(false);
-    setShowScanDone(false);
   };
 
   const printTable = () => {
-    const printContents = document.getElementById('table-to-print').outerHTML;
+    const printContents = document.getElementById("table-to-print").outerHTML;
     const originalContents = document.body.innerHTML;
     document.body.innerHTML = `<html><head><title>Print</title></head><body>${printContents}</body></html>`;
     window.print();
     document.body.innerHTML = originalContents;
-    window.location.reload();  // Reload the page to reset the state
+    window.location.reload(); // Reload the page to reset the state
+  };
+
+  const exportToExcel = () => {
+    const tableData = [
+      [
+        "Sr No",
+        "Date",
+        "Hospital Number",
+        "Patient Name",
+        "Age/Sex",
+        "Phone No",
+        "Reporting Doctor",
+        "Imaging Type",
+        "Imaging Item",
+        "Report",
+      ],
+      ...filteredReportsData.map((report, index) => [
+        index + 1,
+        report.imagingDate,
+        report.patientId,
+        report.patientDTO?.firstName + " " + report.patientDTO?.lastName ||
+          "N/A",
+        `${report.patientDTO?.age || "N/A"}Y / ${
+          report.patientDTO?.gender || "N/A"
+        }`,
+        report.patientDTO?.phoneNumber || "N/A",
+        report.prescriberDTO?.employeeName,
+        report.imagingTypeDTO?.imagingTypeName,
+        report.imagingItemDTO?.imagingItemName,
+        "View",
+      ]),
+    ];
+
+    const ws = XLSX.utils.aoa_to_sheet(tableData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "ImagingReports");
+
+    ws["!cols"] = [
+      { wpx: 50 },
+      { wpx: 100 },
+      { wpx: 150 },
+      { wpx: 150 },
+      { wpx: 100 },
+      { wpx: 120 },
+      { wpx: 150 },
+      { wpx: 120 },
+      { wpx: 120 },
+      { wpx: 80 },
+    ];
+
+    XLSX.writeFile(wb, "ImagingReports.xlsx");
+  };
+
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
   };
 
   return (
-    <div className="rDLListRequest-active-imaging-request">
-      <header>
+    <div className="rDLListReport-active-imaging-request">
+      <header className="rDLListReport-header">
         <h4>* Imaging Reports of All Patients</h4>
-        <div className="rDLListRequest-filter">
+        <div className="rDLListReport-filter">
           <label>
             Filter
-            <select defaultValue="--All--">
+            <select defaultValue={filter} onChange={handleFilterChange}>
               <option>--All--</option>
-              <option>CT-SCAN</option>
-              <option>USG</option>
-              <option>X-RAY</option>
-              <option>ECHO</option>
+              <option value={"CT-SCAN"}>CT-SCAN</option>
+              <option value={"USG"}>USG</option>
+              <option value={"X-RAYS"}>X-RAY</option>
+              <option value={"ECHO"}>ECHO</option>
             </select>
           </label>
         </div>
       </header>
-      <div className="rDLListRequest-controls">
-        <div className="rDLListRequest-date-range">
+      <div className="rDLListReport-controls">
+        <div className="rDLListReport-date-range">
           <label>
             From:
             <input type="date" defaultValue="2024-08-09" />
@@ -54,28 +134,34 @@ function RDLListReports() {
             To:
             <input type="date" defaultValue="2024-08-16" />
           </label>
-          <button className="rDLListRequest-star-button">☆</button>
-          <button className="rDLListRequest-ok-button">OK</button>
+          <button className="rDLListReport-star-button">☆</button>
+          <button className="rDLListReport-ok-button">OK</button>
         </div>
       </div>
-      <div className="rDLListRequest-search-N-results">
-        <div className="rDLListRequest-search-bar">
+      <div className="rDLListReport-search-N-results">
+        <div className="rDLListReport-search-bar">
           <i className="fa-solid fa-magnifying-glass"></i>
           <input type="text" placeholder="Search" />
         </div>
-        <div className="rDLListRequest-results-info">
-          Showing 2 / 2 results
-          <button className="rdlListReports-ex-pri-buttons">Export</button>
-          <button className="rdlListReports-ex-pri-buttons" onClick={printTable}>Print</button>
+        <div className="rDLListReport-results-info">
+          Showing {filteredReportsData.length} / {reportsData.length} results
+          <button
+            className="rDLListReport-ex-pri-buttons"
+            onClick={exportToExcel}
+          >
+            <i className="fa-regular fa-file-excel"></i> Export
+          </button>
+          <button className="rDLListReport-ex-pri-buttons" onClick={printTable}>
+            Print
+          </button>
         </div>
       </div>
-      <div className="rDLListRequest-table-N-paginat" id="table-to-print">
+      <div className="rDLListReport-table-N-paginat" id="table-to-print">
         <table>
           <thead>
             <tr>
               <th>Sr No</th>
               <th>Date</th>
-              <th>Hospital Number</th>
               <th>Patient Name</th>
               <th>Age/Sex</th>
               <th>Phone No</th>
@@ -86,58 +172,42 @@ function RDLListReports() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>2024-08-16</td>
-              <td>2408003817</td>
-              <td>Sachin Ramesh</td>
-              <td>50Y / M</td>
-              <td>9876543211</td>
-              <td>Dr. Pooja Mishra</td>
-              <td>USG Chest</td>
-              <td></td>
-              <td>
-                <button
-                  className="action-button add-report"
-                  onClick={handleAddReportClick}
-                >
-                 View
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>2024-08-16</td>
-              <td>2408003817</td>
-              <td>Sachin Ramesh</td>
-              <td>50Y / M</td>
-              <td>9876543211</td>
-              <td>Dr. Pooja Mishra</td>
-              <td>CT-Neck</td>
-              <td></td>
-              <td>
-                <button
-                  className="action-button scan-done"
-                  onClick={handleScanDoneClick}
-                >
-                  View
-                </button>
-              </td>
-            </tr>
+            {filteredReportsData.map((report, index) => (
+              <tr key={report.imagingId}>
+                <td>{index + 1}</td>
+                <td>{new Date(report.imagingDate).toDateString()}</td>
+                <td>
+                  {report?.patientDTO?.firstName +
+                    " " +
+                    report?.patientDTO?.lastName || "N/A"}
+                </td>
+                <td>{`${report.patientDTO?.age} Y / ${
+                  report.patientDTO?.gender || ""
+                }`}</td>
+                <td>{report.patientDTO?.phoneNumber || "N/A"}</td>
+                <td>{report.prescriberDTO?.employeeName || "Self"}</td>
+                <td>{report.imagingTypeDTO?.imagingTypeName}</td>
+                <td>{report.imagingItemDTO?.imagingItemName}</td>
+                <td>
+                  <button
+                    className="rDLListReport-action-button-add-reports"
+                    onClick={() => handleViewClick(report)}
+                  >
+                    View
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
-        <div className="rDLListRequest-pagination">
-          <span>0 to 0 of 0</span>
-          <button>First</button>
-          <button>Previous</button>
-          <span>Page 0 of 0</span>
-          <button>Next</button>
-          <button>Last</button>
-        </div>
       </div>
 
-      {/* {showAddReport && <AddReportForm />}
-      {showScanDone && <RDLAddScanDoneDetails onClose={closePopups} />} */}
+      {showAddReport && (
+        <RadiologyReportPopup
+          onClose={closePopups}
+          selectedRequest={selectedRequest}
+        />
+      )}
     </div>
   );
 }

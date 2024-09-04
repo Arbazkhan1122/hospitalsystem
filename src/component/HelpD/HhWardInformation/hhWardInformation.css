@@ -6,10 +6,12 @@
     height: 500px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #dff0ff;
+    background-color: #CAF2FF;
   }
   .wardInformation-heading h3{
     color: #532c7b;
+    font-weight: 100;
+    margin: 0;
   }
   
     
@@ -22,5 +24,30 @@
     font-weight: bold;
     color: #007bff;
   }
+
+  .wardInformation-container table {
+width: 100%;
+padding: 5px;
+/* border: 1px solid black ; */
+border-collapse: collapse;
+}
+.wardInformation-container th {
+  color: white;
+  background-color: #599BE0;
+  font-size: 14px;
+  text-align: left;
+  padding: 5px;
+  border: 1px solid #e4e2e2;
+}
+.wardInformation-container tr {
+  border: 1px solid #e4e2e2;
+font-size: 12px;
+padding: 5px;
+
+}
+.wardInformation-container td {
+  padding: 10px;
+border: 1px solid #e4e2e2;
+}
 
  

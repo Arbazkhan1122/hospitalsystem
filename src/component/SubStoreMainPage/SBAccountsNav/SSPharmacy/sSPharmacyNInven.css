@@ -1,0 +1,85 @@
+.sSPharmacyNInven-active-Accounts-btn{
+    background-color: #0056b3;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+  }
+  .sSPharmacyNInven-active-Accounts-LogoutButton{
+    /* grid-area: 10px; */
+    margin:0 10px 0 10px;
+    font-size: 20px;
+    border: none;
+  }
+  .sSPharmacyNInven-Acc-N-Log{
+    display: flex;
+    /* float: right; */
+  }
+  .sSPharmacyNInven-ul
+  {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .sSPharmacyNInven-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+      background-color: white;
+      /* padding: 10px; */
+      /* border: 1px solid #007bff; */
+
+  
+    }
+    .sSPharmacyNInven-pha-N-inven{
+        display: flex;
+        /* border: 1px solid red; */
+        
+    }
+    .sSPharmacyNInven-pha-N-inven li{
+        margin: none;
+        padding:10px;
+        /* color: red; */
+    }
+    
+    
+    .sSPharmacyNInven-bar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 0px 10px 0px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+    }
+    
+    .sSPharmacyNInven-bar li {
+      margin: 0 0px;
+      
+    }
+    
+    .sSPharmacyNInven-bar a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 5px 5px;
+      border-radius: 5px;
+  
+    }
+    
+    .sSPharmacyNInven-bar a:hover {
+      background-color: #0056b3;
+      color: white;
+      /* border: 1px solid gray; */
+  
+      
+    }
+    
+    .sSPharmacyNInven-bar .active {
+      background-color: #0056b3;
+      color: white;
+  
+    }
+    

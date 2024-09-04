@@ -1,12 +1,74 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Vaccinationreports.css";
 
 function VaccinationsReports() {
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownDate, setIsDropdownDate] = useState(false);
   const [fromDate, setFromDate] = useState("2024-08-12");
   const [toDate, setToDate] = useState("2024-08-12");
+  const [selectedVaccines, setSelectedVaccines] = useState([]);
+  const [selectedGender, setSelectedGender] = useState("");
+  const [patients, setPatients] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [dataFetched, setDataFetched] = useState(false);
+
+  const vaccines = ["BCG", "DPT", "Rotavirus", "HBV", "IPV", "OPV", "PCV"];
+  const genders = ["Male", "Female", "Other"];
+
+  const fetchData = () => {
+    // Construct the query parameters for filtering
+    const genderParam = selectedGender
+      ? `gender=${encodeURIComponent(selectedGender)}`
+      : "";
+    const vaccineParam =
+      selectedVaccines.length > 0
+        ? `vaccines=${encodeURIComponent(selectedVaccines.join(","))}`
+        : "";
+    const fromDateParam = fromDate
+      ? `fromDate=${encodeURIComponent(fromDate)}`
+      : "";
+    const toDateParam = toDate ? `toDate=${encodeURIComponent(toDate)}` : "";
+
+    // Combine all parameters into a query string
+    const queryParams = [genderParam, vaccineParam, fromDateParam, toDateParam]
+      .filter((param) => param) // Remove empty parameters
+      .join("&");
+
+    // Fetch the patient data from the API with filters applied
+    fetch(`http://localhost:8888/api/vaccinations/allVaccine?${queryParams}`)
+      .then((response) => response.json())
+      .then((patientsData) => {
+        // Process the fetched patient data
+        const resultPatients = patientsData.map((patient) => {
+          // Filter doses directly in the data
+          const doses =
+            patient.vaccinationDoses?.filter(
+              (dose) =>
+                new Date(dose.vaccinationDate) >= new Date(fromDate) &&
+                new Date(dose.vaccinationDate) <= new Date(toDate) &&
+                (selectedVaccines.length === 0 ||
+                  selectedVaccines.includes(dose.vaccineName))
+            ) || [];
+
+          return {
+            ...patient,
+            doses,
+          };
+        });
+
+        setPatients(resultPatients);
+        console.log(resultPatients);
+
+        setDataFetched(true);
+      })
+      .catch((error) => console.error("Error fetching patient data:", error));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [selectedVaccines, selectedGender, fromDate, toDate]);
 
   const startResizing = (index) => (e) => {
     e.preventDefault();
@@ -33,8 +95,10 @@ function VaccinationsReports() {
     document.addEventListener("mouseup", onMouseUp);
   };
 
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+
   const handleDashClick = () => {
-    setIsDropdownOpen(!isDropdownOpen);
+    setIsDropdownDate(!isDropdownDate);
   };
 
   const handleOptionClick = (option) => {
@@ -54,14 +118,6 @@ function VaccinationsReports() {
     setIsDropdownOpen(false);
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedVaccines, setSelectedVaccines] = useState([]);
-
-  const vaccines = ["BCG", "DPT", "Rotavirus", "HBV", "IPV", "OPV", "PCV"];
-
-  const toggleDropdown = () => setIsOpen(!isOpen);
-
   const handleSearch = (e) => setSearchTerm(e.target.value);
 
   const handleSelectAll = (e) => {
@@ -80,9 +136,25 @@ function VaccinationsReports() {
     }
   };
 
+  const handleGenderChange = (e) => setSelectedGender(e.target.value);
+
   const filteredVaccines = vaccines.filter((vaccine) =>
     vaccine.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handlePrint = () => {
+    const printWindow = window.open("", "", "width=800,height=600");
+    printWindow.document.write("<html><head><title>Print</title></head><body>");
+    printWindow.document.write(
+      `<table border=1 style="border-collapse:collapse">${
+        document.querySelector(".vaccinationsReports-table").innerHTML
+      }</table>`
+    );
+    printWindow.document.write("</body></html>");
+    printWindow.document.close();
+    printWindow.focus();
+    printWindow.print();
+  };
 
   return (
     <div className="vaccinationsReports-main">
@@ -90,11 +162,13 @@ function VaccinationsReports() {
         <div className="vaccinationsReports-header">
           <h4>Vaccination Details</h4>
           <div className="vaccinationsReports-dropfilter">
-            <select>
-              <option value={""}>--All--</option>
-              <option value={""}>Male</option>
-              <option value={""}>Female</option>
-              <option value={""}>Other</option>
+            <select value={selectedGender} onChange={handleGenderChange}>
+              <option value="">--All Gender--</option>
+              {genders.map((gender) => (
+                <option key={gender} value={gender}>
+                  {gender}
+                </option>
+              ))}
             </select>
 
             <div
@@ -103,12 +177,14 @@ function VaccinationsReports() {
             >
               <span>--Select Vaccine--</span>
               <span
-                className={`vaccinationsReports__arrow ${isOpen ? "open" : ""}`}
+                className={`vaccinationsReports__arrow ${
+                  isDropdownOpen ? "open" : ""
+                }`}
               >
                 ▼
               </span>
             </div>
-            {isOpen && (
+            {isDropdownOpen && (
               <div className="vaccinationsReports__content">
                 <label className="vaccinationsReports__selectAll">
                   <input
@@ -163,7 +239,7 @@ function VaccinationsReports() {
             >
               -
             </button>
-            {isDropdownOpen && (
+            {isDropdownDate && (
               <div className="vaccinationsReports-dropdown">
                 <div onClick={() => handleOptionClick("Last 1 Week")}>
                   Last 1 Week
@@ -184,13 +260,23 @@ function VaccinationsReports() {
 
       <div className="vaccinationsReports-search">
         <div className="vaccinationsReports-search-bar">
-          <input type="text" placeholder="Search" />
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={handleSearch}
+          />
           <i className="fas fa-search"></i>
         </div>
         <div className="vaccinationsReports-results">
-          <span>Showing 0 / 0 results</span>
+          <span>Showing {patients?.length} results</span>
           <button className="vaccinationsReports-export-btn">Export</button>
-          <button className="vaccinationsReports-print-btn">Print</button>
+          <button
+            className="vaccinationsReports-print-btn"
+            onClick={handlePrint}
+          >
+            Print
+          </button>
         </div>
       </div>
 
@@ -202,7 +288,6 @@ function VaccinationsReports() {
               "Vacc. Regd. No.",
               "Baby's Name",
               "Age/Sex",
-              "Hospital No.",
               "Mother's Name",
               "Father's Name",
               "Date Of Birth",
@@ -229,11 +314,66 @@ function VaccinationsReports() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td colSpan="13" className="vaccinationsReports-no-rows">
-              No Rows To Show
-            </td>
-          </tr>
+          {dataFetched ? (
+            patients ? (
+              patients.map((patient, index) => (
+                <tr key={index}>
+                  <td>
+                    {patient?.vaccinationDoses &&
+                    patient.vaccinationDoses.length > 0
+                      ? patient.vaccinationDoses[
+                          patient.vaccinationDoses.length - 1
+                        ].vaccinationDate
+                      : ""}
+                  </td>
+                  <td>
+                    {patient?.vaccinationDoses &&
+                    patient.vaccinationDoses.length > 0
+                      ? patient.vaccinationDoses[
+                          patient.vaccinationDoses.length - 1
+                        ].doseId
+                      : ""}
+                  </td>
+                  <td>{patient.babyName}</td>
+                  <td>{`${patient.age} ${patient.ageUnit}`}</td>
+                  <td>{patient.motherName}</td>
+                  <td>{patient.fatherName}</td>
+                  <td>{patient.dateOfBirth}</td>
+                  <td>{patient.religion}</td>
+                  <td>{patient.address}</td>
+                  <td>{patient.phoneNumber}</td>
+                  <td>
+                    {patient?.vaccinationDoses &&
+                    patient.vaccinationDoses.length > 0
+                      ? patient.vaccinationDoses[
+                          patient.vaccinationDoses.length - 1
+                        ].vaccineName
+                      : ""}
+                  </td>
+                  <td>
+                    {patient?.vaccinationDoses &&
+                    patient.vaccinationDoses.length > 0
+                      ? patient.vaccinationDoses[
+                          patient.vaccinationDoses.length - 1
+                        ].vaccinationDose
+                      : ""}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="13" className="vaccinationsReports-no-rows">
+                  No Rows To Show
+                </td>
+              </tr>
+            )
+          ) : (
+            <tr>
+              <td colSpan="13" className="vaccinationsReports-loading">
+                Loading...
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>

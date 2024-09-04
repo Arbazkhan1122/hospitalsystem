@@ -1,0 +1,329 @@
+.sSPReportsConsumption-active-imaging-request {
+  font-family: Arial, sans-serif;
+  /* max-width: 1200px; */
+  /* margin: 0 auto; */
+  /* padding: 10px; */
+  /* background-color: red; */
+  /* background-color: red; */
+  height: 490px;
+  background-color: #CAF2FF;
+}
+
+.sSPReportsConsumption-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-bottom: 20px; */
+}
+
+/* .sSPReportsConsumption-header h4 {
+  color: #3f8fdf;
+  margin: 0;
+} */
+.sSPReportsConsumption-CreateRequisition{
+  margin-left: 10px;
+    /* gap: 10px; */
+  background-color: #0011ff ;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.sSPReportsConsumption-status-filters{
+  display: flex;
+  align-items: center;
+}
+.sSPReportsConsumption-status-filters h4{
+  color: #474747;
+}
+.sSPReportsConsumption-filter {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin-right: 20px;
+}
+
+.sSPReportsConsumption-filter label {
+  margin-right: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.sSPReportsConsumption-filter select {
+  padding: 5px;
+  /* color: red; */
+  font-size: 12px;
+  margin-left: 20px;
+}
+
+.sSPReportsConsumption-checkBox select {
+  padding: 3px 5px 3px 5px;
+  background-color: #f0f0f0;
+  margin-left: 10px;
+  width: 100px;
+}
+.sSPReportsConsumption-checkBox label {
+font-size: 14px;
+font-weight: bold;
+color: green;
+}
+
+.sSPReportsConsumption-controls {
+  padding: 0 10px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.sSPReportsConsumption-date-range {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  gap: 10px;
+  background-color: #f0f0f0;
+  margin-bottom: 10px;
+}
+.sSPReportsConsumption-date-range label{
+  margin-left: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.sSPReportsConsumption-date-range input[type="date"] {
+  padding: 5px;
+}
+
+.sSPReportsConsumption-star-button {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  color: #0011ff;
+  cursor: pointer;
+}
+
+.sSPReportsConsumption-ok-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+.sSPReportsConsumption-search-bar {
+  display: flex;
+}
+
+.sSPReportsConsumption-search-bar input {
+  flex-grow: 1;
+  padding: 5px;
+  width: 200px;
+
+}
+.sSPReportsConsumption-search-bar i{
+  position: relative;
+  color:gray;
+  top: 7px;
+left: 205px;
+}
+
+/* .search-bar button {
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+} */
+
+.sSPReportsConsumption-results-info {
+  text-align: right;
+  color: #0011ff;
+  font-size: 12px;
+  font-weight: bold;
+}
+.sSPReportsConsumption-print-btn{
+    margin-left: 10px;
+    /* gap: 10px; */
+  background-color: #659BE0 ;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+
+}
+
+.sSPReportsConsumption-table-N-paginat table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.sSPReportsConsumption-table-N-paginat th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  font-size: 12px;
+  color: rgb(70, 69, 69);
+}
+.sSPReportsConsumption-table-N-paginat td {
+  font-size: 12px;
+  color: #818181;
+}
+
+.sSPReportsConsumption-table-N-paginat th {
+  /* background-color: red; */
+  background-color: #f2f2f2;
+}
+
+.sSPReportsConsumption-table-N-paginat tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.sSPReportsConsumption-action-button {
+  padding: 5px 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  border-radius: 13px;
+}
+
+.sSPReportsConsumption-add-report {
+  background-color: #008CBA;
+}
+
+.sSPReportsConsumption-scan-done {
+  background-color: #008CBA;
+}
+
+.sSPReportsConsumption-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+
+.sSPReportsConsumption-search-N-results{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.sSPReportsConsumption-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.sSPReportsConsumption-pagination button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+.sSPReportsConsumption-pagination span {
+  margin: 0 10px;
+  color: gray;
+  font-size: 12px;
+}
+.sSPReportsConsumption-table-N-paginat{
+  background-color: white ;
+  padding: 0 10px;
+}
+
+
+.sSPReportsConsumption-modal-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.5);
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 1000;
+}
+
+/* Modal content styling */
+.sSPReportsConsumption-modal-content {
+background-color: #fff;
+padding: 20px;
+border-radius: 8px;
+box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+position: relative;
+max-width: 1300px;
+width: 100%;
+}
+
+/* Close button styling */
+.sSPReportsConsumption-close-modal {
+position: absolute;
+top: 10px;
+right: 10px;
+background: transparent;
+border: none;
+font-size: 24px;
+cursor: pointer;
+}
+.sSPReportsConsumption-view-btn button{
+  background-color: #0F63AF;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 11px;
+
+}
+.sSPReportsConsumption-view-btn button:hover{
+  background-color: white;
+  color: #0F63AF;
+  border: 1px solid #0F63AF;
+  
+
+}
+/* Popup Overlay */
+.sSPReportsConsumption-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Popup Content */
+.sSPReportsConsumption-popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+.sSPReportsConsumption-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+

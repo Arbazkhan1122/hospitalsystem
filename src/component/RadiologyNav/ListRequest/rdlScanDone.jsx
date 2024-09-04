@@ -1,77 +1,98 @@
-// import React from 'react';
-// import "../ListRequest/rdlScanDone.css"
-
-// function RDLAddScanDoneDetails() {
-//   return (
-//     <div className="modal-backdrop">
-//       <div className="modal">
-//         <h2>Add Scan Done Details of Sachin Ramesh</h2>
-//         <form>
-//           <div className="form-group">
-//             <label htmlFor="scannedOn">Scanned On</label>
-//             <input type="date" id="scannedOn" defaultValue="2024-08-18" />
-//           </div>
-//           <div className="form-group">
-//             <label htmlFor="filmType">Film Type *</label>
-//             <select id="filmType" required>
-//               <option value="">Select The Film Type</option>
-//             </select>
-//           </div>
-//           <div className="form-group">
-//             <label htmlFor="quantity">Quantity</label>
-//             <input type="number" id="quantity" />
-//           </div>
-//           <div className="form-group">
-//             <label htmlFor="remarks">Remarks</label>
-//             <textarea id="remarks"></textarea>
-//           </div>
-//           <div className="form-actions">
-//             <button type="submit" className="done-btn">Done</button>
-//             <button type="button" className="cancel-btn">Cancel</button>
-//           </div>
-//         </form>
-//         <button className="close-btn" aria-label="Close">&times;</button>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default RDLAddScanDoneDetails;
-
-
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import "../ListRequest/rdlScanDone.css";
 
-function RDLAddScanDoneDetails({ onClose }) {
+function RDLAddScanDoneDetails({ onClose, onUpdateStatus }) {
+  const [scannedOn, setScannedOn] = useState("");
+  const [filmType, setFilmType] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [remarks, setRemarks] = useState("");
+  const [filmTypes, setFilmTypes] = useState([]);
+
+  useEffect(() => {
+    // Fetch film types from the API
+    fetch("http://localhost:8888/api/film-types")
+      .then((response) => response.json())
+      .then((data) => setFilmTypes(data))
+      .catch((error) => {
+        console.error("Error fetching film types:", error);
+        // Optionally, add UI feedback to inform the user of the error
+      });
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onUpdateStatus(scannedOn, filmType, quantity, remarks);
+  };
+
   return (
-    <div className="modal-backdrop">
-      <div className="modal">
+    <div className="rDLListRequest-ScanDone-modal-backdrop">
+      <div className="rDLListRequest-ScanDone-modal">
         <h2>Add Scan Done Details of Sachin Ramesh</h2>
-        <form>
-          <div className="form-group">
+        <form onSubmit={handleSubmit}>
+          <div className="rDLListRequest-ScanDone-form-group">
             <label htmlFor="scannedOn">Scanned On</label>
-            <input type="date" id="scannedOn" defaultValue="2024-08-18" />
+            <input
+              type="date"
+              id="scannedOn"
+              value={scannedOn}
+              onChange={(e) => setScannedOn(e.target.value)}
+              required
+            />
           </div>
-          <div className="form-group">
+          <div className="rDLListRequest-ScanDone-form-group">
             <label htmlFor="filmType">Film Type *</label>
-            <select id="filmType" required>
+            <select
+              id="filmType"
+              value={filmType}
+              onChange={(e) => setFilmType(e.target.value)}
+              required
+            >
               <option value="">Select The Film Type</option>
+              {filmTypes.map((type) => (
+                <option key={type.filmTypeId} value={type.filmTypeId}>
+                  {type.filmType}
+                </option>
+              ))}
             </select>
           </div>
-          <div className="form-group">
+          <div className="rDLListRequest-ScanDone-form-group">
             <label htmlFor="quantity">Quantity</label>
-            <input type="number" id="quantity" />
+            <input
+              type="number"
+              id="quantity"
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+              required
+            />
           </div>
-          <div className="form-group">
+          <div className="rDLListRequest-ScanDone-form-group">
             <label htmlFor="remarks">Remarks</label>
-            <textarea id="remarks"></textarea>
+            <textarea
+              id="remarks"
+              value={remarks}
+              onChange={(e) => setRemarks(e.target.value)}
+            ></textarea>
           </div>
-          <div className="form-actions">
-            <button type="submit" className="done-btn">Done</button>
-            <button type="button" className="cancel-btn" onClick={onClose}>Cancel</button>
+          <div className="rDLListRequest-ScanDone-form-actions">
+            <button type="submit" className="rDLListRequest-ScanDone-done-btn">
+              Done
+            </button>
+            <button
+              type="button"
+              className="rDLListRequest-ScanDone-cancel-btn"
+              onClick={onClose}
+            >
+              Cancel
+            </button>
           </div>
         </form>
-        <button className="close-btn" aria-label="Close" onClick={onClose}>&times;</button>
+        <button
+          className="rDLListRequest-ScanDone-close-btn"
+          aria-label="Close"
+          onClick={onClose}
+        >
+          &times;
+        </button>
       </div>
     </div>
   );

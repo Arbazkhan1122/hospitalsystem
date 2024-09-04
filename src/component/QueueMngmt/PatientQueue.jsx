@@ -1,3 +1,4 @@
+/* PatientQueue_Mohini_4/9/2024/ */
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import './PatientQueue.css';
@@ -12,7 +13,7 @@ const PatientQueue = () => {
   const [selectedStatus, setSelectedStatus] = useState('all');
 
   useEffect(() => {
-    fetch('http://localhost:1415/api/queues/employee/role')
+    fetch('http://192.168.1.34:1415/api/queues/employee/role')
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -33,7 +34,7 @@ console.log(selectedDoctor);
       const selectedDoctorId = selectedDoctor; // Now this is the employeeId
 
       if (selectedDoctorId) {
-        fetch(`http://localhost:1415/api/queues/employee/${selectedDoctorId}`)
+        fetch(`http://192.168.1.34:1415/api/queues/employee/${selectedDoctorId}`)
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
@@ -60,7 +61,7 @@ console.log(selectedDoctor);
     };
 
     // Make a PUT request to update the status
-    axios.put(`http://localhost:1415/api/queues/update/${patientData.patientQueueId}`, updatedData)
+    axios.put(`http://192.168.1.34:1415/api/queues/update/${patientData.patientQueueId}`, updatedData)
       .then((response) => {
         console.log('Data updated successfully', response.data);
         // Update the local state to reflect the changes
@@ -153,13 +154,12 @@ console.log(selectedDoctor);
         {showTable && (
           <div className="queue-management-table-section">
             <div className="queue-management-search-container">
-            Showing {filteredData.length} results
               <input type="text" placeholder="Search" />
               <button className="queue-management-search-button">🔍</button>
             </div>
             <div className="queue-management-results-info">Showing 0/ 0 results</div>
-
-            <div className='queue-mana-table'>
+              
+            <div className='queue-management-table-wrapper'>
               <table className='queue-managemnt-table'>
                 <thead>
                   <tr>
@@ -197,33 +197,22 @@ console.log(selectedDoctor);
                         <td>{row.queueNumber}</td>
                         <td>{row.status}</td>
                         <td>
-                          {row.status?.toLowerCase()==="pending"?(
-                            <>
-                              <button className='patientQueueDataBTN' onClick={() => handleStatusChange(row, 'completed')}>Complete</button>
-                          <button className='patientQueueDataBTN' onClick={() => handleStatusChange(row, 'skipped')}>Skipped</button>
-                            </>
-                          ):(
-                            <>
-                             <button className='patientQueueDataBTN-disabled' disabled="true" onClick={() => handleStatusChange(row, 'completed')}>Complete</button>
-                          <button className='patientQueueDataBTN-disabled' disabled="true" onClick={() => handleStatusChange(row, 'skipped')}>Skipped</button>
-                            </>
-                          )}
-
-                      
+                        <button  className="que-complete-button" onClick={() => handleStatusChange(row, 'completed')}>Complete</button>
+                        <button  className="que-skipped-button" onClick={() => handleStatusChange(row, 'skipped')}>Skipped</button>
                         </td>
                       </tr>
                     ))
                   )}
                 </tbody>
               </table>
-              <div className="queue-management-pagination">
+              {/* <div className="queue-management-pagination">
                 <span>0 to 0 of 0</span>
                 <button className="queue-management-pagination-button">First</button>
                 <button className="queue-management-pagination-button">Previous</button>
                 <span>Page 0 of 0</span>
                 <button className="queue-management-pagination-button">Next</button>
                 <button className="queue-management-pagination-button">Last</button>
-              </div>
+              </div> */}
             </div>
 
           </div>
@@ -234,3 +223,4 @@ console.log(selectedDoctor);
 };
 
 export default PatientQueue;
+/* PatientQueue_Mohini_4/9/2024/css*/

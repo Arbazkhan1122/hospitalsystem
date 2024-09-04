@@ -1,62 +1,64 @@
 
 
 
-.rDLListRequest-active-imaging-request {
+.rDLListReport-active-imaging-request {
     font-family: Arial, sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #cee6ff;
+    /* max-width: 1300px; */
+    /* margin: 0 auto; */
+    /* padding: 20px; */
+    /* background-color: #cee6ff; */
+    background-color: #ffffff;
   }
   
-  header {
+ .rDLListReport-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    background-color: #01A889;
   }
   
-  h4 {
-    color: #3f8fdf;
+  .rDLListReport-header h4 {
+    color: white;
     margin: 0;
   }
   
   /* .rDLListRequest-filter  {
   } */
-  .rDLListRequest-filter select {
+  .rDLListReport-filter select {
     padding: 3px 5px 3px 5px;
     background-color: #f0f0f0;
     margin-left: 10px;
     width: 100px;
   }
-  .rDLListRequest-filter label {
+  .rDLListReport-filter label {
 font-size: 14px;
 font-weight: bold;
 }
   
-  .rDLListRequest-controls {
+  .rDLListReport-controls {
     padding: 10px;
     margin-bottom: 5px;
   }
   
-  .rDLListRequest-date-range {
+  .rDLListReport-date-range {
     display: flex;
     align-items: center;
     gap: 10px;
     background-color: #f0f0f0;
     margin-bottom: 10px;
   }
-  .rDLListRequest-date-range label{
+  .rDLListReport-date-range label{
     margin-left: 20px;
     font-size: 14px;
     font-weight: bold;
   }
   
-  .rDLListRequest-date-range input[type="date"] {
+  .rDLListReport-date-range input[type="date"] {
     padding: 5px;
   }
   
-  .rDLListRequest-star-button {
+  .rDLListReport-star-button {
     background: none;
     border: none;
     font-size: 1.2em;
@@ -64,7 +66,7 @@ font-weight: bold;
     cursor: pointer;
   }
   
-  .rDLListRequest-ok-button {
+  .rDLListReport-ok-button {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -73,21 +75,21 @@ font-weight: bold;
     cursor: pointer;
   }
   
-  .rDLListRequest-search-bar {
+  .rDLListReport-search-bar {
     display: flex;
   }
   
-  .rDLListRequest-search-bar input {
+  .rDLListReport-search-bar input {
     flex-grow: 1;
     padding: 5px;
     width: 200px;
 
   }
-  .rDLListRequest-search-bar i{
+  .rDLListReport-search-bar i{
     position: relative;
     color:gray;
     top: 7px;
-  left: 205px;
+  left: 175px;
   }
   
   .search-bar button {
@@ -97,9 +99,9 @@ font-weight: bold;
     cursor: pointer;
   }
   
-  .rDLListRequest-results-info {
+  .rDLListReport-results-info {
     text-align: right;
-    color: #0011ff;
+    color: rgb(88, 87, 87);
     font-size: 12px;
     font-weight: bold;
   }
@@ -117,9 +119,15 @@ font-weight: bold;
     font-size: 13px;
     color: rgb(70, 69, 69);
   }
+  .rDLListReport-table-N-paginat{
+    background-color: white ;
+  }
+
   
-  th {
-    background-color: #f2f2f2;
+  .rDLListReport-table-N-paginat th {
+    /* background-color: #f2f2f2; */
+    /* background-color: #E7F7F3; */
+    background-color: #E7F7F3;
   }
   
   tr:nth-child(even) {
@@ -162,21 +170,21 @@ font-weight: bold;
     opacity: 0.5;
     cursor: not-allowed;
   }
-  .rDLListRequest-search-N-results{
+  .rDLListReport-search-N-results{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 }
-.rDLListRequest-pagination {
+.rDLListReport-pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
   }
   
-  .rDLListRequest-pagination button {
-    background-color: #008CBA;
+  .rDLListReport-pagination button {
+    background-color: #0B9D84;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -185,49 +193,22 @@ font-weight: bold;
     border-radius: 5px;
   }
   
-  .rDLListRequest-pagination span {
+  .rDLListReport-pagination span {
     margin: 0 10px;
     color: gray;
     font-size: 12px;
   }
-  .rDLListRequest-table-N-paginat{
-    background-color: white ;
-  }
+ 
 
-  /* src/components/Modal.css */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 800px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
+  .rDLListReport-ex-pri-buttons{
+    background-color: #0B9D84;
+    color: white;
+    margin: 5px;
     border: none;
-    font-size: 24px;
-    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
   }
-  .rdlListReports-ex-pri-buttons{
-    background-color: #008CBA;
+  .rDLListReport-action-button-add-reports{
+    background-color: #0B9D84;
     color: white;
   }

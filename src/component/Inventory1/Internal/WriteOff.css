@@ -1,38 +1,49 @@
-/* WriteOff.css */
-.write-off-content {
+.writeOff-content {
     margin-bottom: 20px;
-    padding: 20px;
+    padding: 0;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.writeOff-content
-{
     width: 98%;
 }
-.write-off-table {
+
+/* .writeOff-tab-content {
     width: 100%;
+} */
+
+.writeOff-write-off-table {
+    width: 100%;
+    margin-left: 5px;
     border-collapse: collapse;
     margin-bottom: 20px;
     table-layout: auto; /* Allows the table to adjust based on content */
+    overflow-x: auto;
+}
+.write-off-header{
+    font-size: 16px;
+    margin-left: 10px;
 }
 
-.write-off-table th,
-.write-off-table td {
-    padding: 12px;
+.writeOff-write-off-table th,
+.writeOff-write-off-table td {
+    padding: 8px;
     text-align: left;
     border: 1px solid #ccc;
     word-wrap: break-word;
     font-size: 14px;
 }
 
-.write-off-table th {
-    background-color: #2196F3;
-    color: white;
+.writeOff-write-off-table th {
+    background-color: #f2f2f2;
+    color: black;
+    position: sticky;
+    font-size: 16px;
+    top: 0;
+    z-index: 1;
 }
 
-.write-off-table input[type="text"],
-.write-off-table input[type="date"] {
+.writeOff-write-off-table input[type="text"],
+.writeOff-write-off-table input[type="date"] {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -40,87 +51,198 @@
     box-sizing: border-box; /* Ensure the input width includes padding */
 }
 
-.write-off-table .remove-row {
+.writeOff-remove-row {
     background-color: #d32f2f;
     color: white;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
 }
 
-.totals-container {
-    width: 100%;
+.writeOff-remove-row:hover {
+    background-color: #b71c1c;
+}
+
+.writeOff-add-row {
+    background-color: #1976d2;
+    color: white;
+    margin-left: 2px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    /* transition: background-color 0.3s ease; */
+    margin-bottom: 10px;
+    border: none; /* Ensure no border is applied */
+}
+
+
+/* .writeOff-totals-container {
+    width: 98%;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     flex-direction: column;
-}
+    margin-top: 20px;
+} */
 
-.totals {
+.writeOff-totals {
     width: 100%;
-    max-width: 300px; /* Controls the max width of the totals section */
+    max-width: 350px; /* Adjusted the max width */
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
 }
 
-.totals label {
+.writeOff-totals label {
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
-    font-weight: bold;
     font-size: 14px;
 }
 
-.totals input[type="text"] {
-    width: 150px;
+.writeOff-totals input[type="text"] {
+    width: 160px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     text-align: right;
     box-sizing: border-box;
+    background-color: #f1f1f1;
 }
 
-.buttons {
+.writeOff-buttons {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
+    gap: 10px; /* Added gap for better spacing */
 }
 
-.buttons button {
+.writeOff-write-off-request {
     padding: 10px 20px;
-    margin-left: 10px;
     border: none;
     cursor: pointer;
     border-radius: 4px;
     font-size: 14px;
-}
-
-.write-off-request {
     background-color: #388e3c;
     color: white;
+    transition: background-color 0.3s ease;
 }
 
-.cancel {
+.writeOff-write-off-request:hover {
+    background-color: #2e7d32;
+}
+
+.writeOff-cancel {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
     background-color: #d32f2f;
     color: white;
+    transition: background-color 0.3s ease;
+}
+
+.writeOff-cancel:hover {
+    background-color: #c62828;
 }
 
 @media (max-width: 768px) {
-    .totals {
+    .writeOff-totals {
         width: 100%;
         max-width: none; /* Allows totals to take full width on smaller screens */
     }
 
-    .buttons {
+    .writeOff-buttons {
         justify-content: center;
     }
 
-    .buttons button {
+    .writeOff-buttons button {
         flex: 1 1 100%; /* Makes buttons take full width on small screens */
-        margin-left: 0;
         margin-bottom: 10px;
     }
 }
 
+
+/*  */
+
+.writeOff-totals-container {
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align the container to the right side */
+    margin-top: 20px;
+}
+
+.writeOff-totals {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 350px; /* Adjust the max width if needed */
+}
+
+.writeOff-total-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.writeOff-total-field label {
+    margin-right: 10px; /* Space between label and input */
+    font-weight: bold;
+    font-size: 14px;
+    flex-basis: 40%; /* Adjust if necessary */
+}
+
+.writeOff-total-field input[type="text"] {
+    width: 100%; /* Full width input */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: #f1f1f1;
+    text-align: right;
+}
+
+.writeOff-buttons {
+    display: flex;
+    gap: 10px; /* Spacing between buttons */
+    margin-top: 20px;
+    justify-content: flex-end; /* Align buttons to the right */
+}
+
+.writeOff-write-off-request {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #388e3c;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.writeOff-write-off-request:hover {
+    background-color: #2e7d32;
+}
+
+.writeOff-cancel {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #d32f2f;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.writeOff-cancel:hover {
+    background-color: #c62828;
+}

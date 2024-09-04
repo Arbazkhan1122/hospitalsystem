@@ -1,9 +1,12 @@
+/* PatientQueue_Mohini_4/9/2024/css_startLine_1_to_EndLine_406 */
+
+
 .patient-queue-management-container {
   background-color: #ccefff;
   font-family: Arial, sans-serif;
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
   }
   /* .queue-management-content{
@@ -24,15 +27,15 @@
   .queue-management-header-button {
     background-color: #005eb8;
     color: white;
-    padding: 8px 16px;
+    padding: 8px 8px;
     border: none;
+    font-size: 14px;
     border-radius: 5px;
-    font-weight: bold;
     cursor: pointer;
   }
   
   .queue-management-content {
-    padding: 20px;
+    /* padding: 20px; */
     border-radius: 8px;
     margin-top: 10px;
   }
@@ -56,13 +59,14 @@
   
   .queue-management-form-group label {
     color: #004080;
-    font-size: 16px;
+    font-size: 14px;
     margin-right: 5px;
   }
   
   .queue-management-select-doctor {
     padding: 5px;
     margin-left: 40px;
+    font-size: 14px;
     border: 1px solid #cccccc;
     border-radius: 5px;
     min-width: 200px;
@@ -85,10 +89,10 @@
   .queue-management-load-data-button {
     background-color: #5d9cec;
     color: white;
-    padding: 10px 20px;
+    font-size: 14px;
+    padding: 10px 10px;
     border: none;
     border-radius: 5px;
-    font-weight: bold;
     cursor: pointer;
   }
   
@@ -130,8 +134,10 @@
   
   .queue-management-table-section th, 
   .queue-management-table-section td {
-    padding: 10px;
-    text-align: left;
+    padding: 5px;
+    text-align: center; /* Center-align the text in table headers */
+    font-size: 14px;
+    /* text-align: left; */
     border: 1px solid #ccc;
   }
   .queue-managemnt-table{
@@ -146,6 +152,9 @@
 
   .queue-management-table-section thead th {
     background-color: #f5f5f5;
+    font-size: 14px;
+    text-align: center; /* Ensure headers are centered in the thead section */
+
   }
   
   .queue-management-no-data {
@@ -169,6 +178,7 @@
   .queue-management-pagination-button {
     padding: 5px 10px;
     margin: 0 5px;
+    font-size: 14px;
     border: none;
     background-color: #90caf9;
     color: white;
@@ -177,20 +187,221 @@
   }
   .queue-management-results-info {
     color: #0F63AF;
-    font-size: 16px;
+    font-size: 14px;
     display: flex;
     justify-content: flex-end; /* Aligns the text to the left */
 }
-.patientQueueDataBTN{
-  background-color: rgb(128, 210, 5);
-  display: flex;
+
+
+.que-complete-button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  padding: 5px 10px;
   margin: 5px;
-  padding: 0 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
 }
-.patientQueueDataBTN-disabled{
-  background-color: rgb(128, 210, 5);
-  display: flex;
+
+.que-complete-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.que-skipped-button {
+  background-color: #f44336; /* Red */
+  color: white;
+  border: none;
+  padding: 5px 10px;
   margin: 5px;
-  padding: 0 10px;
-  cursor: not-allowed;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
 }
+
+.que-skipped-button:hover {
+  background-color: #e53935; /* Darker red on hover */
+}
+
+
+/* Responsive  */
+
+
+/* Responsive  */
+
+/* Responsive adjustments for mobile view */
+@media (max-width: 768px) {
+  .queue-management-form-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .queue-management-form-group {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px; /* Adds space between stacked form groups */
+  }
+
+  .queue-management-status-options {
+    flex-direction: column; /* Stack checkboxes vertically */
+  }
+
+  /* .queue-management-search-container {
+    flex-direction: column;
+    align-items: flex-start;
+  } */
+
+  .queue-management-search-container input {
+    width: 100%; 
+    margin-bottom: 10px; 
+  }
+
+  /* .queue-management-search-button {
+    margin-left: 0; 
+  } */
+
+  .queue-management-table-section th,
+  .queue-management-table-section td {
+    padding: 8px 5px; /* Adjust padding for smaller screens */
+  }
+
+  /* .queue-management-pagination {
+    flex-direction: column; 
+  } */
+
+  /* .queue-management-pagination-button {
+    width: 100%; 
+    margin: 5px 0;
+  }
+
+  .queue-management-results-info {
+    font-size: 12px; 
+    justify-content: flex-start; 
+  } */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  /* Adjust pagination to stack vertically on smaller screens */
+  /* .queue-management-pagination {
+      flex-direction: column;
+  } */
+
+  /* Ensure pagination buttons fit within the available space */
+  /* .queue-management-pagination-button {
+      width: 100%;
+      margin: 5px 0;
+  } */
+
+  /* Reduce font size for results info */
+  /* .queue-management-results-info {
+      font-size: 12px;
+      justify-content: flex-start;
+  } */
+}
+
+/*  */
+
+
+.patient-queue-management-container {
+  background-color: #ccefff;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  height: 100%;
+  /* padding: 20px; */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.patient-queue-management-header {
+  background-color: white;
+}
+
+.queue-management-header {
+  /* padding: 10px; */
+  font-size: 14px;
+  text-align: left;
+}
+
+.queue-management-header-button {
+  background-color: #005eb8;
+  color: white;
+  padding: 8px 8px;
+  border: none;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.queue-management-content {
+  /* padding: 20px; */
+  border-radius: 8px;
+  /* margin-top: 10px; */
+  flex: 1; /* Allow content to grow and take up available space */
+}
+
+.queue-management-title {
+  font-size: 16px;
+  /* margin-bottom: 20px; */
+  color: #004080;
+}
+
+.queue-management-table-section {
+  /* margin-top: 20px; */
+  max-height: 400px; /* Adjust the height as needed */
+  overflow-y: auto; /* Only vertical scrollbar when needed */
+}
+
+.queue-management-table-section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.queue-management-table-section th, 
+.queue-management-table-section td {
+  padding: 5px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #ccc;
+  background-color: white; /* Ensure background remains white */
+}
+
+.queue-management-table-section thead th {
+  background-color: #f5f5f5;
+  font-size: 14px;
+}
+
+/* Hide scrollbar when not needed */
+.queue-management-table-section::-webkit-scrollbar {
+  width: 0; /* For Webkit-based browsers like Chrome */
+}
+
+.queue-management-table-section {
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
+}
+
+
+/*  */
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .queue-management-search-container {
+    flex-direction: column;
+    align-items: stretch; /* Stretches children to full width */
+  }
+
+  .queue-management-search-container input,
+  .queue-management-search-button {
+    width: 100%; /* Makes the input and button full width */
+    margin: 5px 0; /* Adds space between stacked elements */
+  }
+
+  .queue-management-search-button {
+    font-size: 14px; /* Adjust font size for smaller screens */
+  }
+}
+/* PatientQueue_Mohini_4/9/2024/css_startLine_1_to_EndLine_406 */

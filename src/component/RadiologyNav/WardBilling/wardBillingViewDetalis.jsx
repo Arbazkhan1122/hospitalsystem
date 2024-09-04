@@ -3,12 +3,12 @@ import '../WardBilling/wardBillingViewDetalis.css';
 
 function WardBillingViewDetails() {
   return (
-    <div className="radiology-ward-billing">
-      <h2>Radiology Ward Billing</h2>
-      <div className="patient-info">
+    <div className="wardBillingViewDetalis-ward-billing">
+      <h5>Radiology Ward Billing</h5>
+      <div className="wardBillingViewDetalis-patient-info">
         <div>
           <span>Name : </span>
-          <span className="highlight">ANGEL VARGAS MONTERO</span>
+          <span className="wardBillingViewDetalis-highlight">ANGEL VARGAS MONTERO</span>
         </div>
         <div>Hospital No : 2407003799</div>
         <div>Age/Sex : 32 Y/Female</div>
@@ -17,11 +17,11 @@ function WardBillingViewDetails() {
         <div>Doctor : Dr. VICTOR OCHIENG OKECH</div>
       </div>
 
-      <h3>Already Requested Items:</h3>
-      <table className="requested-items">
+      <h6>Already Requested Items:</h6>
+      <table className="wardBillingViewDetalis-requested-items">
         <thead>
           <tr>
-            <th>Date (BS)<span className="sort-icon">↕</span></th>
+            <th>Date (BS)<span className="wardBillingViewDetalis-sort-icon">↕</span></th>
             <th>Type</th>
             <th>Imaging Name</th>
             <th>Qty.</th>
@@ -40,13 +40,13 @@ function WardBillingViewDetails() {
             <td>active</td>
             <td>Mr. admin admin</td>
             <td><input type="text" /></td>
-            <td><button className="cancel-btn">Cancel</button></td>
+            <td><button className="wardBillingViewDetalis-cancel-btn">Cancel</button></td>
           </tr>
         </tbody>
       </table>
 
-      <h3>Request new items:</h3>
-      <table className="new-items">
+      <h6>Request new items:</h6>
+      <table className="wardBillingViewDetalis-new-items">
         <thead>
           <tr>
             <th></th>
@@ -60,12 +60,12 @@ function WardBillingViewDetails() {
         </thead>
         <tbody>
           <tr>
-            <td><button className="remove-btn">×</button></td>
+            <td><button className="wardBillingViewDetalis-remove-btn">×</button></td>
             <td><input type="text" placeholder="Enter Department" /></td>
             <td><input type="text" placeholder="Enter Name" /></td>
             <td>
               <input type="text" placeholder="Enter Name" />
-              <button className="add-btn">+</button>
+              <button className="wardBillingViewDetalis-add-btn"><i class="fa-solid fa-plus"></i></button>
             </td>
             <td><input type="text" placeholder="Enter Item Name" /></td>
             <td><input type="number" defaultValue="1" /></td>
@@ -73,7 +73,8 @@ function WardBillingViewDetails() {
           </tr>
         </tbody>
       </table>
-      <button className="request-btn">Request</button>
+      <div className="wardBillingViewDetalis-request-btn-div"></div>
+      <button className="wardBillingViewDetalis-request-btn">Request</button>
     </div>
   );
 }

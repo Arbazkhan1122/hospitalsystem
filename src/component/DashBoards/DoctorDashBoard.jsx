@@ -4,7 +4,7 @@ import PatientRecord from './OutPatient'; // Import the PatientRecord component
 import InPatient from '../DashBoards/InPatient'; // Import the InPatient component
 import Records from '../DashBoards/PatientsRecord'; // Import the Records component
 
-const Dashboard = () => {
+const DrDashboard = () => {
   // State to manage which content to display
   const [activeSection, setActiveSection] = useState('');
 
@@ -14,6 +14,7 @@ const Dashboard = () => {
   };
 
   return (
+    
     <div className="dashboard-container">
       <div className="button-group">
         <button
@@ -44,4 +45,4 @@ const Dashboard = () => {
   );
 }
 
-export default Dashboard;
+export default DrDashboard;

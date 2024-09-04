@@ -1,81 +1,74 @@
-import React from 'react';
-import "../HhWardInformation/hhWardInformation.css"
+import React, { useState, useEffect } from 'react';
+import "../HhWardInformation/hhWardInformation.css";
+
 function HHWardInformation() {
+  const [wardData, setWardData] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from API
+    fetch("http://192.168.1.34:1415/api/ward-department/getAllWardDepartment")
+      .then(response => response.json())
+      .then(data => setWardData(data))
+      .catch(error => console.error("Error fetching data:", error));
+  }, []);
 
   const handlePrint = () => {
     window.print();
   };
 
+  const calculateTotals = () => {
+    return wardData.reduce((totals, ward) => {
+      totals.occupied += ward.occupied;
+      totals.vacant += ward.vacant;
+      totals.reserved += ward.reserved;
+      totals.total += ward.numberOfBeds;
+      return totals;
+    }, { occupied: 0, vacant: 0, reserved: 0, total: 0 });
+  };
+
+  const totals = calculateTotals();
+
   return (
     <div className="wardInformation-container">
-
-    <div className="wardInformation-heading">
+      <div className="wardInformation-heading">
         <h3>List Of Wards:</h3>
-   </div>
+      </div>
       
-       
-        <table>
-          <thead>
-            <tr>
-              <th>Ward Name</th>
-              <th>Occupied</th>
-              <th>Vacant</th>
-              <th>Reserved</th>
-              <th>Total</th>
+      <div className="wardInformation-button-container">
+        <button className="wardInformation-print-btn" onClick={handlePrint}>
+          <i className="fa-solid fa-print"></i> Print
+        </button>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Ward Name</th>
+            <th>Occupied</th>
+            <th>Vacant</th>
+            <th>Reserved</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {wardData.map((ward, index) => (
+            <tr key={index}>
+              <td className='wardInformation-wardNameColumn'>{ward.wardName}</td>
+              <td>{ward.occupied}</td>
+              <td>{ward.vacant}</td>
+              <td>{ward.reserved}</td>
+              <td>{ward.numberOfBeds}</td>
             </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className='wardInformation-wardNameColumn'>Brain Ward</td>
-              <td>0</td>
-              <td>1</td>
-              <td>0</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td className='wardInformation-wardNameColumn'>Female Ward</td>
-              <td>4</td>
-              <td>2</td>
-              <td>0</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <td className='wardInformation-wardNameColumn'>ICU</td>
-              <td>1</td>
-              <td>5</td>
-              <td>0</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <td className='wardInformation-wardNameColumn'>Male Ward</td>
-              <td>4</td>
-              <td>1</td>
-              <td>1</td>
-              <td>6</td>
-            </tr>
-            <tr>
-              <td className='wardInformation-wardNameColumn'>MATERNITY WARD</td>
-              <td>3</td>
-              <td>5</td>
-              <td>0</td>
-              <td>8</td>
-            </tr>
-            <tr>
-              <td className='wardInformation-wardNameColumn'>Private Ward</td>
-              <td>1</td>
-              <td>4</td>
-              <td>0</td>
-              <td>5</td>
-            </tr>
-            <tr className="wardInformation-total-row">
-              <td>Total</td>
-              <td>13</td>
-              <td>18</td>
-              <td>1</td>
-              <td>32</td>
-            </tr>
-          </tbody>
-        </table>
+          ))}
+          <tr className="wardInformation-total-row">
+            <td>Total</td>
+            <td>{totals.occupied}</td>
+            <td>{totals.vacant}</td>
+            <td>{totals.reserved}</td>
+            <td>{totals.total}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }

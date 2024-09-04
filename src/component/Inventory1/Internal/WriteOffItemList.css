@@ -1,84 +1,104 @@
 /* WriteOffItemsList.css */
-.writeOffList-content{
+
+.writeOffList-inventory-content {
     width: 98%;
 }
 
-.search-bar {
+.writeOffList-inventory-search-bar {
     display: flex;
+    margin-top: 10px;
+
     margin-bottom: 20px;
+    width: 20%;
 }
 
-
-.search-bar input {
+.writeOffList-inventory-search-bar input {
     flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px 0 0 4px;
 }
 
-.search-bar button {
-    padding: 10px;
+.writeOffList-inventory-search-bar button {
+    margin-left: -30px;
     border: none;
-    background-color: #2196F3;
-    color: #fff;
+    background: none; /* Remove any background color */
     cursor: pointer;
-    border-radius: 0 4px 4px 0;
+    padding: 0; /* Remove any padding */
 }
 
-.writeOffList-results {
+.writeOffList-inventory-results {
     display: flex;
     align-items: center;
     justify-content: end;
     margin-bottom: 20px;
 }
 
-.writeOffList-results span {
-    margin-right: 10px;
+.writeOffList-inventory-results span {
+    margin-right: 5px;
+    font-size: 16px;
+    color: #2196F3;
 }
 
-.writeOffList-results button {
+.writeOffList-inventory-results button {
     padding: 10px;
     border: none;
     background-color: #2196F3;
     color: #fff;
     cursor: pointer;
 }
+.wite-off-tab{
+    background-color: white;
+}
 
-.write-off-list-table {
+.writeOffList-inventory-write-off-list-table {
     width: 100%;
+    margin-left: 10px;
     border-collapse: collapse;
     background-color: #fff;
 }
 
-.write-off-list-table th,
-.write-off-list-table td {
-    padding: 10px;
+.writeOffList-inventory-write-off-list-table th,
+.writeOffList-inventory-write-off-list-table td {
+    padding: 5px;
+    font-size: 16px;
+    background-color: #f2f2f2;
     text-align: left;
     border: 1px solid #ddd;
 }
+.writeOffList-inventory-write-off-list-table th{
+    background-color: #f2f2f2;
+}
+.writeOffList-inventory-write-off-list-table tbody tr:hover {
+    background-color: #e0e0e0; /* Adjust the color to your preference */
+}
 
-.writeOffList-pagination {
+
+.writeOffList-inventory-writeOffList-pagination {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap; /* Ensure the elements wrap on smaller screens */
-    margin-top: 20px;
+    margin-top: 10px;
 }
-.writeOffList-pagination-div
-{
+
+.writeOffList-inventory-writeOffList-pagination-div {
     width: 50%;
     padding: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2px;
-
 }
-.writeOffList-pagination-div button
-{
+
+.writeOffList-inventory-writeOffList-pagination-div button {
     background: #2196F3;
     border: none;
     padding: 5px 7px;
     color: white;
+    cursor: pointer;
 }
+
+
+/*  */

@@ -8,6 +8,8 @@
   .purchase-item {
     background-color: #eaf4fe;
     padding: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
     border-radius: 10px;
     display: flex;
     align-items: center;

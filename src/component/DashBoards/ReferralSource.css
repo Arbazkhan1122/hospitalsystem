@@ -1,0 +1,67 @@
+.hist-container {
+    width: 100%;
+    padding: 20px;
+    background-color: #f5f6fa; /* Light gray background color */
+  }
+  
+  .hist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e1f5fe; /* Light blue border */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .hist-required {
+    color: red;
+    font-size: 20px;
+    margin-right: 5px;
+  }
+  
+  .hist-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0d47a1; /* Dark blue color */
+  }
+  
+  .hist-add-button {
+    background-color: #7f5af0; /* Purple background color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .hist-add-button:hover {
+    background-color: #6a47e0; /* Darker purple on hover */
+  }
+  
+  .hist-problem-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hist-problem-list-table th {
+    background-color: #e1f5fe; /* Light blue header background */
+    color: #607d8b; /* Grayish text color */
+    padding: 10px;
+    text-align: left;
+    font-weight: normal;
+    font-size: 14px;
+    border-bottom: 2px solid #e1f5fe;
+  }
+  
+  .hist-problem-list-table th:first-child {
+    border-top-left-radius: 5px;
+  }
+  
+  .hist-problem-list-table th:last-child {
+    border-top-right-radius: 5px;
+  }
+  

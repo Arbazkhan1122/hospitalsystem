@@ -1,0 +1,11 @@
+.cliDoc-container {
+    display: flex;
+    background-color: gray;
+    padding: 10px;
+  }
+  
+  .cliDoc-field {
+    margin-right: 20px;
+    color: white; /* Optional: to ensure the text is readable on the gray background */
+  }
+  

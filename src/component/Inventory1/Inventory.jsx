@@ -4,7 +4,7 @@ import Internal from "./Internal/Internal";
 import Stock from "./Stock/Stock";
 import Reports from "./Reports/Reports";
 import ReturnToVendor from "./ReturnToVendor/ReturnToVendor";
-import Donate from "./Donate/Donate";
+// import Donate from "./Donate/Donate";
 import Navbar from "./Navbar/Navbar";
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ const Inventory = () => {
         <Route path="/stock/*" element={<Stock/>} />
         <Route path="/reports/*" element={<Reports />} />
         <Route path="/return-to-vendor" element={<ReturnToVendor />} />
-        <Route path="/donate" element={<Donate />} />
+        {/* <Route path="/donate" element={<Donate />} /> */}
       </Routes>
     </div>
   )

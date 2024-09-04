@@ -33,11 +33,7 @@ const Sticker = ({ patient, onClose }) => {
           <div class="sticker">
             <h2>IMMUNIZATION</h2>
             <p>Date: ${patient?.lastVisDate}</p>
-            <p>Hospital No.: ${
-              patient?.hospitalNo
-            }  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Vacc. Reg. No: ${
-      patient?.vaccRegNo
-    }</p>
+            <p>Vacc. Reg. No: ${patient?.vaccinationId}</p>
             <p>Name: ${patient?.babyName}</p>
             <p>BABY'S DOB:</p>
             <p>Address: ${patient?.address}</p>
@@ -58,14 +54,16 @@ const Sticker = ({ patient, onClose }) => {
         </button>
         <div className="vaccinationSticker__content">
           <h2>IMMUNIZATION</h2>
-          <p>Date: {patient?.lastVisDate}</p>
           <p>
-            Hospital No.: {patient?.hospitalNo}{" "}
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Vacc. Reg. No:{" "}
-            {patient?.vaccRegNo}
+            Date:{" "}
+            {patient?.vaccinationDoses?.length
+              ? patient.vaccinationDoses[patient.vaccinationDoses.length - 1]
+                  .vaccinationDate
+              : null}
           </p>
+          <p>Vacc. Reg. No: {patient?.vaccinationId}</p>
           <p>Name: {patient?.babyName}</p>
-          <p>BABY'S DOB:</p>
+          <p>BABY'S DOB: {patient?.dateOfBirth}</p>
           <p>Address: {patient?.address}</p>
           <p className="vaccinationSticker_generatedby">
             Time: {new Date().toLocaleString()} User: admin
