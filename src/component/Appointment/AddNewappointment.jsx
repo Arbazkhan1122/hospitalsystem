@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../Appointment/AddNewPpointment.css';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const AddNewAppointmentForm = () => {
 
@@ -22,6 +23,35 @@ const AddNewAppointmentForm = () => {
         visitType: 'New Patient',
         employeeId: 0, // Added employeeId to the form data
     });
+    const [departments,setDepartments]=useState([]);
+    const [selectedDepartment,setselectedDepartment]=useState("");
+    const [doctors,setDoctors]=useState([]);
+    const [formDoctorData,setformDoctorData]=useState({
+        department:'',
+        doctor:'',
+    })
+
+    useEffect(()=>{
+        axios.get("http://192.168.1.34:1415/api/departments/getAllDepartments")
+        .then((response)=>{
+            setDepartments(response.data);
+        })
+        .catch((error)=>{
+            console.error("Error fetching departments",error);
+        })
+    },[]);
+
+    const handleDepartmentChange=async(e)=>{
+        const selectedDept=e.target.value;
+        const response = await axios.get(`http://192.168.1.34:1415/api/employees/department/${selectedDept}`)
+        if(response.status===200){
+           setDoctors(response.data)
+        }
+       
+    }
+    const handleChangedoctor=(e)=>{
+        setformDoctorData({...formDoctorData,[e.target.name]:e.target.value});
+    }
 
     const { id } = useParams(); // Use id if necessary
 
@@ -37,7 +67,7 @@ const AddNewAppointmentForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const apiUrl = 'http://localhost:1415/api/appointments/save-new-appointment';
+        const apiUrl = 'http://192.168.1.34:1415/api/appointments/save-new-appointment';
 
 
         try {
@@ -61,7 +91,7 @@ const AddNewAppointmentForm = () => {
                     // doctor: formData.doctor,
                     visitType: formData.visitType,
                     employee: {
-                        employeeId: parseInt(formData.employeeId, 10), // Include employeeId under employee
+                        employeeId: parseInt(formData.employeeId), // Include employeeId under employee
                     },
                 }),
             });
@@ -270,23 +300,42 @@ const AddNewAppointmentForm = () => {
                 {/* Right Side Inputs */}
                 <div className="addnewaptmtpatient-group">
                     <label>Department</label>
-                    <input
+                    {/* <input
                         type="text"
                         name="department"
                         value={formData.department}
                         onChange={handleChange}
                         placeholder="Department Name"
-                    />
+                    /> */}
+
+                <select
+                    name="department"
+                    value={formData.department}
+                    onChange={handleDepartmentChange}
+                >
+                {departments.map((dept) => (
+                    <option key={dept.departmentId} value={dept.departmentId}>
+                        {dept.departmentName}
+                    </option>
+                ))}
+                </select>
                 </div>
                 <div className="addnewaptmtpatient-group">
                     <label>Doctor</label>
-                    <input
-                        type="text"
-                        name="doctor"
-                        // value={formData.doctor}
-                        // onChange={handleChange}
-                        placeholder="Doctor's Name"
-                    />
+                    <select
+                    name="doctor"
+                    value={formData.doctor}
+                    onChange={handleChangedoctor}
+                   
+                >
+                    {doctors.map((doctor, index) => (
+                        <option key={index} value={doctor.employeeId}>
+                            {doctor.firstName} {doctor.lastName}
+                        </option>
+                    ))}
+                </select>
+                    
+
                 </div>
                 <div className="addnewaptmtpatient-group">
                     <label>Select Visit Type</label>

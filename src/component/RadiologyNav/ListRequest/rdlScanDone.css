@@ -1,4 +1,4 @@
-/* .modal-backdrop {
+.rDLListRequest-ScanDone-modal-backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -9,49 +9,63 @@
     justify-content: center;
     align-items: center;
   }
+  .rDLListRequest-ScanDone-modal form{
+margin-left: 20px
+  }
   
-  .modal {
+  .rDLListRequest-ScanDone-modal {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
-    width: 400px;
+    width: 600px;
     position: relative;
   }
   
-  h2 {
-    color: #3366cc;
+ .rDLListRequest-ScanDone-modal h2 {
+  display: flex;
+  justify-content: center;
+    color: #565758;
     margin-top: 0;
     margin-bottom: 20px;
-    font-size: 1.2em;
+    font-size: 1.0em;
   }
   
-  .form-group {
+  .rDLListRequest-ScanDone-form-group {
+  display: flex;
+
     margin-bottom: 15px;
+    /* width: 270px; */
   }
   
-  label {
+  .rDLListRequest-ScanDone-form-group label {
     display: block;
     margin-bottom: 5px;
+    width: 100px;
+    color: black;
+    font-size: 12px;
   }
   
-  input, select, textarea {
-    width: 100%;
+ .rDLListRequest-ScanDone-form-group input, 
+ .rDLListRequest-ScanDone-form-group select,
+ .rDLListRequest-ScanDone-form-group textarea {
+    width: 170px;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    /* height: 0px; */
   }
-  
-  textarea {
-    height: 60px;
+  .rDLListRequest-ScanDone-form-group input{
+    width: 170px !important;
   }
+
   
-  .form-actions {
+  .rDLListRequest-ScanDone-form-actions {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
   }
   
-  button {
+  .rDLListRequest-ScanDone-button {
     padding: 8px 15px;
     border: none;
     border-radius: 3px;
@@ -59,23 +73,32 @@
     margin-left: 10px;
   }
   
-  .done-btn {
+  .rDLListRequest-ScanDone-done-btn {
+    gap: 10px;
     background-color: #4a90e2;
     color: white;
+    padding: 7px;
+    margin-right: 5px;
+    border-radius: 5px;
+    border: none;
+    
   }
   
-  .cancel-btn {
-    background-color: #f0f0f0;
-    color: #333;
+  .rDLListRequest-ScanDone-cancel-btn {
+    border: 1px solid #4a90e2;
+    border-radius: 5px;
+    background-color: white;
+    color: #4a90e2;
   }
   
-  .close-btn {
+  .rDLListRequest-ScanDone-close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: none;
-    border: none;
+    background: red;
+    border: 1px solid red;
     font-size: 1.5em;
     cursor: pointer;
-    color: #ff0000;
-  } */
+    color: white;
+    
+  }

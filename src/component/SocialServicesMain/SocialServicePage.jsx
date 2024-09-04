@@ -1,86 +1,19 @@
-
-
-// import React from 'react';
-// import "../SocialServicesMain/socialServicePage.css"
-
-// function SocialServicePage() {
-//   const handlePrint = () => {
-//     window.print();
-//   };
-
-//   return (
-//     <div className="ssu-patient-list">
-//       <button className='ssuPatient-bttn'>SSU Patient List</button>
-//       <div className="socialService-content">
-//         <div className="socialService-top-controls">
-//           <button className="socialService-register-button">+ Register New SSU Patient</button>
-//           <div className="socialService-edit-patient">
-//             <span>Edit Information Of</span>
-//             <input type="text" placeholder="Existing Patient Name" />
-//           </div>
-//         </div>
-
-//         <div className="socialService-patient-status-main">
-//           <div className="socialService-patient-status">
-//             <span>List by Patient Status:</span>
-//             <label><input type="radio" name="status" value="all" defaultChecked /> All</label>
-//             <label><input type="radio" name="status" value="active" /> Active</label>
-//             <label><input type="radio" name="status" value="inactive" /> Inactive</label>
-//           </div>
-//         </div>
-
-//         <div className="socialService-search-N-result">
-//           <div className="socialService-search-bar">
-//             <input type="text" placeholder="Search (Minimum 3 Character)" />
-//             <button className="search-button">🔍</button>
-//           </div>
-//           <div className="socialService-results-info">
-//             <span>Showing 0 / 0 results </span>
-//             <button className="socialService-print-button" onClick={handlePrint}>Print</button>
-//           </div>
-//         </div>
-
-//         <div className="socialService-table-N-bttns">
-//           <table>
-//             <thead>
-//               <tr>
-//                 <th>Hospital Number</th>
-//                 <th>Patient Name</th>
-//                 <th>Age/Sex</th>
-//                 <th>Address</th>
-//                 <th>Phone</th>
-//                 <th>Actions</th>
-//               </tr>
-//             </thead>
-//             <tbody>
-//               <tr>
-//                 <td colSpan="6" className="no-data">No Rows To Show</td>
-//               </tr>
-//             </tbody>
-//           </table>
-//           <div className="socialService-pagination">
-//             <span>0 to 0 of 0</span>
-//             <button>First</button>
-//             <button>Previous</button>
-//             <span>Page 0 of 0</span>
-//             <button>Next</button>
-//             <button>Last</button>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default SocialServicePage;
-
-
-import React, { useState } from 'react';
-import "../../component/SocialServicesMain/SocialServicePage.css";
-import RegisterNewSSUPatient from './registerNewSSUPatient';
+import React, { useEffect, useState } from "react";
+import "./SocialServicePage.css";
+import RegisterNewSSUPatient from "./registerNewSSUPatient";
 
 function SocialServicePage() {
   const [showPopup, setShowPopup] = useState(false);
+  const [data, setData] = useState(null);
+  const [selectedEdit, setSelectedEdit] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(""); // State for search query
+
+  useEffect(() => {
+    fetch("http://192.168.1.37:7676/api/patients/show-all-patient-details")
+      .then((res) => res.json())
+      .then((data) => setData(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const handlePrint = () => {
     window.print();
@@ -90,40 +23,80 @@ function SocialServicePage() {
     setShowPopup(!showPopup);
   };
 
+  const handleEdit = (data) => {
+    setSelectedEdit(data);
+    togglePopup();
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value); // Update search query state
+  };
+
+  // Filter data based on search query
+  const filteredData = data
+    ? data.filter((item) =>
+        `${item.firstName} ${item.lastName}`
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase())
+      )
+    : [];
+
   return (
     <div className="ssu-patient-list">
-      <button className='ssuPatient-bttn'>SSU Patient List</button>
+      <button className="ssuPatient-bttn">SSU Patient List</button>
       <div className="socialService-content">
         <div className="socialService-top-controls">
-          <button 
-            className="socialService-register-button" 
-            onClick={togglePopup}
+          <button
+            className="socialService-register-button"
+            onClick={() => {
+              setSelectedEdit(null);
+              togglePopup();
+            }}
           >
             + Register New SSU Patient
           </button>
-          <div className="socialService-edit-patient">
+          {/* <div className="socialService-edit-patient">
             <span>Edit Information Of</span>
             <input type="text" placeholder="Existing Patient Name" />
-          </div>
+          </div> */}
         </div>
 
         <div className="socialService-patient-status-main">
           <div className="socialService-patient-status">
             <span>List by Patient Status:</span>
-            <label><input type="radio" name="status" value="all" defaultChecked /> All</label>
-            <label><input type="radio" name="status" value="active" /> Active</label>
-            <label><input type="radio" name="status" value="inactive" /> Inactive</label>
+            <label>
+              <input type="radio" name="status" value="all" defaultChecked />{" "}
+              All
+            </label>
+            <label>
+              <input type="radio" name="status" value="active" /> Active
+            </label>
+            <label>
+              <input type="radio" name="status" value="inactive" /> Inactive
+            </label>
           </div>
         </div>
 
         <div className="socialService-search-N-result">
           <div className="socialService-search-bar">
-            <input type="text" placeholder="Search (Minimum 3 Character)" />
-            <button className="search-button">🔍</button>
+            <input
+              type="text"
+              placeholder="Search (Minimum 3 Characters)"
+              value={searchQuery} // Bind search query state to input value
+              onChange={handleSearchChange} // Handle input change
+            />
+            <button className="socialService-search-button">🔍</button>
           </div>
           <div className="socialService-results-info">
-            <span>Showing 0 / 0 results </span>
-            <button className="socialService-print-button" onClick={handlePrint}>Print</button>
+            <span>
+              Showing {filteredData.length} / {data ? data.length : 0} results
+            </span>
+            <button
+              className="socialService-print-button"
+              onClick={handlePrint}
+            >
+              Print
+            </button>
           </div>
         </div>
 
@@ -131,7 +104,6 @@ function SocialServicePage() {
           <table>
             <thead>
               <tr>
-                <th>Hospital Number</th>
                 <th>Patient Name</th>
                 <th>Age/Sex</th>
                 <th>Address</th>
@@ -140,27 +112,49 @@ function SocialServicePage() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td colSpan="6" className="no-data">No Rows To Show</td>
-              </tr>
+              {filteredData.length > 0 ? (
+                filteredData.map((item, index) => (
+                  <tr key={index}>
+                    <td>
+                      {item.firstName} {item.lastName}
+                    </td>
+                    <td>
+                      {item.age} {item.ageUnits}/{item.gender}
+                    </td>
+                    <td>{item.address}</td>
+                    <td>{item.phoneNumber}</td>
+                    <td>
+                      <button
+                        onClick={() => handleEdit(item)}
+                        className="socialService-table-editBtn"
+                      >
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="5" className="no-data">
+                    No Rows To Show
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
-          <div className="socialService-pagination">
-            <span>0 to 0 of 0</span>
-            <button>First</button>
-            <button>Previous</button>
-            <span>Page 0 of 0</span>
-            <button>Next</button>
-            <button>Last</button>
-          </div>
         </div>
       </div>
 
       {showPopup && (
         <div className="socialService-popup">
           <div className="socialService-popup-inner">
-            <button className="close-socialService-popup" onClick={togglePopup}>X</button>
-            <RegisterNewSSUPatient />
+            <button className="close-socialService-popup" onClick={togglePopup}>
+              X
+            </button>
+            <RegisterNewSSUPatient
+              togglePopup={togglePopup}
+              patientData={selectedEdit}
+            />
           </div>
         </div>
       )}

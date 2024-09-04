@@ -1,0 +1,96 @@
+.visit-visit-summary {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f0f2f5;
+}
+
+.visit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
+}
+
+.visit-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.visit-title h1 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.visit-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.visit-action-button {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.visit-close-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.visit-nav {
+  display: flex;
+  background-color: #6c5ce7;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+.visit-nav button {
+  background: none;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.visit-nav button.visit-active {
+  background-color: #5541d7;
+}
+
+.visit-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.visit-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.visit-table th, .visit-table td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.visit-table th {
+  background-color: #f1f2f6;
+  font-weight: bold;
+}

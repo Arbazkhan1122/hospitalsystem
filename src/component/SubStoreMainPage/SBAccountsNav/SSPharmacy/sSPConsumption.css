@@ -1,0 +1,152 @@
+/* body {
+  margin: 0;
+  padding: 20px;
+  background-color: #e6f3ff;
+  } */
+  
+  .sSPConsumption-container {
+    font-family: Arial, sans-serif;
+    /* max-width: 1000px; */
+    /* margin: 0 auto; */
+    background-color: #D5FDD5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .sSPConsumption-create-requisition {
+    background-color: #79C879;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .sSPConsumption-search-bar {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .sSPConsumption-search-bar input {
+    flex-grow: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+  }
+  
+  .sSPConsumption-search-bar button {
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  
+  .sSPConsumption-results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .sSPConsumption-btn-print {
+    background-color: #7f56d9;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .sSPConsumption-btn-view, .btn-receive {
+    background-color: #79C879;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .sSPConsumption-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .sSPConsumption-pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .sSPConsumption-pagination button.active {
+    background-color: #79C879;
+    color: white;
+  }
+  
+  .sSPConsumption-pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Popup Overlay */
+.sSPConsumption-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  /* padding: 20px; */
+  z-index: 1000;
+}
+
+/* Popup Content */
+.sSPConsumption-popup-content {
+  background-color: white;
+  /* padding: 10px; */
+  border-radius: 5px;
+  width: 80%;
+  /* max-width: 600px; */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Close Button */
+.sSPConsumption-popup-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}

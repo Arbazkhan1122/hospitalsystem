@@ -1,9 +1,9 @@
-.report-tabs {
+.report-report-tabs {
     display: flex;
     background-color: #ccf2ff;
   }
   
-  .report-tabs button {
+  .report-report-tabs button {
     padding: 10px;
     cursor: pointer;
     border: none;
@@ -12,15 +12,15 @@
     font-size: 16px;
   }
   
-  .report-tabs .active {
+  .report-report-tabs .active {
     border-bottom: 2px solid #2196F3;
   }
-  
-  .content {
+/*   
+  .report-report-content {
     width: 100%;
-    height: calc(100vh - 50px); /* Adjusted based on tabs height */
+    height: calc(100vh - 50px); 
     overflow-y: auto;
     padding: 20px;
     background-color: #f9f9f9;
   }
-  
+   */

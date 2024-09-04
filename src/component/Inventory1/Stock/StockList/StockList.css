@@ -1,35 +1,161 @@
-/* StockList.css */
-.stock-list {
+/* Style for the stock-filters container */
+.stock-filters {
+    display: flex; /* Use flexbox to align items in a row */
+    flex-wrap: wrap; /* Allow items to wrap onto multiple lines if necessary */
+    align-items: center; /* Vertically align items to the center */
+    margin-bottom: 20px; /* Space below the filter section */
+}
+
+/* Style for each label within stock-filters */
+/* Style for select element inside stock-filters */
+.stock-filters select {
+    margin-left: 10px;
+    width: 100%;
+    max-width: 150px;
+    height: 40px; /* Adjust the height of the select element */
+    padding: 5px; /* Optional: add padding for better appearance */
+    box-sizing: border-box; /* Ensure padding is included in the total width/height */
+}
+
+/* Style for checkboxes */
+.stock-filters input[type="checkbox"] {
+    margin-left: 10px;
+    height: 20px; /* Set the height of the checkbox */
+    width: 20px;  /* Set the width of the checkbox for consistent size */
+}
+
+/* Style for label with checkbox */
+.stock-filters label {
+    display: flex; /* Use flexbox for label alignment */
+    align-items: center; /* Vertically center align items */
+    gap: 10px; /* Space between the checkbox and label text */
+    font-size: 16px; /* Font size for the label text */
+    color: #333; /* Color for the label text */
+}
+
+/* Style for the stock-legends container */
+.stock-legends {
+    display: flex; /* Use flexbox to align items in a row */
+    align-items: center; /* Vertically center align items */
+    gap: 20px; /* Space between legend items */
+    margin-top: 20px; /* Space above the legends */
+    color: #333; /* Color for the legend text */
+}
+
+/* Style for the individual legend items */
+.stock-legends .stock-zero-quantity {
+    color: black; /* Color for zero quantity legend */
+}
+
+.stock-legends .stock-below-min-stock {
+    color: #b6a3a3; /* Color for below min stock legend */
+}
+
+/* Additional Styles */
+/* .stock-stock-list {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
     background-color: #f9f9f9;
-}
+} */
 
-.filters {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 20px;
-    gap: 20px;
-}
-
-.filters label {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+.stock-stock-table {
     width: 100%;
-    max-width: 250px;
+    border-collapse: collapse;
 }
 
-.filters select,
-.filters input[type="checkbox"] {
+.stock-stock-table th,
+.stock-stock-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.stock-stock-table th {
+    background-color: #f2f2f2;
+    color: black;
+    font-size: 16px;
+    position: sticky;
+    top: 0;
+}
+
+.stock-view-button,
+.stock-manage-button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    background-color: #42a5f5;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    white-space: nowrap;
+}
+
+.stock-pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.stock-pagination button {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #42a5f5;
+    color: #fff;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.stock-search-export {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.stock-search-export > div {
+    display: flex;
+    align-items: center;
+}
+
+.stock-search-export input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+.stock-search-export button {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
     margin-left: 10px;
-    width: 100%;
-    max-width: 150px;
+    box-sizing: border-box;
 }
 
-.legends {
+.stock-search-export .stock-export {
+    background-color: #42a5f5;
+    color: white;
+}
+
+.stock-search-export .stock-print {
+    background-color: #42a5f5;
+    color: white;
+}
+
+.stock-button-list span {
+    font-size: 14px; /* Font size for the result count */
+    color: #42a5f5;
+    flex-grow: 1; /* Allows the span to take up remaining space */
+}
+.stock-legends {
     margin-left: auto;
     display: flex;
     align-items: center;
@@ -39,118 +165,34 @@
     max-width: 250px;
 }
 
-.legends .zero-quantity {
+.stock-legends .stock-zero-quantity {
     color: red;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
-.legends .below-min-stock {
+.stock-legends .stock-below-min-stock {
     color: #b6a3a3;
-    font-weight: bold;
+    /* font-weight: bold; */
+}
+/*  */
+
+.stock-list-search-bar {
+    background-color: transparent; /* Remove background color */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Change cursor to pointer */
+    font-size: 16px; /* Font size */
+    margin-left: 10px;
+    display: flex; /* Center icon */
+    align-items: center; /* Center icon vertically */
+    justify-content: center; /* Center icon horizontally */
+    box-shadow: none; /* Remove any shadow */
+    background: none; /* Remove any background image */
 }
 
-.search-export {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.search-export input[type="text"] {
+.stock-search-export input[type="text"]{
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    width: 100%;
-    max-width: 250px;
+    margin-right: -50px;
     box-sizing: border-box;
 }
-
-.search-export button {
-    padding: 8px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: 10px;
-    box-sizing: border-box;
-}
-
-.search-export .export {
-    background-color: #42a5f5;
-    color: white;
-}
-
-.search-export .print {
-    background-color: #ffeb3b;
-    color: #000;
-}
-
-.stock-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.stock-table th,
-.stock-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-    white-space: nowrap;
-}
-
-.stock-table th {
-    background-color: #42a5f5;
-    color: white;
-    position: sticky;
-    top: 0;
-}
-
-.view-button,
-.manage-button {
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
-    background-color: #42a5f5;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    white-space: nowrap;
-}
-
-.pagination {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.pagination button {
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    background-color: #42a5f5;
-    color: #fff;
-    border-radius: 5px;
-    white-space: nowrap;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .filters,
-    .search-export {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .filters label,
-    .legends,
-    .search-export input[type="text"],
-    .search-export button {
-        width: 100%;
-        max-width: none;
-    }
-}
-

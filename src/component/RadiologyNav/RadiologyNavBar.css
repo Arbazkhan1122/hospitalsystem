@@ -1,6 +1,6 @@
 
   .radiologyNav-bar {
-      background-color: white;
+      background-color:#4CAF50;
       font-family: Arial, sans-serif;
 
       /* padding: 10px; */
@@ -24,7 +24,7 @@
     }
     
     .radiologyNav-bar a {
-      color: #007bff;
+      color: #f7f8fa;
       text-decoration: none;
       font-weight: bold;
       font-size: 12px;
@@ -42,7 +42,8 @@
     }
     
     .radiologyNav-bar .active {
-      background-color: #0056b3;
+      background-color: #0AB897;
+      /* background-color: #0056b3; */
       color: white;
   
     }

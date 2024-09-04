@@ -165,30 +165,69 @@
   }
   
   /* Modal styles */
-  .modal-content {
-    background-color: #fff;
-    border-radius: 5px;
-  }
-  
-  .modal-header {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .modal-title {
-    margin: 0;
-  }
-  
-  .modal-footer {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .close {
-    color: white;
-  }
-  
-  .close span {
-    font-size: 24px;
-  }
-  
+  .utlt-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Higher z-index to be above other elements */
+}
+
+.utlt-modal-dialog {
+  width: 90%; /* Adjust width as needed */
+  max-width: 700px; /* Limit the maximum width */
+  background-color: white;
+  margin-left: 50px;
+  padding: 20px;
+  border-radius: 8px;
+  overflow: hidden; /* Ensure child elements are contained */
+}
+
+.utlt-modal-header,
+.utlt-modal-footer {
+  padding: 10px 20px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+
+.utlt-modal-body {
+  padding: 20px;
+}
+
+.utlt-modal-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.utlt-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.utlt-close {
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: auto; /* Push the close button to the right */
+}
+
+.utlt-btn {
+  margin-left: 10px;
+}
+
+.utlt-form-group{
+  display: flex;
+  padding: 10px;
+}
+
+
+
+

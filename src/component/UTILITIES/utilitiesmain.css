@@ -1,7 +1,7 @@
 /* src/navbar.css */
 .utlt-header {
-    background-color: #3598dc; /* Background color for the navbar */
-    padding: 0px 15px; /* Padding around the navbar */
+    background-color: white; /* Background color for the navbar */
+    padding: 0px 10px; /* Padding around the navbar */
   }
   
   .utlt-nav-links {
@@ -13,7 +13,7 @@
   }
   
   .utlt-nav-links a {
-    color: white; /* Text color for links */
+    color: blue; /* Text color for links */
     text-decoration: none; /* Remove underline from links */
     padding: 10px 15px; /* Padding around links */
     font-size: 16px; /* Font size for links */
@@ -21,13 +21,19 @@
     transition: background-color 0.3s; /* Smooth background color transition */
   }
   
-  .utlt-nav-links a.active  {
-    background-color: #2874f0; /* Background color for active link */
-    color: #fff; /* Text color for active link */
-  }
-  
-  .utlt-nav-links a:hover {
-    background-color: #1a6bb6; /* Background color on hover */
-    color: #fff; /* Text color on hover */
-  }
-  
+  /* utilitiesmain.css */
+.utlt-header-button {
+  font-size: 16px; /* Consistent font size */
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Dark text color */
+  padding: 10px 15px; /* Padding for spacing */
+  margin-right: 20px; /* Margin between links */
+  transition: color 0.3s, background-color 0.3s; /* Smooth transitions */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.utlt-header-button:hover,
+.utlt-header-button.active {
+  color: #fff; /* White text on hover/active */
+  background-color: #007bff; /* Blue background on hover/active */
+}

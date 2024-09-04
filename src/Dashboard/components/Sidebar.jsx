@@ -5,8 +5,7 @@ import { FaClinicMedical, FaUserMd, FaFileInvoice } from "react-icons/fa";
 import './Sidebar.css';
 import hospitallogo from "../Images/hospital.png";
 import { Link } from "react-router-dom";
-
-const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,onIncentive,onLaboratory,onUtilites,onEmergency,onSystemAdmin,onSocialService,onDisprensary,onDynamicReport,onReport,onNurse,onDoctor,onOperationTheater,onNhif,onADT,onMKT,onClinical,onVaccination,onFixAssests,onCSSD,onAccounting,onQueueManagement,onMaternity,onHelpdesk,onRadiology,onPharmacy,onPatient,onVerification}) => {
+const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,onIncentive,onLaboratory,onUtilites,onEmergency,onSystemAdmin,onSocialService,onDisprensary,onDynamicReport,onReport,onNurse,onDoctor,onOperationTheater,onNhif,onADT,onMKT,onClinical,onVaccination,onFixAssests,onCSSD,onAccounting,onQueueManagement,onMaternity,onHelpdesk,onRadiology,onPharmacy,onPatient,onVerification,onSubstoreClick}) => {
   const [openMenus, setOpenMenus] = useState({});
   const [activeLink, setActiveLink] = useState(null);
 
@@ -150,6 +149,11 @@ const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,
   const handleverificationClick=()=>{
     handleLinkClick("verification");
     onVerification()
+  }
+
+  const handleSubstoreClick=()=>{
+    handleLinkClick("substore");
+    onSubstoreClick()
   }
 
 
@@ -774,6 +778,31 @@ const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,
           </div>
           </li>
 
+          <li className={`custom-nav-item ${activeLink === "substore-submenu1" ? "custom-nav-item-active" : ""}`}>
+          <div className="custom-nav-link-content" onClick={handleSubstoreClick}>
+            <span><TbUsers /></span>
+            {isOpen && <span className="custom-nav-link-text">SubStore</span>}
+            <span className="custom-dropdown-icon">
+              {openMenus.substore ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.substore && isOpen && (
+            <ul className="custom-submenu">
+               <li onClick={() => handleItemClick("substore","submenu1")} className={activeLink === "substore-submenu1" ? "custom-submenu-active" : ""}>
+                <Link to="/subStore">substore</Link> 
+              </li>
+              <li onClick={() => handleItemClick("substore","submenu2")} className={activeLink === "substore-submenu2" ? "custom-submenu-active" : ""}>
+                <Link to="/sSPStock/:store">Pharmacy</Link> 
+              </li>
+              <li onClick={() => handleItemClick("substore","submenu3")} className={activeLink === "substore-submenu3" ? "custom-submenu-active" : ""}>
+                 <Link to="/SSIStock/:store" className="appointment-booking-list-nav-link">
+                  Inventory
+                 </Link>
+              </li>  
+            </ul>
+          )}
+          </li>
+
         <li className={`custom-nav-item ${activeLink === "report-submenu1" || activeLink === "report-submenu2" || activeLink ===  "report-submenu3" || activeLink === "report-submenu4" || activeLink === "report-submenu5" || activeLink === "report-submenu6" || activeLink === "report-submenu7" || activeLink === "report-submenu8"? "custom-nav-item-active" : ""}`}>
           <div className="custom-nav-link-content" onClick={handleReportClick}>
             <span><TbUsers /></span>
@@ -829,7 +858,7 @@ const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,
          <li className={`custom-nav-item ${activeLink === "nhif-submenu1" || activeLink === "nhif-submenu2" || activeLink ===  "nhif-submenu3" || activeLink === "nhif-submenu4" ? "custom-nav-item-active" : ""}`}>
           <div className="custom-nav-link-content" onClick={handleNhifClick}>
             <span><TbUsers /></span>
-            {isOpen && <span className="custom-nav-link-text">NHIF</span>}
+            {isOpen && <span className="custom-nav-link-text">HI</span>}
             <span className="custom-dropdown-icon">
               {openMenus.nhif ? <LuChevronUp /> : <LuChevronDown />}
             </span>

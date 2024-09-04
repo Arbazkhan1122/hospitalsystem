@@ -1,11 +1,10 @@
 
-body {
+
+
+.queueInformation {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #e6f3ff;
-  }
-  
-  .queueInformation {
+    background-color: #CAF2FF;
     display: flex;
     flex-direction: column;
     min-height: 90vh;
@@ -45,7 +44,7 @@ body {
   }
   
   .queueInformation-banner {
-    background-color: #3b5998;
+    background-color: #1F449B;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -87,7 +86,7 @@ body {
     border-bottom: 1px solid #ddd;
   }
   .queueInformation-tr th{
-    background-color: #f3f3f3;
+    background-color: #F3F3F3;
     color: #5a5858;
   }
   

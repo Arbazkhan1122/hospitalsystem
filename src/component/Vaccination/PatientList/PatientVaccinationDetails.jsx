@@ -1,5 +1,28 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./PatientVaccinationDetail.css";
+
+const vaccineOptions = [
+  "BCG",
+  "DPT",
+  "Rotavirus",
+  "HBV",
+  "IPV",
+  "OPV",
+  "PCV",
+  "HIV",
+  "MMR",
+  "Others",
+];
+
+const vaccineDoses = {
+  BCG: ["1st", "2nd", "3rd"],
+  DPT: ["1st", "2nd", "3rd", "4th"],
+  Rotavirus: ["1st", "2nd", "3rd"],
+  HBV: ["1st", "2nd", "3rd", "4th", "5th"],
+  IPV: ["1st", "2nd"],
+  OPV: ["1st", "2nd", "3rd", "4th", "5th"],
+  PCV: ["1st", "2nd", "3rd", "4th"],
+};
 
 const PatientVaccinationDetails = ({ patient, onClose }) => {
   const [columnWidths, setColumnWidths] = useState({});
@@ -11,8 +34,36 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
     vaccineDose: "",
     remarks: "",
   });
-
+  const [doses, setDoses] = useState([]);
+  const [vaccines, setVaccines] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const tableRef = useRef(null);
+
+  useEffect(() => {
+    const fetchVaccines = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:8888/api/vaccinations/get-all-vaccination/doses/${patient?.vaccinationId}`
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setVaccines(data);
+        } else {
+          console.error("Failed to fetch vaccination doses.");
+        }
+      } catch (error) {
+        console.error("Error fetching vaccination doses:", error);
+      }
+    };
+
+    fetchVaccines();
+  }, [patient]);
+
+  useEffect(() => {
+    if (formData.vaccineName) {
+      setDoses(vaccineDoses[formData.vaccineName] || []);
+    }
+  }, [formData.vaccineName]);
 
   const startResizing = (index) => (e) => {
     e.preventDefault();
@@ -40,24 +91,92 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
 
   const handleEditClick = (vaccine) => {
     setIsEditing(true);
-    const dateTime = new Date(vaccine.date); // Convert to Date object
+    const dateTime = new Date(vaccine.vaccinationDate);
     setFormData({
-      vaccineDate: dateTime.toISOString().split("T")[0], // Extract date part
-      vaccineTime: dateTime.toISOString().split("T")[1].split(".")[0], // Extract time part without milliseconds
-      vaccineName: vaccine.name,
-      vaccineDose: vaccine.dose,
+      vaccineDate: dateTime.toISOString().split("T")[0],
+      vaccineTime: dateTime.toISOString().split("T")[1].split(".")[0],
+      vaccineName: vaccine.vaccineName,
+      vaccineDose: vaccine.vaccineDose,
       remarks: vaccine.remarks,
     });
   };
 
-  const handleUpdate = () => {
-    console.log("Updating form data:", formData); // Debugging line
-    // Implement update logic here
-    setIsEditing(false);
+  const handleSubmit = async () => {
+    const newVaccine = {
+      vaccinationDate: formData.vaccineDate,
+      vaccinationTime: formData.vaccineTime,
+      vaccineName: formData.vaccineName,
+      vaccinationDose: formData.vaccineDose,
+      remark: formData.remarks,
+      enteredBy: "admin",
+      vaccinationPatientId: patient?.id,
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:8888/api/vaccinations/${patient?.vaccinationId}/doses`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newVaccine),
+        }
+      );
+      if (response.ok) {
+        console.log("Vaccination record added successfully.");
+        setIsEditing(false);
+        // Optionally, you can refresh the vaccine list here
+      } else {
+        console.error("Failed to add vaccination record.");
+      }
+    } catch (error) {
+      console.error("Error adding vaccination record:", error);
+    }
+  };
+
+  const handleUpdate = async () => {
+    const updatedVaccine = {
+      vaccinationDate: formData.vaccineDate,
+      vaccinationTime: formData.vaccineTime,
+      vaccineName: formData.vaccineName,
+      vaccinationDose: formData.vaccineDose,
+      remark: formData.remarks,
+      enteredBy: "admin",
+      vaccinationPatientId: patient?.id,
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:8888/api/vaccinations/${patient?.vaccinationId}/doses/${vaccines?.doseId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedVaccine),
+        }
+      );
+      if (response.ok) {
+        console.log("Vaccination record updated successfully.");
+        setIsEditing(false);
+        // Optionally, you can refresh the vaccine list here
+      } else {
+        console.error("Failed to update vaccination record.");
+      }
+    } catch (error) {
+      console.error("Error updating vaccination record:", error);
+    }
   };
 
   const handleCancel = () => {
     setIsEditing(false);
+    setFormData({
+      vaccineDate: "",
+      vaccineDose: "",
+      vaccineTime: "",
+      vaccineName: "",
+    });
   };
 
   const handleChange = (e) => {
@@ -67,6 +186,14 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
       [name]: value,
     }));
   };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const filteredVaccines = vaccines.filter((vaccine) =>
+    vaccine.vaccineName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="PatientVaccinationDetail-overlay">
@@ -84,13 +211,14 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
           </span>
           <span>Hospital #: {patient?.hospitalNo}</span>
           <span>
-            <i className="icon-user"></i> Age/Sex: {patient?.ageSex}
+            <i className="icon-user"></i> Age/Sex: {patient?.age}{" "}
+            {patient?.ageUnit} / {patient?.gender}
           </span>
-          <span>Date of Birth: {patient?.dob}</span>
+          <span>Date of Birth: {patient?.dateOfBirth}</span>
           <span>Address: {patient?.address}</span>
         </div>
 
-        <div className="PatientVaccinationDetail-fiscalYear">
+        {/* <div className="PatientVaccinationDetail-fiscalYear">
           <label>
             Fiscal Year:
             <select defaultValue="2023">
@@ -101,7 +229,7 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
             Vaccine Reg. No:
             <input type="text" value={patient?.vaccRegNo} readOnly />
           </label>
-        </div>
+        </div> */}
 
         <div className="PatientVaccinationDetail-newVaccine">
           <div className="PatientVaccinationDetail-formGroup">
@@ -111,14 +239,12 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
               name="vaccineDate"
               value={formData?.vaccineDate}
               onChange={handleChange}
-              disabled={!isEditing}
             />
             <input
               type="time"
               name="vaccineTime"
               value={formData?.vaccineTime}
               onChange={handleChange}
-              disabled={!isEditing}
             />
           </div>
           <div className="PatientVaccinationDetail-formGroup">
@@ -127,19 +253,13 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
               name="vaccineName"
               value={formData?.vaccineName}
               onChange={handleChange}
-              disabled={!isEditing}
             >
               <option value="">--Vaccine--</option>
-              <option value={"BCG"}>BCG</option>
-              <option value={"DPT"}>DPT</option>
-              <option value={"Rotavirus"}>Rotavirus</option>
-              <option value={"HBV"}>HBV</option>
-              <option value={"IPV"}>IPV</option>
-              <option value={"OPV"}>OPV</option>
-              <option value={"PCV"}>PCV</option>
-              <option value={"HIV"}>HIV</option>
-              <option value={"MMR"}>MMR</option>
-              <option value={"Others"}>Others</option>
+              {vaccineOptions.map((vaccine) => (
+                <option key={vaccine} value={vaccine}>
+                  {vaccine}
+                </option>
+              ))}
             </select>
           </div>
           <div className="PatientVaccinationDetail-formGroup">
@@ -148,14 +268,13 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
               name="vaccineDose"
               value={formData?.vaccineDose}
               onChange={handleChange}
-              disabled={!isEditing}
             >
               <option value="">--Dose--</option>
-              <option value={"1st"}>1st</option>
-              <option value={"2nd"}>2nd</option>
-              <option value={"3rd"}>3rd</option>
-              <option value={"4th"}>4th</option>
-              <option value={"5th"}>5th</option>
+              {doses.map((dose) => (
+                <option key={dose} value={dose}>
+                  {dose}
+                </option>
+              ))}
             </select>
           </div>
           <div className="PatientVaccinationDetail-formGroup">
@@ -166,7 +285,6 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
               placeholder="Remarks"
               value={formData.remarks}
               onChange={handleChange}
-              disabled={!isEditing}
             />
           </div>
           {isEditing ? (
@@ -186,10 +304,10 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
             </div>
           ) : (
             <button
-              className="PatientVaccinationDetail-addBtn"
-              onClick={() => handleEditClick(patient.vaccines[0])} // Assuming you want to edit the first vaccine
+              className="PatientVaccinationDetail-submitBtn"
+              onClick={handleSubmit}
             >
-              Add
+              Submit
             </button>
           )}
         </div>
@@ -198,13 +316,17 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
           <h3>Vaccines list taken by</h3>
           <div className="patientList-search-bar">
             <div className="patientList-search-container">
-              <input type="text" placeholder="Search" />
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
               <i className="fas fa-search"></i>
             </div>
             <div>
               <span className="patientList-results-count">
-                Showing {patient?.vaccines?.length} /{" "}
-                {patient?.vaccines?.length} results
+                Showing {filteredVaccines.length} / {vaccines.length} results{" "}
               </span>
               <button className="patientList-print-btn">Print</button>
             </div>
@@ -237,12 +359,12 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
               </tr>
             </thead>
             <tbody>
-              {patient?.vaccines?.map((vaccine, index) => (
+              {filteredVaccines.map((vaccine, index) => (
                 <tr key={index}>
-                  <td>{vaccine.date}</td>
-                  <td>{vaccine.name}</td>
+                  <td>{vaccine.vaccinationDate}</td>
+                  <td>{vaccine.vaccineName}</td>
                   <td>{vaccine.remarks}</td>
-                  <td>{vaccine.dose}</td>
+                  <td>{vaccine.vaccinationDose}</td>
                   <td>{vaccine.enteredBy}</td>
                   <td>
                     <button

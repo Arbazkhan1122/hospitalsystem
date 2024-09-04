@@ -127,8 +127,8 @@
 }
 .patientList-more-options{
   position: absolute;
-  right: 20px;
-  /* top: 50%; */
+  right: 80px;
+  /* top: 0; */
   /* margin: 10px; */
   /* transform: translate(-50%, -50%); */
   background-color: white;
@@ -160,4 +160,7 @@
   padding: 20px;
   background-color: white;
   border-radius: 10px;
+}
+.patientList-table-moreBtn{
+  position: relative;
 }

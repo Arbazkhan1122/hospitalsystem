@@ -1,14 +1,56 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import ReactToPrint from 'react-to-print';
-import { useNavigate } from 'react-router-dom';
+import PatientRecordAction from './PatientRecordAction'; 
 import './PatientsRecords.css';
 
 const PatientRecord = () => {
+  const [selectedPatient, setSelectedPatient] = useState(null);
+  const [showPatientRecordAction, setShowPatientRecordAction] = useState(false);
+  const [filterFavourites, setFilterFavourites] = useState(false);
+  const [filterPending, setFilterPending] = useState(false);
   const componentRef = useRef();
-  const navigate = useNavigate();
+
+  // Sample data with favourite and pending status
+  const patients = [
+    {
+      id: '2406003702',
+      name: 'Philip Juma',
+      ageSex: '34 Y/M',
+      hospitalNo: '2406003702',
+      wardBed: 'Male Ward-001',
+      providerName: 'Mr. COLLINS KIPKEMEI',
+      admissionStatus: 'discharged',
+      admittedOn: 'June 10th 2024, 12:57:00 pm',
+      dept: 'Medicine',
+      isFavourite: true,
+      isPending: false,
+    },
+    // Additional patient records with isFavourite and isPending properties...
+  ];
+
+  // Filtered patients based on favourite and pending filters
+  const filteredPatients = patients
+    .filter(patient => (filterFavourites ? patient.isFavourite : true))
+    .filter(patient => (filterPending ? patient.isPending : true));
 
   const handlePendingListClick = () => {
-    navigate('/pending-list');  // Assuming '/pending-list' is the route for the pending list
+    setFilterPending(!filterPending);
+    setFilterFavourites(false); // Reset favourites filter if needed
+  };
+
+  const handleFavouritesClick = () => {
+    setFilterFavourites(!filterFavourites);
+    setFilterPending(false); // Reset pending filter if needed
+  };
+
+  const handleViewPatientClick = (patientId) => {
+    const patient = patients.find(p => p.id === patientId);
+    setSelectedPatient(patient);
+    setShowPatientRecordAction(true);
+  };
+
+  const handleClosePatientRecordAction = () => {
+    setShowPatientRecordAction(false);
   };
 
   return (
@@ -28,7 +70,7 @@ const PatientRecord = () => {
       </div>
 
       <div className="actions">
-        <button className="favorites">★ My Favorites</button>
+        <button className="favorites" onClick={handleFavouritesClick}>★ My Favorites</button>
         <button className="pending" onClick={handlePendingListClick}>Pending List</button>
         <div className="department-filter">
           <label>Department Filter :</label>
@@ -41,7 +83,7 @@ const PatientRecord = () => {
       <div className="search-bar">
         <input type="text" placeholder="Search" />
         <button>🔍</button>
-        <span className="results">Showing 1 / 1 results</span>
+        <span className="results">Showing {filteredPatients.length} / {patients.length} results</span>
         <ReactToPrint
           trigger={() => <button className="print">Print</button>}
           content={() => componentRef.current}
@@ -65,35 +107,44 @@ const PatientRecord = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>2406003702</td>
-              <td>Philip Juma</td>
-              <td>34 Y/M</td>
-              <td>discharged</td>
-              <td>June 10th 2024, 12:57:00 pm</td>
-              <td>Male Ward-001</td>
-              <td>Medicine</td>
-              <td>Mr. COLLINS KIPKEMEI</td>
-              <td>
-                <button>👤</button>
-                <button>🔔</button>
-                <button>🖼</button>
-                <button>📄</button>
-                <button>♥</button>
-              </td>
-            </tr>
+            {filteredPatients.map((patient) => (
+              <tr key={patient.id}>
+                <td>{patient.hospitalNo}</td>
+                <td>{patient.name}</td>
+                <td>{patient.ageSex}</td>
+                <td>{patient.admissionStatus}</td>
+                <td>{patient.admittedOn}</td>
+                <td>{patient.wardBed}</td>
+                <td>{patient.dept}</td>
+                <td>{patient.providerName}</td>
+                <td>
+                  <button onClick={() => handleViewPatientClick(patient.id)}>👤</button>
+                  <button>🔔</button>
+                  <button>🖼</button>
+                  <button>📄</button>
+                  <button>♥</button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
       <div className="pagination">
-        <span>1 to 1 of 1</span>
+        <span>1 to {filteredPatients.length} of {filteredPatients.length}</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 1 of 1</span>
         <button>Next</button>
         <button>Last</button>
       </div>
+
+      {showPatientRecordAction && (
+        <div className="patient-record-action-modal">
+          <PatientRecordAction patient={selectedPatient} />
+          <button onClick={handleClosePatientRecordAction}>Close</button>
+        </div>
+      )}
     </div>
   );
 };

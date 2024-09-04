@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./patientList.css";
 import VaccinationRegister from "./VaccinationRegister";
 import UpdateVaccinationRegister from "./UpdateVaccinationRegister";
@@ -6,47 +6,8 @@ import Sticker from "./Sticker";
 import VaccinationFollowup from "./VaccinationFollowup";
 import PatientVaccinationDetails from "./PatientVaccinationDetails";
 
-const dummyData = [
-  {
-    vaccRegNo: "VR1001",
-    babyName: "Baby John",
-    ageSex: "2Y/M",
-    hospitalNo: "H1001",
-    motherName: "Jane Doe",
-    address: "1234 Elm St",
-    lastVisDate: "2024-07-10",
-    daysPassed: "37",
-    vaccines: [
-      {
-        date: "2023-12-14T15:25:00",
-        name: "BCG",
-        remarks: "",
-        dose: "1st",
-        enteredBy: "Mr. admin admin",
-      },
-      {
-        date: "2024-06-13T18:34:00",
-        name: "Rotavirus",
-        remarks: "",
-        dose: "1st",
-        enteredBy: "Mr. admin admin",
-      },
-    ],
-  },
-  {
-    vaccRegNo: "VR1002",
-    babyName: "Baby Jane",
-    ageSex: "1Y/F",
-    hospitalNo: "H1002",
-    motherName: "Mary Smith",
-    address: "5678 Oak St",
-    lastVisDate: "2024-06-20",
-    daysPassed: "57",
-  },
-  // Add more dummy data as needed
-];
-
 function Patientlist() {
+  const [patients, setPatients] = useState([]);
   const [isVaccinationRegister, setIsVaccinationRegister] = useState(false);
   const [isUpdateVaccinationRegister, setIsUpdateVaccinationRegister] =
     useState(false);
@@ -55,33 +16,30 @@ function Patientlist() {
   const [isFollowupPopupOpen, setIsFollowupPopupOpen] = useState(false);
   const [activeMoreOptionsIndex, setActiveMoreOptionsIndex] = useState(null);
   const [patientDetails, setPatientDetails] = useState(null);
-
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
 
-  const openRegisterPopup = () => setIsVaccinationRegister(true);
-  const closeRegisterPopup = () => {
-    setIsVaccinationRegister(false);
-  };
-  const closeUpdateRegisterPopup = () => {
-    setIsUpdateVaccinationRegister(false);
-  };
-  const closeVaccinationDetailsPopup = () => {
-    setIsVaccinationDetails(false);
-  };
+  useEffect(() => {
+    fetch("http://localhost:8888/api/vaccinations/allVaccine")
+      .then((response) => response.json())
+      .then((response) => setPatients(response))
+      .catch((error) => console.error("Error fetching patient data:", error));
+  }, [isVaccinationRegister, isUpdateVaccinationRegister]);
 
+  const openRegisterPopup = () => setIsVaccinationRegister(true);
+  const closeRegisterPopup = () => setIsVaccinationRegister(false);
+  const closeUpdateRegisterPopup = () => setIsUpdateVaccinationRegister(false);
+  const closeVaccinationDetailsPopup = () => setIsVaccinationDetails(false);
   const openStickerPopup = (patientDetails) => {
     setIsStickerPopupOpen(true);
     setPatientDetails(patientDetails);
   };
   const closeStickerPopup = () => setIsStickerPopupOpen(false);
-
   const openFollowupPopup = (patient) => {
     setIsFollowupPopupOpen(true);
     setPatientDetails(patient);
   };
   const closeFollowupPopup = () => setIsFollowupPopupOpen(false);
-
   const toggleMoreOptions = (index) => {
     setActiveMoreOptionsIndex(activeMoreOptionsIndex === index ? null : index);
   };
@@ -115,6 +73,7 @@ function Patientlist() {
     setPatientDetails(patient);
     setIsUpdateVaccinationRegister(true);
   };
+
   const handleVaccinationDetails = (patient) => {
     setPatientDetails(patient);
     setIsVaccinationDetails(true);
@@ -129,12 +88,25 @@ function Patientlist() {
       </div>
       <div className="patientList-search-bar">
         <div className="patientList-search-container">
-          <input type="text" placeholder="Search" />
+          <input
+            type="text"
+            placeholder="Search"
+            onChange={(e) => {
+              const searchTerm = e.target.value.toLowerCase();
+              setPatients((prevPatients) =>
+                prevPatients.filter(
+                  (patient) =>
+                    patient.babyName.toLowerCase().includes(searchTerm) ||
+                    patient.motherName.toLowerCase().includes(searchTerm)
+                )
+              );
+            }}
+          />
           <i className="fas fa-search"></i>
         </div>
         <div>
           <span className="patientList-results-count">
-            Showing {dummyData.length} / {dummyData.length} results{" "}
+            Showing {patients.length} / {patients.length} results
           </span>
           <button className="patientList-print-btn">Print</button>
         </div>
@@ -143,14 +115,11 @@ function Patientlist() {
         <thead>
           <tr>
             {[
-              "Vacc. Regd. No",
+              "Id",
               "Baby's Name",
               "Age/Sex",
-              "Hospital No.",
               "Mother's Name",
               "Address",
-              "Last Vis. Date",
-              "Days Passed",
               "Actions",
             ].map((header, index) => (
               <th
@@ -170,26 +139,29 @@ function Patientlist() {
           </tr>
         </thead>
         <tbody>
-          {dummyData?.map((item, index) => (
+          {patients.map((patient, index) => (
             <tr key={index}>
-              <td>{item.vaccRegNo}</td>
-              <td>{item.babyName}</td>
-              <td>{item.ageSex}</td>
-              <td>{item.hospitalNo}</td>
-              <td>{item.motherName}</td>
-              <td>{item.address}</td>
-              <td>{item.lastVisDate}</td>
-              <td>{item.daysPassed}</td>
+              <td>{index + 1}</td>
+              <td>{patient.babyName}</td>
+              <td>
+                {patient.age} {patient.ageUnit} {patient.gender}
+              </td>
+              <td>{patient.motherName}</td>
+              <td>{patient.address}</td>
+              {/* <td>{patient.vaccinationDoses}</td>
+              <td>
+                {patient.daysPassed !== null ? patient?.daysPassed : "N/A"}
+              </td> */}
               <td>
                 <button
-                  onClick={() => openStickerPopup(item)}
+                  onClick={() => openStickerPopup(patient)}
                   className="patientList-table-btn"
                   type="button"
                 >
                   Sticker
                 </button>
                 <button
-                  onClick={() => openFollowupPopup(item)}
+                  onClick={() => openFollowupPopup(patient)}
                   className="patientList-table-btn"
                   type="button"
                 >
@@ -197,17 +169,17 @@ function Patientlist() {
                 </button>
                 <button
                   onClick={() => toggleMoreOptions(index)}
-                  className="patientList-table-btn"
+                  className="patientList-table-btn patientList-table-moreBtn"
                   type="button"
                 >
                   More...
                 </button>
                 {activeMoreOptionsIndex === index && (
                   <div className="patientList-more-options">
-                    <button onClick={() => handleUpdateRegister(item)}>
+                    <button onClick={() => handleUpdateRegister(patient)}>
                       Edit Vaccination Info
                     </button>
-                    <button onClick={() => handleVaccinationDetails(item)}>
+                    <button onClick={() => handleVaccinationDetails(patient)}>
                       Vaccination
                     </button>
                   </div>

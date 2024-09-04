@@ -15,7 +15,7 @@ const NewVisitedList = () => {
     // Fetch data from the API when the component mounts
     const fetchPatients = async () => {
       try {
-        const response = await axios.get('http://localhost:1415/api/new-patient-visits');
+        const response = await axios.get('http://192.168.1.34:1415/api/new-patient-visits');
         // Transform API data to fit the table structure
         const formattedData = response.data.map(patient => ({
           patientNo: patient.newPatientVisitId, // Assuming `id` is used as hospital number

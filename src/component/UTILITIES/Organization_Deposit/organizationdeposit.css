@@ -17,7 +17,7 @@
     margin-top: 20px;
   }
   
-  h2 {
+  .organization-deposit-h2 {
     text-align: center;
     color: #333;
   }
@@ -28,7 +28,7 @@
     align-items: center;
   }
   
-  label {
+  .organization-deposit-lable {
     width: 200px;
     text-align: right;
     margin-right: 50px;
@@ -38,7 +38,7 @@
     font-size: 14px;
   }
   
-  input, select, textarea {
+  .organization-deposit-input, .organization-deposit-select, .organization-deposit-textarea {
     flex: 1;
     padding: 5px;
     border: 1px solid #ccc;
@@ -57,7 +57,7 @@
     margin-bottom: 15px;
   }
   
-  .info-row .form-group {
+  .info-row .utlt-org-form-group {
     margin-bottom: 0;
   }
   
@@ -66,18 +66,18 @@
     color: #0066cc;
   }
   
-  textarea {
+  .organization-deposit-textarea {
     height: 60px;
     resize: vertical;
   }
   
-  .button-group {
+  .utlt-org-button-group {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
   }
   
-  .save-btn, .discard-btn {
+  .utlt-org-save-btn, .discard-btn {
     padding: 10px 20px;
     border: none;
     border-radius: 3px;
@@ -95,62 +95,6 @@
     background-color: #ffc107;
   }
   
-  /* Add asterisk to required fields */
-  label[for="transaction-type"]::after,
-  label[for="representative-name"]::after,
-  label[for="amount"]::after,
-  label[for="deposit-head"]::after {
-    content: " *";
-    color: red;
-  }
+ 
 
-  /* Modal styles */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 600px;
-    position: relative;
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 1.5em;
-    cursor: pointer;
-    color: #333;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #3598dc;
-    color: white;
-    font-size: 16px;
-  }
   

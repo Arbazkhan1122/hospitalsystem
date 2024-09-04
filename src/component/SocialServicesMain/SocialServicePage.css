@@ -2,11 +2,12 @@
 
   .ssu-patient-list {
     font-family: Arial, sans-serif;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
+    background-color: #e6f3ff;
   }
   .ssuPatient-bttn{
-    background-color: #008CBA;
+    background-color: #2D68EA;
     color: white;
     font-size: 12px;
     border: none;
@@ -23,9 +24,7 @@
   }
   
   .socialService-content {
-    background-color: #e6f3ff;
     padding: 20px;
-    border: 1px solid #ccc;
     border-top: none;
   }
   
@@ -37,7 +36,7 @@
   }
   
   .socialService-register-button {
-    background-color: #4CAF50;
+    background-color: #26C281;
     border-radius:5px ;
     color: white;
     border: none;
@@ -55,9 +54,11 @@
     font-size: 13px;
     font-weight: bold;
   }
+  .socialService-patient-status span{
+   white-space: nowrap;
+  }
   .socialService-patient-status label {
     margin-right: 10px;
-    
     /* display: flex; */
     /* justify-content: right; */
   }
@@ -66,21 +67,24 @@
     display: flex;
     margin-bottom: 10px;
     width: 300px;
-
-
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
   }
   
   .socialService-search-bar input {
     flex-grow: 1;
     padding: 5px;
     width: 200px;
+    border: none;
+    background: none;
+    outline: none;
   }
   
-  .search-button {
-    padding: 5px 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
+  .socialService-search-button {
+    /* padding: 5px 10px; */
     cursor: pointer;
+    border: none;
+    background: none;
   }
   
   .socialService-results-info {
@@ -105,20 +109,20 @@ font-size: 12px;
     cursor: pointer;
   }
   
-  table {
+ .socialService-table-N-bttns table {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
   }
   
-  th, td {
+  .socialService-table-N-bttns th,.socialService-table-N-bttns td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
     font-size: 12px;
   }
   
-  th {
+  .socialService-table-N-bttns th {
     background-color: #f2f2f2;
   }
   
@@ -206,6 +210,8 @@ font-size: 12px;
     align-items: center;
     justify-content: center;
     z-index: 1000;
+    padding: 20px;
+
   }
   
   /* Popup Inner Content */
@@ -213,18 +219,19 @@ font-size: 12px;
     background: #fff;
     /* padding: 20px; */
     border-radius: 5px;
-    width: 80%;
-    max-width: 800px;
-    max-height: 80%;
-    overflow-y: auto;
+    width: 100%;
+    max-width: 1300px;
+    max-height: 100%;
+    /* overflow-y: auto; */
     position: relative;
+    padding: 20px;
   }
   
   /* Close Button */
   .close-socialService-popup {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: -10px;
+    right: -10px;
     background: #f00;
     color: #fff;
     border: none;
@@ -233,4 +240,7 @@ font-size: 12px;
     font-size: 16px;
     border-radius: 50%;
   }
-  
+  .socialService-table-editBtn{
+      background-color: #26C281;
+      padding: 5px;
+  }

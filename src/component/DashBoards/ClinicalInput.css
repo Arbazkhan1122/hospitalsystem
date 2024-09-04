@@ -1,0 +1,51 @@
+.input-output-list {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  .controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .date-range {
+    display: flex;
+    gap: 10px;
+    margin-right: 20px;
+  }
+  
+  .date-range input[type="date"] {
+    padding: 5px;
+  }
+  
+  .load-btn, .add-new-btn {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .load-btn {
+    background-color: #6c757d;
+    color: white;
+    margin-right: 10px;
+  }
+  
+  .add-new-btn {
+    background-color: #7952b3;
+    color: white;
+  }
+  
+  .type-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Add more specific styles as needed */

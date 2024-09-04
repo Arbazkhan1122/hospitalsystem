@@ -38,7 +38,7 @@ function vaccinationReports() {
               Vaccination Report
             </NavLink>
           </li>
-          <li ref={(el) => (navRefs.current[1] = el)}>
+          {/* <li ref={(el) => (navRefs.current[1] = el)}>
             <NavLink
               to="AppointmentDetailsReport"
               className={({ isActive }) => (isActive ? "active" : "")}
@@ -46,7 +46,7 @@ function vaccinationReports() {
             >
               Appointments
             </NavLink>
-          </li>
+          </li> */}
         </ul>
         <div className="underline" style={underlineStyle}></div>
       </nav>
@@ -57,10 +57,7 @@ function vaccinationReports() {
           path="AppointmentDetailsReport"
           element={<VaccinationAppointment />}
         />
-        <Route
-          path="Reports/IntegratedReport"
-          element={<VaccinationsReports />}
-        />
+        <Route path="Reports/*" element={<VaccinationsReports />} />
       </Routes>
     </main>
   );

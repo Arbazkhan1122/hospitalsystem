@@ -1,44 +1,72 @@
-// UpdateVaccinationRegister.js
 import React, { useState, useEffect } from "react";
 import "./UpdateVaccination.css";
 
-const dummyData = {
-  vaccRegNo: "VR1001",
-  babyName: "Baby John",
-  ageSex: "2Y/M",
-  hospitalNo: "H1001",
-  motherName: "Jane Doe",
-  address: "1234 Elm St",
-  lastVisDate: "2024-07-10",
-  daysPassed: "37",
-};
+// Indian states and castes for selection
+const indianStates = [
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+];
+
+const castes = ["Hindu", "Muslim", "Christian", "Sikh", "Buddhist"];
 
 const UpdateVaccinationRegister = ({ patient, onClose }) => {
   const [formData, setFormData] = useState({
-    vaccRegNo: "",
-    babyName: "",
-    ageSex: "",
-    hospitalNo: "",
     motherName: "",
+    babyName: "",
+    age: "",
+    ageUnit: "Days",
+    dateOfBirth: "",
+    gender: "Male",
+    country: "India",
+    state: "",
     address: "",
-    lastVisDate: "",
-    daysPassed: "",
+    fatherName: "",
+    phoneNumber: "",
+    religion: "Hindu",
   });
 
   useEffect(() => {
     if (patient) {
       setFormData({
-        vaccRegNo: patient.vaccRegNo || "",
-        babyName: patient.babyName || "",
-        ageSex: patient.ageSex || "",
-        hospitalNo: patient.hospitalNo || "",
         motherName: patient.motherName || "",
+        babyName: patient.babyName || "",
+        age: patient.age || "",
+        ageUnit: patient.ageUnit || "Days",
+        dateOfBirth: patient.dateOfBirth || "",
+        gender: patient.gender || "Male",
+        country: patient.country || "India",
+        state: patient.state || "",
         address: patient.address || "",
-        lastVisDate: patient.lastVisDate || "",
-        daysPassed: patient.daysPassed || "",
+        fatherName: patient.fatherName || "",
+        phoneNumber: patient.phoneNumber || "",
+        religion: patient.religion || "Hindu",
       });
-    } else {
-      setFormData(dummyData);
     }
   }, [patient]);
 
@@ -50,11 +78,31 @@ const UpdateVaccinationRegister = ({ patient, onClose }) => {
     }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { vaccRegdNo, ...updatedData } = formData;
+    fetch(`http://localhost:8888/api/vaccination/${patient?.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        onClose();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   return (
     <div className="UpdateVaccinationRegister__overlay">
       <div className="UpdateVaccinationRegister__popup">
         <div className="UpdateVaccinationRegister__header">
-          <h2>Vaccination Patient Register</h2>
+          <h2>Update Vaccination Patient Register</h2>
           <button
             onClick={onClose}
             className="UpdateVaccinationRegister__closeButton"
@@ -62,38 +110,47 @@ const UpdateVaccinationRegister = ({ patient, onClose }) => {
             X
           </button>
         </div>
-        <form className="UpdateVaccinationRegister__form">
+        <form
+          className="UpdateVaccinationRegister__form"
+          onSubmit={handleSubmit}
+        >
           <div className="UpdateVaccinationRegister__formGroup">
             <label>Mother Name*</label>
             <input
               type="text"
-              placeholder="Mother Name"
               name="motherName"
               value={formData.motherName}
               onChange={handleInputChange}
+              placeholder="Mother Name"
+              required
             />
           </div>
           <div className="UpdateVaccinationRegister__formGroup">
             <label>Baby Name</label>
             <input
               type="text"
-              placeholder="Baby Name"
               name="babyName"
               value={formData.babyName}
               onChange={handleInputChange}
+              placeholder="Baby Name"
             />
           </div>
           <div className="UpdateVaccinationRegister__formGroup">
             <label>Age*</label>
             <div className="UpdateVaccinationRegister__ageInput">
               <input
-                type="text"
-                name="ageSex"
-                value={formData.ageSex}
+                type="number"
+                name="age"
+                value={formData.age}
                 onChange={handleInputChange}
-                placeholder="1"
+                placeholder="Age"
+                required
               />
-              <select>
+              <select
+                name="ageUnit"
+                value={formData.ageUnit}
+                onChange={handleInputChange}
+              >
                 <option>Days</option>
                 <option>Months</option>
                 <option>Years</option>
@@ -102,67 +159,104 @@ const UpdateVaccinationRegister = ({ patient, onClose }) => {
           </div>
           <div className="UpdateVaccinationRegister__formGroup">
             <label>Date Of Birth</label>
-            <input type="date" />
+            <input
+              type="date"
+              name="dateOfBirth"
+              value={formData.dateOfBirth}
+              onChange={handleInputChange}
+            />
           </div>
           <div className="UpdateVaccinationRegister__formGroup">
             <label>Gender*</label>
-            <select>
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleInputChange}
+            >
               <option>Male</option>
               <option>Female</option>
             </select>
           </div>
           <div className="UpdateVaccinationRegister__formGroup">
             <label>Country*</label>
-            <select>
-              <option>Kenya</option>
-              {/* Add more countries as needed */}
+            <select
+              name="country"
+              value={formData.country}
+              onChange={handleInputChange}
+              disabled
+            >
+              <option>India</option>
             </select>
           </div>
           <div className="UpdateVaccinationRegister__formGroup">
-            <label>County*</label>
-            <input
-              type="text"
-              placeholder="Juja sub county"
-              value={formData.county || ""}
-            />
+            <label>State*</label>
+            <select
+              name="state"
+              value={formData.state}
+              onChange={handleInputChange}
+              required
+            >
+              <option value="">Select State</option>
+              {indianStates.map((state) => (
+                <option key={state} value={state}>
+                  {state}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="UpdateVaccinationRegister__formGroup">
             <label>Address</label>
             <input
               type="text"
-              placeholder="Address"
               name="address"
               value={formData.address}
               onChange={handleInputChange}
+              placeholder="Address"
             />
           </div>
-          <div className="UpdateVaccinationRegister__formGroup">
+          {/* <div className="UpdateVaccinationRegister__formGroup">
             <label>Vacc. Regd. No.*</label>
             <input
               type="text"
-              placeholder="1"
-              name="vaccRegNo"
-              value={formData.vaccRegNo}
+              name="vaccRegdNo"
+              value={formData.vaccRegdNo}
               onChange={handleInputChange}
+              placeholder="Vacc. Regd. No."
+              required
             />
-          </div>
+          </div> */}
           <div className="UpdateVaccinationRegister__formGroup">
             <label>Father Name</label>
             <input
               type="text"
+              name="fatherName"
+              value={formData.fatherName}
+              onChange={handleInputChange}
               placeholder="Father Name"
-              value={formData.motherName || ""}
             />
           </div>
           <div className="UpdateVaccinationRegister__formGroup">
             <label>Phone number</label>
-            <input type="tel" placeholder="Phone number" />
+            <input
+              type="tel"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleInputChange}
+              placeholder="Phone number"
+            />
           </div>
           <div className="UpdateVaccinationRegister__formGroup">
             <label>Religion</label>
-            <select>
-              <option>Brahmin/Chhetri</option>
-              {/* Add more religions as needed */}
+            <select
+              name="religion"
+              value={formData.religion}
+              onChange={handleInputChange}
+            >
+              {castes.map((caste) => (
+                <option key={caste} value={caste}>
+                  {caste}
+                </option>
+              ))}
             </select>
           </div>
           <div className="UpdateVaccinationRegister__formActions">

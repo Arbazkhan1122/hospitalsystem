@@ -61,7 +61,7 @@ function OrganizationDeposit() {
       
       <div className="organization-form-group">
         <label>Select Credit Organization:</label>
-        <select  value={selectedOrg} onChange={handleOrgSelect}>
+        <select className='organization-deposit-select'  value={selectedOrg} onChange={handleOrgSelect}>
         {Object.keys(orgData).map(org => (
             <option key={org} value={org}>{org}</option>
           ))}
@@ -71,49 +71,49 @@ function OrganizationDeposit() {
 
       {showOrgInfo && (
         <div className="info-row">
-          <div className="form-group">
+          <div className="utlt-org-form-group">
             <label>Organization Code:</label>
             <span>{orgCode}</span>
           </div>
-          <div className="form-group">
+          <div className="utlt-org-form-group">
             <label>Deposit Balance:</label>
             <span>0</span>
           </div>
         </div>
       )}
 
-      <div className="form-group">
+      <div className="utlt-org-form-group">
         <label>Transaction Type *</label>
-        <select defaultValue="Receive">
+        <select className='organization-deposit-select' defaultValue="Receive">
           <option>Receive</option>
         </select>
       </div>
 
-      <div className="form-group">
+      <div className="utlt-org-form-group">
         <label>Name of Representative *</label>
-        <input type="text" placeholder="Enter Name of Representative" />
+        <input className='organization-deposit-input' type="text" placeholder="Enter Name of Representative" />
       </div>
 
-      <div className="form-group">
+      <div className="utlt-org-form-group">
         <label>Amount *</label>
-        <input type="number" defaultValue={0} />
+        <input className='organization-deposit-input' type="number" defaultValue={0} />
       </div>
 
-      <div className="form-group">
+      <div className="utlt-org-form-group">
         <label>Deposit Head *</label>
-        <select defaultValue="Normal Deposit">
+        <select className='organization-deposit-select' defaultValue="Normal Deposit">
           <option>Normal Deposit</option>
         </select>
       </div>
 
-      <div className="form-group">
+      <div className="utlt-org-form-group">
         <label>Remarks</label>
-        <textarea></textarea>
+        <textarea className='organization-deposit-textarea'></textarea>
       </div>
 
-      <div className="form-group">
+      <div className="utlt-org-form-group">
         <label>Payment Options:</label>
-        <select defaultValue="Cash" onChange={handlePaymentOptionChange}>
+        <select className='organization-deposit-select' defaultValue="Cash" onChange={handlePaymentOptionChange}>
           <option>Cash</option>
           <option>Credit</option>
           <option>Other</option>
@@ -122,7 +122,7 @@ function OrganizationDeposit() {
       {paymentOption === 'Credit' && (
         <div className="form-group Credit-optionlist">
           <label>Credit Options:</label>
-          <select defaultValue="NHIF CAPITATION">
+          <select className='organization-deposit-select' defaultValue="NHIF CAPITATION">
             <option>NHIF CAPITATION</option>
             <option>NHIF General</option>
             <option>MTIBA</option>
@@ -132,9 +132,9 @@ function OrganizationDeposit() {
 
        
           <>
-            <div className="form-group">
-              <label>Payment Details:</label>
-              <textarea rows="4" cols="50" placeholder="Enter payment details here..." />
+            <div className="utlt-org-form-group">
+              <label className='organization-deposit-lable'>Payment Details:</label>
+              <textarea className='organization-deposit-textarea' rows="4" cols="50" placeholder="Enter payment details here..." />
             </div>
             {showModal && (
               <div className="modalOverlayStyle">
@@ -173,7 +173,7 @@ function OrganizationDeposit() {
           {isPopupVisible && (
           <div className="popup">
             <div className="popup-content">
-              <h2>Confirm!</h2>
+              <h2 className='organization-deposit-h2'> Confirm!</h2>
               <p>Are you sure you want to save?</p>
               <div className="popup-buttons">
                 <button className="changevisitscheme-btn-confirm " onClick={handleConfirm}>Confirm</button>
@@ -184,7 +184,7 @@ function OrganizationDeposit() {
         )}
     
 
-      <div className="button-group">
+      <div className="utlt-org-button-group">
       <button className="btn_Change_Visitschememainsave btn btn-success"  onClick={handleSaveClick}>Save Deposit</button>
         <button className="discard-btn">Discard</button>
       </div>

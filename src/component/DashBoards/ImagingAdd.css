@@ -1,0 +1,88 @@
+.container {
+    display: flex;
+    font-family: Arial, sans-serif;
+  }
+  
+  .active-orders, .new-orders {
+    padding: 20px;
+  }
+  
+  .active-orders {
+    background-color: #f0f0f0;
+    flex: 2;
+  }
+  
+  .new-orders {
+    background-color: #e6f3ff;
+    flex: 1;
+  }
+  
+  h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .print-btn {
+    background-color: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  .search-container {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  select, input {
+    padding: 5px;
+    margin-right: 5px;
+  }
+  
+  .search-btn {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .icon-bulb::before {
+    content: '💡';
+    margin-right: 5px;
+  }
+
+  .imaging-add-container {
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  

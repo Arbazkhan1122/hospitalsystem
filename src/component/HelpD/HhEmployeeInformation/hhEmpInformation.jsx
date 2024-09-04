@@ -1,41 +1,72 @@
-
-import React from 'react';
-import "../HhEmployeeInformation/hhEmpInformation.css"
+import React, { useEffect, useState } from 'react';
+import "../HhEmployeeInformation/hhEmpInformation.css";
 
 const HHEmpInformation = () => {
-  const employees = [
-    { name: "Dr PHRM Anonymous Doctor", designation: "Doctor", department: "ADMINISTRATION", phone: "0", ext: "", speedDial: "", room: "", hours: "0" },
-    { name: "Dr VICTOR OCHIENG OKECH", designation: "", department: "Pathology", phone: "0711000116", ext: "", speedDial: "", room: "", hours: "0" },
-    { name: "Mrs Dorcas MUMBUA KITUTA", designation: "", department: "NURSING STATION", phone: "0711000119", ext: "", speedDial: "", room: "", hours: "0" },
-    { name: "Mrs Dorine AWUOR OWIYO", designation: "", department: "NURSING STATION", phone: "0711000122", ext: "", speedDial: "", room: "", hours: "0" },
-    { name: "Mrs Beatrice MUTHONI KIIO", designation: "", department: "Pathology", phone: "0711000124", ext: "", speedDial: "", room: "", hours: "0" },
-    { name: "Mr DENNIS MURANGIRI NJUE", designation: "", department: "Peaditric", phone: "0711000128", ext: "", speedDial: "", room: "", hours: "0" },
-    { name: "Mr KEPHA OPIYO ODINDO", designation: "Doctor", department: "Dermatology & C...", phone: "0711000135", ext: "", speedDial: "", room: "", hours: "0" },
-    { name: "Mrs BRENDA MWANIA WANJI...", designation: "", department: "Operation Thetre", phone: "0711000137", ext: "", speedDial: "", room: "", hours: "0" },
-    { name: "Mr COLLINS GIKUNGU MAINA", designation: "", department: "Laboratory", phone: "0711000138", ext: "", speedDial: "", room: "", hours: "0" },
-    { name: "Mrs CAROLINE wanjiru WAN...", designation: "", department: "Dispensary", phone: "0711000139", ext: "", speedDial: "", room: "", hours: "0" },
-    { name: "Mrs BERTHA WANGARI WAIR...", designation: "", department: "Orthopedic/Spine", phone: "0711000141", ext: "", speedDial: "", room: "", hours: "0" },
-  ];
+  const [employees, setEmployees] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const response = await fetch('http://192.168.1.34:1415/api/employees');
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);
+        }
+        const data = await response.json();
+        console.log('Fetched data:', data);
+        const formattedEmployees = data.map((employee) => ({
+          name: `${employee.salutation || ''} ${employee.firstName || ''} ${employee.lastName || ''}`,
+          designation: employee.employeeRoleDTO?.role || '',
+          department: employee.departmentDTO?.departmentName || '',
+          phone: employee.contactNumber || '',
+          ext: employee.extension || '',
+          speedDial: employee.speedDial || '',
+          room: employee.roomNo || '',
+          hours: employee.officeHour || '',
+        }));
+        setEmployees(formattedEmployees);
+      } catch (error) {
+        console.error('Error fetching employees:', error);
+      }
+    };
+  
+    fetchEmployees();
+  }, []);
+  
+
 
   const handlePrint = () => {
     window.print();
   };
 
+  const filteredEmployees = employees.filter(employee =>
+    employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    employee.designation.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    employee.department.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="hh-employee-list">
       <h4>List of Employees:</h4>
-      
+
       <div className="hh-search-container-N-search">
         <div className="hh-search-container">
           <i className="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search" className="hh-search-input" />
+          <input
+            type="text"
+            placeholder="Search"
+            className="hh-search-input"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
         <div className="hh-results-info">
-          <span>Showing 34 / 34 results</span>
+          <span>Showing {filteredEmployees.length} / {employees.length} results</span>
           <button className="hh-print-button" onClick={handlePrint}>Print</button>
         </div>
       </div>
-      
+
       <div className='hhEmpInfo-table-N-paginat'>
         <table>
           <thead>
@@ -51,7 +82,7 @@ const HHEmpInformation = () => {
             </tr>
           </thead>
           <tbody>
-            {employees.map((employee, index) => (
+            {filteredEmployees.map((employee, index) => (
               <tr key={index}>
                 <td>{employee.name}</td>
                 <td>{employee.designation}</td>
@@ -74,7 +105,6 @@ const HHEmpInformation = () => {
           <button>Last</button>
         </div>
       </div>
-      
     </div>
   );
 };

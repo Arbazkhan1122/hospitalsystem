@@ -85,7 +85,7 @@ const handleSubmit = async (e) => {
 
 
 
-  const apiUrl = 'http://localhost:1415/api/new-patient-visits/save-new-patient';
+  const apiUrl = 'http://192.168.1.34:1415/api/new-patient-visits/save-new-patient';
 
 
 
@@ -466,7 +466,8 @@ const handleSubmit = async (e) => {
             </div>
             <div className="checkIn__form-group">
               <label>Visit Time <span className="checkIn__required">*</span></label>
-              <input type="time" value={formData.visitTime}  onChange={handleChange}/>
+              <input type="time" value={formData.visitTime}  />
+              {/* onChange={handleChange} */}
             </div>
             <div className=" checkIn__form-group--external">
               <label>External?</label>
