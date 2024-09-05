@@ -1,6 +1,6 @@
 .dispensary-navigation-bar {
   background-color: white;
-  padding: 0px 0;
+  /* padding: 0px 0; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,8 +8,8 @@
 
 .dispensary-navigation-bar ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
   display: flex;
 }
 
@@ -31,7 +31,7 @@
   background-color: #005a8e;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 10px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;

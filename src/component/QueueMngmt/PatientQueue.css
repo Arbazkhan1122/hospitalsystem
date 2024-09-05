@@ -3,16 +3,12 @@
 
 .patient-queue-management-container {
   background-color: #ccefff;
-  font-family: Arial, sans-serif;
   width: 100%;
   height: 100%;
-  padding: 10px;
+  /* padding: 10px; */
   box-sizing: border-box;
   }
-  /* .queue-management-content{
-    width: auto;
-    height: 100%;
-  } */
+  
   
   .patient-queue-management-header {
     background-color: white;
@@ -35,7 +31,6 @@
   }
   
   .queue-management-content {
-    /* padding: 20px; */
     border-radius: 8px;
     margin-top: 10px;
   }
@@ -55,10 +50,13 @@
   
   .queue-management-form-group {
     margin-right: 20px;
+    margin-left: 10px;
+
   }
   
   .queue-management-form-group label {
     color: #004080;
+    margin-left: 10px;
     font-size: 14px;
     margin-right: 5px;
   }
@@ -305,7 +303,6 @@
 
 .patient-queue-management-container {
   background-color: #ccefff;
-  font-family: Arial, sans-serif;
   width: 100%;
   height: 100%;
   /* padding: 20px; */
@@ -343,6 +340,7 @@
 
 .queue-management-title {
   font-size: 16px;
+  margin-left: 10px;
   /* margin-bottom: 20px; */
   color: #004080;
 }

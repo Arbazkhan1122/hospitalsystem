@@ -1,17 +1,11 @@
-/* App.css */
 
-* {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  .app {
+  .patient-record-action-app {
     display: flex;
     flex-direction: column;
     height: 100vh;
   }
   
-  header {
+  .patient-record-action-header {
     background-color: #0056b3;
     color: white;
     padding: 10px 20px;
@@ -20,12 +14,12 @@
     align-items: center;
   }
   
-  .logo {
+  .patient-record-action-logo {
     font-size: 24px;
     font-weight: bold;
   }
   
-  .home-button {
+  .patient-record-action-home-button {
     background-color: #ffc107;
     color: #000;
     border: none;
@@ -34,23 +28,23 @@
     cursor: pointer;
   }
   
-  .main-content {
+  .patient-record-action-main-content {
     display: flex;
     flex: 1;
   }
   
-  .sidebar {
+  .patient-record-action-sidebar {
     width: 250px;
     background-color: #0056b3;
     color: white;
     padding: 20px;
   }
   
-  .patient-info {
+  .patient-record-action-patient-info {
     margin-bottom: 20px;
   }
   
-  .avatar {
+  .patient-record-action-avatar {
     width: 100px;
     height: 100px;
     background-color: #ccc;
@@ -58,24 +52,24 @@
     margin-bottom: 10px;
   }
   
-  nav ul {
+  .patient-record-action-nav ul {
     list-style-type: none;
     padding: 0;
   }
   
-  nav ul li {
+  .patient-record-action-nav ul li {
     padding: 10px 0;
     cursor: pointer;
   }
   
-  .dashboard {
+  .patient-record-action-dashboard {
     flex: 1;
     padding: 20px;
     background-color: #f0f0f0;
     overflow-y: auto;
   }
   
-  section {
+  .patient-record-action-section {
     background-color: white;
     margin-bottom: 20px;
     padding: 15px;
@@ -83,12 +77,12 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
   
-  h3 {
+  .patient-record-action-h3 {
     margin-top: 0;
     display: inline-block;
   }
   
-  .add-button {
+  .patient-record-action-add-button {
     float: right;
     background-color: #6f42c1;
     color: white;
@@ -98,54 +92,26 @@
     cursor: pointer;
   }
   
-  table {
+  .patient-record-action-table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  th, td {
+  .patient-record-action th, td {
     text-align: left;
     padding: 8px;
     border-bottom: 1px solid #ddd;
   }
   
-  th {
+  .patient-record-action th {
     background-color: #f2f2f2;
   }
   
-  a {
+  .patient-record-action a {
     color: #0056b3;
     text-decoration: none;
   }
   
-  a:hover {
+  .patient-record-action a:hover {
     text-decoration: underline;
   }
-
-/* 
-  .patient-record-action-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  .patient-record-action {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 800px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .patient-record-action button {
-    margin-top: 10px;
-  }
-   */

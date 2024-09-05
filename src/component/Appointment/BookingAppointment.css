@@ -1,10 +1,10 @@
-.book-appointment {
+.book-appointment-book-appointment {
   background-color: #e6f3ff;
   padding: 20px;
   font-family: Arial, sans-serif;
 }
 
-.new-patient-btn {
+.book-appointment-new-patient-btn {
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -13,31 +13,31 @@
   cursor: pointer;
 }
 
-.search-bar {
+.book-appointment-search-bar {
   display: flex;
   margin-bottom: 20px;
 }
 
-.search-bar input {
+.book-appointment-search-bar input {
   flex-grow: 1;
   padding: 10px;
   font-size: 16px;
 }
 
-.search-btn {
+.book-appointment-search-btn {
   background-color: white;
   border: 1px solid #ccc;
   padding: 10px;
   cursor: pointer;
 }
 
-.results-info {
+.book-appointment-results-info {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.print-btn {
+.book-appointment-print-btn {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   padding: 5px 10px;
@@ -60,7 +60,7 @@ th {
   background-color: #f2f2f2;
 } */
 
-.create-appointment-btn {
+.book-appointment-create-appointment-btn {
   background-color: #008CBA;
   color: white;
   border: none;
@@ -68,14 +68,14 @@ th {
   cursor: pointer;
 }
 
-.pagination {
+.book-appointment-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
 }
 
-.pagination button {
+.book-appointment-pagination button {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   padding: 5px 5px;
@@ -83,6 +83,6 @@ th {
   cursor: pointer;
 }
 
-.pagination span {
+.book-appointment-pagination span {
   margin: 0 10px;
 }

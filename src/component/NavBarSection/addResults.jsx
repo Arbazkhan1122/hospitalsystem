@@ -9,32 +9,31 @@ function AddResults() {
   const [category, setCategory] = useState('');
 
   return (
-    <div className="work-list">
-      <div className="header">
-        <div className="date-range">
+    <div className="add-result-results-work-list">
+      <div className="add-result-results-header">
+        <div className="add-result-results-date-range">
           <label>From:</label>
           <input type="date" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} />
           <label>To:</label>
           <input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} />
         </div>
-        <div className="category-select">
+        <div className="add-result-results-category-select">
           <label>Category:</label>
           <select value={category} onChange={(e) => setCategory(e.target.value)}>
             <option value="">--Select Lab Category--</option>
             {/* Add more options here */}
           </select>
         </div>
-        <button className="load-button">Load</button>
+        <button className="add-result-results-load-button">Load</button>
       </div>
-      <div className="search-bar">
+      <div className="add-result-results-search-bar">
         <input type="text" placeholder="Search..." />
       </div>
-      <table className="work-table">
+      <table className="add-result-results-work-table">
         <thead>
           <tr>
-            <th>Hospit...</th>
             <th>Patient Name</th>
-            <th>Ag...</th>
+            <th>Age/Sex</th>
             <th>Phone...</th>
             <th>Test Name</th>
             <th>Category</th>
@@ -50,7 +49,7 @@ function AddResults() {
           </tr>
         </tbody>
       </table>
-      <div className="pagination">
+      <div className="add-result-results-pagination">
         <button>First</button>
         <button>Previous</button>
         <span>Page 0 of 0</span>

@@ -14,26 +14,26 @@ const salesData = [
 const SalesStockDetails = () => {
     return (
         
-         <div className="stock-container">
-            <div className="header-tabs">
+         <div className="sales-stock-details-container">
+            <div className="sales-stock-details-header-tabs">
                 <span 
-                className="tab active"
+                className="sales-stock-details-tab active"
                 
                 >
                     Stock Details List</span>
                 <span 
-                className="tab"
+                className="sales-stock-details-tab"
                 
                 >
                     Transfer</span>
-                <span className="tab">Requisition</span>
+                <span className="sales-stock-details-tab">Requisition</span>
             </div>
 
             
       
-              <div className="filter-bar">
-                <input type="text" placeholder="Search" className="search-input" />
-                <div className="filter-options">
+              <div className="sales-stock-details-filter-bar">
+                <input type="text" placeholder="Search" className="sales-stock-details-search-input" />
+                <div className="sales-stock-details-filter-options">
                     <span>Filter by Store:</span>
                     <select>
                         <option>Main Dispensary</option>
@@ -43,13 +43,13 @@ const SalesStockDetails = () => {
                         <input type="checkbox" /> Show Zero Quantity
                     </label>
                 </div>
-                <div className="dSSD-results-info">
+                <div className="sales-stock-details-dSSD-results-info">
                     <span>Showing 543 / 543 results</span>
-                    <button className="dSSD-export-btn">Export</button>
-                    <button className="dSSD-print-btn">Print</button>
+                    <button className="sales-stock-details-dSSD-export-btn">Export</button>
+                    <button className="sales-stock-details-dSSD-print-btn">Print</button>
                 </div>
             </div>
-            <table className="dSSD-stock-table">
+            <table className="sales-stock-details-dSSD-stock-table">
                 <thead>
                     <tr>
                         <th>Generic Name</th>
@@ -81,15 +81,15 @@ const SalesStockDetails = () => {
                     ))}
                 </tbody>
             </table>
-            <div className="dSSDetails-pagination-bar">
+            {/* <div className="dSSDetails-pagination-bar">
                 <span>1 to 20 of 543</span>
                 <button>First</button>
                 <button>Previous</button>
                 <span>Page 1 of 28</span>
                 <button>Next</button>
                 <button>Last</button>
-            </div>
-            <div className="dSSDetails-summary">
+            </div> */}
+            <div className="sales-stock-details-dSSDetails-summary">
                 <h4>Summary</h4>
                 <strong>Total Stock Value: </strong>162,914.25
             </div>

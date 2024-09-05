@@ -100,7 +100,7 @@ const SSIPatientConsumNewPCbtn = ({ onBack }) => {
       <h2 className="sSIPatientConsumNewPCbtn-title"><i className="fa-solid fa-star-of-life"></i> Consumption Entry</h2>
       <div className="sSIPatientConsumNewPCbtn-form-section">
         <label>Consumption Date*:</label>
-        <input
+        <input className=''
           type="date"
           value={consumptionDate}
           onChange={(e) => setConsumptionDate(e.target.value)}

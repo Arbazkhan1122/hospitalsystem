@@ -31,23 +31,27 @@
     padding: 15px;
   }
   
-  table {
+  .sSPConsumInternalConsum-content table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
   }
   
-  th, td {
+  .sSPConsumInternalConsum-content th, .sSPConsumInternalConsum-content td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
   }
   
-  th {
+  .sSPConsumInternalConsum-content th {
     background-color: #f2f2f2;
   }
   
-  input[type="text"], input[type="number"], input[type="date"], select, textarea {
+  .sSPConsumInternalConsum-content input[type="text"], 
+  .sSPConsumInternalConsum-content input[type="number"], 
+  .sSPConsumInternalConsum-content input[type="date"], 
+  .sSPConsumInternalConsum-content select, 
+  .sSPConsumInternalConsum-remark textarea {
     width: 100%;
     padding: 5px;
     margin: 5px 0;

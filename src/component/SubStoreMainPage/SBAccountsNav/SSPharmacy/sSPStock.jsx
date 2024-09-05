@@ -140,16 +140,16 @@ function SSPStock() {
     switch (activeTab) {
       case 'Stock':
         return (
-          <div className="sSPStock-content">
-            <div className="search-bar">
+          <div className="sSPStock-stock-content">
+            <div className="sSPStock-stock-search-bar">
               <input type="text" placeholder="Search" />
               <button type="button">🔍</button>
             </div>
-            <div className="results-header">
+            <div className="sSPStock-stock-results-header">
               <span>Showing {stockData.length} / {stockData.length} results</span>
               <div>
-                <button className="btn-blue">Export</button>
-                <button className="btn-blue">Print</button>
+                <button className="sSPStock-stock-btn-blue">Export</button>
+                <button className="sSPStock-stock-btn-blue">Print</button>
               </div>
             </div>
             {loading ? (
@@ -157,7 +157,7 @@ function SSPStock() {
             ) : error ? (
               <p>{error}</p>
             ) : (
-              <table>
+              <table className='sSPStock-stock'>
                 <thead>
                   <tr>
                     <th>Generic Name</th>
@@ -182,14 +182,14 @@ function SSPStock() {
                 </tbody>
               </table>
             )}
-            <div className="pagination">
+            {/* <div className="pagination">
               <span>1 to {stockData.length} of {stockData.length}</span>
               <button disabled>First</button>
               <button disabled>Previous</button>
               <button className="active">Page 1 of 1</button>
               <button disabled>Next</button>
               <button disabled>Last</button>
-            </div>
+            </div> */}
           </div>
         );
       case 'Requisition':
