@@ -1,66 +1,155 @@
-.sales-container {
+.dispenSalesSales-sales-container {
     font-family: Arial, sans-serif;
-    background-color: #e6f7ff;
-    padding: 20px;
+    background-color: #CAF2FF;
+    padding: 10px;
+    height: 450px;
+
   }
   
-  .header .tabs {
+  .dispenSalesSales-header .dispenSalesSales-tabs {
     display: flex;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
+    font-size: 0.8em;
+    background-color: #FAFAFA;
+  }
+  .dispenSalesSales-patient-search input{
+    width: 250px;
   }
   
-  .tab {
+  .dispenSalesSales-tab {
     padding: 10px;
     cursor: pointer;
-    border-right: 1px solid #ccc;
+    /* border-right: 1px solid #ccc; */
   }
   
-  .tab.active {
-    background-color: #007bff;
-    color: #fff;
+  .dispenSalesSales-tab-active {
+    /* background-color: #007bff; */
+    border-bottom: 3px solid #007bff;
+    color: black;
     font-weight: bold;
   }
-  
-  .patient-info,
-  .hospital-info,
-  .medicine-info,
-  .invoice-summary,
-  .payment-section,
-  .history-section {
+  .dispenSalesSales-invoice-summary{
+    background-color:white;
     margin-bottom: 20px;
+    width: 93%;
+
   }
   
-  .patient-info,
-  .hospital-info,
-  .medicine-info {
+  .dispenSalesSales-patient-info {
+    margin-bottom: 20px;
+  }
+  .dispenSalesSales-hospital-info{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
+    background-color: #F3F0F0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .dispenSalesSales-hospital-info-subDiv{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-right: 50px;
+  }
+  .dispenSalesSales-hospital-info-subDiv div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    /* border: 1px solid red; */
+  }
+  .dispenSalesSales-hospital-info select{
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    /* border: 1px solid #e40f0f; */
+    /* flex-grow: 1; */
+    width: 200px;
+  }
+  .dispenSalesSales-hospital-info-subDiv div option{
+    width: 10px;
+  }
+
+  
+  .dispenSalesSales-medicine-info {
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #f0f8ff;
     padding: 10px;
     border-radius: 5px;
+    width: 93%;
+    font-size: 0.7em;
+    color: gray;
+    /* border: 1px solid #0a0707; */
+height: 50px;
+  }
+  .dispenSalesSales-Expiry input{
+/* border: 1px solid red; */
+width: 30px;
+  }
+  .dispenSalesSales-Batch input{
+    width: 30px;
+  }
+  .dispenSalesSales-Avl-Qty input{
+    width: 40px;
+  }
+  .dispenSalesSales-Qty input{
+    width: 40px;
+  }
+  .dispenSalesSales-QSalePricety input{
+    width: 40px;
+  }
+  .dispenSalesSales-SubTotal input{
+    width: 40px;
   }
   
-  .patient-info label,
-  .hospital-info div,
-  .medicine-info label {
+  .dispenSalesSales-patient-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: #f0f8ff; */
+    /* padding: 10px; */
+    border-radius: 5px;
+    font-size: 0.8em;
+  }
+  .dispenSalesSales-patient-info label{
+    margin-right: 10px;
+
+  }
+  
+  /* .dispenSalesSales-hospital-info div{
+    font-weight: bold;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between; 
+  } */
+  
+  .dispenSalesSales-medicine-info label {
     font-weight: bold;
     margin-right: 10px;
   }
   
-  .patient-info input,
-  .hospital-info input,
-  .medicine-info input,
-  .hospital-info select,
-  .medicine-info select {
+  .dispenSalesSales-patient-info input,
+  .dispenSalesSales-hospital-info input,
+  .dispenSalesSales-medicine-info input,
+  .dispenSalesSales-medicine-info select {
     padding: 5px;
     border-radius: 3px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
+    /* border: 1px solid #e40f0f; */
     flex-grow: 1;
   }
   
-  .add-button {
+
+  
+  .dispenSalesSales-add-button {
     background-color: #28a745;
     color: #fff;
     border: none;
@@ -68,47 +157,70 @@
     cursor: pointer;
   }
   
-  .invoice-summary table {
+  .dispenSalesSales-invoice-summary table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  .invoice-summary th,
-  .invoice-summary td {
+  .dispenSalesSales-invoice-summary th,
+  .dispenSalesSales-invoice-summary td {
     padding: 10px;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     text-align: left;
+    background-color: #EEEEEE;
+    font-size: 12px;
+    color: #6b6a6a;
   }
   
-  .payment-section {
+  .dispenSalesSales-payment-section {
+    margin-bottom: 20px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    background-color: #f0f8ff;
+    background-color: white;
     padding: 20px;
     border-radius: 5px;
+    /* border: 1px solid green; */
+    width: 20%;
+    font-size: 0.8em;
+    color: gray;
   }
   
-  .payment-summary,
-  .payment-actions {
-    flex-grow: 1;
+ 
+  .dispenSalesSales-payment-actions {
+    /* flex-grow: 1; */
+    display: flex;
+    justify-content: center;
+  }
+ .dispenSalesSales-payment-summary{
+   flex-grow: 1;
+   padding: 10px;
+  }
+  .dispenSalesSales-payment-summary div{
+    padding: 5px;
+  }
+  .dispenSalesSales-payment-summary-subDiv{
+    display: flex;
+    justify-content: space-between;
+  }
+  .dispenSalesSales-payment-summary-subDiv input{
+    width: 100px;
+    margin-left: 10px;
   }
   
-  .payment-actions {
-    text-align: right;
-  }
   
-  .print-button {
+  .dispenSalesSales-print-button {
     background-color: #28a745;
     color: #fff;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-right: 10px;
   }
   
-  .discard-button {
+  .dispenSalesSales-discard-button {
     background-color: #dc3545;
     color: #fff;
     padding: 10px 20px;
@@ -117,22 +229,65 @@
     cursor: pointer;
   }
   
-  .history-section {
+  .dispenSalesSales-history-section {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: flex-start;
+    margin-bottom: 20px;
+    /* width: 30%; */
+    /* border: 1px solid red; */
   }
   
-  .invoice-history,
-  .credit-limits {
-    background-color: #f0f8ff;
+  .dispenSalesSales-invoice-history,
+  .dispenSalesSales-credit-limits {
+    margin-right: 15px;
+    /* border: 1px solid red; */
+    background-color: white;
     padding: 10px;
     border-radius: 5px;
-    width: 48%;
+    width: 13%;
+    font-size: 0.8em;
   }
   
-  .invoice-history h4,
-  .credit-limits h4 {
+  .dispenSalesSales-invoice-history h4,
+  .dispenSalesSales-credit-limits h4 {
     margin-bottom: 10px;
+    font-weight: bold;
   }
+  .dispenSalesSales-invoice-history div,
+  .dispenSalesSales-credit-limits div{
+    padding: 10px;
+
+  } 
+  /* .dispenSalesSales-register-patient{
+  } */
+  .dispenSalesSales-register-patient span {
+    padding-right: 10px;
+    color: #007bff;
+  }
+  .dispenSalesSales-medicineInfo-N-paymentSection{
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    /* width: 30px; */
+  }
+  .dispenSalesSales-medicineInfo-N-invoiceSummary{
+    display: flex;
+    flex-direction: column;
+  }
+
+.salesStockDetails-popup-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* height: 200px; */
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+ 
   

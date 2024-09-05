@@ -1,0 +1,221 @@
+.drPaymentModeWiseReport-report {
+    font-family: Arial, sans-serif;
+    /* max-width: 1200px; */
+    /* margin: 0 auto; */
+    padding: 10px;
+    height: 460px;
+    background-color: #CAF2FF;
+  }
+  
+ .drPaymentModeWiseReport-report h4 {
+    margin-top: 0;
+    color: rgb(66, 66, 66);
+    font-weight: 200;
+  }
+  .drPaymentModeWiseReport-report i {
+    color: #0F63AF
+  }
+  
+  .drPaymentModeWiseReport-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .drPaymentModeWiseReport-filters-second {
+    display: flex;
+    justify-content: left;
+    /* flex-wrap: wrap; */
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .drPaymentModeWiseReport-date-range{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: #EBF7FF;
+    margin-left: 30px;
+    padding: 2px 30px;
+  }
+  
+  .drPaymentModeWiseReport-select-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+    /* border: 1px solid red; */
+    /* width: 300px; */
+  }
+  .drPaymentModeWiseReport-select-filters select{
+    width: 200px;
+  }
+  .drPaymentModeWiseReport-select-filters label{
+  margin-right: 30px;
+  }
+  .drPaymentModeWiseReport-select-filters input[type="date"], input[type="text"], select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-left: 20px;
+  }
+  
+  .drPaymentModeWiseReport-star-button {
+    background: none;
+    border: none;
+    font-size: 1.9em;
+    color: #0F63AF;
+    cursor: pointer;
+  }
+  
+  .drPaymentModeWiseReport-show-report-button {
+    background-color: #5867DD;
+    color: white;
+    border: none;
+    font-size: 12px;
+    padding: 8px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 100px;
+  }
+  .drPaymentModeWiseReport-show-report-button i{
+    color: white;
+  }
+  
+  .drPaymentModeWiseReport-search-N-result{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+.drPaymentModeWiseReport-search-bar{
+  margin-left: -15px;
+}  
+  .drPaymentModeWiseReport-search-bar input {
+    /* margin-top: 10px; */
+    /* padding: 5px; */
+    width: 200px;
+    margin: 0;
+  }
+  .drPaymentModeWiseReport-search-bar i{
+    position: relative;
+    color:gray;
+    top: 3px;
+  left: 205px;
+  }
+  
+  .drPaymentModeWiseReport-results-info {
+    display: flex;
+    align-items: center;
+    /* padding-top: 10px; */
+  }
+  .drPaymentModeWiseReport-results-info span {
+    /* display: flex;
+    align-items: center; */
+    /* padding-top: 10px; */
+    color: #659BE0;
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  
+  /* .drPaymentModeWiseReport-print-button {
+    background-color: #659BE0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+  } */
+  
+  .results-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .drPaymentModeWiseReport-export-button, .drPaymentModeWiseReport-print-button {
+    background-color: #659BE0;
+    color: white;
+    border: none;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  
+  .drPaymentModeWiseReport-report table {
+    margin-top: 10px;
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+  }
+  
+  .drPaymentModeWiseReport-report th, .drPaymentModeWiseReport-report td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 12px;
+  }
+  
+  .drPaymentModeWiseReport-report th {
+    background-color: #F3F3F3;
+    color: #333333;
+  }
+  
+  /* .no-data {
+    text-align: center;
+    padding: 20px;
+    background-color: #fffbe6;
+  } */
+  
+  .drPaymentModeWiseReport-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .drPaymentModeWiseReport-pagination button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  
+  .drPaymentModeWiseReport-pagination span {
+    margin: 0 10px;
+    color: gray;
+    font-size: 12px;
+  }
+ 
+  .drPaymentModeWiseReport-table-N-paginationDiv{
+    background-color: #FFFFFF;
+  }
+  .drPaymentModeWiseReport-Summary {
+background-color: #F1F1F1;
+width: 50%;
+  }
+
+  .drPaymentModeWiseReport-Summary h3{
+color: #4d4c4c;    
+display: flex;
+justify-content: center;
+padding: 5px 10px;
+  }
+  .drPaymentModeWiseReport-Summary td{
+    color: blue;
+    font-size: 12px;
+    font-weight: bold;
+  }
