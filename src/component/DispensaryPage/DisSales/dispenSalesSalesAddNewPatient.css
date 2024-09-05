@@ -1,0 +1,116 @@
+.salesAddNewPatient-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 200px; */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+.salesAddNewPatient-modal-container {
+    width: 60%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.salesAddNewPatient-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.salesAddNewPatient-modal-header h2 {
+    margin: 0;
+    font-size: 1.0rem;
+    color: #414040;
+}
+
+.salesAddNewPatient-close-button {
+    background-color: red;
+    color: white;
+    border-radius: 15px;
+    padding: 5px 9px;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.salesAddNewPatient-modal-body {
+    padding: 1rem;
+}
+
+.salesAddNewPatient-form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.salesAddNewPatient-form-group {
+    flex: 0 0 48%;
+}
+
+.salesAddNewPatient-form-group label {
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.salesAddNewPatient-form-group input,
+.salesAddNewPatient-form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.salesAddNewPatient-form-group span {
+    color: red;
+}
+
+.salesAddNewPatient-age-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.salesAddNewPatient-age-group input {
+    flex: 0 0 60%;
+}
+
+.salesAddNewPatient-age-group select {
+    flex: 0 0 38%;
+}
+
+.salesAddNewPatient-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.salesAddNewPatient-ok-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.salesAddNewPatient-close-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}

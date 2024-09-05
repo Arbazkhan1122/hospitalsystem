@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .dispensary-navigation-bar {
   background-color: white;
   /* padding: 0px 0; */
@@ -40,3 +41,73 @@
 .dispensary-active-btn:hover {
   background-color: #003b5c;
 }
+=======
+.activeDispensary-btn{
+    background-color: #0056b3;
+    color: white;
+    height: 25px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+  }
+  .dispensary-Navigation-bar {
+      background-color: white;
+      /* padding: 10px; */
+      /* border: 1px solid #007bff; */
+  
+    }
+    
+    .dispensary-Navigation-bar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 0px 10px 0px;
+      display: flex;
+      justify-content: space-between;
+  
+    }
+    
+    .dispensary-Navigation-bar li {
+      margin: 0 0px;
+      
+    }
+    
+    .dispensary-Navigation-bar a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 5px 5px;
+      border-radius: 5px;
+  
+    }
+    
+    .dispensary-Navigation-bar a:hover {
+      background-color: #0056b3;
+      color: white;
+      border: 1px solid gray;
+  
+      
+    }
+    
+    .dispensary-Navigation-bar .active {
+      background-color: #0056b3;
+      color: white;
+  
+    }
+    .dispensary-Activebtn-N-LogOut{
+      display: flex;
+      justify-content: start;
+      gap: 5px;
+    }
+    .dispensary-LogOut{
+      border: none;
+      font-size: 18px;
+    }
+
+    .disPrescription-Navbttn-N-act{
+      display: flex;
+    }
+    .disPrescription-Navbttn-N-act li{
+      padding: 0 10px 0 10px;
+    }
+>>>>>>> 760f6856dec877a39e4e4c8e742340dc5289097f

@@ -1,4 +1,4 @@
-.imu-upload-page {
+/* .imu-upload-page {
     background-color: #CAF2FF;
     padding: 10px 10px 0px 0px;
     font-family: Arial, sans-serif;
@@ -61,14 +61,7 @@
     width: 200px !important;
   }
   
-  /* .iMU-Upload-search-bar button {
-    padding: 8px 12px;
-    background-color: #f8f9fa;
-    border: 1px solid #ccc;
-    border-left: none;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-  } */
+
   
   .upload-status {
     margin-bottom: 20px;
@@ -113,9 +106,9 @@
     justify-content: space-between;
   }
   .iMUUpload-checkbx{
-    /* width: 20%; */
+
     gap: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  }
+  } */
