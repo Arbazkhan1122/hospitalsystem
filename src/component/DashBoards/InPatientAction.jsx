@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import './InPatientAction.css';
 import VitalsPage from '../DashBoards/ClinicalVitals';
 import ImagingAdd from '../DashBoards/ImagingAdd';
-import ActiveProblems from '../DashBoards/ActiveProblems';
+
 import ClinicalDocument from '../DashBoards/ClinicalDocuments';
 import NotesTable from '../DashBoards/Notes';
 import VisitTable from '../DashBoards/EncounterHistory';
 import OrdersPage from '../DashBoards/LabsActiveOrder';
 import PatientDischargeForm from '../DashBoards/DischargeSummary';
 import DynamicInputForm from '../DashBoards/AddCompliants'; // Import the DynamicInputForm component
+import ActiveProblems from './ActiveProblems';
 
 const PatientDashboard = ({ patient }) => {
   const [activeSection, setActiveSection] = useState('dashboard');
@@ -38,7 +39,8 @@ const PatientDashboard = ({ patient }) => {
         if (showDischargeSummary) return <PatientDischargeForm onClose={() => setShowDischargeSummary(false)} />;
         return (
           <div className="main-content">
-            <aside className="patient-info">
+            <aside className=''>
+              <div className="patientDash-patient-info">
               <div className="avatar"></div>
               <div className="ipd-tag">IPD</div>
               <h2>{patient.name}</h2>
@@ -46,6 +48,7 @@ const PatientDashboard = ({ patient }) => {
               <p>Hospital No: {patient.hospitalNo}</p>
               <p>Ward/Bed: {patient.wardBed}</p>
               <p>Attending: {patient.providerName}</p>
+              </div>
 
               <nav>
                 <ul>

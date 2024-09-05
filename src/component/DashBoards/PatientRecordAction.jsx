@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import '../DashBoards/PatientRecordAction.css';
 import VitalsPage from '../DashBoards/ClinicalVitals';
 import ImagingAdd from '../DashBoards/ImagingAdd';
-import ActiveProblems from '../DashBoards/ActiveProblems';
+
 import ClinicalDocument from '../DashBoards/ClinicalDocuments';
 import NotesTable from '../DashBoards/Notes';
 import VisitTable from '../DashBoards/EncounterHistory';
 import OrdersPage from '../DashBoards/LabsActiveOrder';
 import PatientDischargeForm from '../DashBoards/DischargeSummary'; 
+import ActiveProblems from './activeProblems';
 
 const PatientRecordAction = ({ patient }) => {
   const [activeSection, setActiveSection] = useState('dashboard');

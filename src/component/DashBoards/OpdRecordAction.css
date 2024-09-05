@@ -83,10 +83,6 @@ section {
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-h3 {
-  margin-top: 0;
-  display: inline-block;
-}
 
 .add-button {
   float: right;
