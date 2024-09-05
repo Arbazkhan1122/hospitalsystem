@@ -1,6 +1,5 @@
-.nav-Setting-navbar {
+/* .nav-Setting-navbar {
     background-color: #e0f7fa;
-    /* padding: 10px; */
     border-bottom: 1px  solid gray;
 
   }
@@ -22,24 +21,17 @@
   .nav-Setting-navbar a {
     color: black;
     text-decoration: none;
-    /* font-weight: bold; */
     padding: 10px 15px;
     border-radius: 5px;
 
   }
   
-  /* .nav-Setting-navbar a:hover {
-    background-color: #0056b3;
-    color: white;
-    border: 1px solid gray;
-
-    
-  } */
+ 
+  
   
   .nav-Setting-navbar .active {
-    /* background-color: #0056b3; */
+  
     font-weight: bold;
-    /* color: white; */
 
   }
-  
+   */

@@ -1,22 +1,26 @@
+<<<<<<< HEAD
 /* components/WorkList.css */
-.work-list {
+.add-result-results-work-list {
+=======
+/* .work-list {
+>>>>>>> 760f6856dec877a39e4e4c8e742340dc5289097f
     background-color: #e6f3ff;
     padding: 20px;
     border-radius: 5px;
   }
   
-  .header {
+  .add-result-results-header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
   }
   
-  .date-range, .category-select {
+  .add-result-results-date-range, .category-select {
     display: flex;
     align-items: center;
   }
   
-  .load-button {
+  .add-result-results-load-button {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -25,38 +29,38 @@
     cursor: pointer;
   }
   
-  .search-bar input {
+  .add-result-results-search-bar input {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
   }
   
-  .work-table {
+  .add-result-results-work-table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  .work-table th, .work-table td {
+  .add-result-results-work-table th, .work-table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
   }
   
-  .work-table th {
+  .add-result-results-work-table th {
     background-color: #f2f2f2;
   }
   
-  .pagination {
+  .add-result-results-pagination {
     margin-top: 20px;
     display: flex;
     justify-content: center;
   }
   
-  .pagination button {
+  .add-result-results-pagination button {
     margin: 0 5px;
     padding: 5px 10px;
     cursor: pointer;
-  }
+  } */
 
   
   

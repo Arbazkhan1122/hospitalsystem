@@ -51,11 +51,11 @@ const PatientRecordAction = ({ patient }) => {
   };
 
   const renderMainContent = () => (
-    <div className="main-content">
-      <aside className="patient-info">
-        <div className="avatar"></div>
+    <div className="patient-record-action-main-content">
+      <aside className="patient-record-action-patient-info">
+        <div className="patient-record-action-avatar"></div>
         
-        <div className="ipd-tag">IPD</div>
+        <div className="patient-record-action-ipd-tag">IPD</div>
         <h2>{patient?.name || 'No Patient Data'}</h2>
         <p>{patient?.ageSex || 'N/A'}</p>
         <p>Hospital No: {patient?.hospitalNo || 'N/A'}</p>
@@ -77,28 +77,28 @@ const PatientRecordAction = ({ patient }) => {
       </aside>
 
       <main>
-        <section className="labs">
+        <section className="patient-record-action-labs">
           <h3>🧪 Labs</h3>
-          <button className="add-button" onClick={() => setShowOrdersPage(true)}>+ Add</button>
-          <div className="no-records">No Records Found</div>
+          <button className="patient-record-action-add-button" onClick={() => setShowOrdersPage(true)}>+ Add</button>
+          <div className="patient-record-action-no-records">No Records Found</div>
         </section>
 
-        <section className="imaging">
+        <section className="patient-record-action-imaging">
           <h3>🖼 Imaging</h3>
-          <button className="add-button" onClick={() => setShowImagingAdd(true)}>+ Add</button>
-          <div className="no-records">No Records Found</div>
+          <button className="patient-record-action-add-button" onClick={() => setShowImagingAdd(true)}>+ Add</button>
+          <div className="patient-record-action-no-records">No Records Found</div>
         </section>
 
-        <section className="active-problems">
+        <section className="patient-record-action-active-problems">
           <h3>⚠ Active Problems</h3>
-          <button className="add-button" onClick={() => setShowActiveProblems(true)}>+ Add</button>
-          <div className="no-records">No Records Found</div>
+          <button className="patient-record-action-add-button" onClick={() => setShowActiveProblems(true)}>+ Add</button>
+          <div className="patient-record-action-no-records">No Records Found</div>
         </section>
 
-        <section className="medications">
+        <section className="patient-record-action-medications">
           <h3>💊 Medications</h3>
-          <button className="add-button">+ Add</button>
-          <table>
+          <button className="patient-record-action-add-button">+ Add</button>
+          <table className='patient-record-action'>
             <tbody>
               <tr><td>OSMOLAX</td><td>0 times a day</td><td>Start Date- 02.08.2024</td></tr>
               <tr><td>ACECLOFENAC + PARACETAMOL TABS</td><td>0 times a day</td><td>Start Date- 12.08.2024</td></tr>
@@ -109,25 +109,25 @@ const PatientRecordAction = ({ patient }) => {
           </table>
         </section>
 
-        <section className="notes">
+        <section className="patient-record-action-notes">
           <h3>📝 Notes</h3>
-          <button className="add-button" onClick={() => setShowNotesTable(true)}>+ Add</button>
-          <div className="no-records">No Records Found</div>
+          <button className="patient-record-action-add-button" onClick={() => setShowNotesTable(true)}>+ Add</button>
+          <div className="patient-record-action-no-records">No Records Found</div>
         </section>
 
-        <section className="discharge-summary">
+        <section className="patient-record-action-discharge-summary">
           <h3>📄 Discharge Summary</h3>
-          <button className="add-button" onClick={() => setShowDischargeSummary(true)}>+ Add</button>
-          <div className="no-records">No Records Found</div>
+          <button className="patient-record-action-add-button" onClick={() => setShowDischargeSummary(true)}>+ Add</button>
+          <div className="patient-record-action-no-records">No Records Found</div>
         </section>
       </main>
     </div>
   );
 
   return (
-    <div className="patient-record-action">
+    <div className="patient-record-action-patient-record-action">
       <header>
-        <button className="home-button">🏠 Home</button>
+        <button className="patient-record-action-home-button">🏠 Home</button>
       </header>
       {renderContent()}
     </div>

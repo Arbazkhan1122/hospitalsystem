@@ -29,13 +29,13 @@
   font-weight: bold;
 }
 
-input[type="date"],
-input[type="text"] {
+.ssi-return-return-input[type="date"],
+.ssi-return-return-input[type="text"] {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
-}
+} 
 
 .sSIRetunReturnItemBtn-back-btn {
   margin-left: auto;
@@ -83,7 +83,7 @@ justify-content: space-between;
   cursor: pointer;
 }
 
-input[type="number"] {
+.ssi-return-return-input[type="number"][type="number"] {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;

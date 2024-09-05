@@ -1,0 +1,150 @@
+.dispenStockTransferNewTrans-container {
+    width: 100%;
+    /* max-width: 900px; */
+    /* margin: 0 auto; */
+    background-color: white;
+    /* padding: 20px; */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dispenStockTransferNewTrans-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+    background-color: #F5F5F5;
+    padding: 10px;
+    height: 40px;
+  }
+  
+  .dispenStockTransferNewTrans-header h2 {
+    margin: 0;
+    color: black;
+    font-size: 0.9em;
+  }
+  .dispenStockTransferNewTrans-date{
+
+      font-size: 13px;
+      font-weight: bold;
+  }
+  
+  .dispenStockTransferNewTrans-date span {
+    font-size: 12px;
+    font-weight: none;
+  }
+  
+  .dispenStockTransferNewTrans-details {
+    margin: 10px;
+  }
+  
+  .dispenStockTransferNewTrans-details label {
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .dispenStockTransferNewTrans-input-store {
+    width: 200px;
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .dispenStockTransferNewTrans-item-entry table {
+    width: 97%;
+    border-collapse: collapse;
+    margin: 10px;
+    border:none;
+}
+
+.dispenStockTransferNewTrans-item-entry th,
+.dispenStockTransferNewTrans-item-entry td {
+      border:none;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+  }
+  
+  .dispenStockTransferNewTrans-item-entry th {
+    background-color: #f2f2f2;
+    color: #535353;
+  }
+  
+  .dispenStockTransferNewTrans-item-entry input {
+    width: 70%;
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .dispenStockTransferNewTrans-delete-btn{
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer; 
+  }
+  .dispenStockTransferNewTrans-add-item-btn  {
+    background-color: #2D68EA;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .dispenStockTransferNewTrans-add-item-btn {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 14px;
+    font-weight: bolder;
+    /* margin-bottom: 20px; */
+  }
+  
+  .dispenStockTransferNewTrans-remarks-section {
+    margin-bottom: 10px;
+  }
+  
+  .dispenStockTransferNewTrans-remarks-section label {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 10px;
+  }
+  
+  .dispenStockTransferNewTrans-remarks-section textarea {
+    width: 40%;
+    height:30px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .dispenStockTransferNewTrans-action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .dispenStockTransferNewTrans-save-btn,
+  .dispenStockTransferNewTrans-discard-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .dispenStockTransferNewTrans-save-btn {
+    background-color: #27ae60;
+    color: white;
+  }
+  
+  .dispenStockTransferNewTrans-discard-btn {
+    background-color: #e74c3c;
+    color: white;
+  }
+  

@@ -27,8 +27,8 @@ const ListVisited = () => {
   };
 
   return (
-    <div className="appointment-list">
-      <div className='d-flex' style={{alignItems:"center", justifyContent:"space-between"}}>
+    <div className="appointment-visited-list">
+      <div className='appointment-visited-d-flex' style={{alignItems:"center", justifyContent:"space-between"}}>
         <div>
           <h3>Patient Visit List</h3>
           <p>* Followup is valid up to 10 days of last visit with same doctor</p>
@@ -38,8 +38,8 @@ const ListVisited = () => {
           <Button variant="primary">Reload</Button>
         </div>
       </div>
-      <div className='d-flex' style={{alignItems:"center", justifyContent:"space-between"}} >
-      <div className="search-bar">
+      <div className='appointment-visited-d-flex' style={{alignItems:"center", justifyContent:"space-between"}} >
+      <div className="appointment-visited-search-bar">
         <input 
           type="text" 
           placeholder="Search (Atleast 3 characters)" 

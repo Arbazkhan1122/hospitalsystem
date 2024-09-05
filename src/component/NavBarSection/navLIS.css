@@ -1,9 +1,8 @@
-.lis-N-imu-btn{
+/* .lis-N-imu-btn{
     display: flex;
     gap: 10px;
     border-bottom: 1px solid #cfcdcd;
     height: 37px;
-    /* justify-content:space-between; */
   }
   .lis-page {
       background-color: #e6f7ff;
@@ -18,12 +17,10 @@
     .tab {
       padding: 10px 20px;
       border: none;
-      /* background-color: #f0f0f0; */
       cursor: pointer;
     }
     
     .tab.active {
-      /* background-color: #007bff; */
       color: black;
       font-weight: bold;
     }
@@ -87,18 +84,15 @@
   .navNot-search-bar{
     position: relative;
     margin-bottom: 10px;
-    /* padding-left: -10px; */
-    /* opacity: 0; */
-    /* animation: slideIn 1s forwards 0.8s; */
+   
   }
   .navNot-search-bar i{
     position: absolute;
     top: 8px;
     left: 180px;
-    /* display: flex;
-    justify-content: ; */
+
     color: gray;
   }
   .navNote-sms-content{
     margin-top: 15px;
-  }
+  } */

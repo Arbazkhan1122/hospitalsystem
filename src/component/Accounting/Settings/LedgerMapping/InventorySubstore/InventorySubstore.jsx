@@ -15,8 +15,8 @@ const InventorySubstore = () => {
     ]);
 
     return (
-        <div className="inventory-substore">
-            <div className="header">
+        <div className="inventory-substore-container">
+            <div className="inventory-substore-header">
                 <label>Primary Group <span>*</span></label>
                 <select>
                     <option value="Expenses">Expenses</option>
@@ -35,7 +35,7 @@ const InventorySubstore = () => {
                 <input type="text" placeholder="Type here to search substore" />
                 <input type="checkbox" defaultChecked /> All ({data.length})
             </div>
-            <table>
+            <table className='inventory-substore-tab'>
                 <thead>
                     <tr>
                         <th></th>
@@ -66,7 +66,7 @@ const InventorySubstore = () => {
                     ))}
                 </tbody>
             </table>
-            <button className="save-btn">Save Ledgers</button>
+            <button className="inventory-substore-save-btn">Save Ledgers</button>
         </div>
     );
 };
