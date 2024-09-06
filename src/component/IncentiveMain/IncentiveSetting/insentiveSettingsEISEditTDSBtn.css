@@ -1,0 +1,73 @@
+.insentiveSettingsEISEditTDSBtn-popup {
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.insentiveSettingsEISEditTDSBtn-header {
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  font-size: 14px;
+  color: rgb(92, 91, 91);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.insentiveSettingsEISEditTDSBtn-close-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+}
+
+.insentiveSettingsEISEditTDSBtn-content {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.insentiveSettingsEISEditTDSBtn-label {
+  margin-right: 10px;
+  font-size: 14px;
+  
+}
+
+.insentiveSettingsEISEditTDSBtn-input {
+  width: 50px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.insentiveSettingsEISEditTDSBtn-footer {
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+}
+
+.insentiveSettingsEISEditTDSBtn-update-button {
+  background-color: #26C281;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.insentiveSettingsEISEditTDSBtn-update-button i {
+  margin-right: 5px;
+}

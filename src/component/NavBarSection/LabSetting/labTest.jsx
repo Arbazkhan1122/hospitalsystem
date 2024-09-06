@@ -166,9 +166,9 @@
 // // export default App;
 
 
-import React from 'react';
-// import './LabTestSetting.css';
+import React, { useState } from 'react';
 import "../LabSetting/labTest.css"
+import LSLabTestAddNLTest from './lSLabTestAddNLTest';
 const labTests = [
   { labTestName: "Sugar Fasting", reportingName: "Sugar Fasting", category: "Biochemistry", isActive: true, displaySequence: 1000 },
   { labTestName: "RFT", reportingName: "RFT", category: "Biochemistry", isActive: true, displaySequence: 1000 },
@@ -176,26 +176,66 @@ const labTests = [
 ];
 
 const LabTestSetting = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleAddNewLabTestClick = () => {
+    setShowPopup(true); // Show the popup
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false); // Hide the popup
+  };
+
   return (
-    <div className="lab-test-setting-container">
-      <button className="add-button">+Add New Lab Test</button>
-      <div className="search-filters">
-        <input type="text" className="search-box" placeholder="Search" />
-        <div className="filters">
+    <div className="labTestLS-container">
+    <div className="labTestLS-firstRow">
+    <div className="labTestLS-addBtn">
+      <button className="labTestLS-add-button" onClick={handleAddNewLabTestClick}>+Add New Lab Test</button>
+      </div>
+        <div className="labTestLS-filters">
           <span>Search Filters: </span>
           <label><input type="checkbox" /> Active</label>
           <label><input type="checkbox" /> Inactive</label>
           <label><input type="checkbox" /> ALL</label>
         </div>
-        <div className="category-filter">
+        <div className="labTestLS-category-filter">
           <label>Category: </label>
           <select>
             <option>--All--</option>
+            <option>Biochemistry</option>
+            <option>Hematology</option>
+            <option>Parasitology</option>
+            <option>Serology</option>
+            <option>Immunoassay</option>
+            <option>DEFAULT</option>
+            <option>HISTOCYTOLOGY</option>
+            <option>OUT SOURCE</option>
+            <option>MOLECULAR BIOCHEMISTRY</option>
+            <option>PATHOLOGY</option>
+            <option>TUMOR MARKER</option>
+            <option>VIROLOGY</option>
+            <option>SPECIAL CHEMISTRY</option>
+            <option>Blood Transfusion</option>
+            
             {/* Add more categories as needed */}
           </select>
         </div>
       </div>
-      <table className="lab-test-table">
+      <div className='labTestLS-search-N-result'>
+      <div className="labTestLS-search-bar">
+          <i className="fa-solid fa-magnifying-glass"></i>
+          <input 
+            type="text" 
+            placeholder="Search..." 
+            
+          />
+        </div>
+        <div className="labTestLS-results-info">
+          <span>Showing 0 / 0 results</span>
+          <button className="labTestLS-print-button">Print</button>
+        </div>
+        </div>
+      <table >
         <thead>
           <tr>
             <th>Lab Test Name</th>
@@ -215,15 +255,29 @@ const LabTestSetting = () => {
               <td>{test.isActive ? 'True' : 'False'}</td>
               <td>{test.displaySequence}</td>
               <td>
-                <button className="edit-button">Edit</button>
-                <button className="deactivate-button">Deactivate</button>
+                <button className="labTestLS-edit-button"onClick={handleAddNewLabTestClick}>Edit</button>
+                <button className="labTestLS-deactivate-button">Deactivate</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="results-info">Showing 40 / 40 results</div>
-      <button className="print-button">Print</button>
+      <div className="labTestLS-pagination">
+          <span>0 to 0 of 0</span>
+          <button>First</button>
+          <button>Previous</button>
+          <span>Page 0 of 0</span>
+          <button>Next</button>
+          <button>Last</button>
+        </div>
+      {/* Modal Popup */}
+      {showPopup && (
+        <div className="labTestLS-modal">
+          <div className="labTestLS-modal-content">
+            <LSLabTestAddNLTest onClose={handleClosePopup} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

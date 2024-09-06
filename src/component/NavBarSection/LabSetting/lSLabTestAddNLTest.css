@@ -1,0 +1,166 @@
+.lSLabTestAddNLTest-container {
+    width: 100%;
+    /* max-width: 1200px; */
+    margin: auto;
+    border: 1px solid #ddd;
+    padding: 14px;
+    background-color: white;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    color: rgb(82, 81, 81);
+  }
+  
+  .lSLabTestAddNLTest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 16px;
+  }
+  
+  .lSLabTestAddNLTest-header h3 {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .lSLabTestAddNLTest-close-btn {
+    background-color: #E52F3E;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 4px 8px;
+  }
+  
+  .lSLabTestAddNLTest-form .lSLabTestAddNLTest-lSLabTestAddNLTest-form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .lSLabTestAddNLTest-form-group {
+    /* flex: 1; */
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: 12px;
+    /* width: 220px; */
+    /* border: 1px solid red; */
+  }
+  
+  .lSLabTestAddNLTest-form-group label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+    width: 400px;
+  }
+  
+  .lSLabTestAddNLTest-form-group input,
+  .lSLabTestAddNLTest-form-group select,
+  .lSLabTestAddNLTest-form-group textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.lSLabTestAddNLTest-checkbox-row {
+      /* border: 1px solid #d40707; */
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 12px;
+    gap: 16px;
+    margin-bottom: 16px;
+
+  }
+  
+  .lSLabTestAddNLTest-full-width {
+    width: 100%;
+  }
+  
+  .lSLabTestAddNLTest-select-components-section {
+    margin-top: 24px;
+    border-top: 1px solid #ddd;
+    padding-top: 16px;
+  }
+  
+  .lSLabTestAddNLTest-select-components-section h4 {
+    margin-bottom: 8px;
+  }
+  
+  .lSLabTestAddNLTest-select-components-section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 8px;
+  }
+  
+  .lSLabTestAddNLTest-select-components-section table th,
+  .lSLabTestAddNLTest-select-components-section table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .lSLabTestAddNLTest-add-component-btn {
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 4px 8px;
+  }
+  
+  .lSLabTestAddNLTest-create-new-component {
+    display: block;
+    margin-top: 8px;
+    color: #0F63AF;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .lSLabTestAddNLTest-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  
+  .lSLabTestAddNLTest-add-btn {
+    background-color: #0F63AF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 8px 16px;
+  }
+  .lSLabTestAddNLTest-form-group-1row{
+    display: flex;
+    justify-content: space-between;
+  }
+  .lSLabTestAddNLTest-form-group-sub{
+    display: flex;
+    justify-content: space-between;
+    /* width: 600px; */
+    /* border: 1px solid red; */
+  }
+  .lSLabTestAddNLTest-checkbox-N-form-group{
+    display: flex;
+    justify-content: space-between;
+  }
+  .lSLabTestAddNLTest-AddNew{
+    display: flex;
+    justify-content: center;
+  }
+  .lSLabTestAddNLTest-AddNew a{
+    
+    color: #0F63AF;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+  }

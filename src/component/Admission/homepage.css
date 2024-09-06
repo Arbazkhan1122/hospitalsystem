@@ -1,0 +1,98 @@
+
+.dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .dashboard-card {
+    flex: 1;
+    color: white;
+    padding: 17px;
+    border-radius: 8px;
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .card-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card-icon {
+    font-size: 48px;
+    margin-right: 20px;
+  }
+  
+  .adttable{
+    width: 100%;
+    /* border-collapse: collapse; */
+    border: 1px solid black;
+  }
+
+  .adttablehead{
+    background-color: #ccc;
+    border: 1px solid black;
+    padding: 0px 8px;
+    
+  }
+
+  .adttabledata{
+    border: 1px solid black;
+    padding: 3px 8px;
+
+  }
+  .table-actions button {
+    padding: 0px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #48b34b;
+    color: white;
+    cursor: pointer;
+    font-size:14px;
+   
+  }
+  .table-actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+  
+  .table-actions button:hover {
+    background-color: #4752b3;
+  }
+  
+  .adttable {
+    
+    width: 100%;
+    border-collapse: collapse;
+    
+  }
+  
+  thead {
+    background-color: #3598dc;
+    color: white;
+    font-size: 16px;
+    
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    /* border-bottom: 1px solid black; */
+    color: black;
+    border-collapse: collapse;
+  }
+  
+  tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+
+
+
+

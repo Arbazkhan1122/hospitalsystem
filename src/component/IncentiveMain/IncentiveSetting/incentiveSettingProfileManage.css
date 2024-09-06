@@ -1,0 +1,158 @@
+.incentiveSettingProfileManage-container {
+  background-color: #cdeeff;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  /* width: 100%; */
+}
+
+.incentiveSettingProfileManage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.incentiveSettingProfileManage-add-profile-button {
+  background-color: #5A68D0;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.incentiveSettingProfileManage-search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.incentiveSettingProfileManage-search-input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.search-icon {
+  margin-left: -25px;
+  cursor: pointer;
+  color: #999;
+}
+.incentiveSettingProfileManage-search-Showing{
+  display: flex;
+  justify-content: space-between;
+}
+.incentiveSettingProfileManage-Showing span{
+  color: #0F63AF;
+  font-size: 12px;
+  font-weight: bold;
+}
+.incentiveSettingProfileManage-profile-table-N-pagination{
+  background-color: white;
+}
+.incentiveSettingProfileManage-profile-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.incentiveSettingProfileManage-profile-table th,
+.incentiveSettingProfileManage-profile-table td {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: left;
+  font-size: 12px;background-color:white;
+  color: #4d4c4c;
+}
+
+.incentiveSettingProfileManage-profile-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.incentiveSettingProfileManage-action-button {
+  padding: 5px 10px;
+  margin: 2px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.iSPM-rename-button {
+  background-color: #0F63AF;
+  color: white;
+}
+
+.iSPM-edit-items-button {
+  background-color: #0F63AF;
+  color: white;
+}
+
+.iSPM-deactivate-button {
+  background-color: #FF6E07;
+  color: white;
+}
+
+.incentiveSettingProfileManage-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.incentiveSettingProfileManage-pagination button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+.incentiveSettingProfileManage-pagination span {
+  margin: 0 10px;
+  color: gray;
+  font-size: 12px;
+}
+
+
+.incentiveSettingProfileManage-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  /* margin-top: 10px; */
+  justify-content: center;
+  align-items: start;
+  z-index: 1000;
+}
+
+.incentiveSettingProfileManage-popup-content {
+  background-color: white;
+  /* padding: 20px; */
+  border-radius: 8px;
+  width: 90%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.incentiveSettingProfileManage-close-popup-button {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  background-color: transparent;
+  border: none;
+  border-radius: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #E63744;
+  color: white;
+  padding: 5px 10px;
+}

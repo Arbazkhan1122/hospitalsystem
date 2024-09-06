@@ -15,38 +15,38 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="dashboard">
-      <div className="date-range">
+    <div className="labNavHome-dashboard">
+      <div className="labNavHome-date-range">
         <span>From:</span>
         <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
         <span>To:</span>
         <DatePicker selected={endDate} onChange={date => setEndDate(date)} />
-        <button className="ok-button">Ok</button>
+        <button className="labNavHome-ok-button"> <i class="fa-regular fa-square-check"></i> Ok</button>
       </div>
       
-      <div className="stats-container">
-        <div className="stat-box dengue">
+      <div className="labNavHome-stats-container">
+        <div className="labNavHome-stat-box-dengue">
           <h4>Dengue Overall Stats</h4>
           <p>Total: 0 Positive: 0 Negative: 0 Pending: 0</p>
           <h5>Dengue Today's Stats</h5>
           <p>Total: 0 Positive: 0 Negative: 0 Pending: 0</p>
         </div>
         
-        <div className="stat-box covid">
+        <div className="labNavHome-stat-box-covid">
           <h4>Covid Overall Stats</h4>
           <p>Total: 0 Positive: 0 Negative: 0 Pending: 0</p>
           <h5>Covid Today's Stats</h5>
           <p>Total: 0 Positive: 0 Negative: 0 Pending: 0</p>
         </div>
         
-        <div className="stat-box test-requests-today">
+        <div className="labNavHome-stat-box-test-requests-today">
           <h4>Test Requests Today</h4>
           <p>Total: 0 Positive: 0 Negative: 0 Pending: 0</p>
           <p>New: 0 Result Pending: 0 Completed: 0</p>
           <p>Cancelled: 0 Returned: 0</p>
         </div>
         
-        <div className="stat-box test-requests-till-date">
+        <div className="labNavHome-stat-box-test-requests-till-date">
           <h4>Test Requests Till Date</h4>
           <p>Total: 45 Positive: 0 Negative: 0 Pending: 31</p>
           <p>New: 76 Result Pending: 9 Completed: 35</p>
@@ -54,8 +54,8 @@ const Dashboard = () => {
         </div>
       </div>
       
-      <div className="charts-container">
-        <div className="chart trending-tests">
+      <div className="labNavHome-charts-container">
+        <div className="labNavHome-chart trending-tests">
           <h4>Trending Lab Tests (Top 10)</h4>
           <BarChart width={400} height={300} data={data}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -66,32 +66,32 @@ const Dashboard = () => {
           </BarChart>
         </div>
         
-        <div className="chart abnormal-test-result">
+        <div className="labNavHome-chart abnormal-test-result">
           <h4>Abnormal Test Result</h4>
           <select>
             <option>--Select Test Name--</option>
           </select>
         </div>
       </div>
-      <div className="test-dashboard">
-      <div className="dashboard-item rank-wise">
+      <div className="labNavHome-test-dashboard">
+      <div className="labNavHome-dashboard-item rank-wise">
         <h4>Rank Wise Test Count</h4>
-        <div className="no-data">
-          <span className="dot orange"></span>
+        <div className="labNavHome-no-data">
+          <span className="labNavHome-dot orange"></span>
           No Data Available for DateRange
         </div>
       </div>
-      <div className="dashboard-item test-completed">
+      <div className="labNavHome-dashboard-item test-completed">
         <h4>Test Completed Today</h4>
-        <div className="test-count">
-          <span className="count">0</span>
-          <span className="label">Total Test</span>
+        <div className="labNavHome-test-count">
+          <span className="labNavHome-count">0</span>
+          <span className="labNavHome-label">Total Test</span>
         </div>
       </div>
-      <div className="dashboard-item membership-wise">
+      <div className="labNavHome-dashboard-item membership-wise">
         <h4>Membership Wise Test Count</h4>
-        <div className="no-data">
-          <span className="dot green"></span>
+        <div className="labNavHome-no-data">
+          <span className="labNavHome-green"></span>
           No Data Available for DateRange
         </div>
       </div>

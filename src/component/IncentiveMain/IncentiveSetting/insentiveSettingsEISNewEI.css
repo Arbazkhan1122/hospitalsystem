@@ -1,0 +1,143 @@
+
+/* Container styles */
+.insentiveSettingsEISNewEI-container {
+  width: 100%;
+  margin: auto;
+  background-color: #f8f8f8;
+  border-radius: 2px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.insentiveSettingsEISNewEI-header {
+  font-size: 14px;
+  font-weight: bold;
+ color: rgb(78, 78, 78);
+  margin-bottom: 10px;
+}
+.insentiveSettingsEISNewEI-PriceCategory{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.insentiveSettingsEISNewEI-PriceCategory label{
+  font-size: 12px;
+  font-weight: bold;
+}
+.insentiveSettingsEISNewEI-PriceCategory select{
+  font-size: 12px;
+  /* font-weight: bold; */
+}
+.insentiveSettingsEISNewEI-EmployeeName{
+  display: flex;
+  align-items: center;
+}
+
+/* Form Row */
+.insentiveSettingsEISNewEI-form-row {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: left;
+  font-size: 12px;
+  font-weight: bold;
+  /* align-items: center; */
+  margin-bottom: 15px;
+}
+
+.insentiveSettingsEISNewEI-form-label {
+  margin-right: 5px;
+}
+
+.insentiveSettingsEISNewEI-form-select, .insentiveSettingsEISNewEI-form-input {
+  margin-right: 10px;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.insentiveSettingsEISNewEI-search-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* margin-right:150px ; */
+}
+
+.insentiveSettingsEISNewEI-save-button {
+  background-color: #2D68EA;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  margin-left: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Checkbox Section */
+.insentiveSettingsEISNewEI-checkbox-section {
+  display: flex;
+  align-items: center;
+}
+
+.insentiveSettingsEISNewEI-select-profile-section {
+  margin-left: 20px;
+  /* font-size: 12px; */
+}
+
+/* Profile List Table */
+.insentiveSettingsEISNewEI-profile-list {
+  margin-top: 10px;
+}
+
+.insentiveSettingsEISNewEI-profile-table {
+  width: 30%;
+  border-collapse: collapse;
+  font-size: 14px;
+  font-weight: bold;
+  color: #464545;
+  background-color: #DDE3E9;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+}
+
+.insentiveSettingsEISNewEI-profile-table th, .insentiveSettingsEISNewEI-profile-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.insentiveSettingsEISNewEI-preview-button {
+  background-color: #5867DD;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Action Buttons */
+.insentiveSettingsEISNewEI-action-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.insentiveSettingsEISNewEI-discard-button, .insentiveSettingsEISNewEI-ok-button {
+  border: none;
+  padding: 5px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.insentiveSettingsEISNewEI-discard-button {
+  background-color: #E31D2D;
+  color: white;
+}
+
+.insentiveSettingsEISNewEI-ok-button {
+  background-color: #2D68EA;
+  color: white;
+  margin-left: 10px;
+}
+

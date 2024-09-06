@@ -1,0 +1,168 @@
+/* dischargedpatient.css */
+.dischargetable{
+  width: 100%;
+  /* border-collapse: collapse; */
+  border: 1px solid black;
+
+}
+
+
+.dischargetablehead{
+  background-color: #ccc;
+  border: 1px solid black;
+  padding: 0px 8px;
+  
+}
+
+.dischargetabledata{
+  border: 1px solid black;
+  padding: 3px 8px;
+
+}
+
+
+.date-range-picker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-direction: row;
+}
+
+.date-range-picker input[type="date"] {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.date-range-picker span {
+  font-size: 14px;
+}
+
+.date-range-picker button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.date-range-picker .star-button {
+  background: gold;
+}
+
+.date-range-picker .plus-button {
+  background: #28a745;
+}
+
+.date-range-picker .ok-button {
+  background: #17a2b8;
+}
+.discharge-search-input{
+  border-radius: 5px;
+  height: 30px;
+}
+.insurance-patient {
+  margin-bottom: 20px;
+}
+
+.insurance-patient label {
+  font-size: 14px;
+}
+
+.insurance-patient input[type="checkbox"] {
+  margin-left: 10px;
+}
+
+
+
+.discharge-patient-btn-pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.discharge-patient-btn-pagination-btn{
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #0F63AF;
+  color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.discharge-patient-btn-pagination-btn-span {
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+.dischargedbtn{
+  height: 30px;
+  padding:0px 9px;
+  border-radius: 5px;
+
+}
+.discharge-print-button{
+  background-color: #0F63AF;
+  color: white;
+  height: 30px;
+  padding: auto;
+  border-radius:  5px;
+}
+
+/* Date range picker styling */
+.date-range {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; /* Aligns button to the right */
+  /* margin-bottom: 20px; */
+}
+.date-utlt{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; /* Aligns button to the right */
+  margin-bottom: 20px;
+  background-color: #ccc;
+  align-items: center;
+
+}
+
+.dischage-patient{
+  width: 50%;
+  display: flex;
+  justify-content: center; /* Aligns button to the right */
+ margin: 2px;
+  background-color: #dfebe8;
+  align-items: center;
+
+}
+
+.date-range-input {
+  margin: 0 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Buttons in the date range section */
+.star-btn, .dash-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  margin-right: 5px;
+}
+
+.ok-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 3px;
+}
+
+.dischage-insurance{
+  margin-left: 500px;
+}

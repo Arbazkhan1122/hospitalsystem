@@ -10,19 +10,19 @@ function NavNotification() {
   const [endDate, setEndDate] = useState(new Date());
 
   return (
-    <div className="sms-page">
-      <div className="sms-N-imu-btn">
-      <div className="navNote-tabs">
+    <div className="labNotificationSms-page">
+      <div className="labNotificationSms-N-imu-btn">
+      <div className="labNotificationSms-tabs">
         <button
-          className={`tab ${selectedTab === "SMS" ? "active" : ""}`}
+          className={`labNotificationSms-tab ${selectedTab === "SMS" ? "labNotificationSms-active" : ""}`}
           onClick={() => setSelectedTab("SMS")}
         >
           SMS
         </button>
         </div>
-        <div className="tabs"> 
+        <div className="labNotificationSms-tabs"> 
         <button
-          className={`tab ${selectedTab === "IMU" ? "active" : ""}`}
+          className={`labNotificationSms-tab ${selectedTab === "IMU" ? "labNotificationSms-active" : ""}`}
           onClick={() => setSelectedTab("IMU")}
         >
           IMU Upload
@@ -31,9 +31,10 @@ function NavNotification() {
       </div>
 
       {selectedTab === "SMS" ? (
-        <div className="navNote-sms-content">
-          <div className="filters">
-            <div className="date-filters">
+        <div className="labNotificationSms-content">
+          
+          <div className="labNotificationSms-filters">
+            <div className="labNotificationSms-date-filters">
             <span>From:</span>
               <DatePicker
                 selected={startDate}
@@ -41,7 +42,7 @@ function NavNotification() {
                 selectsStart
                 startDate={startDate}
                 endDate={endDate}
-                className="date-picker"
+                className="labNotificationSms-date-picker"
               />
               <span>To:</span>
               <DatePicker
@@ -51,57 +52,57 @@ function NavNotification() {
                 startDate={startDate}
                 endDate={endDate}
                 minDate={startDate}
-                className="date-picker"
+                className="labNotificationSms-date-picker"
               />
 
               </div>
 
               <div>
-              <button className="navNote-show-data-btn">
+              <button className="labNotificationSms-show-data-btn">
                 <i className="fa-solid fa-magnifying-glass"></i>
               Show Data</button>
 
             </div>
 
-            <div className="filter-options">
+            <div className="labNotificationSms-filter-options">
               <span>Filter SMS:</span>
-              <label className="navNote-checkbx">
+              <label className="labNotificationSms-checkbx">
                 <input type="checkbox" /> Sent
               </label>
-              <label className="navNote-checkbx">
+              <label className="labNotificationSms-checkbx">
                 <input type="checkbox" checked readOnly /> NotSent
               </label>
             </div>
           </div>
 
-          <div className="nav-note-search-n-filter">
+          <div className="labNotificationSms-search-n-filter">
 
-            <div className="navNot-search-bar">
+            <div className="labNotificationSms-search-bar">
               <i className="fa-solid fa-magnifying-glass"></i>
               <input
                 type="text"
                 placeholder="Search"
-                className="navNot-search-input"
+                className="labNotificationSms-search-input"
               />
             </div>
 
             
 
-            <div className="navNote-filter-findings">
+            <div className="labNotificationSms-filter-findings">
               <span>Filter Findings:</span>
-              <label className="navNote-checkbx">
+              <label className="labNotificationSms-checkbx">
                 <input type="checkbox" /> Positive
               </label>
-              <label className="navNote-checkbx">
+              <label className="labNotificationSms-checkbx">
                 <input type="checkbox" /> Negative
               </label>
-              <label className="navNote-checkbx">
+              <label className="labNotificationSms-checkbx">
                 <input type="checkbox" /> All
               </label>
             </div>
           </div>
 
-          <table className="navNote-data-table">
+          <table className="labNotificationSms-data-table">
             <thead>
               <tr>
                 <th>Hospital No.</th>
@@ -118,9 +119,9 @@ function NavNotification() {
             <tbody>{/* Table rows would go here */}</tbody>
           </table>
 
-          <div className="navNote-pagination">
-            <button>Previous</button>
-            <button>Next</button>
+          <div className="labNotificationSms-pagination">
+            <button> « Previous</button>
+            <button>Next »</button>
           </div>
         </div>
       ) : (

@@ -1,59 +1,93 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../LabSetting/looksUps.css"
-const lookupData = [
-  { id: 1, module: 'Lab', name: 'Urine-Color', data: '["Light Yellow","Yellow","Red","Deep Yellow","Milky","Straw","Whitish","Greenish...', description: '' },
-  { id: 2, module: 'Lab', name: 'Turbidity', data: '["Clear","Turbid","Slightly Turbid"]', description: '' },
-  { id: 3, module: 'Lab', name: 'Urine-Reaction', data: '["Acidic","Alkaline"]', description: '' },
-  { id: 4, module: 'Lab', name: 'Nil-Trace', data: '["Nil","Trace","+","++","+++","++++"]', description: '' },
-  { id: 5, module: 'Lab', name: 'Nil-Plenty', data: '["Nil","Plenty"]', description: '' },
-  { id: 6, module: 'Lab', name: 'Negative-Positive', data: '["Negative","Positive"]', description: '' },
-  { id: 7, module: 'Lab', name: 'Culture-Sensitivity', data: '["Sensitive","Intermediate","Resistant"]', description: '' },
-  { id: 8, module: 'Lab', name: 'Stool-Color', data: '["Brown","Yellow","Black","Red","Greenish Yellow"]', description: '' },
-  { id: 9, module: 'Lab', name: 'Stool-Consistency', data: '["Soft","Semi Loose","Loose","Solid","Diarrhoeal"]', description: '' },
-  { id: 10, module: 'Lab', name: 'Absent-Present', data: '["Present","Absent"]', description: '' },
-  { id: 11, module: 'Lab', name: 'Seen-NotSeen', data: '["Seen","Not Seen"]', description: '' },
+// import LSLabTestAddNLTest from './lSLabTestAddNLTest';
+import LabLookUpAddNewLUp from './labLookUpAddNewLUp';
+const labTests = [
+  // { vendorCode:'INTERNAL',vendorName: "Lab Internal", address: "", contactNo: "normal",  isExternal: "false", isActive:'true', isDefault:'true' },
+  { moduleName: 'Lab', lookUpName: 'Seen-NotSeen', lookUpData: '["Seen","Not Seen"]', description: '' },
+
+  // Add more rows as needed
+  
+
 ];
 
-function LookUps() {
+const LookUps = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleAddNewLabTestClick = () => {
+    setShowPopup(true); // Show the popup
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false); // Hide the popup
+  };
+
   return (
-    <div className="app">
-      <button className="add-lookup-btn">+Add New Look-up</button>
-      <div className="search-container">
-        <input type="text" placeholder="Search" className="search-input" />
-        <button className="search-btn">🔍</button>
+    <div className="looksUps-container">
+    <div className="looksUps-firstRow">
+    <div className="looksUps-addBtn">
+      <button className="looksUps-add-button" onClick={handleAddNewLabTestClick}>+Add New Look-Up</button>
       </div>
-      <div className="results-info">
-        Showing 29 / 29 results
-        <button className="print-btn">Print</button>
+        
       </div>
-      <table className="lookup-table">
+      <div className='looksUps-search-N-result'>
+      <div className="looksUps-search-bar">
+          <i className="fa-solid fa-magnifying-glass"></i>
+          <input 
+            type="text" 
+            placeholder="Search..." 
+            
+          />
+        </div>
+        <div className="looksUps-results-info">
+          <span>Showing 0 / 0 results</span>
+          <button className="looksUps-print-button">Print</button>
+        </div>
+        </div>
+      <table >
         <thead>
           <tr>
-            <th>1.</th>
-            <th>Module ...</th>
+            <th>Module Name</th>
             <th>Look-up Name</th>
             <th>Look-up Data</th>
-            <th>Description</th>
+            <th>Description </th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {lookupData.map((item) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.module}</td>
-              <td>{item.name}</td>
-              <td>{item.data}</td>
-              <td>{item.description}</td>
+          {labTests.map((test, index) => (
+            <tr key={index}>
+              <td>{test.moduleName}</td>
+              <td>{test.lookUpName}</td>
+              <td>{test.lookUpData}</td>
+              <td>{test.description}</td>
+              
               <td>
-                <button className="edit-btn">Edit</button>
+                <button className="looksUps-edit-button"onClick={handleAddNewLabTestClick}>Edit</button>
+                {/* <button className="looksUps-deactivate-button">Deactivate</button> */}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      <div className="looksUps-pagination">
+          <span>0 to 0 of 0</span>
+          <button>First</button>
+          <button>Previous</button>
+          <span>Page 0 of 0</span>
+          <button>Next</button>
+          <button>Last</button>
+        </div>
+      {/* Modal Popup */}
+      {showPopup && (
+        <div className="looksUps-modal">
+          <div className="looksUps-modal-content">
+            <LabLookUpAddNewLUp onClose={handleClosePopup} />
+          </div>
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default LookUps;

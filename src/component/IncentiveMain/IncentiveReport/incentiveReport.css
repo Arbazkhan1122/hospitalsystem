@@ -1,0 +1,181 @@
+
+
+.incentiveReportNew-container {
+    background-color: #CAF2FF;
+    /* padding: 10px; */
+    width: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.incentiveReportNew-container h3{
+    font-weight: normal;
+    margin: 10px;
+    font-size: 16px;
+    
+}
+.incentiveReportNew-container h3 i{
+  color: #0F63AF;
+  font-size: 14px;
+}
+  
+  .incentiveReportNew-tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #dad7d7;
+    margin-bottom: 20px;
+  }
+  
+  .incentiveReportNew-tab {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .incentiveReportNew-selected {
+    color: #039be5;
+    border-bottom: 4px solid #2D68EA;
+  }
+  
+  .incentiveReportNew-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .incentiveReportNew-date-range {
+    background-color: #EBF7FF;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 30px;
+  }
+  
+  .incentiveReportNew-icon-button {
+    background-color: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .incentiveReportNew-star{
+    color: #0000FF;
+  }
+  .incentiveReportNew-Select-Doctor{
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .incentiveReportNew-Select-Doctor label{
+    margin-right: 10px;
+}
+.incentiveReportNew-load-button {
+      margin-right: 100px;
+    background-color: #5867DD;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 15px;
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 100px;
+  }
+  .incentiveReportNew-search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .incentiveReportNew-info-text {
+    color: #666;
+  }
+  
+
+
+  
+  
+  .incentiveReport-container {
+    background-color: #CAF2FF;
+    padding: 10px;
+    width: 100%;
+    height: 490px;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .incentiveReport-tabs {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid #dad7d7;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .incentiveReport-tab {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .incentiveReport-selected {
+    color: black;
+    font-weight: bold;
+    border-bottom: 4px solid #2D68EA;
+  }
+  
+  .incentiveReport-filters {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.incentiveReport-date-range {
+      background-color: #EBF7FF;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 30px;
+  }
+  
+  .incentiveReport-icon-button {
+    background-color: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .incentiveReport-star{
+    color: #0000FF;
+  }
+  
+  .incentiveReport-load-button {
+    background-color: #5867DD;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 15px;
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 100px;
+  }
+  .incentiveReport-search-N-sms{
+    display: flex;
+    text-align: center;
+  }
+  .incentiveReport-search-input {
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .incentiveReport-info-text {
+    color: #505050;
+    font-size: 12px;
+    margin-left: 30px;
+    align-items: center;
+
+  }
+  

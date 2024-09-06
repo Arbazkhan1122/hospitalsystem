@@ -1,67 +1,167 @@
-/* .lab-test-container {
-    background-color: #d2f0fd;
-    padding: 20px;
-    border-radius: 5px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .add-button {
-    background-color: #4c79da;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 15px;
-  }
-  
-  .search-box {
-    display: block;
+.labTestLS-container {
+  background-color: #CAF2FF;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* width: 100%; */
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  height: 450px;
+}
+.labTestLS-firstRow{
+  display: flex;
+  justify-content: space-between;
+}
+
+.labTestLS-add-button {
+  background-color: #5867DD;
+  color: white;
+  border: none;
+  padding: 7px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+.labTestLS-search-bar{
+  margin-left: -15px;
+  /* margin: 0; */
+}  
+  .labTestLS-search-bar input {
+    /* margin-top: 10px; */
+    /* padding: 5px; */
     width: 200px;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
   }
-  
-  .lab-test-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+  .labTestLS-search-bar i{
+    position: relative;
+    color:gray;
+    top: 3px;
+  left: 205px;
   }
-  
-  .lab-test-table th, .lab-test-table td {
-    padding: 10px;
-    text-align: left;
-    border: 1px solid #ddd;
-  }
-  
-  .lab-test-table th {
-    background-color: #f2f2f2;
-  }
-  
-  .edit-button {
-    background-color: #1c6e8c;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .results-info {
-    margin-top: 10px;
-    margin-bottom: 15px;
-  }
-  
-  .print-button {
-    background-color: #4c79da;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-   */
+
+.labTestLS-search-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.labTestLS-search-box {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.labTestLS-search-N-result{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.labTestLS-results-info {
+  display: flex;
+  align-items: center;
+  /* padding-top: 10px; */
+}
+.labTestLS-results-info span {
+  /* display: flex;
+  align-items: center; */
+  /* padding-top: 10px; */
+  color: #008CBA;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.labTestLS-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 12px;
+  background-color: white;
+}
+
+.labTestLS-container th, .labTestLS-container td {
+  padding: 5px;
+  text-align: left;
+  border: 1px solid #ddd;
+  color: rgb(78, 78, 78);
+}
+
+.labTestLS-container th {
+  background-color: #f2f2f2;
+}
+
+.labTestLS-edit-button, .labTestLS-deactivate-button {
+  background-color: #0F63AF;
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.labTestLS-results-info {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.labTestLS-print-button {
+  background-color: #659BE0;
+  color: white;
+  border: none;
+  padding: 7px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+/* Modal styles */
+.labTestLS-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  z-index: 1000;
+}
+
+.labTestLS-modal-content {
+  /* padding: 20px; */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  /* width: 100%; */
+  position: relative;
+  margin-top: 20px;
+}
+.labTestLS-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.labTestLS-pagination button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 5px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.labTestLS-pagination span {
+  margin: 0 10px;
+  color: gray;
+  font-size: 12px;
+}

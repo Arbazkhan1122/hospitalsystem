@@ -1,98 +1,146 @@
-/* 
+/* body {
+  background-color: #e6f7ff;
+  margin: 0;
+  } */
   
-  .report-dispatch {
-    max-width: 1200px;
+  .labReportDispatch {
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    /* max-width: 1200px; */
     margin: 0 auto;
+    background-color: #CAF2FF;
+    height: 450px;
   }
   
-  h1 {
-    color: #333;
-    margin-bottom: 20px;
-  }
+  .labReportDispatch h5 {
+    color: #525151;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    }
   
-  .filters {
+  .labReportDispatch-filters {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 10px;
   }
-  
-  .date-range {
+  .labReportDispatch-Request{
+    font-size: 12px;
+  }
+  .labReportDispatch-date-range {
     display: flex;
     align-items: center;
     gap: 10px;
+    background-color: #EBF7FF;
+    margin-right: 350px;
+    /* margin-left: 10px; */
+  }
+
+  .labReportDispatch-date-range label{
+    font-size: 12px;
+    font-weight: bold;
   }
   
-  .date-range input[type="date"] {
+  .labReportDispatch-date-range input[type="date"] {
     padding: 5px;
   }
   
-  .star-btn, .more-btn {
-    background-color: #f0f0f0;
+  .labReportDispatch-star-btn{
+    border: none;
+    background-color: #EBF7FF;
+    color: #2D68EA;
+    font-size: 24px;
+    align-items: center;
+  }
+   .labReportDispatch-more-btn {
+    background-color: #B9B9CA;
     border: 1px solid #ccc;
     padding: 5px 10px;
     cursor: pointer;
+    color: white;
   }
-  
-  .category-select select {
+  .labReportDispatch-category-select label{
+    font-size: 12px;
+    margin-right: 10px;
+  }
+  .labReportDispatch-category-select select {
     padding: 5px;
     width: 200px;
   }
   
-  .load-btn {
-    background-color: #28a745;
-    color: white;
-    border: none;
+  .labReportDispatch-load-btn {
+    background-color: #26C281;
+    margin-right: 10px;
     padding: 8px 15px;
+    border: none;
     border-radius: 4px;
+    color: white;
     cursor: pointer;
+    font-size: 11px;
   }
   
-  .search-bar {
+  .labReportDispatch-search-bar {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   
-  .search-bar input {
-    flex-grow: 1;
-    padding: 8px;
+  .labReportDispatch-search-bar input {
+    /* flex-grow: 1; */
+    width: 280px;
+    padding: 5px;
     border: 1px solid #ccc;
     border-right: none;
+    font-size: 12px;
+    /* color: red; */
   }
+.labReportDispatch-search-bar i{
+  position: relative;
+  color:gray;
+  top: 5px;
+ left: 285px;
+}
   
-  .search-btn {
+  .labReportDispatch-search-btn {
     background-color: white;
     border: 1px solid #ccc;
     padding: 8px 15px;
     cursor: pointer;
   }
   
-  .patient-table {
+  .labReportDispatch-patient-table {
+    color: #3b3b3b;
+    font-size: 12px;
+    font-weight: bold;
     width: 100%;
     border-collapse: collapse;
   }
   
-  .patient-table th, .patient-table td {
+  .labReportDispatch-patient-table th, .labReportDispatch-patient-table td {
     border: 1px solid #ddd;
     padding: 8px;
+    font-size: 12px;
+    font-weight: bold;
     text-align: left;
   }
   
-  .patient-table th {
+  .labReportDispatch-patient-table th {
     background-color: #f2f2f2;
   }
   
-  .pagination {
+  .labReportDispatch-pagination {
     margin-top: 20px;
-    text-align: center;
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
   }
   
-  .pagination button {
+  .labReportDispatch-pagination button {
     padding: 5px 10px;
-    margin: 0 5px;
-    background-color: #007bff;
-    color: white;
+    margin-left: 5px;
+    background-color: #CAF2FF;
+    color: #d8d5d5;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  } */
+  }

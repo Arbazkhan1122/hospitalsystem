@@ -1,0 +1,70 @@
+.activeincentiveNavBar-btn{
+    background-color: #0056b3;
+    color: white;
+    height: 25px;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+  }
+  .incentiveNavBar-Navigation-bar {
+      background-color: white;
+      font-family: Arial, sans-serif;
+font-size: 14px;
+      /* padding: 10px; */
+      /* border: 1px solid #007bff; */
+  
+    }
+    
+    .incentiveNavBar-Navigation-bar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 0px 10px 0px;
+      display: flex;
+      justify-content: space-between;
+  
+    }
+    
+    .incentiveNavBar-Navigation-bar li {
+      margin: 0 0px;
+      
+    }
+    
+    .incentiveNavBar-Navigation-bar a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 5px 5px;
+      border-radius: 5px;
+  
+    }
+    
+    .incentiveNavBar-Navigation-bar a:hover {
+      background-color: #0056b3;
+      color: white;
+      border: 1px solid gray;
+  
+      
+    }
+    
+    .incentiveNavBar-Navigation-bar .active {
+      background-color: #0056b3;
+      color: white;
+  
+    }
+    .incentiveNavBar-Activebtn-N-LogOut{
+      display: flex;
+      justify-content: start;
+      gap: 5px;
+    }
+    .incentiveNavBar-LogOut{
+      border: none;
+      font-size: 18px;
+    }
+
+    .incentiveNavBar-Navbttn-N-act{
+      display: flex;
+    }
+    .incentiveNavBar-Navbttn-N-act li{
+      padding: 0 10px 0 10px;
+    }

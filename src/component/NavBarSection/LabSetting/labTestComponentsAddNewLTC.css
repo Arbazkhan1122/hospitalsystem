@@ -1,0 +1,141 @@
+
+.labTestComponentsAddNewLTC-container {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  /* width: 100%; */
+  /* max-width: 1300px; */
+  /* margin: 20px auto; */
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.labTestComponentsAddNewLTC-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 16px;
+}
+
+.labTestComponentsAddNewLTC-header h3 {
+  margin: 0;
+  font-size: 14px;
+color: #3a3a3a;
+}
+.labTestComponentsAddNewLTC-close-btn {
+  background-color: #E52F3E;
+  color: white;
+  border: none;
+  border-radius:  14px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+
+.labTestComponentsAddNewLTC-table {
+  display: flex;
+  flex-direction: column;
+  background-color: #FBFCFD;
+}
+.labTestComponentsAddNewLTC-table:hover {
+  background-color: #f2f2f2;
+  
+
+}
+.labTestComponentsAddNewLTC-fsttable table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 12px;
+  background-color: white;
+}
+
+.labTestComponentsAddNewLTC-fsttable th, .labTestComponentsAddNewLTC-fsttable td {
+  /* color: red; */
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ddd;
+  color: #4e4e4e;
+  font-size: 10px;
+  padding: 10px;
+}
+
+.labTestComponentsAddNewLTC-fsttable th {
+  background-color: #f2f2f2;
+}
+
+.labTestComponentsAddNewLTC-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr 2fr 2.5fr 1.5fr 2fr 2fr 0.5fr;
+  gap: 10px;
+  align-items: center;
+  padding: 8px;
+  font-size: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.labTestComponentsAddNewLTC-cell {
+  display: flex;
+  align-items: center;
+}
+
+.labTestComponentsAddNewLTC-cell input,
+.labTestComponentsAddNewLTC-cell select,
+.labTestComponentsAddNewLTC-cell textarea {
+  width: 100%;
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 10px;
+}
+
+.labTestComponentsAddNewLTC-cell textarea {
+  resize: none;
+  height: 36px;
+}
+
+.labTestComponentsAddNewLTC-range-buttons button {
+  margin-right: 5px;
+  padding: 4px 8px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.labTestComponentsAddNewLTC-range-buttons button:hover {
+  background-color: #e0e0e0;
+}
+
+.labTestComponentsAddNewLTC-add-button {
+  background-color: #5867DD;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.labTestComponentsAddNewLTC-add-footer-button {
+  margin-top: 10px;
+  float: right;
+}
+
+.labTestComponentsAddNewLTC-component-name {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.labTestComponentsAddNewLTC-description textarea {
+  width: calc(100% - 10px);
+}
+
+.labTestComponentsAddNewLTC-footer {
+  padding-top: 8px;
+  text-align: right;
+}
