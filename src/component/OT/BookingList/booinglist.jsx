@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './bookinglist.css';
-import { FaSearch, FaPlus, FaRedo } from 'react-icons/fa';
-import axios from 'axios';
-import { Button } from 'react-bootstrap';
+import './bookinglist.css'
+import { FaSearch, FaRedo, FaPlus } from 'react-icons/fa';
 import moment from 'moment';
+import { Button } from 'react-bootstrap';
+import axios from 'axios';
 
 function BookingList() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -14,62 +14,44 @@ function BookingList() {
   const [procedure, setProcedure] = useState('');
   const [useAnaesthesia, setUseAnaesthesia] = useState(false);
   const [machineName, setMachineName] = useState('');
-  const [remarks, setRemarks] = useState('');
+  const [status, setStatus] = useState('Booked'); // Default status
   const [otPatientList, setOtPatientList] = useState([]);
-  const [patientList, setPatientList] = useState([]);
-  const [filteredPatients, setFilteredPatients] = useState([]);
 
-  useEffect(() => {
-    const fetchOtBookings = async () => {
+   useEffect(() => {
+    // Fetch existing bookings when the component mounts
+    const fetchPatientList = async () => {
       try {
-        const response = await axios.get('http://localhost:8888/api/operation-bookings/operation-bookings');
-        setOtPatientList(Array.isArray(response.data) ? response.data : []);
+        const response = await axios.get('http://localhost:8888/api/operation-bookings/fetch-all');
+        setOtPatientList(response.data); // Store data from the API in state
       } catch (error) {
-        console.error('Error fetching OT bookings:', error);
+        console.error('Error fetching data:', error);
       }
     };
-    fetchOtBookings();
-  }, []);
-
-  const fetchPatientList = async () => {
-    try {
-      const response = await axios.get('http://localhost:8888/api/patient-visits');
-      setPatientList(Array.isArray(response.data) ? response.data : []);
-      setFilteredPatients(Array.isArray(response.data) ? response.data : []);
-    } catch (error) {
-      console.error('Error fetching patient data:', error);
-    }
-  };
-
-  useEffect(() => {
     fetchPatientList();
-  }, []);
+  }, []); 
 
-  const handleSearchInputChange = (e) => {
-    const searchValue = e.target.value.toLowerCase();
-    setPatientName(searchValue);
-    const filtered = patientList.filter((patient) =>
-      patient.name.toLowerCase().includes(searchValue)
-    );
-    setFilteredPatients(filtered);
-  };
-
-  const handleSubmit = async (e) => {
+   const handleSubmit = async (e) => {
     e.preventDefault();
-    const bookingData = {
-      patient: { id: filteredPatients.find(p => p.name.toLowerCase() === patientName)?.id || null },
-      otDateTime: `${otDate}T${otTime}`,
+
+    // Combine OT date and time into one field
+    const otDateTime = `${otDate}T${otTime}:00`;
+
+    // Prepare the payload for the API
+    const payload = {
+      otDateTime,
       diagnosis,
-      procedure,
-      useAnaesthesia,
+      otProcedure: procedure,
+      useAnesthesia: useAnaesthesia,
       machineName,
-      remarks,
-      status: 'Scheduled',
+      status
     };
 
     try {
-      await axios.post('http://localhost:8888/api/operation-bookings', bookingData);
-      alert('Booking added successfully!');
+      // Send POST request to add a new booking
+      const response = await axios.post('http://localhost:8888/api/operation-bookings', payload);
+      console.log('Operation booked successfully:', response.data);
+
+      // Reset the form after submission
       setPatientName('');
       setOtDate('');
       setOtTime('');
@@ -77,12 +59,25 @@ function BookingList() {
       setProcedure('');
       setUseAnaesthesia(false);
       setMachineName('');
-      setRemarks('');
-      fetchOtBookings(); // Refresh the OT bookings list after adding a new booking
+      setStatus('Booked');
+
+      // Fetch updated patient list after adding a new booking
+      const updatedPatientList = await axios.get('http://localhost:8888/api/operation-bookings/fetch-all');
+      setOtPatientList(updatedPatientList.data);
     } catch (error) {
-      console.error('Error adding booking:', error);
+      console.error('Error booking operation:', error);
     }
   };
+
+  // Handlers for form inputs
+  const handlePatientNameChange = (e) => setPatientName(e.target.value);
+  const handleOtDateChange = (e) => setOtDate(e.target.value);
+  const handleOtTimeChange = (e) => setOtTime(e.target.value);
+  const handleDiagnosisChange = (e) => setDiagnosis(e.target.value);
+  const handleProcedureChange = (e) => setProcedure(e.target.value);
+  const handleUseAnaesthesiaChange = (e) => setUseAnaesthesia(e.target.checked);
+  const handleMachineNameChange = (e) => setMachineName(e.target.value);
+  const handleStatusChange = (e) => setStatus(e.target.value);
 
   return (
     <div className="booking-list">
@@ -93,20 +88,8 @@ function BookingList() {
       </div>
 
       <div className="patient-search-dropdown">
-        <input
-          type="text"
-          placeholder="Search Patient"
-          value={patientName}
-          onChange={handleSearchInputChange}
-          className="search-input"
-        />
-        <ul className="dropdown-list">
-          {filteredPatients.map((patient) => (
-            <li key={patient.id} onClick={() => setPatientName(patient.name)}>
-              {patient.name}
-            </li>
-          ))}
-        </ul>
+         <input type="text" placeholder="Search" value={patientName} onChange={handlePatientNameChange} />
+        
       </div>
 
       <table className="ot-patient-table">
@@ -115,23 +98,27 @@ function BookingList() {
             <th>Sr.No</th>
             <th>Patient Name</th>
             <th>Age/Sex</th>
-            <th>Booked For Date and Time</th>
-            <th>Diagnosis</th>
-            <th>Anesthesia</th>
-            <th>Status</th>
+            <th>OT Date & Time</th>
+              <th>Diagnosis</th>
+              <th>Procedure</th>
+              <th>Anesthesia</th>
+              <th>Machine</th>
+              <th>Status</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {otPatientList.map((patient) => (
-            <tr key={patient.id}>
+   {otPatientList.map((booking, index) => (
+            <tr key={index}>
               <td>{patient.hospitalNo}</td>
               <td>{patient.patient.name}</td>
               <td>{patient.patient.ageSex}</td>
-              <td>{moment(patient.otDateTime).format('YYYY-MM-DD HH:mm')}</td>
-              <td>{patient.diagnosis}</td>
-              <td>{patient.useAnesthesia ? 'Yes' : 'No'}</td>
-              <td>{patient.status}</td>
+              <td>{moment(booking.otDateTime).format('YYYY-MM-DD HH:mm')}</td>
+              <td>{booking.diagnosis}</td>
+                <td>{booking.otProcedure}</td>
+                <td>{booking.useAnesthesia ? 'Yes' : 'No'}</td>
+                <td>{booking.machineName}</td>
+                <td>{booking.status}</td>
               <td>
                 <Button onClick={() => console.log(`Print receipt ${patient.id}`)}>
                   Print
@@ -150,60 +137,40 @@ function BookingList() {
             </button>
             <form onSubmit={handleSubmit}>
               <div className="patient-search-dropdown">
-                <input
-                  type="text"
-                  placeholder="Search Patient"
-                  value={patientName}
-                  onChange={handleSearchInputChange}
-                  className="search-input"
-                />
-                <ul className="dropdown-list">
-                  {filteredPatients.map((patient) => (
-                    <li key={patient.id} onClick={() => setPatientName(patient.name)}>
-                      {patient.name}
-                    </li>
-                  ))}
-                </ul>
+                <label>Patient Name:</label>
+                  <input type="text" value={patientName} onChange={handlePatientNameChange} />
               </div>
               <div>
                 <label>OT Date:</label>
-                <input type="date" value={otDate} onChange={(e) => setOtDate(e.target.value)} required />
+                <input type="date" value={otDate} onChange={handleOtDateChange} />
               </div>
               <div>
                 <label>OT Time:</label>
-                <input type="time" value={otTime} onChange={(e) => setOtTime(e.target.value)} required />
+                  <input type="time" value={otTime} onChange={handleOtTimeChange} />
               </div>
               <div>
                 <label>Diagnosis:</label>
-                <input type="text" value={diagnosis} onChange={(e) => setDiagnosis(e.target.value)} required />
+                <input type="text" value={diagnosis} onChange={handleDiagnosisChange} />
               </div>
               <div>
                 <label>Procedure:</label>
-                <input type="text" value={procedure} onChange={(e) => setProcedure(e.target.value)} required />
+                 <input type="text" value={procedure} onChange={handleProcedureChange} />
               </div>
               <div>
                 <label>Use Anaesthesia:</label>
-                <input
-                  type="checkbox"
-                  checked={useAnaesthesia}
-                  onChange={(e) => setUseAnaesthesia(e.target.checked)}
-                />
+               <input type="checkbox" checked={useAnaesthesia} onChange={handleUseAnaesthesiaChange} />
               </div>
               <div>
                 <label>Machine Name:</label>
-                <input
-                  type="text"
-                  value={machineName}
-                  onChange={(e) => setMachineName(e.target.value)}
-                />
+                <input type="text" value={machineName} onChange={handleMachineNameChange} />
               </div>
               <div>
-                <label>Remarks:</label>
-                <input
-                  type="text"
-                  value={remarks}
-                  onChange={(e) => setRemarks(e.target.value)}
-                />
+                <label>Status:</label>
+                <select value={status} onChange={handleStatusChange}>
+                  <option value="Booked">Booked</option>
+                  <option value="Cancelled">Cancelled</option>
+                  <option value="Concluded">Concluded</option>
+                </select>
               </div>
               <button type="submit">Submit</button>
             </form>
