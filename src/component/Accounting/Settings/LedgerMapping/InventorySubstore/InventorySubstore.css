@@ -1,57 +1,57 @@
-.inventory-substore {
+.inventory-substore-container {
     background-color: #e1f5fe;
     padding: 20px;
     border-radius: 10px;
     margin: 20px;
 }
 
-.header {
+.inventory-substore-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.header label {
+.inventory-substore-header label {
     margin-right: 10px;
     font-weight: bold;
 }
 
-.header input[type="text"] {
+.inventory-substore-header input[type="text"] {
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
     margin-right: 10px;
 }
 
-.header select {
+.inventory-substore-header select {
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
     margin-right: 10px;
 }
 
-table {
+.inventory-substore-tab {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
 
-table th, table td {
+.inventory-substore-tab th, table td {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: left;
 }
 
-table .has-code {
+ .inventory-substore-tab .has-code {
     background-color: #fff;
 }
 
-table .no-code {
+.inventory-substore-tab .no-code {
     background-color: #fff;
 }
 
-.save-btn {
+.inventory-substore-tab-save-btn {
     background-color: #2196f3;
     color: #fff;
     padding: 10px 20px;
@@ -60,6 +60,6 @@ table .no-code {
     cursor: pointer;
 }
 
-.save-btn:hover {
+.inventory-substore-tab-save-btn:hover  :hover {
     background-color: #1976d2;
 }

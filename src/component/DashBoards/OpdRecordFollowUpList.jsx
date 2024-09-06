@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './OpdRecordFollowUpList.css'; // Ensure correct styling
-import OpdRecordApp from '../DashBoards/OpdRecordAction';
+import OpdRecordApp from './PatientDashboard';
 
 const OpdRecordFollowUpList = () => {
   const [selectedPatient, setSelectedPatient] = useState(null);
@@ -30,22 +30,22 @@ const OpdRecordFollowUpList = () => {
   }
 
   return (
-    <div className="patient-list">
-      <div className="top-buttons">
-        <button className="favorites">★ My Favorites</button>
-        <button className="follow-up">Follow Up List</button>
+    <div className="opd-rec-patient-list">
+      <div className="opd-rec-top-buttons">
+        <button className="opd-rec-favorites">★ My Favorites</button>
+        <button className="opd-rec-follow-up">Follow Up List</button>
       </div>
 
-      <div className="filters">
+      <div className="opd-rec-filters">
         <select defaultValue="This Month">
           <option>This Month</option>
         </select>
-        <div className="search-bar">
+        <div className="opd-rec-search-bar">
           <input type="text" placeholder="Search" />
           <button>🔍</button>
         </div>
-        <span className="results">Showing 32 / 32 results</span>
-        <button className="print" onClick={printTable}>Print</button>
+        <span className="opd-rec-results">Showing 32 / 32 results</span>
+        <button className="opd-rec-print" onClick={printTable}>Print</button>
       </div>
 
       <table>
@@ -78,7 +78,7 @@ const OpdRecordFollowUpList = () => {
           ))}
         </tbody>
       </table>
-      <div className="paginat">
+      <div className="opd-rec-paginat">
         <span>0 to 0 of 0</span>
         <button>First</button>
         <button>Previous</button>

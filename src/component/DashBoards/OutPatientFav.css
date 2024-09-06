@@ -1,16 +1,17 @@
-.patient-list {
+.Out-patient-list {
   font-family: Arial, sans-serif;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
   padding: 20px;
   background-color: #e6f3ff;
 }
 
 .search-bar {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .search-bar input {

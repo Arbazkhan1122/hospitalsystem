@@ -1,16 +1,16 @@
-.patient-list {
+.opd-rec-patient-list {
     font-family: Arial, sans-serif;
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     padding: 20px;
     background-color: #e6f3ff;
   }
   
-  .top-buttons {
+  .opd-rec-top-buttons {
     margin-bottom: 20px;
   }
   
-  .top-buttons button {
+  .opd-rec-top-buttons button {
     padding: 10px 20px;
     margin-right: 10px;
     background-color: #4a90e2;
@@ -20,39 +20,39 @@
     cursor: pointer;
   }
   
-  .filters {
+  .opd-rec-filters {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
   }
   
-  .filters select {
+  .opd-rec-filters select {
     padding: 5px;
   }
   
-  .search-bar {
+  .opd-rec-search-bar {
     display: flex;
     align-items: center;
   }
   
-  .search-bar input {
+  .opd-rec-search-bar input {
     padding: 5px;
     margin-right: 5px;
   }
   
-  .search-bar button {
+  .opd-rec-search-bar button {
     padding: 5px 10px;
     background-color: white;
     border: 1px solid #ccc;
     cursor: pointer;
   }
   
-  .results {
+  .opd-rec-results {
     color: #3498db;
   }
   
-  .print {
+  .opd-rec-print {
     padding: 5px 10px;
     background-color: #3498db;
     color: white;
@@ -87,14 +87,14 @@
   
   /* You may want to add styles for pagination here */
   
-.paginat {
+.opd-rec-paginat {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
   }
   
-  .paginat button {
+  .opd-rec-paginat button {
     margin: 0 5px;
     padding: 5px 10px;
     background-color: #4a90e2;

@@ -1,0 +1,53 @@
+/* Problems Navbar Styles */
+.problems-navbar {
+    background-color: #f8f9fa; 
+    padding: 0px;
+    border-bottom: 2px solid #e0e0e0; 
+    display: flex; 
+  }
+  
+  .problems-navbar ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Display list items in a row */
+    gap: 20px; /* Space between list items */
+  }
+  
+  .problems-navbar li {
+    display: inline; /* Inline list items */
+  }
+  
+  .problems-navbar button {
+    background-color: transparent; 
+    color: #007bff; 
+    border: none; 
+    /* padding: 10px 15px;  */
+    cursor: pointer; 
+    font-size: 14px; 
+    border-bottom: 3px solid transparent; 
+    transition: border-color 0.3s; 
+  }
+  
+  .problems-navbar button:hover {
+    color: #0056b3; /* Darker text color on hover */
+    border-bottom-color: #0056b3;
+  }
+  
+  .problems-navbar .problems-active {
+    border-bottom-color: #007bff; 
+    color: #0056b3; 
+  }
+  
+  
+  .problems-content {
+    padding: 20px; 
+    /* margin-top: 20px;  */
+    background-color: #ffffff; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 5px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  }
+  
+
+

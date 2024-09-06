@@ -1,5 +1,5 @@
 /* Container */
-.reports-cont {
+/* .reports-cont {
   font-family: Arial, sans-serif;
   background-color: #e0f7ff;
   padding: 20px;
@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
+} */
 
 /* Report Card */
 .report-card-container {
@@ -18,7 +18,8 @@
   padding: 10px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease,
+    background-color 0.3s ease, color 0.3s ease;
   cursor: pointer;
   margin-bottom: 20px; /* Adds spacing between cards if more are added */
 }
@@ -30,7 +31,7 @@
   color: white; /* Change text color to white on hover */
 }
 
-.report-icon-container{
+.report-icon-container {
   font-size: 18px; /* Icon size */
   color: #007bff;
   margin-right: 20px;
@@ -58,7 +59,7 @@
 }
 .report-icon-container {
   font-size: 32px; /* Adjust the size of the icon */
-  color:#007bff; /* Ensure the color makes the icon visible */
+  color: #007bff; /* Ensure the color makes the icon visible */
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,77 +1,131 @@
-.ive-container {
-  font-family: Arial, sans-serif;
-  max-width: 1200px;
-  margin: 0 auto;
+.activeproblems-container {
   padding: 20px;
 }
 
-.ive-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  border-bottom: 2px solid #e0e0e0;
+/* .activeproblems-section {
+  margin-bottom: 40px;
+} */
+
+.activeproblems-sectionh5 {
+  font-size: 14px;
+  color: black;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.ive-nav li {
-  padding: 10px 20px;
+.activeproblems-modal-overlay label{
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+
+
+}
+
+
+.activeproblems-add-button {
+  background-color: #3578e5;
+  color: white;
+  padding: 8px;
+  /* margin-bottom: 10px; */
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  color: #666;
+  font-size: 14px;
 }
 
-.ive-nav li.ive-active {
-  color: #6200ee;
-  border-bottom: 2px solid #6200ee;
+.activeproblems-add-button:hover {
+  background-color: #3578e5;
 }
 
-.ive-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+.activeproblems-table {
+  width: 100%;
+  border-collapse: collapse; 
+   margin-top: 10px;
 }
 
-.ive-header h2 {
+.activeproblems-table th,
+.activeproblems-table td {
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: left;
+}
+
+.activeproblems-table th {
+  background-color: #f3f3f3;
   color: #333;
-  font-size: 18px;
+}
+.active-problem-main{
+  display: flex;
+  flex-direction: row;
+}
+.actproblem-table{
+  display: flex;
+  flex-direction: column;
 }
 
-.ive-add-btn {
-  background-color: #6200ee;
+.activeproblems-modal-overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.actproblemtabledata{
+  padding: 0px;
+}
+.activeproblems-modal-content input{
+  width: 300px;
+
+}
+
+.activeproblems-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  position: relative;
+}
+
+.activeproblems-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.activeproblems-form-group {
+  /* margin-bottom: 5px; */
+  display: flex;
+}
+.activeproblems-form-group input[type=checkbox]{
+  height: 20px;
+  width: 20px;
+
+
+}
+
+
+.activeproblems-form-group label {
+width: 50%;
+}
+
+.activeproblems-add-problem-button {
+  background-color: #8e44ad;
   color: white;
   border: none;
-  padding: 5px 15px;
-  border-radius: 4px;
+  padding: 0px 8px;
+  border-radius: 5px;
   cursor: pointer;
+  margin-top: 20PX;
+  
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 30px;
-}
 
-th, td {
-  text-align: left;
-  padding: 12px;
-  border-bottom: 1px solid #e0e0e0;
-}
 
-th {
-  font-weight: bold;
-  color: #333;
-}
-
-a.ive-edit-link, a.ive-set-active-link {
-  color: #6200ee;
-  text-decoration: none;
-}
-
-.ive-star {
-  color: #6200ee;
-  margin-right: 5px;
-}
-
-input[type="checkbox"] {
-  transform: scale(1.2);
-}

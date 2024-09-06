@@ -1,29 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './OutPatient.css';
-import OpdList from '../DashBoards/Opd'; // Import the OpdList component
-import OutPatientFav from '../DashBoards/OutPatientFav'; // Import the OutPatientFav component
-import OutPatientFollowUp from '../DashBoards/OutPatientFollowUp'; // Import the OutPatientFollowUp component
-import TableComponent from '../DashBoards/NewPatientsMyFavourite'; // Import the My Favorites component
-import NewPatientFollowUpList from '../DashBoards/NewPatientFollowUpList'; // Import the Follow Up List component
+import OpdList from '../DashBoards/Opd'; 
+import OutPatientFav from '../DashBoards/OutPatientFav';
+import OutPatientFollowUp from '../DashBoards/OutPatientFollowUp';
+import TableComponent from '../DashBoards/NewPatientsMyFavourite';
+import NewPatientFollowUpList from '../DashBoards/NewPatientFollowUpList';
+import PatientDashboard from '../DashBoards/PatientDashboard'; // Import the PatientDashboard component
 
 const OutPatient = () => {
-  const [view, setView] = useState('newPatient'); // Initialize state for main view
-  const [showFavorites, setShowFavorites] = useState(false); // State to control visibility of My Favorites
-  const [showFollowUp, setShowFollowUp] = useState(false); // State to control visibility of Follow Up List
+  const [view, setView] = useState('newPatient');
+  const [showFavorites, setShowFavorites] = useState(false);
+  const [showFollowUp, setShowFollowUp] = useState(false);
+  const [isPatientOPEN,setIsPatientOPEN] = useState(false)
+  const [patients, setPatients] = useState([]); // State to store the fetched patient data
+  const [isLoading, setIsLoading] = useState(true); // Loading state
+  const [error, setError] = useState(null); // Error state
+  const [selectedPatient, setSelectedPatient] = useState(null); // State to store the selected patient
 
   const handleViewChange = (newView) => {
-    setView(newView); // Update the view based on the button clicked
-    if (newView !== 'favorite') setShowFavorites(false); // Hide My Favorites if not selected
-    if (newView !== 'followUp') setShowFollowUp(false); // Hide Follow Up List if not selected
+    setView(newView);
+    if (newView !== 'favorite') setShowFavorites(false);
+    if (newView !== 'followUp') setShowFollowUp(false);
   };
 
   const toggleFavorites = () => {
-    setShowFavorites(!showFavorites); // Toggle the visibility of My Favorites
+    setShowFavorites(!showFavorites);
   };
 
   const toggleFollowUp = () => {
-    setShowFollowUp(!showFollowUp); // Toggle the visibility of Follow Up List
+    setShowFollowUp(!showFollowUp);
   };
+
+  const handlePatientClick = (patient) => {
+    setIsPatientOPEN(!isPatientOPEN)
+    setSelectedPatient(patient); // Set the selected patient to open the dashboard
+  };
+
+  // Fetch data from the API when the component mounts
+  useEffect(() => {
+    const fetchPatientData = async () => {
+      setIsLoading(true);
+      try {
+        const response = await fetch('http://192.168.1.39:1415/api/new-patient-visits');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setPatients(data); // Store the fetched data in the state
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPatientData();
+  }, []);
+
+
+  // If a patient is selected, render the PatientDashboard
+  if (isPatientOPEN) {
+    return <PatientDashboard  isPatientOPEN={isPatientOPEN} setIsPatientOPEN={setIsPatientOPEN} patient={selectedPatient} />;
+  }
 
   return (
     <div className="OutPatient-out-patient">
@@ -76,40 +114,66 @@ const OutPatient = () => {
           <table className="OutPatient-table">
             <thead>
               <tr>
-                <th>Hospital No.</th>
                 <th>Name</th>
                 <th>Age/Sex</th>
                 <th>VisitType</th>
-                <th>Admitted On</th>
+                {/* <th>Admitted On</th> */}
                 <th>Performer Name</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td colSpan="7" className="OutPatient-no-data">
-                  No Rows To Show
-                </td>
-              </tr>
+              {isLoading ? (
+                <tr>
+                  <td colSpan="6">Loading...</td>
+                </tr>
+              ) : error ? (
+                <tr>
+                  <td colSpan="6">{error}</td>
+                </tr>
+              ) : patients.length > 0 ? (
+                patients.map((patient, index) => (
+                  <tr key={index}>
+                    <td>{`${patient.firstName} ${patient.lastName}`}</td>
+                    <td>{patient.age}/{patient.sex}</td>
+                    <td>{patient.visitType}</td>
+                    {/* <td>{patient.admittedOn}</td> */}
+                    <td>{`${patient?.employeeDTO?.salutation} ${patient?.employeeDTO?.firstName} ${patient?.employeeDTO?.lastName}`}</td>
+                    <td>
+                      <button
+                        className="OutPatient-action-button"
+                        onClick={() => handlePatientClick(patient)} // Open the PatientDashboard when clicked
+                      >
+                        👤
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="6" className="OutPatient-no-data">
+                    No Rows To Show
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
 
           <div className="OutPatient-pagination">
-            <span>0 to 0 of 0</span>
-            <button>First</button>
-            <button>Previous</button>
-            <span>Page 0 of 0</span>
-            <button>Next</button>
-            <button>Last</button>
+            <span>0 to {patients.length} of {patients.length}</span>
+            <button disabled>First</button>
+            <button disabled>Previous</button>
+            <span>Page 1 of 1</span>
+            <button disabled>Next</button>
+            <button disabled>Last</button>
           </div>
         </div>
       )}
 
-      {view === 'opdRecord' && <OpdList />} {/* Renders OpdList if "OPD Record" is selected */}
+      {view === 'opdRecord' && <OpdList />}
       
-      {showFavorites && <TableComponent />} {/* Renders My Favorites when toggled */}
-      
-      {showFollowUp && <NewPatientFollowUpList />} {/* Renders Follow Up List when toggled */}
+      {showFavorites && <TableComponent />}
+      {showFollowUp && <NewPatientFollowUpList />}
     </div>
   );
 };

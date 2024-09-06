@@ -2,14 +2,14 @@ import React from 'react'
 import "../SSPharmacy/sSPStoreTransfer.css"
 function SSPStoreTransfer() {
   return (
-    <div className="container">
-      <div className="transfer-form">
+    <div className="ssp-Transfer-store-container">
+      <div className="ssp-Transfer-store-transfer-form">
         <label htmlFor="transfer-type">Transfer Type:</label>
-        <select id="transfer-type" className="transfer-type">
+        <select id="transfer-type" className="ssp-Transfer-store-transfer-type">
           <option>Normal Transfer</option>
           <option>Expiry Transfer</option>
         </select>
-        <table>
+        <table className='ssp-Transfer-store'>
           <thead>
             <tr>
               <th>Item Name</th>
@@ -35,7 +35,7 @@ function SSPStoreTransfer() {
             </tr>
           </tbody>
         </table>
-        <button className="btn-transfer">Transfer</button>
+        <button className="ssp-Transfer-store-btn-transfer">Transfer</button>
       </div>
     </div>
   )

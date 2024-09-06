@@ -3,27 +3,27 @@ import './ClinicalBloodSugarMonitoring.css';
 
 const ClinicalBloodSugarMonitoring = () => {
   return (
-    <div className="blood-sugar-monitoring">
-      <div className="header">
-        <h2>Blood Sugar Monitoring</h2>
-        <button className="add-new">+ Add New</button>
+    <div className="blood-sugar-monitoring-container">
+      <div className="blood-sugar-monitoring-header">
+        <h2 className='blood-sugar-monitoring-header'>Blood Sugar Monitoring</h2>
+        <button className="blood-sugar-monitoring-add-new">+ Add New</button>
         <h3>Blood Sugar New Entry</h3>
-        <button className="close">×</button>
+        <button className="blood-sugar-monitoring-close">×</button>
       </div>
       
-      <div className="main-content">
-        <div className="left-panel">
-          <div className="search-bar">
+      <div className="blood-sugar-monitoring-main-content">
+        <div className="blood-sugar-monitoring-left-panel">
+          <div className="blood-sugar-monitoring-search-bar">
             <input type="text" placeholder="Search" />
             <button>🔍</button>
           </div>
           
-          <div className="results">
+          <div className="blood-sugar-monitoring-results">
             <span>Showing 0 / 0 results</span>
-            <button className="print">Print</button>
+            <button className="blood-sugar-monitoring-print">Print</button>
           </div>
           
-          <table>
+          <table className='blood-sugar-monitoring'>
             <thead>
               <tr>
                 <th>Date</th>
@@ -36,23 +36,23 @@ const ClinicalBloodSugarMonitoring = () => {
             </thead>
             <tbody>
               <tr>
-                <td colSpan="6" className="no-rows">No Rows To Show</td>
+                <td colSpan="6" className="blood-sugar-monitoring-no-rows">No Rows To Show</td>
               </tr>
             </tbody>
           </table>
           
-          <div className="pagination">
+          {/* <div className="pagination">
             <span>0 to 0 of 0</span>
             <button>First</button>
             <button>Previous</button>
             <span>Page 0 of 0</span>
             <button>Next</button>
             <button>Last</button>
-          </div>
+          </div> */}
         </div>
         
-        <div className="right-panel">
-          <div className="patient-info">
+        <div className="blood-sugar-monitoring-right-panel">
+          <div className="blood-sugar-monitoring-patient-info">
             <div>
               <label>Hospital No :</label>
               <input type="text" />
@@ -75,7 +75,7 @@ const ClinicalBloodSugarMonitoring = () => {
             </div>
           </div>
           
-          <div className="entry-fields">
+          <div className="blood-sugar-monitoring-entry-fields">
             <div>
               <label>RBS :</label>
               <input type="text" placeholder="RBS" />
@@ -90,9 +90,9 @@ const ClinicalBloodSugarMonitoring = () => {
             </div>
           </div>
           
-          <div className="form-buttons">
-            <button className="discard">Discard</button>
-            <button className="save">Save</button>
+          <div className="blood-sugar-monitoring-form-buttons">
+            <button className="blood-sugar-monitoring-discard">Discard</button>
+            <button className="blood-sugar-monitoring-save">Save</button>
           </div>
         </div>
       </div>

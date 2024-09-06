@@ -29,8 +29,8 @@
   font-weight: bold;
 }
 
-input[type="date"],
-input[type="text"] {
+.sSIPatientConsumNewPCbtn-form-section input[type="date"],
+.sSIPatientConsumNewPCbtn-form-section input[type="text"] {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -81,7 +81,7 @@ input[type="text"] {
   cursor: pointer;
 }
 
-input[type="number"] {
+.sSIPatientConsumConsumEntry-table input[type="number"] {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;

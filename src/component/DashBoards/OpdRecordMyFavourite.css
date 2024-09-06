@@ -1,16 +1,17 @@
-.patient-list {
+.OpdRec-patient-list{
+  width: 100%;
     font-family: Arial, sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    /* max-width: 1200px; */
+    /* margin: 0 auto; */
+    /* padding: 20px; */
     background-color: #e6f3ff;
   }
   
-  .top-buttons {
+  .OpdRec-top-buttons{
     margin-bottom: 20px;
   }
   
-  .top-buttons button {
+  .OpdRec-top-buttons button {
     padding: 10px 20px;
     margin-right: 10px;
     background-color: #4a90e2;
@@ -20,39 +21,39 @@
     cursor: pointer;
   }
   
-  .filters {
+  .OpdRec-filters {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
   }
   
-  .filters select {
+  .OpdRec-filters select {
     padding: 5px;
   }
   
-  .search-bar {
+  .OpdRec-search-bar {
     display: flex;
     align-items: center;
   }
   
-  .search-bar input {
+  .OpdRec-search-bar input {
     padding: 5px;
     margin-right: 5px;
   }
   
-  .search-bar button {
+  .OpdRec-search-bar button {
     padding: 5px 10px;
     background-color: white;
     border: 1px solid #ccc;
     cursor: pointer;
   }
   
-  .results {
+  .OpdRec-results{
     color: #3498db;
   }
   
-  .print {
+  .OpdRec-print {
     padding: 5px 10px;
     background-color: #3498db;
     color: white;
@@ -87,7 +88,7 @@
   
   /* You may want to add styles for pagination here */
   
-.paginat {
+.OpdRec-paginat {
     display: flex;
     justify-content: center;
     align-items: center;

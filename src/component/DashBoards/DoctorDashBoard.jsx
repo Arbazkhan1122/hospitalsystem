@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './DoctorDashBoard.css'; // Make sure to create and include the CSS file
 import PatientRecord from './OutPatient'; // Import the PatientRecord component
 import InPatient from '../DashBoards/InPatient'; // Import the InPatient component
@@ -6,8 +6,11 @@ import Records from '../DashBoards/PatientsRecord'; // Import the Records compon
 
 const DrDashboard = () => {
   // State to manage which content to display
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState('outPatient');
 
+  useEffect(()=>{
+    
+  },[activeSection])
   // Function to handle button clicks
   const handleButtonClick = (section) => {
     setActiveSection(section);

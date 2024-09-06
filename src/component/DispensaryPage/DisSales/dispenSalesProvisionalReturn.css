@@ -1,0 +1,250 @@
+
+
+
+.dispenSalesProvisionalReturn-active-imaging-request {
+    font-family: Arial, sans-serif;
+    /* max-width: 1200px; */
+    /* margin: 0 auto; */
+    /* padding: 10px; */
+    /* background-color: red; */
+  }
+  
+  .dispenSalesProvisionalReturn-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 20px; */
+  }
+  
+  /* .dispenSalesProvisionalReturn-header h4 {
+    color: #3f8fdf;
+    margin: 0;
+  } */
+  .dispenSalesProvisionalReturn-CreateRequisition{
+      margin-left: 10px;
+      /* gap: 10px; */
+      background-color: #26C281;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 0px 10px;
+      font-size: 12px;
+      margin-left: 100px;
+      height: 28px;
+      text-align: center;
+    }
+    
+    .dispenSalesProvisionalReturn-CreateRequisition:hover{
+    background-color: #0011ff ;
+    }
+ 
+  .dispenSalesProvisionalReturn-checkBox select {
+    padding: 3px 5px 3px 5px;
+    background-color: #f0f0f0;
+    margin-left: 10px;
+    width: 100px;
+  }
+  .dispenSalesProvisionalReturn-checkBox label {
+font-size: 14px;
+font-weight: bold;
+color: green;
+}
+  
+  .dispenSalesProvisionalReturn-controls {
+    display: flex;
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .dispenSalesProvisionalReturn-date-range {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    gap: 10px;
+    background-color: #f0f0f0;
+    margin-bottom: 10px;
+  }
+  .dispenSalesProvisionalReturn-date-range label{
+    margin-left: 20px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .dispenSalesProvisionalReturn-date-range input[type="date"] {
+    padding: 5px;
+  }
+  
+  .dispenSalesProvisionalReturn-star-button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    color: #0011ff;
+    cursor: pointer;
+  }
+  
+  .dispenSalesProvisionalReturn-ok-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+  }
+  
+  .dispenSalesProvisionalReturn-search-bar {
+    display: flex;
+  }
+  
+  .dispenSalesProvisionalReturn-search-bar input {
+    flex-grow: 1;
+    padding: 5px;
+    width: 200px;
+
+  }
+  .dispenSalesProvisionalReturn-search-bar i{
+    position: relative;
+    color:gray;
+    top: 7px;
+  left: 205px;
+  }
+  
+  /* .search-bar button {
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  } */
+  
+  .dispenSalesProvisionalReturn-results-info {
+    text-align: right;
+    color: #0011ff;
+    font-size: 12px;
+    font-weight: bold;
+}
+.dispenSalesProvisionalReturn-print-btn{
+      margin-left: 10px;
+      /* gap: 10px; */
+    background-color: #0011ff ;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+
+  }
+  
+  .dispenSalesProvisionalReturn-table-N-paginat table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.dispenSalesProvisionalReturn-table-N-paginat th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 12px;
+    color: rgb(70, 69, 69);
+}
+  
+  .dispenSalesProvisionalReturn-table-N-paginat th {
+    /* background-color: red; */
+    background-color: #F3F3F3;
+  }
+  
+  .dispenSalesProvisionalReturn-table-N-paginat tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .dispenSalesProvisionalReturn-action-button {
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+
+    border-radius: 13px;
+  }
+  
+  .dispenSalesProvisionalReturn-add-report {
+    background-color: #008CBA;
+  }
+  
+  .dispenSalesProvisionalReturn-scan-done {
+    background-color: #008CBA;
+  }
+  
+  .dispenSalesProvisionalReturn-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  
+  .dispenSalesProvisionalReturn-search-N-results{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.dispenSalesProvisionalReturn-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .dispenSalesProvisionalReturn-pagination button {
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 5px;
+  }
+  
+  .dispenSalesProvisionalReturn-pagination span {
+    margin: 0 10px;
+    color: gray;
+    font-size: 12px;
+  }
+  .dispenSalesProvisionalReturn-table-N-paginat{
+    background-color: white ;
+  }
+
+  
+.dispenSalesProvisionalReturn-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal content styling */
+.dispenSalesProvisionalReturn-modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  max-width: 1300px;
+  width: 100%;
+}
+
+/* Close button styling */
+.dispenSalesProvisionalReturn-close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
