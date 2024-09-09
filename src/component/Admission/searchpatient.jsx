@@ -37,7 +37,7 @@ const SearchPatient = () => {
 
   // Fetch data from API
   useEffect(() => {
-    fetch('http://localhost:1415/api/patients/getAllPatients', {
+    fetch('http://localhost:1415/api/new-patient-visits', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -68,11 +68,11 @@ const SearchPatient = () => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredPatients = currentPatients.filter(
-    (patient) =>
-      patient &&
-      patient.firstName.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredPatients = currentPatients.filter((patient) => {
+  if (!patient || !patient.firstName) return false; // Ensure patient and firstName exist
+  return patient.firstName.toLowerCase().includes(searchTerm.toLowerCase());
+});
+
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 

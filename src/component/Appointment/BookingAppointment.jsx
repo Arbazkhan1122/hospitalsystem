@@ -15,7 +15,7 @@ const BookingAppointment = () => {
     const fetchPatients = async () => {
       try {
         // Replace with your API endpoint
-        const response = await axios.get('http://192.168.1.34:1415/api/appointments/fetch-all-appointment');
+        const response = await axios.get('http://localhost:1415/api/appointments/fetch-all-appointment');
         setPatients(response.data);
       } catch (error) {
         setError('Failed to fetch patient data.');
