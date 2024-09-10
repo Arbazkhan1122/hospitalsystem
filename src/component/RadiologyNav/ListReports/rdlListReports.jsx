@@ -157,7 +157,7 @@ function RDLListReports() {
         </div>
       </div>
       <div className="rDLListReport-table-N-paginat" id="table-to-print">
-        <table>
+        <table className="rd-list-report-table">
           <thead>
             <tr>
               <th>Sr No</th>

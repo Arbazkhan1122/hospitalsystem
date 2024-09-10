@@ -1,8 +1,9 @@
 .dispenSalesSales-sales-container {
     font-family: Arial, sans-serif;
-    background-color: #CAF2FF;
+    /* background-color: #CAF2FF; */
     padding: 10px;
-    height: 450px;
+    height: 90vh;
+    overflow-y: scroll;
 
   }
   
@@ -10,12 +11,10 @@
     display: flex;
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
-    font-size: 0.8em;
+    font-size: 16px;
     background-color: #FAFAFA;
   }
-  .dispenSalesSales-patient-search input{
-    width: 250px;
-  }
+ 
   
   .dispenSalesSales-tab {
     padding: 10px;
@@ -25,7 +24,7 @@
   
   .dispenSalesSales-tab-active {
     /* background-color: #007bff; */
-    border-bottom: 3px solid #007bff;
+    border-bottom:5px solid  var(--sideBar-bg-color);
     color: black;
     font-weight: bold;
   }
@@ -52,8 +51,7 @@
   .dispenSalesSales-hospital-info-subDiv{
     display: flex;
     justify-content: space-between;
-    font-size: 0.8em;
-    font-weight: bold;
+    font-size: 14px;
     margin-right: 50px;
   }
   .dispenSalesSales-hospital-info-subDiv div{
@@ -61,6 +59,7 @@
     justify-content: space-between;
     margin-bottom: 10px;
     padding-left: 10px;
+    font-size: 14px;
     /* border: 1px solid red; */
   }
   .dispenSalesSales-hospital-info select{
@@ -73,6 +72,7 @@
   }
   .dispenSalesSales-hospital-info-subDiv div option{
     width: 10px;
+    font-size: 14px;
   }
 
   
@@ -81,11 +81,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f0f8ff;
-    padding: 10px;
+    background-color: #f2f2f2;
+    /* padding: 10px; */
     border-radius: 5px;
     width: 93%;
-    font-size: 0.7em;
+    font-size: 14px;
     color: gray;
     /* border: 1px solid #0a0707; */
 height: 50px;
@@ -117,10 +117,11 @@ width: 30px;
     /* background-color: #f0f8ff; */
     /* padding: 10px; */
     border-radius: 5px;
-    font-size: 0.8em;
+    font-size: 14px;
   }
   .dispenSalesSales-patient-info label{
     margin-right: 10px;
+    font-size: 14px;
 
   }
   
@@ -132,8 +133,8 @@ width: 30px;
   } */
   
   .dispenSalesSales-medicine-info label {
-    font-weight: bold;
     margin-right: 10px;
+    font-size: 14px;
   }
   
   .dispenSalesSales-patient-info input,
@@ -142,6 +143,8 @@ width: 30px;
   .dispenSalesSales-medicine-info select {
     padding: 5px;
     border-radius: 3px;
+    
+    font-size: 14px;
     /* border: 1px solid #ccc; */
     /* border: 1px solid #e40f0f; */
     flex-grow: 1;
@@ -168,7 +171,7 @@ width: 30px;
     /* border: 1px solid #ccc; */
     text-align: left;
     background-color: #EEEEEE;
-    font-size: 12px;
+    font-size: 16px;
     color: #6b6a6a;
   }
   
@@ -183,7 +186,7 @@ width: 30px;
     border-radius: 5px;
     /* border: 1px solid green; */
     width: 20%;
-    font-size: 0.8em;
+    font-size: 14px;
     color: gray;
   }
   
@@ -206,7 +209,7 @@ width: 30px;
   }
   .dispenSalesSales-payment-summary-subDiv input{
     width: 100px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
   }
   
   
@@ -246,7 +249,7 @@ width: 30px;
     padding: 10px;
     border-radius: 5px;
     width: 13%;
-    font-size: 0.8em;
+    font-size: 14px;
   }
   
   .dispenSalesSales-invoice-history h4,
@@ -263,7 +266,8 @@ width: 30px;
   } */
   .dispenSalesSales-register-patient span {
     padding-right: 10px;
-    color: #007bff;
+    color: black;
+    font-size: 14px;
   }
   .dispenSalesSales-medicineInfo-N-paymentSection{
     display: flex;

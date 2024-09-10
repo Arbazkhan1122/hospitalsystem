@@ -8,9 +8,9 @@ const UserCollectionReport = () => {
       <div className="user-collection-filter-section">
         <div className="user-collection-date-range">
           <label>From: </label>
-          <input type="date" />
+          <input className='user-collection-input' type="date" />
           <label>To: </label>
-          <input type="date" />
+          <input type="date" className="user-collection-date-input" />
           <button className="user-collection-filter-btn">★</button>
         </div>
         <div className="user-collection-input-group">
@@ -31,8 +31,8 @@ const UserCollectionReport = () => {
       </div>
       <div className="user-collection-table-actions">
         <div className="-user-collectionsearch-container">
-          <input type="text" placeholder="Search" />
-          <button className="user-collection-search-btn">🔍</button>
+        <input type="text" className="user-collection-search-input" placeholder="Search" />
+        <button className="user-collection-search-btn">🔍</button>
         </div>
         <div className="user-collection-export-buttons">
           <button className="user-collection-export-btn">Export</button>
@@ -64,14 +64,14 @@ const UserCollectionReport = () => {
           </tr>
         </tbody>
       </table>
-      <div className="user-collection-pagination">
+      {/* <div className="user-collection-pagination">
         <span>0 to 0 of 0</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 0 of 0</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
       </div>
     </div>
   );

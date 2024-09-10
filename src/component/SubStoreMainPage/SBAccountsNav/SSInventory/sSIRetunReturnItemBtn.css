@@ -107,13 +107,13 @@ justify-content: space-between;
   margin-right: 10px;
 }
 
-textarea {
+/* textarea {
   flex-grow: 1;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
-}
+} */
 
 .sSIRetunReturnItemBtn-button-section {
   margin-top: 20px;

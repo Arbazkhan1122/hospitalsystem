@@ -15,61 +15,61 @@ const Home = () => {
       ];
   return (
     <div>
-        <div className="dashboard-cards">
-        <div className="dashboard-card" style={{ backgroundColor: '#007bff' }}>
-          <div className="card-content">
-            <span className="card-icon">🛏️</span>
-            <div className="card-text">
+        <div className="home-page-dashboard-cards">
+        <div className="home-page-dashboard-card" style={{ backgroundColor: '#007bff' }}>
+          <div className="home-page-card-content">
+            <span className="home-page-card-icon">🛏️</span>
+            <div className="home-page-card-text">
               <h3>Total No. of Beds</h3>
               <h2>31</h2>
             </div>
           </div>
         </div>
-        <div className="dashboard-card" style={{ backgroundColor: '#20c997' }}>
-          <div className="card-content">
-            <span className="card-icon">🛏️</span>
-            <div className="card-text">
+        <div className="home-page-dashboard-card" style={{ backgroundColor: '#20c997' }}>
+          <div className="home-page-card-content">
+            <span className="home-page-card-icon">🛏️</span>
+            <div className="home-page-card-text">
               <h3>Available No. of Beds</h3>
               <h2>17</h2>
             </div>
           </div>
         </div>
-        <div className="dashboard-card" style={{ backgroundColor: '#fd7e14' }}>
-          <div className="card-content">
-            <span className="card-icon">🛏️</span>
-            <div className="card-text">
+        <div className="home-page-dashboard-card" style={{ backgroundColor: '#fd7e14' }}>
+          <div className="home-page-card-content">
+            <span className="home-page-card-icon">🛏️</span>
+            <div className="home-page-card-text">
               <h3>Occupied No. of Beds</h3>
               <h2>14</h2>
             </div>
           </div>
         </div>
       </div>
-      <div className="bed-feature-table">
-      <div className="table-header">
+      <div className="home-page-bed-feature-table">
+      <div className="home-page-table-header">
         <h2>Bed Feature Details</h2>
-        <div className="table-actions">
+        <div className="home-page-table-actions">
           <button>Print</button>
           <button>Export</button>
         </div>
       </div>
-      <table className='adttable'>
+      <table className='home-page-adttable'>
         <thead>
           <tr>
-            <th className='adttablehead'>Ward Name</th>
-            <th className='adttablehead'>Occupied</th>
-            <th className='adttablehead'>Vacant</th>
-            <th className='adttablehead'> Reserved</th>
-            <th className='adttablehead'>Total</th>
+            <th className='home-page-adttablehead'>Ward Name</th>
+            <th className='home-page-adttablehead'>Occupied</th>
+            <th className='home-page-adttablehead'>Vacant</th>
+            <th className='home-page-adttablehead'> Reserved</th>
+            <th className='home-page-adttablehead'>Total</th>
           </tr>
         </thead>
         <tbody>
           {tableData.map((row, index) => (
             <tr key={index}>
-              <td className='adttabledata'>{row.wardName}</td>
-              <td className='adttabledata'>{row.occupied}</td>
-              <td className='adttabledata'>{row.vacant}</td>
-              <td className='adttabledata'>{row.reserved}</td>
-              <td className='adttabledata'>{row.total}</td>
+              <td className='home-page-adttabledata'>{row.wardName}</td>
+              <td className='home-page-adttabledata'>{row.occupied}</td>
+              <td className='home-page-adttabledata'>{row.vacant}</td>
+              <td className='home-page-adttabledata'>{row.reserved}</td>
+              <td className='home-page-adttabledata'>{row.total}</td>
             </tr>
           ))}
         </tbody>

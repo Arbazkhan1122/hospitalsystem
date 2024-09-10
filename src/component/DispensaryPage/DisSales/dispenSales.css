@@ -1,5 +1,4 @@
 
-/* General styling */
 /* body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -24,26 +23,34 @@
     margin-bottom: 20px;
     font-size: 0.8em;
   } */
+
+  .dispenSales-counter-selection h4 {
+    font-size: 16px;
+    margin-top: 20px;
+  }
   
   .dispenSales-counter-selection h4 i {
-    margin-right: 10px;
+    margin-left: 20px; /* Reduced the gap between h4 and i */
+    font-size: 16px;
     color: #3b5998;
-  
   }
   
   .dispenSales-counter-options {
     display: flex;
+    margin-left: 20px;
     gap: 20px;
   }
   
   .dispenSales-counter-option {
+    margin-top: 30px;
     background-color: #fff;
+
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     padding: 10px;
     border-radius: 5px;
     text-align: center;
     width: 170px;
-    height: 70px;
+    height: 90px;
     cursor: pointer;
     color: red;
     display: flex;
@@ -57,11 +64,11 @@
     gap: 15px;
   }
   
-  .dispenSales-counter-option:hover {
+  /* .dispenSales-counter-option:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   }
-  
+   */
   .dispenSales-counter-option i {
     font-size: 36px;
     color: #779be9;
@@ -69,8 +76,8 @@
   }
   
   .dispenSales-counter-option h3 {
-    font-size: 14px;
-    color: #5470eb;
+    font-size: 16px;
+    color: black;
     margin-bottom: 5px;
   }
   

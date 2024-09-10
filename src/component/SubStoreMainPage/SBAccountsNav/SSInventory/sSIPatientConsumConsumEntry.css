@@ -29,13 +29,13 @@
     font-weight: bold;
   }
   
-  input[type="date"],
+  /* input[type="date"],
   input[type="text"] {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
-  }
+  } */
   
   .sSIPatientConsumConsumEntry-back-btn {
     margin-left: auto;
@@ -81,12 +81,12 @@
     cursor: pointer;
   }
   
-  input[type="number"] {
+  /* input[type="number"] {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     text-align: center;
-  }
+  } */
   .sSIPatientConsumConsumEntry-remark{
     display: flex;
     justify-content: right;
@@ -106,13 +106,13 @@
     margin-right: 10px;
   }
   
-  textarea {
+  /* textarea {
     flex-grow: 1;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
-  }
+  } */
   
   .sSIPatientConsumConsumEntry-button-section {
     margin-top: 20px;

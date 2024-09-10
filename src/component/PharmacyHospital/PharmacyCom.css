@@ -1,6 +1,8 @@
 .pharmacy-home-page-container {
-  font-family: Arial, sans-serif;
-  background-color: #e3f2fd;
+  /* font-family: Arial, sans-serif; */
+  /* background-color: #e3f2fd; */
+  height: 90vh;
+  overflow-y: scroll;
 }
 
 .pharmacy-home-page-com {

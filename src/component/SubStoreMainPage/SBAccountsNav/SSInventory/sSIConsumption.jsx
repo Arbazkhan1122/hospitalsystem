@@ -202,14 +202,14 @@ function SSIPatientConsumption() {
                 )}
               </tbody>
           </table>
-          <div className="sSIConsumption-pagination">
+          {/* <div className="sSIConsumption-pagination">
             <span>0 to 0 of 0</span>
             <button>First</button>
             <button>Previous</button>
             <span>Page 0 of 0</span>
             <button>Next</button>
             <button>Last</button>
-          </div>
+          </div> */}
         </div>
       </>
       ) : (

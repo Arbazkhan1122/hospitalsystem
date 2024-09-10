@@ -61,19 +61,19 @@
     cursor: pointer;
   }
   
-  table {
+  .sSPConsumption-container table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
   }
   
-  th, td {
+  .sSPConsumption-container th, .sSPConsumption-container td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
   }
   
-  th {
+  .sSPConsumption-container th {
     background-color: #f2f2f2;
   }
   

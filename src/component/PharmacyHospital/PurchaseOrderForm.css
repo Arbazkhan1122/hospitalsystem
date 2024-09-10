@@ -34,12 +34,23 @@
     margin-bottom: 5px;
   }
   
-  /* Input and textarea styling */
-  input, textarea, select {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+  .purchase-order-input,
+  .purchase-order-select,
+  .purchase-order-textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box; /* Include padding and border in element's total width */
   }
+  
+  /* Specific styling for textarea to adjust height */
+  .purchase-order-textarea {
+      resize: vertical; /* Allow vertical resizing only */
+      min-height: 50px; /* Set a minimum height */
+  }
+  
   
   textarea.purchase-order-textare {
     resize: vertical;

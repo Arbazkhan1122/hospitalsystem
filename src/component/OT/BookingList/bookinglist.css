@@ -1,191 +1,84 @@
 /* Container for the entire component */
-.utltlist {
-    height: 100vh; /* Full viewport height */
-    width: 100vw;  /* Full viewport width */
-    background-color: #e6f3ff; /* Light blue background color */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px; 
-    box-sizing: border-box; 
-    
-  }
-  
-  /* Container for the button */
-  .bookinglist-modelbtn {
-    width: 50%;
-    display: flex;
-    justify-content:flex-start; 
-    margin-bottom: 20px; 
-  }
+.booking-list-container {
+  height: 100vh; /* Full viewport height */
+  width: 100vw;  /* Full viewport width */
+  background-color: #e6f3ff; /* Light blue background color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px; 
+  box-sizing: border-box; 
+}
 
-  .bookinglist-btn {
-    background-color:#007bff;
-    color: white;
-    padding: 8px;
-    border-radius: 5px;
-    border: none;
-    justify-self:left;
-    
-  }
+/* Header section with the button */
+.booking-list-booking-header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; 
+  margin-bottom: 20px; 
+}
 
-  .booklist-action-btn{
-    background-color:#007bff;
-    color: white;
-    padding: 4px;
-    border-radius: 5px;
-    border: none;
-    
+/* New OT Booking button */
+.booking-list-btn-btn-success {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
 
-  }
-  
-  /* Date range picker styling */
-  .date-range {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start; /* Aligns button to the right */
-    /* margin-bottom: 20px; */
-  }
-  .date-utlt{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start; /* Aligns button to the right */
-    margin-bottom: 20px;
-    background-color: #ccc;
-    align-items: center;
+/* Search bar container */
+.booking-list-patient-search-dropdown {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; 
+  margin-bottom: 20px;
+}
 
-  }
+.booking-list-patient-search-dropdown input {
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
 
-  .utltdatemiddle{
-    width: 50%;
-    display: flex;
-    justify-content: center; /* Aligns button to the right */
-   margin: 2px;
-    background-color: #dfebe8;
-    align-items: center;
+/* Table styles */
+.booking-list-ot-patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
 
-  }
-  
-  .date-range input {
-    margin: 0 10px;
-    padding: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  /* Buttons in the date range section */
-  .star-btn, .dash-btn {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    margin-right: 5px;
-  }
-  
-  .ok-btn {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 5px 15px;
-    border-radius: 3px;
-  }
-  
-  /* Search bar styling */
-  .utlt-search-bar {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start; /* Aligns button to the right */
-    margin-bottom: 20px;
- 
+.booking-list-ot-patient-table th, 
+.booking-list-ot-patient-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
 
-  }
-  
-  .utlt-search-bar input {
-  
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 30px;
-    
-  }
-  
-  .utlt-search-bar button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  /* Table styling */
-  .utlt-table {
-    overflow-x: auto;
-    background-color: white;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    table-layout: fixed;
-    
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-    font-weight: normal;
-  }
-  
-  /* No rows message styling */
-  .no-rows {
-    text-align: center;
-    background-color: #fff3cd;
-    color: #856404;
-    padding: 15px;
-  }
-  
-  /* Pagination styling */
-  .utlt-pagination {
-    display: flex;
-    justify-content: center; /* Center the pagination horizontally */
-    align-items: center;     /* Align items vertically */
-    width: 100%;             /* Ensure the pagination takes the full width of its container */
-    margin-top: 20px;        /* Optional: add top margin for spacing */
-  }
-  
-  .utlt-pagination button {
-    margin: 0 5px;           /* Add margin between buttons */
-    padding: 5px 10px;
-    background-color: #007bff; /* Button background color */
-    color: white;            /* Button text color */
-    border: none;            /* Remove button border */
-    cursor: pointer;         /* Change cursor to pointer on hover */
-    border-radius: 3px;      /* Round button corners */
-    transition: background-color 0.3s; /* Smooth transition on hover */
-  }
-  
-  .utlt-pagination button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
-  .utlt-pagination button:disabled {
-    background-color: #cccccc; /* Disabled button color */
-    cursor: not-allowed;       /* Change cursor for disabled buttons */
-  }
-  
-  /* Additional styles */
-  .admitted-search-input {
-    border-radius: 5px;
-    height: 30px;
-  }
-  
-  /* Modal styles */
-  .utlt-modal {
+.booking-list-ot-patient-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Action buttons in the table */
+.booklist-action-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Modal overlay */
+.booking-list-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -195,192 +88,62 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1050; /* Higher z-index to be above other elements */
+  z-index: 1050; /* Higher z-index to be above other content */
 }
 
-.utlt-modal-dialog {
- 
-    max-width: 939px;
-    background-color: white;
-    margin-left: 50px;
-    padding: 20px;
-    border-radius: 8px;
-    overflow:scroll;
-    margin-top: 20px;
-    /* margin-bottom: 179px; */
-    height: 78%; /* Ensure child elements are contained */
-
+/* Modal content */
+.booking-list-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.utlt-modal-header,
-.utlt-modal-footer {
-  padding: 10px 20px;
-  background-color: #f7f7f7;
-  border-bottom: 1px solid #e5e5e5;
-}
-.persanalinvolvement{
-  display: block;
-  padding: 10px;
-  gap: 20px;
-
-}
-
-.persanalinvolvement label, select{
-  margin-bottom: 20px;
-  padding-right: 20px;
-}
-
-.booklist-persanal-involvement-btn{
- 
-  align-items: center;
-  margin-left: 20px;
-  padding: 6px 12px;
-  background-color: #3598dc;
-  color: white;
+/* Close button inside the modal */
+.booking-list-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
   border: none;
-  border-radius: 4px;
+  font-size: 20px;
   cursor: pointer;
 }
 
-/* PersonalInvolvement popup window.css */
-
-.personal-involvement-confirmation-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.personal-involvement-confirmation-popup {
-  width: 400px;
-  height: 200px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px !important;
-  text-align: center;
+/* Form styling inside the modal */
+.booking-list-modal-content form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  gap: 10px;
 }
 
-.personal-involvement-confirmation-buttons {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
+.booking-list-modal-content label {
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-.personal-involvement-confirmation-btn {
-  padding: 10px 20px;
+.booking-list-modal-content input, 
+.booking-list-modal-content select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.booking-list-modal-content input[type="checkbox"] {
+  width: auto;
+}
+
+.booking-list-modal-content button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
 }
-
-.personal-involvement-confirmation-btn.confirm {
-  background-color: #4caf50;
-  color: white;
-}
-
-.personal-involvement-confirmation-btn.cancel {
-  background-color: #f44336;
-  color: white;
-}
-
-
-.bookinglist-modal-body {
-margin: 10px;
-display: flex;
-
-}
-
-.utlt-modal-title {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.utlt-modal-footer {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.utlt-close {
-  font-size: 1.5rem;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  margin-left: 10px; 
-}
-
-.bookinglist-btn {
-  margin-left: 10px;
-}
-
-.utlt-form-group{
-  display: flex;
-  padding: 10px;
-}
-
-
-/* FilterComponent.css */
-
-.booklist-nav-content{
-  display: flex;
-  justify-content:center;
-  width: 100%;
-  padding: 20px;
-  margin-right: 10px;
-
-}
-
-.bookedlistcheckbox-container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.bookedlistcheckbox-checkbox {
-  margin-right: 8px;
-}
-
-.bookedlistcheckbox-label {
-  margin-left: 8px;
-}
-
-.bookedlistdropdown-label , select {
-  margin-right: 8px;
-  margin-top: 20px;
-}
-
-.bookedlistdropdown-select {
-  padding: 4px;
-}
-
-.bookedlistbutton-button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  background-color: #3598dc;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.bookedlistbutton-button:hover {
-  background-color: #287bb5;
-}
-
-.bookedlistbutton-icon {
-  margin-right: 4px;
-}
-
-

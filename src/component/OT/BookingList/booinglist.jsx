@@ -80,19 +80,19 @@ function BookingList() {
   const handleStatusChange = (e) => setStatus(e.target.value);
 
   return (
-    <div className="booking-list">
-      <div className="booking-header">
-        <button className="btn btn-success" onClick={() => setIsPopupOpen(true)}>
+    <div className="booking-list-conatiner">
+      <div className="booking-list-booking-header">
+        <button className="booking-list-btn-btn-success" onClick={() => setIsPopupOpen(true)}>
           <FaPlus /> New OT Booking
         </button>
       </div>
 
-      <div className="patient-search-dropdown">
+      <div className="booking-list-patient-search-dropdown">
          <input type="text" placeholder="Search" value={patientName} onChange={handlePatientNameChange} />
         
       </div>
 
-      <table className="ot-patient-table">
+      <table className="booking-list-ot-patient-table">
         <thead>
           <tr>
             <th>Sr.No</th>
@@ -130,13 +130,13 @@ function BookingList() {
       </table>
 
       {isPopupOpen && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <button className="modal-close" onClick={() => setIsPopupOpen(false)}>
+        <div className="booking-list-modal-overlay">
+          <div className="booking-list-modal-content">
+            <button className="booking-list-modal-close" onClick={() => setIsPopupOpen(false)}>
               &times;
             </button>
             <form onSubmit={handleSubmit}>
-              <div className="patient-search-dropdown">
+              <div className="booking-list-patient-search-dropdown">
                 <label>Patient Name:</label>
                   <input type="text" value={patientName} onChange={handlePatientNameChange} />
               </div>

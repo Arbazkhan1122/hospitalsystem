@@ -32,13 +32,13 @@
   cursor: pointer;
 }
 
-input[type="date"],
-input[type="text"],
+/* .user-collection-input[type="date"],
+.user-collection-input[type="text"],
 select {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
+} */
 
 .user-collection-show-report-btn {
   background-color: #5a5dc6;
@@ -59,17 +59,34 @@ select {
   align-items: center;
 }
 
-input[type="text"] {
-  padding: 7px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.user-collection-input-group {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
 }
-
 .user-collection-search-btn {
   background: none;
   border: none;
   font-size: 18px;
   cursor: pointer;
+}
+.user-collection-input {
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user-collection-input[type="text"] {
+  padding: 7px;
+  width: 250px;
+}
+
+.user-collection-input[type="date"] {
+  padding: 7px;
+  width: 170px;
 }
 
 .user-collection-export-buttons {

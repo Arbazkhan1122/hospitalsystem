@@ -22,15 +22,14 @@
   } */
   .dispenSalesSalesList-CreateRequisition{
       margin-left: 10px;
-      /* gap: 10px; */
       background-color: #26C281;
       color: white;
       border: none;
+      height: 30px;
       border-radius: 5px;
-      padding: 0px 10px;
-      font-size: 12px;
+      /* padding: 0px 10px; */
+      font-size: 14px;
       margin-left: 100px;
-      height: 28px;
       text-align: center;
     }
     
@@ -46,7 +45,6 @@
   }
   .dispenSalesSalesList-checkBox label {
 font-size: 14px;
-font-weight: bold;
 color: green;
 }
   
@@ -67,27 +65,27 @@ color: green;
   .dispenSalesSalesList-date-range label{
     margin-left: 20px;
     font-size: 14px;
-    font-weight: bold;
   }
   
   .dispenSalesSalesList-date-range input[type="date"] {
     padding: 5px;
+    font-size: 14px;
   }
   
   .dispenSalesSalesList-star-button {
     background: none;
     border: none;
-    font-size: 1.2em;
-    color: #0011ff;
+    font-size: 24px;
+    color:var(--button-color) ;
     cursor: pointer;
   }
   
   .dispenSalesSalesList-ok-button {
-    background-color: #4CAF50;
+    background-color: var(--button-color);
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 5px 15px;
+    padding: 5px 10px;
     cursor: pointer;
   }
   
@@ -97,15 +95,15 @@ color: green;
   
   .dispenSalesSalesList-search-bar input {
     flex-grow: 1;
-    padding: 5px;
+    /* padding: 5px; */
     width: 200px;
 
   }
   .dispenSalesSalesList-search-bar i{
     position: relative;
     color:gray;
-    top: 7px;
-  left: 205px;
+    top: 8px;
+    left: 195px;
   }
   
   /* .search-bar button {
@@ -117,9 +115,8 @@ color: green;
   
   .dispenSalesSalesList-results-info {
     text-align: right;
-    color: #0011ff;
-    font-size: 12px;
-    font-weight: bold;
+    color:black;
+    font-size: 14px;
 }
 .dispenSalesSalesList-print-btn{
       margin-left: 10px;
@@ -143,7 +140,7 @@ color: green;
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    font-size: 12px;
+    font-size: 16px;
     color: rgb(70, 69, 69);
 }
   

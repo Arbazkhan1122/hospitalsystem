@@ -1,135 +1,135 @@
 .disPrescription-list-requisition {
-    background-color: #CAF2FF;
-    padding: 0px 10px 0px 10px;
-    font-family: Arial, sans-serif;
-    height: 500px;
-    border: 1px solid #CAF2FF;
-  }
- 
-.disPrescription-search-bar{
+  /* background-color: #CAF2FF; */
+  padding: 0px 10px;
+  font-family: Arial, sans-serif;
+  height: 90vh;
+  overflow-y: scroll;
+  border: 1px solid #CAF2FF;
+}
+
+.disPrescription-search-bar {
   margin-left: -15px;
-}  
-  .disPrescription-search-bar input {
-    /* margin-top: 10px; */
-    /* padding: 5px; */
-    height: 25px;
-    width: 200px;
-    border: 1px solid gray;
-    border-radius: 15px;
-  }
-  .disPrescription-search-bar i{
-    position: relative;
-    color:gray;
-    top: 3px;
-  left: 195px;
-  }
-  
-  .disPrescription-results-info {
-    display: flex;
-    align-items: center;
-  }
-  .disPrescription-results-info span {
-   
-    color: #008CBA;
-    font-size: 14px;
-  }
+}
 
-  
-  .disPrescription-print-button {
-    background-color: #008CBA;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .disPrescription-requisition-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .disPrescription-requisition-table th{
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    background-color: #F3F3F3;
-    font-size: 14px;
-    color: #383737;
-  }
+.disPrescription-search-bar input {
+  height: 25px;
+  font-size: 14px;
+  width: 200px;
+  border: 1px solid gray;
+  border-radius: 15px;
+}
 
-  .disPrescription-requisition-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    font-size: 14px;
-    color: #3f3e3e;
-  }
-  
-  
-  .disPrescription-pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .disPrescription-pagination button {
-    background-color: #008CBA;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin: 0 5px;
-    border-radius: 5px;
-  }
-  
-  .disPrescription-pagination span {
-    margin: 0 10px;
-    color: gray;
-    font-size: 12px;
-  }
-  .disPrescription-search-N-result{
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* border: 1px solid black; */
+.disPrescription-search-bar i {
+  position: relative;
+  color: gray;
+  top: 25px;
+  left: 225px;
+}
 
-  }
-  .disPrescription-table-N-paginationDiv{
-    background-color: white;
-  }
-  .disPrescription-Availability-button{
-    border: 1px solid gray;
-    border-radius: 15px;
-    height: 25px;
-    background-color: #008CBA;
-    color: white;
+.disPrescription-results-info {
+  display: flex;
+  align-items: center;
+}
 
-  }
-  .disPrescription-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  /* Modal Content */
-  /* .disPrescription-modal-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 800px;
-    max-height: 80%;
-    overflow-y: auto;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  } */
+.disPrescription-results-info span {
+  color: black;
+  font-size: 14px;
+}
+
+.disPrescription-print-button {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.disPrescription-table-wrapper {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scrolling */
+}
+
+.disPrescription-requisition-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.disPrescription-requisition-table th {
+  border: 1px solid #ddd;
+  padding: 5px 0;
+  text-align: center;
+  background-color: #F3F3F3;
+  font-size: 16px;
+  color: #383737;
+  white-space: nowrap;
+}
+
+.disPrescription-requisition-table td {
+  border: 1px solid #ddd;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #3f3e3e;
+  white-space: nowrap;
+}
+
+.disPrescription-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.disPrescription-pagination button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+.disPrescription-pagination span {
+  margin: 0 10px;
+  color: gray;
+  font-size: 12px;
+}
+
+.disPrescription-search-N-result {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.disPrescription-table-N-paginationDiv {
+  background-color: white;
+}
+
+.disPrescription-Availability-button {
+  border: 1px solid gray;
+  border-radius: 5px;
+  background-color: var(--button-color);
+  color: white;
+}
+
+.disPrescription-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+
+/*  */
+

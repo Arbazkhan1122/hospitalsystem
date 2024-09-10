@@ -49,7 +49,7 @@
     border: 1px solid #ccc;
   }
   
-  .age-input {
+  .register-new-age-input-age-input {
     width: 60%;
     display: inline-block;
   }
@@ -63,7 +63,8 @@
     text-align: right;
   }
   
-  button {
+  .registerNewSSUPatient-register-btn,
+  .registerNewSSUPatient-close-btn  {
     padding: 10px 20px;
     margin-left: 10px;
     border: none;
