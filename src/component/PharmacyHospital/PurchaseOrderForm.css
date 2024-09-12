@@ -30,6 +30,7 @@
   display: flex;
   flex-direction: column;
   width: 23%;
+  padding: 5px;
 }
 
 .purchase-order-form-form-group label {
@@ -99,7 +100,7 @@ textarea.purchase-order-textare {
 
 .purchase-order-form-summary-item input {
   width: 30%; /* Takes up 30% of the width */
-  padding: 8px;
+  padding: 5px;
   box-sizing: border-box;
 }
 
@@ -120,15 +121,14 @@ textarea.purchase-order-textare {
 
 /* Button styling */
 .purchase-btn-order {
-  background-color: #4caf50; /* Green background color */
+  background-color:var(--button-color); 
   color: white;
   border: none;
-  height: 30px;
-  padding: 0 20px; /* Adjust padding to maintain height */
+ 
+  padding: 5px; 
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
-  line-height: 30px; /* Vertically center text */
+  font-size: 14px;
   text-align: center;
   display: inline-flex;
   align-items: center;
@@ -137,7 +137,7 @@ textarea.purchase-order-textare {
 }
 
 .purchase-btn-order:hover {
-  background-color: #45a049; /* Slightly darker green on hover */
+  background-color: var(--button-bg-color); /* Slightly darker green on hover */
 }
 
 /* Close button styling */
@@ -151,3 +151,7 @@ textarea.purchase-order-textare {
   cursor: pointer;
   color: #333;
 }
+
+/* .purchase-order-form-component input[type="date"] {
+  width: 60%;
+} */

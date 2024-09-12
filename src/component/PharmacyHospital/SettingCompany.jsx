@@ -135,7 +135,7 @@ const filteredUsers = suppliers.filter(user =>
             ))}
           </tbody>
         </table>
-        <div className="setting-supplier-pagination">
+        {/* <div className="setting-supplier-pagination">
           <div className="setting-supplier-pagination-controls">
             <button>First</button>
             <button>Previous</button>
@@ -143,7 +143,7 @@ const filteredUsers = suppliers.filter(user =>
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Modal show={showEditModal} onHide={handleCloseModal} className="supplier-setting-supplier-update-modal">
@@ -223,7 +223,7 @@ const filteredUsers = suppliers.filter(user =>
             </div>
 
             <div className="supplier-setting-text-right">
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" className=''>
                 {isEditMode ? 'Update' : 'Add'}
               </Button>
             </div>
