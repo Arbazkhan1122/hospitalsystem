@@ -256,7 +256,7 @@
 
 /* Modal Content */
 .purchase-order-modal .modal-dialog {
-    max-width: 1400px;
+    max-width: 100%;
     margin: 0;
 }
 
@@ -315,4 +315,7 @@
     .purchase-order-form-horizontal > div {
         min-width: 100%;
     }
+}
+.purchase-order-modal .modal-content{
+    display: contents!important;
 }

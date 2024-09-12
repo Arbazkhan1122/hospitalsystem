@@ -30,7 +30,7 @@ const PurchaseOrderForm = () => {
   const [suppliers, setSuppliers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8888/api/suppliers')
+    axios.get('http://192.168.1.37:8888/api/suppliers')
       .then(response => {
         setSuppliers(response.data);
       })
@@ -106,7 +106,7 @@ const PurchaseOrderForm = () => {
       }))
     };
 
-    axios.post('http://localhost:8888/api/order-purchase-orders', data)
+    axios.post('http://192.168.1.37:8888/api/order-purchase-orders', data)
       .then(response => {
         alert('Purchase order saved successfully!');
       })
@@ -122,11 +122,13 @@ const PurchaseOrderForm = () => {
 
   return (
     <form className="purchase-order-form-component" onSubmit={handleSubmit}>
-      <h2 className='purchase-order-header'>Add Purchase Order</h2>
+     
       <button className="purchase-order-close-button" onClick={handleCloseForm}>
         &times;
       </button>
-
+      <div className='div-add-good-purchase'>
+          <h5 >Add Purchase Order</h5>
+      </div>
       <div className="purchase-order-form-form-row">
         <div className="purchase-order-form-form-group">
           <label>Supplier:*</label>
@@ -171,6 +173,9 @@ const PurchaseOrderForm = () => {
           <label>Contact:</label>
           <textarea className="purchase-order-textare" name="contact" value={formData.contact} onChange={handleInputChange}></textarea>
         </div>
+        <div className="purchase-order-form-form-group">
+         
+        </div>
       </div>
 
       <table className="purchase-order-form-items-table">
@@ -214,49 +219,55 @@ const PurchaseOrderForm = () => {
         </tbody>
       </table>
 
-      <button type="button" onClick={addItem}>Add Item</button>
+   
+      <div className="purchase-order-form-summary-buttons" style={{textAlign:"right"}}>
+      <button type="button" className='purchase-btn-order' onClick={addItem}>Add Item</button>
+      </div><br></br>
+      <div className='goods-receipt-totals-section'>
 
+  
       <div className="purchase-order-form-summary">
         <div className="purchase-order-form-summary-item">
           <label>Sub Total:</label>
           <input type="text" name="subtotal" value={formData.subtotal} readOnly />
-        </div>
-        <div className="purchase-order-form-summary-item">
+        {/* </div> */}
+        {/* <div className="purchase-order-form-summary-item"> */}
           <label>Discount %:</label>
           <input type="number" name="discountPercentage" value={formData.discountPercentage} onChange={handleInputChange} />
         </div>
         <div className="purchase-order-form-summary-item">
           <label>Taxable Amount:</label>
           <input type="number" name="taxableAmount" value={formData.taxableAmount} onChange={handleInputChange} />
-        </div>
-        <div className="purchase-order-form-summary-item">
+        {/* </div>
+        <div className="purchase-order-form-summary-item"> */}
           <label>Non-Taxable Amount:</label>
           <input type="number" name="nonTaxableAmount" value={formData.nonTaxableAmount} onChange={handleInputChange} />
         </div>
         <div className="purchase-order-form-summary-item">
           <label>VAT Amount:</label>
           <input type="number" name="vatAmount" value={formData.vatAmount} onChange={handleInputChange} />
-        </div>
-        <div className="purchase-order-form-summary-item">
+        {/* </div>
+        <div className="purchase-order-form-summary-item"> */}
           <label>CC Charge:</label>
           <input type="number" name="ccCharge" value={formData.ccCharge} onChange={handleInputChange} />
         </div>
         <div className="purchase-order-form-summary-item">
           <label>Adjustment:</label>
           <input type="number" name="adjustment" value={formData.adjustment} onChange={handleInputChange} />
-        </div>
-        <div className="purchase-order-form-summary-item-com">
+        {/* </div>
+        <div className="purchase-order-form-summary-item"> */}
           <label>Total Amount:</label>
           <input type="text" name="totalAmount" value={formData.totalAmount} onChange={handleInputChange} />
         </div>
-        <div className="purchase-order-form-summary-item-com">
+        <div className="purchase-order-form-summary-item">
           <label>In Words:</label>
           <input type="text" name="inWords" value={formData.inWords} onChange={handleInputChange} />
         </div>
       </div>
 
-      <div className="purchase-order-form-summary-buttons">
-        <button type="submit" className="purchase-order-submit-btn">Submit</button>
+      <div className="purchase-order-form-summary-buttons" style={{textAlign:"right"}}>
+        <button type="submit" className="purchase-btn-order">Submit</button>
+      </div>
       </div>
     </form>
   );

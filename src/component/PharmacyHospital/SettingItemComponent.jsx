@@ -21,12 +21,12 @@ const SettingItemComponent = () => {
     const fetchData = async () => {
       try {
         const [itemsResponse, companiesResponse, categoriesResponse, unitsResponse, itemTypesResponse, genericNamesResponse] = await Promise.all([
-          axios.get('http://localhost:1415/api/add-items'),
-          axios.get('http://localhost:1415/api/companies'),
-          axios.get('http://localhost:1415/api/categories'),
-          axios.get('http://localhost:1415/api/units-of-measurement'),
-          axios.get('http://localhost:1415/api/itemtypes'),
-          axios.get('http://localhost:1415/api/generic-names'), // Fetch generic names
+          axios.get('http://192.168.1.37:1415/api/add-items'),
+          axios.get('http://192.168.1.37:1415/api/companies'),
+          axios.get('http://192.168.1.37:1415/api/categories'),
+          axios.get('http://192.168.1.37:1415/api/units-of-measurement'),
+          axios.get('http://192.168.1.37:1415/api/itemtypes'),
+          axios.get('http://192.168.1.37:1415/api/generic-names'), // Fetch generic names
         ]);
 
         console.log('Items Response:', itemsResponse.data);
@@ -102,8 +102,8 @@ const SettingItemComponent = () => {
     event.preventDefault();
     try {
       const url = isEditMode
-        ? `http://localhost:1415/api/add-items/${selectedItem.itemCode}`
-        : 'http://localhost:1415/api/add-items';
+        ? `http://192.168.1.37:1415/api/add-items/${selectedItem.itemCode}`
+        : 'http://192.168.1.37:1415/api/add-items';
       const method = isEditMode ? 'put' : 'post';
 
       const response = await axios({
@@ -139,7 +139,7 @@ const SettingItemComponent = () => {
 
   const handleDelete = async (itemCode) => {
     try {
-      await axios.delete(`http://localhost:1415/api/add-items/${itemCode}`);
+      await axios.delete(`http://192.168.1.37:1415/api/add-items/${itemCode}`);
       setItems(prevItems =>
         prevItems.filter(item => item.itemCode !== itemCode)
       );

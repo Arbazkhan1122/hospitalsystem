@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'; // import styles
+// import ReactQuill from 'react-quill';
+// import 'react-quill/dist/quill.snow.css'; 
 import './SettingSupplier.css';
 
 const usersData = [
@@ -149,7 +149,7 @@ const SettingTerms = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId="taxText" className="supplier-setting-form-group">
+            {/* <Form.Group controlId="taxText" className="supplier-setting-form-group">
               <Form.Label className="supplier-setting-form-label">Text:</Form.Label>
               <ReactQuill
                 value={selectedUser.text}
@@ -157,7 +157,7 @@ const SettingTerms = () => {
                 placeholder="Enter Text"
                 className="supplier-setting-quill"
               />
-            </Form.Group>
+            </Form.Group> */}
             <Form.Group controlId="taxText" className="supplier-setting-form-group">
               <Form.Label className="supplier-setting-form-label">Type:</Form.Label>
               <Form.Control

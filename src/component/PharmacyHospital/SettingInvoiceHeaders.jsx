@@ -3,7 +3,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css';
 
-const apiEndpoint = 'http://localhost:1415/api/v1/invoice-headers';
+const apiEndpoint = 'http://192.168.1.37:1415/api/v1/invoice-headers';
 
 const SettingInvoiceHeaders = () => {
   const [invoiceHeaders, setInvoiceHeaders] = useState([]);

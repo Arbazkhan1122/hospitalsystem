@@ -22,7 +22,7 @@ const SettingCompany = () => {
 
   useEffect(() => {
     // Fetch initial data from the API
-    axios.get('http://localhost:1415/api/companies')
+    axios.get('http://192.168.1.37:1415/api/companies')
       .then(response => setSuppliers(response.data))
       .catch(error => console.error('Error fetching suppliers:', error));
   }, []);
@@ -48,7 +48,7 @@ const filteredUsers = suppliers.filter(user =>
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const apiUrl = 'http://localhost:1415/api/companies';
+    const apiUrl = 'http://192.168.1.37:1415/api/companies';
     const apiMethod = isEditMode ? axios.put : axios.post;
     const apiData = {
       companyName: selectedUser.name,
