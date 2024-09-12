@@ -268,8 +268,8 @@ const SettingSupplierComponent = () => {
             <div className="supplier-setting-form-actions">
               <Button variant="secondary" onClick={handleCloseModal}>
                 Cancel
-              </Button>
-              <Button variant="primary" type="submit">
+              </Button> &nbsp; &nbsp;
+              <Button variant="primary" type="submit" className='btnAddSupplier'>
                 {isEditMode ? 'Update Supplier' : 'Add Supplier'}
               </Button>
             </div>

@@ -271,7 +271,7 @@ const GoodsReceiptForm = () => {
           </div>
         </div>
         <div className="goods-receipt-form-actions">
-          <button className="goods-receipt-print-btn" type="button">Print Receipt</button>
+          <button className="goods-receipt-print-btn" type="button">Print Receipt</button> &nbsp;&nbsp;
           <button className="goods-receipt-discard-btn" type="button">Discard</button>
         </div>
       </form>

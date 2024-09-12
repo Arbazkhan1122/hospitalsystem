@@ -13,7 +13,7 @@ const AddGRItemForm = ({ onClose }) => {
     <div className="add-gr-item-modal-form-com">
       <div className="add-gr-item-modal-content">
         <button className="add-gr-item-close-btn" onClick={onClose}>×</button>
-        <h2>Add GR Item</h2>
+        <h5>Add GR Item</h5>
         <form onSubmit={handleSubmit}>
           <div className="add-gritem-form-row">
             <div className="add-gritem-form-field">

@@ -158,10 +158,12 @@ const PurchaseOrderForm = () => {
           <label>Reference No.:</label>
           <input type="text" name="referenceNo" value={formData.referenceNo} onChange={handleInputChange} />
         </div>
+
         <div className="purchase-order-form-form-group">
-          <label>Invoicing Address:</label>
-          <textarea className="purchase-order-textare" name="invoicingAddress" value={formData.invoicingAddress} onChange={handleInputChange}></textarea>
+          <label>Contact:</label>
+          <input type="text" name="contact" value={formData.contact} onChange={handleInputChange} />
         </div>
+       
       </div>
 
       <div className="purchase-order-form-form-row">
@@ -169,10 +171,14 @@ const PurchaseOrderForm = () => {
           <label>Delivery Address:</label>
           <textarea className="purchase-order-textare" name="deliveryAddress" value={formData.deliveryAddress} onChange={handleInputChange}></textarea>
         </div>
+
         <div className="purchase-order-form-form-group">
-          <label>Contact:</label>
-          <textarea className="purchase-order-textare" name="contact" value={formData.contact} onChange={handleInputChange}></textarea>
+          <label>Invoicing Address:</label>
+          <textarea className="purchase-order-textare" name="invoicingAddress" value={formData.invoicingAddress} onChange={handleInputChange}></textarea>
         </div>
+
+
+       
         <div className="purchase-order-form-form-group">
          
         </div>
