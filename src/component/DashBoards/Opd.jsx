@@ -73,7 +73,7 @@ const OpdList = () => {
         <button className="opd-print" onClick={printTable}>Print</button>
       </div>
 
-      <table>
+      <table className='opd-list-table'>
         <thead>
           <tr>
             <th>Hospital No.</th>
@@ -101,14 +101,14 @@ const OpdList = () => {
           ))}
         </tbody>
       </table>
-      <div className="paginat">
+      {/* <div className="paginat">
         <span>0 to 0 of 0</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 0 of 0</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
     </div>
   );
 };

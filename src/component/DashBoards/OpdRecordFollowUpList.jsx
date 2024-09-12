@@ -48,7 +48,7 @@ const OpdRecordFollowUpList = () => {
         <button className="opd-rec-print" onClick={printTable}>Print</button>
       </div>
 
-      <table>
+      <table className='opd-record-follow-up-list'>
         <thead>
           <tr>
             <th>Hospital No.</th>
@@ -78,14 +78,14 @@ const OpdRecordFollowUpList = () => {
           ))}
         </tbody>
       </table>
-      <div className="opd-rec-paginat">
+      {/* <div className="opd-rec-paginat">
         <span>0 to 0 of 0</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 0 of 0</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
     </div>
   );
 };

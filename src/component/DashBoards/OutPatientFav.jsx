@@ -3,18 +3,18 @@ import './OutPatientFav.css';
 
 const OutPatientFav = () => {
   return (
-    <div className="patient-list">
-      <div className="search-bar">
+    <div className="out-patient-list">
+      <div className="out-patient-search-bar">
         <input type="text" placeholder="Search" />
         <button>🔍</button>
-        <span className="results">Showing 0 / 0 results</span>
-        <button className="print">Print</button>
+        <span className="out-patient-results">Showing 0 / 0 results</span>
+        <button className="out-patient-print">Print</button>
       </div>
 
-      <table>
+      <table className='out-patient-table'> 
         <thead>
           <tr>
-            <th>Hospital ...</th>
+            <th>Hospital No</th>
             <th>Name</th>
             <th>Age/Sex</th>
             <th>VisitType</th>
@@ -24,20 +24,20 @@ const OutPatientFav = () => {
           </tr>
         </thead>
         <tbody>
-          <tr className="no-data">
-            <td colSpan="7">No Rows To Show</td>
+          <tr className="out-patient-no-data">
+            <td  className="out-patient-col-span" colSpan="7">No Rows To Show</td>
           </tr>
         </tbody>
       </table>
 
-      <div className="pagination">
+      {/* <div className="pagination">
         <span>0 to 0 of 0</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 0 of 0</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
     </div>
   );
 };
