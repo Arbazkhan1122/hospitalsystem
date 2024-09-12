@@ -1,118 +1,238 @@
-
 .hospital-header-container-module{
-    background-color:#e0f7fa ;
+  background-color:#e0f7fa ;
 }
 
 .pharmacy-header-module {
-    background-color: white;
-    color: #3598dc;
-    padding: 0;
-    font-size: 16px;
-    /* position: static; */
-  }
-  
+  background-color: white;
+  color: #3598dc;
+  padding: 0;
+  font-size: 16px;
+  /* position: static; */
+}
+
+.hospital-nav-list-module {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  overflow-x: auto;
+  gap: 10px; /* Add 10px space between flex items */
+}
+
+.hospital-nav-item-module {
+  background-color: var( --button-color);
+text-decoration: none;
+color: white;
+font-size: 16px;
+padding: 5px;
+border-radius: 5px;
+margin-top: 8px;
+margin-left: 5px;
+}
+
+.hospital-nav-item-module:hover, 
+.hospital-nav-item-module.active {
+  background-color:var(--button-bg-color);
+  color: white;
+}
+
+/* Sub-navigation Styles */
+.pharmacy-sub-nav-module {
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: white;
+  padding: 0;
+  margin-right: 10px;
+
+  gap: 10px;
+  /* border-radius: 5px; */
+}
+
+.pharmacy-sub-nav-module ul {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  gap: 10px;
+  border-radius: 5px;
+  margin: 0;
+}
+
+
+.pharmacy-sub-nav-module li {
+  padding: 10px 15px;
+  cursor: pointer;
+  color: black;
+}
+
+/* .pharmacy-sub-nav-module li:hover, 
+.pharmacy-sub-nav-module li.active {
+  background-color: #bbdefb;
+}
+ */
+
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .hospital-nav-list-module {
-    list-style-type: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-    overflow-x: auto;
-    gap: 10px; /* Add 10px space between flex items */
-  }
-  
-  .hospital-nav-item-module {
-    color: #3598dc;
-    padding: 10px 15px;
-    cursor: pointer;
-    white-space: nowrap;
-    font-size: 16px;
-    border-radius: 5px;
-  }
-  
-  .hospital-nav-item-module:hover, 
-  .hospital-nav-item-module.active {
-    background-color: #3598dc;
-    color: white;
-  }
-  
-  /* Sub-navigation Styles */
-  .pharmacy-sub-nav-module {
-    margin-top: 10px;
-    background-color: white;
-    padding: 0;
-    gap: 10px;
-    /* border-radius: 5px; */
-  }
-  
-  .pharmacy-sub-nav-module ul {
-    list-style-type: none;
-    display: flex;
-    padding: 0;
-    gap: 10px;
-    border-radius: 5px;
-    margin: 0;
+    flex-direction: column;
   }
 
-  
+  .hospital-nav-item-module {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .pharmacy-sub-nav-module ul {
+    flex-direction: column;
+  }
+
   .pharmacy-sub-nav-module li {
-    padding: 10px 15px;
-    cursor: pointer;
-    color: black;
-  }
-  
-  .pharmacy-sub-nav-module li:hover, 
-  .pharmacy-sub-nav-module li.active {
-    background-color: #bbdefb;
-  }
-  
-  .pharmacy-sub-nav-module a {
-    text-decoration: none;
-    color: black;
+    padding: 10px;
     font-size: 16px;
-    display: block;
-    padding-bottom: 5px;
-    position: relative;
   }
-  
-  .pharmacy-sub-nav-module a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 4px;
-    background-color: blue;
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease;
-  }
-  
-  .pharmacy-sub-nav-module a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .hospital-nav-list-module {
+}
+
+
+/*  */
+.hospital-header-container-module {
+  background-color: #e0f7fa;
+}
+
+
+
+.hospital-nav-list-module {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;  
+  overflow-x: auto;
+  gap: 10px; /* Add 10px space between flex items */
+}
+
+.hospital-nav-item-module {
+  background-color: var(--button-color);
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.hospital-nav-item-module:hover{
+  color: var(--button-color);
+  background-color: white;
+
+} 
+.hospital-nav-item-module.active {
+  background-color: var(--button-bg-color);
+  color: white;
+}
+
+/* Sub-navigation Styles */
+.pharmacy-sub-nav-module {
+  /* margin-top: 10px; */
+  background-color: white;
+  /* padding: 0; */
+  gap: 10px;
+}
+
+.pharmacy-sub-nav-module ul {
+  list-style-type: none;
+  display: flex;
+  /* padding: 0; */
+  gap: 10px;
+  border-radius: 5px;
+  /* margin: 0; */
+}
+
+.pharmacy-sub-nav-module li {
+  padding: 10px 10px;
+  cursor: pointer;
+  color: black;
+}
+
+/* .pharmacy-sub-nav-module li:hover, 
+.pharmacy-sub-nav-module li.active {
+  background-color: var(--button-color);
+} */
+.pharmacy-sub-nav-module a {
+text-decoration: none;
+color: black;
+font-size: 16px;
+display: block;
+/* padding-bottom: 5px; */
+position: relative;
+}
+
+.pharmacy-sub-nav-module a::after {
+content: '';
+position: absolute;
+left: 0;
+bottom: 0;
+width: 100%;
+/* height: 4px; */
+/* background-color: var(--sideBar-bg-color);  */
+transform: scaleX(0);
+transform-origin: bottom right;
+transition: transform 0.3s ease;
+}
+
+.pharmacy-sub-nav-module a:hover::after, 
+.pharmacy-sub-nav-module a.active::after {
+transform: scaleX(1);
+transform-origin: bottom left;
+}
+.pharmacy-sub-nav-module li.active {
+border-bottom:5px solid  var(--sideBar-bg-color);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hospital-nav-list-module {
       flex-direction: column;
-    }
-  
-    .hospital-nav-item-module {
+      gap: 5px; /* Reduce gap for smaller screens */
+  }
+
+  .hospital-nav-item-module {
       padding: 10px;
       font-size: 14px;
-    }
-  
-    .pharmacy-sub-nav-module ul {
+      margin-left: 0; /* Remove margin for better alignment */
+  }
+
+  .pharmacy-sub-nav-module ul {
       flex-direction: column;
-    }
-  
-    .pharmacy-sub-nav-module li {
+      gap: 5px; /* Reduce gap for smaller screens */
+  }
+
+  .pharmacy-sub-nav-module li {
       padding: 10px;
       font-size: 16px;
-    }
   }
-  
+}
 
-  /*  */
-  
+@media (max-width: 480px) {
+  .hospital-header-container-module {
+      padding: 10px; /* Add padding for mobile */
+  }
+
+  .hospital-nav-item-module {
+      font-size: 14px; /* Smaller font for better readability on small screens */
+      padding: 8px 10px; /* Increase padding for better touch targets */
+  }
+
+  .pharmacy-sub-nav-module li {
+      padding: 10px;
+      font-size: 14px; /* Smaller font size for sub-navigation items */
+  }
+
+  .pharmacy-sub-nav-module a {
+      font-size: 14px;
+  }
+}
+
+
+
+/*  */

@@ -1,65 +1,63 @@
 .sales-book-details {
-    background-color: #e6f7ff;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    min-height: 10vh;
-  }
-  
-  .header {
-    color: #0056b3;
-    font-size: 16px;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  
-  .date-range {
-    display: flex;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  }
-  
-  .date-input {
-    margin-right: 15px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .date-input label {
-    margin-right: 5px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .date-input input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  .star-button, .minus-button {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    margin-right: 5px;
-    cursor: pointer;
-    border-radius: 3px;
-  }
-  
-  .show-report-button {
-    background-color: #7986cb;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-weight: bold;
-    margin-left: auto;
-  }
-  
-  .show-report-button::before {
-    content: "Q";
-    margin-right: 5px;
-  }
+  background-color: #e6f7ff;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  min-height: 10vh;
+}
+
+.sales-book-header {
+  color: #0056b3;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.sales-book-date-range {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.sales-book-date-input {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.sales-book-date-input label {
+  margin-right: 5px;
+  color: #333;
+}
+
+.sales-book-date-input input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.sales-book-star-button,
+.sales-book-minus-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.sales-book-show-report-button {
+  background-color: #7986cb;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-left: auto;
+}
+
+.sales-book-show-report-button::before {
+  content: "Q";
+  margin-right: 5px;
+}

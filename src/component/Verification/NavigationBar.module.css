@@ -2,8 +2,8 @@
 .navigationBarContainer {
   display: flex;
   flex-direction: column;
-  background-color: #d1ecf7;
-  padding: 10px;
+  /* background-color: #d1ecf7; */
+  /* padding: 10px; */
 }
 
 /* Tab menu styling */
@@ -11,34 +11,31 @@
   display: flex;
   background-color: #eaf4fd;
   padding: 10px;
-  border-bottom: 2px solid #007bff;
+  /* border-bottom: 2px solid #007bff; */
 }
 
 .navigationBarTabButton {
-  background-color: #007bff;
+  background-color: var(--button-color);
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 5px;
   margin-right: 10px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 4px;
 }
 
 .navigationBarActive {
-  background-color: #0056b3;
+  background-color:var( --button-color);
 }
 
-.navigationBarTabButton:hover {
-  background-color: #0056b3;
-}
 
 /* Action buttons styling */
 .navigationBarActionButtons {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
-  background-color: #b3e5fc;
+  /* background-color: #b3e5fc; */
   padding: 10px;
 }
 

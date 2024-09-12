@@ -14,12 +14,11 @@
   }
   
   .setting-supplier-add-user-button {
-    background-color: #5b73e8;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 6px 12px;
+    padding: 5px 5px;
     border-radius: 4px;
-    font-weight: bold;
     cursor: pointer;
   }
   
@@ -58,7 +57,6 @@
   
   .setting-suppliers-users-table th {
     background-color: #f5f5f5;
-    font-weight: bold;
     color: #333;
   }
   
@@ -215,7 +213,6 @@
 
 .supplier-setting-supplier-update-modal .modal-title {
   font-size: 16px;
-  font-weight: 500;
 }
 
 .supplier-setting-supplier-update-modal .modal-body {

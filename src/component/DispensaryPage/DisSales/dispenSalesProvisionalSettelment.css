@@ -3,10 +3,7 @@
 
 .dispenSalesProvisionalSettelment-active-imaging-request {
     font-family: Arial, sans-serif;
-    /* max-width: 1200px; */
-    /* margin: 0 auto; */
-    /* padding: 10px; */
-    /* background-color: red; */
+    
   }
   
   .dispenSalesProvisionalSettelment-header {
@@ -27,7 +24,6 @@
     align-items: center;
     gap: 10px;
     font-size: 12px;
-    font-weight: bold;
     margin-left: 10px;
     /* border: 1px solid red; */
     /* width: 300px; */
@@ -38,12 +34,64 @@
   .dispenSalesProvisionalSettelment-select-filters label{
   margin-right: 30px;
   }
-  .dispenSalesProvisionalSettelment-select-filters input[type="date"], input[type="text"], select {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    margin-left: 20px;
-  }
+  /* DispenSalesProvisionalSettelment.css */
+
+.dispenSalesProvisionalSettelment-select-filters select,
+.dispenSalesProvisionalSettelment-search-bar input[type="text"],
+.dispenSalesProvisionalSettelment-date-range input[type="date"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 10px;
+  width: auto; /* Adjust width as needed */
+}
+
+.dispenSalesProvisionalSettelment-search-bar input[type="text"] {
+  width: 200px; /* Adjust width for the search bar */
+  font-size: 14px;
+}
+
+.dispenSalesProvisionalSettelment-select-filters select {
+  width: 150px; /* Adjust width for the select dropdown */
+}
+
+.dispenSalesProvisionalSettelment-controls label,
+.dispenSalesProvisionalSettelment-search-bar i {
+  margin-right: 10px;
+}
+
+.dispenSalesProvisionalSettelment-print-btn {
+  padding: 6px 12px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dispenSalesProvisionalSettelment-print-btn:hover {
+  background-color: #0056b3;
+}
+
+.dispenSalesProvisionalSettelment-pagination button {
+  padding: 5px 10px;
+  margin: 0 2px;
+  border: 1px solid #ddd;
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+
+.dispenSalesProvisionalSettelment-pagination button:hover {
+  background-color: #e0e0e0;
+}
+
+.dispenSalesProvisionalSettelment-pagination span {
+  margin: 0 10px;
+  font-size: 14px;
+}
+
   .dispenSalesProvisionalSettelment-CreateRequisition{
       margin-left: 10px;
       /* gap: 10px; */
@@ -70,7 +118,6 @@
   }
   .dispenSalesProvisionalSettelment-checkBox label {
 font-size: 14px;
-font-weight: bold;
 color: green;
 }
   
@@ -92,7 +139,6 @@ color: green;
   .dispenSalesProvisionalSettelment-date-range label{
     margin-left: 20px;
     font-size: 14px;
-    font-weight: bold;
   }
   
   .dispenSalesProvisionalSettelment-date-range input[type="date"] {
@@ -142,14 +188,13 @@ color: green;
   
   .dispenSalesProvisionalSettelment-results-info {
     text-align: right;
-    color: #0011ff;
-    font-size: 12px;
-    font-weight: bold;
+    color: black;
+    font-size: 14px;
 }
 .dispenSalesProvisionalSettelment-print-btn{
       margin-left: 10px;
       /* gap: 10px; */
-    background-color: #0011ff ;
+    background-color: var(--button-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -175,6 +220,7 @@ color: green;
   .dispenSalesProvisionalSettelment-table-N-paginat th {
     /* background-color: red; */
     background-color: #F3F3F3;
+    font-size: 16px;
   }
   
   .dispenSalesProvisionalSettelment-table-N-paginat tr:nth-child(even) {

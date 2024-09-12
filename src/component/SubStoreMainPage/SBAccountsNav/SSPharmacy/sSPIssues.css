@@ -5,7 +5,7 @@
     background-color: #e6f3ff;
   } */
   
-  .container {
+  /* .container {
     max-width: 1200px;
     margin: 0 auto;
     background-color: white;
@@ -107,4 +107,4 @@
   .pagination button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-  }
+  } */

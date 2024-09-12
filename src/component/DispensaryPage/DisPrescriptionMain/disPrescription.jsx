@@ -149,7 +149,7 @@ const DisPrescription = () => {
 
   const fetchPrescriptions = async () => {
     try {
-      const response = await axios.get('http://192.168.1.40:3155/api/hospital/fetch-all-prescription-data');
+      const response = await axios.get('http://192.168.1.56:3155/api/hospital/fetch-all-prescription-data');
       setPrescriptions(response.data);
       setLoading(false);
     } catch (err) {
@@ -245,14 +245,14 @@ const DisPrescription = () => {
           </tbody>
         </table>
 
-        <div className="disPrescription-pagination">
+        {/* <div className="disPrescription-pagination">
           <span>{filteredPrescriptions.length} to {prescriptions.length} of {prescriptions.length}</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 1 of 1</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
       
       {selectedPrescription && (

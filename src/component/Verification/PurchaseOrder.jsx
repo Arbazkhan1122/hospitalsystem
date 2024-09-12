@@ -72,13 +72,13 @@ function PurchaseOrder() {
             </tr>
           </tbody>
         </table>
-        <div className={styles.requisitionPagination}>
+        {/* <div className={styles.requisitionPagination}>
           <button className={styles.requisitionPaginationButton}>First</button>
           <button className={styles.requisitionPaginationButton}>Previous</button>
           <span>Page 0 of 0</span>
           <button className={styles.requisitionPaginationButton}>Next</button>
           <button className={styles.requisitionPaginationButton}>Last</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

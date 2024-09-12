@@ -98,13 +98,13 @@ const DynamicReport = () => {
           )}
         </tbody>
       </table>
-      <div className="DynamicReport-pagination">
+      {/* <div className="DynamicReport-pagination">
         <button>First</button>
         <button>Previous</button>
         <span>Page 1 of 1</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
     </div>
   );
 };

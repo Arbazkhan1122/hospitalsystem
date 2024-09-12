@@ -1,5 +1,5 @@
 .dispenSalesReturnFromCust-form {
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
     /* max-width: 1200px; */
     /* margin: 0 auto; */
     padding: 10px;
@@ -26,8 +26,7 @@
     align-items: center;
   }
   .dispenSalesReturnFromCust-checkbox-group label{
-    font-size: 12px;
-    font-weight: bold;
+    font-size: 14px;
   }
   
   .dispenSalesReturnFromCust-checkbox-group input[type="checkbox"] {
@@ -43,8 +42,7 @@
         display: flex;
         align-items: center;
         text-align: center;
-        font-size: 13px;
-        font-weight: bold;
+        font-size: 14px;
         /* margin-left: 10px; */
         padding: 10px 0;
         
@@ -52,29 +50,30 @@
     /* margin-bott  om: 15px; */
   }
   .dispenSalesReturnFromCust-form-group-fs label{
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 14px;
     /* color: red; */
     padding: 0 10px;
   }
   .dispenSalesReturnFromCust-btn-manual-return {
-    background-color: #E31D2D;
+    background-color: var(--button-color);
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 8px 15px;
-    font-size: 12px;
+    height: 29px;
+    /* padding: 8px 15px; */
+    font-size: 14px;
 
   }
   .dispenSalesReturnFromCust-form h5{
     padding-top: 20px;
+    font-size: 16px;
     color: black;
     margin: 0px;
   }
   .dispenSalesReturnFromCust-patient-info{
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
+    font-size: 14px;
   }
   .dispenSalesReturnFromCust-patient-info label {
     margin-right: 20px;
@@ -91,7 +90,6 @@
   
   .dispenSalesReturnFromCust-form-group label {
     margin-bottom: 5px;
-    font-weight: bold;
   }
   
   .dispenSalesReturnFromCust-form-group input,
@@ -101,7 +99,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
+ 
   .dispenSalesReturnFromCust-search-input,
   .date-input {
     position: relative;
@@ -118,7 +116,7 @@
   
   .dispenSalesReturnFromCust-error-messages {
     color: red;
-    font-size: 0.8em;
+    font-size: 14px;
     margin-top: 5px;
   }
   
@@ -135,13 +133,15 @@
     padding: 8px;
     text-align: left;
     color: #6d6c6c;
-    font-size: 12px;
+    font-size: 14px;
     background-color: white;
 }
 
 .dispenSalesReturnFromCust-return-table th {
     background-color: #F5F5F5;
-    font-weight: bold;
+    font-size: 16px;
+
+
   }
   
   .dispenSalesReturnFromCust-btn {
@@ -149,21 +149,20 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-weight: bold;
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
   
   .dispenSalesReturnFromCust-btn-search {
-    background-color: #26C281;
+    background-color:var(--button-color) ;
     color: white;
     border: none;
     border-radius: 5px;
     height: 29px;
     margin: 10px;
     padding: 0 10px;
-    font-size: 12px;
+    font-size: 14px;
   }
   
   
@@ -188,13 +187,13 @@
     justify-content: center;
   }
   .dispenSalesReturnFromCust-btn-print {
-    background-color: #E31D2D;
+    background-color: var(--button-color);
     color: white;
     margin-top: 20px;
     border: none;
+    height: 29px;
     border-radius: 5px;
-    padding: 7px 15px;
-    font-size: 12px;
+    font-size: 14px;
   }
   
   .dispenSalesReturnFromCust-remarks {
@@ -213,8 +212,7 @@
     display: flex;
   }
 .dispenSalesReturnFromCust-form-group-remarks label{
-    font-size: 12px;
-    font-weight: bold;
+    font-size: 14px;
 }
 .dispenSalesReturnFromCust-form-group-remarks textarea{
     margin-left: 100px;

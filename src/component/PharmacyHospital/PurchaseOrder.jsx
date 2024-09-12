@@ -20,7 +20,7 @@ const PurchaseOrder = () => {
 
     const fetchPurchaseOrders = async () => {
         try {
-            const response = await axios.get('http://localhost:8888/api/order-purchase-orders');
+            const response = await axios.get('http://192.168.1.37:8888/api/order-purchase-orders');
             console.log('API Response:', response.data); // Log the API response
             setPurchaseOrders(response.data); // Set the data in state
             console.log('Purchase Orders State:', purchaseOrders); // Log the state to ensure it's updated
@@ -111,15 +111,17 @@ const PurchaseOrder = () => {
                         )}
                     </tbody>
                 </table>
-                <div className="purchase-order-pagination">
+                {/* <div className="purchase-order-pagination">
                     <span>0 to 0 of 0</span>
                     <button>First</button>
                     <button>Previous</button>
                     <span>Page 0 of 0</span>
                     <button>Next</button>
                     <button>Last</button>
-                </div>
+                </div> */}
             </div>
+
+            
 
             <Modal
                 show={showEditModal}

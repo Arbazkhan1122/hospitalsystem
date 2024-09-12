@@ -56,11 +56,11 @@ const SettingSupplierComponent = () => {
     try {
       if (isEditMode) {
         // Update existing supplier
-        const response = await axios.put(`http://localhost:1415/api/suppliers/${selectedUser.kraPin}`, dataToSend);
+        const response = await axios.put(`http://192.168.1.37:1415/api/suppliers/${selectedUser.kraPin}`, dataToSend);
         console.log('Update Response:', response.data);
       } else {
         // Add new supplier
-        const response = await axios.post('http://localhost:1415/api/suppliers', dataToSend);
+        const response = await axios.post('http://192.168.1.37:1415/api/suppliers', dataToSend);
         console.log('Add Response:', response.data);
       }
 
@@ -136,7 +136,7 @@ const SettingSupplierComponent = () => {
             ))}
           </tbody>
         </table>
-        <div className="setting-supplier-pagination">
+        {/* <div className="setting-supplier-pagination">
           <div className="setting-supplier-pagination-controls">
             <button>First</button>
             <button>Previous</button>
@@ -144,7 +144,7 @@ const SettingSupplierComponent = () => {
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Modal

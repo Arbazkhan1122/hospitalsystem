@@ -155,7 +155,7 @@ function RegisterNewSSUPatient({ togglePopup, patientData = null }) {
                 value={formData.age}
                 onChange={handleChange}
                 placeholder="Age"
-                className="age-input"
+                className="register-new-age-input"
               />
               <select
                 name="ageUnit"

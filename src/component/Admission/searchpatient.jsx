@@ -14,10 +14,27 @@ const SearchPatient = () => {
 
   // Fetch data from the new API
   useEffect(() => {
-    fetch('http://192.168.1.39:1415/api/new-patient-visits')
-      .then((response) => response.json())
-      .then((data) => setPatients(data))
-      .catch((error) => console.error('Error fetching patient data:', error));
+
+    fetch('http://localhost:1415/api/new-patient-visits', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log('Fetched Patients:', data); // Log the fetched data
+        setPatients(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching patient data:', error);
+        alert(`Error fetching patient data: ${error.message}`);
+      });
   }, []);
 
   // Pagination logic
@@ -29,9 +46,12 @@ const SearchPatient = () => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredPatients = currentPatients.filter(
-    (patient) => patient && patient.firstName && patient.firstName.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+
+  const filteredPatients = currentPatients.filter((patient) => {
+    if (!patient || !patient.firstName) return false; // Ensure patient and firstName exist
+    return patient.firstName.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 

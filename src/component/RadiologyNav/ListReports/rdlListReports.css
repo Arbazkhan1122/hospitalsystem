@@ -92,11 +92,18 @@ font-weight: bold;
   left: 175px;
   }
   
-  .search-bar button {
+  .rDLListReport-search-button {
     padding: 5px 10px;
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     cursor: pointer;
+    margin-left: 5px; /* Adds some spacing between the input and the button */
+    border-radius: 4px; /* Optional: rounds the corners of the button */
+    font-size: 14px; /* Adjusts the font size for consistency */
+  }
+  
+  .rDLListReport-search-button:hover {
+    background-color: #e0e0e0; /* Changes the background color on hover */
   }
   
   .rDLListReport-results-info {
@@ -106,19 +113,37 @@ font-weight: bold;
     font-weight: bold;
   }
   
-  table {
+  .rDLListReport-results-info {
+    text-align: right;
+    color: rgb(88, 87, 87);
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.rd-list-report-table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 10px;
     background-color: white;
-  }
-  
-  th, td {
+}
+
+.rd-list-report-table th, .rd-list-report-table td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
     font-size: 13px;
     color: rgb(70, 69, 69);
-  }
+}
+
+.rd-list-report-table th {
+    background-color: #E7F7F3;
+    font-weight: bold;
+}
+
+.rd-list-report-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
   .rDLListReport-table-N-paginat{
     background-color: white ;
   }

@@ -1,162 +1,4 @@
 
-// import React, { useState, useRef } from 'react';
-// // import "../DisStocks/dispenSalesProvisionalBill.css"
-// import { useReactToPrint } from 'react-to-print';
-// import "../DisSales/dispenSalesProvisionalReturn.css"
-
-// DispenSalesProvisionalReturn
-// function DispenSalesProvisionalReturn() {
-//   const [showAddReport, setShowAddReport] = useState(false);
-//   const [showScanDone, setShowScanDone] = useState(false);
-//   const [showCreateRequisition, setShowCreateRequisition] = useState(false);
-
-//   const printRef = useRef();
-
-//   const handleCreateRequisitionClick = () => {
-//     setShowCreateRequisition(true);
-//   };
-//   const closePopups = () => {
-//     setShowAddReport(false);
-//     setShowScanDone(false);
-//     setShowCreateRequisition(false);
-
-//   };
-//   const handlePrint = useReactToPrint({
-//     content: () => printRef.current,
-//     documentTitle: 'ProvisionalBill_Report',
-//     pageStyle: `
-//       @page {
-//         size: A4;
-//         margin: 20mm;
-//       }
-//     `,
-//   });
-
-//   return (
-//     <div className="dispenSalesProvisionalReturn-active-imaging-request">
-       
-//         <>
-//       {/* Rest of your code */}
-//       <header className='dispenSalesProvisionalReturn-header'>
-//          {/* <h4>* ACTIVE IMAGING R EQUEST</h4> */}
-//          {/* <div className="dispenSalesProvisionalReturn-checkBox">
-//            <label>
-//             <input type="checkbox" />
-//              All
-//            </label>
-           
-//             <input type="checkbox" />
-//             <label >Completed</label>
-//             <input type="checkbox" />
-//             <label >Pending</label>
-           
-
-             
-//          </div> */}
-//        </header>
-//        <div className="dispenSalesProvisionalReturn-controls">
-//          <div className="dispenSalesProvisionalReturn-date-range">
-//            <label>
-//              From:
-//              <input type="date" defaultValue="2024-08-09" />
-//            </label>
-//            <label>
-//              To:
-//              <input type="date" defaultValue="2024-08-16" />
-//            </label>
-//            <button className="dispenSalesProvisionalReturn-star-button">☆</button>
-//            <button className="dispenSalesProvisionalReturn-ok-button">OK</button>
-//          </div>
-//          {/* <button className='dispenSalesProvisionalReturn-CreateRequisition'>Load Data</button> */}
-//        </div>
-//        <div className="dispenSalesProvisionalReturn-search-N-results">
-//          <div className="dispenSalesProvisionalReturn-search-bar">
-//            <i className="fa-solid fa-magnifying-glass"></i>
-//            <input type="text" placeholder="Search" />
-//          </div>
-//          <div className="dispenSalesProvisionalReturn-results-info">
-//            Showing 2 / 2 results
-//            <button className='dispenSalesProvisionalReturn-print-btn'
-//            onClick={handlePrint}
-//            >Print</button>
-//          </div>
-//        </div>
-//        <div style={{ display: 'none' }}>
-//             <div ref={printRef}>
-//               <h2>Provisional Bill Report</h2>
-//               <p>Date and Time: {new Date().toLocaleString()}</p>
-//               <table>
-//                 <thead>
-//                   <tr>
-//                   <th>Hospital Number</th>
-//               <th>Ret Receipt No</th>
-//               <th>Patient Name</th>
-//               <th>Contact No.</th>
-//               <th>Age/Sex </th>
-//               <th>SubTotal</th>
-//               <th>Discount</th>
-//               <th>Total</th>
-//               <th>Ref No</th>
-//               <th>LastReturnDate</th>
-//               <th>VisitType</th>
-//                   </tr>
-//                 </thead>
-//                 <tbody>
-//                   <tr>
-//                     {/* Add your table data here */}
-//                   </tr>
-//                 </tbody>
-//               </table>
-//             </div>
-//           </div>
-//       <div className="dispenSalesProvisionalReturn-table-N-paginat">
-        
-//         <table>
-//           <thead>
-//             <tr>
-//               <th>Hospital Number</th>
-//               <th>Ret Receipt No</th>
-//               <th>Patient Name</th>
-//               <th>Contact No.</th>
-//               <th>Age/Sex </th>
-//               <th>SubTotal</th>
-//               <th>Discount</th>
-//               <th>Total</th>
-//               <th>Ref No</th>
-//               <th>LastReturnDate</th>
-//               <th>VisitType</th>
-//               <th>Action</th>
-//             </tr>
-//           </thead>
-//           <tbody>
-//             <tr>
-              
-//             </tr>
-//             <tr>
-              
-//             </tr>
-//           </tbody>
-//         </table>
-//         <div className="dispenSalesProvisionalReturn-pagination">
-//           <span>0 to 0 of 0</span>
-//           <button>First</button>
-//           <button>Previous</button>
-//           <span>Page 0 of 0</span>
-//           <button>Next</button>
-//           <button>Last</button>
-//         </div>
-//       </div>
-
-//       </>
-      
-
-//     </div>
-//   );
-// }
-
-// export default DispenSalesProvisionalReturn;
-
-
 
 import React, { useState, useEffect, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
@@ -309,14 +151,14 @@ function DispenSalesProvisionalReturn() {
             </tbody>
           </table>
         )}
-        <div className="dispenSalesProvisionalReturn-pagination">
+        {/* <div className="dispenSalesProvisionalReturn-pagination">
           <span>0 to {provisionalReturns.length} of {provisionalReturns.length}</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 1 of 1</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

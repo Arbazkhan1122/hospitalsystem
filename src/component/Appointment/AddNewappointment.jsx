@@ -32,7 +32,7 @@ const AddNewAppointmentForm = () => {
     })
 
     useEffect(()=>{
-        axios.get("http://192.168.1.34:1415/api/departments/getAllDepartments")
+        axios.get("http://localhost:1415/api/departments/getAllDepartments")
         .then((response)=>{
             setDepartments(response.data);
         })
@@ -43,7 +43,7 @@ const AddNewAppointmentForm = () => {
 
     const handleDepartmentChange=async(e)=>{
         const selectedDept=e.target.value;
-        const response = await axios.get(`http://192.168.1.34:1415/api/employees/department/${selectedDept}`)
+        const response = await axios.get(`http://localhost:1415/api/employees/department/${selectedDept}`)
         if(response.status===200){
            setDoctors(response.data)
         }
@@ -67,7 +67,7 @@ const AddNewAppointmentForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const apiUrl = 'http://192.168.1.34:1415/api/appointments/save-new-appointment';
+        const apiUrl = 'http://localhost:1415/api/appointments/save-new-appointment';
 
 
         try {
