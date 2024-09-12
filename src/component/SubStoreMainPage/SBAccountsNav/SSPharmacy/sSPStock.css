@@ -4,19 +4,19 @@
     padding: 0;
   } */
   
-  .sSPStock-container {
+  .sSPStock-stock-container {
     margin: 0 auto;
     /* padding: 20px; */
     /* background-color: red; */
 
   }
-  .sSPStock-nav
+  .sSPStock-stock-nav
   {
     width: 100%;
 
   }
   
-  .sSPStock-container ul {
+  .sSPStock-stock-container ul {
     list-style-type: none;
     width: 100%;
     padding: 0;
@@ -29,17 +29,17 @@
     border-bottom: 1px solid #ccc;
   }
   
-  .sSPStock-container  li {
+  .sSPStock-stock-container  li {
     padding: 10px 20px;
     cursor: pointer;
   }
   
-  nav li.active {
+  .sSPStock-stock-nav li.active {
     background-color: #007bff;
     color: white;
   }
   
-  .sSPStock-content {
+  .sSPStock-stock-content {
     /* background-color: #fff; */
     background-color: #e6f3ff;
 
@@ -49,33 +49,33 @@
 
   }
   
-  .search-bar {
+  .sSPStock-stock-search-bar {
     display: flex;
     margin-bottom: 20px;
   }
   
-  .search-bar input {
+  .sSPStock-stock-search-bar input {
     flex-grow: 1;
     padding: 5px;
     border: 1px solid #ccc;
     border-right: none;
   }
   
-  .search-bar button {
+  .sSPStock-stock-search-bar button {
     padding: 5px 10px;
     background-color: #fff;
     border: 1px solid #ccc;
     cursor: pointer;
   }
   
-  .results-header {
+  .sSPStock-stock-results-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
   }
   
-  .btn-blue {
+  .sSPStock-stock-btn-blue {
     background-color: #007bff;
     color: white;
     border: none;
@@ -84,29 +84,29 @@
     cursor: pointer;
   }
   
-  table {
+  .sSPStock-stock {
     width: 100%;
     border-collapse: collapse;
   }
   
-  th, td {
+  .sSPStock-stock th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
   }
   
-  th {
+  .sSPStock-stock th {
     background-color: #f2f2f2;
   }
   
-  .pagination {
+  .sSPStock-stock-pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
   }
   
-  .pagination button {
+  .sSPStock-stock-pagination button {
     margin: 0 5px;
     padding: 5px 10px;
     background-color: #fff;
@@ -114,12 +114,12 @@
     cursor: pointer;
   }
   
-  .pagination button.active {
+  .sSPStock-stock-pagination button.active {
     background-color: #007bff;
     color: white;
   }
   
-  .pagination button:disabled {
+  .sSPStock-stock-pagination button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }

@@ -1,4 +1,4 @@
-.patient-list {
+/* .patient-list {
     background-color: #e6f7ff;
     padding: 20px;
     font-family: Arial, sans-serif;
@@ -106,12 +106,12 @@
   }
 
   .header-icon {
-    margin-left: 5px; /* Adds space between the text and the icon */
+    margin-left: 5px; 
     cursor: pointer;
   }
   
   .header-icon:hover {
-    color: #007bff; /* Change the icon color on hover */
+    color: #007bff; 
   }
   
 
@@ -164,25 +164,25 @@
     position: absolute;
     background-color: white;
     border: 1px solid #ccc;
-    padding: 5px; /* Reduced padding */
+    padding: 5px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    width: 150px; /* Set a specific width */
+    width: 150px; 
   }
   
   .dropdown-container {
-    width: 100%; /* Keeps it responsive */
-    padding: 3px; /* Reduced padding */
-    margin-bottom: 5px; /* Reduced margin */
+    width: 100%;
+    padding: 3px;
+    margin-bottom: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
   
   .dropdown-textbox {
-    width: 100%; /* Keeps it responsive */
-    padding: 3px; /* Reduced padding */
-    margin-bottom: 5px; /* Reduced margin */
+    width: 100%; 
+    padding: 3px; 
+    margin-bottom: 5px; 
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
+   */

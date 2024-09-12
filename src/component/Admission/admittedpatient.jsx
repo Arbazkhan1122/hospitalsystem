@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './AdmittedPatient.css';
 import { FaSearch } from 'react-icons/fa';
@@ -11,8 +11,7 @@ const AdmittedPatient = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedOption, setSelectedOption] = useState('');
   const [patients, setPatients] = useState([]);
-  const [loading, setLoading] = useState(true); // Add loading state
-  const [error, setError] = useState(null); // Add error state
+  const patientDataRef = useRef();
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
@@ -30,7 +29,7 @@ const AdmittedPatient = () => {
   });
 
   const handlePrint = () => {
-    const printContent = document.getElementById('patient-table').innerHTML;
+    const printContent = patientDataRef.current.innerHTML;
     const printWindow = window.open('', '', 'height=500, width=800');
     printWindow.document.write('<html><head><title>Print Patient Data</title>');
     printWindow.document.write('</head><body>');
@@ -70,31 +69,20 @@ const AdmittedPatient = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setLoading(true);
         const response = await axios.get('http://192.168.1.39:1415/api/admissions/fetch');
-        if (Array.isArray(response.data)) {
-          setPatients(response.data);
-        } else {
-          setPatients([response.data]); // If it's a single object, wrap it in an array
-        }
+        setPatients(response.data);
       } catch (error) {
-        setError('Error fetching data. Please try again later.');
         console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  if (loading) return <p>Loading data...</p>;
-  if (error) return <p>{error}</p>;
-
   return (
     <div className="adt-app-container">
       <main className="adt-main">
-        <div className='admitedmain-div' style={{ display: "flex", gap: "500px", padding: "10px", alignItems: "center" }}>
+        <div className='admitedmain-div' style={{display:"flex", gap:"500px",padding:"10px",alignItems:"center"}}>
           <div className="adt-search-container">
             <input
               type="text"
@@ -115,7 +103,7 @@ const AdmittedPatient = () => {
         </div>
 
         <div className="adt-admitted-ptient-table-container">
-          <Table className='admittedtable' id="patient-table">
+          <table className='admittedtable'>
             <thead>
               <tr>
                 <th className='admittedtablehead'>Refund Date</th>
@@ -163,7 +151,7 @@ const AdmittedPatient = () => {
                 </tr>
               ))}
             </tbody>
-          </Table>
+          </table>
         </div>
       </main>
 
@@ -307,3 +295,332 @@ const AdmittedPatient = () => {
 };
 
 export default AdmittedPatient;
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+
+
+// function Admission() {
+
+
+//   const [CurrentAdmission, setCurrentAdmission] = useState({
+//     ClaimCode: '',
+//     Ins_HasInsurance: false,
+//     Ins_NshiNumber: '',
+//     Ins_InsuranceBalance: 0,
+//     AdmissionValidator: false,
+//     // Add more fields as required
+// });
+
+// const [deptList, setDeptList] = useState([
+//   { id: 1, name: 'Department 1' },
+//   { id: 2, name: 'Department 2' },
+//   { id: 3, name: 'Department 3' },
+// ]);
+// const [selectedPerformer, setSelectedPerformer] = useState('');
+//     const [performerList, setPerformerList] = useState([
+//         { id: 1, name: 'Performer 1' },
+//         { id: 2, name: 'Performer 2' },
+//         { id: 3, name: 'Performer 3' },
+//     ]);
+
+// const [showInsuranceCheckBox, setShowInsuranceCheckBox] = useState(false);
+//   const [schemePriceCategoryFromVisit, setSchemePriceCategoryFromVisit] = useState({});
+  
+//   const [claimCodeType, setClaimCodeType] = useState('');
+//   const [claimCode, setClaimCode] = useState(CurrentAdmission.ClaimCode);
+//   const [isDirty, setIsDirty] = useState(false);
+//   const [isValid, setIsValid] = useState(true);
+//   const [admissionCase, setAdmissionCase] = useState('');
+//   const [admissionCases, setAdmissionCases] = useState([]);
+//   const [filteredOptions, setFilteredOptions] = useState([]);
+//   const [selectedDept, setSelectedDept] = useState('');
+//   const handleClaimCodeChange = (event) => {
+//     setClaimCode(event.target.value);
+//   };
+//   const items = ['Item1', 'Item2', 'Item3'];
+//   const formattedItems = myListFormatter(items);
+
+//   const [docList, setDocList] = useState([
+//     { id: 1, name: 'Document 1' },
+//     { id: 2, name: 'Document 2' },
+//     { id: 3, name: 'Document 3' },
+// ]);
+// const [filteredDocList, setFilteredDocList] = useState([]);
+
+// useEffect(() => {
+//     // Example filtering logic
+//     const filtered = docList.filter(doc => doc.name.includes('1'));
+//     setFilteredDocList(filtered);
+// }, [docList]);
+
+//   const handleClaimCodeTypeChange = (event) => {
+//     setClaimCodeType(event.target.value);
+//     GetClaimCode();
+//   };
+
+//   const handleAdmissionCaseChange = (event) => {
+//     setAdmissionCase(event.target.value);
+//   };
+
+//   const GetClaimCode = () => {
+//     // Implement your GetClaimCode logic here
+//   };
+
+//   const parseAmount = (amount) => {
+//     // Implement your amount parsing logic here
+//     return amount; // Placeholder return
+//   };
+
+//   const handleDeptChange = (event) => {
+//     setSelectedDept(event.target.value);
+// };
+// const handleDeptSelect = (event) => {
+//   setSelectedDept(event.target.value);
+// };
+
+// const handleDeptBlur = (event) => {
+//   console.log('Dropdown lost focus');
+//   // You can add any logic you want to execute when the dropdown loses focus
+// };
+
+// const handlePerformerSelect = (event) => {
+//   setSelectedPerformer(event.target.value);
+// };
+
+// const handlePerformerChange = (event) => {
+//   setSelectedPerformer(event.target.value);
+// };
+
+//     const handleInputChange = (event) => {
+//         const inputValue = event.target.value;
+//         onChange(event);
+
+//         const filtered = options.filter(option =>
+//             option.toLowerCase().includes(inputValue.toLowerCase())
+//         );
+//         setFilteredOptions(filtered);
+//     };
+
+//     const handlePerformerBlur = () => {
+//       // Logic for handling blur event
+//       console.log('Performer input lost focus');
+//   };
+
+//   const myListFormatter = (list) => {
+//     return list.map(item => `Formatted: ${item}`);
+// };
+
+//   return (
+//     <div className="">
+//       <div className="col-md-6">
+//         {showInsuranceCheckBox && (
+//           <form className="form-horizontal hm-form">
+//             <div className="form-body">
+//               <div className="form-group">
+//                 <label className="control-label col-md-5" style={{ color: 'orange' }} htmlFor="isGovInsuranceAdmission">
+//                   Is Insurance admission? :
+//                 </label>
+//                 <div className="col-md-6">
+//                   <input
+//                     id="isGovInsuranceAdmission"
+//                     style={{ zoom: 1.5, height: 'auto', marginLeft: '10px' }}
+//                     name="isGovInsuranceAdmission"
+//                     type="checkbox"
+//                     value=""
+//                     onChange={GovInsuranceAdmissionChange}
+//                     checked={isGovInsuranceAdmission}
+//                   />
+//                 </div>
+//               </div>
+//             </div>
+//           </form>
+//         )}
+
+//         {CurrentAdmission.Ins_HasInsurance && (
+//           <form className="form-horizontal hm-form">
+//             <div className="form-body">
+//               <div className="form-group">
+//                 <label className="control-label col-md-5" style={{ fontSize: 20, fontWeight: 'bold' }}>
+//                   {GeneralFieldLabel.NSHINo}:
+//                 </label>
+//                 <label className="control-label col-md-6" style={{ fontSize: 20, fontWeight: 'bold' }}>
+//                   {CurrentAdmission.Ins_NshiNumber}
+//                 </label>
+//               </div>
+//             </div>
+//           </form>
+//         )}
+
+//         <form className="form-horizontal hm-form">
+//           <div className="form-group">
+//             <label className="control-label col-md-5">
+//               Claim code<sup className="color-red">*</sup>:
+//             </label>
+//             <div className="col-md-6">
+//               <input
+//                 id="ClaimCode"
+//                 style={{ color: 'darkgreen', fontWeight: 'bold', fontSize: '20px', width: '147px' }}
+//                 disabled
+//                 className="form-control"
+//                 type="text"
+//                 value={claimCode}
+//                 onChange={handleClaimCodeChange}
+//                 placeholder="Claim Code"
+//               />
+//               <div className="tooltip list-tooltip" style={{ paddingLeft: '5px' }}>
+//                 <span className="fa fa-info info-icon-wrapper"></span>
+//                 <p className="tooltiptext ttptextdown no-print">Actual ClaimCode may be different than this after Save</p>
+//               </div>
+//               {isDirty && !isValid && <span className="color-red font-sm">Claim code is required.</span>}
+//             </div>
+//           </div>
+
+//           <div className="form-body">
+//             <div className="form-group">
+//               <label className="control-label col-md-5" style={{ fontSize: '20px' }}>
+//                 <b>Claim Code Type</b>
+//               </label>
+//               <div className="control-label col-md-6" style={{ fontSize: '20px' }}>
+//                 <div className="input-group">
+//                   <div className="icheck-inline">
+//                     <label className="mt-checkbox mt-checkbox-outline mapped mapped-outline">
+//                       <input
+//                         name="claimCodeType"
+//                         type="radio"
+//                         value="new"
+//                         checked={claimCodeType === 'new'}
+//                         onChange={handleClaimCodeTypeChange}
+//                       />
+//                       <span></span>
+//                       <b> New Code </b>
+//                     </label>
+//                     <label className="mt-checkbox mt-checkbox-outline mapped mapped-outline">
+//                       <input
+//                         name="claimCodeType"
+//                         type="radio"
+//                         value="old"
+//                         checked={claimCodeType === 'old'}
+//                         onChange={handleClaimCodeTypeChange}
+//                       />
+//                       <span></span>
+//                       <b> Last Code </b>
+//                     </label>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </form>
+
+//         <form className="form-horizontal hm-form">
+//           <div className="form-group">
+//             <label className="control-label col-md-5">
+//               Insurance Balance Amt<sup className="color-red">*</sup>:
+//             </label>
+//             {CurrentAdmission.AdmissionValidator && (
+//               <label className="control-label col-md-6" style={{ fontSize: 20, color: 'darkgreen' }}>
+//                 {parseAmount(CurrentAdmission.Ins_InsuranceBalance)}
+//               </label>
+//             )}
+//           </div>
+//         </form>
+
+//         <form className="form-horizontal hm-form">
+//           <div className="form-body">
+//             <div className="form-group">
+//               <label className="control-label col-md-5" htmlFor="admissionCase">
+//                 Case<sup className="color-red">*</sup>:
+//               </label>
+//               <div className="col-md-6">
+//                 <select
+//                   id="admissionCase"
+//                   value={admissionCase}
+//                   onChange={handleAdmissionCaseChange}
+//                   className="form-control"
+//                 >
+//                   <option value="">--Select--</option>
+//                   {admissionCases.map((caseItem) => (
+//                     <option key={caseItem.Name} value={caseItem.Name}>
+//                       {caseItem.Name}
+//                     </option>
+//                   ))}
+//                 </select>
+//                 {isDirty && !isValid && <span className="color-red font-sm">Select Admission Case</span>}
+//               </div>
+//             </div>
+//           </div>
+//         </form>
+//         <form className="form-horizontal hm-form">
+//       <div className="form-body">
+//         <div className="form-group">
+//           <label className="control-label col-md-5">
+//             Requesting Department<sup>*</sup>:
+//           </label>
+//           <div className="col-md-6">
+//             <input
+//               id="RequestingDeptId"
+//               className="form-control"
+//               value={selectedDept}
+//               onChange={handleDeptChange}
+//               onSelect={handleDeptSelect}
+//               onBlur={handleDeptBlur}
+             
+//               list={deptList}
+//               placeholder="Enter Department Name"
+//               displayPropertyName="Value"
+//               minChars={1}
+//               maxNumList={10}
+//               matchFormatted={true}
+//               gridSort="Value"
+//             />
+//             {isDirty && !isValid && (
+//               <span className="color-red font-sm">
+//                 Select Admitting Department
+//               </span>
+//             )}
+//           </div>
+//         </div>
+//       </div>
+//     </form>
+//     <form className="form-horizontal hm-form">
+//       <div className="form-body">
+//         <div className="form-group">
+//           <label className="control-label col-md-5">
+//             Admitting Doctor<sup
+//               ngIf="AdmittingDoctorMandatory">*</sup>:
+//           </label>
+//           <div className="col-md-6">
+//             <input
+//               id="AdmittingDoctorId"
+//               className="form-control"
+//               value={selectedPerformer}
+//               onChange={handlePerformerChange}
+//               onSelect={handlePerformerSelect}
+//               onBlur={handlePerformerBlur}
+              
+//               list={filteredDocList}
+//               placeholder="Enter Doctor Name"
+//               displayPropertyName="Value"
+//               minChars={1}
+//               maxNumList={10}
+//               matchFormatted={true}
+//               gridSort="Value"
+//               valuePropertyName={null}
+//               listFormatter={myListFormatter}
+//             />
+//             {AdmittingDoctorMandatory && isDirty && !isValid && (
+//               <span className="color-red font-sm">Select Admitting Doctor</span>
+//             )}
+//           </div>
+//         </div>
+//       </div>
+//     </form>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Admission;

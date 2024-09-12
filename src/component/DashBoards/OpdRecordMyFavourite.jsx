@@ -41,22 +41,22 @@ const OpdRecordMyFavourites = () => {
   }
 
   return (
-    <div className="patient-list">
-      <div className="top-buttons">
-        <button className="favorites">★ My Favorites</button>
-        <button className="follow-up">Follow Up List</button>
+    <div className="OpdRec-patient-list">
+      <div className="OpdRec-top-buttons">
+        <button className="OpdRec-favorites">★ My Favorites</button>
+        <button className="OpdRec-follow-up">Follow Up List</button>
       </div>
 
-      <div className="filters">
+      <div className="OpdRec-filters">
         <select defaultValue="This Month">
           <option>This Month</option>
         </select>
-        <div className="search-bar">
+        <div className="OpdRec-search-bar">
           <input type="text" placeholder="Search" />
           <button>🔍</button>
         </div>
-        <span className="results">Showing 32 / 32 results</span>
-        <button className="print" onClick={printTable}>Print</button>
+        <span className="OpdRec-results">Showing 32 / 32 results</span>
+        <button className="OpdRec-print" onClick={printTable}>Print</button>
       </div>
 
       <table>
@@ -89,7 +89,7 @@ const OpdRecordMyFavourites = () => {
           ))}
         </tbody>
       </table>
-      <div className="paginat">
+      <div className="OpdRec-paginat">
         <span>0 to 0 of 0</span>
         <button>First</button>
         <button>Previous</button>

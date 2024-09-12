@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Opd.css';
-import OpdRecordApp from '../DashBoards/OpdRecordAction';
+import OpdRecordApp from './PatientDashboard';
 import OpdRecordMyFavourites from '../DashBoards/OpdRecordMyFavourite'; 
 import OpdRecordFollowUpList from '../DashBoards/OpdRecordFollowUpList';
 
@@ -52,25 +52,25 @@ const OpdList = () => {
   }
 
   return (
-    <div className="patient-list">
-      <div className="top-buttons">
-        <button className="favorites" onClick={handleFavouritesClick}>★ My Favorites</button>
-        <button className="follow-up" onClick={handleFollowUpClick}>Follow Up List</button>
+    <div className="opd-patient-list">
+      <div className="opd-top-buttons">
+        <button className="opd-favorites" onClick={handleFavouritesClick}>★ My Favorites</button>
+        <button className="opd-follow-up" onClick={handleFollowUpClick}>Follow Up List</button>
       </div>
 
-      <div className="filters">
+      <div className="opd-filters">
         <select defaultValue="This Month">
           <option>Today</option>
           <option>Last Week</option>
           <option>This Month</option>
           <option>Custom</option>
         </select>
-        <div className="search-bar">
+        <div className="opd-search-bar">
           <input type="text" placeholder="Search" />
           <button>🔍</button>
         </div>
-        <span className="results">Showing 32 / 32 results</span>
-        <button className="print" onClick={printTable}>Print</button>
+        <span className="opd-results">Showing 32 / 32 results</span>
+        <button className="opd-print" onClick={printTable}>Print</button>
       </div>
 
       <table>
@@ -80,7 +80,6 @@ const OpdList = () => {
             <th>Name</th>
             <th>Age/Sex</th>
             <th>VisitType</th>
-            <th>Admitted On</th>
             <th>Performer Name</th>
             <th>Actions</th>
           </tr>
@@ -92,7 +91,6 @@ const OpdList = () => {
               <td>{patient.name}</td>
               <td>{patient.ageSex}</td>
               <td>{patient.visitType}</td>
-              <td>{patient.admittedOn}</td>
               <td>{patient.performerName}</td>
               <td>
                 <button onClick={() => handlePatientClick(patient)}>👤</button>

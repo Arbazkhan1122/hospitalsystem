@@ -1,67 +1,114 @@
-.hist-container {
-    width: 100%;
-    padding: 20px;
-    background-color: #f5f6fa; /* Light gray background color */
-  }
+.surgical-history-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+}
+
+.surgical-history-main {
+  margin: 0 auto;
+  max-width: 800px;
+}
+.surgicalhist{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+}
+
+.surgical-history-section {
+  margin-bottom: 20px;
+}
+
+.surgical-history-section label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.add-button {
+  background-color: #4c5baf;
+  color: white;
+  border: none;
+  padding: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.surgical-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.surgical-history-table th,
+.surgical-history-table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.surgical-history-table th {
+  background-color: #f2f2f2;
+}
+
+.surgical-history-table-data {
+  padding: 8px;
+}
+
+.surgical-history-modal-overlay {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.surgical-history-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  position: relative;
   
-  .hist-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #e1f5fe; /* Light blue border */
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .hist-required {
-    color: red;
-    font-size: 20px;
-    margin-right: 5px;
-  }
-  
-  .hist-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #0d47a1; /* Dark blue color */
-  }
-  
-  .hist-add-button {
-    background-color: #7f5af0; /* Purple background color */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .hist-add-button:hover {
-    background-color: #6a47e0; /* Darker purple on hover */
-  }
-  
-  .hist-problem-list-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .hist-problem-list-table th {
-    background-color: #e1f5fe; /* Light blue header background */
-    color: #607d8b; /* Grayish text color */
-    padding: 10px;
-    text-align: left;
-    font-weight: normal;
-    font-size: 14px;
-    border-bottom: 2px solid #e1f5fe;
-  }
-  
-  .hist-problem-list-table th:first-child {
-    border-top-left-radius: 5px;
-  }
-  
-  .hist-problem-list-table th:last-child {
-    border-top-right-radius: 5px;
-  }
-  
+}
+
+
+.surgical-history-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.surgical-history-form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+.surgical-history-form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  display: block;
+  width: 50%;
+}
+
+.surgical-history-form-group input,
+.surgical-history-form-group textarea {
+  /* width: 100%; */
+  padding: 5px;
+  margin-top: 4px;
+  /* box-sizing: border-box; */
+}
+
+.surgical-history-add-button {
+  background-color: #4c82af;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+

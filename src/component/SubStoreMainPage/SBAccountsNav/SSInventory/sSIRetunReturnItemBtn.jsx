@@ -247,7 +247,8 @@ const SSIRetunReturnItemBtn = ({ onBack }) => {
           </select>
 
           {/* Vendor Name */}
-          <input
+          <input 
+          className='ssi-return-return'
             type="text"
             name="vendorName"
             value={rowData.vendorName}
@@ -257,6 +258,7 @@ const SSIRetunReturnItemBtn = ({ onBack }) => {
 
           {/* Code (Auto-Filled) */}
           <input
+            className='ssi-return-return'
             type="text"
             name="code"
             value={rowData.code}
@@ -266,6 +268,7 @@ const SSIRetunReturnItemBtn = ({ onBack }) => {
 
           {/* Batch No. */}
           <input
+            className='ssi-return-return'
             type="text"
             name="batchNo"
             value={rowData.batchNo}
@@ -275,6 +278,7 @@ const SSIRetunReturnItemBtn = ({ onBack }) => {
 
           {/* Expiry Date */}
           <input
+            className='ssi-return-return'
             type="date"
             name="expiryDate"
             value={rowData.expiryDate}
@@ -283,6 +287,7 @@ const SSIRetunReturnItemBtn = ({ onBack }) => {
 
           {/* Barcode No. */}
           <input
+            className='ssi-return-return'
             type="text"
             name="barcodeNumber"
             value={rowData.barcodeNumber}
@@ -292,6 +297,7 @@ const SSIRetunReturnItemBtn = ({ onBack }) => {
 
           {/* Store Name */}
           <input
+             className='ssi-return-return'
             type="text"
             name="storeName"
             value={rowData.storeName}
@@ -301,6 +307,7 @@ const SSIRetunReturnItemBtn = ({ onBack }) => {
 
           {/* Available Qty (Auto-Filled) */}
           <input
+            className='ssi-return-return'
             type="number"
             name="availableQty"
             value={rowData.availableQty}
@@ -309,6 +316,7 @@ const SSIRetunReturnItemBtn = ({ onBack }) => {
 
           {/* Return Qty */}
           <input
+            className='ssi-return-return'
             type="number"
             name="returnQty"
             value={rowData.returnQty}
@@ -319,6 +327,7 @@ const SSIRetunReturnItemBtn = ({ onBack }) => {
 
           {/* Returned By */}
           <input
+            className='ssi-return-return'
             type="text"
             name="returnedBy"
             value={returnBy}

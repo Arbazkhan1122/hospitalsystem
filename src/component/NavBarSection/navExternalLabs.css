@@ -1,195 +1,191 @@
 .labExternalLab-test-list {
-    font-family: Arial, sans-serif;
-    padding: 5px 10px 10px 10px;
-    background-color: #CAF2FF;
-    height: 450px;
-  }
-  
-  .labExternalLab-test-list h5 {
-    color: #333;
-    border-bottom: 1px solid #dad9d9;
-    padding-bottom: 10px;
-    margin: 0px ;
-  }
-  .labExternalLab-test-list h5 :active {
-border-bottom: 3px solid #2D68EA;
-  }
-  .labExternalLab-filters {
-    display: flex;
-    justify-content: space-between;
-    /* grid-template-columns: repeat(3, 1fr); */
-    gap: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .labExternalLab-filters > div {
-    margin-bottom: 10px;
-  }
-  
-  input, select {
+  font-family: Arial, sans-serif;
+  padding: 5px 10px 10px 10px;
+  background-color: #caf2ff;
+  height: 450px;
+}
+
+.labExternalLab-test-list h5 {
+  color: #333;
+  border-bottom: 1px solid #dad9d9;
+  padding-bottom: 10px;
+  margin: 0px;
+}
+.labExternalLab-test-list h5 :active {
+  border-bottom: 3px solid #2d68ea;
+}
+.labExternalLab-filters {
+  display: flex;
+  justify-content: space-between;
+  /* grid-template-columns: repeat(3, 1fr); */
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.labExternalLab-filters > div {
+  margin-bottom: 10px;
+}
+
+/* input, select {
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  .labExternalLab-date-range {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background-color: #EBF7FF;
-  }
-  .labExternalLab-date-range label {
+  } */
+
+.labExternalLab-date-range {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #ebf7ff;
+}
+.labExternalLab-date-range label {
   font-size: 12px;
   font-weight: bold;
-  }
-  .labExternalLab-date-range input[type="date"] {
-    width: auto;
-  }
-  .labExternalLab-star-btn{
-    color: #2D68EA;
-    border: none;
-    background-color: #EBF7FF;
-    font-size: 24px;
-  }
-   .labExternalLab-more-btn {
-    background-color: #B9B9CA;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .labExternalLab-action-buttons {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: right;
-  }
-  
-  .labExternalLab-action-buttons button {
-    margin-right: 10px;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    font-size: 11px;
-  }
-  
-  .labExternalLab-load-btn, .labExternalLab-print-btn, .labExternalLab-export-btn {
-    background-color: #26C281;
-  }
-  .labExternalLab-load-btn:hover, .labExternalLab-print-btn:hover, .labExternalLab-export-btn:hover {
-    background-color: #2D68EA;
-  }
-  
-  .labExternalLab-test-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .labExternalLab-test-table th, .labExternalLab-test-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    color: #646363;
-    font-size: 12px;
-  }
-  
-  .labExternalLab-test-table th {
-    background-color: #E1E2E4;
-  }
-  
-  .labExternalLab-pagination {
-    margin-top: 20px;
-    text-align: right;
-    font-size: 12px;
-    font-weight: bold;
-  }
-  
-  .labExternalLab-pagination button {
-    padding: 5px 10px;
-    margin-left: 5px;
-    background-color: #CAF2FF;
-    color: #d8d5d5;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  .labExternalLab-hospital-no{
-    font-size: 12px;
-  }
+}
+.labExternalLab-date-range input[type="date"] {
+  width: auto;
+}
+.labExternalLab-star-btn {
+  color: #2d68ea;
+  border: none;
+  background-color: #ebf7ff;
+  font-size: 24px;
+}
+.labExternalLab-more-btn {
+  background-color: #b9b9ca;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: white;
+}
 
-  .labExternalLab-hospital-no input{
-    width: 170px;
-    font-size: 12px;
-    
-  }
-  .labExternalLab-hospital-no label{
-    font-weight: bold;
-    margin-right: 10px;
+.labExternalLab-action-buttons {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: right;
+}
 
+.labExternalLab-action-buttons button {
+  margin-right: 10px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 11px;
+}
 
-  }
-  .labExternalLab-patient-name{
-    font-size: 12px;
-  }
-  .labExternalLab-patient-name input{
-    width: 170px;
-  }
-  .labExternalLab-patient-name label{
-    /* width: 120px; */
-    font-size: 12px;
-    font-weight: bold;
-    margin-right: 10px;
+.labExternalLab-load-btn,
+.labExternalLab-print-btn,
+.labExternalLab-export-btn {
+  background-color: #26c281;
+}
+.labExternalLab-load-btn:hover,
+.labExternalLab-print-btn:hover,
+.labExternalLab-export-btn:hover {
+  background-color: #2d68ea;
+}
 
-  }
-  .labExternalLab-search-bar input{
-width: 170px;
-  }
-  .labExternalLab-vendor-select{
-    display: flex;
-    align-items: center;
-    
-  }
-  .labExternalLab-vendor-select select{
-    width: 170px;
+.labExternalLab-test-table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-  }
-  .labExternalLab-vendor-select label{
-    font-size: 12px;
-    font-weight: bold;
-    margin-right: 10px;
+.labExternalLab-test-table th,
+.labExternalLab-test-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  color: #646363;
+  font-size: 12px;
+}
 
-  }
-  .labExternalLab-lab-tests label{
-font-size: 12px;
-font-weight: bold;
-margin-right: 10px;
+.labExternalLab-test-table th {
+  background-color: #e1e2e4;
+}
 
-  }
-  /* .labExternalLab-lab-status{
+.labExternalLab-pagination {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.labExternalLab-pagination button {
+  padding: 5px 10px;
+  margin-left: 5px;
+  background-color: #caf2ff;
+  color: #d8d5d5;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.labExternalLab-hospital-no {
+  font-size: 12px;
+}
+
+.labExternalLab-hospital-no input {
+  width: 170px;
+  font-size: 12px;
+}
+.labExternalLab-hospital-no label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+.labExternalLab-patient-name {
+  font-size: 12px;
+}
+.labExternalLab-patient-name input {
+  width: 170px;
+}
+.labExternalLab-patient-name label {
+  /* width: 120px; */
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.labExternalLab-search-bar input {
+  width: 170px;
+}
+.labExternalLab-vendor-select {
+  display: flex;
+  align-items: center;
+}
+.labExternalLab-vendor-select select {
+  width: 170px;
+}
+.labExternalLab-vendor-select label {
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.labExternalLab-lab-tests label {
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+/* .labExternalLab-lab-status{
     
   } */
-  .labExternalLab-lab-status label{
-    font-size: 12px;
-    font-weight: bold;
-    margin-right: 10px;
-
-  }
-  .labExternalLab-lab-status select{
-    width: 150px;
-    color: gray;
-  }
-  .labExternalLab-lab-status option{
-    color:gray;
-  }
-  .labExternalLab-second-header{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+.labExternalLab-lab-status label {
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.labExternalLab-lab-status select {
+  width: 150px;
+  color: gray;
+}
+.labExternalLab-lab-status option {
+  color: gray;
+}
+.labExternalLab-second-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
   /* border: 1px solid red; */
-  }
+}

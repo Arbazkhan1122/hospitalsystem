@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import "../DisSales/dispenSales.css";
 import SalesSales from '../DisSales/dispenSalesSales';
@@ -27,25 +26,25 @@ const DispenSales = () => {
 
         <div className="dispenSales-counter-option" onClick={() => handleCounterClick('MORNING')}>
           <div className="dispenSales-counter-Sub-option">
-          <i className="fa-solid fa-cash-register"></i>
-          <h3>MORNING COUNTER</h3>
+            <i className="fa-solid fa-cash-register"></i>
+            <h3>MORNING COUNTER</h3>
           </div>
           <p>Click To Activate</p>
         </div>
 
         <div className="dispenSales-counter-option" onClick={() => handleCounterClick('EVENING')}>
-        <div className="dispenSales-counter-Sub-option">
-          <i className="fa-solid fa-cash-register"></i>
-          <h3>EVENING COUNTER</h3>
-        </div>
+          <div className="dispenSales-counter-Sub-option">
+            <i className="fa-solid fa-cash-register"></i>
+            <h3>EVENING COUNTER</h3>
+          </div>
           <p>Click To Activate</p>
         </div>
 
         <div className="dispenSales-counter-option" onClick={() => handleCounterClick('NIGHT')}>
-        <div className="dispenSales-counter-Sub-option">
-          <i className="fa-solid fa-cash-register"></i>
-          <h3>NIGHT COUNTER</h3>
-        </div>
+          <div className="dispenSales-counter-Sub-option">
+            <i className="fa-solid fa-cash-register"></i>
+            <h3>NIGHT COUNTER</h3>
+          </div>
           <p>Click To Activate</p>
         </div>
 

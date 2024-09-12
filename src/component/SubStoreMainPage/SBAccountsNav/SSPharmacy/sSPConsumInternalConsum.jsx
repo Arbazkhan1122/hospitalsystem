@@ -94,9 +94,9 @@ function SSPConsumInternalConsum() {
         <i className="fa fa-shopping-cart"></i> New Internal Consumption
         <button className="sSPConsumInternalConsum-close-button"></button>
       </div>
-      <div className="content">
+      <div className="sSPConsumInternalConsum-content">
         <form onSubmit={handleSubmit}>
-          <table>
+          <table >
             <thead>
               <tr>
                 <th>Item Name</th>
@@ -123,6 +123,7 @@ function SSPConsumInternalConsum() {
                 </td>
                 <td>
                   <input
+                  className='sSPConsumInternalConsum'
                     type="number"
                     name="availableQuantity"
                     value={formData.availableQuantity}
@@ -132,6 +133,7 @@ function SSPConsumInternalConsum() {
                 </td>
                 <td>
                   <input
+                    className='sSPConsumInternalConsum'
                     type="number"
                     name="quantity"
                     value={formData.quantity}
@@ -140,6 +142,7 @@ function SSPConsumInternalConsum() {
                 </td>
                 <td>
                   <input
+                    className='sSPConsumInternalConsum'
                     type="text"
                     name="batchNo"
                     value={formData.batchNo}
@@ -148,6 +151,7 @@ function SSPConsumInternalConsum() {
                 </td>
                 <td>
                   <input
+                  className='sSPConsumInternalConsum'
                     type="date"
                     name="expiryDate"
                     value={formData.expiryDate}
@@ -156,6 +160,7 @@ function SSPConsumInternalConsum() {
                 </td>
                 <td>
                   <input
+                    className='sSPConsumInternalConsum'
                     type="number"
                     name="salePrice"
                     value={formData.salePrice}
@@ -165,6 +170,7 @@ function SSPConsumInternalConsum() {
                 </td>
                 <td>
                   <input
+                    className='sSPConsumInternalConsum'
                     type="number"
                     name="totalAmount"
                     value={formData.totalAmount}

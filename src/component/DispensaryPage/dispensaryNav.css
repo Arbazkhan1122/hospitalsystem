@@ -1,3 +1,47 @@
+<<<<<<< HEAD
+.dispensary-navigation-bar {
+  background-color: white;
+  /* padding: 0px 0; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dispensary-navigation-bar ul {
+  list-style-type: none;
+  /* margin: 0;
+  padding: 0; */
+  display: flex;
+}
+
+.dispensary-nav-link {
+  color: blue;
+  text-decoration: none;
+  padding: 10px 10px;
+  margin: 0 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.dispensary-nav-link:hover {
+  background-color: #005a8e;
+  color: white;
+}
+
+.dispensary-active-btn {
+  background-color: #005a8e;
+  color: #fff;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dispensary-active-btn:hover {
+  background-color: #003b5c;
+}
+=======
 .activeDispensary-btn{
     background-color: #0056b3;
     color: white;
@@ -66,3 +110,4 @@
     .disPrescription-Navbttn-N-act li{
       padding: 0 10px 0 10px;
     }
+>>>>>>> 760f6856dec877a39e4e4c8e742340dc5289097f

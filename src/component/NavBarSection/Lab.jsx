@@ -24,6 +24,7 @@ import LabCategories from './LabSetting/labCategories';
 import MapGovernmentItemxs from './LabSetting/mapGovernmentItems';
 // import SampleCollection from './NavBarSection/sampleCollection';
 import HospitalNav from "./hospitalNav"
+import CollectSample from './CollectSample';
 const Lab = () => {
 
   return (
@@ -53,6 +54,7 @@ const Lab = () => {
           <Route path="/lookUps" element={<LookUps />} />
           <Route path="/labCategories" element={<LabCategories />} />
           <Route path="/mapGovernmentItemxs" element={<MapGovernmentItemxs />} />
+          <Route path="/collect-sample/:id" element={<CollectSample />}></Route>
 
 
         </Routes>

@@ -1,159 +1,95 @@
-.sam-Coll-list-requisition {
-    background-color: #CAF2FF;
-    padding: 0px 10px 0px 10px;
-    font-family: Arial, sans-serif;
-    height: 500px;
-  }
-  
-  .sampCollec-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* margin-bottom: 20px; */
-  }
-  .sampCollec-header h5 {
-font-size: 13px;
-color: #444343;
-  }
-  
-  .samCollec-samples-collected {
-    background-color: #26c281;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    /* height: 30px; */
-    padding: 5px 10px ;
-    cursor: pointer;
-    font-size: 12px;
-  }
-  .samCollec-samples-collected:hover{
-    background-color: #0F63AF;
+/* sampleCollection.css */
 
-  }
+.labContainer {
+  padding: 16px;
+  background-color: #e0f7fa;
+  height: 80vh;
+  overflow-y: scroll;
+}
 
-  .sampCollect-filters {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #EAEAEA;
-    padding: 5px;
-    /* margin-bottom: 20px; */
-  }
-  
-  .sampCollect-date-range {
-    background-color: #EBF7FF;
-    display: flex;
-    align-items: center;
-  }
-  
-  .sampCollect-date-range span {
-    margin: 0 10px;
-    margin-left: 20px;
-    font-size: 12px;
-    font-weight: bold;
-  }
-  
-  .samCollec-ok-button {
-    background-color: #26c281;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: 20px;
-  }
-  .sam-Coll-search-N-result{
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-.sam-Coll-search-bar{
-  margin-left: -15px;
-}  
-  .sam-Coll-search-bar input {
-    /* margin-top: 10px; */
-    /* padding: 5px; */
-    width: 200px;
-  }
-  .sam-Coll-search-bar i{
-    position: relative;
-    color:gray;
-    top: 3px;
-  left: 205px;
-  }
-  
-  .samCollect-results-info {
-    display: flex;
-    align-items: center;
-    /* padding-top: 10px; */
-  }
-  .samCollect-results-info span {
-    /* display: flex;
-    align-items: center; */
-    /* padding-top: 10px; */
-    color: #008CBA;
-    font-size: 14px;
-  }
+.labHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
 
-  
-  .samCollec-print-button {
-    background-color: #008CBA;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .samCollec-requisition-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .samCollec-requisition-table th, .samCollec-requisition-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .samCollec-requisition-table th {
-    background-color: #F3F3F3;
-    font-size: 12px;
-    color: #383737;
-  }
-  
-  /* .no-data {
-    background-color: #fff9c4;
-    text-align: center;
-  } */
-  
-  .sampCollect-pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .sampCollect-pagination button {
-    background-color: #008CBA;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin: 0 5px;
-    border-radius: 5px;
-    font-size: 12px;
-  }
-  
-  .sampCollect-pagination span {
-    margin: 0 10px;
-    color: gray;
-    font-size: 12px;
-  }
- 
-  .userCollectionReport-table-N-paginationDiv{
-    background-color: #f8f2f2;
-  }
+.labTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.labButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.labButtonGreen {
+  background-color: #4caf50;
+  color: white;
+}
+
+.labButtonPrint {
+  background-color: #2196f3;
+  color: white;
+}
+
+.labDateFilters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.labDateFilterLabel {
+  font-weight: 500;
+}
+
+.labSearchPrint {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.labSearchInput {
+  flex: 1;
+}
+
+.labTableWrapper {
+  overflow-x: auto;
+}
+
+.labTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.labTableHeader {
+  background-color: #f1f1f1;
+}
+
+.labTableCell {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.labPagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.labPaginationControls {
+  display: flex;
+  gap: 8px;
+}
+
+.labPaginationButton {
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}

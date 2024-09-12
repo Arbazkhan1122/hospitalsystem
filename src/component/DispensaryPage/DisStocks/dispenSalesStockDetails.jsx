@@ -423,15 +423,18 @@ const SalesStockDetails = () => {
     if (error) return <p>{error}</p>;
 
     return (
+
         <div className="dispenSalesStockDetails-container">
             <div className="dispenSalesStockDetails-header-tabs">
                 <span 
                     className={activeTab === "StockDetails" ? "dispenSalesStockDetails-tab-active" : "dispenSalesStockDetails-tab"} 
                     onClick={() => setActiveTab("StockDetails")}
+
                 >
                     Stock Details List
                 </span>
                 <span 
+
                     className={activeTab === "Transfer" ? "dispenSalesStockDetails-tab-active" : "dispenSalesStockDetails-tab"} 
                     onClick={() => setActiveTab("Transfer")}
                 >
