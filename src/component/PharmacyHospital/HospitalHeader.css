@@ -120,7 +120,11 @@ margin-left: 5px;
   margin-left: 5px;
 }
 
-.hospital-nav-item-module:hover, 
+.hospital-nav-item-module:hover{
+  color: var(--button-color);
+  background-color: white;
+
+} 
 .hospital-nav-item-module.active {
   background-color: var(--button-bg-color);
   color: white;

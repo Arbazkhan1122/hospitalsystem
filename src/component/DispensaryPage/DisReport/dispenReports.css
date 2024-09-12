@@ -5,10 +5,9 @@
     gap: 20px;
     padding: 20px;
     width: auto;
-    background-color: #e6f7ff;
+    /* background-color: #e6f7ff; */
     font-family: Arial, Helvetica, sans-serif;
-    /* color: red; */
-    /* height: 430px; */
+   
   }
   
   .dis-report-item {
@@ -19,7 +18,7 @@
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: calc(20.33% - 20px);
-    height: 20px;
+    height: 30px;
   }
   
   .dis-report-icon {
@@ -40,6 +39,6 @@
   
   .dis-report-info p {
     margin: 5px 0 0;
-    font-size: 12px;
+    font-size: 14px;
     color: #8c8c8c;
   }

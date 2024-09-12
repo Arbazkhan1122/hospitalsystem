@@ -2,7 +2,6 @@
   display: flex;
   gap: 10px;
   padding: 10px;
-  background-color: #f0f8ff; /* Light blue background */
 }
 
 .patient-actions-container a {
@@ -10,37 +9,40 @@
 }
 
 .patient-action-button, .home-button {
-  background-color: #4285f4; /* Blue color */
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  background-color: var(--button-color); /* Use CSS variable for background color */
+  text-decoration: none; /* Remove any text decoration */
+  color: white; /* Text color */
+  font-size: 16px; /* Font size */
+  padding: 5px; /* Button padding */
+  border-radius: 5px; /* Rounded corners */
+  border: none; /* Remove the border */
+  cursor: pointer; /* Add pointer cursor for interactivity */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions for hover effects */ 
 }
-
-.home-button {
-  width: 40px;
-  height: 40px;
-  padding: 0; /* Center the icon in the button */
-}
-
-.patient-action-button i, .home-button i {
-  font-size: 18px;
-}
-
 .patient-action-button:hover, .home-button:hover {
-  background-color: #3074d2; /* Darker blue on hover */
+  background-color: white; /* Background color changes to white on hover */
+  color: var(--button-color); /* Text color changes to button color on hover */
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+.home-button-home {
+  background-color: var(--button-color); /* Use CSS variable for background color */
+  text-decoration: none; /* Remove any text decoration */
+  color: white; /* Text color */
+  font-size: 16px; /* Font size */
+  padding: 5px; /* Button padding */
+  border-radius: 5px; /* Rounded corners */
+  border: none; /* Remove the border */
+  cursor: pointer; /* Add pointer cursor for interactivity */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions for hover effects */ 
 }
 
-.patient-action-button.selected, .home-button.selected {
-  background-color:  #27ae60; /* Highlight with different color when selected */
+.home-button-home i {
+  font-size: 18px; /* Icon size */
+  color: white; /* Default icon color */
 }
 
-.patient-action-button.selected:hover, .home-button.selected:hover {
-  background-color: #27ae60;/* Darker shade when selected and hovered */
+.home-button-home:hover {
+  color: white;
+  background-color: var(--button-color); /* Change background color on hover */
+  transform: scale(1.1); /* Slightly enlarge the button on hover */
 }

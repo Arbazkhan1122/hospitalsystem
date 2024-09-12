@@ -1,6 +1,7 @@
 .activeDispensary-btn {
   background-color: var( --button-color);
   color: white;
+  margin-left: 60px;
   font-size: 16px;
   padding: 5px 5px;
   border: none;

@@ -13,7 +13,7 @@ function Navbar() {
     <div className="patient-actions-container">
       <Link to="/">
         <button
-          className={`home-button ${selectedButton === 'home' ? 'selected' : ''}`}
+          className={`home-button-home ${selectedButton === 'home' ? 'selected' : ''}`}
           onClick={() => handleButtonClick('home')}
         >
           <i className="fas fa-home"></i>
