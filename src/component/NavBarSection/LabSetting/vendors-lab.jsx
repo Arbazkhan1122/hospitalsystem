@@ -1,69 +1,97 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../LabSetting/vendors-lab.css"
-const vendorData = [
-  { code: 'INTERNAL', name: 'Lab Internal', isExternal: false, isActive: true, isDefault: true },
-  { code: 'EXTERNAL', name: 'Shadon', isExternal: true, isActive: true, isDefault: false },
+import LSLabTestAddNLTest from './lSLabTestAddNLTest';
+import LabVenderAddNewLV from './labVenderAddNewLV';
+const labTests = [
+  { vendorCode:'INTERNAL',vendorName: "Lab Internal", address: "", contactNo: "normal",  isExternal: "false", isActive:'true', isDefault:'true' },
+
+  // Add more rows as needed
+
+
 ];
 
-function VendorsLab() {
+const VendorsLab = () => {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleAddNewLabTestClick = () => {
+    setShowPopup(true); // Show the popup
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false); // Hide the popup
+  };
+
   return (
-    <div className="app">
-      <button className="add-vendor-btn">+Add New External Vendor</button>
-      <div className="search-container">
-        <input type="text" placeholder="Search" className="search-input" />
-        <button className="search-btn">🔍</button>
+    <div className="vendors-lab-container">
+    <div className="vendors-lab-firstRow">
+    <div className="vendors-lab-addBtn">
+      <button className="vendors-lab-add-button" onClick={handleAddNewLabTestClick}>+Add New External Vendor</button>
       </div>
-      <div className="results-info">
-        Showing 2 / 2 results
-        <button className="print-btn">Print</button>
+        
       </div>
-      <table className="vendor-table">
+      <div className='vendors-lab-search-N-result'>
+      <div className="vendors-lab-search-bar">
+          <i className="fa-solid fa-magnifying-glass"></i>
+          <input 
+            type="text" 
+            placeholder="Search..." 
+            
+          />
+        </div>
+        <div className="vendors-lab-results-info">
+          <span>Showing 0 / 0 results</span>
+          <button className="vendors-lab-print-button">Print</button>
+        </div>
+        </div>
+      <table >
         <thead>
           <tr>
             <th>Vendor Code</th>
             <th>Vendor Name</th>
-            <th>Address</th>
+            <th>Address </th>
             <th>Contact No</th>
-            <th>Is External?</th>
-            <th>Is Active?</th>
-            <th>Is Default?</th>
+            <th>Is External ?</th>
+            <th>Is Active ?</th>
+            <th>Is Default ?</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {vendorData.map((vendor) => (
-            <tr key={vendor.code}>
-              <td>{vendor.code}</td>
-              <td>{vendor.name}</td>
-              <td></td>
-              <td></td>
-              <td>{vendor.isExternal.toString()}</td>
-              <td>{vendor.isActive.toString()}</td>
-              <td>{vendor.isDefault.toString()}</td>
+          {labTests.map((test, index) => (
+            <tr key={index}>
+              <td>{test.vendorCode}</td>
+              <td>{test.vendorName}</td>
+              <td>{test.address}</td>
+              <td>{test.contactNo}</td>
+              <td>{test.isExternal}</td>
+              <td>{test.isActive}</td>
+              <td>{test.isDefault}</td>
               <td>
-                {vendor.code === 'INTERNAL' ? (
-                  <button className="change-btn">Change Restricted (Internal Vendor)</button>
-                ) : (
-                  <>
-                    <button className="edit-btn">Edit</button>
-                    <button className="deactivate-btn">Deactivate</button>
-                  </>
-                )}
+                <button className="vendors-lab-edit-button"onClick={handleAddNewLabTestClick}>Edit</button>
+                <button className="vendors-lab-deactivate-button">Deactivate</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="pagination">
-        <span>1 to 2 of 2</span>
-        <button disabled>First</button>
-        <button disabled>Previous</button>
-        <span>Page 1 of 1</span>
-        <button disabled>Next</button>
-        <button disabled>Last</button>
-      </div>
+      <div className="vendors-lab-pagination">
+          <span>0 to 0 of 0</span>
+          <button>First</button>
+          <button>Previous</button>
+          <span>Page 0 of 0</span>
+          <button>Next</button>
+          <button>Last</button>
+        </div>
+      {/* Modal Popup */}
+      {showPopup && (
+        <div className="vendors-lab-modal">
+          <div className="vendors-lab-modal-content">
+            <LabVenderAddNewLV onClose={handleClosePopup} />
+          </div>
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default VendorsLab;

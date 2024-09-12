@@ -10,9 +10,9 @@ function NavLISMachineResults() {
   const [endDate, setEndDate] = useState(new Date());
 
   return (
-    <div className="navLIS-upload-page">
-      <div className="filters">
-        <div className="date-range">
+    <div className="labLIS-MachineResults-upload-page">
+      <div className="labLIS-MachineResults-filters">
+        <div className="labLIS-MachineResults-date-range">
           <span>From:</span>
           <DatePicker
             selected={startDate}
@@ -33,9 +33,9 @@ function NavLISMachineResults() {
             dateFormat="MM/dd/yyyy"
           />
         </div>
-        <div className="buttons">
+        <div className="labLIS-MachineResults-buttons">
             <input type="text" name="" id="" />
-          <button className="load-data">Load </button>
+          <button className="labLIS-MachineResults-load-data">Load  <i className="fa-solid fa-rotate"></i></button>
         </div>
       </div>
 

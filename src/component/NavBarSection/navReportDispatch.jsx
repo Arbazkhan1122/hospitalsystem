@@ -3,31 +3,50 @@ import "../NavBarSection/navReportDispatch.css"
 
 function NavReportDispatch() {
   return (
-    <div className="report-dispatch">
-      <h1>Report Dispatch</h1>
-      <div className="filters">
-        <div className="date-range">
-          <label>Request Date:</label>
+    <div className="labReportDispatch">
+      <h5>Report Dispatch</h5>
+      <div className="labReportDispatch-filters">
+      <div className="labReportDispatch-Request">
+          Request Date:
+           </div>
+        <div className="labReportDispatch-date-range">
           <label>From:</label>
           <input type="date" value="2024-08-05" />
           <label>To:</label>
           <input type="date" value="2024-08-12" />
-          <button className="star-btn">☆</button>
-          <button className="more-btn">-</button>
+          <button className="labReportDispatch-star-btn">☆</button>
+          <button className="labReportDispatch-more-btn">-</button>
         </div>
-        <div className="category-select">
+        <div className="labReportDispatch-category-select">
           <label>Category:</label>
           <select>
             <option>--Select Lab Category--</option>
+            <option value="">Sellect All</option>
+            <option value="">Search</option>
+            <option value="">Biochemistry</option>
+            <option value="">Hematology</option>
+            <option value="">Microbiology</option>
+            <option value="">Parasitology</option>
+            <option value="">Serology</option>
+            <option value="">Immunoassay</option>
+            <option value="">DEFAULT</option>
+            <option value="">HISTOCYTOLOGY</option>
+            <option value="">OUT SOURCE</option>
+            <option value="">MOLECULAR BIOCHEMISTRY</option>
+            <option value="">PATHOLOGY</option>
+            <option value="">TUMOR MARKER</option>
+            <option value="">VIROLOGY</option>
+            <option value="">Blood Transfusion</option>
           </select>
         </div>
-        <button className="load-btn">Load</button>
+        <button className="labReportDispatch-load-btn">Load <i className="fa-solid fa-rotate"></i></button>
       </div>
-      <div className="search-bar">
+      <div className="labReportDispatch-search-bar">
+      <i className="fa-solid fa-magnifying-glass"></i>
         <input type="text" placeholder="Search by Hospital No. Or Patient Name" />
-        <button className="search-btn">🔍</button>
+        {/* <button className="labReportDispatch-search-btn">🔍</button> */}
       </div>
-      <table className="patient-table">
+      <table className="labReportDispatch-patient-table">
         <thead>
           <tr>
             <th>S.N.</th>
@@ -40,7 +59,7 @@ function NavReportDispatch() {
           {/* Table rows would be populated here */}
         </tbody>
       </table>
-      <div className="pagination">
+      <div className="labReportDispatch-pagination">
         <button>« Previous</button>
         <button>Next »</button>
       </div>

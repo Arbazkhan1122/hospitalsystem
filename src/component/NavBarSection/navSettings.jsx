@@ -9,6 +9,7 @@ const NavSetting = () => {
     <nav className="nav-Setting-navbar">
       <ul>
         <li><NavLink to="/labTest">Lab Test</NavLink></li>
+        {/* <li><NavLink to="/navHome"><i className="fa-solid fa-house-chimney" ></i></NavLink></li> */}
         <li><NavLink to="/labTestComponent">Lab Test Components</NavLink></li>
         <li><NavLink to="/reportTemplate">Report Template</NavLink></li>
         <li><NavLink to="/defaultSignatories">Default Signatories</NavLink></li>

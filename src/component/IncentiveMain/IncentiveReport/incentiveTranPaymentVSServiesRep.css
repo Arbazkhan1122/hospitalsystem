@@ -1,0 +1,93 @@
+
+
+.incentiveTranPaymentVSServiesRep-container {
+    background-color: #CAF2FF;
+    /* padding: 10px; */
+    width: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.incentiveTranPaymentVSServiesRep-container h3{
+    font-weight: normal;
+    margin: 10px;
+    font-size: 16px;
+    
+}
+.incentiveTranPaymentVSServiesRep-container h3 i{
+  color: #0F63AF;
+  font-size: 14px;
+}
+  
+  .incentiveTranPaymentVSServiesRep-tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #dad7d7;
+    margin-bottom: 20px;
+  }
+  
+  .incentiveTranPaymentVSServiesRep-tab {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .incentiveTranPaymentVSServiesRep-selected {
+    color: #039be5;
+    border-bottom: 4px solid #2D68EA;
+  }
+  
+  .incentiveTranPaymentVSServiesRep-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .incentiveTranPaymentVSServiesRep-date-range {
+    background-color: #EBF7FF;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 30px;
+  }
+  
+  .incentiveTranPaymentVSServiesRep-icon-button {
+    background-color: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .incentiveTranPaymentVSServiesRep-star{
+    color: #0000FF;
+  }
+  .incentiveTranPaymentVSServiesRep-Select-Doctor{
+    font-size: 12px;
+    font-weight: bold;
+  }
+  .incentiveTranPaymentVSServiesRep-Select-Doctor label{
+    margin-right: 10px;
+}
+.incentiveTranPaymentVSServiesRep-load-button {
+      margin-right: 100px;
+    background-color: #5867DD;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 15px;
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 100px;
+  }
+  .incentiveTranPaymentVSServiesRep-search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .incentiveTranPaymentVSServiesRep-info-text {
+    color: #666;
+  }
+  

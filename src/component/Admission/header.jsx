@@ -12,38 +12,38 @@ const Navbar = ({ handleNavigation }) => {
         <Link to="/">🏠</Link>
       </div>
       <nav className="nav-links">
-        <Link 
-          to="/search-patient" 
+        <Link
+          to="/search-patient"
           className={`adt-header-button ${location.pathname === '/search-patient' ? 'active' : ''}`}
-         
+
         >
           Search Patient
         </Link>
-        <Link 
-          to="/admitted-patient" 
+        <Link
+          to="/admitted-patient"
           className={`adt-header-button ${location.pathname === '/admitted-patient' ? 'active' : ''}`}
-         
+
         >
           Admitted Patients
         </Link>
-        <Link 
-          to="/discharged-patient" 
+        <Link
+          to="/discharged-patient"
           className={`adt-header-button ${location.pathname === '/discharged-patient' ? 'active' : ''}`}
-         
+
         >
           Discharged Patients
         </Link>
-        <Link 
-          to="/exchange-bed" 
+        <Link
+          to="/exchange-bed"
           className={`adt-header-button ${location.pathname === '/exchange-bed' ? 'active' : ''}`}
-          
+
         >
           Exchange Bed
         </Link>
-        <Link 
-          to="/cancel-reservation" 
+        <Link
+          to="/cancel-reservation"
           className={`adt-header-button ${location.pathname === '/cancel-reservation' ? 'active' : ''}`}
-          
+
         >
           Cancel Bed Reservation
         </Link>

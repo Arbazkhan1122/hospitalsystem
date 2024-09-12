@@ -1,72 +1,167 @@
-/* .app {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #e6f2ff;
-  }
-  
-  .add-lookup-btn {
-    background-color: #6c757d;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .search-container {
-    margin-top: 20px;
-    display: flex;
-  }
-  
-  .search-input {
-    padding: 5px;
+.looksUps-container {
+  background-color: #CAF2FF;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* width: 100%; */
+  /* max-width: 1200px; */
+  margin: 0 auto;
+  height: 450px;
+}
+.looksUps-firstRow{
+  display: flex;
+  justify-content: space-between;
+}
+
+.looksUps-add-button {
+  background-color: #5867DD;
+  color: white;
+  border: none;
+  padding: 7px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+.looksUps-search-bar{
+  margin-left: -15px;
+  /* margin: 0; */
+}  
+  .looksUps-search-bar input {
+    /* margin-top: 10px; */
+    /* padding: 5px; */
     width: 200px;
   }
-  
-  .search-btn {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    cursor: pointer;
+  .looksUps-search-bar i{
+    position: relative;
+    color:gray;
+    top: 3px;
+  left: 205px;
   }
-  
-  .results-info {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .print-btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .lookup-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .lookup-table th, .lookup-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .lookup-table th {
-    background-color: #f2f2f2;
-  }
-  
-  .edit-btn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-  } */
+
+.looksUps-search-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.looksUps-search-box {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.looksUps-search-N-result{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.looksUps-results-info {
+  display: flex;
+  align-items: center;
+  /* padding-top: 10px; */
+}
+.looksUps-results-info span {
+  /* display: flex;
+  align-items: center; */
+  /* padding-top: 10px; */
+  color: #008CBA;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.looksUps-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 12px;
+  background-color: white;
+}
+
+.looksUps-container th, .looksUps-container td {
+  padding: 5px;
+  text-align: left;
+  border: 1px solid #ddd;
+  color: rgb(78, 78, 78);
+}
+
+.looksUps-container th {
+  background-color: #f2f2f2;
+}
+
+.looksUps-edit-button, .looksUps-deactivate-button {
+  background-color: #0F63AF;
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.looksUps-results-info {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.looksUps-print-button {
+  background-color: #659BE0;
+  color: white;
+  border: none;
+  padding: 7px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+/* Modal styles */
+.looksUps-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  z-index: 1000;
+}
+
+.looksUps-modal-content {
+  margin-top: 20px;
+  /* padding: 20px; */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 45%;
+  /* width: 100%; */
+  position: relative;
+}
+.looksUps-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.looksUps-pagination button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 0 5px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.looksUps-pagination span {
+  margin: 0 10px;
+  color: gray;
+  font-size: 12px;
+}

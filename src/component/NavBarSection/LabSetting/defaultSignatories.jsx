@@ -24,10 +24,10 @@ const DefaultSignatories = () => {
   };
 
   return (
-    <div className="default-signature-container">
-      <div className="section">
+    <div className="defaultSignature-container">
+      <div className="defaultSignature-section">
         <h3>Default Signatories for Normal Tests:</h3>
-        <div className="signatories">
+        <div className="defaultSignature-signatories">
           <label>
             <input
               type="checkbox"
@@ -60,11 +60,12 @@ const DefaultSignatories = () => {
             />
             CHRISTINE MUTOKA
           </label>
+          <label htmlFor=""></label>
         </div>
       </div>
-      <div className="section">
+      <div className="defaultSignature-section">
         <h3>Default Histo/Cyto Signatories:</h3>
-        <div className="signatories">
+        <div className="defaultSignature-signatories">
           <label>
             <input
               type="checkbox"
@@ -97,9 +98,10 @@ const DefaultSignatories = () => {
             />
             CHRISTINE MUTOKA
           </label>
+          <label htmlFor=""></label>
         </div>
       </div>
-      <button className="update-button">Update Default Signatories</button>
+      <button className="defaultSignature-update-button">Update Default Signatories</button>
     </div>
   );
 };

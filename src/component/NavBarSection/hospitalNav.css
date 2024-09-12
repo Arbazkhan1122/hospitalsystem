@@ -1,52 +1,55 @@
-/* .activeLab-btn{
-  background-color: #0056b3;
-  color: white;
-  height: 25px;
-  font-weight: bold;
-  font-size: 14px;
-  border: none;
-}
-.navigation-bar {
-    background-color: white;
- 
-
-  }
-  
-  .navigation-bar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 10px 0px 10px 0px;
-    display: flex;
-    justify-content: space-around;
-
-  }
-  
-  .navigation-bar li {
-    margin: 0 0px;
-    
-  }
-  
-  .navigation-bar a {
-    color: #007bff;
-    text-decoration: none;
+  .activeLab-btn{
+    background-color: #0056b3;
+    color: white;
+    height: 25px;
     font-weight: bold;
-    font-size: 12px;
-    padding: 5px 5px;
-    border-radius: 5px;
-
-  }
-  
-  .navigation-bar a:hover {
-    background-color: #0056b3;
-    color: white;
-    border: 1px solid gray;
-
+    font-size: 14px;
+    border: none;
     
   }
-  
-  .navigation-bar .active {
-    background-color: #0056b3;
-    color: white;
+  .navigation-bar {
+    font-family: Arial, sans-serif;
+      background-color: white;
+      /* padding: 10px; */
+      /* border: 1px solid #007bff; */
 
-  }
-   */
+    }
+    
+    .navigation-bar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 0px 10px 0px;
+      display: flex;
+      justify-content: space-around;
+
+    }
+    
+    .navigation-bar li {
+      margin: 0 0px;
+      
+    }
+    
+    .navigation-bar a {
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 12px;
+      padding: 5px 5px;
+      border-radius: 5px;
+
+    }
+    
+    .navigation-bar a:hover {
+      background-color: #0056b3;
+      color: white;
+      border: 1px solid gray;
+
+      
+    }
+    
+    .navigation-bar .active {
+      background-color: #0056b3;
+      color: white;
+
+    }
+    

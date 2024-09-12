@@ -16,7 +16,8 @@ import AdmittedPatient from './admittedpatient';
 
 const Adt = () => {
   return (
-  <>
+
+    <>
       <Navbar />
       <div className="app-container">
         <Routes>

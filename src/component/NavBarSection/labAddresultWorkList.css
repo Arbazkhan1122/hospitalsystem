@@ -1,0 +1,146 @@
+.labAddresultWorkList-container {
+    /* margin: 20px; */
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .labAddresultWorkList-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+
+  }
+  
+  .labAddresultWorkList-header h4 {
+    margin: 0;
+    color: #3d3c3c;
+  }
+  
+  .labAddresultWorkList-close-button {
+    background-color: #dd0303;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .labAddresultWorkList-filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .labAddresultWorkList-date-range, .labAddresultWorkList-category-select {
+  display: flex;
+    align-items: center;
+  }
+  .labAddresultWorkList-date-range span{
+font-size: 12px;
+font-weight: bold;
+  }
+  .labAddresultWorkList-datepicker{
+    /* background-color: red; */
+    width: 140px;
+    height: 15px;
+    color: gray;
+  }
+  
+  .labAddresultWorkList-date-picker {
+    display: flex;
+    align-items: center;
+    background-color: #EBF7FF;
+    border: 1px solid #e0dede;
+    padding: 4px;
+  }
+  
+  .labAddresultWorkList-date-picker span {
+    margin: 0 15px;
+  }
+  
+  .labAddresultWorkList-category-select span {
+    margin-right: 5px;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .labAddresultWorkList-category-select select {
+    padding: 5px;
+  }
+  
+  .labAddresultWorkList-load-button {
+      background-color: #26C281;
+      color: white;
+      border: none;
+      padding: 0px 15px;
+      cursor: pointer;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+    }
+    .labAddresultWorkList-load-button:hover{
+        background-color: #007bff;
+    }
+  .labAddresultWorkList-load-button i {
+    margin-left: 5px;
+  }
+  
+  .labAddresultWorkList-table-container {
+    margin-bottom: 15px;
+    color: gray;
+    font-size: 12px;
+    background-color: #F6F6F6;
+  }
+  
+  .labAddresultWorkList-table-header {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .labAddresultWorkList-table-header p {
+    margin: 0;
+  }
+  
+  .labAddresultWorkList-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .labAddresultWorkList-table th, .labAddresultWorkList-table td {
+    /* padding: 10px; */
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .labAddresultWorkList-print-button-container {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .labAddresultWorkList-print-button {
+    background-color: #5867DD;
+    color: white;
+    border: none;
+    padding: 7px 13px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+  }
+  
+  .labAddresultWorkList-print-button i {
+    margin-right: 5px;
+    font-size: 12px;
+  }
+  

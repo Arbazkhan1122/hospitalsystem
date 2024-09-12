@@ -1,0 +1,81 @@
+.collectsample-container {
+  background-color: #e6f3ff;
+}
+
+.collectsample-header {
+  background-color: #cce6ff;
+  padding: 1rem;
+}
+
+.collectsample-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.collectsample-alert {
+  background-color: #e6ffe6;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.collectsample-content {
+  padding: 1rem;
+}
+
+.collectsample-info {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.collectsample-table {
+  margin-top: 1rem;
+}
+
+.collectsample-table table {
+  width: 100%;
+}
+
+.collectsample-table th {
+  background-color: #e6e6e6;
+  text-align: left;
+  padding: 0.5rem;
+}
+
+.collectsample-table td {
+  padding: 0.5rem;
+}
+
+.collectsample-transfer {
+  background-color: #3399ff;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.collectsample-run-number {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.collectsample-run-number input {
+  border: 1px solid #ccc;
+  margin: 0 0.5rem;
+  width: 4rem;
+  text-align: center;
+}
+
+.collectsample-change-date {
+  margin-left: 1rem;
+  color: #3399ff;
+}
+
+.collectsample-button {
+  margin-top: 1rem;
+  background-color: #33cc33;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}

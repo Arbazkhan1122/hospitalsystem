@@ -11,32 +11,10 @@ const SearchPatient = () => {
   const [patientsPerPage] = useState(20);
   const [showModal, setShowModal] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState(null);
-  const [formData, setFormData] = useState({
-    admissionDate: '',
-    admissionNotes: '',
-    careOfPersonName: '',
-    careOfPersonPhone: '',
-    depositAmount: '',
-    paymentOption: '',
-    membership: '',
-    priceCategory: '',
-    caseType: '',
-    requestingDepartment: '',
-    price: '',
-    depositBalance: '',
-    depositRemarks: '',
-    careOfPersonRelation: '',
-    admissionStatus: '',
-    wardDepartmentId: '',
-    wardBedFeatureId: '',
-    bedId: '',
-    admittedDoctorId: '',
-    allocatedNurseId: '',
-    newPatientVisitId: '',
-  });
 
-  // Fetch data from API
+  // Fetch data from the new API
   useEffect(() => {
+
     fetch('http://localhost:1415/api/new-patient-visits', {
       method: 'GET',
       headers: {
@@ -68,65 +46,97 @@ const SearchPatient = () => {
     setSearchTerm(event.target.value);
   };
 
+
   const filteredPatients = currentPatients.filter((patient) => {
-  if (!patient || !patient.firstName) return false; // Ensure patient and firstName exist
-  return patient.firstName.toLowerCase().includes(searchTerm.toLowerCase());
-});
+    if (!patient || !patient.firstName) return false; // Ensure patient and firstName exist
+    return patient.firstName.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleAdmit = (patient) => {
     setSelectedPatient(patient);
-    setFormData({
-      ...formData,
-      admissionDate: patient.admissionDate || '',
-      admissionNotes: patient.admissionNotes || '',
-      careOfPersonName: patient.careOfPersonName || '',
-      careOfPersonPhone: patient.careOfPersonPhone || '',
-      depositAmount: patient.depositAmount || '',
-      paymentOption: patient.paymentOption || '',
-      admissionStatus: 'Reserved', // Default status can be adjusted as needed
-      patientId: patient.patientId, // Ensure patientId is passed for the admission
-    });
     setShowModal(true);
   };
 
   const handleClose = () => setShowModal(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const submitAdmission = async () => {
+    if (!selectedPatient) {
+      console.error('No patient selected');
+      return;
+    }
 
-  const handleSubmit = () => {
-    const admissionData = {
-      ...formData,
-      patient: {
-        patientId: selectedPatient.patientId,
+    // Define the admission details
+    const admissionDetails = {
+      membership: "Premium",
+      priceCategory: "Category A",
+      caseType: "Emergency",
+      requestingDepartment: "Cardiology",
+      price: 5000.00,
+      admissionDate: new Date().toISOString().split('T')[0], // YYYY-MM-DD format
+      admissionNotes: "Urgent care required",
+      careOfPersonName: selectedPatient.careOfPerson,
+      careOfPersonPhone: selectedPatient.careOfPersonContact,
+      careOfPersonRelation: selectedPatient.relationWithPatient,
+      depositBalance: 2000.00,
+      depositAmount: 1000.00,
+      depositRemarks: "Initial deposit",
+      paymentOption: "Cash",
+      nhifno: selectedPatient.nhifno || 'N/A',
+      admissionStatus: "Reserved",
+      address: selectedPatient.address,
+      wardDepatment: {
+        wardDepartmentId: 2 // Replace with actual ID if needed
       },
-      // Additional nested objects can be updated based on actual form data needs
+      wardBedFeature: {
+        wardBedFeatureId: 1 // Replace with actual ID if needed
+      },
+      manageBed: {
+        bedId: 1 // Replace with actual ID if needed
+      },
+      admittedDoctor: {
+        employeeId: 1 // Replace with actual ID if needed
+      },
+      allocatedNurse: {
+        employeeId: 2 // Replace with actual ID if needed
+      },
+      newPatientVisit: {
+        newPatientVisitId: selectedPatient.newPatientVisitId
+      },
+      patient: {
+        patientId: selectedPatient.patientId
+      }
     };
 
-    fetch('http://localhost:1415/api/admissions/add-admission-details', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(admissionData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Success:', data);
-        setShowModal(false);
-        // Refresh the list after successful admission
-        fetch('http://localhost:1415/api/patients/getAllPatients') // Re-fetch data
-          .then((response) => response.json())
-          .then((data) => setPatients(data))
-          .catch((error) => console.error('Error fetching patient data after admission:', error));
-      })
-      .catch((error) => console.error('Error:', error));
+    try {
+      const response = await fetch('http://localhost:1415/api/admissions/add-admission-details', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(admissionDetails)
+      });
+
+      const text = await response.text(); // Get raw text to debug
+
+      console.log('Raw response:', text); // Log raw response for debugging
+
+      try {
+        const data = JSON.parse(text); // Attempt to parse JSON
+        console.log('Parsed JSON:', data);
+        handleClose(); // Close modal after successful admission
+      } catch (error) {
+        console.error('Failed to parse JSON:', error);
+        // Optionally display a user-friendly error message
+      }
+    } catch (error) {
+      console.error('Error adding admission details:', error);
+      // Optionally display a user-friendly error message
+    }
   };
+
 
   return (
     <div className="search-patient-container">
@@ -147,35 +157,33 @@ const SearchPatient = () => {
       <table className="patient-table">
         <thead>
           <tr>
-            <th className="search-patient-tablehead">Name</th>
-            <th className="search-patient-tablehead">Age</th>
-            <th className="search-patient-tablehead">Phone</th>
-            <th className="search-patient-tablehead">Address</th>
-            <th className="search-patient-tablehead">Hospital No</th>
-            <th className="search-patient-tablehead">Actions</th>
+            <th className='search-patient-tablehead'>Hospital No</th>
+            <th className='search-patient-tablehead'>Name</th>
+            <th className='search-patient-tablehead'>Age</th>
+            <th className='search-patient-tablehead'>Gender</th>
+            <th className='search-patient-tablehead'>Phone</th>
+            <th className='search-patient-tablehead'>Address</th>
+            <th className='search-patient-tablehead'>Visit Type</th>
+            <th className='search-patient-tablehead'>Status</th>
           </tr>
         </thead>
         <tbody>
-          {filteredPatients.length === 0 ? (
-            <tr>
-              <td colSpan="6">No patients found.</td>
+          {filteredPatients.map((patient) => (
+            <tr key={patient.newPatientVisitId}>
+              <td>{patient.patientQueue?.hospitalNumber || 'N/A'}</td>
+              <td>{`${patient.firstName} ${patient.middleName ? patient.middleName + ' ' : ''}${patient.lastName}`}</td>
+              <td>{patient.age}</td>
+              <td>{patient.gender}</td>
+              <td>{patient.phoneNumber}</td>
+              <td>{patient.address}</td>
+              <td>{patient.visitType}</td>
+              <td>
+                <button className="admit-button" onClick={() => handleAdmit(patient)}>
+                  Admit
+                </button>
+              </td>
             </tr>
-          ) : (
-            filteredPatients.map((patient) => (
-              <tr key={patient.patientId}>
-                <td>{`${patient.firstName} ${patient.middleName || ''} ${patient.lastName}`}</td>
-                <td>{patient.age}</td>
-                <td>{patient.phoneNumber}</td>
-                <td>{patient.address}</td>
-                <td>{patient.hospitalNo}</td>
-                <td>
-                  <button className="admit-button" onClick={() => handleAdmit(patient)}>
-                    Admit
-                  </button>
-                </td>
-              </tr>
-            ))
-          )}
+          ))}
         </tbody>
       </table>
 
@@ -198,69 +206,43 @@ const SearchPatient = () => {
           <Modal.Title>Admit Patient</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
-            <div className="form-group">
-              <label>Admission Date:</label>
-              <input
-                type="date"
-                name="admissionDate"
-                value={formData.admissionDate}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Admission Notes:</label>
-              <textarea
-                name="admissionNotes"
-                value={formData.admissionNotes}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Care Of Person Name:</label>
-              <input
-                type="text"
-                name="careOfPersonName"
-                value={formData.careOfPersonName}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Care Of Person Phone:</label>
-              <input
-                type="text"
-                name="careOfPersonPhone"
-                value={formData.careOfPersonPhone}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Deposit Amount:</label>
-              <input
-                type="number"
-                name="depositAmount"
-                value={formData.depositAmount}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Payment Option:</label>
-              <input
-                type="text"
-                name="paymentOption"
-                value={formData.paymentOption}
-                onChange={handleChange}
-              />
-            </div>
-            {/* Additional fields for admission can be added similarly */}
-          </form>
+          {selectedPatient && (
+            <form>
+
+              <div className="form-group">
+                <label>Patient Name:</label>
+                <input type="text" value={`${selectedPatient.firstName} ${selectedPatient.middleName || ''} ${selectedPatient.lastName}`} readOnly />
+              </div>
+              <div className="form-group">
+                <label>Age:</label>
+                <input type="text" value={selectedPatient.age} readOnly />
+              </div>
+              <div className="form-group">
+                <label>Gender:</label>
+                <input type="text" value={selectedPatient.gender} readOnly />
+              </div>
+              <div className="form-group">
+                <label>Phone Number:</label>
+                <input type="text" value={selectedPatient.phoneNumber} readOnly />
+              </div>
+              <div className="form-group">
+                <label>Address:</label>
+                <input type="text" value={selectedPatient.address} readOnly />
+              </div>
+              <div className="form-group">
+                <label>Visit Type:</label>
+                <input type="text" value={selectedPatient.visitType} readOnly />
+              </div>
+              {/* Add more fields as needed */}
+              <Button variant="primary" onClick={submitAdmission}>
+                Submit Admission
+              </Button>
+            </form>
+          )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            Admit
+            Close
           </Button>
         </Modal.Footer>
       </Modal>

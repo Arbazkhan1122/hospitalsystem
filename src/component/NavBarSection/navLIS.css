@@ -1,31 +1,36 @@
-/* .lis-N-imu-btn{
+.labLIS-N-imu-btn{
     display: flex;
     gap: 10px;
     border-bottom: 1px solid #cfcdcd;
     height: 37px;
+    /* justify-content:space-between; */
   }
-  .lis-page {
-      background-color: #e6f7ff;
+  .labLIS-page {
+      background-color: #CAF2FF;
       padding: 1px 1px  1px 20px;
       font-family: Arial, sans-serif;
     }
     
-    .tabs {
+    .labLIS-tabs {
       margin-bottom: 20px;
     }
     
-    .tab {
+    .labLIS-tab {
+      background-color: #CAF2FF;
       padding: 10px 20px;
       border: none;
+      /* background-color: #f0f0f0; */
       cursor: pointer;
     }
     
-    .tab.active {
+    .labLIS-tab.labLIS-active {
+      /* background-color: #007bff; */
       color: black;
       font-weight: bold;
+      border-bottom: 3px solid #2D68EA;
     }
     
-    .filters {
+    .labLIS-filters {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -33,66 +38,113 @@
       margin-bottom: 20px;
     }
    
-    .navLIS -show-data-btn {
+   
+    .labLIS-show-data-btn {
       height: 30px;
       border-radius: 5px;
-      background-color: #28a745;
+      background-color: #26C281;
       color: white;
       border: none;
       padding: 5px 10px;
       cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .labLIS-show-data-btn:hover {
+    background-color: #008CBA;
+    }
+
+
+    .labLIS-show-data-btn i{
+      font-size: 14px;
     }
     
     
     
-    .data-table {
+    .labLIS-data-table {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 20px;
+      background-color: white;
     }
     
-    .data-table th, .data-table td {
+    .labLIS-data-table th, .labLIS-data-table td {
       border: 1px solid #ddd;
       padding: 8px;
       text-align: left;
+      color:rgb(66, 66, 66);
+      font-size: 12px;
     }
     
-    .data-table th {
+    .labLIS-data-table th {
       background-color: #f2f2f2;
     }
     
-    .pagination {
-      text-align: right;
+    .labLIS-pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     
-    .pagination button {
-      margin-left: 10px;
+    .labLIS-pagination button {
+      background-color: #008CBA;
+      color: white;
+      border: none;
       padding: 5px 10px;
       cursor: pointer;
+      margin: 0 5px;
+      border-radius: 5px;
+      font-size: 12px;
     }
     
-    .nav-note-search-n-filter{
+    .labLIS-pagination span {
+      margin: 0 10px;
+      color: gray;
+      font-size: 12px;
+    }
+   
+    .labLIS-table-N-paginationDiv{
+      background-color: white;
+    }
+    
+    .labLIS-note-search-n-filter{
       display: flex;
       justify-content: space-between;
     }
-    .navNot-search-input {
+    .labLIS-Not-search-bar input {
       padding: 5px;
       width: 200px;
       border: 1px solid black;
-      border-radius: 15px;
+      border-radius: 2px;
     }
-  .navNot-search-bar{
+  .labLIS-Not-search-bar{
     position: relative;
     margin-bottom: 10px;
-   
+    /* padding-left: -10px; */
+    /* opacity: 0; */
+    /* animation: slideIn 1s forwards 0.8s; */
   }
-  .navNot-search-bar i{
+  .labLIS-Not-search-bar i{
     position: absolute;
     top: 8px;
     left: 180px;
-
+    /* display: flex;
+    justify-content: ; */
     color: gray;
   }
-  .navNote-sms-content{
+  .labLIS-Note-sms-content{
     margin-top: 15px;
-  } */
+  }
+  .labLIS-filter-findings span {
+color: #2D68EA;
+font-size: 12px;
+font-weight: bold;
+  }
+  .labLIS-filter-findings-Printbtn{
+    background-color: #659BE0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 8px 15px;
+  }

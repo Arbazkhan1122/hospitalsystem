@@ -1,58 +1,58 @@
-/* .imu-upload-page {
+.imuUpload-page {
     background-color: #CAF2FF;
     padding: 10px 10px 0px 0px;
     font-family: Arial, sans-serif;
   }
   
-  .filters {
+  .imuUpload-filters {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
   }
   
-  .date-range {
+  .imuUpload-date-range {
     display: flex;
     align-items: center;
+    background-color: #EBF7FF;
   }
   
-  .date-range span {
+  .imuUpload-date-range span {
     margin: 0 10px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 20px;
   }
   
-  .buttons {
+  .imuUpload-buttons {
     display: flex;
     gap: 10px;
   }
   
-  .load-data, .upload-to-imu {
-    padding: 8px 16px;
+  .imuUpload-load-data, .imuUpload-upload-to-imu {
+    padding: 5px 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
-  
-  .load-data {
-    background-color: #007bff;
+    font-size: 12px;
     color: white;
-  }
-  
-  .upload-to-imu {
     background-color: #007bff;
-    color: white;
   }
   
-  .iMU-Upload-search-bar {
+  
+  
+  .imuUpload-search-bar {
     position: relative;
     display: flex;
     margin-bottom: 20px;
     width: 10px;
   }
-  .iMU-Upload-search-bar i {
+  .imuUpload-search-bar i {
     position: absolute;
-    top: 8px;
-  left: 160px;
+    top: 7px;
+    left: 150px;
+    color: rgb(121, 118, 118);
   }
-  .iMU-Upload-search-bar input {
+  .imuUpload-search-bar input {
     flex-grow: 1;
     padding: 8px;
     border: 1px solid black;
@@ -61,54 +61,61 @@
     width: 200px !important;
   }
   
-
   
-  .upload-status {
+  .imuUpload-upload-status {
     margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 10px;
+    font-weight: bold;
   }
   
-  .upload-status label {
+  .imuUpload-upload-status label {
     margin-right: 20px;
   }
   
-  .iMU-Uploade-data-table {
+  .imuUpload-data-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
   }
   
-  .iMU-Uploade-data-table th, .iMU-Uploade-data-table td {
+  .imuUpload-data-table th, .imuUpload-data-table td {
     border: 1px solid #e6e3e3;
     padding: 8px;
     text-align: left;
   }
   
-  .iMU-Uploade-data-table th {
+  .imuUpload-data-table th {
     background-color: #A5ACAC;
     color: #5a5959;
     font-size: 12px;
   }
   
-  .pagination {
+  .imuUpload-pagination {
     text-align: right;
   }
   
-  .pagination button {
+  .imuUpload-pagination button {
+    background-color: #CAF2FF;
+    color: gray;
+    font-size: 12px;
+    font-weight: bold;
     margin-left: 10px;
     padding: 5px 10px;
     cursor: pointer;
+    border: none;
   }
-  .iMU-search-N-upload{
+  .imuUpload-search-N-upload{
     display: flex;
     justify-content: space-between;
   }
-  .iMUUpload-checkbx{
-
+  .imuUpload-checkbx{
+    /* width: 20%; */
+    font-size: 12px;
     gap: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-  } */
+  }

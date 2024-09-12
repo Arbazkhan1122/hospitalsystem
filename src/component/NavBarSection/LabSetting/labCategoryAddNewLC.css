@@ -1,0 +1,135 @@
+.labCategoryAddNewLC-container {
+  width: 100%;
+  /* max-width: 1200px; */
+  margin: auto;
+  border: 1px solid #ddd;
+  padding: 14px;
+  background-color: white;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  color: #525151;
+}
+
+.labCategoryAddNewLC-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 16px;
+}
+
+.labCategoryAddNewLC-header h3 {
+  margin: 0;
+  font-size: 14px;
+}
+
+.labCategoryAddNewLC-close-btn {
+  background-color: #E31D2D;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+
+
+.labCategoryAddNewLC-form-group {
+  /* flex: 1; */
+  display: flex;
+  /* text-align: center; */
+  /* align-items: left; */
+  font-size: 12px;
+  margin-left: 10px;
+  /* width: 220px; */
+  /* border: 1px solid red; */
+}
+
+.labCategoryAddNewLC-form-group label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: bold;
+  width: 400px;
+}
+
+.labCategoryAddNewLC-form-group input,
+.labCategoryAddNewLC-form-group select,
+.labCategoryAddNewLC-form-group textarea {
+  width: 60%;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  color: gray;
+}
+
+
+.labCategoryAddNewLC-add-component-btn {
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+
+
+.labCategoryAddNewLC-form-actions {
+  display: flex;
+  justify-content:right;
+  font-size: 12px;
+  gap: 8px;
+  margin-top: 16px;
+  border-top: 1px solid #ddd;
+  /* margin-bottom: 10px; */
+}
+
+.labCategoryAddNewLC-add-btn {
+  margin-top: 10px;
+  background-color: #0F63AF;
+  font-size: 12px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 8px 16px;
+}
+.labCategoryAddNewLC-plus-btn {
+  /* margin-top: 10px; */
+  background-color: #0F63AF;
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 1px 10px;
+  height: 30px;
+
+}
+.labCategoryAddNewLC-form-group-1row{
+  display: flex;
+  justify-content: space-between;
+  gap:30px;
+
+}
+.labCategoryAddNewLC-form-group-sub{
+  display: flex;
+  justify-content: space-between;
+  /* width: 600px; */
+  /* border: 1px solid red; */
+}
+
+.labCategoryAddNewLC-AddNew{
+  display: flex;
+  justify-content: center;
+}
+.labCategoryAddNewLC-AddNew a{
+  
+  color: #0F63AF;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: none;
+}

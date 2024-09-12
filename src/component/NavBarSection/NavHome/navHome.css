@@ -1,20 +1,20 @@
-/* .dashboard {
+.labNavHome-dashboard {
     background-color: #e6f7ff;
     padding: 20px;
     font-family: Arial, sans-serif;
   }
   
-  .date-range {
+  .labNavHome-date-range {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
   }
   
-  .date-range span {
+  .labNavHome-date-range span {
     margin: 0 10px;
   }
   
-  .ok-button {
+  .labNavHome-ok-button {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -23,54 +23,54 @@
     margin-left: 10px;
   }
   
-  .stats-container {
+  .labNavHome-stats-container {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
   }
   
-  .stat-box {
+  .labNavHome-stat-box {
     background-color: white;
     border-radius: 5px;
     padding: 10px;
     width: 23%;
   }
   
-  .stat-box h3 {
+  .labNavHome-stat-box h3 {
     margin-top: 0;
   }
   
-  .stat-box p {
+  .labNavHome-stat-box p {
     margin: 5px 0;
   }
   
-  .charts-container {
+  .labNavHome-charts-container {
     display: flex;
     justify-content: space-between;
   }
   
-  .chart {
+  .labNavHome-chart {
     background-color: white;
     border-radius: 5px;
     padding: 10px;
     width: 48%;
   }
   
-  .chart h3 {
+  .labNavHome-chart h3 {
     margin-top: 0;
   }
   
-  .abnormal-test-result select {
+  .labNavHome-abnormal-test-result select {
     width: 100%;
     padding: 5px;
   }
   
-  .dengue { border: 1px solid gray; }
-  .covid { border: 1px solid gray; }
-  .test-requests-today { border: 1px solid gray; }
-  .test-requests-till-date { border: 1px solid gray;}
+  .labNavHome-stat-box-dengue { border: 1px solid gray; }
+  .labNavHome-stat-box-covid { border: 1px solid gray; }
+  .labNavHome-stat-box-test-requests-today { border: 1px solid gray; }
+  .labNavHome-stat-box-test-requests-till-date { border: 1px solid gray;}
 
-  .test-dashboard {
+  .labNavHome-test-dashboard {
     display: flex;
     justify-content: space-between;
     background-color: #e6f7ff;
@@ -78,7 +78,7 @@
     font-family: Arial, sans-serif;
   }
   
-  .dashboard-item {
+  .labNavHome-dashboard-item {
     background-color: white;
     border-radius: 8px;
     padding: 20px;
@@ -86,52 +86,52 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .dashboard-item h2 {
+  .labNavHome-dashboard-item h2 {
     margin-top: 0;
     margin-bottom: 20px;
     font-size: 18px;
     color: #333;
   }
   
-  .no-data {
+  .labNavHome-no-data {
     display: flex;
     align-items: center;
     color: #666;
     font-size: 14px;
   }
   
-  .dot {
+  .labNavHome-dot {
     width: 10px;
     height: 10px;
     border-radius: 50%;
     margin-right: 10px;
   }
   
-  .orange {
+  .labNavHome-orange {
     background-color: orange;
   }
   
-  .green {
+  .labNavHome-green {
     background-color: green;
   }
   
-  .test-completed {
+  .labNavHome-test-completed {
     text-align: center;
   }
   
-  .test-count {
+  .labNavHome-test-count {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
   
-  .count {
+  .labNavHome-count {
     font-size: 18px;
     font-weight: bold;
     color: #333;
   }
   
-  .label {
+  .labNavHome-label {
     font-size: 14px;
     color: #666;
-  } */
+  }

@@ -1,113 +1,95 @@
-/* .sam-Coll-list-requisition {
-    background-color: #CAF2FF;
-    padding: 0px 15px 0px 10px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .sampCollec-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .samples-collected {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  
-  .filters {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .date-range {
-    display: flex;
-    align-items: center;
-  }
-  
-  .date-range span {
-    margin: 0 10px;
-  }
-  
-  .ok-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .sam-Coll-search-bar input {
-    padding: 5px;
-    width: 200px;
-  }
-  .sam-Coll-search-bar i{
-    position: relative;
-    top: 3px;
-  left: 205px;
-  }
-  
-  .results-info {
-    display: flex;
-    align-items: center;
-    padding-bottom: 10px;
-  }
-  
-  .print-button {
-    background-color: #008CBA;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: 10px;
-  }
-  
-  .requisition-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  .requisition-table th, .requisition-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .requisition-table th {
-    background-color: #f2f2f2;
-  }
-  
-  .no-data {
-    background-color: #fff9c4;
-    text-align: center;
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .pagination button {
-    background-color: #008CBA;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin: 0 5px;
-  }
-  
-  .pagination span {
-    margin: 0 10px;
-  }
-  .sam-Coll-search-N-result{
-    display: flex;
-    justify-content: space-between;
-  } */
+/* sampleCollection.css */
+
+.labContainer {
+  padding: 16px;
+  background-color: #e0f7fa;
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+.labHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.labTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.labButton {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.labButtonGreen {
+  background-color: #4caf50;
+  color: white;
+}
+
+.labButtonPrint {
+  background-color: #2196f3;
+  color: white;
+}
+
+.labDateFilters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.labDateFilterLabel {
+  font-weight: 500;
+}
+
+.labSearchPrint {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.labSearchInput {
+  flex: 1;
+}
+
+.labTableWrapper {
+  overflow-x: auto;
+}
+
+.labTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.labTableHeader {
+  background-color: #f1f1f1;
+}
+
+.labTableCell {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.labPagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.labPaginationControls {
+  display: flex;
+  gap: 8px;
+}
+
+.labPaginationButton {
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,7 +1,10 @@
-import React from 'react';
-// import './App.css';
-import "../NavBarSection/navWardBilling.css"
 
+import React, { useState } from 'react';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import "../NavBarSection/navWardBilling.css"
+// import LabAddResultWorkList from './labAddresultWorkList';
+import LabWardBillingViewDetails from './labWardBillingViewDetails';
 const patients = [
   { hospitalNo: '2407003799', name: 'ANGEL VARGAS MONTERO', ageSex: '32 Y/F', contact: '0926641813', admittedDate: '2024-07-30 11:06', admittingDoctor: 'Mrs. BRENDA MWANIA W...', inpatientNo: 'H2400023', wardBed: 'ICU-02' },
   { hospitalNo: '2407003800', name: 'NORALINE SHIT PACQUIO', ageSex: '30 Y/F', contact: '0964823145', admittedDate: '2024-07-30 09:37', admittingDoctor: 'Dr. Emmanuel Bassy', inpatientNo: 'H2400022', wardBed: 'MATERNITY WA...' },
@@ -19,17 +22,68 @@ const patients = [
 ];
 
 function NavWardBilling() {
+  const handlePrint = () => {
+    const doc = new jsPDF();
+
+    // Add the current date and time at the top
+    const currentDate = new Date().toLocaleString();
+    doc.text(`Printed on: ${currentDate}`, 10, 10);
+
+    // Define the table columns
+    const columns = ["Hospital No.", "Patient Name", "Age/Sex", "Contact", "Admitted Date", "Admitting Doctor", "Inpatient No.", "Ward/Bed"];
+    
+    // Map the data to be printed in the table
+    const rows = patients.map(patient => [
+      patient.hospitalNo,
+      patient.name,
+      patient.ageSex,
+      patient.contact,
+      patient.admittedDate,
+      patient.admittingDoctor,
+      patient.inpatientNo,
+      patient.wardBed
+    ]);
+
+    // Generate the table
+    doc.autoTable({
+      startY: 20,
+      head: [columns],
+      body: rows
+    });
+
+    // Open PDF in a new window instead of downloading
+    const pdfOutput = doc.output('blob');
+    const pdfURL = URL.createObjectURL(pdfOutput);
+    window.open(pdfURL);
+  };
+  const [showViewDetails, setShowViewDetails] = useState(false);
+  const [selectedPatient, setSelectedPatient] = useState(null);
+
+  // ... (keep the handlePrint function as is)
+
+  const handleViewDetail = (patient) => {
+    setSelectedPatient(patient);
+    setShowViewDetails(true);
+  };
+
+  const handleCloseViewDetails = () => {
+    setShowViewDetails(false);
+    setSelectedPatient(null);
+  };
+
   return (
-    <div className="app">
-      <div className="search-container">
-        <input type="text" placeholder="Search" className="search-input" />
-        <button className="search-btn">🔍</button>
+    <div className="navWardBilling">
+      <div className="navWardBilling-search-results">
+        <div className="navWardBilling-search-container">
+          <i className="fa-solid fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search" className="navWardBilling-search-input" />
+        </div>
+        <div className="navWardBilling-results-info">
+          <span>Showing 13 / 13 results</span>
+          <button className="navWardBilling-print-btn" onClick={handlePrint}>Print</button>
+        </div>
       </div>
-      <div className="results-info">
-        Showing 13 / 13 results
-        <button className="print-btn">Print</button>
-      </div>
-      <table className="patient-table">
+      <table className="navWardBilling-patient-table">
         <thead>
           <tr>
             <th>Hospital No.</th>
@@ -54,19 +108,31 @@ function NavWardBilling() {
               <td>{patient.admittingDoctor}</td>
               <td>{patient.inpatientNo}</td>
               <td>{patient.wardBed}</td>
-              <td><button className="view-btn">View Detail</button></td>
+              <td><button className="navWardBilling-view-btn"onClick={() => handleViewDetail(patient)}>
+                <i className="fa-regular fa-eye"></i>
+                 View Detail</button></td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="pagination">
-        <span>1 to 13 of 13</span>
-        <button disabled>First</button>
-        <button disabled>Previous</button>
-        <span>Page 1 of 1</span>
-        <button disabled>Next</button>
-        <button disabled>Last</button>
+      <div className="navWardBilling-pagination">
+        <span>0 to 0 of 0</span>
+        <button>First</button>
+        <button>Previous</button>
+        <span>Page 0 of 0</span>
+        <button>Next</button>
+        <button>Last</button>
       </div>
+      {showViewDetails && (
+        <div className="navWardBilling-popup-overlay">
+          <div className="navWardBilling-popup-content">
+            <LabWardBillingViewDetails 
+              patient={selectedPatient} 
+              onClose={handleCloseViewDetails} 
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { RiTeamFill } from "react-icons/ri";
 import './hospitalNav.css';
 
-const HospitalNav = () => {
+const NavigationBar = () => {
   return (
     <nav className="navigation-bar">
       <ul>
@@ -25,4 +25,4 @@ const HospitalNav = () => {
   );
 }
 
-export default HospitalNav;
+export default NavigationBar;

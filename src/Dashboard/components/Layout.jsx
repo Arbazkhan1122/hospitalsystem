@@ -7,7 +7,7 @@ import AppointmentBookingList from "../../component/Appointment/AppointmentRouti
 import AppointmentRouting from "../../component/Appointment/AppointmentRouting";
 import AppRoutes from "../../component/Employee/AppRoutes";
 import Inventory from "../../component/Inventory1/Inventory";
-import Incentive from "../../component/incentive/items/Incentive";
+import Incentive from "../../component/IncentiveMain/incentiveApp";
 import Lab from "../../component/NavBarSection/Lab";
 import Emergency from "../../component/Emergency/Emergency"
 import Utilitiesmain from "../../component/UTILITIES/utilitiesmain";
@@ -45,35 +45,35 @@ const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
-  const [showInventory,setShowInventory]=useState(false);
-  const [showIncentive,setshowIncentive]=useState(false);
-  const [showLaboratory,setShowLaboratory]=useState(false);
-  const [showUtilites,setShowUtilites]=useState(false);
-  const [showEmergency,setShowEmergency]=useState(false);
-  const [showSystemAdmin,setShowSystemAdmin]=useState(false)
-  const [showSocialService,setShowSocialService]=useState(false)
-  const [showDisprensary,setShowDisprensary]=useState(false)
-  const [showDynamicReport,setShowDynamicReport]=useState(false)
-  const [showReport,setShowReport]=useState(false)
-  const [showNurse,setShowNurse]=useState(false)
-  const [showDoctor ,setShowDoctor]=useState(false)
-  const [showOprationTheater,setShowOprationTheater]=useState(false)
-  const [showNhif,setShowNhif]=useState(false)
-  const [showADT,setShowATD]=useState(false)
-  const [showMKT,setShowMKT]=useState(false)
-  const [showClinical,setShowClinical]=useState(false)
-  const [showVaccination ,setShowVaccination]=useState(false)
-  const [showFixAssets,setShowFixAssets]=useState(false)
-  const [showCSSD,setShowCSSD]=useState(false)
-  const [showAccounting,setShowAccounting]=useState(false)
-  const [showQueuemgnt,setShowQueuemgnt]=useState(false)
-  const [showMaternity,setShowMaternity]=useState(false)
-  const [showHelpDesk,setShowHelpDesk]=useState(false)
-  const [showRadiology,setShowRadiology]=useState(false)
-  const [showPharmacy,setShowPharmacy]=useState(false)
-  const [showPatient,setShowPatient]=useState(false)
-  const [showVerification,setShowVerification]=useState(false)
-  const [showSubStore,setShowSubStore]=useState(false)
+  const [showInventory, setShowInventory] = useState(false);
+  const [showIncentive, setshowIncentive] = useState(false);
+  const [showLaboratory, setShowLaboratory] = useState(false);
+  const [showUtilites, setShowUtilites] = useState(false);
+  const [showEmergency, setShowEmergency] = useState(false);
+  const [showSystemAdmin, setShowSystemAdmin] = useState(false)
+  const [showSocialService, setShowSocialService] = useState(false)
+  const [showDisprensary, setShowDisprensary] = useState(false)
+  const [showDynamicReport, setShowDynamicReport] = useState(false)
+  const [showReport, setShowReport] = useState(false)
+  const [showNurse, setShowNurse] = useState(false)
+  const [showDoctor, setShowDoctor] = useState(false)
+  const [showOprationTheater, setShowOprationTheater] = useState(false)
+  const [showNhif, setShowNhif] = useState(false)
+  const [showADT, setShowATD] = useState(false)
+  const [showMKT, setShowMKT] = useState(false)
+  const [showClinical, setShowClinical] = useState(false)
+  const [showVaccination, setShowVaccination] = useState(false)
+  const [showFixAssets, setShowFixAssets] = useState(false)
+  const [showCSSD, setShowCSSD] = useState(false)
+  const [showAccounting, setShowAccounting] = useState(false)
+  const [showQueuemgnt, setShowQueuemgnt] = useState(false)
+  const [showMaternity, setShowMaternity] = useState(false)
+  const [showHelpDesk, setShowHelpDesk] = useState(false)
+  const [showRadiology, setShowRadiology] = useState(false)
+  const [showPharmacy, setShowPharmacy] = useState(false)
+  const [showPatient, setShowPatient] = useState(false)
+  const [showVerification, setShowVerification] = useState(false)
+  const [showSubStore, setShowSubStore] = useState(false)
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -118,127 +118,127 @@ const Layout = () => {
     resetAllToggles();
     setShowSetting(!showSetting);
   };
-   const toggelInventory = () => {
+  const toggelInventory = () => {
     resetAllToggles();
     setShowInventory(!showInventory);
   };
-   const toggelIncentive = () => {
+  const toggelIncentive = () => {
     resetAllToggles();
     setshowIncentive(!showIncentive);
   };
-  const toggelLaboratory=()=>{
+  const toggelLaboratory = () => {
     resetAllToggles();
     setShowLaboratory(!showLaboratory);
   }
-  const toggelUtilites=()=>{
+  const toggelUtilites = () => {
     resetAllToggles();
     setShowUtilites(!showUtilites)
   }
-  const toggelEmergency=()=>{
+  const toggelEmergency = () => {
     resetAllToggles();
     setShowEmergency(!showEmergency)
   }
 
-  const toggelSystemAdmin=()=>{
+  const toggelSystemAdmin = () => {
     resetAllToggles();
     setShowSystemAdmin(!showSystemAdmin);
   }
-  const toggelSocialService =()=>{
+  const toggelSocialService = () => {
     resetAllToggles();
     setShowSocialService(!showSocialService)
   }
-  const toggelDisprensary=()=>{
+  const toggelDisprensary = () => {
     resetAllToggles();
     setShowDisprensary(!showDisprensary)
   }
-  const toggelDynamicReport=()=>{
+  const toggelDynamicReport = () => {
     resetAllToggles();
     setShowDynamicReport(!showDynamicReport)
   }
-  const toggelReport=()=>{
+  const toggelReport = () => {
     resetAllToggles();
     setShowReport(!showReport)
   }
-  const toggelNurse=()=>{
+  const toggelNurse = () => {
     resetAllToggles();
     setShowNurse(!showNurse)
   }
-  const toggelDoctor=()=>{
-  resetAllToggles()
-  setShowDoctor(!showDoctor)
+  const toggelDoctor = () => {
+    resetAllToggles()
+    setShowDoctor(!showDoctor)
   }
-  const toggelOprationTheater=()=>{
+  const toggelOprationTheater = () => {
     resetAllToggles()
     setShowOprationTheater(!showOprationTheater)
   }
-  const toggelNhif=()=>{
+  const toggelNhif = () => {
     resetAllToggles()
     setShowNhif(!showNhif)
   }
-  const toggelADT=()=>{
+  const toggelADT = () => {
     resetAllToggles()
     setShowATD(!showADT)
   }
-  const toggelMKT=()=>{
+  const toggelMKT = () => {
     resetAllToggles()
     setShowMKT(!showMKT)
   }
-  const toggelClinical=()=>{
+  const toggelClinical = () => {
     resetAllToggles();
     setShowClinical(!showClinical)
   }
-  const toggelVaccination=()=>{
+  const toggelVaccination = () => {
     resetAllToggles()
     setShowVaccination(!showVaccination)
   }
-  const toggelFixAssests=()=>{
-    resetAllToggles() 
+  const toggelFixAssests = () => {
+    resetAllToggles()
     setShowFixAssets(!showFixAssets)
   }
-  const toggelCSSD=()=>{
+  const toggelCSSD = () => {
     resetAllToggles()
     setShowCSSD(!showCSSD)
   }
-  const toggelAccounting=()=>{
+  const toggelAccounting = () => {
     resetAllToggles()
     setShowAccounting(!showAccounting)
   }
-  const toggelQueuemgnt=()=>{
+  const toggelQueuemgnt = () => {
     resetAllToggles()
     setShowQueuemgnt(!showQueuemgnt)
   }
-  const toggelMaternity=()=>{
+  const toggelMaternity = () => {
     resetAllToggles()
     setShowMaternity(!showMaternity)
   }
-  const toggelHelpDesk=()=>{
+  const toggelHelpDesk = () => {
     resetAllToggles()
     setShowHelpDesk(!showHelpDesk)
   }
-  const toggelRadiology=()=>{
+  const toggelRadiology = () => {
     resetAllToggles()
     setShowRadiology(!showRadiology)
   }
-  const toggelPharmacy=()=>{
+  const toggelPharmacy = () => {
     resetAllToggles()
     setShowPharmacy(!showPharmacy)
   }
-  const toggelPatient=()=>{
+  const toggelPatient = () => {
     resetAllToggles()
     setShowPatient(!showPatient)
   }
-  const toggelVerification=()=>{
+  const toggelVerification = () => {
     resetAllToggles()
     setShowVerification(!showVerification)
   }
-  const toggelSubstore=()=>{
+  const toggelSubstore = () => {
     resetAllToggles()
     setShowSubStore(!showSubStore)
   }
   return (
     <div className="hrmsLayout">
-      <Sidebar 
-        onAppointmentClick={toggelAppointment} 
+      <Sidebar
+        onAppointmentClick={toggelAppointment}
         onSettings={toggelSetting}
         onInventory={toggelInventory}
         onIncentive={toggelIncentive}
@@ -269,43 +269,43 @@ const Layout = () => {
         onPatient={toggelPatient}
         onVerification={toggelVerification}
         onSubstoreClick={toggelSubstore}
-        isOpen={isOpen} 
-        setIsOpen={setIsOpen} 
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
       />
       <div className={`hrmsLayoutMainContent ${isOpen ? "hrmsLayoutMainContentOpen" : "hrmsLayoutMainContentClosed"}`}>
         <Header />
         <main className="hrmsLayoutMainPadding">
-          {showAppointment && <AppointmentRouting/>}
-          {showSetting && <AppRoutes/>}
-          {showInventory && <Inventory/>}
-          {showIncentive && <Incentive/>}
-          {showLaboratory && <Lab/>}
-          {showUtilites && <Utilitiesmain/>}
-          {showEmergency && <Emergency/>}
-          {showSystemAdmin && <SystemAdmin/>}
-          {showSocialService && <SocialServicePage/>}
-          {showDisprensary && <Disprensary/>}
-          {showDynamicReport && <DynamicReport/>}
-          {showReport && <ReportMainRouting/>}
-          {showNurse && <NursingMainRouting/>}
-          {showDoctor && <DoctorDashBoard/>}
-          {showOprationTheater && <Otmain/>}
-          {showNhif && <Nhif/>}
-          {showADT && <HomePage/>}
-          {showMKT && <Mkrtrefrrance/>}
-          {showClinical && <Clinical/>}
-          {showVaccination && <Vaccination/>}
-          {showFixAssets && <FixedAssets/>}
-          {showCSSD && <Cssd/>}
-          {showAccounting && <AccountComponent/>}
-          {showQueuemgnt && <PatientQueue/>}
-          {showMaternity && <AppConfig/>}
-          {showHelpDesk && <HelpDeskRouting/>}
-          {showRadiology && <RadiologyRouting/>}
-          {showPharmacy && <PharmacyRouting/>}
-          {showPatient && <PatientRouting/>}
-          {showVerification && <VerificationRouting/>}
-          {showSubStore && <SubstoreRouting/>}
+          {showAppointment && <AppointmentRouting />}
+          {showSetting && <AppRoutes />}
+          {showInventory && <Inventory />}
+          {showIncentive && <Incentive />}
+          {showLaboratory && <Lab />}
+          {showUtilites && <Utilitiesmain />}
+          {showEmergency && <Emergency />}
+          {showSystemAdmin && <SystemAdmin />}
+          {showSocialService && <SocialServicePage />}
+          {showDisprensary && <Disprensary />}
+          {showDynamicReport && <DynamicReport />}
+          {showReport && <ReportMainRouting />}
+          {showNurse && <NursingMainRouting />}
+          {showDoctor && <DoctorDashBoard />}
+          {showOprationTheater && <Otmain />}
+          {showNhif && <Nhif />}
+          {showADT && <HomePage />}
+          {showMKT && <Mkrtrefrrance />}
+          {showClinical && <Clinical />}
+          {showVaccination && <Vaccination />}
+          {showFixAssets && <FixedAssets />}
+          {showCSSD && <Cssd />}
+          {showAccounting && <AccountComponent />}
+          {showQueuemgnt && <PatientQueue />}
+          {showMaternity && <AppConfig />}
+          {showHelpDesk && <HelpDeskRouting />}
+          {showRadiology && <RadiologyRouting />}
+          {showPharmacy && <PharmacyRouting />}
+          {showPatient && <PatientRouting />}
+          {showVerification && <VerificationRouting />}
+          {showSubStore && <SubstoreRouting />}
         </main>
       </div>
     </div>

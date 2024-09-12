@@ -8,9 +8,9 @@ function IMUUploadPage() {
   const [endDate, setEndDate] = useState(new Date());
 
   return (
-    <div className="imu-upload-page">
-      <div className="filters">
-        <div className="date-range">
+    <div className="imuUpload-page">
+      <div className="imuUpload-filters">
+        <div className="imuUpload-date-range">
           <span>From:</span>
           <DatePicker
             selected={startDate}
@@ -31,27 +31,27 @@ function IMUUploadPage() {
             dateFormat="MM/dd/yyyy"
           />
         </div>
-        <div className="buttons">
-          <button className="load-data">🔄 Load Data</button>
-          <button className="upload-to-imu">⬆️ Upload To IMU</button>
+        <div className="imuUpload-buttons">
+          <button className="imuUpload-load-data"><i class="fa-brands fa-instalod"></i> Load Data</button>
+          <button className="imuUpload-upload-to-imu"><i class="fa-solid fa-upload"></i> Upload To IMU</button>
         </div>
       </div>
 
-<div className='iMU-search-N-upload'>
-      <div className="iMU-Upload-search-bar">
+<div className='imuUpload-search-N-upload'>
+      <div className="imuUpload-search-bar">
       <i className="fa-solid fa-magnifying-glass"></i>
         <input type="text" placeholder="Search" />
         {/* <button>🔍</button> */}
       </div>
 
-      <div className="upload-status">
-        <label className='iMUUpload-checkbx'><input type="radio" name="status" checked /> UploadPending</label>
-        <label className='iMUUpload-checkbx'><input type="radio" name="status" /> UploadCompleted</label>
-        <label className='iMUUpload-checkbx'><input type="radio" name="status" /> All</label>
+      <div className="imuUpload-upload-status">
+        <label className='imuUpload-checkbx'><input type="radio" name="status" checked /> UploadPending</label>
+        <label className='imuUpload-checkbx'><input type="radio" name="status" /> UploadCompleted</label>
+        <label className='imuUpload-checkbx'><input type="radio" name="status" /> All</label>
       </div>
       </div>
 
-      <table className="iMU-Uploade-data-table">
+      <table className="imuUpload-data-table">
         <thead>
           <tr>
             <th><input type="checkbox" /></th>
@@ -70,7 +70,7 @@ function IMUUploadPage() {
         </tbody>
       </table>
 
-      <div className="pagination">
+      <div className="imuUpload-pagination">
         <button>Previous</button>
         <button>Next</button>
       </div>

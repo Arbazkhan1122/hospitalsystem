@@ -1,10 +1,10 @@
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.css';
 import NavigationBar from './hospitalNav';
 import Notification from './navNotification'
 import SampleCollection from './sampleCollection';
-import AddResults  from './addResults';
+import AddResults from './addResults';
 import PendingReports from './pendingReports';
 
 import FinalReports from './finalReports';
@@ -24,17 +24,18 @@ import LabCategories from './LabSetting/labCategories';
 import MapGovernmentItemxs from './LabSetting/mapGovernmentItems';
 // import SampleCollection from './NavBarSection/sampleCollection';
 import HospitalNav from "./hospitalNav"
-const Lab=()=> {
+import CollectSample from './CollectSample';
+const Lab = () => {
 
   return (
     <>
-      
-     
+
+
       <div className="content">
-             <NavigationBar />
+        <NavigationBar />
         <Routes>
           <Route path="/" element={<HospitalNav />} />
-          <Route path="/notification" element={<Notification />} />          
+          <Route path="/notification" element={<Notification />} />
           <Route path="/navHome" element={<NavHome />} />
           <Route path="/sampleCollection" element={<SampleCollection />} />
           <Route path="/add-results" element={<AddResults />} />
@@ -46,15 +47,16 @@ const Lab=()=> {
           <Route path="/report-dispatch" element={<NavReportDispatch />} />
           <Route path="/lis" element={<NavLIS />} />
           <Route path="/labTest" element={<LabTest />} />
-          <Route path="/labTestComponent" element={<LabTestComponent/>}/>
-          <Route path="/reportTemplate" element={<ReportTemplate/>}/>
-          <Route path="/defaultSignatories" element={<DefaultSignatories/>}/>
-          <Route path="/vendorsLab" element={<VendorsLab/>}/>
-          <Route path="/lookUps" element={<LookUps/>}/>
-          <Route path="/labCategories" element={<LabCategories/>}/>
-          <Route path="/mapGovernmentItemxs" element={<MapGovernmentItemxs/>}/>
+          <Route path="/labTestComponent" element={<LabTestComponent />} />
+          <Route path="/reportTemplate" element={<ReportTemplate />} />
+          <Route path="/defaultSignatories" element={<DefaultSignatories />} />
+          <Route path="/vendorsLab" element={<VendorsLab />} />
+          <Route path="/lookUps" element={<LookUps />} />
+          <Route path="/labCategories" element={<LabCategories />} />
+          <Route path="/mapGovernmentItemxs" element={<MapGovernmentItemxs />} />
+          <Route path="/collect-sample/:id" element={<CollectSample />}></Route>
 
-          
+
         </Routes>
       </div>
     </>

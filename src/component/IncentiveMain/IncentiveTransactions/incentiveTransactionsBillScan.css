@@ -1,0 +1,80 @@
+
+  
+  .incentiveTransactionsBillScan-container {
+    background-color: #CAF2FF;
+    /* padding: 10px; */
+    width: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  .incentiveTransactionsBillScan-container h3{
+font-weight: normal;
+margin: 10px;
+  }
+  
+  .incentiveTransactionsBillScan-tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #dad7d7;
+    margin-bottom: 20px;
+  }
+  
+  .incentiveTransactionsBillScan-tab {
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .incentiveTransactionsBillScan-selected {
+    color: #039be5;
+    border-bottom: 4px solid #2D68EA;
+  }
+  
+  .incentiveTransactionsBillScan-filters {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .incentiveTransactionsBillScan-date-range {
+    background-color: #EBF7FF;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 30px;
+  }
+  
+  .incentiveTransactionsBillScan-icon-button {
+    background-color: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .incentiveTransactionsBillScan-star{
+    color: #0000FF;
+  }
+  
+  .incentiveTransactionsBillScan-load-button {
+    background-color: #5867DD;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 7px 15px;
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 100px;
+  }
+  
+  .incentiveTransactionsBillScan-search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .incentiveTransactionsBillScan-info-text {
+    color: #666;
+  }
+  
