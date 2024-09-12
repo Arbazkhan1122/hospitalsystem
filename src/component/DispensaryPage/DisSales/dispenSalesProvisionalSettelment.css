@@ -24,7 +24,6 @@
     align-items: center;
     gap: 10px;
     font-size: 12px;
-    font-weight: bold;
     margin-left: 10px;
     /* border: 1px solid red; */
     /* width: 300px; */
@@ -50,6 +49,7 @@
 
 .dispenSalesProvisionalSettelment-search-bar input[type="text"] {
   width: 200px; /* Adjust width for the search bar */
+  font-size: 14px;
 }
 
 .dispenSalesProvisionalSettelment-select-filters select {
@@ -118,7 +118,6 @@
   }
   .dispenSalesProvisionalSettelment-checkBox label {
 font-size: 14px;
-font-weight: bold;
 color: green;
 }
   
@@ -140,7 +139,6 @@ color: green;
   .dispenSalesProvisionalSettelment-date-range label{
     margin-left: 20px;
     font-size: 14px;
-    font-weight: bold;
   }
   
   .dispenSalesProvisionalSettelment-date-range input[type="date"] {
@@ -190,14 +188,13 @@ color: green;
   
   .dispenSalesProvisionalSettelment-results-info {
     text-align: right;
-    color: #0011ff;
-    font-size: 12px;
-    font-weight: bold;
+    color: black;
+    font-size: 14px;
 }
 .dispenSalesProvisionalSettelment-print-btn{
       margin-left: 10px;
       /* gap: 10px; */
-    background-color: #0011ff ;
+    background-color: var(--button-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -223,6 +220,7 @@ color: green;
   .dispenSalesProvisionalSettelment-table-N-paginat th {
     /* background-color: red; */
     background-color: #F3F3F3;
+    font-size: 16px;
   }
   
   .dispenSalesProvisionalSettelment-table-N-paginat tr:nth-child(even) {

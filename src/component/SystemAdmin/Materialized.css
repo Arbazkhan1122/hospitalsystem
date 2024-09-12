@@ -1,4 +1,4 @@
-.materialized-sales-view {
+/* .materialized-sales-view {
   background-color: #e6f2ff;
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -79,7 +79,7 @@
   border-radius: 4px;
 }
 
-/* Make the table responsive */
+
 .sales-table-container {
   overflow-x: auto;
 }
@@ -88,7 +88,7 @@
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  table-layout: fixed; /* Fixed table layout */
+  table-layout: fixed; 
 }
 
 .sales-table th, .sales-table td {
@@ -96,9 +96,9 @@
   padding: 8px;
   text-align: left;
   font-size: 14px;
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflowed text */
-  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
 }
 
 .sales-table th {
@@ -130,4 +130,4 @@
 
 .pagination span {
   margin: 0 10px;
-}
+} */

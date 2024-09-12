@@ -33,22 +33,7 @@
     background-color: #e6f7ff;
   }
   
-  .Admission-patientsTable {
-    width: 70%;
-    border-collapse: collapse;
-  }
   
-  .Admission-patientsTable th,
-  .Admission-patientsTable td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
-    background-color:lightgray;
-  }
-  .Actions-actions {
-    display: flex;
-    gap: 5px;
-  }
   
   .Actions-btn {
     padding: 5px 10px;
@@ -140,15 +125,8 @@
     background-color: #e4f4ff;
   }
   
-  .total-row {
-    background-color: #d3d3d3;
-    font-weight: bold;
-  }
+ 
   
-  .info-icon {
-    font-size: 12px;
-    cursor: pointer;
-  }
 
   .Report-pagination{
     text-align: center;
@@ -178,18 +156,8 @@
   .InpatientCensus-report-table tr:nth-child(odd) {
     background-color: #e4f4ff;
   }
-  
-  .total-row {
-    background-color: #ada8a8;
-    font-weight: bold;
-  }
-  
-  .info-icon {
-    font-size: 12px;
-    cursor: pointer;
-  }
-
-  .print-button {
+ 
+  /* .print-button {
     background-color: #007bff;
     color: white;
     border: none;
@@ -197,15 +165,15 @@
     cursor: pointer;
     margin-top: 20px;
   }
-  
-  .print-icon {
+   */
+  /* .print-icon {
     margin-right: 5px;
   }
   .print-button-container {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-  }
+  } */
 
   .Admitted-Patient-tableContainer{
     width: 100%;
@@ -264,16 +232,6 @@
   padding: 10px;
   border: 1px solid #c1e4f8;
   background-color: #e4f4ff;
-}
-
-.total-row {
-  background-color: #d3d3d3;
-  font-weight: bold;
-}
-
-.info-icon {
-  font-size: 12px;
-  cursor: pointer;
 }
 
 

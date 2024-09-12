@@ -3,26 +3,18 @@
 
 .dispenSalesProvisionalBill-active-imaging-request {
     font-family: Arial, sans-serif;
-    /* max-width: 1200px; */
-    /* margin: 0 auto; */
-    /* padding: 10px; */
-    /* background-color: red; */
+    
   }
   
   .dispenSalesProvisionalBill-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* margin-bottom: 20px; */
   }
   
-  /* .dispenSalesProvisionalBill-header h4 {
-    color: #3f8fdf;
-    margin: 0;
-  } */
+  
   .dispenSalesProvisionalBill-CreateRequisition{
       margin-left: 10px;
-      /* gap: 10px; */
       background-color: #26C281;
       color: white;
       border: none;
@@ -34,10 +26,6 @@
       text-align: center;
     }
     
-    .dispenSalesProvisionalBill-CreateRequisition:hover{
-    background-color: #0011ff ;
-    }
- 
   .dispenSalesProvisionalBill-checkBox select {
     padding: 3px 5px 3px 5px;
     background-color: #f0f0f0;
@@ -46,7 +34,6 @@
   }
   .dispenSalesProvisionalBill-checkBox label {
 font-size: 14px;
-font-weight: bold;
 color: green;
 }
   
@@ -67,7 +54,6 @@ color: green;
   .dispenSalesProvisionalBill-date-range label{
     margin-left: 20px;
     font-size: 14px;
-    font-weight: bold;
   }
   
   .dispenSalesProvisionalBill-date-range input[type="date"] {
@@ -83,7 +69,7 @@ color: green;
   }
   
   .dispenSalesProvisionalBill-ok-button {
-    background-color: #4CAF50;
+    background-color: var(--button-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -108,28 +94,22 @@ color: green;
   left: 205px;
   }
   
-  /* .search-bar button {
-    padding: 5px 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    cursor: pointer;
-  } */
+ 
   
   .dispenSalesProvisionalBill-results-info {
     text-align: right;
-    color: #0011ff;
+    color: black;
     font-size: 12px;
-    font-weight: bold;
 }
 .dispenSalesProvisionalBill-print-btn{
       margin-left: 10px;
       /* gap: 10px; */
-    background-color: #0011ff ;
+    background-color:var(--button-color) ;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
-    font-size: 12px;
+    font-size: 14px;
 
   }
   
@@ -143,13 +123,15 @@ color: green;
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    font-size: 12px;
+    font-size: 14px;
     color: rgb(70, 69, 69);
 }
   
   .dispenSalesProvisionalBill-table-N-paginat th {
     /* background-color: red; */
     background-color: #F3F3F3;
+    font-size: 16px;
+
   }
   
   .dispenSalesProvisionalBill-table-N-paginat tr:nth-child(even) {
