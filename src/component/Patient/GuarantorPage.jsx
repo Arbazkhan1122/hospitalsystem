@@ -1,3 +1,4 @@
+ //prachi parab patientRegisteration css 13/9
 import React, { useEffect, useState } from 'react';
 import './GaurantorPage.css';
 
@@ -50,17 +51,18 @@ const GuarantorPage = ({sendguarantordata,guarantorData}) => {
 
   return (
     <div className="guarantor-page">
-      <h2>Guarantor Information</h2>
-      <form onSubmit={handleSubmit}>
+      <h5 style={{marginBottom:'20px'}}>Guarantor Information</h5>
+      <form onSubmit={handleSubmit} className='guarantor-page-form'>
         <div className="guarantor-page-form-columns">
           <div className="guarantor-page-left-column">
             <div className="guarantor-page-relationpatient">
-              <label>Relationship with Patient*:</label>
+              <label>Relationship with Patient<span className='mandatory'>*</span>:</label>
               <input 
                 type="text" 
                 name="relationWithPatient" 
                 value={guarantorDataPatient?.relationWithPatient} 
                 onChange={handleChange} 
+                 style={{height:'fit-content',width:'calc(100% - 30px)'}}
                 required 
               />
               <span className="guarantor-page-or-text">OR</span>
@@ -76,7 +78,7 @@ const GuarantorPage = ({sendguarantordata,guarantorData}) => {
               </label>
             </div>
             <div className="guarantor-page-form-group">
-              <label>Name*:</label>
+              <label>Name<span className='mandatory'>*</span>:</label>
               <input 
                 type="text" 
                 name="guarantorName" 
@@ -86,7 +88,7 @@ const GuarantorPage = ({sendguarantordata,guarantorData}) => {
               />
             </div>
             <div className="guarantor-page-form-group">
-              <label>Gender:</label>
+              <label style={{marginRight:'5px'}}>Gender:</label>
               <div className="guarantor-page-radio-group">
                 <label>
                   <input 
@@ -135,9 +137,30 @@ const GuarantorPage = ({sendguarantordata,guarantorData}) => {
                 onChange={handleChange} 
               />
             </div>
-            <button type="submit" className="guarantor-page-save-button">Save</button>
+           
           </div>
+          
           <div className="guarantor-page-right-column">
+          <div className="guarantor-page-form-group">
+              <label>Country:</label>
+              <select name="state" value={guarantorDataPatient.state} onChange={handleChange}>
+                <option value="">Select Country</option>
+                <option value="India">India</option>
+                <option value="Kenya">Germany</option>
+                <option value="Japan">Japan</option>
+                <option value="France">France</option>
+              </select>
+            </div>
+            <div className="guarantor-page-form-group">
+              <label>City:</label>
+              <input 
+                type="text" 
+                name="city" 
+                value={guarantorDataPatient.city} 
+                onChange={handleChange} 
+              />
+            </div>
+
             <div className="guarantor-page-form-group">
               <label>Street 1:</label>
               <input 
@@ -162,25 +185,7 @@ const GuarantorPage = ({sendguarantordata,guarantorData}) => {
                 <option value="">Select country</option>
               </select>
             </div> */}
-            <div className="guarantor-page-form-group">
-              <label>Country:</label>
-              <select name="state" value={guarantorDataPatient.state} onChange={handleChange}>
-                <option value="">Select Country</option>
-                <option value="India">India</option>
-                <option value="Kenya">Kenya</option>
-                <option value="Japan">Japan</option>
-                <option value="France">France</option>
-              </select>
-            </div>
-            <div className="guarantor-page-form-group">
-              <label>City:</label>
-              <input 
-                type="text" 
-                name="city" 
-                value={guarantorDataPatient.city} 
-                onChange={handleChange} 
-              />
-            </div>
+            
             <div className="guarantor-page-form-group">
               <label>Zip code:</label>
               <input 
@@ -192,6 +197,11 @@ const GuarantorPage = ({sendguarantordata,guarantorData}) => {
             </div>
           </div>
         </div>
+      
+
+        <div style={{textAlign:"right"}}>
+            <button type="submit" className="guarantor-page-save-button" style={{textAlign:'right'}} >Save</button>
+       </div>
       </form>
     </div>
   );

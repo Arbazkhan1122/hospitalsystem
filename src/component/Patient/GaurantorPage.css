@@ -22,7 +22,7 @@
 }
 
 .guarantor-page-form-group label {
-  width: 20%;
+  width: 25%;
   font-weight: bold;
   
 }
@@ -32,7 +32,7 @@
 .guarantor-page-form-group input[type="date"],
 .guarantor-page-form-group select {
   width: calc(100% - 110px); /* Adjusted width for text inputs */
-  padding: 8px;
+  padding: 5px 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
@@ -43,7 +43,7 @@
   display: flex;
   align-items: left;
   margin-top: 3px;
-  margin-right: 40%;
+  margin-right:20%;
 }
 
 .guarantor-page-radio-group label {
@@ -55,6 +55,7 @@
 
 .guarantor-page-radio-group input {
   margin-right: 5px; /* Space between radio button and text */
+  margin-right: 10px;
 }
 
 .guarantor-page-or-text {
@@ -66,14 +67,18 @@
 }
 
 .guarantor-page-save-button {
-  background-color: #6c63ff;
+  background-color: var(--button-color);
   color: white;
-  padding: 10px 20px;
   border: none;
+  padding: 5px;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 20px;
+  margin-bottom: 15px;
 }
+.guarantor-page-save-button:hover {
+  background-color: var(--button-bg-color);
+}
+
 .guarantor-page-relationpatient{
 
  
@@ -97,12 +102,17 @@ font-weight: bold;
 
  
   width: calc(100% - 10px); /* Adjusted width for text inputs */
-  padding: 8px;
+  padding: 5px 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
   margin-top: 3px;
   padding-left: 25px;
 
+}
+
+.guarantor-page-form{
+  background-color: white;
+  padding: 20px;
 }
 

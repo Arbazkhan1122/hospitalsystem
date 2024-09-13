@@ -21,6 +21,14 @@
     border-radius: 4px;
     cursor: pointer;
   }
+  .setting-supplier-add-user-button:hover {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
   
   .manage-users-search-input {
     padding: 6px;
@@ -122,6 +130,19 @@
     margin: 0 8px;
     font-size: 13px;
   }
+  .setting-supplier-add-user-button {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+
+   .setting-supplier-add-user-button:hover {
+    background-color: var(--button-bg-color);
+   }
   
   /* Responsive Design */
   @media (max-width: 768px) {
@@ -130,10 +151,7 @@
       align-items: flex-start;
     }
   
-    .setting-supplier-add-user-button {
-      margin-bottom: 8px;
-    }
-  
+
     .manage-users-search-input {
       width: 100%;
     }
@@ -296,6 +314,11 @@
 .supplier-setting-text-right .btn-primary {
   background-color: var(--button-color);
   border-color:var(--button-bg-color);
+   color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .supplier-setting-text-right .btn-primary:hover {

@@ -154,7 +154,7 @@ const SettingInvoiceHeaders = () => {
             ))}
           </tbody>
         </table>
-        <div className="setting-supplier-pagination">
+        {/* <div className="setting-supplier-pagination">
           <div className="setting-supplier-pagination-controls">
             <Button>First</Button>
             <Button>Previous</Button>
@@ -162,7 +162,7 @@ const SettingInvoiceHeaders = () => {
             <Button>Next</Button>
             <Button>Last</Button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Modal show={showModal} onHide={handleCloseModal} className="supplier-setting-supplier-update-modal">
@@ -267,7 +267,7 @@ const SettingInvoiceHeaders = () => {
             </Form.Group>
 
             <div className="supplier-setting-text-right">
-              <Button variant="secondary" onClick={handleCloseModal} className="supplier-setting-mr-2">Cancel</Button>
+              <Button variant="primary" onClick={handleCloseModal} className="supplier-setting-mr-2">Cancel</Button>
               <Button variant="primary" type="submit">{isEditMode ? 'Update Invoice Header' : 'Add Invoice Header'}</Button>
             </div>
           </Form>

@@ -69,7 +69,7 @@ const SettingUOM = () => {
   return (
     <div className="setting-supplier-container">
       <div className="setting-supplier-header">
-        <button className="setting-supplier-add-user-button" onClick={() => handleShowModal()}>+ Add UnitOfMeasurement</button>
+        <button className="setting-supplier-add-user-button" onClick={() => handleShowModal()}>+ Add Unit Of Measurement</button>
       </div>
       <input
         type="text"
