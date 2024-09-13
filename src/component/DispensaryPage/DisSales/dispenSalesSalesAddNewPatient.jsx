@@ -146,7 +146,8 @@ const AddNewPatient = ({ onClose, counterId }) => {
                 <form onSubmit={handleSubmit}>
                     <div className="salesAddNewPatient-form-row">
                         <div className="salesAddNewPatient-form-group">
-                            <label>First Name<span>*</span></label>
+                            <label>First Name<span>*</span> </label>
+                            <span className="salesAddNewPatient-form-group-spandot">:</span>
                             <input 
                                 type="text" 
                                 name="patientName"
@@ -158,6 +159,7 @@ const AddNewPatient = ({ onClose, counterId }) => {
                         </div>
                         <div className="salesAddNewPatient-form-group">
                             <label>Contact Number</label>
+                            <span className="salesAddNewPatient-form-group-spandot">:</span>
                             <input 
                                 type="text" 
                                 name="contactNumber"
@@ -170,6 +172,7 @@ const AddNewPatient = ({ onClose, counterId }) => {
                     <div className="salesAddNewPatient-form-row">
                         <div className="salesAddNewPatient-form-group">
                             <label>Middle Name</label>
+                        <span className="salesAddNewPatient-form-group-spandot">:</span>
                             <input 
                                 type="text" 
                                 name="patientMiddleName"
@@ -180,6 +183,7 @@ const AddNewPatient = ({ onClose, counterId }) => {
                         </div>
                         <div className="salesAddNewPatient-form-group">
                             <label>Country<span>*</span></label>
+                            <span className="salesAddNewPatient-form-group-spandot">:</span>
                             <select 
                                 name="country" 
                                 value={patientData.country} 
@@ -192,6 +196,7 @@ const AddNewPatient = ({ onClose, counterId }) => {
                     <div className="salesAddNewPatient-form-row">
                         <div className="salesAddNewPatient-form-group">
                             <label>Last Name<span>*</span></label>
+                        <span className="salesAddNewPatient-form-group-spandot">:</span>
                             <input 
                                 type="text" 
                                 name="patientLastName"
@@ -203,11 +208,12 @@ const AddNewPatient = ({ onClose, counterId }) => {
                         </div>
                         <div className="salesAddNewPatient-form-group">
                             <label>County<span>*</span></label>
+                            <span className="salesAddNewPatient-form-group-spandot">:</span>
                             <input 
                                 type="text" 
                                 name="county"
                                 placeholder="Juja sub county" 
-                                value={patientData.county}
+                                value={patientData.country}
                                 onChange={handleChange}
                                 required 
                             />
@@ -216,6 +222,7 @@ const AddNewPatient = ({ onClose, counterId }) => {
                     <div className="salesAddNewPatient-form-row">
                         <div className="salesAddNewPatient-form-group">
                             <label>Gender<span>*</span></label>
+                            <span className="salesAddNewPatient-form-group-spandot">:</span>
                             <select 
                                 name="gender" 
                                 value={patientData.gender} 
@@ -228,6 +235,7 @@ const AddNewPatient = ({ onClose, counterId }) => {
                         </div>
                         <div className="salesAddNewPatient-form-group">
                             <label>Address</label>
+                            <span className="salesAddNewPatient-form-group-spandot">:</span>
                             <input 
                                 type="text" 
                                 name="address"
@@ -240,6 +248,7 @@ const AddNewPatient = ({ onClose, counterId }) => {
                     <div className="salesAddNewPatient-form-row">
                         <div className="salesAddNewPatient-form-group">
                             <label>Age<span>*</span></label>
+                            <span className="salesAddNewPatient-form-group-spandot">:</span>
                             <div className="salesAddNewPatient-age-group">
                                 <input 
                                     type="number" 
@@ -258,6 +267,7 @@ const AddNewPatient = ({ onClose, counterId }) => {
                         </div>
                         <div className="salesAddNewPatient-form-group">
                             <label>KRA PIN</label>
+                            <span className="salesAddNewPatient-form-group-spandot">:</span>
                             <input 
                                 type="text" 
                                 name="pinCode"
@@ -269,7 +279,7 @@ const AddNewPatient = ({ onClose, counterId }) => {
                     </div>
                     <div className="salesAddNewPatient-form-actions">
                         <button type="submit" className="salesAddNewPatient-ok-button">OK</button>
-                        <button type="button" className="salesAddNewPatient-close-button" onClick={onClose}>Close</button>
+                        <button type="button" className="salesAddNewPatient-close-buttontxt" onClick={onClose}>Close</button>
                     </div>
                 </form>
             </div>

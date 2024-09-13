@@ -8,15 +8,15 @@
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     z-index: 1000;
-  }
+}
 
 .salesAddNewPatient-modal-container {
-    width: 60%;
-    margin: 0 auto;
+    margin-top: 30px;
+    width: 75%;
     background-color: white;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
@@ -25,24 +25,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    background-color: #f5f5f5;
+    padding: 10px;
+    /* background-color: #f5f5f5; */
     border-bottom: 1px solid #ddd;
 }
 
 .salesAddNewPatient-modal-header h2 {
     margin: 0;
-    font-size: 1.0rem;
-    color: #414040;
+    font-size: 16px;
+    /* color: #414040; */
 }
 
 .salesAddNewPatient-close-button {
-    background-color: red;
+    background-color: #E31D2D;
     color: white;
     border-radius: 15px;
-    padding: 5px 9px;
+    padding: 5px 11px;
     border: none;
-    font-size: 1rem;
+    font-size: 14px;
     cursor: pointer;
 }
 
@@ -58,24 +58,44 @@
 
 .salesAddNewPatient-form-group {
     flex: 0 0 48%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .salesAddNewPatient-form-group label {
     display: flex;
-    font-weight: bold;
+    /* font-weight: bold; */
     margin-bottom: 0.5rem;
-}
+    font-size: 14px;
 
-.salesAddNewPatient-form-group input,
-.salesAddNewPatient-form-group select {
-    width: 100%;
-    padding: 0.5rem;
+}
+.salesAddNewPatient-form-group input{
+    width: 60% !important;
+    padding: 3px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    gap: 43px;
+    float: left;
+    /* flex-grow: 0; */
+}
+
+.salesAddNewPatient-form-group select {
+    width: 30%;
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    gap: 43px;
+    float: left;
+    display: flex;
+    justify-content: left;
 }
 
 .salesAddNewPatient-form-group span {
     color: red;
+}
+.salesAddNewPatient-form-group-spandot{
+    color:black !important;
+    font-weight: bold;
 }
 
 .salesAddNewPatient-age-group {
@@ -101,16 +121,16 @@
     background-color: #28a745;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    padding: 5px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.salesAddNewPatient-close-button {
+.salesAddNewPatient-close-buttontxt {
     background-color: #dc3545;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    padding: 5px;
+    border-radius: 5px;
     cursor: pointer;
 }

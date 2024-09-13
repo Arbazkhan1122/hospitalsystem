@@ -1,4 +1,17 @@
-  .dispenSales-counter-selection h4 {
+.salesStockDetails-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* height: 200px; */
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+ .dispenSales-counter-selection h4 {
     font-size: 16px;
     margin-top: 20px;
   }
