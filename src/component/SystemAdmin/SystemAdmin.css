@@ -1,4 +1,4 @@
-.button-panel {
+/* .button-panel {
     display: flex;
     gap: 10px;
   }
@@ -13,10 +13,10 @@
   }
   
   .button.active {
-    background-color:#0d6efd ;/* Set the background color to blue for the active button */
+    background-color:#0d6efd ;
     color: white;
   }
   
   .button:hover {
-    background-color: darkgray; /* Optional: Add hover effect for buttons */
-  }
+    background-color: darkgray;
+  } */

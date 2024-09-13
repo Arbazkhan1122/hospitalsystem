@@ -137,7 +137,7 @@ const GoodReceiptComponent = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="13" className="purchase-order-no-rows">
+                <td colSpan="14 " className="purchase-order-no-rows">
                   No Rows To Show
                 </td>
               </tr>

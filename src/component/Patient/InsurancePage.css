@@ -53,19 +53,21 @@
   }
   
   .add-insurance-btn {
-    grid-column: 1 / -1;
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px;
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
   }
   
   .add-insurance-btn:hover {
-    background-color: #3a7bc8;
+    background-color: var(--button-bg-color);
+  }
+  .insurance-page-form{
+    background-color: white;
+    padding: 20px;
   }
   
   /* Responsive design for smaller screens */

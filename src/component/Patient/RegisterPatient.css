@@ -6,6 +6,9 @@
   
   .register-patient-content {
     padding: 20px;
+    height: 80vh;
+    overflow-y: scroll;
+
   }
   
   .register-patient-camera-container {
@@ -54,46 +57,44 @@
     font-size: 16px;
 }
 
-/* Styling each menu item as a tab */
+
 .menu-item {
-    margin-right: 25px; /* Increased spacing between menu items */
+    margin-right: 25px; 
     color: #000;
     text-decoration: none;
     font-weight: normal;
-    padding: 10px 20px;
-    border-radius: 5px; /* Rounded corners */
-    border: 1px solid transparent; /* Transparent border for default state */
+    padding: 5px 5px;
+    border-radius: 5px; 
+    border: 1px solid transparent; 
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
+.menu-item.active {
+  background-color: var(--button-bg-color);
+  color: #fff; /* Change text color for active tab */
  
-
-
-/* Style for the selected item */
-.menu-item.selected {
-    font-weight: bold;
-    background-color: #d0f0ff; /* Slightly darker blue background */
-    border-color: #000; /* Black border for selected tab */
+  font-weight: bold; /* Make it bold when active */
 }
+
 
 /* Register button styling */
 .register-button {
-    margin-left: auto;
-    background-color: #2ecc71; /* Green background */
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
 }
 
 /* Hover effect for the register button */
 .register-button:hover {
-  background-color: #3074d2; /* Darker green on hover */
+  background-color: var(--button-bg-color);
   
 }
 
 .menu-item:hover {
-  background-color: #3074d2; /* Darker blue on hover */
+  background-color: var(--button-bg-color);
   color: #fff;
 }
 

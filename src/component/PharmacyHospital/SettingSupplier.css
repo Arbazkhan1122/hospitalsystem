@@ -1,7 +1,8 @@
 /* Setting Supplier Styles */
 .setting-supplier-container {
-    background-color: #d4f1f9;
+    background-color: var( --background-color);
     padding: 20px;
+    height: 90vh;
     border-radius: 5px;
     font-family: Arial, sans-serif;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -21,6 +22,14 @@
     border-radius: 4px;
     cursor: pointer;
   }
+  .setting-supplier-add-user-button:hover {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
   
   .manage-users-search-input {
     padding: 6px;
@@ -31,8 +40,8 @@
   
   .setting-supplier-span {
     text-align: right;
-    color: #0772bc;
-    font-size: 16px;
+    color: black;
+    font-size: 14px;
     margin-top: 10px;
   }
   
@@ -50,9 +59,9 @@
   .setting-suppliers-users-table th,
   .setting-suppliers-users-table td {
     border: 1px solid #e0e0e0;
-    padding: 8px;
-    text-align: left;
-    font-size: 13px;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
   }
   
   .setting-suppliers-users-table th {
@@ -122,6 +131,19 @@
     margin: 0 8px;
     font-size: 13px;
   }
+  .setting-supplier-add-user-button {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+
+   .setting-supplier-add-user-button:hover {
+    background-color: var(--button-bg-color);
+   }
   
   /* Responsive Design */
   @media (max-width: 768px) {
@@ -130,10 +152,7 @@
       align-items: flex-start;
     }
   
-    .setting-supplier-add-user-button {
-      margin-bottom: 8px;
-    }
-  
+
     .manage-users-search-input {
       width: 100%;
     }
@@ -296,6 +315,11 @@
 .supplier-setting-text-right .btn-primary {
   background-color: var(--button-color);
   border-color:var(--button-bg-color);
+   color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .supplier-setting-text-right .btn-primary:hover {

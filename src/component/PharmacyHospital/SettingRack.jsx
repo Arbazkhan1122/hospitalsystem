@@ -150,7 +150,7 @@ const SettingRack = () => {
             ))}
           </tbody>
         </table>
-        <div className="setting-supplier-pagination">
+        {/* <div className="setting-supplier-pagination">
           <div className="setting-supplier-pagination-controls">
             <Button>First</Button>
             <Button>Previous</Button>
@@ -158,7 +158,7 @@ const SettingRack = () => {
             <Button>Next</Button>
             <Button>Last</Button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Modal show={showModal} onHide={handleCloseModal} className="supplier-setting-supplier-update-modal">
@@ -212,7 +212,7 @@ const SettingRack = () => {
             </div>
 
             <div className="supplier-setting-text-right">
-              <Button variant="secondary" onClick={handleCloseModal} className="supplier-setting-mr-2">Cancel</Button>
+              <Button variant="primary" onClick={handleCloseModal} >Cancel</Button>&nbsp; &nbsp;
               <Button variant="primary" type="submit">{isEditMode ? 'Update' : 'Add'}</Button>
             </div>
           </Form>

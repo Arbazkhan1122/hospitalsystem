@@ -15,23 +15,39 @@ const OutPatientComponent = () => {
   const [filterOption, setFilterOption] = useState('All');
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
-
+  const [filteredPatients, setFilteredPatients] = useState([]);
+  const [modalData, setModalData] = useState({}); 
   // Fetch patient data from API
   useEffect(() => {
-    fetch('http://localhost:8989/api/patient-visits')
+    fetch('http://192.168.1.37:1415/api/new-patient-visits')
       .then(response => response.json())
-      .then(data => setPatients(data))
-     
+      .then(data => {
+        setPatients(data);
+        filterTodayData(data);
+      })
       .catch(error => console.error('Error fetching patient data:', error));
   }, []);
-  // console.log(patients);
+  useEffect(() => {
+    handleFilterData();
+  }, [fromDate, toDate]);
+  
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
+    if (tabName === 'Today') {
+      filterTodayData(patients);
+    }
   };
 
-  const openTriAgeModal = () => setIsTriageModalOpen(true);
-  const closeTriAgeModal = () => setIsTriageModalOpen(false);
+  const openTriAgeModal = (data) => {
+    setModalData(data); // Set the data to be passed to the modal
+    setIsTriageModalOpen(true);
+  };
+
+  // Function to close the modal
+  const closeTriAgeModal = () => {
+    setIsTriageModalOpen(false);
+  };
 
   const handlePageChange = (page) => {
     if (page > 0 && page <= totalPages) {
@@ -42,12 +58,30 @@ const OutPatientComponent = () => {
   const handleFilterChange = (event) => {
     setFilterOption(event.target.value);
   };
-
   const handleFilterData = () => {
-    // Implement filter logic here
-    console.log(`Filtering data from ${fromDate} to ${toDate} with option ${filterOption}`);
+    const from = new Date(fromDate);
+    const to = new Date(toDate);
+  
+    // Filter patients based on the date range
+    const filtered = patients.filter(patient => {
+      const visitDate = patient.visitTime ? new Date(patient.visitTime.split('T')[0]) : null;
+      // Check if the visitDate is within the selected range
+      return visitDate && visitDate >= from && visitDate <= to;
+    });
+  
+    setFilteredPatients(filtered);
   };
 
+  const filterTodayData = (patientData) => {
+    const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
+    const filtered = patientData.filter(patient => {
+      const visitDate = patient.visitTime ? patient.visitTime.split('T')[0] : '';
+      return visitDate === today;
+    });
+    setFilteredPatients(filtered);
+  };
+
+  
   return (
     <>
       <div className="out-patient-container">
@@ -73,45 +107,57 @@ const OutPatientComponent = () => {
                 placeholder="Hospital No/Patient Name/Department Name"
               />
               
-              <input type="text" className="department-input" placeholder="Department Name" />
+              <input type="text" className="department-input" placeholder="Department Name" style={{marginRight:'3%'}}/>
+              {/* <button className="Actions-btn Actions-consumption" onClick={openTriAgeModal}> Add Triage</button> */}
             </div>
             <div className="nurse-action-buttons">
-            <button className="Actions-btn Actions-consumption" onClick={openTriAgeModal}>Triage</button>
-              <button className="nurse-action-button">Check In</button>
+           
+              {/* <button className="nurse-action-button">Check In</button>
               <button className="nurse-action-button">Refer</button>
               <button className="nurse-action-button">Exchange Doc/Dept</button>
-              <button className="nurse-action-button">Conclude</button>
+              <button className="nurse-action-button">Conclude</button> */}
             </div>
             <table className="patients-table">
               <thead>
                 <tr>
                   <th>SN</th>
+                  <th>Date</th>
                   <th>Time</th>
-                  <th>Hospital No.</th>
+                
                   <th>Patient Name</th>
                   <th>Age/Sex</th>
                   <th>Phone</th>
                   <th>Department</th>
                   <th>Doctor</th>
-                  <th>Scheme</th>
+                  {/* <th>Scheme</th> */}
                   <th>Visit Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {patients.map((patient, index) => (
+                {filteredPatients.map((patient, index) => (
                   <tr key={index}>
                     <td>
-                      <input type="checkbox" id="triageCheckbox" />
+                      {/* <input type="checkbox" id="triageCheckbox" /> */}
+                      {patient.newPatientVisitId}
                     </td>
-                    <td>{patient.time}</td>
-                    <td>{patient.hospitalNo}</td>
-                    <td>{patient.patientName}</td>
-                    <td>{patient.ageSex}</td>
-                    <td>{patient.phone}</td>
-                    <td>{patient.department}</td>
-                    <td>{patient.doctor}</td>
-                    <td>{patient.scheme}</td>
-                    <td>{patient.visitStatus}</td>
+                    <td>{patient.patientQueue?.date}</td>
+                    <td>{patient.visitTime}</td>
+                    <td>{`${patient.firstName} ${patient.middleName || ''} ${patient.lastName}`}</td>
+                    <td>{`${patient.age} / ${patient.gender}`}</td>
+                    <td>{patient.phoneNumber}</td>
+                    <td>{patient.patientQueue?.department || 'N/A'}</td>
+                    <td>{`${patient.employeeDTO?.salutation || ''} ${patient.employeeDTO?.firstName || ''} ${patient.employeeDTO?.lastName || ''}`}</td>
+                    {/* <td>{patient.scheme}</td> */}
+                    <td>{patient.visitType}</td>
+                    <td>
+                        <div className="Actions-actions">
+                          <button className="Actions-btn Actions-consumption" onClick={openTriAgeModal}>Add Triage</button>
+                          <button className="Actions-btn Actions-wardRequest">&#x1F5A5;</button>
+                          <button className="Actions-btn Actions-transfer">Clinical</button>
+                          {/* <button className="Actions-btn Actions-vitals">&#x21E7;</button> */}
+                        </div>
+                      </td>
                   </tr>
                 ))}
               </tbody>
@@ -122,7 +168,7 @@ const OutPatientComponent = () => {
         {activeTab === 'Past Days' && (
           <>
             <div className="OutPatient_PastDays-tableContainer">
-              <div className="filter-options">
+              {/* <div className="filter-options">
                 <label>
                   <input
                     type="radio"
@@ -150,7 +196,7 @@ const OutPatientComponent = () => {
                   />
                   Triage Pending
                 </label>
-              </div>
+              </div> */}
 
               <div className="date-filter">
                 <label>
@@ -165,6 +211,8 @@ const OutPatientComponent = () => {
               </div>
               <div className='OutPatient_PastDays-Header'>
                 <input type='text' placeholder='Search' className='OutPatient_PastDays-searchInput'/>
+
+                
                 <div className="OutPatient_PastDays-actions">
                   <span className="OutPatient_PastDays-results">Showing 0/0 results</span>
                   <button className="OutPatient_PastDays-button">Export</button>
@@ -174,39 +222,46 @@ const OutPatientComponent = () => {
               <table className="OutPatient_PastDays-patientsTable">
                 <thead>
                   <tr>
+                    <th>SN</th>
                     <th>Date &#x2193;</th>
                     <th>Time</th>
-                    <th>Hospital Number</th>
+                   
                     <th>Patient Name</th>
                     <th>Age/Sex</th>
                     <th>Phone Number</th>
+                    <th>Department</th>
                     <th>Doctor Name</th>
                     <th>Appointment Type</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {patients.map((patient, index) => (
-                    <tr key={index} className="OutPatient_PastDays-tableRow">
-                      <td>{patient.date}</td>
-                      <td>{patient.time}</td>
-                      <td>{patient.hospitalNo}</td>
-                      <td>{patient.patientName}</td>
-                      <td>{patient.ageSex}</td>
-                      <td>{patient.phone}</td>
-                      <td>{patient.doctor}</td>
-                      <td>{patient.scheme}</td>
-                      <td>
+                {patients.map((patient, index) => (
+                  <tr key={index}>
+                    <td>
+                      {/* <input type="checkbox" id="triageCheckbox" /> */}
+                      {patient.newPatientVisitId}
+                    </td>
+                    <td>{patient.patientQueue?.date}</td>
+                    <td>{patient.visitTime}</td>
+                    <td>{`${patient.firstName} ${patient.middleName || ''} ${patient.lastName}`}</td>
+                    <td>{`${patient.age} / ${patient.gender}`}</td>
+                    <td>{patient.phoneNumber}</td>
+                    <td>{patient.patientQueue?.department || 'N/A'}</td>
+                    <td>{`${patient.employeeDTO?.salutation || ''} ${patient.employeeDTO?.firstName || ''} ${patient.employeeDTO?.lastName || ''}`}</td>
+                    {/* <td>{patient.scheme}</td> */}
+                    <td>{patient.visitType}</td>
+                    <td>
                         <div className="Actions-actions">
                           <button className="Actions-btn Actions-consumption" onClick={openTriAgeModal}>Add Triage</button>
                           <button className="Actions-btn Actions-wardRequest">&#x1F5A5;</button>
                           <button className="Actions-btn Actions-transfer">Clinical</button>
-                          <button className="Actions-btn Actions-vitals">&#x21E7;</button>
+                          {/* <button className="Actions-btn Actions-vitals">&#x21E7;</button> */}
                         </div>
                       </td>
-                    </tr>
-                  ))}
-                </tbody>
+                  </tr>
+                ))}
+              </tbody>
               </table>
             </div>
             <div className="OutPatient_PastDays-pagination">
@@ -261,12 +316,13 @@ const OutPatientComponent = () => {
         )}
 
         {isTriageModalOpen && (
-          <div className="modal">
-            <div className="modal-content">
-              <OpdTriagePage closeModal={closeTriAgeModal} />
-            </div>
-          </div>
-        )}
+                <OpdTriagePage
+                  onClose={closeTriAgeModal}
+                  data={modalData} 
+                />
+              )}
+
+      
       </div>
     </>
   );

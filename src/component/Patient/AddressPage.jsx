@@ -1,4 +1,4 @@
-// export default AddressPage;
+ //prachi parab patientRegisteration css 13/9
 
 import React, { useEffect, useState } from "react";
 import "./AddressPage.css";
@@ -43,11 +43,11 @@ const AddressPage = ({ sendaddressdata, addressData }) => {
   return (
     <div className="address-page-container">
       <div className="address-page-main-content">
-        <h2>Address Information</h2>
-        <form onSubmit={handleSubmit}>
+        <h5>Address Information</h5>
+        <form onSubmit={handleSubmit} className='address-page-form'>
           <div className="address-page-form-row">
             <div className="address-page-form-group">
-              <label htmlFor="addressType">Address Type*:</label>
+              <label htmlFor="addressType">Address Type<span className="mandatory">*</span> :</label>
               <select
                 id="addressType"
                 name="addressType"
@@ -60,7 +60,7 @@ const AddressPage = ({ sendaddressdata, addressData }) => {
               </select>
             </div>
             <div className="address-page-form-group">
-              <label htmlFor="street1">Street 1*:</label>
+              <label htmlFor="street1">Street 1<span className="mandatory">*</span> :</label>
               <input
                 type="text"
                 id="street1"
@@ -84,7 +84,7 @@ const AddressPage = ({ sendaddressdata, addressData }) => {
             </div>
 
             <div className="address-page-form-group">
-              <label htmlFor="birthCountry">Birth Country*:</label>
+              <label htmlFor="birthCountry">Birth Country<span className="mandatory">*</span>:</label>
               <select
                 id="birthCountry"
                 name="birthCountry"
@@ -103,7 +103,7 @@ const AddressPage = ({ sendaddressdata, addressData }) => {
           </div>
           <div className="address-page-form-row">
             <div className="address-page-form-group">
-              <label htmlFor="state">State*:</label>
+              <label htmlFor="state">State<span className="mandatory">*</span> :</label>
               <select
                 id="state"
                 name="state"
@@ -119,7 +119,7 @@ const AddressPage = ({ sendaddressdata, addressData }) => {
               </select>
             </div>
             <div className="address-page-form-group">
-              <label htmlFor="city">City*:</label>
+              <label htmlFor="city">City<span className="mandatory">*</span> :</label>
               <input
                 type="text"
                 id="city"
@@ -143,9 +143,11 @@ const AddressPage = ({ sendaddressdata, addressData }) => {
             </div>
             <div className="address-page-form-group"></div>
           </div>
-          <button type="submit" className="address-page-add-address">
+          <div style={{textAlign:"right"}}>
+          <button type="submit" className="register-save-button">
             Add Address
           </button>
+          </div>
         </form>
       </div>
     </div>

@@ -217,20 +217,20 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
               }}
               children={<> {filteredMedications.length > 0 ? (
                 <div className='inputSection'>
-              <table border="1" cellPadding="10" cellSpacing="0">
+              <table border="1" cellPadding="10" cellSpacing="0" className='patient-table'>
                 <thead>
                   <tr>
-                    <th>Medication Name</th>
-                    <th>Frequency</th>
-                    <th>Last Taken</th>
+                    <th className='patient-th'>Medication Name</th>
+                    <th className='patient-th'>Frequency</th>
+                    <th className='patient-th'>Last Taken</th>
                   </tr>
                 </thead>
                 <tbody>
                   {filteredMedications.map((medication) => (
                     <tr key={medication.medicationId}>
-                      <td>{medication.medicationName}</td>
-                      <td>{medication.frequency}</td>
-                      <td>{medication.lastTaken}</td>
+                      <td className='patient-td'>{medication.medicationName}</td>
+                      <td className='patient-td'>{medication.frequency}</td>
+                      <td className='patient-td'>{medication.lastTaken}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -257,43 +257,43 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
                 </div>
               </div>
               <div className="tableRecord">
-                <table>
+                <table className='patient-table'>
                   <tr>
-                    <td>Recoreded On</td>
-                    <td>2024-06-18 03:22 PM</td>
+                    <td className='patient-td'>Recoreded On</td>
+                    <td className='patient-td'>2024-06-18 03:22 PM</td>
                   </tr>
                   <tr>
-                    <td>Height</td>
-                    <td>200 cm</td>
+                    <td className='patient-td'>Height</td>
+                    <td className='patient-td'>200 cm</td>
                   </tr>
                   <tr>
-                    <td>Weight</td>
-                    <td>40kg</td>
+                    <td className='patient-td'>Weight</td>
+                    <td className='patient-td'>40kg</td>
                   </tr>
                   <tr>
-                    <td>BMI</td>
-                    <td>10</td>
+                    <td className='patient-td'>BMI</td>
+                    <td className='patient-td'>10</td>
                   </tr>
                   <tr>
-                    <td>Temprature</td>
+                    <td className='patient-td'>Temprature</td>
                   </tr>
                   <tr>
-                    <td>Pulse</td>
+                    <td className='patient-td'>Pulse</td>
                   </tr>
                   <tr>
-                    <td>Blood Pressure</td>
+                    <td className='patient-td'>Blood Pressure</td>
                   </tr>
                   <tr>
-                    <td>Respiratory Rate</td>
+                    <td className='patient-td'>Respiratory Rate</td>
                   </tr>
                   <tr>
-                    <td>SpO2</td>
+                    <td className='patient-td'>SpO2</td>
                   </tr>
                   <tr>
-                    <td>O2 Deliver Method</td>
+                    <td className='patient-td'>O2 Deliver Method</td>
                   </tr>
                   <tr>
-                    <td>Body Pain Data</td>
+                    <td className='patient-td'>Body Pain Data</td>
                   </tr>
                 </table>
               </div>

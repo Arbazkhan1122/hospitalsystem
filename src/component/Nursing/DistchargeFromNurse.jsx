@@ -23,9 +23,9 @@ function DistchargeFromNurse({ onClose, show }) {
                     <div className="container">
                         {/* Header Section */}
                         <header className="distcharge-header">
-                            <div className="patient-header">
+                            <div className="distcharge-patient-header">
                                 <h2>Aakash Pathan</h2>
-                                <div className="patient-details">
+                                <div className="distcharge-patient-details">
                                     <div>
                                         <p><strong>Address:</strong> Pune</p>
                                         <p><strong>Hospital No:</strong> 240008307</p>
@@ -49,22 +49,22 @@ function DistchargeFromNurse({ onClose, show }) {
                         </header>
 
                         {/* Form Section */}
-                        <form className="form">
-                            <div className="form-row">
-                                <div className="form-group">
+                        <form className="distcharge-form">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Discharge Type:</label>
                                     <select>
                                         <option value="Not Improved">Not Improved</option>
                                     </select>
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Treatment During Hospital Stay:</label>
                                     <textarea rows="3"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group full-width">
                                     <label>Consultant:</label>
                                     <input type="text" placeholder="Consultant: name" />
                                 </div>
@@ -74,133 +74,133 @@ function DistchargeFromNurse({ onClose, show }) {
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Doctor Incharge:</label>
                                     <input type="text" placeholder="Dr. VICTOR OCHEING OKECH" readOnly />
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Pending Reports:</label>
                                     <textarea rows="3"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Anesthetists:</label>
                                     <input type="text" placeholder="Anesthetists: name" />
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Special Notes:</label>
                                     <textarea rows="3"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Resident Dr:</label>
                                     <input type="text" placeholder="Dr. VICTOR OCHEING OKECH" />
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Allergies:</label>
                                     <textarea rows="3"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Select Diagnosis:</label>
                                     <input type="text" placeholder="Select ICD-11(a) for Provisional Diagnosis" />
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Discharge Order:</label>
                                     <textarea rows="3"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Provisional Diagnosis:</label>
                                     <input type="text" placeholder="Select ICD-11(b) for Provisional Diagnosis" />
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Activities:</label>
                                     <input type="text" placeholder="Activities" />
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Other Diagnosis:</label>
                                     <input type="text" placeholder="Enter Other Diagnosis" />
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Diet:</label>
                                     <input type="text" placeholder="Diet" />
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Clinical Findings:</label>
                                     <textarea rows="3" placeholder="Clinical Findings"></textarea>
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Rest Days:</label>
                                     <input type="text" placeholder="Rest Days" />
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Chief Complain:</label>
                                     <textarea rows="3" placeholder="Chief Complain"></textarea>
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Follow UP:</label>
                                     <input type="text" placeholder="Follow UP" />
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>History Of Presenting Illness:</label>
                                     <textarea rows="3" placeholder="History Of Presenting Illness"></textarea>
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Others:</label>
                                     <input type="text" placeholder="Others" />
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Past History:</label>
                                     <textarea rows="3" placeholder="Past History"></textarea>
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>CheckedBy:</label>
                                     <input type="text" placeholder="CheckedBy: name" />
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Case Summary:</label>
                                     <textarea rows="3" placeholder="Case Summary"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Procedure:</label>
                                     <textarea rows="3" placeholder="Procedure"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group full-width">
-                                    <div className="medications">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group full-width">
+                                    <div className="distcharge-medications">
                                         <label>Medications:</label>
                                         <input type="text" placeholder="Enter Medicines" />
                                         <button className="add-button">+</button>
@@ -209,9 +209,9 @@ function DistchargeFromNurse({ onClose, show }) {
                                 </div>
                             </div>
 
-                            <div className="form-actions">
-                                <button type="submit" className="submit-button">Submit and Print Summary</button>
-                                <button type="button" className="update-button">Update</button>
+                            <div className="distcharge-form-actions">
+                                <button type="submit" className="distcharge-submit-button">Submit and Print Summary</button>
+                                <button type="button" className="distcharge-update-button">Update</button>
                             </div>
                         </form>
                     </div>
