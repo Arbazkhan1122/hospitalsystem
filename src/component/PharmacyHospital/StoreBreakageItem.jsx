@@ -49,14 +49,14 @@ const StoreBreakageItem = () => {
         </tbody>
       </table>
       
-      <div className="setting-terms-pagination">
+      {/* <div className="setting-terms-pagination">
         <span>0 to 0 of 0</span>
         <button className="setting-terms-page-btn">First</button>
         <button className="setting-terms-page-btn">Previous</button>
         <span>Page 0 of 0</span>
         <button className="setting-terms-page-btn">Next</button>
         <button className="setting-terms-page-btn">Last</button>
-      </div>
+      </div> */}
       </div>
       {showReturnForm && (
         <div className="return-form-overlay-model">

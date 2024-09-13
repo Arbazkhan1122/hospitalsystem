@@ -1,7 +1,8 @@
 /* Setting Supplier Styles */
 .setting-supplier-container {
-    background-color: #d4f1f9;
+    background-color: var( --background-color);
     padding: 20px;
+    height: 90vh;
     border-radius: 5px;
     font-family: Arial, sans-serif;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -31,8 +32,8 @@
   
   .setting-supplier-span {
     text-align: right;
-    color: #0772bc;
-    font-size: 16px;
+    color: black;
+    font-size: 14px;
     margin-top: 10px;
   }
   
@@ -50,9 +51,9 @@
   .setting-suppliers-users-table th,
   .setting-suppliers-users-table td {
     border: 1px solid #e0e0e0;
-    padding: 8px;
-    text-align: left;
-    font-size: 13px;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
   }
   
   .setting-suppliers-users-table th {

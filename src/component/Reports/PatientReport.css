@@ -112,54 +112,6 @@
     display: flex;
 }
 
-.OutPatient_PastDays-patientsTable {
-  width: 100%;
-  border-collapse: collapse; /* Remove gaps between table borders */
-  margin-top: 20px;
-  font-size: 14px;
-  color: #333;
-}
-
-.OutPatient_PastDays-patientsTable th,
-.OutPatient_PastDays-patientsTable td {
-  padding: 12px; /* Add padding to the table cells */
-  border: 1px solid #c1e4f8; /* Light border around cells */
-  text-align: left; /* Align text to the left */
-}
-
-.OutPatient_PastDays-patientsTable th {
-  background-color: #f0f2f5; /* Light grey background for table headers */
-  font-weight: bold; /* Bold text for headers */
-  text-align: center; /* Center the text in the headers */
-}
-
-.OutPatient_PastDays-patientsTable tr:nth-child(even) {
-  background-color: #f9fbfc; /* Light background for even rows */
-}
-
-.OutPatient_PastDays-patientsTable tr:nth-child(odd) {
-  background-color: #ffffff; /* White background for odd rows */
-}
-
-.OutPatient_PastDays-patientsTable tr:hover {
-  background-color: #e6f7ff; /* Light blue highlight on hover */
-}
-
-.OutPatient_PastDays-tableRow td {
-  font-size: 14px;
-  color: #333; /* Dark text color */
-}
-
-.OutPatient_PastDays-patientsTable td {
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden;
-  text-overflow: ellipsis; /* Show ellipsis if text overflows */
-}
-
-.OutPatient_PastDays-patientsTable td:first-child {
-  text-align: center; /* Center the first column */
-}
-
 
   .Report-pagination{
     text-align: center;
@@ -178,7 +130,7 @@
 
 
   
-  .InpatientCensus-report-table th {
+  /* .InpatientCensus-report-table th {
     background-color: #b4d8f1;
   }
   
@@ -189,7 +141,7 @@
   .InpatientCensus-report-table tr:nth-child(odd) {
     background-color: #e4f4ff;
   }
- 
+  */
   /* .print-button {
     background-color: #007bff;
     color: white;
@@ -251,22 +203,22 @@
   }
 
   
-.OutPatient_PastDays-patientsTable {
+/* .OutPatient_PastDays-patientsTable {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-}
+} */
 
-.OutPatient_PastDays-patientsTable th, .report-table td {
+/* .OutPatient_PastDays-patientsTable th, .report-table td {
   text-align: left;
   padding: 10px;
   border: 1px solid #c1e4f8;
   background-color: #e4f4ff;
 }
+ */
 
 
-
-.OutPatient_PastDays-patientsTable th {
+/* .OutPatient_PastDays-patientsTable th {
   background-color: #f0f2f5;
 }
 
@@ -276,7 +228,7 @@
 
 .InpatientCensus-report-table tr:nth-child(odd) {
   background-color: #e4f4ff;
-}
+} */
 
   
 

@@ -150,7 +150,7 @@ const SettingRack = () => {
             ))}
           </tbody>
         </table>
-        <div className="setting-supplier-pagination">
+        {/* <div className="setting-supplier-pagination">
           <div className="setting-supplier-pagination-controls">
             <Button>First</Button>
             <Button>Previous</Button>
@@ -158,7 +158,7 @@ const SettingRack = () => {
             <Button>Next</Button>
             <Button>Last</Button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Modal show={showModal} onHide={handleCloseModal} className="supplier-setting-supplier-update-modal">

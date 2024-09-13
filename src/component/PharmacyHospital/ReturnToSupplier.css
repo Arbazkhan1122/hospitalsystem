@@ -1,6 +1,6 @@
 .return-to-supplier-container {
     font-family: Arial, sans-serif;
-    background-color: #e6f3ff;
+    background-color: var(--background-color);
     padding: 20px;
   }
   
@@ -31,7 +31,7 @@
   }
   
   .return-to-supplier-search-button {
-    background-color: #4a90e2;
+    background-color: var(--button-color);
     color: white;
     border: none;
     padding: 5px 15px;
@@ -43,7 +43,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    background-color: #d9edf7;
+    background-color: #f2f2f2;
     padding: 10px;
     border-radius: 3px;
     margin-bottom: 15px;
@@ -79,8 +79,9 @@
   }
   
   .return-to-supplier-ok-button {
-    background-color: #5cb85c;
+    background-color: var(--button-color);
     color: white;
+    padding: 5px 5px;
   }
   
   .return-to-supplier-search-bar {
@@ -112,7 +113,7 @@
   }
   
   .return-to-supplier-print-button {
-    background-color: #4a90e2;
+    background-color: var(--button-color);
     color: white;
     border: none;
     padding: 5px 15px;
@@ -165,8 +166,8 @@
     cursor: not-allowed;
   }
   .return-to-supplier-print-container{
-    color: #4a90e2;
-    font-size: 16px;
+    
+    font-size: 14px;
   }
   .return-to-supplier-retuurn-store-supplier{
     background-color: white;
