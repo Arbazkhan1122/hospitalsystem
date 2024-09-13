@@ -1,28 +1,3 @@
-/* .patient-dashboard {
-  font-family: Arial, sans-serif;
-}
-.isPatientDetailsActive{
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 22222;
-  background-color: white;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-}
-.isPatientDetailsInActive{
-  display: none;
-}
-
-.patient-dashboard-header {
-  background-color: #0066cc;
-  color: white;
-  /* padding: 10px; */
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
-}
 
 .patientDash-home-button {
   background-color: #ffcc00;
@@ -83,9 +58,7 @@
   overflow-y: auto; /* Enables vertical scrolling */
   width: 100%;
 }
-.patientDash-sidebar ul::-webkit-scrollbar{
-  /* width: 10px; */
-}
+
 .patientDash-sidebar ul li {
   padding: 10px;
   overflow-y: auto;
@@ -144,14 +117,49 @@ section {
   color: #006600;
 }
 
-table {
+/* Table styling */
+.inpatient-table {
   width: 100%;
   border-collapse: collapse;
+  margin: 20px 0; /* Add margin to separate the table from other content */
 }
 
-td {
-  padding: 5px;
-  border-bottom: 1px solid #ddd;
+/* Table header styling (if applicable) */
+.inpatient-table th {
+  background-color: #f4f4f4;
+  color: #333;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+/* Table cell styling */
+.inpatient-table td {
+  padding: 10px; /* Increase padding for better readability */
+  border-bottom: 1px solid #ddd; /* Add border between rows */
+  text-align: left; /* Align text to the left */
+}
+
+/* Table row hover effect */
+.inpatient-table tr:hover {
+  background-color: #f9f9f9; /* Highlight row on hover */
+}
+
+/* Table cell styling for the first column (optional) */
+.inpatient-table td:first-child {
+  font-weight: bold; /* Make the first column bold */
+}
+
+/* Table cell styling for the last column (optional) */
+.inpatient-table td:last-child {
+  color: #555; /* Different color for the last column */
+}
+
+/* Table styling for the entire table */
+.inpatient-table {
+  border: 1px solid #ddd; /* Add border around the table */
+  border-radius: 4px; /* Rounded corners for the table */
+  overflow: hidden; /* Ensure rounded corners are visible */
 }
 
 .patientDash-complaint {
@@ -168,4 +176,4 @@ td {
   border: none;
   cursor: pointer;
   color: red;
-} */
+} 

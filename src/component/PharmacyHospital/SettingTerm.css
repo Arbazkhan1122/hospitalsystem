@@ -1,5 +1,5 @@
 .setting-terms-container {
-  background-color: #e6f3ff;
+  background-color: var(--background-color);
   padding: 20px;
   font-family: Arial, sans-serif;
 }
@@ -19,7 +19,7 @@
   margin-bottom: 15px;
 }
 
-.search-input {
+.manage-users-search-input{
   width: 200px;
   padding: 5px 25px 5px 10px;
   border: 1px solid #ccc;

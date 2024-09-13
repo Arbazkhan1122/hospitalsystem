@@ -86,7 +86,7 @@ const PatientDashboard = ({ patient }) => {
               <section className="medications">
                 <h3>💊 Medications</h3>
                 <button className="add-button">+ Add</button>
-                <table>
+                <table className='inpatient-table'>
                   <tbody>
                     <tr><td>.OSMOLAX</td><td>0 times a day</td><td>Start Date- 02.08.2024</td></tr>
                     <tr><td>ACECLOFENAC + PARACETAMOL TABS</td><td>0 times a day</td><td>Start Date- 12.08.2024</td></tr>

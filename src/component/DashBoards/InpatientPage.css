@@ -107,7 +107,7 @@
     flex: 1;
   }
     
-  h3 {
+  .InpatientPage-active-orders h3 {
     margin-top: 0;
     color: #333;
   }
