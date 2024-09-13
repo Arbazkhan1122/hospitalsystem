@@ -61,13 +61,18 @@
 }
 
 .goods-receipt-add-item-btn {
-  background-color: #4CAF50;
+  background-color: var(--button-color);
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
+  padding: 5px;
+  border-radius: 5px;
   cursor: pointer;
   margin-bottom: 15px;
+}
+
+.goods-receipt-add-item-btn:hover{
+  background-color: var(--button-bg-color);
+
 }
 
 
@@ -100,22 +105,20 @@
 
 .goods-receipt-print-btn,
 .goods-receipt-discard-btn {
-  padding: 10px 20px;
+  background-color: var(--button-color);
+  color: white;
   border: none;
-  border-radius: 4px;
+  padding: 5px;
+  border-radius: 5px;
   cursor: pointer;
-  margin-left: 10px;
+  margin-bottom: 15px;
 }
 
-.goods-receipt-print-btn {
-  background-color: #4CAF50;
-  color: white;
+.goods-receipt-print-btn:hover,
+.goods-receipt-discard-btn:hover {
+  background-color: var(--button-bg-color);
 }
 
-.goods-receipt-discard-btn {
-  background-color: #f44336;
-  color: white;
-}
 
 .goods-receipt-totals-column {
   width: auto;
@@ -245,4 +248,13 @@
 .input-container-question-box .question-icon:hover {
   color: #000;
 }
-/*  */
+.goods-receipt-form-com input[type="date"] {
+  padding: 5px;
+}
+.goods-receipt-form-group input, .goods-receipt-form-group select{
+  padding: 5px!important;
+}
+
+.goods-receipt-total-row input{
+  padding: 5px!important;
+}

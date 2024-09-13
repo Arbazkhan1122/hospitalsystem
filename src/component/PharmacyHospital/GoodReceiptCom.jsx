@@ -81,6 +81,7 @@ const GoodReceiptComponent = () => {
           placeholder="Search"
         />
         <div className="purchase-order-button">
+          
           <button className="purchase-order-print-button">Print</button>
         </div>
         <button className="purchase-order-print-button">Export</button>
@@ -136,21 +137,21 @@ const GoodReceiptComponent = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="12" className="purchase-order-no-rows">
+                <td colSpan="14 " className="purchase-order-no-rows">
                   No Rows To Show
                 </td>
               </tr>
             )}
           </tbody>
         </table>
-        <div className="purchase-order-pagination">
+        {/* <div className="purchase-order-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
 
       <Modal

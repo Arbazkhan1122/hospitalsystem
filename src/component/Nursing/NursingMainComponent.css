@@ -214,7 +214,7 @@
 
 .OutPatient_PastDays-pagination-btn {
   border: 1px solid #ddd;
-  background-color: #0772bc;
+  /* background-color: #0772bc; */
   cursor: pointer;
 }
 

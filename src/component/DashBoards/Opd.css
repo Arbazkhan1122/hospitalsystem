@@ -59,33 +59,46 @@
   border-radius: 3px;
   cursor: pointer;
 }
-
-table {
+/* Table styling for .opd-list-table */
+.opd-list-table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
+  font-family: Arial, sans-serif;
+  margin-bottom: 20px; /* Adjust margin if needed */
 }
 
-th, td {
+.opd-list-table th,
+.opd-list-table td {
   border: 1px solid #ddd;
-  padding: 4px;
+  padding: 8px; /* Increased padding for better readability */
   text-align: left;
 }
 
-th {
+.opd-list-table th {
   background-color: #f2f2f2;
+  font-weight: bold;
 }
 
-td button {
+.opd-list-table tbody tr:hover {
+  background-color: #f9f9f9; /* Light hover effect for table rows */
+}
+
+.opd-list-table td button {
   background: none;
   border: none;
   cursor: pointer;
   font-size: 16px;
   margin: 0 2px;
+  padding: 4px; /* Adds padding for click area */
 }
 
-/* You may want to add styles for pagination here */
+.opd-list-table td button:hover {
+  background-color: #e6f3ff; /* Subtle hover effect for buttons */
+  border-radius: 3px;
+}
 
+/* Optional: Add pagination styles if needed */
 .opd-paginat {
   display: flex;
   justify-content: center;
@@ -99,5 +112,10 @@ td button {
   background-color: #4a90e2;
   color: white;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+}
+
+.opd-paginat button:hover {
+  background-color: #357ab8; /* Darker shade on hover */
 }

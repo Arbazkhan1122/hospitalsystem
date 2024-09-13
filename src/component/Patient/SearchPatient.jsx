@@ -1,3 +1,5 @@
+ //prachi parab search Patient 13/9
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -60,7 +62,7 @@ function SearchPatient() {
           <div className="input-wrapper">
             <input
               type="text"
-              placeholder="Search by Patient Name"
+              placeholder="Search"
               value={searchTerm}
               onChange={handleSearch}
             />
@@ -99,13 +101,13 @@ function SearchPatient() {
           ))}
         </tbody>
       </table>
-      <div className="pagination">
+      {/* <div className="pagination">
         <button onClick={() => handlePageChange(1)} disabled={currentPage === 1}>First</button>
         <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
         <span>Page {currentPage} of {Math.ceil(filteredPatients.length / patientsPerPage)}</span>
         <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === Math.ceil(filteredPatients.length / patientsPerPage)}>Next</button>
         <button onClick={() => handlePageChange(Math.ceil(filteredPatients.length / patientsPerPage))} disabled={currentPage === Math.ceil(filteredPatients.length / patientsPerPage)}>Last</button>
-      </div>
+      </div> */}
     </div>
   );
 }

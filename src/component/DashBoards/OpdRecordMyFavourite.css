@@ -61,31 +61,49 @@
     border-radius: 3px;
     cursor: pointer;
   }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 4px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  td button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 0 2px;
-  }
-  
+  /* Table styling for .opd-record-follow-up-list */
+.opd-record-follow-up-list {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  font-family: Arial, sans-serif;
+  margin-bottom: 20px;
+}
+
+.opd-record-follow-up-list th,
+.opd-record-follow-up-list td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.opd-record-follow-up-list th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.opd-record-follow-up-list td {
+  background-color: #fff;
+}
+
+.opd-record-follow-up-list td button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 2px;
+  padding: 4px;
+}
+
+.opd-record-follow-up-list td button:hover {
+  background-color: #e6f3ff;
+  border-radius: 3px;
+}
+
+.opd-record-follow-up-list tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
   /* You may want to add styles for pagination here */
   
 .OpdRec-paginat {

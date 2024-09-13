@@ -1,5 +1,5 @@
 .hospital-header-container-module{
-  background-color:#e0f7fa ;
+  background-color:var(--background-color) ;
 }
 
 .pharmacy-header-module {
@@ -7,7 +7,6 @@
   color: #3598dc;
   padding: 0;
   font-size: 16px;
-  /* position: static; */
 }
 
 .hospital-nav-list-module {
@@ -97,7 +96,7 @@ margin-left: 5px;
 
 /*  */
 .hospital-header-container-module {
-  background-color: #e0f7fa;
+  background-color: var(--background-color);
 }
 
 

@@ -71,13 +71,23 @@
 }
 
 .add-gritem-submit-btn {
-  background-color: #4caf50;
+  background-color: var(--button-color);
   color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
 }
 
 .add-gritem-cancel-btn {
-  background-color: #f44336;
+  background-color: var(--button-color);
   color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
 }
 .add-supplier-help-icon {
   display: inline-block;
@@ -102,4 +112,7 @@
 .add-supplier-help-icon:focus {
   outline: 2px solid #0056b3; /* Add a focus outline */
   outline-offset: 2px;
+}
+.add-gritem-form-field input, .add-gritem-form-field select{
+  padding: 5px!important;
 }

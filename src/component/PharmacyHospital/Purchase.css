@@ -4,7 +4,8 @@
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    background-color: #e0f7fa;
+    height: 90vh;
+    background-color: var( --background-color);
     box-sizing: border-box;
 }
 
@@ -23,7 +24,7 @@
     align-items: flex-start; /* Align items to the top */
     background-color: #ffffff;
     border-radius: 8px;
-    padding: 10px;
+    padding: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
@@ -33,7 +34,7 @@
 /* Icon container */
 .report-icon-container {
     font-size: 36px;
-    color: #007bff;
+    color:var(--button-color);
     margin-right: 20px;
     transition: color 0.3s ease;
 }
@@ -48,7 +49,9 @@
 .report-details-container h4,
 .report-details-container p {
     margin: 0;
+    margin-top: -40px;
     color: #333333;
+    margin-left: 60px;
     transition: color 0.3s ease;
 }
 
@@ -62,9 +65,15 @@
     color: #777777;
 }
 
+
+
+
+
+
+
 /* Hover effect: icon and text turn white, background turns blue */
 .reports-cont:hover {
-    background-color: #007bff;
+    background-color: var(--button-color);
 }
 
 .reports-cont:hover .report-icon-container,

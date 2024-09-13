@@ -1,5 +1,5 @@
 .setting-terms-container {
-  background-color: #e6f3ff;
+  background-color: var(--background-color);
   padding: 20px;
   font-family: Arial, sans-serif;
 }
@@ -8,7 +8,7 @@
   background-color: var(--button-color);
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 5px 5px;
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 15px;
@@ -19,7 +19,7 @@
   margin-bottom: 15px;
 }
 
-.search-input {
+.manage-users-search-input{
   width: 200px;
   padding: 5px 25px 5px 10px;
   border: 1px solid #ccc;
@@ -41,12 +41,13 @@
 }
 
 .setting-terms-print-btn {
-  background-color: #4a90e2;
+  background-color: var(--button-color);
   color: white;
   border: none;
-  padding: 5px 15px;
+  padding: 5px 5px;
   border-radius: 5px;
   cursor: pointer;
+  margin-bottom: 15px;
 }
 
 .setting-terms-terms-table {
@@ -134,11 +135,15 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background: #f44;
+  background-color: var(--button-color);
   color: white;
   border: none;
   padding: 10px;
   border-radius: 4px;
   cursor: pointer;
   z-index: 1010; /* Ensure it's above other elements in the modal */
+}
+
+.return-form-com-close-btn {
+  background-color: var(--button-bg-color);
 }

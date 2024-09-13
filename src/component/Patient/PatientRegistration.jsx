@@ -1,3 +1,4 @@
+ //prachi parab patientRegisteration css 13/9
 import React, { useEffect, useState } from 'react';
 import './PatientRegistration.css';
 const PatientRegistration = ({sendpatientdata,patientData}) => {
@@ -85,19 +86,26 @@ const PatientRegistration = ({sendpatientdata,patientData}) => {
 
   return (
     <div className="patient-registration">
-      <h2>Basic Information</h2>
+      <h5>Basic Information</h5>
       <form onSubmit={handleSubmit}>
         <div className="form-row">
-          <div className="form-group">
-            <label>Salutation:</label>
-            <div>
-              <input type="radio" name="salutation" value="Mr" onChange={handleChange} /> Mr
-              <input type="radio" name="salutation" value="Ms" onChange={handleChange} /> Ms
-              <input type="radio" name="salutation" value="Mrs" onChange={handleChange} /> Mrs
+        <div className="form-group">
+          <label>Salutation:</label>
+            <div className="patient-registration-data">
+            <div className="form-group">
+                <label className="radio-label">Mr.</label>
+                <input type="radio" name="salutation" value="Mr" onChange={handleChange} /> 
+                <label className="radio-label">Ms.</label>
+                <input type="radio" name="salutation" value="Ms" onChange={handleChange} /> 
+                <label className="radio-label">Mrs.</label>
+                <input type="radio" name="salutation" value="Mrs" onChange={handleChange} />
             </div>
-          </div>
+        </div>
+        </div>
           <div className="form-group">
             <label>Gender <span className="mandatory">*</span>:</label>
+
+            
             <select name="gender" onChange={handleChange} value={formData.gender} required>
               <option value="">--select--</option>
               <option value="male">Male</option>
@@ -126,13 +134,17 @@ const PatientRegistration = ({sendpatientdata,patientData}) => {
             <label>Middle Name:</label>
             <input type="text" name="middleName" value={formData.middleName} onChange={handleChange} />
           </div>
-          <div className="form-group">
-            <label>Marital Status:</label>
-            <div>
-              <input type="radio" name="maritalStatus" value="Married" onChange={handleChange} /> Married
-              <input type="radio" name="maritalStatus" value="Unmarried" onChange={handleChange} /> Unmarried
-            </div>
-          </div>
+
+            <div className="form-group">
+                 <label>Marital Status:</label>
+                Married &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="maritalStatus" value="Married" onChange={handleChange} /> 
+                Unmarried &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="maritalStatus" value="Unmarried" onChange={handleChange} />
+               
+         
+        </div>
+          
         </div>
 
         <div className="form-row">
@@ -198,7 +210,6 @@ const PatientRegistration = ({sendpatientdata,patientData}) => {
           <div className="form-group">
             <label>Country<span className="mandatory">*</span>:</label>
             <select name="country" onChange={handleChange} value={formData.country} required>
-                <option value="Kenya">Kenya</option>
                 <option value="United States">United States</option>
                 <option value="Canada">Canada</option>
                 <option value="United Kingdom">United Kingdom</option>
@@ -270,8 +281,11 @@ const PatientRegistration = ({sendpatientdata,patientData}) => {
           </div>
           <div className="form-group"></div>
         </div>
+       <div style={{textAlign:"right"}}>
+       <button type="submit" className="register-save-button" style={{textAlign:'right'}} >Save</button>
+
+       </div>
        
-        <button type="submit" className="register-button" style={{textAlign:'center'}} >Save</button>
       </form>
     </div>
   );

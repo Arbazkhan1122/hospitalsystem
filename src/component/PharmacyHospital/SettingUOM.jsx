@@ -69,7 +69,7 @@ const SettingUOM = () => {
   return (
     <div className="setting-supplier-container">
       <div className="setting-supplier-header">
-        <button className="setting-supplier-add-user-button" onClick={() => handleShowModal()}>+ Add UnitOfMeasurement</button>
+        <button className="setting-supplier-add-user-button" onClick={() => handleShowModal()}>+ Add Unit Of Measurement</button>
       </div>
       <input
         type="text"
@@ -106,7 +106,7 @@ const SettingUOM = () => {
           </tbody>
         </table>
 
-        <div className="setting-supplier-pagination">
+        {/* <div className="setting-supplier-pagination">
           <div className="setting-supplier-pagination-controls">
             <button>First</button>
             <button>Previous</button>
@@ -114,7 +114,7 @@ const SettingUOM = () => {
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Modal show={showModal} onHide={handleCloseModal} className="supplier-setting-supplier-update-modal">

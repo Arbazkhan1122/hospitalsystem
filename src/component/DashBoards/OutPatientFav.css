@@ -1,39 +1,37 @@
-.Out-patient-list {
+.out-patient-list {
   font-family: Arial, sans-serif;
-  /* max-width: 1200px; */
   margin: 0 auto;
   padding: 20px;
   background-color: #e6f3ff;
 }
 
-.search-bar {
+.out-patient-search-bar {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin-bottom: 20px; */
 }
 
-.search-bar input {
+.out-patient-search-bar input {
   flex-grow: 1;
   padding: 5px;
   margin-right: 5px;
 }
 
-.search-bar button {
+.out-patient-search-bar button {
   padding: 5px 10px;
   background-color: white;
   border: 1px solid #ccc;
   cursor: pointer;
 }
 
-.results {
+.out-patient-results {
   margin-left: auto;
   margin-right: 10px;
   color: #3498db;
 }
 
-.print {
+.out-patient-print {
   padding: 5px 10px;
   background-color: #3498db;
   color: white;
@@ -42,33 +40,34 @@
   cursor: pointer;
 }
 
-table {
+.out-patient-table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
 }
 
-th, td {
+.out-patient-table th, 
+.out-patient-table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
 }
 
-th {
+.out-patient-table th {
   background-color: #f2f2f2;
 }
 
-.no-data {
+.out-patient-no-data {
   background-color: #fff9e6;
 }
 
-.no-data td {
+.out-patient-no-data td {
   text-align: center;
   padding: 20px;
   color: #856404;
 }
 
-.pagination {
+/* .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,4 +86,4 @@ th {
 
 .pagination span {
   margin: 0 10px;
-}
+} */

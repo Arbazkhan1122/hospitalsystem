@@ -3,8 +3,8 @@ import './OpdTriagePage.css';
 import { Modal } from 'react-bootstrap';
 import axios from "axios";
 
-function OPDTriagePage({ onClose }) {
-  const [isTriageModalOpen, setIsTriageModalOpen] = useState(true); // Set to true for demo purposes
+function OPDTriagePage({ onClose, data }) {
+  const [isTriageModalOpen, setIsTriageModalOpen] = useState(true);
   const [vitals, setVitals] = useState([]);
   const [newVitals, setNewVitals] = useState({
     addedOn: '',
@@ -23,7 +23,6 @@ function OPDTriagePage({ onClose }) {
   const [allergy, setAllergy] = useState({});
   const [chiefComplaint, setChiefComplaint] = useState({});
 
-  // Function to open/close the triage modal
   const openTriAgeModal = () => setIsTriageModalOpen(true);
   const closeTriAgeModal = () => {
     setIsTriageModalOpen(false);
@@ -65,7 +64,7 @@ function OPDTriagePage({ onClose }) {
   const handleVitalsSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8989/api/patient-visits", newVitals);
+      await axios.post("http://192.168.1.34:1415/api/vitals", newVitals);
       fetchData(); // Refresh data after saving
     } catch (error) {
       console.error('Error saving vitals:', error);
@@ -84,7 +83,6 @@ function OPDTriagePage({ onClose }) {
 
       if (response.status === 200) {
         console.log('Allergy saved successfully');
-        // Add logic here to update the UI or inform the user of success
       } else {
         console.error('Failed to save Allergy:', response.status);
       }
@@ -102,7 +100,6 @@ function OPDTriagePage({ onClose }) {
 
       if (response.status === 200) {
         console.log('Chief Complaint saved successfully');
-        // Add logic here to update the UI or inform the user of success
       } else {
         console.error('Failed to save Chief Complaint:', response.status);
       }
@@ -112,35 +109,14 @@ function OPDTriagePage({ onClose }) {
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
-
-  // Function to fetch data from the API
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:8989/api/patient-visits/8");
-      if (response.data) {
-        // Assuming your API response has properties like 'vitals', 'allergy', 'chiefComplaint'
-        setVitals([response.data]);  // if the data is not an array, wrap it in an array
-        setAllergy({
-          recordedOn: response.data.recordedOn,
-          allergen: response.data.allergen,
-          severity: response.data.severity,
-          reaction: response.data.reaction,
-          verified: response.data.verified,
-          comments: response.data.allergyComments
-        });
-        setChiefComplaint({
-          description: response.data.chiefComplaint,
-          comments: response.data.chiefComments
-        });
-      } else {
-        console.error("Data not found:", response.data);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
+    // Populate modal with data if available
+    if (data) {
+      setVitals(data || {});
+      console.log(data+'tttttttttttttt')
+      // setAllergy(data.allergy || {});
+      // setChiefComplaint(data.chiefComplaint || {});
     }
-  };
+  }, [data]);
 
   return (
     <>
@@ -151,7 +127,7 @@ function OPDTriagePage({ onClose }) {
         <Modal.Body>
           <div className="triage-container">
             <header>
-              <h2>OPD Triage of {vitals.length > 0 && vitals[0].patientName}</h2>
+              <h2>OPD Triage of {vitals.length > 0 && vitals[0].patientDTO.firstName}</h2>
               <p>Doctor Name: {vitals.length > 0 && vitals[0].doctor}</p>
             </header>
             <main>
@@ -160,7 +136,7 @@ function OPDTriagePage({ onClose }) {
                   <h2>Vitals List</h2>
                   {vitals.length > 0 ? (
                     vitals.map((vital) => (
-                      <table key={vital.id} className="vertical-table">
+                      <table key={vital.vitalId} className="vertical-table">
                         <tbody>
                           <tr>
                             <th>Date</th>
@@ -179,7 +155,7 @@ function OPDTriagePage({ onClose }) {
                             <td>{vital.bmi}</td>
                           </tr>
                           <tr>
-                            <th>Temperature (F)</th>
+                            <th>Temperature (C)</th>
                             <td>{vital.temperature}</td>
                           </tr>
                           <tr>
@@ -188,7 +164,7 @@ function OPDTriagePage({ onClose }) {
                           </tr>
                           <tr>
                             <th>BP (Systolic/Diastolic)</th>
-                            <td>{vital.bloodPressureSystolic}/{vital.bloodPressureDiastolic}</td>
+                            <td>{vital.bpSystolic}/{vital.bpDiastolic}</td>
                           </tr>
                           <tr>
                             <th>Respiratory Rate</th>
@@ -196,7 +172,7 @@ function OPDTriagePage({ onClose }) {
                           </tr>
                           <tr>
                             <th>SpO2</th>
-                            <td>{vital.spo2}</td>
+                            <td>{vital.spO2}</td>
                           </tr>
                           <tr>
                             <th>Pain Scale</th>
@@ -221,50 +197,42 @@ function OPDTriagePage({ onClose }) {
                 <input type="number" name="height" placeholder="Height (cm)" value={newVitals.height} onChange={handleVitalsChange} />
                 <input type="number" name="weight" placeholder="Weight (kg)" value={newVitals.weight} onChange={handleVitalsChange} />
                 <input type="number" name="bmi" placeholder="BMI" value={newVitals.bmi} onChange={handleVitalsChange} />
-                <input type="number" name="temperature" placeholder="Temperature (F)" value={newVitals.temperature} onChange={handleVitalsChange} />
+                <input type="number" name="temperature" placeholder="Temperature (C)" value={newVitals.temperature} onChange={handleVitalsChange} />
                 <input type="number" name="pulse" placeholder="Pulse" value={newVitals.pulse} onChange={handleVitalsChange} />
-                <div className="blood-pressure">
-                  <input type="number" name="bloodPressureSystolic" placeholder="BP Systolic" value={newVitals.bloodPressureSystolic} onChange={handleVitalsChange} />
-                  <input type="number" name="bloodPressureDiastolic" placeholder="BP Diastolic" value={newVitals.bloodPressureDiastolic} onChange={handleVitalsChange} />
-                </div>
+                <input type="number" name="bloodPressureSystolic" placeholder="BP Systolic" value={newVitals.bloodPressureSystolic} onChange={handleVitalsChange} />
+                <input type="number" name="bloodPressureDiastolic" placeholder="BP Diastolic" value={newVitals.bloodPressureDiastolic} onChange={handleVitalsChange} />
                 <input type="number" name="respiratoryRate" placeholder="Respiratory Rate" value={newVitals.respiratoryRate} onChange={handleVitalsChange} />
                 <input type="number" name="spo2" placeholder="SpO2" value={newVitals.spo2} onChange={handleVitalsChange} />
                 <input type="number" name="painScale" placeholder="Pain Scale" value={newVitals.painScale} onChange={handleVitalsChange} />
                 <input type="text" name="bodyPart" placeholder="Body Part" value={newVitals.bodyPart} onChange={handleVitalsChange} />
-                <button type="button" onClick={handleVitalsSubmit}>Save Vitals</button>
+                <button onClick={handleVitalsSubmit}>Save Vitals</button>
               </section>
 
-              <section className="AllergyComponent">
-                <h3>Add Allergy</h3>
-                <div className="allergy-form">
-                  <select name="allergen" value={allergy.allergen || ''} onChange={handleAllergyChange}>
-                    <option value="">Select Allergen</option>
-                    <option value="food">Food</option>
-                    <option value="medication">Medication</option>
-                    <option value="environmental">Environmental</option>
-                  </select>
-                  <input type="text" name="severity" placeholder="Severity" value={allergy.severity || ''} onChange={handleAllergyChange} />
-                  <input type="text" name="reaction" placeholder="Reaction" value={allergy.reaction || ''} onChange={handleAllergyChange} />
-                  <input type="text" name="comments" placeholder="Comments" value={allergy.comments || ''} onChange={handleAllergyChange} />
-                  <label>
-                    Verified
-                    <input type="checkbox" name="verified" checked={allergy.verified || false} onChange={handleAllergyCheckboxChange} />
-                  </label>
-                  <button type="button" onClick={handleAllergySave}>Save Allergy</button>
-                </div>
+              <section className="allergy-section">
+                <h3>Allergy</h3>
+                <input type="text" name="allergen" placeholder="Allergen" value={allergy.allergen} onChange={handleAllergyChange} />
+                <input type="text" name="severity" placeholder="Severity" value={allergy.severity} onChange={handleAllergyChange} />
+                <input type="text" name="reaction" placeholder="Reaction" value={allergy.reaction} onChange={handleAllergyChange} />
+                <input type="text" name="comments" placeholder="Comments" value={allergy.comments} onChange={handleAllergyChange} />
+                <label>
+                  <input type="checkbox" name="verified" checked={allergy.verified || false} onChange={handleAllergyCheckboxChange} />
+                  Verified
+                </label>
+                <button onClick={handleAllergySave}>Save Allergy</button>
               </section>
 
-              <section className="ComplaintComponent">
-                <h3>Add Chief Complaint</h3>
-                <div className="complaint-form">
-                  <input type="text" name="description" placeholder="Description" value={chiefComplaint.description || ''} onChange={handleChiefComplaintChange} />
-                  <textarea name="comments" placeholder="Comments" value={chiefComplaint.comments || ''} onChange={handleChiefComplaintChange} />
-                  <button type="button" onClick={handleChiefComplaintSave}>Save Complaint</button>
-                </div>
+              <section className="chief-complaint-section">
+                <h3>Chief Complaint</h3>
+                <input type="text" name="description" placeholder="Description" value={chiefComplaint.description} onChange={handleChiefComplaintChange} />
+                <input type="text" name="comments" placeholder="Comments" value={chiefComplaint.comments} onChange={handleChiefComplaintChange} />
+                <button onClick={handleChiefComplaintSave}>Save Chief Complaint</button>
               </section>
             </main>
           </div>
         </Modal.Body>
+        <Modal.Footer>
+          <button variant="secondary" onClick={closeTriAgeModal}>Close</button>
+        </Modal.Footer>
       </Modal>
     </>
   );

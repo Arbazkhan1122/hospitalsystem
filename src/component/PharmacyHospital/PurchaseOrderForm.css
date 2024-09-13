@@ -8,6 +8,7 @@
   max-width: 1200px; /* Set maximum width to prevent exceeding */
   width: 100%; /* Ensure it takes up full width up to max-width */
   margin: 0 auto;
+  /* height: 90vh; */
 }
 
 /* Header styling */
@@ -30,6 +31,7 @@
   display: flex;
   flex-direction: column;
   width: 23%;
+  padding: 5px;
 }
 
 .purchase-order-form-form-group label {
@@ -77,7 +79,8 @@ textarea.purchase-order-textare {
 }
 
 .goods-receipt-totals-section {
-  /* justify-content: flex-end;  */
+width: 100%;
+height: 90vh;
 }
 
 /* Summary section styling */
@@ -99,7 +102,7 @@ textarea.purchase-order-textare {
 
 .purchase-order-form-summary-item input {
   width: 30%; /* Takes up 30% of the width */
-  padding: 8px;
+  padding: 5px;
   box-sizing: border-box;
 }
 
@@ -120,15 +123,14 @@ textarea.purchase-order-textare {
 
 /* Button styling */
 .purchase-btn-order {
-  background-color: #4caf50; /* Green background color */
+  background-color:var(--button-color); 
   color: white;
   border: none;
-  height: 30px;
-  padding: 0 20px; /* Adjust padding to maintain height */
+ 
+  padding: 5px; 
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
-  line-height: 30px; /* Vertically center text */
+  font-size: 14px;
   text-align: center;
   display: inline-flex;
   align-items: center;
@@ -137,7 +139,7 @@ textarea.purchase-order-textare {
 }
 
 .purchase-btn-order:hover {
-  background-color: #45a049; /* Slightly darker green on hover */
+  background-color: var(--button-bg-color); /* Slightly darker green on hover */
 }
 
 /* Close button styling */
@@ -150,4 +152,53 @@ textarea.purchase-order-textare {
   font-size: 24px;
   cursor: pointer;
   color: #333;
+}
+
+/* .purchase-order-form-component input[type="date"] {
+  width: 60%;
+} */
+
+
+
+/* Style for the table header cells */
+.purchase-order-tab thead th {
+  background-color: #f4f4f4; /* Background color for the header */
+  color: #333; /* Text color for the header */
+  padding: 10px; /* Padding inside the header cells */
+  text-align: left; /* Align text to the left */
+  border-bottom: 2px solid #ddd; /* Border at the bottom of the header cells */
+}
+
+/* Style for the table body rows */
+.purchase-order-tab tbody tr {
+  border-bottom: 1px solid #ddd; /* Border at the bottom of each row */
+}
+
+/* Style for the table body cells */
+.purchase-order-tab tbody td {
+  padding: 10px; /* Padding inside the body cells */
+  color: #555; /* Text color for the body cells */
+}
+
+/* Style for the Edit button */
+.purchase-order-tab tbody td button {
+  background-color: #007bff; /* Background color for the button */
+  color: white; /* Text color for the button */
+  border: none; /* Remove default border */
+  padding: 5px 10px; /* Padding inside the button */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Hover effect for the Edit button */
+.purchase-order-tab tbody td button:hover {
+  background-color: #0056b3; /* Darker background color on hover */
+}
+
+/* Style for no rows message */
+.purchase-order-tab tbody .purchase-order-no-rows {
+  text-align: center; /* Center text alignment */
+  padding: 20px; /* Padding inside the no rows cell */
+  color: #888; /* Text color for no rows message */
+  font-style: italic; /* Italicize the no rows message */
 }

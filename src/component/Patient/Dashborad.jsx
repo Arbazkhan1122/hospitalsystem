@@ -29,48 +29,48 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="dashboard-container">
+    <div className="patient-dashboard-container">
       {/* <div className="navbar">
         <button className="nav-button">Search Patient</button>
         <button className="nav-button">Register Patient</button>
       </div> */}
 
-      <div className="date-range-picker">
+      <div className="patient-date-range-picker">
         <label>From:</label>
         <input type="date" />
         <label>To:</label>
         <input type="date" />
-        <button className="date-picker-button">OK</button>
+        <button className="patient-date-picker-button">OK</button>
       </div>
 
-      <div className="stats">
-        <div className="stat-card">
-          <div className="stat-icon">🧑‍⚕️</div>
-          <div className="stat-info">
+      <div className="patient-stats">
+        <div className="patient-stat-card">
+          <div className="patient-stat-icon">🧑‍⚕️</div>
+          <div className="patient-stat-info">
             <p>Registered Patient</p>
             <h2>2</h2>
             <p>Today: 0 | Yesterday: 0</p>
           </div>
         </div>
-        <div className="stat-card">
-          <div className="stat-icon">👨‍⚕️</div>
-          <div className="stat-info">
+        <div className="patient-stat-card">
+          <div className="patient-stat-icon">👨‍⚕️</div>
+          <div className="patient-stat-info">
             <p>Doctors</p>
             <h2>8</h2>
             <p>Consultants: 8 | Anaesthetists: 0</p>
           </div>
         </div>
-        <div className="stat-card">
-          <div className="stat-icon">📅</div>
-          <div className="stat-info">
+        <div className="patient-stat-card">
+          <div className="patient-stat-icon">📅</div>
+          <div className="patient-stat-info">
             <p>Appointments</p>
             <h2>16</h2>
             <p>Today: 0 | Yesterday: 0</p>
           </div>
         </div>
-        <div className="stat-card">
-          <div className="stat-icon">🔄</div>
-          <div className="stat-info">
+        <div className="patient-stat-card">
+          <div className="patient-stat-icon">🔄</div>
+          <div className="patient-stat-info">
             <p>Readmission</p>
             <h2>0</h2>
             <p>Today: 0 | Yesterday: 0</p>
@@ -78,8 +78,8 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="charts-container">
-        <div className="chart">
+      <div className="patient-charts-container">
+        <div className="patient-chart">
           <h3>Patient Count by Day</h3>
           <BarChart width={400} height={300} data={dummyData}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -89,7 +89,7 @@ const Dashboard = () => {
             <Bar dataKey="patients" fill="#007bb5" />
           </BarChart>
         </div>
-        <div className="chart">
+        <div className="patient-chart">
           <h3>Average Treatment Cost by Age Group</h3>
           <BarChart width={400} height={300} data={ageGroupData}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -99,7 +99,7 @@ const Dashboard = () => {
             <Bar dataKey="cost" fill="#007bb5" />
           </BarChart>
         </div>
-        <div className="chart">
+        <div className="patient-chart">
           <h3>Department Wise Appointment Count</h3>
           <PieChart width={400} height={300}>
             <Pie

@@ -75,13 +75,13 @@ const PurchaseSummaryReport = () => {
           </tbody>
         </table>
         
-        <div className="iten-purchase-pagination">
+        {/* <div className="iten-purchase-pagination">
         <button className="iten-purchase-paginationButton">First</button>
         <button className="iten-purchase-paginationButton">Previous</button>
         <span>Page 0 of 0</span>
         <button className="iten-purchase-paginationButton">Next</button>
         <button className="iten-purchase-paginationButton">Last</button>
-      </div>
+      </div> */}
       </div>
     </div>
   );

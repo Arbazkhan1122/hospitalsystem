@@ -141,62 +141,6 @@ function RegisterPatient() {
     }));
   };
 
-  // useEffect(()=>{
-  //   if(patientIds!=null){
-  //     fetchPatientdata()
-  //   }
-  // },[])
-
-  // const fetchPatientdata = () => {
-  //   fetch(`http://192.168.1.40:1415/api/patients/${patientIds}`)
-  //     .then(response => response.json())
-  //     .then(res => {
-  //       // Assuming `res` is the patient data object
-  //       setFormData({
-  //         patientData: {
-  //           address: res.address || '',
-  //           age: res.age || '',
-  //           bloodGroup: res.bloodGroup || '',
-  //           country: res.country || '',
-  //           dateOfBirth: res.dateOfBirth || '',
-  //           dialysisPatient: res.dialysisPatient || false,
-  //           email: res.email || '',
-  //           emergencyContactDTO: res.emergencyContactDTO || {},
-  //           employerInfo: res.employerInfo || '',
-  //           firstName: res.firstName || '',
-  //           gender: res.gender || '',
-  //           guarantorDTO: res.guarantorDTO || {},
-  //           hospitalNo: res.hospitalNo || '',
-  //           insuranceDTO: res.insuranceDTO || {},
-  //           ipd: res.ipd || false,
-  //           landlineNumber: res.landlineNumber || '',
-  //           lastName: res.lastName || '',
-  //           maritalStatus: res.maritalStatus || '',
-  //           middleName: res.middleName || '',
-  //           notifications: res.notifications || false,
-  //           occupation: res.occupation || '',
-  //           passportNumber: res.passportNumber || '',
-  //           phoneNumber: res.phoneNumber || '',
-  //           pinCode: res.pinCode || '',
-  //           previousLastName: res.previousLastName || '',
-  //           race: res.race || '',
-  //           religion: res.religion || '',
-  //           salutation: res.salutation || '',
-  //           state: res.state || '',
-  //         },
-  //         addressData: res.addressDTO || {},
-  //         guarantorData: res.guarantorDTO || {},
-  //         insuranceData: res.insuranceDTO || {},
-  //         emergencyContactData: res.emergencyContactDTO || {},
-  //       });
-  //       console.log(res);
-        
-  //     })
-  //     .catch(error => {
-  //       console.error('Error fetching patient data:', error);
-  //     });
-  // };
-  
 
   const handleRegisterPatient = async () => {
     // Check if all tabs have data (optional validation)

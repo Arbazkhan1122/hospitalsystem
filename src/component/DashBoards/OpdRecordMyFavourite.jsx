@@ -59,7 +59,7 @@ const OpdRecordMyFavourites = () => {
         <button className="OpdRec-print" onClick={printTable}>Print</button>
       </div>
 
-      <table>
+      <table className='opd-record-my-favourite'>
         <thead>
           <tr>
             <th>Hospital No.</th>
@@ -89,14 +89,14 @@ const OpdRecordMyFavourites = () => {
           ))}
         </tbody>
       </table>
-      <div className="OpdRec-paginat">
+      {/* <div className="OpdRec-paginat">
         <span>0 to 0 of 0</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 0 of 0</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
     </div>
   );
 };
