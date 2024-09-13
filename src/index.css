@@ -4,4 +4,7 @@
 
   --button-bg-color: #00968f; /* Active */
   --button-color: #00c9c0; /*button color*/
+  --background-color:#e3fffe; /* /background-color/ */
+  --heading-font:16px; /* Heading font size */
+  --font-size:14px ; /* For all text size  */
 }

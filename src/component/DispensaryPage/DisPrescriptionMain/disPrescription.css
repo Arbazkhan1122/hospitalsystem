@@ -2,7 +2,7 @@
   /* background-color: #CAF2FF; */
   padding: 0px 10px;
   font-family: Arial, sans-serif;
-  height: 90vh;
+  height: 80vh;
   overflow-y: scroll;
   border: 1px solid #CAF2FF;
 }
@@ -16,14 +16,14 @@
   font-size: 14px;
   width: 200px;
   border: 1px solid gray;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .disPrescription-search-bar i {
   position: relative;
   color: gray;
-  top: 25px;
-  left: 225px;
+  top: 2px;
+  left: 190px;
 }
 
 .disPrescription-results-info {
@@ -67,7 +67,10 @@
   color: #383737;
   white-space: nowrap;
 }
+/* .disPrescription-requisition-tableBody{
+  overflow-y: scroll;
 
+} */
 .disPrescription-requisition-table td {
   border: 1px solid #ddd;
   padding: 5px 0;

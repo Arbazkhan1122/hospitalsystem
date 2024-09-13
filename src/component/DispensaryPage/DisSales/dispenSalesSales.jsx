@@ -284,31 +284,41 @@ const SalesSales = () => {
           <div className="dispenSalesSales-payment-summary">
             <div className="dispenSalesSales-payment-summary-subDiv">
               Sub Total:
-              <input type="text" />
+              <input type="text" placeholder='0'/>
             </div>
             <div className="dispenSalesSales-payment-summary-subDiv">
               Total Amount:
-              <input type="text" />
+              <input type="text" placeholder='0'/>
             </div>
             <div className="dispenSalesSales-payment-summary-subDiv">In Words: Only.</div>
-            <div className="dispenSalesSales-payment-summary-subDiv">Payment Options:</div>
+            <div className="dispenSalesSales-payment-summary-subDiv">Payment Options:
             <select>
               <option>Cash</option>
               <option>Credit</option>
               <option>Other</option>
               {/* Add more payment options */}
             </select>
+            </div>
             <div className="dispenSalesSales-payment-summary-subDiv">
               Tender:
-              <input type="text" />
+            <input type="text" placeholder='0'/>
             </div>
-            <div className="dispenSalesSales-payment-summary-subDiv">Change: Kshs. 0</div>
+            <div className="dispenSalesSales-payment-summary-subDiv">Change: 
+            <div className="dispenSalesSales-payment-summary-subDiv-Kshs"> 
+              
+              Kshs. 0
+
+            </div>
+            </div>
             <div className="dispenSalesSales-payment-summary-subDiv">
               Remarks:
               <input type="text" />
             </div>
 
-            <div className="dispenSalesSales-payment-summary-subDiv">Paid Amount: 0</div>
+            <div className="dispenSalesSales-payment-summary-subDiv">Paid Amount: 
+            <input type="text" placeholder='0'/>
+
+            </div>
           </div>
           <div className="dispenSalesSales-payment-actions">
             <button className="dispenSalesSales-print-button">Print Invoice</button>
