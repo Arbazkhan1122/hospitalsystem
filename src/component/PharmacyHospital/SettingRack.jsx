@@ -212,7 +212,7 @@ const SettingRack = () => {
             </div>
 
             <div className="supplier-setting-text-right">
-              <Button variant="secondary" onClick={handleCloseModal} className="supplier-setting-mr-2">Cancel</Button>
+              <Button variant="primary" onClick={handleCloseModal} >Cancel</Button>&nbsp; &nbsp;
               <Button variant="primary" type="submit">{isEditMode ? 'Update' : 'Add'}</Button>
             </div>
           </Form>

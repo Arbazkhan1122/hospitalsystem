@@ -267,7 +267,7 @@ const SettingInvoiceHeaders = () => {
             </Form.Group>
 
             <div className="supplier-setting-text-right">
-              <Button variant="secondary" onClick={handleCloseModal} className="supplier-setting-mr-2">Cancel</Button>
+              <Button variant="primary" onClick={handleCloseModal} className="supplier-setting-mr-2">Cancel</Button>
               <Button variant="primary" type="submit">{isEditMode ? 'Update Invoice Header' : 'Add Invoice Header'}</Button>
             </div>
           </Form>

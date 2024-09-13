@@ -62,7 +62,7 @@ const StoreBreakageItem = () => {
         <div className="return-form-overlay-model">
           <div className="return-form-container-com">
             <ReturnForm />
-            <button className="return-form-com-close-btn" onClick={handleCloseReturnForm}>Close</button>
+            <button className="return-form-com-close-btn" onClick={handleCloseReturnForm}>X</button>
           </div>
         </div>
       )}

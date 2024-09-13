@@ -24,13 +24,13 @@ function Change_Visitscheme() {
   };
 
   return (
-    <div className="Change_Visitschememain-content">
-      <div className="Change_Visitschememain-middleChange_Visitscheme">
-        <div className="Change_Visitschememain-headingChange_Visitschememain">
+    <div className="Change_Visitschememain">
+      <div className="middleChange_Visitscheme">
+        <div className="headingChange_Visitschememain">
           <h4>Change Scheme / Price Category</h4>
         </div>
 
-        <div className="Change_Visitschememain-label_Change_Visitschememain">
+        <div className="label_Change_Visitschememain">
           <label htmlFor="patientsearch">Select Patient :</label>
           <input 
             type="text" 
@@ -41,59 +41,59 @@ function Change_Visitscheme() {
 
         {isVisible && (
           <div>
-            <div className="Change_Visitschememain-patient-info">
-              <div className="Change_Visitschememain-info-row">
-                <span className="Change_Visitschememain-label">Patient Name:</span>
-                <span className="Change_Visitschememain-value">Arbaz s Pathan</span>
+            <div className="patient-info">
+              <div className="info-row">
+                <span className="label">Patient Name:</span>
+                <span className="value">Arbaz s Pathan</span>
               </div>
-              <div className="Change_Visitschememain-info-row">
-                <span className="Change_Visitschememain-label">Hospital No:</span>
-                <span className="Change_Visitschememain-value">2408003807</span>
+              <div className="info-row">
+                <span className="label">Hospital No:</span>
+                <span className="value">2408003807</span>
               </div>
-              <div className="Change_Visitschememain-info-row">
-                <span className="Change_Visitschememain-label">Age/Sex:</span>
-                <span className="Change_Visitschememain-value">25Y</span>
+              <div className="info-row">
+                <span className="label">Age/Sex:</span>
+                <span className="value">25Y</span>
               </div>
-              <div className="Change_Visitschememain-info-row">
-                <span className="Change_Visitschememain-label">Contact No:</span>
-                <span className="Change_Visitschememain-value">8382883822</span>
+              <div className="info-row">
+                <span className="label">Contact No:</span>
+                <span className="value">8382883822</span>
               </div>
-              <div className="Change_Visitschememain-info-row">
-                <span className="Change_Visitschememain-label">Visit Type:</span>
-                <span className="Change_Visitschememain-value">Inpatient</span>
+              <div className="info-row">
+                <span className="label">Visit Type:</span>
+                <span className="value">Inpatient</span>
               </div>
-              <div className="Change_Visitschememain-info-row">
-                <span className="Change_Visitschememain-label">Inpatient No:</span>
-                <span className="Change_Visitschememain-value">H2400025</span>
+              <div className="info-row">
+                <span className="label">Inpatient No:</span>
+                <span className="value">H2400025</span>
               </div>
-              <div className="Change_Visitschememain-info-row">
-                <span className="Change_Visitschememain-label">Address:</span>
-                <span className="Change_Visitschememain-value">Pune, Maharashtra</span>
+              <div className="info-row">
+                <span className="label">Address:</span>
+                <span className="value">Pune, Maharashtra</span>
               </div>
             </div>
 
-            <div className="Change_Visitschememain-scheme-info">
-              <span className="Change_Visitschememain-label">Current Scheme:</span>
-              <span className="Change_Visitschememain-value">General</span>
-              <span className="Change_Visitschememain-label">Current Price Category:</span>
-              <span className="Change_Visitschememain-value">Normal</span>
+            <div className="scheme-info">
+              <span className="label">Current Scheme:</span>
+              <span className="value">General</span>
+              <span className="label">Current Price Category:</span>
+              <span className="value">Normal</span>
             </div>
 
-            <div className="Change_Visitschememain-change-form">
+            <div className="change-form">
               <h3>Change To:</h3>
-              <div className="Change_Visitschememain-form-row">
+              <div className="form-row">
                 <label>Select New Scheme:</label>
                 <select>
                   <option>---Select New Scheme---</option>
                 </select>
               </div>
-              <div className="Change_Visitschememain-form-row">
+              <div className="form-row">
                 <label>Select New Price Category:</label>
                 <select>
                   <option>---Select New Price Category---</option>
                 </select>
               </div>
-              <div className="Change_Visitschememain-form-row">
+              <div className="form-row">
                 <label>Remarks:</label>
                 <textarea></textarea>
               </div>
@@ -110,11 +110,11 @@ function Change_Visitscheme() {
 
         {/* Popup Modal */}
         {isPopupVisible && (
-          <div className="Change_Visitschememain-popup">
-            <div className="Change_Visitschememain-popup-content">
+          <div className="popup">
+            <div className="popup-content">
               <h2>Confirm!</h2>
               <p>Are you sure you want to save?</p>
-              <div className="Change_Visitschememain-popup-buttons">
+              <div className="popup-buttons">
                 <button className="changevisitscheme-btn-confirm " onClick={handleConfirm}>Confirm</button>
                 <button className="changevisitscheme-btn-cancel" onClick={handleCancel}>Cancel</button>
               </div>

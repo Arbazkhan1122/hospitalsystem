@@ -25,11 +25,11 @@ function Navigation() {
                 > In Patient</button>
             </NavLink>
 
-            <NavLink to="/Nephrology"> <button
+            {/* <NavLink to="/Nephrology"> <button
                 className={`nursing-action-button ${selectedButton === 'Nephrology' ? 'selected' : ''}`}
                 onClick={() => handleButtonClick('Nephrology')}
                 > Nephrology</button>
-            </NavLink>
+            </NavLink> */}
 
             <NavLink to="/RequisitionList"> <button
                 className={`nursing-action-button ${selectedButton === 'RequisitionList' ? 'selected' : ''}`}

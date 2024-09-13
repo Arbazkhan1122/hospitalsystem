@@ -77,9 +77,9 @@ const SettingSupplierComponent = () => {
 
   return (
     <div className="setting-supplier-container">
-      <div className="setting-supplier-header">
+      {/* <div className="setting-supplier-header">
         <button className="setting-supplier-add-user-button">+ Add User</button>
-      </div>
+      </div> */}
       <input
         type="text"
         placeholder="Search"
