@@ -11,7 +11,7 @@ import Nephrology from './Nephrology';
 import RequisitionList from './RequisitionList';
 import DischargeSummary from './DischargeSummary';
 
-function App() {
+function NurisingMainRouting() {
 
   return (
     <>
@@ -30,4 +30,5 @@ function App() {
   )
 }
 
-export default App
+export default NurisingMainRouting;
+

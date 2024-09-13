@@ -1,4 +1,4 @@
-.container {
+.discharge-container {
     width: 90%;
     margin: 0 auto;
     background-color: #f9f9f9;
@@ -7,7 +7,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .distcharge-header {
+  .discharge-container .distcharge-header {
     background-color: #d9edf7;
     padding: 10px;
     border-radius: 5px;
@@ -18,7 +18,7 @@
     margin: 20px;
   }
   
-  .back-button {
+  .discharge-container .back-button {
     background-color: #4a90e2;
     color: white;
     border: none;
@@ -27,25 +27,25 @@
     cursor: pointer;
   }
   
-  .patient-header {
+  .discharge-container .patient-header {
     width: 100%;
   }
   
-  .patient-header h2 {
+  .discharge-container .patient-header h2 {
     margin: 0;
   }
   
-  .patient-details {
+  .discharge-container .patient-details {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
   }
   
-  .patient-details p {
+  .discharge-container .patient-details p {
     margin: 5px 0;
   }
   
-  .form {
+  .discharge-container .form {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -54,61 +54,61 @@
     border-radius: 5px;
   }
   
-  .form-row {
+  .discharge-container .form-row {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 15px;
   }
   
-  .form-group {
+  .discharge-container .form-group {
     width: 48%;
   }
   
-  .form-group.full-width {
+  .discharge-container .form-group.full-width {
     width: 100%;
   }
   
-  .form-group label {
+  .discharge-container .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
   }
   
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
+  .discharge-container .form-group input,
+  .discharge-container .form-group select,
+  .discharge-container .form-group textarea {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
   
-  textarea {
+  .discharge-container textarea {
     resize: vertical;
   }
   
-  .investigations {
+  .discharge-container .investigations {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
   }
   
-  .investigations label {
+  .discharge-container .investigations label {
     margin-right: 10px;
   }
   
-  .medications {
+  .discharge-container .medications {
     display: flex;
     align-items: center;
   }
   
-  .medications input {
+  .discharge-container .medications input {
     flex: 1;
   }
   
-  .add-button,
-  .remove-button {
+  .discharge-container .add-button,
+  .discharge-container .remove-button {
     background-color: #4caf50;
     color: white;
     border: none;
@@ -118,19 +118,19 @@
     cursor: pointer;
   }
   
-  .remove-button {
+  .discharge-container .remove-button {
     background-color: #f44336;
   }
   
-  .form-actions {
+  .discharge-container .form-actions {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
   }
   
-  .submit-button,
-  .update-button {
+  .discharge-container .submit-button,
+  .discharge-container .update-button {
     background-color: #4a90e2;
     color: white;
     border: none;
@@ -140,7 +140,7 @@
     margin-left: 10px;
   }
   
-  .submit-button {
+  .discharge-container .submit-button {
     background-color: #4caf50;
   }
 

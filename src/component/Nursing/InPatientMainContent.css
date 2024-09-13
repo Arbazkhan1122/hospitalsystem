@@ -49,3 +49,70 @@
         --bs-modal-width: 1200px;
     }
 }
+
+.hospital-wards-container {
+    padding: 20px;
+    background-color: #e0f7fa;
+    font-family: Arial, sans-serif;
+  }
+
+  
+  h2 {
+    color: #007acc;
+    margin-bottom: 20px;
+  }
+  
+  .ward-info-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+.ward-info-card:hover{
+    background-color: #cbe1f0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+    
+}
+
+  
+  .ward-info-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 350px;
+    cursor: pointer;
+  }
+  
+  .ward-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .ward-info-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .ward-info-patients {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .ward-info-occupancy {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .ward-info-occupied {
+    color: #1976d2;
+    font-weight: bold;
+  }
+  
+  .ward-info-vacant {
+    color: #00acc1;
+    font-weight: bold;
+  }
+  

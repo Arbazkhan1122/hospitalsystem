@@ -6,6 +6,9 @@
   
   .register-patient-content {
     padding: 20px;
+    height: 80vh;
+    overflow-y: scroll;
+
   }
   
   .register-patient-camera-container {
