@@ -1,171 +1,571 @@
-/* .patient-dashboard {
-  font-family: Arial, sans-serif;
-}
-.isPatientDetailsActive{
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 22222;
-  background-color: white;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-}
-.isPatientDetailsInActive{
-  display: none;
-}
 
-.patient-dashboard-header {
-  background-color: #0066cc;
-  color: white;
-  /* padding: 10px; */
+/* SwapnilRokade_PatientDashboard_Adding_New_patientDashboard_13/09 */
+
+.main-section {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
-}
+  justify-content: space-between;
 
-.patientDash-home-button {
-  background-color: #ffcc00;
+  border: 1px solid #ddd;
   border: none;
-  padding: 5px 10px;
-  cursor: pointer;
 }
 
-.patientDash-main-content {
+
+.aside-section {
+
+
+  width: 0%;
+  margin: 5px 5px;
+  /* Margin between asides */
+  border: 1px solid black;
+  border: none;
+
+
+}
+
+.betweenSection {
+
+  border: 1px solid black;
   width: 100%;
-  display: flex;
- 
-}
-
-.patientDash-patient-info {
-  width: 100%;
-  background-color: #0066cc;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-direction: column;
-  padding: 5px 10px;
-}
-.patientDash-sidebar {
-  width: 400px; /* Adjust width as needed */
-  /* padding: 10px; */
-  height: 100%; /* Ensures it fills the full height of the parent */
-  overflow: hidden; /* Prevents overflowing content */
-  /* background-color: #0066cc; */
-  color: white;
-}
+  margin-top: 5px;
+  /* background-color: #c5d2ee; */
+  border: none;
 
 
-.patientDash-avatar {
-  width: 100px;
-  height: 100px;
-  background-color: #ccc;
+
+}
+
+.navLogoOne {
+  height: 40px;
+  width: 40px;
+  border: 1px solid white;
   border-radius: 50%;
- 
 }
 
-.patientDash-ipd-tag {
-  background-color: #ffcc00;
-  color: black;
-  padding: 2px 5px;
-  display: inline-block;
- 
-}
-.patientDash-sidebar ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.firstBox {
+  padding: 5px 0 5px 5px;
+  border: 1px solid black;
   background-color: white;
-  color: black;
-  height: 410px;
-  /* height: 100%; Full height */
-  overflow-y: auto; /* Enables vertical scrolling */
-  width: 100%;
-}
-.patientDash-sidebar ul::-webkit-scrollbar{
-  /* width: 10px; */
-}
-.patientDash-sidebar ul li {
-  padding: 10px;
-  overflow-y: auto;
-  cursor: pointer;
-  margin-bottom: 10px;
-/* Optional: a darker shade for better contrast */
-}
-
-.patientDash-main {
-  width: 60%;
-}
-
-.patientDash-right-panel {
-  width: 40%;
-}
-
-section {
-  background-color: #f0f0f0;
-  padding: 10px;
-}
-
-.patientDash-right-panel-h3{
-  font-size: 18px;
-  font-weight: 700;
-}
-.patientDash-add
-{
-  font-size: 14px;
-  background-color: #6600cc;
-  color: white;
   border: none;
-  padding: 5px 5px;
-  cursor: pointer;
 }
-.patientDash-right-panel-subCard-subpart
+
+.subNav {
+  border: 1px solid black;
+  display: flex;
+  height: 40px;
+
+  justify-content: space-between;
+  padding-right: 5px;
+  padding-left: 5px;
+  align-items: center;
+  background-color: #eee6e6;
+  border: none;
+
+}
+
+
+.btnAdd {
+  width: 65px;
+  border-radius: 5px;
+  border: none;
+  background-color: #00968f;
+  color: white;
+}
+
+.btnAddBack
 {
+  height: 25px;
+  padding: 0;
+  width: 65px;
+  border-radius: 5px;
+  border: none;
+  background-color:white ;
+  color: #00968f;
+}
+.btnAddBack:hover
+{
+  background-color: #00968f;
+  color: white;
+}
+
+.btnAdd:hover {
+  background-color: white;
+  color: #00968f;
+}
+
+.spanText {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.inputSection {
+  padding-top: 15px;
+}
+
+.inputOne {
+  height: 40px;
+  width: 96%;
+  background-color: rgb(198, 238, 198);
+  padding-right: 15px;
+  padding-left: 15px;
+  border: none;
+
+
+
+}
+
+.left-aside {
+  width: 30%;
+  height: auto;
+
+  /* padding-top: 15px; */
+  /* padding-bottom: 15px; */
+  border: 1px solid black;
+  border: none;
+  font-size: 14px;
+
+
+}
+
+.outOutDiv {
+  padding: 0px 0px 10px 0px;
+  border: 1px solid black;
+  background-color: #007973;
+  border: none;
+
+}
+
+.logoOne {
+  border: 1px solid white;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  margin-bottom: 10px;
+
+}
+
+.divOne {
+  padding-left: 15px;
+  display: flex;
+  justify-content: space-between;
+  border: 1ps solid black;
+  padding-top: 15px;
+  padding-right: 10px;
+  border: none;
+}
+
+.outDiv {
+  padding-bottom: 10px;
+  /* background-color: blue; */
+  border: 1px solid black;
+  border: none;
+
+
+}
+
+.btnIpd {
+  background-color: rgb(231, 217, 12);
+  height: 25px;
+  width: 50px;
+  border-radius: 45px;
+  border: none;
+
+
+}
+
+.textName {
+  color: rgb(231, 217, 12);
+  font-size: 16px;
+  font-weight: bold;
+
+  padding-left: 15px;
+
+
+
+}
+
+
+
+.ageGen {
+  font-size: 14px;
+  color: white;
+  padding-left: 15px;
+
+
+}
+
+.right-aside {
+  width: 55%;
+  height: auto;
+
+}
+
+
+
+
+.outerSection {
   width: 100%;
+  height: auto;
+  border: 1px solid black;
+  border: none;
+
+
+}
+
+.navbar {
+
+  height: 50px;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007973;
+  border: 1px solid black;
+  border: none;
+
+}
+
+.navText {
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+.btnOne {
+  margin-right: 30px;
+  background-color: rgb(231, 217, 12);
+
+  height: 30px;
+  width: 90px;
+  border: none;
+  border-radius: 3px;
+
+}
+
+.Leftaside {
+  width: 100%;
+  padding-right: 15px;
+  margin-right: 15px;
+  float: right;
+  font-style: italic;
+
+  border: 1px solid black;
+  border: none;
+}
+
+.asideFirstBox {
   display: flex;
   justify-content: space-between;
 }
-.patientDash-h3{
-  font-size: 18px;
-  font-weight: 700;
-}
-.patientDash-add-button, .show-graph, .add-vitals, .new-complaint {
-  background-color: #6600cc;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
+
+.textName {
+  font-size: 16px;
+  font-weight: bold;
+
 }
 
-.patientDash-no-records {
-  background-color: #e6ffe6;
-  padding: 10px;
-  color: #006600;
+.divTwoDetails {
+  color: white;
+  height: auto;
+  padding-left: 15px;
+  padding-top: 15px;
+
+  /* background-color: blue; */
+  height: 100px;
+  font-size: 14px;
+  border: 1px solid black;
+  border: none;
+
+}
+
+.detailHeading {
+  color: rgb(231, 217, 12);
+  font-weight: bold;
+}
+
+.ward {
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+}
+
+.attending {
+  padding-bottom: 5px;
+}
+
+.detailsBox {
+
+  padding: 15px 0px;
+
+}
+
+.boxOne {
+  height: 10px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  box-shadow: 5px 5px 5px rgb(232, 244, 248);
+  border: none;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  /* margin: 20px 0;  */
+
+
+}
+
+th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  background-color: #f2f2f2;
 }
 
 td {
-  padding: 5px;
-  border-bottom: 1px solid #ddd;
+  /* background-color: #f2f2f2; */
+  text-align: center;
+  padding: 8px;
+
+
+
 }
 
-.patientDash-complaint {
-  background-color: white;
-  padding: 5px;
- 
+
+
+
+.navTextandBtn {
+  padding-right: 0px;
+  border: 1px solid black;
+  border: none;
+}
+
+.navVitals {
   display: flex;
   justify-content: space-between;
+  padding: 10px;
+  background-color: #eee6e6;
   align-items: center;
+
 }
 
-.patientDash-remove-complaint {
-  background: none;
+
+.twoBtns {
+
+  width: 250px;
+  display: flex;
+  border: 1px solid black;
+  justify-content: space-around;
+  align-items: center;
   border: none;
-  cursor: pointer;
-  color: red;
-} */
+
+
+}
+
+.oneBtnNormal {
+  height: 30px;
+  width: 100px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  color: #00968f;
+
+}
+
+.oneBtnNormal:hover {
+  background-color: #00968f;
+  color: white;
+}
+
+.secBtnBlue {
+  height: 30px;
+  width: 100px;
+  background-color: #00968f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.secBtnBlue:hover {
+  background-color: white;
+  color: #00968f;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  
+}
+
+td {
+  border: none;
+  padding: 8px;
+  text-align: left;
+}
+
+.cheifComplaints {
+
+  height: auto;
+  width: 100%;
+  border: 1px solid black;
+  border: none;
+  padding: 5px;
+}
+
+.navComplaints {
+
+  border: 1px solid black;
+
+  width: 100%;
+  border: none;
+
+
+}
+
+.contentNav {
+  display: flex;
+  border: 1px solid black;
+  border: none;
+  /* width: 100%; */
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #eee6e6;
+
+}
+
+.btnComplaints {
+  height: 25px;
+  width: 130px;
+  background-color: #00968f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.btnComplaints:hover {
+  background-color: white;
+  color: #00968f;
+}
+
+.inputSecTwo {
+  /* padding: 10px; */
+  padding: 10px 0px 10px 0px;
+  border: 1px solid black;
+  border: none;
+
+}
+
+.inputTwo {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(198, 238, 198);
+  border: none;
+}
+
+@media (max-width: 1106px) {
+  .btnIpd {
+      margin-top: 25px;
+  }
+
+  .textSurname {
+      padding-left: 5px;
+  }
+}
+
+@media(max-width:1046px) {
+  .divTwoDetails {
+      height: auto;
+  }
+}
+
+
+
+@media (max-width: 880px) {
+  .navbar {
+      width: 102%;
+
+  }
+
+  .main-section {
+      flex-direction: column;
+      margin-right: 5px;
+  }
+
+  .left-aside,
+  .right-aside {
+      /* flex: 1; */
+      margin-bottom: 10px;
+  }
+
+  .btnAdd {
+      width: 100px;
+  }
+
+  .left-aside {
+      width: 100%;
+      /* padding-right: 5px; */
+      /* flex: 1; */
+      margin-bottom: 5px;
+      margin-top: 5px;
+      margin-left: 8px;
+
+  }
+
+  .right-aside {
+      width: 100%;
+  }
+
+  .divOne {
+      display: flex;
+      align-items: center;
+
+  }
+
+}
+
+
+
+@media (max-width: 480px) {
+  .navbar {
+      padding: 10px;
+
+  }
+
+
+
+  .btnAdd {
+      width: 80px;
+  }
+
+  .main-section {
+      gap: 5px; 
+      margin-right:-5px;
+
+  }
+}
+
+@media(max-width:375px) {
+  .inputSection {
+      padding-right: 15px;
+  }
+}
+
+@media(max-width:390px) {
+  .inputSection {
+      padding-right: 15px;
+  }
+}
