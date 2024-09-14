@@ -1,7 +1,7 @@
 
 
 
-/* Prachi */
+ /* prachi parab user interface changed  14/9 */
 
 
 .nursing-actions-container {
@@ -16,17 +16,12 @@
   }
   
   .nursing-action-button {
-    background-color: #4285f4; /* Blue color */
+    background-color: var(--button-color);
     color: white;
     border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
   }
   
 
@@ -36,14 +31,12 @@
   }
   
   .nursing-action-button:hover{
-    background-color: #3074d2; /* Darker blue on hover */
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
   .nursing-action-button.selected {
-    background-color:  #27ae60; /* Highlight with different color when selected */
-  }
-  
-  .nursing-action-button.selected:hover{
-    background-color: #27ae60;/* Darker shade when selected and hovered */
+    background-color: var(--button-bg-color);
   }
   

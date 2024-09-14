@@ -285,10 +285,11 @@ cursor: pointer;
   font-size: 11px;
 
 }
+/* prachi parab button hover effect  14/9 */
 .sSPReportsBreakage-view-btn button:hover{
-  background-color: white;
-  color: #0F63AF;
-  border: 1px solid #0F63AF;
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
   
 
 }

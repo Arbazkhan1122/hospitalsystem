@@ -58,7 +58,7 @@ nav button.active {
 
 .actions button, .department-filter select, .print {
   padding: 5px 10px;
-  background-color: #4a90e2;
+  /* background-color: #4a90e2; */
   color: white;
   border: none;
   cursor: pointer;

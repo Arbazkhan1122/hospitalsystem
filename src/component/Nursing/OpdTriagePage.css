@@ -82,29 +82,27 @@
 
 /* Button styling */
 .triage-container button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px;
-  margin: 10px 0;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
+  background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .triage-container button:hover {
-  background-color: #45a049;
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 }
 
 .btnFooter {
-  background-color: #4CAF50;
+  background-color: var(--button-color);
   color: white;
-  padding: 10px;
-  margin: 10px 0;
   border: none;
+  padding: 5px 5px;
   border-radius: 5px;
   cursor: pointer;
-  text-align: center;
 }
 
 .btnFooter:hover {
@@ -160,16 +158,17 @@
 }
 
 .vitals-actions button {
-  margin-left: 10px;
-  padding: 8px 12px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .vitals-actions button:hover {
-  background-color: #45a049;
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 

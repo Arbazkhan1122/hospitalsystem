@@ -1,3 +1,5 @@
+ /* prachi parab user interface changed  14/9 */
+
 import React, { useState, useEffect } from 'react';
 import '../Nursing/InPatientMainContent.css';
 import { useNavigate } from 'react-router-dom';
@@ -34,11 +36,11 @@ function MainContent() {
         const fetchData = async () => {
             try {
                 if (activeTab === 'Discharged Patients') {
-                    const response = await axios.get('http://192.168.1.37:1415/api/admissions/discharged-summary/Discharged');
+                    const response = await axios.get('http://192.168.1.39:1415/api/admissions/discharged-summary/Discharged');
                     setDischargeData(response.data);
                     console.log(response.data+'discharged');
                 } else if (activeTab === 'Admitted Patients') {
-                    const response = await axios.get('http://192.168.1.37:1415/api/admissions/discharged-summary/Admitted');
+                    const response = await axios.get('http://192.168.1.39:1415/api/admissions/discharged-summary/Admitted');
                     setAdmittedData(response.data);
                     console.log(response.data+'admitted');
                 }
@@ -59,18 +61,25 @@ function MainContent() {
     return (
         <>
             <div className="discharge-summary-component-container">
-                <button
-                    className={`inpatient-component-tab ${activeTab === 'Discharged Patients' ? 'active' : ''}`}
+
+            <div className="opd-tabs">
+                <a
+                    href="#today"
+                    className={`opd-tab-item ${activeTab === 'today' ? 'active' : ''}`}
                     onClick={() => handleTabClick('Discharged Patients')}
                 >
                     Discharged Patients
-                </button>
-                <button
-                    className={`inpatient-component-tab ${activeTab === 'Admitted Patients' ? 'active' : ''}`}
+                </a>
+                <a
+                    href="#past-days"
+                    className={`opd-tab-item ${activeTab === 'past-days' ? 'active' : ''}`}
                     onClick={() => handleTabClick('Admitted Patients')}
                 >
                     Admitted Patients
-                </button>
+                </a>
+                </div>
+
+               
             </div>
 
             {activeTab === 'Discharged Patients' && (

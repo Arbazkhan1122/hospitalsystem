@@ -125,7 +125,7 @@ function InsurancePage({ sendinsurancedata, insuranceData }) {
         <div style={{textAlign:"right"}}>
          
        </div>
-        <button type="submit" className="add-insurance-btn" style={{width:'fit-content'}}>Add Insurance</button>
+        <button type="submit" className="add-insurance-btn" style={{width:'fit-content',marginLeft:'2%'}}>Add Insurance</button>
       </form>
     </div>
   );
