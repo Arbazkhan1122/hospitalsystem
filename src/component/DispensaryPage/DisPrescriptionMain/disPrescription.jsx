@@ -166,27 +166,52 @@ const DisPrescription = () => {
     setSelectedPrescription(null);
   };
 
+  // const handlePrint = () => {
+  //   const tableElement = document.getElementById('prescription-table');
+  //   const actionColumn = tableElement.querySelectorAll('.disPrescription-action-column');
+
+  //   actionColumn.forEach(column => {
+  //     column.style.display = 'none';
+  //   });
+
+  //   html2canvas(tableElement).then((canvas) => {
+  //     const imgData = canvas.toDataURL('image/png');
+  //     const pdf = new jsPDF();
+  //     pdf.addImage(imgData, 'PNG', 10, 10, 190, 0);
+  //     const pdfDataUri = pdf.output('dataurlstring');
+  //     const pdfWindow = window.open("");
+  //     pdfWindow.document.write(`<iframe width='100%' height='100%' src='${pdfDataUri}'></iframe>`);
+
+  //     actionColumn.forEach(column => {
+  //       column.style.display = '';
+  //     });
+  //   });
+  // };
   const handlePrint = () => {
     const tableElement = document.getElementById('prescription-table');
     const actionColumn = tableElement.querySelectorAll('.disPrescription-action-column');
-
+  
+    // Hide action columns before printing
     actionColumn.forEach(column => {
       column.style.display = 'none';
     });
-
+  
+    // Convert table to canvas
     html2canvas(tableElement).then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF();
       pdf.addImage(imgData, 'PNG', 10, 10, 190, 0);
-      const pdfDataUri = pdf.output('dataurlstring');
-      const pdfWindow = window.open("");
-      pdfWindow.document.write(`<iframe width='100%' height='100%' src='${pdfDataUri}'></iframe>`);
-
+  
+      // Open PDF in a new tab
+      pdf.output('dataurlnewwindow');
+  
+      // Restore action columns after printing
       actionColumn.forEach(column => {
         column.style.display = '';
       });
     });
   };
+  
 
   const filteredPrescriptions = prescriptions.filter(prescription =>
     prescription.patientName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -225,7 +250,7 @@ const DisPrescription = () => {
               <th className="disPrescription-action-column">Actions</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="disPrescription-requisition-tableBody">
             {filteredPrescriptions.map((prescription, index) => (
               <tr key={index}>
                 <td>{prescription.code}</td>

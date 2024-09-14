@@ -12,7 +12,7 @@ const SettingCategory = () => {
 
   useEffect(() => {
     // Fetch initial data
-    axios.get('http://192.168.1.37:1415/api/categories')
+    axios.get('http://192.168.1.39:1415/api/categories')
       .then(response => {
         setSuppliers(response.data);
       })

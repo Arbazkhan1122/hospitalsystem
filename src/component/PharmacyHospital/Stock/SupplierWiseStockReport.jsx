@@ -85,14 +85,14 @@ const SupplierWiseStockReport = () => {
         </tbody>
       </table>
 
-      <div className="pharmacy-expiry-report-pagination">
+      {/* <div className="pharmacy-expiry-report-pagination">
         <span>0 to 0 of 0</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 0 of 0</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
       </div>
       {/* <div className="pharmacy-expiry-report-summary">
         <h2>Summary</h2>

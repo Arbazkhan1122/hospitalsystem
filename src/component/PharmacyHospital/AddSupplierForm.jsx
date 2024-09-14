@@ -31,7 +31,7 @@ const AddSupplierForm = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent page refresh
     try {
-      const response = await axios.post('http://192.168.1.37:8888/api/suppliers', formData);
+      const response = await axios.post('http://192.168.1.39:8888/api/suppliers', formData);
       console.log('Response:', response); // Log the response
       setShowSuccessMessage(true);
       setTimeout(() => setShowSuccessMessage(false), 3000); // Hide after 3 seconds

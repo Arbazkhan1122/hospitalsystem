@@ -56,11 +56,11 @@ const SettingSupplierComponent = () => {
     try {
       if (isEditMode) {
         // Update existing supplier
-        const response = await axios.put(`http://192.168.1.37:1415/api/suppliers/${selectedUser.kraPin}`, dataToSend);
+        const response = await axios.put(`http://192.168.1.39:1415/api/suppliers/${selectedUser.kraPin}`, dataToSend);
         console.log('Update Response:', response.data);
       } else {
         // Add new supplier
-        const response = await axios.post('http://192.168.1.37:1415/api/suppliers', dataToSend);
+        const response = await axios.post('http://192.168.1.39:1415/api/suppliers', dataToSend);
         console.log('Add Response:', response.data);
       }
 

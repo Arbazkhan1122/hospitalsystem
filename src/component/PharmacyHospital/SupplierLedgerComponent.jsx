@@ -11,7 +11,7 @@ const SupplierLedgerComponent = () => {
         // Fetch data from the API
         const fetchSuppliers = async () => {
             try {
-                const response = await axios.get("http://192.168.1.37:1415/api/suppliers");
+                const response = await axios.get("http://192.168.1.39:1415/api/suppliers");
                 setSuppliers(response.data);
                 setLoading(false);
             } catch (error) {
@@ -28,7 +28,7 @@ const SupplierLedgerComponent = () => {
         // Refresh suppliers list
         const fetchSuppliers = async () => {
             try {
-                const response = await axios.get("http://192.168.1.37:1415/api/suppliers");
+                const response = await axios.get("http://192.168.1.39:1415/api/suppliers");
                 setSuppliers(response.data);
             } catch (error) {
                 setError("Failed to fetch suppliers");
@@ -39,7 +39,7 @@ const SupplierLedgerComponent = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://192.168.1.37:1415/api/suppliers/${id}`);
+            await axios.delete(`http://192.168.1.39:1415/api/suppliers/${id}`);
             setSuppliers(suppliers.filter(supplier => supplier.id !== id));
         } catch (error) {
             setError("Failed to delete supplier");
