@@ -1,6 +1,6 @@
 .report-report-tabs {
     display: flex;
-    background-color: #ccf2ff;
+    background-color:var(--background-color);
   }
   
   .report-report-tabs button {
@@ -13,7 +13,7 @@
   }
   
   .report-report-tabs .active {
-    border-bottom: 2px solid #2196F3;
+    border-bottom: 2px solid var(--sideBar-bg-color);
   }
 /*   
   .report-report-content {

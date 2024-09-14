@@ -1,3 +1,4 @@
+/* Swapnil ROkade adding className And Applying colors 14/09 */
 .inventory-modal-overlay {
     position: fixed;
     top: 0;
@@ -94,7 +95,7 @@
 }
 
 .inventory-step.completed span {
-    background-color: #007bff;
+    background-color:var(--button-color);
     color: white;
 }
 

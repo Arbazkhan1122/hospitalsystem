@@ -1,13 +1,118 @@
 :root {
   --sideBar-bg-color: #007973;
   --upperBar-bg-color: #00968f;
-
-  --button-bg-color: #00968f; /* Active */
-  --button-color: #00c9c0; /*button color*/
-  --background-color:#e3fffe; /* /background-color/ */
-  --heading-font:16px; /* Heading font size */
-  --font-size:14px ; /* For all text size  */
-  --button-hover-border-color:#00c9c0;  /* For all button hover color */
-  --button-hover-text-color:#00c9c0; /* when hover on button then use that color for text */
+  --button-bg-color: #00968f;
+  --button-color: #00c9c0;
+  --background-color: #e3fffe;
+  --heading-font: 16px;
+  --font-size: 14px;
+  --button-hover-border-color:#00c9c0;
+  --button-hover-text-color:#00c9c0;
   --button-hover-background-color:white ;
+  --input-box-padding:5px;
+}
+
+/* Table Styling */
+.table-container {
+  max-width: 100%; /* Ensure container does not exceed viewport width */
+  max-height: 60vh;
+  overflow-x: auto; /* Allow horizontal scrolling */
+  overflow-y: auto; /* Allow vertical scrolling */
+}
+
+table {
+  width: 100%;
+  background-color: #f2f2f2;
+  border-collapse: collapse;
+  table-layout: fixed;
+  overflow: auto; 
+}
+thead{
+  background-color: #f2f2f2;
+  z-index: 15;
+  position: sticky;
+  top: -0.5px;
+}
+
+table th,
+table td {
+  background-color: #f2f2f2;  
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+  font-size: var(--font-size);
+
+  text-overflow: ellipsis;
+  white-space: nowrap; /* Ensure ellipsis for overflowing text */
+}
+
+table td {
+  overflow: hidden;
+  position: relative; /* Required for tooltip positioning */
+}
+
+table th {
+ overflow: hidden; 
+  user-select: none;
+  white-space: nowrap;
+}
+
+table th .header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Resizable Columns */
+.resizable-th {
+  position: relative;
+}
+
+.resizer {
+  width: 5px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: col-resize;
+  z-index: 1;
+}
+
+table th .resizer:hover {
+  background-color: #aaa;
+}
+
+/* Tooltip Styling */
+.table-tooltiptext {
+  visibility: hidden;
+  background-color: var(--button-color);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 10000;
+  white-space: normal;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  transition: visibility 0.2s, opacity 0.2s;
+  opacity: 0;
+}
+
+.table-tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--button-color) transparent;
+}
+
+td:hover .table-tooltiptext {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(10px);
 }

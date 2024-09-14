@@ -1,5 +1,6 @@
 .purchase-order-report {
-    background-color: #e0f7ff;
+    background-color: var(--background-color);
+    height: 75vh;
     padding: 20px;
     font-family: Arial, sans-serif;
     color: #333;
@@ -38,7 +39,7 @@
   }
   
   .purchase-order-report-btn {
-    background-color: #5567f7;
+    background-color:var(--button-color);
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -104,7 +105,7 @@
   
   .purchase-order-export-btn,
   .purchase-order-print-btn {
-    background-color: #4e73df;
+    background-color: var(--button-color);
     color: #fff;
     border: none;
     padding: 5px 10px;
@@ -122,7 +123,7 @@
   .purchase-order-previous-page,
   .purchase-order-next-page,
   .purchase-order-last-page {
-    background-color: #4e73df;
+    background-color: var(--button-color);
     color: #fff;
     border: none;
     padding: 5px 10px;
@@ -133,7 +134,7 @@
     background-color: white;
   }
   .purchase-order-pagination span{
-    color: #4e73df;
+    color: var(--button-color);
   }
 
 
