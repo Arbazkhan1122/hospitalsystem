@@ -1,8 +1,9 @@
 :root {
   --sideBar-bg-color: #007973;
   --upperBar-bg-color: #00968f;
-
   --button-bg-color: #00968f; /* Active */
   --button-color: #00c9c0; /*button color*/
   --background-color:#e3fffe; /*background-color*/
+  --heading-font:16px;
+  --font-size:14px;
 }

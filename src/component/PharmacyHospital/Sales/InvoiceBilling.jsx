@@ -7,27 +7,28 @@ const InvoiceBilling = () => {
       <h1 className="invoice-billing-report-title">⚛ Bill-wise Sales Report</h1>
       <div className="invoice-billing-note">*Note: Return Sales are not included in this report.</div>
 
+      <div className='invoice-billing-from-to'>
       <div className="invoice-billing-filters-container">
        
-          <label>From:</label>
-          <input type="date" value="2024-08-23" />
-      
-        
-      
-          <label>To:</label>
-          <input type="date" value="2024-08-23" />
-       
-          <button className="invoice-billing-favorite-btn">★</button>
-          <button className="invoice-billing-reset-btn">-</button>
-      <div className='sales-invoice-number'>
-      <label>Invoice Number :</label>
-          <input type="text" placeholder="Enter Invoice Number" />
-       
+       <label>From:</label>
+       <input type="date" value="2024-08-23" />
+   
+     
+   
+       <label>To:</label>
+       <input type="date" value="2024-08-23" />
+    
+       <button className="invoice-billing-favorite-btn">★</button>
+       <button className="invoice-billing-reset-btn">-</button>
+   </div>
+   <div className='sales-invoice-number'>
+   <label>Invoice Number :</label>
+       <input type="text" placeholder="Enter Invoice Number" />
+       <button className="invoice-billing-show-report-button">Show Report</button>
+
+   </div>
       </div>
           
-        
-        <button className="invoice-billing-show-report-button">Show Report</button>
-      </div>
       
       
       <div className="invoice-billing-search-export-container">
@@ -72,7 +73,7 @@ const InvoiceBilling = () => {
   </div>
 </div>
 
-      <div className="invoice-billing-pagination-container">
+      {/* <div className="invoice-billing-pagination-container">
         
         <div className="invoice-billing-pagination-buttons">
           <button className="invoice-billing-pagination-button">First</button>
@@ -81,7 +82,7 @@ const InvoiceBilling = () => {
           <button className="invoice-billing-pagination-button">Next</button>
           <button className="invoice-billing-pagination-button">Last</button>
         </div>
-      </div>
+      </div> */}
       </div>
 
     </div>

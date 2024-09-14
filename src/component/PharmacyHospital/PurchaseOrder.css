@@ -103,38 +103,7 @@
     font-size: 14px;
 }
 
-/* Table Container */
-.purchase-order-table-container {
-    margin-top: 5px;
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow-x: auto;
-    max-width: 100%;
-}
 
-/* Table Styles */
-.purchase-order-tab {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 1000px;
-}
-
-/* .purchase-order-tab thead th {
-    padding: 10px;
-    text-align: left;
-    font-size: 16px;
-    border-bottom: 2px solid #e0e0e0;
-    background: #e9ecef;
-    text-overflow: ellipsis;
-} */
-
-/* .purchase-order-tab tbody td {
-    padding: 10px;
-    border-bottom: 1px solid #e0e0e0;
-    text-overflow: ellipsis;
-    overflow: hidden;
-} */
 
 /* No Rows */
 .purchase-order-no-rows {
@@ -334,3 +303,74 @@
 .purchase-order-modal .modal-content{
     display: contents!important;
 }
+
+
+/*Table */
+
+.purchase-order-table-container {
+    margin-top: 5px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.purchase-order-table-container {
+    background-color: white;
+    padding: 10px;
+  }
+  
+  .purchase-order-tab {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .purchase-order-tab th, .purchase-order-tab td {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 5px 0; /* Only top-bottom padding */
+  }
+  
+  .purchase-order-tab th {
+    background-color: #f1f1f1;
+    white-space: nowrap;
+    font-size: 16px;
+  }
+  
+  .purchase-order-tab td {
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .purchase-order-no-rows {
+    background-color: #ffecb3;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .purchase-order-pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .purchase-order-pagination-btn {
+    padding: 5px 10px;
+    margin: 0 5px;
+    background-color: #90caf9;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .purchase-order-pagination-btn:hover {
+    background-color: var(--button-color);
+  }
+  .purchase-results-count-span {
+    font-size: 14px;
+    color: black;
+    margin-right: 10px;
+  }

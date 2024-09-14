@@ -80,11 +80,16 @@ const GoodReceiptComponent = () => {
           className="purchase-order-search-box"
           placeholder="Search"
         />
-        <div className="purchase-order-button">
-          
-          <button className="purchase-order-print-button">Print</button>
-        </div>
+               
+               <div className="purchase-order-search-container">
+    <div className="purchase-order-search-right">
+        <span className="purchase-results-count-span">Showing 0 / 0 results</span>
+        <button className="purchase-order-print-button">Print</button>
         <button className="purchase-order-print-button">Export</button>
+
+    </div>
+</div>
+
       </div>
 
       <div className="purchase-order-table-container">

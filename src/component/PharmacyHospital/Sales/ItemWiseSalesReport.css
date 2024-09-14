@@ -19,13 +19,14 @@
 
 .item-wise-sales-filter-group {
     display: flex;
+    background-color: #f2f2f2;
     align-items: center;
     gap: 10px;
 }
 
 .item-wise-sales-filter-group label {
-    font-size: 16px;
-    color: #004d80;
+    font-size: 14px;
+    color: black;
 }
 
 .item-wise-sales-filter-group input,
@@ -73,47 +74,56 @@
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-
 .item-wise-sales-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff; /* Same as invoice table */
+  }
+  
+  .item-wise-sales-table th,
+  .item-wise-sales-table td {
     padding: 10px;
+    font-size: 14px; /* Matches font size */
     border: 1px solid #ddd;
-    text-align: left;
-}
-
-.item-wise-sales-table th,
-.item-wise-sales-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-.item-wise-sales-table th {
+    text-align: center; /* Matches center alignment */
+  }
+  
+  .item-wise-sales-table th {
     background-color: #f2f2f2;
     color: #333;
-}
-
-.item-wise-sales-no-rows {
+    font-size: 16px; /* Matches header font size */
+    position: sticky; /* Keeps headers sticky */
+    top: 0;
+    z-index: 10; /* Ensures headers are above content */
+  }
+  
+  .item-wise-sales-no-rows {
     text-align: center;
-    padding: 15px;
-    background-color: #f6e58d;
-    font-weight: bold;
-}
-
-.item-wise-sales-pagination {
-    margin-top: 10px;
+    background-color: #fff3e0; /* Matches background color for no rows */
+    color: #999; /* Matches text color */
+  }
+  
+  .item-wise-sales-pagination {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.item-wise-sales-pagination button {
+    margin-top: 20px; /* Adjusted margin */
+  }
+  
+  .item-wise-sales-pagination button {
     padding: 5px 10px;
-    background-color: #b3b3b3;
+    background-color: #42a5f5; /* Matches button style */
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-}
+    margin: 0 5px; /* Adds margin between buttons */
+  }
+  
+  .item-wise-sales-pagination button:hover {
+    background-color: #1e88e5; /* Darker color on hover */
+  }
+  
 
 .item-wise-sales-summary-section {
     display: flex;

@@ -11,8 +11,10 @@ const ItemWiseSalesReport = () => {
                     <input type="date" value="2024-08-23" />
                     <label>To:</label>
                     <input type="date" value="2024-08-23" />
+                    <button className="invoice-billing-favorite-btn">★</button>
+       <button className="invoice-billing-reset-btn">-</button>
                 </div>
-                <div className="item-wise-sales-filter-group">
+                <div className="item-wise-sales-filter-groups">
                     <label>Generic Name:</label>
                     <select>
                         <option>--Select Generic--</option>
@@ -24,17 +26,17 @@ const ItemWiseSalesReport = () => {
                 </div>
                 
               
-                <div className="item-wise-sales-filter-group">
+                <div className="item-wise-sales-filter-groups">
                     <label>Dispensary:</label>
                     <input type="text" placeholder="Enter Dispensary Name" />
                 </div>
-                <div className="item-wise-sales-filter-group">
+                <div className="item-wise-sales-filter-groups">
                     <label>Counter:</label>
                     <select>
                         <option>Select Counter</option>
                     </select>
                 </div>
-                <div className="item-wise-sales-filter-group">
+                <div className="item-wise-sales-filter-groups">
                     <label>User:</label>
                     <input type="text" placeholder="Enter User Name" />
                 </div>
@@ -48,6 +50,8 @@ const ItemWiseSalesReport = () => {
 
             <div className="item-wise-sales-report-table">
                 <input type="text" placeholder="Search" className="item-wise-sales-search-bar" />
+                <button className="invoice-billing-search-button"><i className="fa fa-search"></i></button>
+
                 </div>
                 <div className='item-wise-sales-table'>
                 <table className='item-wise-sales-ta'>
