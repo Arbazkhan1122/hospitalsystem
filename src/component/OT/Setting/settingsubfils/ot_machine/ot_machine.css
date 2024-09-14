@@ -1,8 +1,10 @@
+/* neha-OT-ot-machine-14-9-24 */
 .ot_machine_main{
-    background-color: #e3f2fd;
+    background-color:var( --background-color);
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 10px;
+    font-size: var(--font-size);
 
   }
   
@@ -28,9 +30,9 @@
   
   .ot_machine_search_bar input[type="text"] {
     width: 300px;
-    padding: 8px;
+    padding: 2px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 5px;
   }
   
   .ot_machine_filter_button {
@@ -88,15 +90,18 @@
     flex-direction: row;
   }
   
-  .ot_machine_input label {
-    margin-bottom: 5px;
-  }
+    .ot_machine_input label {
+      margin-bottom: 5px;
+      line-height: 2;
+    }
   
   .ot_machine_input input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-left: 30px;
+    width: 200px;
+    padding: 2px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    line-height: 1;
+    height: 30px;
   }
   
   .ot_machine_checkbox {
@@ -104,6 +109,11 @@
     align-items: center;
     gap: 5px;
     margin-left: 20px;
+  }
+  .ot_machine_checkbox input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+
   }
   
   .ot_machine_buttons {
@@ -113,23 +123,25 @@
   }
   
   .ot_machine_save, .ot_machine_clear {
-    padding: 10px 15px;
+    padding:5px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     color: white;
     cursor: pointer;
     font-size: 16px;
   }
   
   .ot_machine_save {
-    background-color: green;
+    background-color: var(--button-color);
   }
   
   .ot_machine_clear {
-    background-color: orange;
+    background-color: var(--button-color);
   }
   
   .ot_machine_save:hover, .ot_machine_clear:hover {
-    background-color: blue;
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+    border: 1px solid var(--button-hover-border-color);
   }
   

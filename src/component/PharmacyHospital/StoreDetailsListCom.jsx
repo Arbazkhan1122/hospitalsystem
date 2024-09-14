@@ -1,3 +1,4 @@
+/* Mohini_StoreDetailsListCom_WholePage_14/sep/2024 */
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './SettingSupplier.css'; 
@@ -255,3 +256,4 @@ const StoreDetailsListCom = () => {
 };
 
 export default StoreDetailsListCom;
+/* Mohini_StoreDetailsListCom_WholePage_14/sep/2024 */

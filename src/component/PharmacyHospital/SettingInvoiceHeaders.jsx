@@ -1,9 +1,10 @@
+/* Mohini_SettingInvoiceHeaders_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css';
 
-const apiEndpoint = 'http://192.168.1.37:1415/api/v1/invoice-headers';
+const apiEndpoint = 'http://192.168.1.39:1415/api/v1/invoice-headers';
 
 const SettingInvoiceHeaders = () => {
   const [invoiceHeaders, setInvoiceHeaders] = useState([]);
@@ -278,3 +279,4 @@ const SettingInvoiceHeaders = () => {
 };
 
 export default SettingInvoiceHeaders;
+/* Mohini_SettingInvoiceHeaders_WholePage_14/sep/2024 */

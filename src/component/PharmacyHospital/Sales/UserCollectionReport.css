@@ -1,12 +1,16 @@
+/* Mohini_SettlementSummaryReport_WholePage_14/sep/2024 */
 .user-collection-report-container {
-  background-color: #d9f2ff;
+  background-color: var( --background-color);
   padding: 20px;
+  height: 90vh;
   font-family: Arial, sans-serif;
 }
+.user-collection-header{
 
+}
 .user-collection-header h2 {
   text-align: left;
-  color: #1b4d8b;
+  color: black;
 }
 
 .user-collection-filter-section {
@@ -15,7 +19,9 @@
   gap: 15px;
   margin-bottom: 20px;
 }
-
+.user-collection-date-range{
+background-color: #f2f2f2;
+}
 .user-collection-date-range,
 .user-collection-input-group,
 .user-collection-select-group {
@@ -25,10 +31,10 @@
 }
 
 .user-collection-filter-btn {
-  background-color: #5291e0;
+  /* background-color: white; */
   border: none;
   padding: 6px 10px;
-  color: white;
+  /* color: #f2f2f2; ; */
   cursor: pointer;
 }
 
@@ -67,8 +73,14 @@ select {
 .user-collection-search-btn {
   background: none;
   border: none;
-  font-size: 18px;
+  margin-left: -40px;
+  padding: 5px;
+  /* font-size: 14px; */
   cursor: pointer;
+}
+.user-collection-search-input{
+  font-size: 14px;
+  padding: 5px;
 }
 .user-collection-input {
   padding: 7px;
@@ -85,8 +97,8 @@ select {
 }
 
 .user-collection-input[type="date"] {
-  padding: 7px;
-  width: 170px;
+  padding: 5px;
+  /* width: 170px; */
 }
 
 .user-collection-export-buttons {
@@ -151,3 +163,26 @@ select {
 .user-collection-header{
   font-size: 16px;
 }
+/*  */
+.user-collection-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between each element */
+}
+
+.user-collection-input-group,
+.user-collection-select-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-collection-input-group label,
+.user-collection-select-group label {
+    margin-right: 5px; /* Space between label and input */
+}
+
+.user-collection-show-report-btn {
+    margin-left: auto; /* Push the button to the right */
+}
+/* Mohini_SettlementSummaryReport_WholePage_14/sep/2024 */

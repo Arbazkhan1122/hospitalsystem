@@ -11,7 +11,7 @@
     padding: 20px;
     font-family: Arial, sans-serif;
     max-width:90%;
-    margin: 0 auto;
+   
     border: 1px solid black;
     border-radius: 5px;
     margin-top: 20px;
@@ -34,12 +34,11 @@
     margin-right: 50px;
     margin-bottom: 10px;
     
-    color: #333;
-    font-size: 14px;
+    color: black;
+    font-size: var(--font-size);
   }
   
   .organization-deposit-input, .organization-deposit-select, .organization-deposit-textarea {
-    flex: 1;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -77,22 +76,22 @@
     margin-top: 20px;
   }
   
-  .utlt-org-save-btn, .discard-btn {
-    padding: 10px 20px;
+  .orgdeposit-save-btn, .discard-btn {
+    padding: 5px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     color: white;
-    font-weight: bold;
     cursor: pointer;
     margin-left: 10px;
   }
   
-  .save-btn {
-    background-color: #28a745;
+  .orgdeposit-save-btn {
+    background-color: var(--button-color);
+   
   }
   
   .discard-btn {
-    background-color: #ffc107;
+    background-color: var(--button-color);
   }
   
  

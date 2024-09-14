@@ -1,3 +1,4 @@
+/* Mohini_SettingCategory_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
@@ -12,7 +13,7 @@ const SettingCategory = () => {
 
   useEffect(() => {
     // Fetch initial data
-    axios.get('http://192.168.1.37:1415/api/categories')
+    axios.get('http://192.168.1.39:1415/api/categories')
       .then(response => {
         setSuppliers(response.data);
       })
@@ -201,3 +202,4 @@ const SettingCategory = () => {
 };
 
 export default SettingCategory;
+/* Mohini_SettingCategory_WholePage_14/sep/2024 */

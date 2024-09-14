@@ -1,3 +1,4 @@
+// neha-OT-manage-checklist-14-9-24
 import React, { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import './manage_checklist.css';
@@ -232,9 +233,9 @@ function ManageOtChecklist() {
           value={searchTerm}
           onChange={handleSearchChange}
         />
-        <button className="manage_ot_checklist_filter_button">
+        {/* <button className="manage_ot_checklist_filter_button">
           <FaSearch />
-        </button>
+        </button> */}
       </div>
 
       

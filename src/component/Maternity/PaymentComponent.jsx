@@ -176,7 +176,7 @@ function PaymentComponent({ patient }) {
               </tr>
             ))}
           </tbody>
-          <div className="mat-pagination">
+          {/* <div className="mat-pagination">
             <div className="mat-pagination-buttons">
               <button className="pagination-button">First</button>
               <button className="pagination-button">Previous</button>
@@ -184,7 +184,7 @@ function PaymentComponent({ patient }) {
               <button className="pagination-button">Next</button>
               <button className="pagination-button">Last</button>
             </div>
-          </div>
+          </div> */}
         </table>
       </div>
     </div>

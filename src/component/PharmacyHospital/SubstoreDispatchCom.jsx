@@ -1,3 +1,4 @@
+/* Mohini_StoreDetailsListCom_WholePage_14/sep/2024 */
 import React from "react";
 import "./PurchaseOrder.css"; // Ensure you have this CSS file
 
@@ -72,3 +73,4 @@ const SubstoreDispatchCom = () => {
 };
 
 export default SubstoreDispatchCom;
+/* Mohini_StoreDetailsListCom_WholePage_14/sep/2024 */

@@ -64,11 +64,11 @@
   }
 
   
-  h2 {
+  /* h2 {
     color: #007acc;
     margin-bottom: 20px;
   }
-  
+   */
   .ward-info-grid {
     display: flex;
     flex-wrap: wrap;

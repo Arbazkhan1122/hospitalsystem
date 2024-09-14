@@ -1,5 +1,4 @@
-/* Container for the entire return purchase order report section */
-.return-purchase-order-container {
+/* Mohini_ReturnToSupplier_14/sep/2024 */.return-purchase-order-container {
     width: 100%;
     background-color: var(--background-color); /* Light background color for contrast */
     padding: 10px; /* Added padding for spacing */
@@ -131,3 +130,4 @@
     border-radius: 5px;
     cursor: pointer;
 }
+/* Mohini_ReturnToSupplier_14/sep/2024 */

@@ -1,3 +1,4 @@
+/* Mohini_ReturnInvestment_WholePage_14/sep/2024 */
 import React from 'react';
 import './ItemWiseSalesReport.css';
 
@@ -84,13 +85,13 @@ const ReturnInvestment = () => {
   </table>
 </div>
 
-                <div className="item-wise-sales-pagination">
+                {/* <div className="item-wise-sales-pagination">
                     <button>First</button>
                     <button>Previous</button>
                     <span>Page 0 of 0</span>
                     <button>Next</button>
                     <button>Last</button>
-                </div>
+                </div> */}
                 </div>
 
             <div className="item-wise-sales-summary-section">
@@ -116,3 +117,4 @@ const ReturnInvestment = () => {
 };
 
 export default ReturnInvestment;
+/* Mohini_ReturnInvestment_WholePage_14/sep/2024 */
