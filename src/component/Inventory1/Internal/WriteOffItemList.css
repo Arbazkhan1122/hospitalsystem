@@ -35,6 +35,12 @@
     justify-content: space-between;
     margin-bottom: 20px;
 }
+.writeOffList-inventory-results-search
+{
+    padding: 1px;
+    background-color: var(--button-color);
+    color: white;
+}
 
 .writeOffList-inventory-span {
     margin-right: 5px;

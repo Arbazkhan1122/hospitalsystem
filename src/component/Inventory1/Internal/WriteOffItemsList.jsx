@@ -57,7 +57,7 @@ const WriteOffItemsList = () => {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <button onClick={handleSearch}>🔍</button>
+        <button className='writeOffList-inventory-results-search' onClick={handleSearch}>🔍</button>
       </div>
         <div>
           <span className='writeOffList-inventory-span'>Showing {filteredGoods.length} / {writeOffGoods.length} results</span>
