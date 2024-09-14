@@ -5,8 +5,8 @@
   
   /* Header styling */
   .mkt_setting-header {
-    background-color: #f8f9fa; /* Light gray background for the navbar */
-    padding: 10px; /* Padding around the navbar */
+    background-color: white; /* Light gray background for the navbar */
+    padding: 5px; /* Padding around the navbar */
     border-bottom: 2px solid #ddd; /* Border at the bottom */
   }
   
@@ -31,7 +31,7 @@
   /* Link styling */
   .mkt_setting-nav-link {
     text-decoration: none; /* Remove underline from links */
-    color: #007bff; /* Default link color (blue) */
+    color: black; /* Default link color (blue) */
     padding: 10px 15px; /* Padding around the links */
     border-radius: 4px; /* Slightly rounded corners */
     transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
@@ -40,8 +40,8 @@
   /* Highlight active link */
   .mkt_setting-nav-link.active,
   .mkt_setting-nav-link:hover {
-    background-color: #007bff; /* Blue background when active/hover */
-    color: #fff; /* White text when active/hover */
+    border-bottom: 4px solid #007bff; /* Blue background when active/hover */
+    color: black; /* White text when active/hover */
   }
   
   /* Content area styling */
@@ -51,9 +51,5 @@
     min-height: 80vh; /* Ensure content area has a minimum height */
   }
   
-  /* Active state for the link */
-  .mkt_setting-nav-link.active {
-    background-color: #007bff; /* Highlighted background color for active link */
-    color: white; /* White text for active link */
-  }
+  
   

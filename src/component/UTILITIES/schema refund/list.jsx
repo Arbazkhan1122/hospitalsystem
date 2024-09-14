@@ -1,8 +1,8 @@
+// neha-utilities-SchemeRefundList-14-9-24
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { Modal, Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./list.css";
+import './list.css';
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 
@@ -15,7 +15,7 @@ const SchemeRefundList = () => {
 
   const [searchPatient, setSearchPatient] = useState("");
   const [ipNo, setIpNo] = useState("");
-  const [refuntScheme, setRefuntScheme] = useState("");
+  const [refundScheme, setRefundScheme] = useState("");
   const [amount, setAmount] = useState("");
   const [remark, setRemark] = useState("");
 
@@ -59,7 +59,7 @@ const SchemeRefundList = () => {
       const payload = {
         searchPatient,
         ipNo,
-        refuntScheme,
+        refundScheme,
         amount,
         remark,
       };
@@ -68,18 +68,12 @@ const SchemeRefundList = () => {
 
       if (response.status === 200) {
         alert("Data saved successfully!");
-
-        // Update the state with the new data
         setSchemeRefundList((prevList) => [...prevList, payload]);
-
-        // Clear input fields after saving
         setSearchPatient("");
         setIpNo("");
         setAmount("");
         setRemark("");
-        setRefuntScheme("");
-
-        // Close the modal after saving
+        setRefundScheme("");
         closeSchemeReturnEntryModal(); 
       }
     } catch (error) {
@@ -87,58 +81,38 @@ const SchemeRefundList = () => {
       alert("Failed to save data. Please try again.");
     }
   };
+
   return (
-    <div className="utltlist">
-      <div className="modelbtn">
-        <button className="btn btn-success" onClick={openSchemeReturnEntryModal}>
+    <div className="scheme-refund-list">
+      <div className="header">
+        <button className="new-entry-btn" onClick={openSchemeReturnEntryModal}>
           <i className="fa fa-plus"></i> New Scheme Refund Entry
         </button>
       </div>
 
-      <div className="date-utlt">
-        <div className="utltdatemiddle">
-          <div className="date-range">
-            <label>From: </label>
-            <input type="date" value="2024-08-05" />
-            <label> To: </label>
-            <input type="date" value="2024-08-12" />
-            <button style={{ marginLeft: "5px" }}>★</button>
-            <button style={{ marginLeft: "5px" }}>+</button>
-            <button
-              style={{
-                marginLeft: "5px",
-                backgroundColor: "#4CAF50",
-                color: "white",
-                border: "none",
-                padding: "5px 10px",
-              }}
-            >
-              OK
-            </button>
-          </div>
-        </div>
+      <div className="date-range-container">
+        <label>From: </label>
+        <input type="date" value="2024-08-05" />
+        <label> To: </label>
+        <input type="date" value="2024-08-12" />
+        <button className="star-btn">★</button>
+        <button className="plus-btn">+</button>
+        <button className="ok-btn">OK</button>
       </div>
 
-      <div className="utlt-search-bar">
-        <input type="text" placeholder="Search by patient name" className="inputsearchbar" />
-        {/* <button className="utltlistsearchbar">
-          <FaSearch style={{ color: "gray", fontSize: "18px" }} />
-        </button> */}
+      <div className="scheme-refund-search-bar">
+        <input type="text" placeholder="Search by patient name" className="input-search-bar" />
       </div>
 
-      <table className="utlt-table">
+      <table className="scheme-refund-table">
         <thead>
           <tr>
-            {/* <th>Receipt No</th> */}
             <th>Refund Date</th>
             <th>Reception No</th>
             <th>Scheme</th>
-            {/* <th>Hospital No</th> */}
             <th>Patient</th>
-            {/* <th>Age/Sex</th> */}
             <th>Refund Amount</th>
             <th>Inpatient No</th>
-            {/* <th>Entered By</th> */}
             <th>Remark</th>
             <th>Actions</th>
           </tr>
@@ -146,16 +120,12 @@ const SchemeRefundList = () => {
         <tbody>
           {schemeRefundList.map((item, index) => (
             <tr key={index}>
-              {/* <td>{item.receiptNo}</td> */}
               <td>{moment(item.refundDate).format("YYYY-MM-DD")}</td>
               <td>{item.receiptNo}</td>
-              <td>{item.refuntScheme}</td>
-              {/* <td>{item.hosNo}</td> */}
+              <td>{item.refundScheme}</td>
               <td>{item.searchPatient}</td>
-              {/* <td>{item.ageSex}</td> */}
               <td>{item.amount}</td>
               <td>{item.ipNo}</td>
-              {/* <td>{item.enteredBy}</td> */}
               <td>{item.remark}</td>
               <td>
                 <button className="btn btn-primary" onClick={() => printSchemeRefundDetails(item.receiptNo)}>
@@ -167,128 +137,79 @@ const SchemeRefundList = () => {
         </tbody>
       </table>
 
-      <div className="utlt-pagination">
-        <Button>First</Button>
-        <Button>Previous</Button>
-        <span>Page 1 of 4</span>
-        <Button>Next</Button>
-        <Button>Last</Button>
-      </div>
-
       {/* Modal for New Scheme Refund Entry */}
       {showSchemeReturnEntryModal && (
-        <div className="utlt-modal show d-block" role="dialog">
-        <div className="utlt-modal-dialog modal-lg" role="document">
-          <div className="utlt-modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">New Scheme Refund Entry</h5>
-              <button
-                style={{ marginLeft: "60%", backgroundColor: "white" }}
-                type="button"
-                className="utlt-close"
-                onClick={closeSchemeReturnEntryModal}
+        <Modal show={true} onHide={closeSchemeReturnEntryModal} className="scheme-modal">
+          <Modal.Header closeButton>
+            <Modal.Title>New Scheme Refund Entry</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="form-group">
+              <label>Patient Name:</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter patient name"
+                value={searchPatient}
+                onChange={(e) => setSearchPatient(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label>Inpatient No:</label>
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Enter inpatient no"
+                value={ipNo}
+                onChange={(e) => setIpNo(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label>Scheme:</label>
+              <select
+                className="form-control"
+                value={refundScheme}
+                onChange={(e) => setRefundScheme(e.target.value)}
               >
-                <span>&times;</span>
-              </button>
+                <option value="">Select Scheme</option>
+                <option value="ASTRA">ASTRA</option>
+                <option value="BRITAM">BRITAM</option>
+                <option value="GENERAL">GENERAL</option>
+                <option value="MTABTA">MTABTA</option>
+              </select>
             </div>
-            <div className="modal-body">
-              <div className="utlt-form-group">
-                <label>Patient Name:</label>
-                <input
-                  type="text"
-                  className="utlt-form-control"
-                  placeholder="Enter patient name"
-                  value={searchPatient}
-                  onChange={(e) => setSearchPatient(e.target.value)}
-                />
-              </div>
-              <div className="utlt-form-group">
-                <label>Enter Inpatient No (If Applicable)</label>
-                <input
-                  type="number"
-                  className="utlt-form-control"
-                  placeholder="Enter inpatient no"
-                  value={ipNo}
-                  onChange={(e) => setIpNo(e.target.value)}
-                />
-              </div>
-              <div className="utlt-form-group">
-                <label>Scheme:</label>
-                <select
-                  className="utlt-form-control"
-                  value={refuntScheme}
-                  onChange={(e) => setRefuntScheme(e.target.value)}
-                >
-                  <option value="">__________Scheme_______</option>
-                  <option value="ASTRA">ASTRA</option>
-                  <option value="BRITAM">BRITAM</option>
-                  <option value="GENERAL">GENERAL</option>
-                  <option value="MTABTA">MTABTA</option>
-                </select>
-              </div>
-              <div className="utlt-form-group">
-                <label>Amount:</label>
-                <input
-                  type="number"
-                  className="utlt-form-control"
-                  placeholder="Enter amount"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                />
-              </div>
-              <div className="utlt-form-group">
-                <label>Remark</label>
-                <input
-                  type="text"
-                  className="utlt-form-control"
-                  placeholder="Enter remark"
-                  value={remark}
-                  onChange={(e) => setRemark(e.target.value)}
-                />
-              </div>
+            <div className="form-group">
+              <label>Amount:</label>
+              <input
+                type="number"
+                className="form-control"
+                placeholder="Enter amount"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+              />
             </div>
-            <div className="utlt-modal-footer">
-              <button type="button" className="utlt-btn btn btn-secondary" onClick={closeSchemeReturnEntryModal}>
-                Close
-              </button>
-              <button type="button" className="utlt-btn btn btn-primary" onClick={handleSave}>
-                Save
-              </button>
+            <div className="form-group">
+              <label>Remark:</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Enter remark"
+                value={remark}
+                onChange={(e) => setRemark(e.target.value)}
+              />
             </div>
-          </div>
-        </div>
-      </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={closeSchemeReturnEntryModal}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleSave}>
+              Save
+            </Button>
+          </Modal.Footer>
+        </Modal>
       )}
-
-      {/* Modal for Print Scheme Refund */}
-      {showReceipt && (
-        <div className="utlt modal show d-block" tabIndex="-1" role="dialog">
-          <div className="utlt-modal-dialog" role="document">
-            <div className="utlt-modal-content">
-              <div className="utlt-modal-header">
-                <h5 className="utlt-modal-title">Scheme Refund Receipt</h5>
-              </div>
-              <div className="utlt-modal-body">
-                {printSchemeRefund && (
-                  <div>
-                    <p>Receipt No: {receiptNo}</p>
-                    <p>Refund Date: {schemeRefundList.find((item) => item.receiptNo === receiptNo)?.refundDate}</p>
-                    <p>Amount: {schemeRefundList.find((item) => item.receiptNo === receiptNo)?.amount}</p>
-                  </div>
-                )}
-              </div>
-              <div className="utlt-modal-footer">
-                <button type="button" className="utlt-btn btn btn-secondary" onClick={closeSchemeRefundReceiptPopUp}>
-                  Close
-                </button>
-                <button type="button" className="utlt-btn btn btn-primary">
-                  Print
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 };

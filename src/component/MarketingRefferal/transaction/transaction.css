@@ -1,7 +1,7 @@
 .mkrt_transaction_main_container {
-    font-family: Arial, sans-serif;
+    
     padding: 10px;
-    background-color: #e0f5fc; /* Light blue background */
+    background-color: var(--background-color); /* Light blue background */
   }
   
   .mkrt_transaction-header {
