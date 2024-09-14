@@ -71,7 +71,9 @@
 }
 
 .goods-receipt-add-item-btn:hover{
-  background-color: var(--button-bg-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 
 }
 
@@ -116,7 +118,9 @@
 
 .goods-receipt-print-btn:hover,
 .goods-receipt-discard-btn:hover {
-  background-color: var(--button-bg-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 
@@ -201,7 +205,9 @@
 }
 
 .goods-receipt-close-btn:hover {
-  color: #000;
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 }
 
 .goods-receipt-close-btn {
@@ -216,7 +222,9 @@
 }
 
 .goods-receipt-close-btn:hover {
-  color: #000;
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 }
 
 /* Additional styles for your form remain unchanged */
@@ -246,7 +254,9 @@
 }
 
 .input-container-question-box .question-icon:hover {
-  color: #000;
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 }
 .goods-receipt-form-com input[type="date"] {
   padding: 5px;

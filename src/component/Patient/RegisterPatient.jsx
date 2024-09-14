@@ -1,3 +1,5 @@
+ /* prachi parab user interface changed  14/9 */
+ 
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import './RegisterPatient.css'; // Add your CSS for styling
@@ -200,47 +202,48 @@ function RegisterPatient() {
   };
 
   return (
-    <div className="register-patient">
-      <div className="menu">
-      <a 
-    href={patientIds ? `#basic-info/${patientIds}` : '#basic-info'} 
-    className={`menu-item ${activeTab === 'basic-info' ? 'active' : ''}`} 
-    onClick={() => setActiveTab('basic-info')}
-  >
-    Basic Information
-  </a>
-  <a 
-    href={patientIds ? `#address/${patientIds}` : '#address'} 
-    className={`menu-item ${activeTab === 'address' ? 'active' : ''}`} 
-    onClick={() => setActiveTab('address')}
-  >
-    Address
-  </a>
-  <a 
-    href={patientIds ? `#guarantor/${patientIds}` : '#guarantor'} 
-    className={`menu-item ${activeTab === 'guarantor' ? 'active' : ''}`} 
-    onClick={() => setActiveTab('guarantor')}
-  >
-    Guarantor
-  </a>
-  <a 
-    href={patientIds ? `#insurance/${patientIds}` : '#insurance'} 
-    className={`menu-item ${activeTab === 'insurance' ? 'active' : ''}`} 
-    onClick={() => setActiveTab('insurance')}
-  >
-    Insurance
-  </a>
-  <a 
-    href={patientIds ? `#emergency-contact/${patientIds}` : '#emergency-contact'} 
-    className={`menu-item ${activeTab === 'emergency-contact' ? 'active' : ''}`} 
-    onClick={() => setActiveTab('emergency-contact')}
-  >
-    Kin/Emergency Contact
-  </a>
-        <a href="#" className="register-button" onClick={handleRegisterPatient}>
-          {isEditMode ? 'Update Patient' : 'Register Patient'}
-        </a>
-      </div>
+ <div className="register-patient">
+
+      <div className="patient-menu">
+      <a
+        href={patientIds ? `#basic-info/${patientIds}` : '#basic-info'}
+        className={`menu-item ${activeTab === 'basic-info' ? 'active' : ''}`}
+        onClick={() => setActiveTab('basic-info')}
+      >
+        Basic Information
+      </a>
+      <a
+        href={patientIds ? `#address/${patientIds}` : '#address'}
+        className={`menu-item ${activeTab === 'address' ? 'active' : ''}`}
+        onClick={() => setActiveTab('address')}
+      >
+        Address
+      </a>
+      <a
+        href={patientIds ? `#guarantor/${patientIds}` : '#guarantor'}
+        className={`menu-item ${activeTab === 'guarantor' ? 'active' : ''}`}
+        onClick={() => setActiveTab('guarantor')}
+      >
+        Guarantor
+      </a>
+      <a
+        href={patientIds ? `#insurance/${patientIds}` : '#insurance'}
+        className={`menu-item ${activeTab === 'insurance' ? 'active' : ''}`}
+        onClick={() => setActiveTab('insurance')}
+      >
+        Insurance
+      </a>
+      <a
+        href={patientIds ? `#emergency-contact/${patientIds}` : '#emergency-contact'}
+        className={`menu-item ${activeTab === 'emergency-contact' ? 'active' : ''}`}
+        onClick={() => setActiveTab('emergency-contact')}
+      >
+        Emergency Contact
+      </a>
+      <a href="#" className="register-button" onClick={handleRegisterPatient}>
+        {isEditMode ? 'Update Patient' : 'Register Patient'}
+      </a>
+    </div>
 
       <div className="register-patient-content">
         {activeTab === 'basic-info' && <PatientRegistration sendpatientdata={handlePatientData}  patientData={formData.patientData} />}

@@ -1,9 +1,10 @@
+// neha-OT-OT-navbar-14-9-24
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './otmain.css';
 
 const Navbar = ({ handleNavigation }) => {
-  const location = useLocation(); // Access the current route
+  const location = useLocation(); 
 
   return (
     <header className="ot_setting-header">

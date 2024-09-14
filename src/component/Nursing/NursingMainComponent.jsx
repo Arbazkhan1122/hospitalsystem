@@ -1,3 +1,5 @@
+ /* prachi parab user interface changed  14/9 */
+
 import React, { useState, useEffect } from 'react';
 import './NursingMainComponent.css';
 import OpdTriagePage from './OpdTriagePage';
@@ -19,7 +21,7 @@ const OutPatientComponent = () => {
   const [modalData, setModalData] = useState({}); 
   // Fetch patient data from API
   useEffect(() => {
-    fetch('http://192.168.1.37:1415/api/new-patient-visits')
+    fetch('http://192.168.1.39:1415/api/new-patient-visits')
       .then(response => response.json())
       .then(data => {
         setPatients(data);
@@ -85,29 +87,38 @@ const OutPatientComponent = () => {
   return (
     <>
       <div className="out-patient-container">
-        <button 
-          className={`inpatient-component-tab ${activeTab === 'Today' ? 'active' : ''}`} 
-          onClick={() => handleTabClick('Today')}
-        >
-          Today
-        </button>
-        <button 
-          className={`inpatient-component-tab ${activeTab === 'Past Days' ? 'active' : ''}`} 
-          onClick={() => handleTabClick('Past Days')}
-        >
-          Past Days
-        </button>
+
+      <div className="opd-tabs">
+      <a
+        href="#today"
+        className={`opd-tab-item ${activeTab === 'today' ? 'active' : ''}`}
+        onClick={() => handleTabClick('Today')}
+      >
+        Today
+      </a>
+      <a
+        href="#past-days"
+        className={`opd-tab-item ${activeTab === 'past-days' ? 'active' : ''}`}
+        onClick={() => handleTabClick('Past Days')}
+      >
+        Past Days
+      </a>
+    </div>
+
+
+       
 
         {activeTab === 'Today' && (
-          <>               
+          <>            
+         
             <div className="search-and-filter">
               <input
                 type="text"
-                className="search-input"
-                placeholder="Hospital No/Patient Name/Department Name"
+                className="nursing-search-input"
+                placeholder="Search by Hospital No/Patient Name/Department Name"
               />
               
-              <input type="text" className="department-input" placeholder="Department Name" style={{marginRight:'3%'}}/>
+              <input type="text" className="department-input" placeholder="Search by Department Name" style={{marginRight:'3%'}}/>
               {/* <button className="Actions-btn Actions-consumption" onClick={openTriAgeModal}> Add Triage</button> */}
             </div>
             <div className="nurse-action-buttons">
@@ -168,7 +179,7 @@ const OutPatientComponent = () => {
         {activeTab === 'Past Days' && (
           <>
             <div className="OutPatient_PastDays-tableContainer">
-              {/* <div className="filter-options">
+              <div className="nursing-filter-options">
                 <label>
                   <input
                     type="radio"
@@ -176,7 +187,7 @@ const OutPatientComponent = () => {
                     checked={filterOption === 'All'}
                     onChange={handleFilterChange}
                   />
-                  All
+                 <b >All</b>
                 </label>
                 <label>
                   <input
@@ -185,7 +196,7 @@ const OutPatientComponent = () => {
                     checked={filterOption === 'Triage Done'}
                     onChange={handleFilterChange}
                   />
-                  Triage Done
+                 <b>Triage Done</b> 
                 </label>
                 <label>
                   <input
@@ -194,9 +205,9 @@ const OutPatientComponent = () => {
                     checked={filterOption === 'Triage Pending'}
                     onChange={handleFilterChange}
                   />
-                  Triage Pending
+                  <b>Triage Pending</b>
                 </label>
-              </div> */}
+              </div>
 
               <div className="date-filter">
                 <label>
@@ -207,7 +218,9 @@ const OutPatientComponent = () => {
                   To:
                   <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} />
                 </label>
-                <button onClick={handleFilterData}>OK</button>
+                <button onClick={handleFilterData} className='datefilter-from-to'>OK</button>
+
+                {/* <input type='text' placeholder='Search' className='OutPatient_PastDays-searchInput'/> */}
               </div>
               <div className='OutPatient_PastDays-Header'>
                 <input type='text' placeholder='Search' className='OutPatient_PastDays-searchInput'/>

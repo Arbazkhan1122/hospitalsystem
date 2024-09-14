@@ -1,3 +1,4 @@
+// neha-OT-BookingList-14-9-24
 import React, { useState, useEffect } from 'react';
 import './bookinglist.css'
 import { FaSearch, FaRedo, FaPlus } from 'react-icons/fa';
@@ -80,7 +81,7 @@ function BookingList() {
   const handleStatusChange = (e) => setStatus(e.target.value);
 
   return (
-    <div className="booking-list-conatiner">
+    <div className="booking-list-container">
       <div className="booking-list-booking-header">
         <button className="booking-list-btn-btn-success" onClick={() => setIsPopupOpen(true)}>
           <FaPlus /> New OT Booking

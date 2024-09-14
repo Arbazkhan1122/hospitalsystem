@@ -1,8 +1,11 @@
+
+/* neha-utilities-change_Visitscheme-14-9-24 */
 .Change_Visitschememain{
-    background-color:  #e6f3ff;
+    background-color:var(--background-color);
     height:auto;
     width: 100%;
     display: flex;
+    font-size: 14px;
 }
 
 .middleChange_Visitscheme{
@@ -38,8 +41,8 @@
 
 }
 .lable_Change_Visitschememain input{
-    margin-left: 500px;
-    width: 300px;
+    margin-left: 400px;
+    width: 400px;
 }
 
 .btn_Change_Visitschememain{
@@ -51,16 +54,17 @@
 }
 
 .btn_Change_Visitschememainsave{
-    /* background-color: green; */
+    background-color: var(--button-color);
     border-radius: 5px;
     color: white;
     padding: 5px 20px;
+    
 }
 
 
 
 .btn_Change_Visitschememaindiscard{
-    background-color: orange;
+    background-color:var(--button-color);
     border-radius: 5px;
     color: white;
     padding: 5px 20px;
@@ -195,26 +199,26 @@
     color: #333;
   }
   
-  .form-row {
+  .visitschemeform-rowform-row {
     display: flex;
     margin-bottom: 15px;
   }
   
-  .form-row label {
+  .visitschemeform-rowform-row label {
     width: 30%;
     font-weight: bold;
     color: #333;
   }
   
-  .form-row select,
-  .form-row textarea {
+  .visitschemeform-rowform-row select,
+  .visitschemeform-rowform-row textarea {
     width: 70%;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
   }
   
-  .form-row textarea {
+  .visitschemeform-rowform-row textarea {
     height: 60px;
     resize: vertical;
   }
@@ -229,7 +233,7 @@
       grid-template-columns: auto;
     }
     
-    .form-row {
+    .visitschemeform-rowform-row {
       flex-direction: column;
     }
     

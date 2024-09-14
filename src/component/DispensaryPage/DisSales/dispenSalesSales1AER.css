@@ -1,13 +1,13 @@
 
 .addExternalReferral-modal-container {
-    padding: 20px;
-    width: 400px;
-    height: 450px;
+    /* padding: 20px; */
+    width: 35%;
+    height:75vh;
     background-color: white;
-    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     font-family: Arial, sans-serif;
+    margin-top: 20px;
 }
 
 .addExternalReferral-modal-header {
@@ -17,24 +17,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #b1b0b0;
 }
 
 
 .addExternalReferral-modal-header h2 {
     margin: 0;
-    font-size: 14px;
-    color: #424242;
+    font-size: var(--heading-font);
+    color: black;
 }
 
 
 .addExternalReferral-close-button {
-    background-color: red;
-    padding: 5px 8px;
-    border-radius: 15px;
+    background-color: #E31D2D;
+    padding: 3px 11px;
+    border-radius: 17px;
     border: none;
     color: white;
     font-size: 16px;
     cursor: pointer;
+    /* top: 1px; */
 }
 
 .addExternalReferral-modal-body {
@@ -42,15 +44,19 @@
 }
 
 .addExternalReferral-form-group {
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     
 }
 
 .addExternalReferral-form-group label {
     display: block;
     margin-bottom: 5px;
-    font-weight: bold;
+    color:black;
+    font-size: var(--font-size);
+    
 }
 
 .addExternalReferral-form-group span {
@@ -67,6 +73,7 @@
     border: 1px solid #ccc;
     border-radius: 3px;
     outline: none;
+    width: 60%;
 }
 
 .addExternalReferral-form-group input[type="checkbox"] {
@@ -79,7 +86,8 @@
 }
 
 .addExternalReferral-form-actions button {
-    background-color: #28a745;
+    
+    background-color: #26C281;
     color: white;
     padding: 5px 30px;
     border: none;
@@ -104,7 +112,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     z-index: 1000;
   }
   

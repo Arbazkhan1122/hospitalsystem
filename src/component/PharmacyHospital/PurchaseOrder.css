@@ -92,6 +92,12 @@
     background-color: var(--button-hover-background-color);
 }
 
+.purchase-order-date-range-button:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+}
+
 /* Favorite and Reset Buttons */
 .purchase-order-favorite-btn,
 .purchase-order-reset-btn {
@@ -186,6 +192,8 @@
     transition: background-color 0.3s ease;
 }
 .purchase-order-print-button:hover{
+
+    border: 1px solid var( --button-hover-border-color);
     color: var(--button-hover-text-color);
     background-color: var(--button-hover-background-color);
 }

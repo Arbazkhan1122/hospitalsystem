@@ -4,7 +4,7 @@
   }
   
   .mkrtref_report_title {
-    font-size: 24px;
+    font-size: 16px;
     margin-bottom: 20px;
   }
   
@@ -25,16 +25,16 @@
   }
   
   .mkrtref_report_filters input {
-    margin-right: 10px;
+    margin-right: 5px;
     margin-top: 20px;
-    padding: 5px;
+    padding: 2px;
   }
   
   .mkrtref_report_show_button {
-    background-color: #2ca4f4;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 5px ;
     cursor: pointer;
     border-radius: 4px;
   }

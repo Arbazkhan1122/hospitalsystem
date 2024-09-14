@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Routes, BrowserRouter } from 'react-router-dom';
+import { NavLink, Route, Routes } from 'react-router-dom';
 import RefringOrg from './reffering_organization/RefringOrg';
 import ReferringParty from './refferint_party/Reffering_part';
 import './mkt_settin.css'; // Import the CSS file
@@ -11,10 +11,24 @@ const Settings = () => {
         <nav className="mkt_setting-nav">
           <ul className="mkt_setting-nav-list">
             <li className="mkt_setting-nav-item">
-              <Link to="RefringOrg" className="mkt_setting-nav-link">Referring Organization</Link>
+              <NavLink
+                to="RefringOrg"
+                className={({ isActive }) =>
+                  isActive ? 'mkt_setting-nav-link active' : 'mkt_setting-nav-link'
+                }
+              >
+                Referring Organization
+              </NavLink>
             </li>
             <li className="mkt_setting-nav-item">
-              <Link to="ReferringParty" className="mkt_setting-nav-link">Referring Party</Link>
+              <NavLink
+                to="ReferringParty"
+                className={({ isActive }) =>
+                  isActive ? 'mkt_setting-nav-link active' : 'mkt_setting-nav-link'
+                }
+              >
+                Referring Party
+              </NavLink>
             </li>
             {/* Other settings links */}
           </ul>

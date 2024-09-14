@@ -51,6 +51,13 @@
     color: var(--button-hover-text-color);
     background-color: var(--button-hover-background-color);
   }
+  .return-to-supplier-search-button:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+
+  }
+  
   .return-to-supplier-date-filter-container {
     display: flex;
     align-items: center;
@@ -75,10 +82,19 @@
   
   .return-to-supplier-date-filter-actions button {
     margin-left: 5px;
-    padding: 5px 10px;
+    background-color: var(--button-color);
+    color: white;
     border: none;
-    border-radius: 3px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
+  }
+
+  .return-to-supplier-date-filter-actions button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+
   }
   
   .return-to-supplier-star-button {
@@ -155,6 +171,12 @@
     color: var(--button-hover-text-color);
     background-color: var(--button-hover-background-color);
   }
+   .return-to-supplier-print-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+   }
+  
   .return-to-supplier-data-table {
     width: 100%;
     border-collapse: collapse;

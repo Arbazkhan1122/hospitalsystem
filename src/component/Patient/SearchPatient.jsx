@@ -15,7 +15,7 @@ function SearchPatient() {
 
   useEffect(() => {
     // Fetch patients from the API when the component mounts
-    axios.get('http://localhost:1415/api/patients/getAllPatients')
+    axios.get('http://192.168.1.39:1415/api/patients/getAllPatients')
       .then(response => {
         setPatients(response.data);
       })
@@ -71,7 +71,7 @@ function SearchPatient() {
         </div>
         <div className="results-and-print">
           <span className="results-text">Showing {displayedPatients.length} / {filteredPatients.length} results</span>
-          <button className="print-button" onClick={handlePrint}>Print</button>
+          <button className="handle-print-button" onClick={handlePrint}>Print</button>
         </div>
       </div>
 

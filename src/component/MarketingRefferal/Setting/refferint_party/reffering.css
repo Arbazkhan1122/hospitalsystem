@@ -12,12 +12,13 @@
 .referring_party_new_org_button {
     display: flex;
     align-items: center;
-    background-color: #28a745;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 5px;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 14px;
 }
 
 .referring_party_button_icon {
@@ -64,12 +65,15 @@
 
 
 .referring_party_new_party_button{
-    background-color: #28a745;
-    padding: 8px;
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    background-color: var(--button-color);
     color: white;
-    font-size: 16px;
     border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
 .referring_party_table {
@@ -78,10 +82,11 @@
 }
 
 .referring_party_tablehead {
-    background-color: #f2f2f2;
-    padding: 10px;
+    background-color: #ddd;
+    padding: 5px;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
+    font-size: 14px;
 }
 
 .referring_party_tabledata {
