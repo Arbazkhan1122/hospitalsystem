@@ -1,3 +1,4 @@
+/* Mohini_HospitalHeader_WholePage_14/sep/2024 */
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./HospitalHeader.css";
@@ -72,7 +73,7 @@ const HospitalHeader = () => {
             </Link>
           </ul>
         </nav>
-      </header>
+      </header> 
 
       {activeNav === "order" && (
         <div className="pharmacy-sub-nav-module">
@@ -242,3 +243,4 @@ const HospitalHeader = () => {
 };
 
 export default HospitalHeader;
+/* Mohini_HospitalHeader_WholePage_14/sep/2024 */

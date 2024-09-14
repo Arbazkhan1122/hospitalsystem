@@ -1,4 +1,4 @@
-// OrganizationDeposit.js
+// neha-utilities-14-9-24OrganizationDeposit
 import React,{useState} from 'react';
 import './organizationdeposit.css';
 
@@ -185,7 +185,7 @@ function OrganizationDeposit() {
     
 
       <div className="utlt-org-button-group">
-      <button className="btn_Change_Visitschememainsave btn btn-success"  onClick={handleSaveClick}>Save Deposit</button>
+      <button className="orgdeposit-save-btn"  onClick={handleSaveClick}>Save Deposit</button>
         <button className="discard-btn">Discard</button>
       </div>
     </div>

@@ -1,11 +1,13 @@
+/* Mohini_ReturnToSupplier_WholePage_14/sep/2024 */
 .return-to-supplier-container {
     font-family: Arial, sans-serif;
-    background-color: #e6f3ff;
+    background-color: var(--background-color);
     padding: 20px;
+    height: 90vh;
   }
   
   .return-to-supplier-header-title {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 15px;
   }
   
@@ -22,28 +24,46 @@
   
   .return-to-supplier-filter-group label {
     margin-right: 5px;
+    font-size: 14px;
   }
   
   .return-to-supplier-input-box {
-    padding: 5px;
+    padding: 3px;
     border: 1px solid #ccc;
     border-radius: 3px;
   }
   
   .return-to-supplier-search-button {
-    background-color: #4a90e2;
+    background-color:var( --button-color);
     color: white;
     border: none;
-    padding: 5px 15px;
-    border-radius: 3px;
+    margin-right: 10px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
+    margin-left: auto;
+    transition: background-color 0.3s ease;
+  }
+
+  .return-to-supplier-search-button:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
+  .return-to-supplier-search-button:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+
   }
   
   .return-to-supplier-date-filter-container {
     display: flex;
     align-items: center;
     gap: 20px;
-    background-color: #d9edf7;
+    width: 60%;
+    background-color: #f2f2f2;
     padding: 10px;
     border-radius: 3px;
     margin-bottom: 15px;
@@ -62,10 +82,19 @@
   
   .return-to-supplier-date-filter-actions button {
     margin-left: 5px;
-    padding: 5px 10px;
+    background-color: var(--button-color);
+    color: white;
     border: none;
-    border-radius: 3px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
+  }
+
+  .return-to-supplier-date-filter-actions button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+
   }
   
   .return-to-supplier-star-button {
@@ -79,8 +108,23 @@
   }
   
   .return-to-supplier-ok-button {
-    background-color: #5cb85c;
+    background-color:var( --button-color);
     color: white;
+    border: none;
+    margin-right: 10px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: auto;
+    transition: background-color 0.3s ease;
+
+  }
+  .return-to-supplier-ok-button:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+
   }
   
   .return-to-supplier-search-bar {
@@ -91,34 +135,47 @@
   .return-to-supplier-search-input {
     /* flex-grow: 1; */
     padding: 5px;
+    font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 3px 0 0 3px;
   }
   
   .return-to-supplier-search-icon-button {
-    background-color: white;
-    border: 1px solid #ccc;
-    border-left: none;
-    padding: 5px 10px;
-    border-radius: 0 3px 3px 0;
-    cursor: pointer;
-  }
-  
-  .return-to-supplier-print-container {
+    background: none; /* Remove background color */
+    border: none; /* Remove border */
+    padding: 0; /* Remove padding */
+    margin-left: -20px;
+    cursor: pointer; /* Keep the pointer cursor */
+}
+  /* .return-to-supplier-print-container {
     display: flex;
     justify-content: flex-end;
-    /* align-items: center; */
     margin-bottom: 15px;
-  }
+  } */
   
   .return-to-supplier-print-button {
-    background-color: #4a90e2;
+    background-color:var( --button-color);
     color: white;
     border: none;
-    padding: 5px 15px;
-    border-radius: 3px;
+    margin-right: 10px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
+    margin-left: auto;
+    transition: background-color 0.3s ease;
+
   }
+  .return-to-supplier-print-button:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
+   .return-to-supplier-print-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+   }
   
   .return-to-supplier-data-table {
     width: 100%;
@@ -164,10 +221,7 @@
     background-color: #ccc;
     cursor: not-allowed;
   }
-  .return-to-supplier-print-container{
-    color: #4a90e2;
-    font-size: 16px;
-  }
+
   .return-to-supplier-retuurn-store-supplier{
     background-color: white;
   }
@@ -185,3 +239,34 @@
     cursor: not-allowed;
   }
   
+  /*  */
+  .return-to-supplier-print-container {
+    display: flex;
+    justify-content: flex-end; /* Aligns content to the right */
+    align-items: center; /* Vertically centers content */
+    gap: 10px; /* Adds space between the span and the button */
+    font-size: 14px;
+
+}
+
+
+.return-to-supplier-print-container {
+  display: flex;
+  justify-content: flex-end; /* Aligns the span and button to the right side */
+  align-items: center; /* Vertically centers the content */
+  width: 100%; /* Ensures the container takes the full width */
+  margin-right: 0; /* Optional: Removes any unwanted margin */
+}
+
+.return-to-supplier-print-container span {
+  margin-left: 70%;
+}
+
+.return-to-supplier-print-button {
+  /* padding: 5px 10px; */
+  /* background-color: #f2f2f2; */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+/* Mohini_ReturnToSupplier_WholePage_14/sep/2024 */

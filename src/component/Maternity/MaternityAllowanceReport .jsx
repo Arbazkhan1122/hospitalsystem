@@ -139,13 +139,13 @@ const MaternityAllowanceReportComponent = () => {
               </table>
             </div>
             <div className="maternity-report-pagination">
-  <ul className="maternity-report-page-numbers">
+  {/* <ul className="maternity-report-page-numbers">
     <li><button disabled={true}>First</button></li>
     <li><button disabled={true}>Previous</button></li>
     <li><span>Page 1 of 1</span></li>
     <li><button disabled={true}>Next</button></li>
     <li><button disabled={true}>Last</button></li>
-  </ul>
+  </ul> */}
 </div>
 
             </div>

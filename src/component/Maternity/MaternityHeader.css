@@ -1,6 +1,5 @@
 /* Styles for the header container */
 .maternity-header {
-  
   width: 100%; /* Make the header full width */
   z-index: 1000; /* Ensure the header stays on top of other elements */
   background-color: white; /* Background color to distinguish the header */
@@ -11,13 +10,14 @@
 
 /* Styles for the header links */
 .maternity-header-button {
-  font-size: 16px; /* Ensure font-size is consistent */
-  text-decoration: none; /* Remove default link underline */
-  color: #333; /* Dark text color */
-  padding: 10px 15px; /* Padding around each link */
-  margin-right: 20px; /* Add right margin for spacing */
-  transition: color 0.3s, background-color 0.3s; /* Smooth transition for hover effects */
-  border-radius: 5px; /* Rounded corners for links */
+  background-color: var( --button-color);
+text-decoration: none;
+color: white;
+font-size: 16px;
+padding: 5px;
+border-radius: 5px;
+margin-top: 8px;
+margin-left: 5px;
 }
 
 /* Remove the margin from the last button */
@@ -28,6 +28,6 @@
 /* Hover effect for links */
 .maternity-header-button:hover,
 .maternity-header-button.active {
-  color: #fff; /* White text for hover and active link */
-  background-color: #007bff; /* Blue background for hover and active link */
+  background-color:var(--button-bg-color);
+  color: white;
 }

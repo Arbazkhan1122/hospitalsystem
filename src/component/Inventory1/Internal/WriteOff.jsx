@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import "./WriteOff.css";
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const WriteOff = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [rows, setRows] = useState([
     {
       itemName: '',
@@ -95,25 +98,43 @@ const WriteOff = () => {
 
   return (
     <div className='writeOff-content'>
-    <div className="writeOff-tab-content">
-      <h2 className='write-off-header'>Write-Off Goods</h2>
-      <table className="writeOff-write-off-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Item Name *</th>
-            <th>Code</th>
-            <th>Available Qty</th>
-            <th>Write-Off Qty *</th>
-            <th>Write-Off Date *</th>
-          <th></th>
-            <th>Remark *</th>
-            <th>Item Rate</th>
-            <th>Sub Total</th>
-            <th>VAT %</th>
-            <th>Total Amount</th>
-          </tr>
-        </thead>
+    <div className="table-container ">
+    <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "",
+                 "Item Name *",
+                 "Code",
+                 "Available Qty",
+                 "Write-Off Qty *",
+                 "Write-Off Date *",
+                 "",
+                 "Remark *",
+                 "Item Rate",
+                 "Sub Total",
+                 "VAT %",
+                 "Total Amount"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {rows.map((row, index) => (
             <tr key={index}>

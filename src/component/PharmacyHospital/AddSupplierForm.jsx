@@ -1,3 +1,4 @@
+/* Mohini_AddSupplierForm_WholePage_14/sep/2024 */
 import React, { useState } from 'react';
 import axios from 'axios';
 import './AddSupplierForm.css';
@@ -31,7 +32,7 @@ const AddSupplierForm = ({ onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent page refresh
     try {
-      const response = await axios.post('http://192.168.1.37:8888/api/suppliers', formData);
+      const response = await axios.post('http://192.168.1.39:8888/api/suppliers', formData);
       console.log('Response:', response); // Log the response
       setShowSuccessMessage(true);
       setTimeout(() => setShowSuccessMessage(false), 3000); // Hide after 3 seconds
@@ -177,3 +178,4 @@ const AddSupplierForm = ({ onClose }) => {
 };
 
 export default AddSupplierForm;
+/* Mohini_AddSupplierForm_WholePage_14/sep/2024 */

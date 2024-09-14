@@ -1,3 +1,4 @@
+ //prachi parab patientRegisteration css 13/9
 import React, { useEffect, useState } from 'react';
 import './EmergencyContactPage.css';
 
@@ -55,10 +56,10 @@ function EmergencyContactPage({ sendemergencycontactdata, emergencyData }) {
 
   return (
     <div className="emergency-contact-page">
-      <h2>Kin/Emergency Contact</h2>
-      <form onSubmit={handleSubmit}>
+      <h5 style={{marginBottom:'20px'}}>Kin/Emergency Contact</h5>
+      <form onSubmit={handleSubmit} className='emergency-page-form'>
         <div className="emergency-contact-type">
-          <label>Type*:</label>
+          <label>Type<span className='mandatory'>*</span>:</label>
           <div>
             <label>
               <input 
@@ -84,7 +85,7 @@ function EmergencyContactPage({ sendemergencycontactdata, emergencyData }) {
           </div>
         </div>
         <div className="emergency-contact-input">
-          <label htmlFor="firstName">First Name*:</label>
+          <label htmlFor="firstName">First Name<span className='mandatory'>*</span>:</label>
           <input
             type="text"
             id="firstName"
@@ -95,7 +96,7 @@ function EmergencyContactPage({ sendemergencycontactdata, emergencyData }) {
           />
         </div>
         <div className="emergency-contact-input">
-          <label htmlFor="lastName">Last Name*:</label>
+          <label htmlFor="lastName">Last Name<span className='mandatory'>*</span>:</label>
           <input
             type="text"
             id="lastName"
@@ -136,7 +137,10 @@ function EmergencyContactPage({ sendemergencycontactdata, emergencyData }) {
             placeholder="Comments"
           />
         </div>
+        <div style={{textAlign:"right"}}>
         <button type="submit" className="emergency-contact-add-btn">Save</button>
+        </div>
+       
       </form>
     </div>
   );

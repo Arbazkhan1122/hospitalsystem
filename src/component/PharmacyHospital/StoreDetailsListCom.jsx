@@ -1,3 +1,4 @@
+/* Mohini_StoreDetailsListCom_WholePage_14/sep/2024 */
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './SettingSupplier.css'; 
@@ -225,7 +226,7 @@ const StoreDetailsListCom = () => {
             ))}
           </tbody>
         </table>
-        <div className="setting-supplier-pagination">
+        {/* <div className="setting-supplier-pagination">
           <div className="setting-supplier-pagination-controls">
             <button>First</button>
             <button>Previous</button>
@@ -233,7 +234,7 @@ const StoreDetailsListCom = () => {
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* <Modal show={showEditModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">
@@ -255,3 +256,4 @@ const StoreDetailsListCom = () => {
 };
 
 export default StoreDetailsListCom;
+/* Mohini_StoreDetailsListCom_WholePage_14/sep/2024 */

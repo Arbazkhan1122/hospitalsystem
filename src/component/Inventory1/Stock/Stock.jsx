@@ -18,7 +18,7 @@ const Stock = () => {
     };
   return (
     <div>
-    <div className="stock-tabs">
+    <div className="inventory-stock-tabs">
       {tabs.map((tab) => (
         <button
           key={tab.name}
@@ -29,7 +29,7 @@ const Stock = () => {
         </button>
       ))}
     </div>
-    <div className="content">
+    <div className="inventory-stock-content">
       <Routes>
         <Route path="stockList" element={<StockList/>} />
         <Route path="goodsReceiptList" element={<GoodsReceiptList/>} />

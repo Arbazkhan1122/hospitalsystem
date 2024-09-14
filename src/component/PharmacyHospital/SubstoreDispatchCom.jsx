@@ -1,3 +1,4 @@
+/* Mohini_StoreDetailsListCom_WholePage_14/sep/2024 */
 import React from "react";
 import "./PurchaseOrder.css"; // Ensure you have this CSS file
 
@@ -53,22 +54,23 @@ const SubstoreDispatchCom = () => {
                     </thead>
                     <tbody>
                         <tr>
-                            <td colSpan="13" className="purchase-order-no-rows">No Rows To Show</td>
+                            <td colSpan="6" className="purchase-order-no-rows">No Rows To Show</td>
                         </tr>
                     </tbody>
                     
                 </table>
-                <div className="purchase-order-pagination">
+                {/* <div className="purchase-order-pagination">
                     <span>0 to 0 of 0</span>
                     <button>First</button>
                     <button>Previous</button>
                     <span>Page 0 of 0</span>
                     <button>Next</button>
                     <button>Last</button>
-                </div>
+                </div> */}
             </div>
         </div>
     );
 };
 
 export default SubstoreDispatchCom;
+/* Mohini_StoreDetailsListCom_WholePage_14/sep/2024 */

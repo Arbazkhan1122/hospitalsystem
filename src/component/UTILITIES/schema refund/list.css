@@ -1,58 +1,67 @@
-/* Container for the entire component */
-.utltlist {
-    height: 100vh; /* Full viewport height */
-    width: 100vw;  /* Full viewport width */
-    background-color: #e6f3ff; /* Light blue background color */
+
+.scheme-refund-list {
+    height: 100vh; 
+    width: 100%;  
+    background-color:var(--background-color); 
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px; /* Adds padding around the content */
-    box-sizing: border-box; /* Ensures padding and border are included in total dimensions */
+    padding: 20px; 
+    box-sizing: border-box;
     
   }
   
-  /* Container for the button */
   .modelbtn {
     width: 100%;
     display: flex;
-    justify-content: flex-start; /* Aligns button to the right */
-    margin-bottom: 20px; /* Adds space below the button */
+    justify-content: flex-start; 
+    margin-bottom: 20px; 
+    
+  }
+
+  .new-entry-btn{
+    background-color:var( --button-color);
+    color: white;
+    border: none;
+    margin-right: 10px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: auto;
+    transition: background-color 0.3s ease;
+
   }
   
-  /* Date range picker styling */
-  .date-range {
+
+  .date-range-container{
     width: 100%;
     display: flex;
-    justify-content: flex-start; /* Aligns button to the right */
-    /* margin-bottom: 20px; */
-  }
-  .date-utlt{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start; /* Aligns button to the right */
+    justify-content: flex-start; 
     margin-bottom: 20px;
     background-color: #ccc;
     align-items: center;
+    margin-left: 20px;
+    padding-left: 10px;
 
   }
 
   .utltdatemiddle{
     width: 50%;
     display: flex;
-    justify-content: center; /* Aligns button to the right */
+    justify-content: center; 
    margin: 2px;
     background-color: #dfebe8;
     align-items: center;
 
   }
   
-  .date-range input {
+  .utlt-date-range input {
     margin: 0 10px;
     padding: 5px;
     border: 1px solid #ccc;
   }
   
-  /* Buttons in the date range section */
   .star-btn, .dash-btn {
     background-color: #f0f0f0;
     border: 1px solid #ccc;
@@ -60,26 +69,21 @@
     margin-right: 5px;
   }
   
-  .ok-btn {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 5px 15px;
-    border-radius: 3px;
+  .scheme-refund-table{
+    width: 100%;
+    font-size: var(--font-size);
   }
-  
-  /* Search bar styling */
-  .utlt-search-bar {
+  .scheme-refund-search-bar {
     width: 100%;
     display: flex;
-    justify-content: flex-start; /* Aligns button to the right */
+    justify-content: flex-start;
     margin-bottom: 20px;
+    padding-left: 20px;
  
 
   }
   
-  .utlt-search-bar input {
-  
+  .scheme-refund-search-bar input {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -92,113 +96,55 @@
     border: none;
     cursor: pointer;
   }
-  
-  /* Table styling */
-  .utlt-table {
-    overflow-x: auto;
-    background-color: white;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    table-layout: fixed;
-    
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-    font-weight: normal;
-  }
-  
-  /* No rows message styling */
-  .no-rows {
-    text-align: center;
-    background-color: #fff3cd;
-    color: #856404;
-    padding: 15px;
-  }
-  
-  /* Pagination styling */
-  .utlt-pagination {
-    display: flex;
-    justify-content: center; /* Center the pagination horizontally */
-    align-items: center;     /* Align items vertically */
-    width: 100%;             /* Ensure the pagination takes the full width of its container */
-    margin-top: 20px;        /* Optional: add top margin for spacing */
-  }
-  
-  .utlt-pagination button {
-    margin: 0 5px;           /* Add margin between buttons */
-    padding: 5px 10px;
-    background-color: #007bff; /* Button background color */
-    color: white;            /* Button text color */
-    border: none;            /* Remove button border */
-    cursor: pointer;         /* Change cursor to pointer on hover */
-    border-radius: 3px;      /* Round button corners */
-    transition: background-color 0.3s; /* Smooth transition on hover */
-  }
-  
+
   .utlt-pagination button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3; 
   }
   
   .utlt-pagination button:disabled {
-    background-color: #cccccc; /* Disabled button color */
-    cursor: not-allowed;       /* Change cursor for disabled buttons */
+    background-color: #cccccc;
+    cursor: not-allowed;      
   }
   
-  /* Additional styles */
   .admitted-search-input {
     border-radius: 5px;
     height: 30px;
   }
   
-  /* Modal styles */
-  .utlt-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1050; /* Higher z-index to be above other elements */
+    /* .utlt-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; 
+  } */
+
+.scheme-modal {
+  width: 700px !important;
+  background-color: white;
+  margin-left: 200px; 
+  /* padding: 20px;  */
+  border-radius: 8px;
+  /* overflow: hidden;   */
 }
 
-.utlt-modal-dialog {
-  width: 90%; /* Adjust width as needed */
-  max-width: 700px; /* Limit the maximum width */
-  background-color: white;
-  margin-left: 50px;
-  padding: 20px;
-  border-radius: 8px;
-  overflow: hidden; /* Ensure child elements are contained */
-}
 
 .utlt-modal-header,
 .utlt-modal-footer {
-  padding: 10px 20px;
+  padding: 2px;
   background-color: #f7f7f7;
   border-bottom: 1px solid #e5e5e5;
 }
 
 
-.utlt-modal-body {
+/* .utlt-modal-body {
   padding: 20px;
-}
+} */
 
 .utlt-modal-title {
   margin: 0;
@@ -211,12 +157,12 @@
 }
 
 .utlt-close {
-  font-size: 1.5rem;
+  font-size: 14px;
   cursor: pointer;
   background: none;
   border: none;
   padding: 0;
-  margin-left: auto; /* Push the close button to the right */
+  margin-left: auto; 
 }
 
 .utlt-btn {

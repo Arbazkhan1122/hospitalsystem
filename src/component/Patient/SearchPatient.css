@@ -16,8 +16,8 @@
   }
   
   .search-form .search-btn {
-    padding: 8px 16px;
-    background-color: #007bb5;
+    padding: 5px 5px;
+    background-color: var(--button-color);
     color: white;
     border: none;
     border-radius: 4px;
@@ -25,7 +25,7 @@
   }
   
   .search-form .search-btn:hover {
-    background-color: #005f8d;
+    background-color: var(--button-bg-color);
   }
   
   .results-info {
@@ -48,25 +48,32 @@
   }
   
   .action-btn {
-    padding: 4px 8px;
-    margin: 2px;
+    background-color: var(--button-color);
+    color: white;
     border: none;
-    border-radius: 4px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
   }
+
   
   .action-btn.edit {
-    background-color: #4caf50;
+    background-color: var(--button-color);
     color: white;
   }
   
   .action-btn.history {
-    background-color: #2196f3;
+    background-color: var(--button-color);
     color: white;
+  }
+  .action-btn.edit:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
   .action-btn.more {
-    background-color: #f44336;
+    background-color: var(--button-color);
     color: white;
   }
   
@@ -141,11 +148,11 @@
 }
 
 .input-wrapper input {
-  padding: 10px 30px 10px 10px;
+  padding: 5px 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
-  width: 80%;
+  width: 100%;
 }
 
 .input-wrapper i {
@@ -168,16 +175,18 @@
   color: #004a99; /* Matching the text color */
 }
 
-.print-button {
-  background-color: #4285f4; /* Blue color */
+.handle-print-button {
+  background-color: var(--button-color);
   color: white;
   border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  font-size: 14px;
+  padding: 5px;
+  border-radius: 5px;
   cursor: pointer;
+  margin-bottom: 15px;
 }
 
-.print-button:hover {
-  background-color: #3074d2; /* Darker blue on hover */
+.handle-print-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 }

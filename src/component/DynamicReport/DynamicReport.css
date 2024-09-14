@@ -2,7 +2,7 @@
 .DynamicReport-container {
     max-width: 1200px;
     margin: 0 auto;
-    /* background-color: #e0f7fa; */
+    background-color: var(--background-color);
     padding: 5px;
     margin-left: 10px;
     border-radius: 10px;
@@ -42,10 +42,10 @@
     margin-bottom: 10px;
 }
 .Dynamic-Load-Report-Outer button{
-    background-color: #0277bd;
+    background-color: var(--button-color);
     color: #ffffff;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 5px;
     margin-right: 5px;
     border-radius: 5px;
     cursor: pointer;
@@ -69,9 +69,6 @@
     float: right;
 }
 
-.DynamicReport-container .DynamicReport-button-group button:hover {
-    background-color: #01579b;
-}
 
 /* Search Input */
 .DynamicReport-container .DynamicReport-search-group input {
@@ -137,7 +134,7 @@
 }
 
 .DynamicReport-container .DynamicReport-pagination button {
-    background-color: #0277bd;
+    background-color: var(--button-color);
     color: #ffffff;
     border: none;
     padding: 5px 10px;
@@ -147,9 +144,7 @@
     transition: background-color 0.3s;
 }
 
-.DynamicReport-container .DynamicReport-pagination button:hover {
-    background-color: #01579b;
-}
+
 
 .DynamicReport-container .DynamicReport-pagination span {
     margin: 0 5px;

@@ -1,3 +1,4 @@
+ //prachi parab patientRegisteration css 13/9
 import React, { useEffect, useState } from 'react';
 import './InsurancePage.css';
 
@@ -48,10 +49,10 @@ function InsurancePage({ sendinsurancedata, insuranceData }) {
 
   return (
     <div className="insurance-page">
-      <h2>Insurance Information</h2>
-      <form onSubmit={handleSubmit}>
+      <h5 style={{marginBottom:'20px'}}>Insurance Information</h5>
+      <form onSubmit={handleSubmit} className='insurance-page-form'>
         <div>
-          <label htmlFor="insuranceProvider">Insurance Provider*:</label>
+          <label htmlFor="insuranceProvider">Insurance Provider<span className='mandatory'>*</span>:</label>
           <select
             id="insuranceProvider"
             name="insuranceProvider"
@@ -75,7 +76,7 @@ function InsurancePage({ sendinsurancedata, insuranceData }) {
           />
         </div>
         <div>
-          <label htmlFor="cardNo">Card Number (ID No)*:</label>
+          <label htmlFor="cardNo">Card Number (ID No)<span className='mandatory'>*</span>:</label>
           <input
             type="text"
             id="cardNo"
@@ -87,7 +88,7 @@ function InsurancePage({ sendinsurancedata, insuranceData }) {
           />
         </div>
         <div>
-          <label htmlFor="insuranceNo">Insurance Number (Member No)*:</label>
+          <label htmlFor="insuranceNo">Insurance Number (Member No)<span className='mandatory'>*</span>:</label>
           <input
             type="text"
             id="insuranceNo"
@@ -99,7 +100,7 @@ function InsurancePage({ sendinsurancedata, insuranceData }) {
           />
         </div>
         <div>
-          <label htmlFor="facilityCode">Facility Code*:</label>
+          <label htmlFor="facilityCode">Facility Code<span className='mandatory'>*</span>:</label>
           <input
             type="text"
             id="facilityCode"
@@ -111,7 +112,7 @@ function InsurancePage({ sendinsurancedata, insuranceData }) {
           />
         </div>
         <div>
-          <label htmlFor="initialBalance">Initial Balance*:</label>
+          <label htmlFor="initialBalance">Initial Balance<span className='mandatory'>*</span>:</label>
           <input
             type="number"
             id="initialBalance"
@@ -121,7 +122,10 @@ function InsurancePage({ sendinsurancedata, insuranceData }) {
             required
           />
         </div>
-        <button type="submit" className="add-insurance-btn">Add Insurance</button>
+        <div style={{textAlign:"right"}}>
+         
+       </div>
+        <button type="submit" className="add-insurance-btn" style={{width:'fit-content',marginLeft:'2%'}}>Add Insurance</button>
       </form>
     </div>
   );

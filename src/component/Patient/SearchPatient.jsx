@@ -1,3 +1,5 @@
+ //prachi parab search Patient 13/9
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -13,7 +15,7 @@ function SearchPatient() {
 
   useEffect(() => {
     // Fetch patients from the API when the component mounts
-    axios.get('http://localhost:1415/api/patients/getAllPatients')
+    axios.get('http://192.168.1.39:1415/api/patients/getAllPatients')
       .then(response => {
         setPatients(response.data);
       })
@@ -60,7 +62,7 @@ function SearchPatient() {
           <div className="input-wrapper">
             <input
               type="text"
-              placeholder="Search by Patient Name"
+              placeholder="Search"
               value={searchTerm}
               onChange={handleSearch}
             />
@@ -69,7 +71,7 @@ function SearchPatient() {
         </div>
         <div className="results-and-print">
           <span className="results-text">Showing {displayedPatients.length} / {filteredPatients.length} results</span>
-          <button className="print-button" onClick={handlePrint}>Print</button>
+          <button className="handle-print-button" onClick={handlePrint}>Print</button>
         </div>
       </div>
 
@@ -99,13 +101,13 @@ function SearchPatient() {
           ))}
         </tbody>
       </table>
-      <div className="pagination">
+      {/* <div className="pagination">
         <button onClick={() => handlePageChange(1)} disabled={currentPage === 1}>First</button>
         <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
         <span>Page {currentPage} of {Math.ceil(filteredPatients.length / patientsPerPage)}</span>
         <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === Math.ceil(filteredPatients.length / patientsPerPage)}>Next</button>
         <button onClick={() => handlePageChange(Math.ceil(filteredPatients.length / patientsPerPage))} disabled={currentPage === Math.ceil(filteredPatients.length / patientsPerPage)}>Last</button>
-      </div>
+      </div> */}
     </div>
   );
 }

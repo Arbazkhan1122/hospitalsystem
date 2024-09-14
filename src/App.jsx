@@ -5,11 +5,13 @@ import './App.css'
 
 import Layout from './Dashboard/components/Layout'
 import { BrowserRouter } from 'react-router-dom'
+import Section from './Section'
 
 function App() {
 
   return (
     <>
+    {/* <Section/> */}
     <BrowserRouter>
       {/* <AppointmentBookingList/> */}
       {/* <BookingAppointment/> */}

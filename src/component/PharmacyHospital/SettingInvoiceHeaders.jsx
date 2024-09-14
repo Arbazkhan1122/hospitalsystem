@@ -1,9 +1,10 @@
+/* Mohini_SettingInvoiceHeaders_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css';
 
-const apiEndpoint = 'http://192.168.1.37:1415/api/v1/invoice-headers';
+const apiEndpoint = 'http://192.168.1.39:1415/api/v1/invoice-headers';
 
 const SettingInvoiceHeaders = () => {
   const [invoiceHeaders, setInvoiceHeaders] = useState([]);
@@ -154,7 +155,7 @@ const SettingInvoiceHeaders = () => {
             ))}
           </tbody>
         </table>
-        <div className="setting-supplier-pagination">
+        {/* <div className="setting-supplier-pagination">
           <div className="setting-supplier-pagination-controls">
             <Button>First</Button>
             <Button>Previous</Button>
@@ -162,7 +163,7 @@ const SettingInvoiceHeaders = () => {
             <Button>Next</Button>
             <Button>Last</Button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Modal show={showModal} onHide={handleCloseModal} className="supplier-setting-supplier-update-modal">
@@ -267,7 +268,7 @@ const SettingInvoiceHeaders = () => {
             </Form.Group>
 
             <div className="supplier-setting-text-right">
-              <Button variant="secondary" onClick={handleCloseModal} className="supplier-setting-mr-2">Cancel</Button>
+              <Button variant="primary" onClick={handleCloseModal} className="supplier-setting-mr-2">Cancel</Button>
               <Button variant="primary" type="submit">{isEditMode ? 'Update Invoice Header' : 'Add Invoice Header'}</Button>
             </div>
           </Form>
@@ -278,3 +279,4 @@ const SettingInvoiceHeaders = () => {
 };
 
 export default SettingInvoiceHeaders;
+/* Mohini_SettingInvoiceHeaders_WholePage_14/sep/2024 */

@@ -1,3 +1,4 @@
+/* Mohini_GoodReceiptComponent_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap'; // Ensure you have react-bootstrap installed
 import axios from 'axios'; // Make sure axios is installed
@@ -19,7 +20,7 @@ const GoodReceiptComponent = () => {
 
   const fetchGoodReceipts = async () => {
     try {
-      const response = await axios.get('http://192.168.1.37:8888/api/good-receipts/good-receipts'); // Adjust URL to your backend endpoint
+      const response = await axios.get('http://192.168.1.39:8888/api/good-receipts/good-receipts'); // Adjust URL to your backend endpoint
       setGoodReceipts(response.data);
     } catch (error) {
       console.error('Error fetching good receipts:', error);
@@ -80,11 +81,16 @@ const GoodReceiptComponent = () => {
           className="purchase-order-search-box"
           placeholder="Search"
         />
-        <div className="purchase-order-button">
-          
-          <button className="purchase-order-print-button">Print</button>
-        </div>
+               
+               <div className="purchase-order-search-container">
+    <div className="purchase-order-search-right">
+        <span className="purchase-results-count-span">Showing 0 / 0 results</span>
+        <button className="purchase-order-print-button">Print</button>
         <button className="purchase-order-print-button">Export</button>
+
+    </div>
+</div>
+
       </div>
 
       <div className="purchase-order-table-container">
@@ -137,7 +143,7 @@ const GoodReceiptComponent = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="13" className="purchase-order-no-rows">
+                <td colSpan="14 " className="purchase-order-no-rows">
                   No Rows To Show
                 </td>
               </tr>
@@ -170,3 +176,4 @@ const GoodReceiptComponent = () => {
 };
 
 export default GoodReceiptComponent;
+/* Mohini_GoodReceiptComponent_WholePage_14/sep/2024 */

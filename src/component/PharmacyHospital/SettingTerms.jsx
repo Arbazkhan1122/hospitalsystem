@@ -1,3 +1,4 @@
+/* Mohini_SettingTerm_WholePage_14/sep/2024 */
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 // import ReactQuill from 'react-quill';
@@ -117,7 +118,7 @@ const SettingTerms = () => {
             ))}
           </tbody>
         </table>
-        <div className="setting-supplier-pagination">
+        {/* <div className="setting-supplier-pagination">
           <div className="setting-supplier-pagination-controls">
             <button>First</button>
             <button>Previous</button>
@@ -125,7 +126,7 @@ const SettingTerms = () => {
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Modal show={showModal} onHide={handleCloseModal} className="supplier-setting-supplier-update-modal">
@@ -193,3 +194,4 @@ const SettingTerms = () => {
 };
 
 export default SettingTerms;
+/* Mohini_SettingTerm_WholePage_14/sep/2024 */

@@ -1,3 +1,4 @@
+/* Mohini_SupplierWisePurchaseReport_14/sep/2024 */
 import React, { useState } from 'react';
 import './SupplierWisePurchaseReport.css';
 
@@ -12,6 +13,8 @@ const SupplierWisePurchaseReport = () => {
       <h1>⚛ Supplier Wise Purchase Report</h1>
       
       <div className="supplier-wise-purchase-date-range">
+
+        <div className='supp-date'>
         <div>
           <label>From:</label>
           <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
@@ -22,6 +25,7 @@ const SupplierWisePurchaseReport = () => {
         </div>
         <button className="supplier-wise-purchase-star-btn">☆</button>
         <button className="supplier-wise-purchase-dash-btn">-</button>
+        </div>
         <div className="supplier-wise-purchase-supplier-selection">
         <label>Supplier Name:</label>
         <select value={supplier} onChange={(e) => setSupplier(e.target.value)}>
@@ -33,7 +37,7 @@ const SupplierWisePurchaseReport = () => {
 
      
 
-      <div className="supplier-wise-purchase-search-bar">
+      <div className="supplier-wise-purchase-search-bar" >
         <input
       
           type="text"
@@ -44,7 +48,6 @@ const SupplierWisePurchaseReport = () => {
           }
         
         />
-        <button>🔍</button>
       </div>
 
       <div className="supplier-wise-purchase-results-info">
@@ -56,17 +59,18 @@ const SupplierWisePurchaseReport = () => {
       <table className="supplier-wise-purchase-report-table">
         <thead>
           <tr>
-            <th>GoodRe...</th>
-            <th>Supplier...</th>
+            <th>SN</th>
+            <th>GoodReceiptDate</th>
+            <th>SupplierName</th>
             <th>Bill No</th>
             <th>Item Name</th>
-            <th>Generic N...</th>
+            <th>Generic Name</th>
             <th>BatchNo</th>
-            <th>Qu...</th>
-            <th>Purchas...</th>
-            <th>Su...</th>
-            <th>VAT A...</th>
-            <th>Total A...</th>
+            <th>Quantity</th>
+            <th>Purchase Rate</th>
+            <th>Sub Total </th>
+            <th>VAT Amount </th>
+            <th>Total Amount</th>
           </tr>
         </thead>
         <tbody>
@@ -76,14 +80,14 @@ const SupplierWisePurchaseReport = () => {
         </tbody>
       </table>
 
-      <div className="supplier-wise-purchase-pagination">
+      {/* <div className="supplier-wise-purchase-pagination">
         <span>0 to 0 of 0</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 0 of 0</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
 </div>
      
     </div>
@@ -91,3 +95,4 @@ const SupplierWisePurchaseReport = () => {
 };
 
 export default SupplierWisePurchaseReport;
+/* Mohini_SupplierWisePurchaseReport_14/sep/2024 */

@@ -1,3 +1,4 @@
+/* Mohini_SettingItemComponent_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
@@ -21,12 +22,12 @@ const SettingItemComponent = () => {
     const fetchData = async () => {
       try {
         const [itemsResponse, companiesResponse, categoriesResponse, unitsResponse, itemTypesResponse, genericNamesResponse] = await Promise.all([
-          axios.get('http://192.168.1.37:1415/api/add-items'),
-          axios.get('http://192.168.1.37:1415/api/companies'),
-          axios.get('http://192.168.1.37:1415/api/categories'),
-          axios.get('http://192.168.1.37:1415/api/units-of-measurement'),
-          axios.get('http://192.168.1.37:1415/api/itemtypes'),
-          axios.get('http://192.168.1.37:1415/api/generic-names'), // Fetch generic names
+          axios.get('http://192.168.1.39:1415/api/add-items'),
+          axios.get('http://192.168.1.39:1415/api/companies'),
+          axios.get('http://192.168.1.39:1415/api/categories'),
+          axios.get('http://192.168.1.39:1415/api/units-of-measurement'),
+          axios.get('http://192.168.1.39:1415/api/itemtypes'),
+          axios.get('http://192.168.1.39:1415/api/generic-names'), // Fetch generic names
         ]);
 
         console.log('Items Response:', itemsResponse.data);
@@ -102,8 +103,8 @@ const SettingItemComponent = () => {
     event.preventDefault();
     try {
       const url = isEditMode
-        ? `http://192.168.1.37:1415/api/add-items/${selectedItem.itemCode}`
-        : 'http://192.168.1.37:1415/api/add-items';
+        ? `http://192.168.1.39:1415/api/add-items/${selectedItem.itemCode}`
+        : 'http://192.168.1.39:1415/api/add-items';
       const method = isEditMode ? 'put' : 'post';
 
       const response = await axios({
@@ -139,7 +140,7 @@ const SettingItemComponent = () => {
 
   const handleDelete = async (itemCode) => {
     try {
-      await axios.delete(`http://192.168.1.37:1415/api/add-items/${itemCode}`);
+      await axios.delete(`http://192.168.1.39:1415/api/add-items/${itemCode}`);
       setItems(prevItems =>
         prevItems.filter(item => item.itemCode !== itemCode)
       );
@@ -178,7 +179,7 @@ const SettingItemComponent = () => {
         <table className="setting-suppliers-users-table">
           <thead>
             <tr>
-              <th>Generic Name</th>
+              <th>Generic Nameaaaaaaa</th>
               <th>Medicine Name</th>
               <th>Company Name</th>
               <th>Item Type</th>
@@ -491,3 +492,4 @@ const SettingItemComponent = () => {
 };
 
 export default SettingItemComponent;
+/* Mohini_SettingItemComponent_WholePage_14/sep/2024 */

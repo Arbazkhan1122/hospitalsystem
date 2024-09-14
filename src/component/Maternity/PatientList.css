@@ -1,7 +1,7 @@
 .patient-component{
   height: 240vh; 
   width: auto;  
-  background-color: #e6f3ff; 
+  background-color: var(--background-color); 
   display: flex;
   /* justify-content: center; */
   align-items: flex-start;
@@ -17,7 +17,7 @@
   }
   
   .patient-list-title {
-    background-color: #e0f7ff;
+    /* background-color:; */
     padding: 10px;
     margin-bottom: 20px;
     border-radius: 4px;

@@ -3,7 +3,7 @@
     /* max-width: 1200px; */
     margin: 0 auto;
     padding: 20px;
-    background-color: #e6f3f7;
+    background-color: #e3fffe;
   }
   
   .patient-registration header {
@@ -74,7 +74,7 @@
     display: block;
     margin-right: 10px;
     font-weight: bold;
-    width: 25%;
+    width: 40%;
   }
   
   .patient-registration input[type="text"],
@@ -84,7 +84,7 @@
   .patient-registration input[type="number"],
   .patient-registration select {
     width: 100%;
-    padding: 8px;
+    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -150,3 +150,40 @@
     border-radius: 5px;
     font-weight: bold;
 }
+
+.register-save-button{
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+.register-save-button:hover{
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+}
+
+.patient-registration-data .form-group {
+
+  font-family: Arial, sans-serif;
+
+}
+.patient-registration-data .form-group {
+  display: flex;
+  align-items: center;
+  /* margin-right: 15px; */
+}
+
+.patient-registration .radio-label {
+  /* margin-right: 5px; */
+  font-weight: bold;
+}
+
+.patient-registration input[type="radio"] {
+  margin-right: 30px;
+}
+
+

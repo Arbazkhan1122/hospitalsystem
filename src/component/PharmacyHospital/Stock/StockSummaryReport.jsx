@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+  /* Mohini_StockSummaryReport_WholePage_14/sep/2024 */
+  import React, { useState } from 'react';
 import './StockSummaryReport.css';
 
 const StockSummaryReport = () => {
@@ -133,14 +134,14 @@ const StockSummaryReport = () => {
 </div>
 
      
-      <div className="stock-summary-report-pagination">
+      {/* <div className="stock-summary-report-pagination">
         <span>0 to 0 of 0</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 0 of 0</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
       </div>
 
       <div className="stock-summary-report-summary">
@@ -183,3 +184,4 @@ const StockSummaryReport = () => {
 };
 
 export default StockSummaryReport;
+  /* Mohini_StockSummaryReport_WholePage_14/sep/2024 */

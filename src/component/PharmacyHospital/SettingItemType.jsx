@@ -1,3 +1,4 @@
+/* Mohini_SettingItemType_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
@@ -12,7 +13,7 @@ const SettingItemType = () => {
 
   // Fetch item types from API
   useEffect(() => {
-    axios.get('http://192.168.1.37:1415/api/itemtypes')
+    axios.get('http://192.168.1.39:1415/api/itemtypes')
       .then(response => {
         console.log('Data fetched successfully:', response.data); // Debugging line
         setItemTypes(response.data);
@@ -48,7 +49,7 @@ const SettingItemType = () => {
     };
 
     if (formMode === 'Add') {
-      axios.post('http://192.168.1.37:1415/api/itemtypes', itemTypeData)
+      axios.post('http://192.168.1.39:1415/api/itemtypes', itemTypeData)
         .then(response => {
           setItemTypes([...itemTypes, response.data]);
           handleCloseModal();
@@ -57,7 +58,7 @@ const SettingItemType = () => {
           console.error('There was an error adding the item type!', error);
         });
     } else if (formMode === 'Edit') {
-      axios.put(`http://192.168.1.37:1415/api/itemtypes/${selectedItem.id}`, itemTypeData)
+      axios.put(`http://192.168.1.39:1415/api/itemtypes/${selectedItem.id}`, itemTypeData)
         .then(response => {
           const updatedItemTypes = itemTypes.map(item =>
             item.id === selectedItem.id ? response.data : item
@@ -113,7 +114,7 @@ const SettingItemType = () => {
           </tbody>
         </table>
 
-        <div className="setting-supplier-pagination">
+        {/* <div className="setting-supplier-pagination">
           <div className="setting-supplier-pagination-controls">
             <button>First</button>
             <button>Previous</button>
@@ -121,7 +122,7 @@ const SettingItemType = () => {
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Modal show={showModal} onHide={handleCloseModal} className="supplier-setting-supplier-update-modal">
@@ -178,3 +179,4 @@ const SettingItemType = () => {
 };
 
 export default SettingItemType;
+/* Mohini_SettingItemType_WholePage_14/sep/2024 */

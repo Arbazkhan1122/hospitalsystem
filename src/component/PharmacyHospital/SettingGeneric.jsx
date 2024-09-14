@@ -1,10 +1,11 @@
+/* Mohini_SettingGeneric_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css'; 
 
-const genericApiUrl = 'http://192.168.1.37:1415/api/generic-names';
-const categoryApiUrl = 'http://192.168.1.37:1415/api/categories';
+const genericApiUrl = 'http://192.168.1.39:1415/api/generic-names';
+const categoryApiUrl = 'http://192.168.1.39:1415/api/categories';
 
 const SettingGeneric = () => {
   const [suppliers, setSuppliers] = useState([]);
@@ -131,7 +132,7 @@ const SettingGeneric = () => {
             ))}
           </tbody>
         </table>
-        <div className="setting-supplier-pagination">
+        {/* <div className="setting-supplier-pagination">
           <div className="setting-supplier-pagination-controls">
             <button>First</button>
             <button>Previous</button>
@@ -139,7 +140,7 @@ const SettingGeneric = () => {
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Modal show={showModal} onHide={handleCloseModal} className="supplier-setting-supplier-update-modal">
@@ -248,3 +249,4 @@ const SettingGeneric = () => {
 };
 
 export default SettingGeneric;
+/* Mohini_SettingGeneric_WholePage_14/sep/2024 */

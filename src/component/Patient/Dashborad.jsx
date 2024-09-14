@@ -86,7 +86,7 @@ const Dashboard = () => {
             <XAxis dataKey="date" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="patients" fill="#007bb5" />
+            <Bar dataKey="patients" fill="var( --button-bg-color)" />
           </BarChart>
         </div>
         <div className="patient-chart">
@@ -96,7 +96,7 @@ const Dashboard = () => {
             <XAxis dataKey="ageGroup" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="cost" fill="#007bb5" />
+            <Bar dataKey="cost" fill="var( --button-bg-color)" />
           </BarChart>
         </div>
         <div className="patient-chart">
@@ -108,7 +108,7 @@ const Dashboard = () => {
               cx="50%"
               cy="50%"
               outerRadius={80}
-              fill="#007bb5"
+              fill="var( --button-bg-color)"
               label
             />
             <Tooltip />

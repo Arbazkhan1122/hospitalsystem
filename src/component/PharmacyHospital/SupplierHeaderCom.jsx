@@ -1,3 +1,4 @@
+/* Mohini_SupplierHeaderCom_WholePage_14/sep/2024 */
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './SettingSupplier.css'; 
@@ -77,9 +78,9 @@ const SettingSupplierComponent = () => {
 
   return (
     <div className="setting-supplier-container">
-      <div className="setting-supplier-header">
+      {/* <div className="setting-supplier-header">
         <button className="setting-supplier-add-user-button">+ Add User</button>
-      </div>
+      </div> */}
       <input
         type="text"
         placeholder="Search"
@@ -124,7 +125,7 @@ const SettingSupplierComponent = () => {
             ))}
           </tbody>
         </table>
-        <div className="setting-supplier-pagination">
+        {/* <div className="setting-supplier-pagination">
           <div className="setting-supplier-pagination-controls">
             <button>First</button>
             <button>Previous</button>
@@ -132,7 +133,7 @@ const SettingSupplierComponent = () => {
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
       </div>
 {/* 
       <Modal show={showEditModal} onHide={handleCloseModal} className="supplier-setting-supplier-update-modal">
@@ -264,3 +265,4 @@ const SettingSupplierComponent = () => {
 };
 
 export default SettingSupplierComponent;
+/* Mohini_SupplierHeaderCom_WholePage_14/sep/2024 */

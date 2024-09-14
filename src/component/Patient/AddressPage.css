@@ -1,4 +1,5 @@
-   /* AddressPage.css */
+ /* prachi parab user interface changed  14/9 */
+
 .address-page-container {
     display: flex;
     font-family: Arial, sans-serif;
@@ -7,7 +8,7 @@
   .address-page-main-content {
     flex-grow: 1;
     padding: 20px;
-    background-color: #e6f3f7;
+    background-color: #e3fffe;
   }
   
   .address-page-form-row {
@@ -36,9 +37,9 @@
   .address-page-form-group input[type="text"],
   .address-page-form-group select {
     flex: 1;
-    padding: 8px;
+    padding: 5px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
     box-sizing: border-box;
   }
   
@@ -50,4 +51,12 @@
     border-radius: 5px;
     cursor: pointer;
   }
-  
+  .mandatory{
+    color: red;
+    
+  }
+
+  .address-page-form{
+    background-color: white;
+  padding: 20px;
+  }

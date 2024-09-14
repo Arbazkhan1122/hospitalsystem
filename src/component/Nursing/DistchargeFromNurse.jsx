@@ -1,390 +1,297 @@
-import React, { useState,useEffect } from 'react';
+ /* prachi parab user interface changed  14/9 */
+
+import React, { useState } from 'react';
 import './DistchargeFromNurse.css';
 import { Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 
-function DistchargeFromNurse({ closeModal, show,patientData }) {
+function DistchargeFromNurse({ onClose, show }) {
     const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(show);
-    const [formData, setFormData] = useState({
-        dischargeId: 6,
-        dischargeDate: "2024-09-03",
-        dischargedType: "Regular",
-        consultant: "Dr. Ajay",
-        doctorIncharge: "Dr. Arbaz",
-        anesthetists: "Dr. Sarah",
-        residentDr: "Dr. Doe",
-        selectDiagnosis: "Diagnosis1",
-        provisonalDiagnosis: "Provisional1",
-        otherDiagnosis: "Other1",
-        clinicalFindings: "Findings1",
-        cheifComplain: "Complain1",
-        historyOfPresentingIllness: "History1",
-        pastHistory: "PastHistory1",
-        caseSummary: "Summary1",
-        medicalProcedure: "Procedure1",
-        operativeFindings: "OperativeFindings1",
-        hospitalReports: "Reports1",
-        hospitalCourse: "Course1",
-        treatmentDuringHospitalStay: "Treatment1",
-        conditionOnDischarge: "Condition1",
-        pendingReport: "PendingReport1",
-        specialNotes: "Notes1",
-        allergies: "Allergies1",
-        dischargeOrder: "Order1",
-        activities: "Activities1",
-        diet: "Diet1",
-        restDay: "RestDay1",
-        followUp: 1,
-        others: "Others1",
-        checkedBy: "CheckedBy1",
-        showResult: "ShowResult1",
-        labTests: "LabTests1",
-        imaging: "Imaging1",
-        medications: "Medications1",
-        patientDTO: {
-          patientId: 1,
-          salutation: null,
-          firstName: null,
-          middleName: null,
-          lastName: null,
-          dateOfBirth: null,
-          age: 0,
-          phoneNumber: null,
-          landlineNumber: null,
-          country: null,
-          passportNumber: null,
-          state: null,
-          address: null,
-          bloodGroup: null,
-          gender: null,
-          religion: null,
-          maritalStatus: null,
-          notifications: null,
-          employerInfo: null,
-          previousLastName: null,
-          occupation: null,
-          email: null,
-          race: null,
-          pinCode: null,
-          dialysisPatient: null,
-          hospitalNo: null,
-          isIPD: null,
-          addressDTO: null,
-          guarantorDTO: null,
-          insuranceDTO: null,
-          emergencyContactDTO: null
-        },
-        newPatientVisitDTO: null
-        });
 
-  const closeTriAgeModal = () => {
+    const closeModal = () => {
         setIsModalOpen(false);
-        closeModal();
-        navigate('/DischargeSummary');
+        onClose(); // Close the modal
+        navigate('/DischargeSummary'); 
+
     };
 
-    console.log(patientData);
-    
+    const [medications, setMedications] = useState([{ id: 1, name: '' }]);
 
-
-    const openTriAgeModal = (data) => {
-        setModalData(data); // Set the data to be passed to the modal
-        setIsModalOpen(true);
-      };
-
-      const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-        console.log(formData+"------");
-        
+    const handleAddMedication = () => {
+      setMedications([...medications, { id: Date.now(), name: '' }]); // Add new row
     };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await axios.post('http://192.168.1.37:1415/api/discharge-summaries/save', formData);
-        
-            console.log('Discharge saved successfully:................', response.data);
-            alert("Discharge data saved successfully")
-            closeTriAgeModal();
-        } catch (error) {
-            console.error('Error saving discharge summary:', error);
-        }
+  
+    const handleRemoveMedication = (id) => {
+      setMedications(medications.filter((med) => med.id !== id)); // Remove row by id
     };
-    
-    
-     
+  
+    const handleInputChange = (id, value) => {
+      setMedications(
+        medications.map((med) =>
+          med.id === id ? { ...med, name: value } : med
+        )
+      );
+    }
 
     return (
         <>
-            <Modal show={setIsModalOpen} onClose={closeTriAgeModal} size="lg" className="custom-modal">
+            <Modal show={isModalOpen} onHide={closeModal} size="lg" className="custom-modal" >
                 <Modal.Header closeButton>
-                
                     <h2>Discharge Summary</h2>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="discharge-container">
-                    <button type="button" className="update-button" onClick={closeTriAgeModal}>Back</button>
+                    <div className="container">
                         {/* Header Section */}
                         <header className="distcharge-header">
-                        <div className="patient-header">
-                            <h2>{patientData?.firstName} {patientData?.lastName}</h2>
-                            <div className="patient-details">
-                                <div>
-                                    <p><strong>Address:</strong> {patientData?.address || 'Pune'}</p>
-                                    <p><strong>Admitted On:</strong> 2024-08-24 02:51 AD</p>
-                                    <p><strong>Discharged On:</strong> {formData.dischargeDate || '-'}</p>
-                                </div>
-                                <div>
-                                    <p><strong>Contact No:</strong> {patientData?.phoneNumber || 'N/A'}</p>
-                                    <p><strong>InPatient No:</strong> H240007</p>
-                                    <p><strong>Ward:</strong>{patientData?.wardName || 'N/A'} </p>
-                                </div>
-                                <div>
-                                    <p><strong>Guardian:</strong> Sanjay Pathan | Son</p>
-                                    <p><strong>Bed Number:</strong>{patientData?.wardCode || 'N/A'} </p>
-                                </div>
-                                <div>
-                                    <p>{patientData?.age} Years{patientData?.gender}</p>
+                            <div className="distcharge-patient-header">
+                                <h2>Aakash Pathan</h2>
+                                <div className="distcharge-patient-details">
+                                    <div>
+                                        <p><strong>Address:</strong> Pune</p>
+                                        <p><strong>Hospital No:</strong> 240008307</p>
+                                        <p><strong>Admitted On:</strong> 2024-08-24 02:51 AD</p>
+                                        <p><strong>Discharged On:</strong> -</p>
+                                    </div>
+                                    <div>
+                                        <p><strong>Contact No:</strong> 838288382</p>
+                                        <p><strong>InPatient No:</strong> H240007</p>
+                                        <p><strong>Ward:</strong> Male Ward</p>
+                                    </div>
+                                    <div>
+                                        <p><strong>Guardian:</strong> Sanjay Pathan | Son</p>
+                                        <p><strong>Bed Number:</strong> 001</p>
+                                    </div>
+                                    <div>
+                                        <p>25 Y/Male</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </header>
 
                         {/* Form Section */}
-                        <form className="form">
-                            <div className="form-row">
-                                <div className="form-group">
+                        <form className="distcharge-form">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Discharge Type:</label>
-                                    <select name="dischargedType" value={formData.dischargedType} onChange={handleInputChange}>
-                                    <option value="DOR">DOR</option>
-                                    <option value="Recovered">Recovered</option>
-                                    <option value="NotImproved">Not Improved</option>
-                                    <option value="LAMA">LAMA</option>
-                                    <option value="Absconded">Absconded</option>
-                                    <option value="Death">Death</option>
-                                    <option value="Referred">Referred</option>
-                                    <option value="Death">Discharge On Request</option>
-                                    <option value="Stable">Stable</option>
-                                   
-                                </select>
+                                    <select>
+                                        <option value="Not Improved">Not Improved</option>
+                                    </select>
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Treatment During Hospital Stay:</label>
-                                    <textarea rows="3" onChange={handleInputChange}></textarea>
+                                    <textarea rows="3"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Consultant:</label>
-                                    <select name="consultant" value={formData.consultant} onChange={handleInputChange}>
-                                        <option value="DrJohnDoe">Dr. John Doe</option>
-                                        <option value="DrJaneSmith">Dr. Jane Smith</option>
-                                        <option value="DrEmilyBrown">Dr. Emily Brown</option>
-                                        <option value="DrMichaelJohnson">Dr. Michael Johnson</option>
-                                        <option value="DrSarahWilliams">Dr. Sarah Williams</option>
-                                        <option value="DrRobertDavis">Dr. Robert Davis</option>
-                                        <option value="DrLauraWilson">Dr. Laura Wilson</option>
-                                        <option value="DrDavidClark">Dr. David Clark</option>
-                                            
-                                     </select>
-                                   
+                                    <input type="text" placeholder="Consultant: name" />
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Condition On Discharge:</label>
-                                    <textarea rows="3" onChange={handleInputChange}></textarea>
+                                    <textarea rows="3"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Doctor Incharge:</label>
-                                    <select name="drIncharge" value={formData.doctorIncharge} onChange={handleInputChange}>
-                                        <option value="DrJohnDoe">Dr. John Doe</option>
-                                        <option value="DrJaneSmith">Dr. Jane Smith</option>
-                                        <option value="DrEmilyBrown">Dr. Emily Brown</option>
-                                        <option value="DrMichaelJohnson">Dr. Michael Johnson</option>
-                                        <option value="DrSarahWilliams">Dr. Sarah Williams</option>
-                                        <option value="DrRobertDavis">Dr. Robert Davis</option>
-                                        <option value="DrLauraWilson">Dr. Laura Wilson</option>
-                                        <option value="DrDavidClark">Dr. David Clark</option>
-                                            
-                                     </select>
+                                    <input type="text" placeholder="Dr. VICTOR OCHEING OKECH" readOnly />
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Pending Reports:</label>
-                                    <textarea rows="3" value={formData.pendingReport} onChange={handleInputChange}></textarea>
+                                    <textarea rows="3"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Anesthetists:</label>
-                                    <select name="anesthetists" value={formData.anesthetists} onChange={handleInputChange}>
-                                        <option value="DrJohnDoe">Dr. John Doe</option>
-                                        <option value="DrJaneSmith">Dr. Jane Smith</option>
-                                        <option value="DrEmilyBrown">Dr. Emily Brown</option>
-                                        <option value="DrMichaelJohnson">Dr. Michael Johnson</option>
-                                        <option value="DrSarahWilliams">Dr. Sarah Williams</option>
-                                        <option value="DrRobertDavis">Dr. Robert Davis</option>
-                                        <option value="DrLauraWilson">Dr. Laura Wilson</option>
-                                        <option value="DrDavidClark">Dr. David Clark</option>
-                                            
-                                     </select>
-                                 
+                                    <input type="text" placeholder="Anesthetists: name" />
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Special Notes:</label>
                                     <textarea rows="3"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Resident Dr:</label>
-                                    <select name="residentDr" value={formData.residentDr} onChange={handleInputChange}>
-                                        <option value="DrJohnDoe">Dr. John Doe</option>
-                                        <option value="DrJaneSmith">Dr. Jane Smith</option>
-                                        <option value="DrEmilyBrown">Dr. Emily Brown</option>
-                                        <option value="DrMichaelJohnson">Dr. Michael Johnson</option>
-                                        <option value="DrSarahWilliams">Dr. Sarah Williams</option>
-                                        <option value="DrRobertDavis">Dr. Robert Davis</option>
-                                        <option value="DrLauraWilson">Dr. Laura Wilson</option>
-                                        <option value="DrDavidClark">Dr. David Clark</option>
-                                            
-                                     </select>
+                                    <input type="text" placeholder="Dr. VICTOR OCHEING OKECH" />
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Allergies:</label>
                                     <textarea rows="3"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Select Diagnosis:</label>
-                                    <select name="diagnosis" value={formData.selectDiagnosis} onChange={handleInputChange}>
-                                        <option value="" disabled>Select a Diagnosis</option>  {/* Placeholder */}
-                                        <option value="Flu">Flu</option>
-                                        <option value="Hypertension">Hypertension</option>
-                                        <option value="Diabetes">Diabetes</option>
-                                        <option value="Pneumonia">Pneumonia</option>
-                                        <option value="Covid19">COVID-19</option>
-                                        <option value="Asthma">Asthma</option>
-                                        <option value="HeartDisease">Heart Disease</option>
-                                        <option value="Arthritis">Arthritis</option>
-                                        <option value="Cancer">Cancer</option>
-                                        <option value="Stroke">Stroke</option>
-                                        <option value="KidneyDisease">Kidney Disease</option>
-                                    </select>
-
+                                    <input type="text" placeholder="Select ICD-11(a) for Provisional Diagnosis" />
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Discharge Order:</label>
-                                    <textarea rows="3" onChange={handleInputChange}></textarea>
+                                    <textarea rows="3"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Provisional Diagnosis:</label>
-                                    <input type="text" placeholder="Select ICD-11(b) for Provisional Diagnosis" onChange={handleInputChange} />
+                                    <input type="text" placeholder="Select ICD-11(b) for Provisional Diagnosis" />
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Activities:</label>
-                                    <input type="text" placeholder="Activities" onChange={handleInputChange} />
+                                    <input type="text" placeholder="Activities" />
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Other Diagnosis:</label>
-                                    <input type="text" placeholder="Enter Other Diagnosis" onChange={handleInputChange}/>
+                                    <input type="text" placeholder="Enter Other Diagnosis" />
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Diet:</label>
-                                    <input type="text" placeholder="Diet" onChange={handleInputChange}/>
+                                    <input type="text" placeholder="Diet" />
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Clinical Findings:</label>
-                                    <textarea rows="3" placeholder="Clinical Findings" onChange={handleInputChange}></textarea>
+                                    <textarea rows="3" placeholder="Clinical Findings"></textarea>
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Rest Days:</label>
-                                    <input type="text" placeholder="Rest Days" onChange={handleInputChange} />
+                                    <input type="text" placeholder="Rest Days" />
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Chief Complain:</label>
-                                    <textarea rows="3" placeholder="Chief Complain" onChange={handleInputChange}></textarea>
+                                    <textarea rows="3" placeholder="Chief Complain"></textarea>
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Follow UP:</label>
-                                    <input type="text" placeholder="Follow UP" onChange={handleInputChange}/>
+                                    <input type="text" placeholder="Follow UP" />
                                 </div>
-                            </div> 
+                            </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>History Of Presenting Illness:</label>
-                                    <textarea rows="3" placeholder="History Of Presenting Illness" onChange={handleInputChange}></textarea>
+                                    <textarea rows="3" placeholder="History Of Presenting Illness"></textarea>
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>Others:</label>
-                                    <input type="text" placeholder="Others" onChange={handleInputChange} />
+                                    <input type="text" placeholder="Others" />
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Past History:</label>
-                                    <textarea rows="3" placeholder="Past History" onChange={handleInputChange}></textarea>
+                                    <textarea rows="3" placeholder="Past History"></textarea>
                                 </div>
-                                <div className="form-group">
+                                <div className="distcharge-form-group">
                                     <label>CheckedBy:</label>
-                                    <input type="text" placeholder="CheckedBy: name"  onChange={handleInputChange}/>
+                                    <input type="text" placeholder="CheckedBy: name" />
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Case Summary:</label>
-                                    <textarea rows="3" placeholder="Case Summary" onChange={handleInputChange}></textarea>
+                                    <textarea rows="3" placeholder="Case Summary"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group">
+                            <div className="distcharge-form-row">
+                                <div className="distcharge-form-group">
                                     <label>Procedure:</label>
-                                    <textarea rows="3" placeholder="Procedure" onChange={handleInputChange}></textarea>
+                                    <textarea rows="3" placeholder="Procedure"></textarea>
                                 </div>
                             </div>
 
-                            <div className="form-row">
-                                <div className="form-group full-width">
-                                    <div className="medications">
+                            {/* <div className="distcharge-form-row">
+                                <div className="distcharge-form-group full-width">
+                                    <div className="distcharge-medications">
                                         <label>Medications:</label>
-                                        <input type="text" placeholder="Enter Medicines" onChange={handleInputChange} />
+                                        <input type="text" placeholder="Enter Medicines" />
                                         <button className="add-button">+</button>
-                                        <button className="remove-button">x</button>
+                                      
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
+                            <div className="investigation-section">
+                                    <div className="investigation-header">
+                                    <i className="fa fa-list"></i> Investigations :
+                                    </div>
+                                    <div className="investigation-content">
+                                    <div className="investigation-radio-buttons">
+                                        Show Result on Report: 
+                                        <input type="radio" name="result" /> Yes
+                                        <input type="radio" name="result" /> No
+                                    </div>
+                                    <div className="test-section">
+                                        <div className="lab-tests">
+                                        <div className="lab-header">Lab Tests</div>
+                                        <div className="test-item">
+                                            <input type="checkbox" /> CREATININE
+                                        </div>
+                                        </div>
+                                        <div className="add-new-tests">
+                                        <div className="test-header">Add New Tests</div>
+                                        <input type="text" placeholder="Add New Test" style={{marginTop:'5px'}}/>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
 
-                            <div className="form-actions">
-                                <button type="submit" className="submit-button" onClick={handleSubmit}>Submit and Print Summary</button>
-                                <button type="button" className="update-button">Update</button>
+                                 {/* Imagings Section */}
+                                    {/* <div className="imaging-section">
+                                        <div className="imaging-header">Imagings :</div>
+                                    </div> */}
+
+                                <div className="medication-section">
+                                    <div className="medication-header">
+                                        <i className="fa fa-list"></i> Medications:
+                                    </div>
+                                    {medications.map((med) => (
+                                        <div className="medication-content" key={med.id}>
+                                        <input
+                                            type="text"
+                                            placeholder="Enter Medicines"
+                                            value={med.name}
+                                            onChange={(e) => handleInputChange(med.id, e.target.value)}
+                                        />
+                                        <button
+                                            className="medication-add-btn"
+                                            onClick={handleAddMedication}
+                                        >
+                                            +
+                                        </button>
+                                        {medications.length > 1 && (
+                                            <button
+                                            className="medication-delete-btn"
+                                            onClick={() => handleRemoveMedication(med.id)}
+                                            >
+                                            x
+                                            </button>
+                                        )}
+                                        </div>
+                                    ))}
+                                    </div>
+
+                            <div className="distcharge-form-actions">
+                                <button type="submit" className="distcharge-submit-button">Submit and Print Summary</button>&nbsp;&nbsp;&nbsp;
+                                <button type="button" className="distcharge-update-button">Update</button>
                             </div>
                         </form>
                     </div>

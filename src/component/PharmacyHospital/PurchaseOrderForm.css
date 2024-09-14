@@ -1,4 +1,4 @@
-/* Container for the form */
+/* Mohini_PurchaseOrder_WholePage_14/sep/2024 */
 .purchase-order-form-component {
   position: relative;
   padding: 20px;
@@ -8,6 +8,7 @@
   max-width: 1200px; /* Set maximum width to prevent exceeding */
   width: 100%; /* Ensure it takes up full width up to max-width */
   margin: 0 auto;
+  /* height: 90vh; */
 }
 
 /* Header styling */
@@ -78,7 +79,8 @@ textarea.purchase-order-textare {
 }
 
 .goods-receipt-totals-section {
-  /* justify-content: flex-end;  */
+width: 100%;
+height: 90vh;
 }
 
 /* Summary section styling */
@@ -155,3 +157,49 @@ textarea.purchase-order-textare {
 /* .purchase-order-form-component input[type="date"] {
   width: 60%;
 } */
+
+
+
+/* Style for the table header cells */
+.purchase-order-tab thead th {
+  background-color: #f4f4f4; /* Background color for the header */
+  color: #333; /* Text color for the header */
+  padding: 10px; /* Padding inside the header cells */
+  text-align: left; /* Align text to the left */
+  border-bottom: 2px solid #ddd; /* Border at the bottom of the header cells */
+}
+
+/* Style for the table body rows */
+.purchase-order-tab tbody tr {
+  border-bottom: 1px solid #ddd; /* Border at the bottom of each row */
+}
+
+/* Style for the table body cells */
+.purchase-order-tab tbody td {
+  padding: 10px; /* Padding inside the body cells */
+  color: #555; /* Text color for the body cells */
+}
+
+/* Style for the Edit button */
+.purchase-order-tab tbody td button {
+  background-color: #007bff; /* Background color for the button */
+  color: white; /* Text color for the button */
+  border: none; /* Remove default border */
+  padding: 5px 10px; /* Padding inside the button */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Hover effect for the Edit button */
+.purchase-order-tab tbody td button:hover {
+  background-color: #0056b3; /* Darker background color on hover */
+}
+
+/* Style for no rows message */
+.purchase-order-tab tbody .purchase-order-no-rows {
+  text-align: center; /* Center text alignment */
+  padding: 20px; /* Padding inside the no rows cell */
+  color: #888; /* Text color for no rows message */
+  font-style: italic; /* Italicize the no rows message */
+}
+/* Mohini_PurchaseOrder_WholePage_14/sep/2024 */

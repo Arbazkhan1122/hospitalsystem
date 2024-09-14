@@ -97,12 +97,12 @@ const RefringOrg = () => {
             onChange={handleSearchChange}
             className="reffering_org_input_text"
           />
-          <button className="reffering_org_filter_button">
+          {/* <button className="reffering_org_filter_button">
             <FaSearch />
-          </button>
-          <div>
+          </button> */}
+          {/* <div>
             <label>Showing {filteredOrgs.length} results</label>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -155,13 +155,13 @@ const RefringOrg = () => {
         </tbody>
       </table>
 
-      <div className="reffering_org_pagination">
+      {/* <div className="reffering_org_pagination">
         <button disabled>First</button>
         <button disabled>Previous</button>
         <span>Page 1 of 1</span>
         <button disabled>Next</button>
         <button disabled>Last</button>
-      </div>
+      </div> */}
       {isModalOpen && (
         <div className="refering_org_modal_overlay">
           <div className="refering_org_modal_content">

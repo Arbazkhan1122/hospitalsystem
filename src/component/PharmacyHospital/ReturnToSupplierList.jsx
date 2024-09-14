@@ -1,3 +1,4 @@
+/* Mohini_ReturnToSupplier_WholePage_14/sep/2024 */
 import React from 'react';
 import './ReturnToSupplier.css';
 
@@ -63,7 +64,7 @@ const ReturnToSupplier = () => {
         </tbody>
       </table>
 
-      <div className="return-to-supplier-pagination-container">
+      {/* <div className="return-to-supplier-pagination-container">
         <span>0 to 0 of 0</span>
         <button className="return-to-supplier-pagination-button" disabled>
           First
@@ -78,7 +79,7 @@ const ReturnToSupplier = () => {
         <button className="return-to-supplier-pagination-button" disabled>
           Last
         </button>
-      </div>
+      </div> */}
       </div>
 
       
@@ -87,3 +88,4 @@ const ReturnToSupplier = () => {
 };
 
 export default ReturnToSupplier;
+/* Mohini_ReturnToSupplier_WholePage_14/sep/2024 */
