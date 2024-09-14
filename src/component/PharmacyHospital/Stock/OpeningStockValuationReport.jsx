@@ -1,3 +1,4 @@
+/* Mohini_OpeningStockValuationReport_WholePage_14/sep/2024 */
 import React, { useState } from 'react';
 import './PharmacyExpiryReport.css';
 
@@ -81,14 +82,14 @@ const OpeningStockValuationReport = () => {
         </tbody>
       </table>
 
-      <div className="pharmacy-expiry-report-pagination">
+      {/* <div className="pharmacy-expiry-report-pagination">
         <span>0 to 0 of 0</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 0 of 0</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
       </div>
       {/* <div className="pharmacy-expiry-report-summary">
         <h2>Summary</h2>
@@ -103,3 +104,4 @@ const OpeningStockValuationReport = () => {
 };
 
 export default OpeningStockValuationReport;
+/* Mohini_OpeningStockValuationReport_WholePage_14/sep/2024 */

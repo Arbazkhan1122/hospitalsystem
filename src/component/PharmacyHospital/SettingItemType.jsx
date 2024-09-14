@@ -1,3 +1,4 @@
+/* Mohini_SettingItemType_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
@@ -178,3 +179,4 @@ const SettingItemType = () => {
 };
 
 export default SettingItemType;
+/* Mohini_SettingItemType_WholePage_14/sep/2024 */

@@ -1,3 +1,4 @@
+/* Mohini_SettingRack_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './SettingSupplier.css';
@@ -223,3 +224,4 @@ const SettingRack = () => {
 };
 
 export default SettingRack;
+/* Mohini_SettingRack_WholePage_14/sep/2024 */

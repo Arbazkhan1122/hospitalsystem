@@ -1,3 +1,4 @@
+/* Mohini_GoodsReceiptForm_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import './GoodsReceiptForm.css';
 import AddSupplierForm from './AddSupplierForm';
@@ -288,3 +289,4 @@ const GoodsReceiptForm = () => {
 };
 
 export default GoodsReceiptForm;
+/* Mohini_GoodsReceiptForm_WholePage_14/sep/2024 */

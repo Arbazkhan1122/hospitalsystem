@@ -1,14 +1,17 @@
-.pharmacy-expiry-report-container {
-    background-color: #e6f3ff;
+  /* Mohini_PharmacyExpiryReport_WholePage_14/sep/2024 */
+  .pharmacy-expiry-report-container {
+    background-color: var(--background-color);
     padding: 20px;
     font-family: Arial, sans-serif;
   }
   
   .pharmacy-expiry-report-container h1 {
-    color: #004080;
-    font-size: 18px;
-    margin-bottom: 20px;
+    color: black; /* Set font color to black */
+    font-size: 16px; /* Set font size to 18px */
+    margin-bottom: 20px; /* Space below the heading */
+    text-align: left; /* Align text to the left */
   }
+  
   
   .pharmacy-expiry-report-date-range,
   .pharmacy-expiry-report-filters,
@@ -38,11 +41,23 @@
   }
   
   .pharmacy-expiry-report-show-report-btn {
-    background-color: #6495ED;
+    background-color:var( --button-color);
     color: white;
     border: none;
-    padding: 5px 10px;
+    margin-right: 10px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
+    margin-left: auto;
+    transition: background-color 0.3s ease;
+
+  }
+  .pharmacy-expiry-report-show-report-btn:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+
   }
   
   .pharmacy-expiry-report-checkboxes label {
@@ -83,13 +98,20 @@
   
   .pharmacy-expiry-report-export-btn,
   .pharmacy-expiry-report-print-btn {
-    background-color: #6495ED;
+    background-color:var( --button-color);
     color: white;
     border: none;
-    padding: 5px 10px;
+    border: 1px solid var( --button-hover-border-color);
+    padding: 5px 5px;
     margin-left: 10px;
     cursor: pointer;
   }
+  .pharmacy-expiry-report-export-btn:hover,
+  .pharmacy-expiry-report-print-btn:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  } 
   
   .pharmacy-expiry-report-ta {
     background-color: white;
@@ -156,8 +178,8 @@
     font-size: 16px;
   }
   .pharmacy-expiry-report-results-info{
-    color: #6495ED;
-    font-size: 16px;
+    color: black;
+    font-size: 14px;
     margin-top: 10px;
   }
   .pharmacy-expiry-report-checkboxes {
@@ -198,4 +220,4 @@
     text-align: center;
     background-color: #ffffc0;
   }
-  
+  /* Mohini_PharmacyExpiryReport_WholePage_14/sep/2024 */

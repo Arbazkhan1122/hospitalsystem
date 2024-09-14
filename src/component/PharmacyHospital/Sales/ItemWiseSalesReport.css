@@ -1,12 +1,14 @@
+/* Mohini_ItemWiseSalesReport_WholePage_14/sep/2024 */
 .item-wise-sales-report-container {
     padding: 20px;
-    background-color: #d0f0fd;
+    height: 90vh;
+    background-color: var(--background-color);
     font-family: Arial, sans-serif;
 }
 
 .item-wise-sales-report-title {
     font-size: 16px;
-    color: #004d80;
+    color:black;
     margin-bottom: 10px;
 }
 
@@ -45,20 +47,27 @@
 }
 
 .item-wise-sales-btn {
-    background-color: #564eb1;
+    background-color:var( --button-color);
     color: white;
-    padding: 8px 16px;
     border: none;
-    border-radius: 4px;
+    margin-right: 10px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
+    margin-left: auto;
+    transition: background-color 0.3s ease;
+
 }
 
 .item-wise-sales-btn:hover {
-    background-color: #6c5ac8;
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 }
 
 .item-wise-sales-report-table {
-    width: 20%;
+    /* width: 20%; */
     /* background-color: white; */
     /* border: 1px solid #e0e0e0; */
     padding: 10px;
@@ -68,11 +77,12 @@
     ;
 }
 .item-wise-sales-search-bar {
-    width: 100%;
+    /* width: 100%; */
     padding: 5px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 14px;
 }
 .item-wise-sales-table {
     width: 100%;
@@ -201,4 +211,33 @@
     text-align: center;
     background-color: #ffffc0;
   }
-  
+  /*  */
+  /* Apply font size to all labels within the filter groups */
+.item-wise-sales-filter-groups label {
+    font-size: 14px; /* Set font size for labels */
+    margin-right: 10px; /* Add space between label and input/select */
+}
+
+/* Style input fields */
+.item-wise-sales-filter-groups input[type="text"] {
+    padding: 5px; /* Add padding inside input fields */
+    border: 1px solid #ccc; /* Optional: border for input fields */
+    border-radius: 4px; /* Optional: rounded corners for input fields */
+    font-size: 14px; /* Set font size for text in input fields */
+}
+
+/* Style select fields */
+.item-wise-sales-filter-groups select {
+    padding: 5px; /* Add padding inside select fields */
+    border: 1px solid #ccc; /* Optional: border for select fields */
+    border-radius: 4px; /* Optional: rounded corners for select fields */
+    font-size: 14px; /* Set font size for text in select fields */
+}
+
+/* Flexbox styling to ensure items are aligned properly */
+.item-wise-sales-filter-groups {
+    display: flex; /* Enable flexbox layout */
+    align-items: center; /* Vertically align items in the center */
+    margin-bottom: 10px; /* Optional: Add space between filter groups */
+}
+/* Mohini_ItemWiseSalesReport_WholePage_14/sep/2024 */

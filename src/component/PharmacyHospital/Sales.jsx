@@ -1,3 +1,4 @@
+/* Mohini_Sales_WholePage_14/sep/2024 */
 import React from "react";
 import { Link } from "react-router-dom"; // Ensure Link is imported correctly
 import "./Purchase.css";
@@ -151,3 +152,4 @@ const Sales = () => {
 };
 
 export default Sales;
+/* Mohini_Sales_WholePage_14/sep/2024 */

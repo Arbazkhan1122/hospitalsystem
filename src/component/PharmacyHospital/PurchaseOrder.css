@@ -1,4 +1,4 @@
-/* Main container */
+/* Mohini_PurchaseOrder_WholePage_14/sep/2024 */
 .purchase-order-container {
     padding: 20px;
     height: 90vh;
@@ -24,6 +24,12 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+}
+.purchase-order-add-purchase-order-button:hover
+{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 }
 
 /* Status Filters */
@@ -79,6 +85,11 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+}
+.purchase-order-date-range-button:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 }
 
 /* Favorite and Reset Buttons */
@@ -165,7 +176,7 @@
 .purchase-order-print-button {
     background-color:var( --button-color);
     color: white;
-    border: none;
+    border: 1px solid var( --button-hover-border-color);
     margin-right: 10px;
     padding: 5px 5px;
     border-radius: 5px;
@@ -173,6 +184,10 @@
     font-size: 14px;
     margin-left: auto;
     transition: background-color 0.3s ease;
+}
+.purchase-order-print-button:hover{
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 }
 .purchase-order-button span {
  /* This pushes the span to the right */
@@ -375,3 +390,4 @@
     color: black;
     margin-right: 10px;
   }
+/* Mohini_PurchaseOrder_WholePage_14/sep/2024 */

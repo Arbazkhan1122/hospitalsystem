@@ -1,3 +1,4 @@
+/* Mohini_ItemWiseSalesReport_WholePage_14/sep/2024 */
 import React from 'react';
 import './ItemWiseSalesReport.css';
 
@@ -12,7 +13,7 @@ const ItemWiseSalesReport = () => {
                     <label>To:</label>
                     <input type="date" value="2024-08-23" />
                     <button className="invoice-billing-favorite-btn">★</button>
-       <button className="invoice-billing-reset-btn">-</button>
+                     <button className="invoice-billing-reset-btn">-</button>
                 </div>
                 <div className="item-wise-sales-filter-groups">
                     <label>Generic Name:</label>
@@ -41,8 +42,8 @@ const ItemWiseSalesReport = () => {
                     <input type="text" placeholder="Enter User Name" />
                 </div>
                 <div className="item-wise-sales-action-buttons">
-                <button className="item-wise-sales-btn show-report-btn">Show Report</button>
-                <button className="item-wise-sales-btn summary-details-btn">Summary Details</button>
+                <button className="item-wise-sales-btn">Show Report</button>
+                <button className="item-wise-sales-btn">Summary Details</button>
             </div>
             </div>
 
@@ -81,13 +82,13 @@ const ItemWiseSalesReport = () => {
                         </tr>
                     </tbody>
                 </table>
-                <div className="item-wise-sales-pagination">
+                {/* <div className="item-wise-sales-pagination">
                     <button>First</button>
                     <button>Previous</button>
                     <span>Page 0 of 0</span>
                     <button>Next</button>
                     <button>Last</button>
-                </div>
+                </div> */}
                 </div>
 
             {/* <div className="item-wise-sales-summary-section">
@@ -113,3 +114,4 @@ const ItemWiseSalesReport = () => {
 };
 
 export default ItemWiseSalesReport;
+/* Mohini_ItemWiseSalesReport_WholePage_14/sep/2024 */

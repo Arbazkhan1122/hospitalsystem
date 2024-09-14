@@ -1,3 +1,4 @@
+/* Mohini_SupplierHeaderCom_WholePage_14/sep/2024 */
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './SettingSupplier.css'; 
@@ -264,3 +265,4 @@ const SettingSupplierComponent = () => {
 };
 
 export default SettingSupplierComponent;
+/* Mohini_SupplierHeaderCom_WholePage_14/sep/2024 */

@@ -1,3 +1,4 @@
+/* Mohini_SettingTerm_WholePage_14/sep/2024 */
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 // import ReactQuill from 'react-quill';
@@ -193,3 +194,4 @@ const SettingTerms = () => {
 };
 
 export default SettingTerms;
+/* Mohini_SettingTerm_WholePage_14/sep/2024 */

@@ -73,14 +73,14 @@ const GoodsReceiptList = () => {
           </tr>
         </tbody>
       </table>
-      <div className="goods-receipt-pagination">
+      {/* <div className="goods-receipt-pagination">
         <span>0 to 0 of 0</span>
         <button disabled>First</button>
         <button disabled>Previous</button>
         <span>Page 0 of 0</span>
         <button disabled>Next</button>
         <button disabled>Last</button>
-      </div>
+      </div> */}
       </div>
     </div>
   );

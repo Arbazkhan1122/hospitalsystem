@@ -1,3 +1,4 @@
+/* Mohini_StockTransferSummary_WholePage_14/sep/2024 */
 import React, { useState } from 'react';
 import './PharmacyExpiryReport.css';
 
@@ -124,3 +125,4 @@ const StockTrasferReport = () => {
 };
 
 export default StockTrasferReport;
+/* Mohini_StockTransferSummary_WholePage_14/sep/2024 */

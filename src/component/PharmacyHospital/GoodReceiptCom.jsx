@@ -1,3 +1,4 @@
+/* Mohini_GoodReceiptComponent_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal } from 'react-bootstrap'; // Ensure you have react-bootstrap installed
 import axios from 'axios'; // Make sure axios is installed
@@ -175,3 +176,4 @@ const GoodReceiptComponent = () => {
 };
 
 export default GoodReceiptComponent;
+/* Mohini_GoodReceiptComponent_WholePage_14/sep/2024 */

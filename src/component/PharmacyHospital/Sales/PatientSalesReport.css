@@ -1,12 +1,14 @@
+/* Mohini_PatientSalesReport_WholePage_14/sep/2024 */
 .patient-sales-report-container {
-  background-color: #e6f3ff;
+  background-color:var( --background-color);
   padding: 20px;
+  height: 90vh;
   font-family: Arial, sans-serif;
   font-size: 16px; /* Ensure all text is at 16px */
 }
 
 .patient-sales-report-container h2 {
-  color: #0066cc;
+  color: black;
   margin-bottom: 20px;
   font-size: 16px; /* Ensure h2 is at 16px */
 }
@@ -26,7 +28,7 @@
 
 .patient-sales-report-date-range input[type="date"] {
   padding: 5px;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 3px;
   border: 1px solid #ccc;
 }
@@ -34,21 +36,30 @@
 
 .patient-sales-report-show-report-btn,
 .patient-sales-report-more-columns {
-  background-color: #6495ED; /* Blue background */
+  background-color:var( --button-color);
   color: white; /* White text */
   border: none;
-  padding: 8px 16px;
-  font-size: 16px;
+  padding: 5px 5px;
+  font-size: 14px;
   cursor: pointer;
+  border: 1px solid var( --button-hover-border-color);
+
   border-radius: 3px;
+}
+.patient-sales-report-show-report-btn:hover,
+.patient-sales-report-more-columns:hover{
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+
 }
 
 .patient-sales-report-star-btn,
 .patient-sales-report-minus-btn{
-  color: #6495ED; /* White text */
+  color: #f2f2f2f2; /* White text */
   border: none;
-  padding: 8px 16px;
-  font-size: 16px;
+  padding: 5px 5px;
+  font-size: 14px;
   cursor: pointer;
   border-radius: 3px;
 }
@@ -69,6 +80,7 @@
 
 .patient-sales-report-filters label {
   display: flex;
+  font-size: 14px;
   flex-direction: column;
   /* font-weight: bold; */
 }
@@ -134,4 +146,5 @@
   color: #0066cc;
   font-size: 16px;
 }
+/* Mohini_PatientSalesReport_WholePage_14/sep/2024 */
 

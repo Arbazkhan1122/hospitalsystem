@@ -1,3 +1,4 @@
+/* Mohini_SupplierWiseStockReport_WholePage_14/sep/2024 */
 import React, { useState } from 'react';
 import './PharmacyExpiryReport.css';
 
@@ -110,3 +111,4 @@ const SupplierWiseStockReport = () => {
 };
 
 export default SupplierWiseStockReport;
+/* Mohini_SupplierWiseStockReport_WholePage_14/sep/2024 */

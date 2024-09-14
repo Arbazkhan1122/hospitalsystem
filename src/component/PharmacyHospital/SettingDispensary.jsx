@@ -1,3 +1,4 @@
+/* Mohini_SettingDispensary_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './SettingSupplier.css'; 
@@ -253,3 +254,4 @@ const SettingDispensary = () => {
 };
 
 export default SettingDispensary;
+/* Mohini_SettingDispensary_WholePage_14/sep/2024 */

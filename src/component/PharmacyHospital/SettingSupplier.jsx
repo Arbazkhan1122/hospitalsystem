@@ -1,3 +1,4 @@
+/* Mohini_SettingSupplier_WholePage_14/sep/2024 */
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
@@ -281,3 +282,4 @@ const SettingSupplierComponent = () => {
 };
 
 export default SettingSupplierComponent;
+/* Mohini_SettingSupplier_WholePage_14/sep/2024 */
