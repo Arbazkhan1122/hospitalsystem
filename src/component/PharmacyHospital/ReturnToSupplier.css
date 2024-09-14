@@ -34,9 +34,15 @@
     background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 5px 15px;
-    border-radius: 3px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
+  }
+  .return-to-supplier-search-button:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+
   }
   
   .return-to-supplier-date-filter-container {
@@ -62,10 +68,19 @@
   
   .return-to-supplier-date-filter-actions button {
     margin-left: 5px;
-    padding: 5px 10px;
+    background-color: var(--button-color);
+    color: white;
     border: none;
-    border-radius: 3px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
+  }
+
+  .return-to-supplier-date-filter-actions button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+
   }
   
   .return-to-supplier-star-button {
@@ -120,6 +135,11 @@
     border-radius: 3px;
     cursor: pointer;
   }
+   .return-to-supplier-print-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+   }
   
   .return-to-supplier-data-table {
     width: 100%;

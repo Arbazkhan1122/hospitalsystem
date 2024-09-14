@@ -1,3 +1,5 @@
+ /* prachi parab user interface changed  14/9 */
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../Nursing/InPatientMainContent.css";
@@ -309,7 +311,7 @@ useEffect(() => {
   useEffect(() => {
     const fetchMedicines = async () => {
       try {
-        const response = await axios.get("http://192.168.1.37:1415/api/medicine/find-all-medicine-details");
+        const response = await axios.get("http://192.168.1.39:1415/api/medicine/find-all-medicine-details");
         setMedicines(response.data);
         console.log(response.data+"Med");
       } catch (error) {
@@ -358,7 +360,7 @@ useEffect(() => {
 
   useEffect(() => {
     axios
-      .get("http://192.168.1.37:1415/api/ward-department/get-all-ward")
+      .get("http://192.168.1.39:1415/api/ward-department/get-all-ward")
       .then((response) => {
         const data = response.data;
 
@@ -389,7 +391,7 @@ useEffect(() => {
   useEffect(() => {
     const fetchMedicines = async () => {
       try {
-        const response = await axios.get("http://192.168.1.37:1415/api/medicine/find-all-medicine-details");
+        const response = await axios.get("http://192.168.1.39:1415/api/medicine/find-all-medicine-details");
         setMedicines(response.data); // assuming response.data contains the list of medicines
       } catch (error) {
         console.error("Error fetching medicine data:", error);
@@ -436,7 +438,7 @@ useEffect(() => {
     let patientType="Patient"
       try {
      
-      const response = await axios.post(`http://192.168.1.37:1415/api/medicine/save-medicine-details/${id}/${patientType}`, payload);
+      const response = await axios.post(`http://192.168.1.39:1415/api/medicine/save-medicine-details/${id}/${patientType}`, payload);
       console.log("Payload:", payload);
       alert("Consumption added successfully");
       
@@ -466,7 +468,7 @@ useEffect(() => {
 
     await axios
       .get(
-        `http://192.168.1.37:1415/api/admissions/ward-data/${wardDepartmentId}`
+        `http://192.168.1.39:1415/api/admissions/ward-data/${wardDepartmentId}`
       )
       .then((response) => {
         setPatients(response.data); // Assuming setPatients is part of your state
@@ -518,7 +520,28 @@ useEffect(() => {
       {showWardwise && (
         <>
           <div className="inpatient-component-container">
-            <button
+
+          <a
+      
+        className={`opd-tab-item ${activeTab === 'My Patients' ? 'active' : ''}`}
+        onClick={() => handleTabClick("My Patients")}
+      >
+                      All Patients
+
+      </a>
+     
+      <a       
+      className={`opd-tab-item ${activeTab === 'Consumptions' ? 'active' : ''}`}
+      onClick={() => handleTabClick("Consumptions")}
+    > Consumptions </a>
+    
+    <a       
+      className={`opd-tab-item ${activeTab === 'Diet Sheet' ? 'active' : ''}`}
+      onClick={() => handleTabClick("Diet Sheet")}
+    > Diet Sheet </a>
+
+
+    {/* <button
               className={`inpatient-component-tab ${
                 activeTab === "My Patients" ? "active" : ""
               }`}
@@ -526,12 +549,7 @@ useEffect(() => {
             >
               All Patients
             </button>
-            {/* <button 
-                    className={`inpatient-component-tab ${activeTab === 'All Patients' ? 'active' : ''}`} 
-                    onClick={() => handleTabClick('All Patients')}
-                >
-                    All Patients
-                </button> */}
+          
             <button
               className={`inpatient-component-tab ${
                 activeTab === "Consumptions" ? "active" : ""
@@ -547,7 +565,7 @@ useEffect(() => {
               onClick={() => handleTabClick("Diet Sheet")}
             >
               Diet Sheet
-            </button>
+            </button> */}
           </div>
           {activeTab === "My Patients" && (
             <div className="MyPatientsTable-tableContainer">
@@ -828,7 +846,7 @@ useEffect(() => {
                     <th>DOD(BS)</th>
                     <th>Diagnosis</th>
                     <th>Remarks</th>
-                    {/* <th>Actions</th> */}
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -857,7 +875,7 @@ useEffect(() => {
                               onClick={() => handleDelete(patient.id)}
                             ></i>
                           )}
-                        {/* <button className='EditButton'>Edit</button> */}
+                        <button className='wardEditButton'>Edit</button>
                       </td>
                     </tr>
                   ))}
@@ -1003,7 +1021,7 @@ useEffect(() => {
               <Form.Control type="text" placeholder="0" value={row.discountPercentage} disabled />
             </td>
             <td>
-              <Button variant="success" onClick={handleAddRow}>+</Button>
+              <Button variant="primary" onClick={handleAddRow} className="consum-add-row ">+</Button>
             </td>
           </tr>
         ))}
@@ -1067,10 +1085,10 @@ useEffect(() => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-        <Button variant="success" onClick={handleSaveConsumption}>
+        <Button variant="primary" onClick={handleSaveConsumption}>
             Save Consumption
           </Button>
-          <Button variant="danger" onClick={handleCloseConsumption}>
+          <Button variant="primary" onClick={handleCloseConsumption}>
             Discard Changes
           </Button>
         </Modal.Footer>
@@ -1178,7 +1196,7 @@ useEffect(() => {
                   <Form.Control type="text" placeholder="0" disabled />
                 </Col>
                 <Col md={4}>
-                  <Button variant="primary" className="mt-4">
+                  <Button variant="primary" className="mt-4 request-button" >
                     Request
                   </Button>
                 </Col>
@@ -1344,7 +1362,7 @@ useEffect(() => {
           </Row>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success" onClick={handleCloseTransfer}>
+          <Button variant="primary" onClick={handleCloseTransfer}>
             Transfer
           </Button>
         </Modal.Footer>

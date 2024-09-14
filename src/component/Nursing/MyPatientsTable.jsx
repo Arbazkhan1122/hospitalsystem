@@ -1,3 +1,5 @@
+ /* prachi parab user interface changed  14/9 */
+
 import React from 'react';
 
 import './MyPatientsTable.css';
