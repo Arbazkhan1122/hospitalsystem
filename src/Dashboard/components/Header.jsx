@@ -10,7 +10,7 @@ const Header = () => {
       </div>
       <div className="hrmsDashHeaderRight">
         <div className="hrmsDashHeaderRight">
-          <button className="hrmsDashNotificationButton">
+          {/* <button className="hrmsDashNotificationButton">
             <GoBell size={28} />
             <span className="hrmsDashNotificationBadge">9</span>
           </button>
@@ -18,7 +18,7 @@ const Header = () => {
             className="hrmsDashProfileImage"
             src="https://randomuser.me/api/portraits/women/50.jpg"
             alt="Profile"
-          />
+          /> */}
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import { FaClinicMedical, FaUserMd, FaFileInvoice } from "react-icons/fa";
 import './Sidebar.css';
 import hospitallogo from "../Images/hospital.png";
 import { Link } from "react-router-dom";
-const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,onIncentive,onLaboratory,onUtilites,onEmergency,onSystemAdmin,onSocialService,onDisprensary,onDynamicReport,onReport,onNurse,onDoctor,onOperationTheater,onNhif,onADT,onMKT,onClinical,onVaccination,onFixAssests,onCSSD,onAccounting,onQueueManagement,onMaternity,onHelpdesk,onRadiology,onPharmacy,onPatient,onVerification,onSubstoreClick}) => {
+const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,onIncentive,onLaboratory,onUtilites,onEmergency,onSystemAdmin,onSocialService,onDisprensary,onDynamicReport,onReport,onNurse,onDoctor,onOperationTheater,onNhif,onADT,onMKT,onClinical,onVaccination,onFixAssests,onCSSD,onAccounting,onQueueManagement,onMaternity,onHelpdesk,onRadiology,onPharmacy,onPatient,onVerification,onSubstoreClick,onMedicalRecord}) => {
   const [openMenus, setOpenMenus] = useState({});
   const [activeLink, setActiveLink] = useState(null);
 
@@ -156,6 +156,11 @@ const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,
     onSubstoreClick()
   }
 
+  const handleMedicalRecord=()=>{
+    handleLinkClick("medicalrecord");
+    onMedicalRecord();
+  }
+
 
   return (
     <div className={`custom-sidebar ${isOpen ? '' : 'custom-sidebar-closed'}`}>
@@ -205,6 +210,39 @@ const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,
           )}
         </li>
 
+
+
+    <li className={`custom-nav-item ${activeLink === "medicalrecord-submenu1" || activeLink === "medicalrecord-submenu2" || activeLink === "medicalrecord-submenu3" || activeLink === "medicalrecord-submenu4" || activeLink === "medicalrecord-submenu5" || activeLink === "medicalrecord-submenu6" ? "custom-nav-item-active" : ""}`}>
+          <div className="custom-nav-link-content" onClick={handleMedicalRecord}>
+            <span><FaClinicMedical /></span>
+            {isOpen && <span className="custom-nav-link-text">MedicalRecord</span>}
+            <span className="custom-dropdown-icon">
+              {openMenus.medicalrecord ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.medicalrecord && isOpen && (
+            <ul className="custom-submenu">
+              <li onClick={() => handleItemClick("medicalrecord", "submenu1")} className={activeLink === "medicalrecord-submenu1" ? "custom-submenu-active" : ""}>
+                <Link to="/MROutPatientList">MR Outpatient List</Link> 
+              </li>
+              <li onClick={() => handleItemClick("medicalrecord", "submenu2")} className={activeLink === "medicalrecord-submenu2" ? "custom-submenu-active" : ""}>
+                <Link to="/MRInpatientList">MR Inpatient List</Link> 
+              </li>
+              <li onClick={() => handleItemClick("medicalrecord", "submenu3")} className={activeLink === "medicalrecord-submenu3" ? "custom-submenu-active" : ""}>
+                <Link to="/BirthList">Birth List</Link> 
+              </li>
+              <li onClick={() => handleItemClick("medicalrecord", "submenu4")} className={activeLink === "medicalrecord-submenu4" ? "custom-submenu-active" : ""}>
+                <Link to="/DeathList">Death List </Link> 
+              </li>
+              <li onClick={() => handleItemClick("medicalrecord", "submenu5")} className={activeLink === "medicalrecord-submenu5" ? "custom-submenu-active" : ""}>
+                <Link to="/MedicalRecordReport">Reports </Link> 
+              </li>
+               <li onClick={() => handleItemClick("medicalrecord", "submenu6")} className={activeLink === "medicalrecord-submenu6" ? "custom-submenu-active" : ""}>
+                <Link to="/EmergencyPatientList">Emergency Patient List</Link> 
+              </li>
+            </ul>
+          )}
+        </li>
 
 
 

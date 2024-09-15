@@ -11,19 +11,9 @@ function App() {
 
   return (
     <>
-    {/* <Section/> */}
-    <BrowserRouter>
-      {/* <AppointmentBookingList/> */}
-      {/* <BookingAppointment/> */}
-      {/* <ListVisited/> */}
-      {/* <NewVisitedList/> */}
-      {/* <OnlineAppointment/> */}
-      {/* <SSFClaim/> */}
-      <Layout/>
-      </BrowserRouter>
-
-      
-      
+        <BrowserRouter>
+             <Layout/>
+        </BrowserRouter>
     </>
   )
 }

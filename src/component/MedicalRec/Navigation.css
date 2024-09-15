@@ -1,0 +1,32 @@
+/* Navigation bar container */
+.reports-tabs-nav {
+    display: flex;
+    /* justify-content: space-around; */
+    padding: 10px;
+}
+
+/* Navigation links */
+.reports-nav-link {
+    text-decoration: none;
+    color: #2d68ea;;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: transparent;
+    font-weight: normal;
+    transition: background-color 0.3s, font-weight 0.3s;
+}
+
+/* Hover and active state */
+.reports-nav-link:hover,
+.reports-nav-link.active {
+    background-color: #2d68ea;;
+    color: white; /* Optional: change text color on hover */
+    font-weight: bold;
+}
+
+/* Optional: additional styling for the active state, if needed */
+.reports-nav-link.active {
+    background-color: #2d68ea;;
+    color: white; /* Optional: change text color on active */
+    font-weight: bold;
+}
