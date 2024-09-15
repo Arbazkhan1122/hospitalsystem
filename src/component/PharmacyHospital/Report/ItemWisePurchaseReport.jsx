@@ -1,3 +1,5 @@
+/* Mohini_ItemWisePurchaseReport_14/sep/2024 */
+
 import React from 'react';
 import './ItemWisePurchaseReport.css';
 
@@ -12,13 +14,13 @@ const ItemWisePurchaseReportCom = () => {
           <span> To: </span>
           <input type="date" defaultValue="2024-08-22" />
         </div>
-        <div>
+        <div className='item-span'>
           <span>Select Item: </span>
           <select>
             <option>--Select Item--</option>
           </select>
         </div>
-        <div>
+        <div className='item-span'>
           <span>Select Generic: </span>
           <select>
             <option>--Select Generic--</option>
@@ -30,11 +32,11 @@ const ItemWisePurchaseReportCom = () => {
           <span>Bill No.: </span>
           <input type="text" />
         </div>
-        <div>
+        <div className='item-span'>
           <span>GR No.: </span>
           <input type="text" />
         </div>
-        <div>
+        <div className='item-span'>
           <span>Supplier Name: </span>
           <select>
             <option>--Select Supplier--</option>
@@ -76,13 +78,13 @@ const ItemWisePurchaseReportCom = () => {
           </tr>
         </tbody>
       </table>
-      <div className="iten-purchase-pagination">
+      {/* <div className="iten-purchase-pagination">
         <button className="iten-purchase-paginationButton">First</button>
         <button className="iten-purchase-paginationButton">Previous</button>
         <span>Page 0 of 0</span>
         <button className="iten-purchase-paginationButton">Next</button>
         <button className="iten-purchase-paginationButton">Last</button>
-      </div>
+      </div> */}
       </div>
       {/* <div className="iten-purchase-summary">
         <h3>Summary</h3>
@@ -97,3 +99,4 @@ const ItemWisePurchaseReportCom = () => {
 };
 
 export default ItemWisePurchaseReportCom;
+/* Mohini_ItemWisePurchaseReport_14/sep/2024 */

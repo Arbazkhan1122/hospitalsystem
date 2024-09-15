@@ -1,3 +1,4 @@
+/* Mohini_ItemWiseSalesReport_WholePage_14/sep/2024 */
 import React from 'react';
 import './ItemWiseSalesReport.css';
 
@@ -11,8 +12,10 @@ const ItemWiseSalesReport = () => {
                     <input type="date" value="2024-08-23" />
                     <label>To:</label>
                     <input type="date" value="2024-08-23" />
+                    <button className="invoice-billing-favorite-btn">★</button>
+                     <button className="invoice-billing-reset-btn">-</button>
                 </div>
-                <div className="item-wise-sales-filter-group">
+                <div className="item-wise-sales-filter-groups">
                     <label>Generic Name:</label>
                     <select>
                         <option>--Select Generic--</option>
@@ -24,23 +27,23 @@ const ItemWiseSalesReport = () => {
                 </div>
                 
               
-                <div className="item-wise-sales-filter-group">
+                <div className="item-wise-sales-filter-groups">
                     <label>Dispensary:</label>
                     <input type="text" placeholder="Enter Dispensary Name" />
                 </div>
-                <div className="item-wise-sales-filter-group">
+                <div className="item-wise-sales-filter-groups">
                     <label>Counter:</label>
                     <select>
                         <option>Select Counter</option>
                     </select>
                 </div>
-                <div className="item-wise-sales-filter-group">
+                <div className="item-wise-sales-filter-groups">
                     <label>User:</label>
                     <input type="text" placeholder="Enter User Name" />
                 </div>
                 <div className="item-wise-sales-action-buttons">
-                <button className="item-wise-sales-btn show-report-btn">Show Report</button>
-                <button className="item-wise-sales-btn summary-details-btn">Summary Details</button>
+                <button className="item-wise-sales-btn">Show Report</button>
+                <button className="item-wise-sales-btn">Summary Details</button>
             </div>
             </div>
 
@@ -48,6 +51,8 @@ const ItemWiseSalesReport = () => {
 
             <div className="item-wise-sales-report-table">
                 <input type="text" placeholder="Search" className="item-wise-sales-search-bar" />
+                <button className="invoice-billing-search-button"><i className="fa fa-search"></i></button>
+
                 </div>
                 <div className='item-wise-sales-table'>
                 <table className='item-wise-sales-ta'>
@@ -77,13 +82,13 @@ const ItemWiseSalesReport = () => {
                         </tr>
                     </tbody>
                 </table>
-                <div className="item-wise-sales-pagination">
+                {/* <div className="item-wise-sales-pagination">
                     <button>First</button>
                     <button>Previous</button>
                     <span>Page 0 of 0</span>
                     <button>Next</button>
                     <button>Last</button>
-                </div>
+                </div> */}
                 </div>
 
             {/* <div className="item-wise-sales-summary-section">
@@ -109,3 +114,4 @@ const ItemWiseSalesReport = () => {
 };
 
 export default ItemWiseSalesReport;
+/* Mohini_ItemWiseSalesReport_WholePage_14/sep/2024 */

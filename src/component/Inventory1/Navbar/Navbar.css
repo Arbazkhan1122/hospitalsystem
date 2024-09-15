@@ -1,19 +1,24 @@
 .inventory-navbar {
     display: flex;
     align-items: center;
-    padding: 10px 20px;
+    padding: 5px;
     background-color: white; /* Adjust as needed */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .inventory-home-button {
     border: none;
-    background: none;
+    background: white;
+    color: var( --button-bg-color);
     font-size: 18px;
     cursor: pointer;
     margin-right: 10px; /* Gap between home button and the rest */
   }
-  
+  .inventory-home-button.active
+  {
+    color: var( --button-hover-background-color);
+    border-radius: 5px;
+  }  
   .inventory-nav-links {
     display: flex;
     gap: 10px; /* 10px gap between buttons */
@@ -22,7 +27,7 @@
   .inventory-nav-links button {
     border: none;
     background: none;
-    padding: 8px 12px;
+    padding: 5px;
     cursor: pointer;
     font-size: 16px;
     color: #333;
@@ -30,13 +35,13 @@
   }
   
   .inventory-nav-links button.active {
-    background-color: #2196F3; /* Active button background */
+    border-bottom: 4px solid var(--sideBar-bg-color);
     color: white; /* Active button text color */
     border-radius: 4px;
   }
   
   .inventory-nav-links button:hover {
-    background-color: #2196F3;
+    border-bottom: 4px solid var(--sideBar-bg-color);
   }
   
   .inventory-active-inventory {
@@ -44,11 +49,13 @@
     font-size: 16px;
     padding: 5px;
     display: flex;
-    background-color: #2196F3;
+    border-radius: 5px;
+    background-color: var(--button-bg-color);
     color:white;
     align-items: center;
     /* color: #555; */
   }
+
   
   .inventory-arrow {
     margin-left: 5px;

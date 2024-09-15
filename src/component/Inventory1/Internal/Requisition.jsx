@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Requisition.css";
 import DirectDispatch from "./DirectDispatch";
 import DispatchTable from "./DispatchTable";
 import RequisitionDetail from "./RequisitionDetail";
 import axios from "axios";
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+
 
 const Requisition = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [dateFrom, setDateFrom] = useState("2024-08-07");
   const [dateTo, setDateTo] = useState("2024-08-07");
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,7 +26,7 @@ const Requisition = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://192.168.1.39:8080/api/dispatch/getAllDispatches"
+          "http://localhost:8080/api/dispatch/getAllDispatches"
         );
         setData(response.data);
       } catch (error) {
@@ -69,13 +73,15 @@ const Requisition = () => {
         <>
           {!showDispatchTable ? (
             <>
+              
+              <div className="requisition-inventory-status-filter">
               <button
                 className="requisition-inventory-direct-dispatch"
                 onClick={() => setShowDirect(true)}
               >
                 Direct Dispatch ➚
               </button>
-              <div className="requisition-inventory-status-filter">
+              <div>
                 <span>List by Requisition Status:</span>
                 {["Pending", "Complete", "Cancelled", "All"].map((s) => (
                   <label key={s}>
@@ -88,6 +94,7 @@ const Requisition = () => {
                     {s}
                   </label>
                 ))}
+                </div>
               </div>
               <div className="requisition-inventory-date-range">
                 <label>
@@ -117,26 +124,45 @@ const Requisition = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
-                <button onClick={handleSearch}>🔍</button>
+                <button className="requisition-inventory-search-bar-button" onClick={handleSearch}>🔍</button>
               </div>
               <div className="requisition-inventory-results">
-                <span>Showing {data.length} results</span>
-                <button onClick={handlePrint}>Print</button>
+                <span className="requisition-inventory-results-span">Showing {data.length} results</span>
+                <button className="requisition-inventory-results-print" onClick={handlePrint}>Print</button>
               </div>
               <div className="requisition-ta">
-                <table className="requisition-inventory-requisition-table">
-                  <thead>
-                    <tr>
-                      <th>Req.No</th>
-                      <th>StoreName</th>
-                      <th>Req.Date</th>
-                      <th>Requested By</th>
-                      <th>Received By</th>
-                      <th>Status</th>
-                      <th>Verification Status</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
+              <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Req.No",
+  "StoreName",
+  "Req.Date",
+  "Requested By",
+  "Received By",
+  "Status",
+  "Verification Status",
+  "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                   <tbody>
                     {data.length > 0 ? (
                       data.map((item, index) => (
@@ -171,7 +197,7 @@ const Requisition = () => {
                     )}
                   </tbody>
                 </table>
-                <div className="requisition-inventory-requisition-pagination">
+                {/* <div className="requisition-inventory-requisition-pagination">
                   <div className="requisition-inventory-requisition-pagination-div">
                     <span>0 to 0 of 0</span>
                     <button>First</button>
@@ -180,7 +206,7 @@ const Requisition = () => {
                     <button>Next</button>
                     <button>Last</button>
                   </div>
-                </div>
+                </div> */}
               </div>
             </>
           ) : (

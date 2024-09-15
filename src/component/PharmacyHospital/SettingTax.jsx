@@ -1,3 +1,4 @@
+/* Mohini_SettingTax_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
@@ -12,7 +13,7 @@ const SettingTax = () => {
 
   useEffect(() => {
     // Fetch data from API
-    axios.get('http://192.168.1.37:1415/api/taxes')
+    axios.get('http://192.168.1.39:1415/api/taxes')
       .then(response => {
         setSuppliers(response.data);
       })
@@ -46,7 +47,7 @@ const SettingTax = () => {
     event.preventDefault();
     if (isEditMode) {
       // Update the existing item
-      axios.put(`http://192.168.1.37:1415/api/taxes/${selectedUser.id}`, selectedUser)
+      axios.put(`http://192.168.1.39:1415/api/taxes/${selectedUser.id}`, selectedUser)
         .then(response => {
           setSuppliers(suppliers.map(supplier =>
             supplier.id === selectedUser.id ? response.data : supplier
@@ -58,7 +59,7 @@ const SettingTax = () => {
         });
     } else {
       // Add a new item
-      axios.post('http://192.168.1.37:1415/api/taxes', selectedUser)
+      axios.post('http://192.168.1.39:1415/api/taxes', selectedUser)
         .then(response => {
           setSuppliers([...suppliers, response.data]);
           handleCloseModal();
@@ -185,3 +186,4 @@ const SettingTax = () => {
 };
 
 export default SettingTax;
+/* Mohini_SettingTax_WholePage_14/sep/2024 */

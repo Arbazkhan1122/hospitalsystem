@@ -1,3 +1,4 @@
+/* Mohini_PurchaseComponent_WholePage_14/sep/2024 */
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Purchase.css";
@@ -68,3 +69,4 @@ const PurchaseComponent = () => {
 };
 
 export default PurchaseComponent;
+/* Mohini_PurchaseComponent_WholePage_14/sep/2024 */

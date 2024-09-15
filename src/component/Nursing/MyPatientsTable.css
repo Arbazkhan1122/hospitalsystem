@@ -1,6 +1,6 @@
 .MyPatientsTable-tableContainer {
     padding: 20px;
-    background-color: #e6f7ff;
+    background-color: #e3fffe;;
   }
   
   .MyPatientsTable-patientsTable {
@@ -20,14 +20,16 @@
   }
   
   .Actions-btn {
-    padding: 5px 10px;
-    background-color: #007bff;
-    border: none;
+    background-color: var(--button-color);
     color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
-    border-radius: 4px;
   }
   
   .Actions-btn:hover {
-    background-color: #0056b3;
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }

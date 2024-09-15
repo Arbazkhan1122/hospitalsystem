@@ -1,3 +1,4 @@
+/* Mohini_Supplier_WholePage_14/sep/2024 */
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -28,3 +29,4 @@ const Supplier = () => {
 };
 
 export default Supplier;
+/* Mohini_Supplier_WholePage_14/sep/2024 */

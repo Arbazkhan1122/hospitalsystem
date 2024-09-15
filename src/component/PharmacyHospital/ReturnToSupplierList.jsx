@@ -1,3 +1,4 @@
+/* Mohini_ReturnToSupplier_WholePage_14/sep/2024 */
 import React from 'react';
 import './ReturnToSupplier.css';
 
@@ -87,3 +88,4 @@ const ReturnToSupplier = () => {
 };
 
 export default ReturnToSupplier;
+/* Mohini_ReturnToSupplier_WholePage_14/sep/2024 */

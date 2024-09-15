@@ -55,7 +55,7 @@
     background-color: #e53935;
     color: white;
   }
-  .modal-overlay {
+  .billing-modal-overlay{
     position: fixed;
     top: 0;
     left: 0;
@@ -67,11 +67,11 @@
     align-items: center;
   }
   
-  .modal-content {
+  .billing-modal-content{
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    width: 400px;
+    /* width: 400px; */
     position: relative;
   }
   

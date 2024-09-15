@@ -1,13 +1,14 @@
-/* Container for the entire component */
+/* neha-OT-BookingList-14-9-24 */
 .booking-list-container {
-  height: 100vh; /* Full viewport height */
-  width: 100vw;  /* Full viewport width */
-  background-color: #e6f3ff; /* Light blue background color */
+  height: 100vh; 
+  width: 100vw;  
+  background-color:var(--background-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px; 
   box-sizing: border-box; 
+  font-size: var(--font-size);
 }
 
 /* Header section with the button */
@@ -20,7 +21,7 @@
 
 /* New OT Booking button */
 .booking-list-btn-btn-success {
-  background-color: #007bff;
+  background-color:var(--button-color);
   color: white;
   padding: 8px 12px;
   border-radius: 5px;
@@ -28,6 +29,13 @@
   cursor: pointer;
   display: flex;
   align-items: center;
+}
+
+/* New OT Booking button */
+.booking-list-btn-btn-success:hover{
+  background-color: var(--button-hover-background-color);
+  color: var( --button-hover-text-color);
+  border: 1px solid var(--button-hover-border-color);
 }
 
 /* Search bar container */
@@ -94,10 +102,9 @@
 /* Modal content */
 .booking-list-modal-content {
   background-color: white;
-  padding: 20px;
+  padding: 30px;
   border-radius: 8px;
-  width: 400px;
-  max-width: 90%;
+  width: 700px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -113,6 +120,7 @@
   border: none;
   font-size: 20px;
   cursor: pointer;
+  background-color: red;
 }
 
 /* Form styling inside the modal */
@@ -125,6 +133,7 @@
 .booking-list-modal-content label {
   font-weight: bold;
   margin-bottom: 5px;
+  margin-right: 20px;
 }
 
 .booking-list-modal-content input, 
@@ -139,7 +148,7 @@
 }
 
 .booking-list-modal-content button[type="submit"] {
-  background-color: #28a745;
+  background-color:var(--button-color);
   color: white;
   padding: 10px;
   border: none;

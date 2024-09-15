@@ -1,4 +1,4 @@
-/* Setting Supplier Styles */
+/* Mohini_SettingSupplier_WholePage_14/sep/2024 */
 .setting-supplier-container {
     background-color: var( --background-color);
     padding: 20px;
@@ -23,12 +23,9 @@
     cursor: pointer;
   }
   .setting-supplier-add-user-button:hover {
-    background-color: var(--button-color);
-    color: white;
-    border: none;
-    padding: 5px 5px;
-    border-radius: 4px;
-    cursor: pointer;
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
   .manage-users-search-input {
@@ -88,12 +85,9 @@
     font-size: 14px;
   }
   .supplier-setting-form-actions button:hover{
-    background-color: var(--button-bg-color);
-    color: white;
-    border: none;
-    padding: 5px 5px;
-    border-radius: 3px;
-    cursor: pointer;
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 
   }
  
@@ -142,7 +136,9 @@
   }
 
    .setting-supplier-add-user-button:hover {
-    background-color: var(--button-bg-color);
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
    }
   
   /* Responsive Design */
@@ -323,8 +319,9 @@
 }
 
 .supplier-setting-text-right .btn-primary:hover {
-  background-color:var(--button-bg-color);
-  border-color:var(--button-bg-color);
+	border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 }
 .store-setting-incoming-stock-list-header {
   display: flex;
@@ -404,3 +401,4 @@
   max-height: 70vh; /* Limits the height of the modal body */
   overflow-y: auto; /* Enables vertical scrolling */
 }
+/* Mohini_SettingSupplier_WholePage_14/sep/2024 */

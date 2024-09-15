@@ -1,3 +1,4 @@
+// neha-OT-OT-Personaltype-14-9-24
 import React, { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import './ot_personnelType.css';
@@ -158,9 +159,9 @@ function Ot_personnelType() {
           value={searchTerm}
           onChange={handleSearchChange}
         />
-        <button className="ot_personnelType_filter_button">
+        {/* <button className="ot_personnelType_filter_button">
           <FaSearch />
-        </button>
+        </button> */}
       </div>
 
       <table className="ot_personnelType_table">
@@ -189,13 +190,13 @@ function Ot_personnelType() {
         </tbody>
       </table>
 
-      <div className="ot_personnelType_pagination">
+      {/* <div className="ot_personnelType_pagination">
         <button>First</button>
         <button>Previous</button>
         <span>Page 1 of 4</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
     </div>
   );
 }

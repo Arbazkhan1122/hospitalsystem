@@ -1,4 +1,4 @@
-/* Main header styling */
+ /* neha-OT-OT-otmain-14-9-24 */
 .ot_setting-header {
     background-color:white; 
     padding: 10px 20px; 
@@ -27,7 +27,7 @@
   
   /* Active link styling */
   .ot_setting-header-button.active {
-    background-color: #007bff; 
+    background-color:var(--button-bg-color);
     color: white;
   }
   

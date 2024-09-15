@@ -1,9 +1,9 @@
 .maternity-allowance-report {
   font-family: Arial, sans-serif;
   padding: 20px;
-  height: 100vh;
+  height: 90vh;
   width: auto;
-  background-color: #e6f3ff;
+  background-color: var(--background-color);
 }
 
 .maternity-allowance-container {

@@ -53,7 +53,7 @@ function Transaction() {
           <button className="mkrt_transaction-search-button">
             <FaSearch />
           </button>
-          <label htmlFor=""> showing {transactions.length}/{transactions.length} result</label>
+          {/* <label htmlFor=""> showing {transactions.length}/{transactions.length} result</label> */}
         </div>
       </div>
       <div className="mkrt_transaction-table-container">
@@ -87,13 +87,13 @@ function Transaction() {
             ))}
           </tbody>
         </table>
-        <div className="mkrt_transaction-pagination">
+        {/* <div className="mkrt_transaction-pagination">
           <button>First</button>
           <button>Previous</button>
           <span>Page 1 of 1</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
 
       {/* Modal section */}

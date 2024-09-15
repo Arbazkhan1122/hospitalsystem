@@ -1,3 +1,4 @@
+ /* prachi parab user interface changed  14/9 */
 .distcharge-container {
   width: 90%;
   margin: 0 auto;
@@ -8,7 +9,7 @@
 }
 
 .distcharge-header {
-  background-color: #d9edf7;
+  background-color: #e3fffe;;
   padding: 10px;
   border-radius: 5px;
   display: flex;
@@ -49,7 +50,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: #e9ecef;
+  background-color: #e3fffe;;
   padding: 20px;
   border-radius: 5px;
 }
@@ -131,15 +132,118 @@
 
 .distcharge-submit-button,
 .distcharge-update-button {
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 10px;
+  background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;  
 }
 
-.distcharge-submit-button {
-  background-color: #4caf50;
+.distcharge-submit-button:hover,
+.distcharge-update-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+
+
+/* Container */
+.investigation-container {
+  width: 80%;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+/* Section */
+.investigation-section, .medication-section, .imaging-section {
+  margin: 20px;
+  border: 1px solid #d3d3d3;
+  background-color: #f7f7f7;
+  width: 40%;
+}
+
+.investigation-header, .medication-header {
+  background-color: #eaeaea;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.investigation-content, .medication-content {
+  padding: 10px;
+}
+
+.investigation-radio-buttons {
+  margin-bottom: 10px;
+}
+
+/* Test Section */
+.test-section {
+  display: flex;
+}
+
+.lab-tests, .add-new-tests {
+  width: 50%;
+}
+
+.lab-header, .test-header {
+  background-color:#e3fffe;;
+  color: black;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.test-item {
+  padding: 10px;
+}
+
+/* Medication Section */
+.medication-content {
+  display: flex;
+  align-items: center;
+}
+
+.medication-content input {
+  width: 300px;
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+}
+
+.medication-add-btn {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.medication-add-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+
+.medication-delete-btn {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.medication-delete-btn:hover {
+  background-color: #b71c1c;
+}
+
+/* Imagings Section */
+.imaging-header {
+  background-color: #1976d2;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
 }

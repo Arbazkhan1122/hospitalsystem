@@ -6,7 +6,7 @@
   }
   
   .purchase-item {
-    background-color: #eaf4fe;
+    background-color: var(--background-color);
     padding: 20px;
     margin-top: 20px;
     margin-left: 20px;

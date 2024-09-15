@@ -1,3 +1,6 @@
+ /* prachi parab user interface changed  14/9 */
+
+
 import React, { useState, useEffect } from 'react';
 import './OpdTriagePage.css';
 import { Modal } from 'react-bootstrap';
@@ -231,7 +234,7 @@ function OPDTriagePage({ onClose, data }) {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <button variant="secondary" onClick={closeTriAgeModal}>Close</button>
+          <button variant="primary" onClick={closeTriAgeModal} style={{backgroundColor:' background-color: var(--button-color);'}}>Close</button>
         </Modal.Footer>
       </Modal>
     </>

@@ -48,12 +48,14 @@
   }
   
   .action-btn {
-    padding: 5px 5px;
-    margin: 2px;
+    background-color: var(--button-color);
+    color: white;
     border: none;
+    padding: 5px 5px;
     border-radius: 5px;
     cursor: pointer;
   }
+
   
   .action-btn.edit {
     background-color: var(--button-color);
@@ -63,6 +65,11 @@
   .action-btn.history {
     background-color: var(--button-color);
     color: white;
+  }
+  .action-btn.edit:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
   .action-btn.more {
@@ -168,7 +175,7 @@
   color: #004a99; /* Matching the text color */
 }
 
-.print-button {
+.handle-print-button {
   background-color: var(--button-color);
   color: white;
   border: none;
@@ -178,6 +185,8 @@
   margin-bottom: 15px;
 }
 
-.print-button:hover {
-  background-color: var(--button-bg-color);
+.handle-print-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 }

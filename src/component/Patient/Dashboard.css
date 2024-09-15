@@ -1,3 +1,5 @@
+ /* prachi parab user interface changed  14/9 */
+
 .patient-dashboard-container {
     font-family: Arial, sans-serif;
     padding: 20px;
@@ -9,13 +11,13 @@
 .patient-navbar {
     display: flex;
     justify-content: flex-start;
-    background-color: #0056b3;
+    background-color:var( --button-bg-color);
     padding: 10px;
 }
 
 .patient-nav-button {
     background-color: white;
-    color: #0056b3;
+    color: var( --button-bg-color);
     border: none;
     padding: 10px 20px;
     margin-right: 10px;
@@ -39,16 +41,22 @@
     margin-right: 10px;
     padding: 5px;
     border-radius: 5px;
-    border: 1px solid #007bb5;
+    border: 1px solid var( --button-bg-color);
 }
 
 .patient-date-picker-button {
-    background-color: #28a745;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 5px 15px;
+    padding: 5px 5px;
     border-radius: 5px;
     cursor: pointer;
+}
+.patient-date-picker-button:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+
 }
 
 .patient-stats {

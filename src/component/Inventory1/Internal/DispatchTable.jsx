@@ -86,7 +86,7 @@ const DispatchTable = ({ dispatch }) => {
                 </tbody>
             </table>
 
-            <div className="dispatch-table-pagination">
+            {/* <div className="dispatch-table-pagination">
 
                 <button
                     disabled={currentPage === 1}
@@ -101,7 +101,7 @@ const DispatchTable = ({ dispatch }) => {
                 >
                     Next
                 </button>
-            </div>
+            </div> */}
 
             
         </div>

@@ -154,12 +154,12 @@ const ReferringParty = () => {
             onChange={handleSearchChange}
             className="referring_party_input_text"
           />
-          <button className="referring_party_filter_button">
+          {/* <button className="referring_party_filter_button">
             <FaSearch />
-          </button>
-          <div>
+          </button> */}
+          {/* <div>
             <label>Showing {filteredParties.length} results</label>
-          </div>
+          </div> */}
         </div>
       </div>
 

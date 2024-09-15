@@ -1,3 +1,4 @@
+/* Mohini_PurchaseOrderForm_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PurchaseOrderForm.css';
@@ -30,7 +31,7 @@ const PurchaseOrderForm = () => {
   const [suppliers, setSuppliers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://192.168.1.37:8888/api/suppliers')
+    axios.get('http://192.168.1.39:8888/api/suppliers')
       .then(response => {
         setSuppliers(response.data);
       })
@@ -106,7 +107,7 @@ const PurchaseOrderForm = () => {
       }))
     };
 
-    axios.post('http://192.168.1.37:8888/api/order-purchase-orders', data)
+    axios.post('http://192.168.1.39:8888/api/order-purchase-orders', data)
       .then(response => {
         alert('Purchase order saved successfully!');
       })
@@ -280,3 +281,4 @@ const PurchaseOrderForm = () => {
 };
 
 export default PurchaseOrderForm;
+/* Mohini_PurchaseOrderForm_WholePage_14/sep/2024 */

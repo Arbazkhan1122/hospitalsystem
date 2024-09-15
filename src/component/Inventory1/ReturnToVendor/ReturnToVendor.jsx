@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './ReturnToVendor.css';
 import CreateReturnToVendor from './CreateReturnToVendor';
 import CustomModal from "../CustomModel/CustomModal";
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const ReturnToVendor = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [returnData, setReturnData] = useState([]); // State to hold the fetched data
   const [isLoading, setIsLoading] = useState(true); // State to manage loading
@@ -20,7 +23,7 @@ const ReturnToVendor = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://192.168.1.38:8080/api/returnToVendor');
+        const response = await fetch('http://localhost:8080/api/returnToVendor');
         if (response.ok) {
           const data = await response.json();
           setReturnData(data); // Set the fetched data
@@ -73,13 +76,32 @@ const ReturnToVendor = () => {
       {/* Table */}
       <div className='return-to-vendor-ta'>
       <div className="returnToVendor-table">
-        <table className="returnToVendor-receipt-table">
+      <table className="patientList-table" ref={tableRef}>
           <thead>
             <tr>
-              <th>Vendor Name</th>
-              <th>Credit Note No</th>
-              <th>Returned On</th>
-              <th>Action</th>
+              {[
+                "Vendor Name",
+                "Credit Note No",
+                "Returned On",
+                "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -108,14 +130,14 @@ const ReturnToVendor = () => {
       </div>
 
       {/* Pagination */}
-      <div className="returnToVendor-returnToVendor-pagination">
+      {/* <div className="returnToVendor-returnToVendor-pagination">
         <span>{returnData.length > 0 ? `1 to ${filteredData.length} of ${returnData.length}` : '0 to 0 of 0'}</span>
         <button disabled>First</button>
         <button disabled>Previous</button>
         <span>Page 1 of 1</span>
         <button disabled>Next</button>
         <button disabled>Last</button>
-      </div>
+      </div> */}
       </div>
     </div>
   );

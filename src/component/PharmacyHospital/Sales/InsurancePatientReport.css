@@ -1,5 +1,6 @@
+/* Mohini_InsurancePatientReport_WholePage_14/sep/2024 */
 .insurance-patient-report-container {
-  background-color: #e6f3ff;
+  background-color: var(--background-color);
   padding: 20px;
   font-family: Arial, sans-serif;
   font-size: 16px;
@@ -13,13 +14,13 @@
 }
 
 .insurance-patient-report-report-header h2 {
-  color: #0066cc;
+  color: black;
   margin: 0;
   font-size: 16px;
 }
 
 .insurance-patient-report-note {
-  color: #666;
+  color: black;
   font-size: 16px;
 }
 
@@ -31,7 +32,7 @@
 
 .insurance-patient-report-date-range input[type="date"] {
   padding: 5px;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 3px;
   border: 1px solid #ccc;
 }
@@ -56,59 +57,81 @@
 
 .insurance-patient-report-filters label {
   display: flex;
+  font-size: 14px;
   flex-direction: column;
-  font-weight: bold;
 }
 
 .insurance-patient-report-filters input,
 .insurance-patient-report-filters select {
   padding: 5px;
-  font-size: 16px;
+  font-size: 14px;
   margin-top: 5px;
   border-radius: 3px;
   border: 1px solid #ccc;
 }
 
 .insurance-patient-report-show-report-btn {
-  background-color: #6495ED; /* Blue background */
-  color: white; /* White text */
+  background-color:var( --button-color);
+  color: white;
   border: none;
-  padding: 8px 16px;
-  font-size: 16px;
+  margin-right: 10px;
+  padding: 5px 5px;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 3px;
+  font-size: 14px;
+  margin-left: auto;
+  transition: background-color 0.3s ease;
+
+}
+.insurance-patient-report-show-report-btn:hover{
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+
 }
 
 .insurance-patient-report-search-bar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin-bottom: 20px;
 }
 
 .insurance-patient-report-search-bar input {
   padding: 5px;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 3px;
   border: 1px solid #ccc;
   width: 200px;
 }
 
 .insurance-patient-report-results {
-  color: #0066cc;
-  font-size: 16px;
+  color: black;
+  font-size: 14px;
 }
 
-.insurance-patient-report-export-btn,
+/* .insurance-patient-report-export-btn,
 .insurance-patient-report-print-btn {
-  background-color: #6495ED; /* Blue background */
-  color: white; /* White text */
-  border: none;
-  padding: 8px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 3px;
-}
+  background-color:var( --button-color);
+    color: white;
+    border: none;
+    margin-right: 10px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: auto;
+    transition: background-color 0.3s ease;
+
+} */
+
+/* .insurance-patient-report-export-btn:hover,
+.insurance-patient-report-print-btn {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+
+} */
 
 .insurance-patient-report-table {
   width: 100%;
@@ -180,3 +203,41 @@
 .insurance-table-con {
   background-color: white;
 }
+
+
+/*  */
+.insurance-patient-report-search-bar {
+  display: flex;
+  justify-content: flex-end; /* Aligns the contents to the right */
+  align-items: center; /* Vertically centers items */
+  gap: 10px; /* Adds space between the span and buttons */
+}
+
+.insurance-patient-report-results {
+  font-size: 14px; /* Font size for the span text */
+}
+
+.insurance-patient-report-export-btn,
+.insurance-patient-report-print-btn {
+  background-color:var( --button-color);
+  color: white;
+  border: none;
+  margin-right: 10px;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: auto;
+  transition: background-color 0.3s ease;
+
+}
+
+.insurance-patient-report-export-btn:hover,
+.insurance-patient-report-print-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+
+
+/* Mohini_InsurancePatientReport_WholePage_14/sep/2024 */

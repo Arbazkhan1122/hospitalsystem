@@ -1,7 +1,7 @@
 .maternity-component{
   height: 100vh; /* Full viewport height */
   width: 100wh;  /* Full viewport width */
-  background-color: #e6f3ff; /* Light blue background color */
+  background-color:var(--background-color); /* Light blue background color */
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -17,21 +17,23 @@
 }
 
 .matern-content {
-  background-color: #e6f3ff;
+  background-color: var(--background-color);
   padding: 20px;
   border-radius: 5px;
 }
 
 .matern-edit-info {
   display: flex;
+  font-size: 14px;
   justify-content: space-between; 
   align-items: center;
   margin-bottom: 20px;
 }
 
 .matern-edit-info input {
-  width: 300px;
+  /* width: 300px; */
   padding: 5px;
+  font-size: 14px;
   margin-left: 10px;
   border: 1px solid #ccc;
   margin-right: 20px; 
@@ -40,7 +42,8 @@
 
 .matern-view-all {
   margin-left: auto; 
-  color: #007bff;
+  color: black;
+  font-size: 14px;
   text-decoration: none;
 }
 
@@ -51,12 +54,16 @@
 
 .mater-date-range {
   display: flex;
+  background-color:  #f2f2f2;;
+  font-size: 14px;
+  width: 50%;
   align-items: center;
   margin-bottom: 20px;
 }
 
 .mater-date-range input {
   margin: 0 10px;
+  font-size: 14px;
   padding: 5px;
   border: 1px solid #ccc;
 }
@@ -69,11 +76,19 @@
 }
 
 .mater-ok-btn {
-  background-color: #28a745;
+  background-color:var( --button-color);
   color: white;
+  font-size: 14px;
+  border: 1px solid var( --button-hover-border-color);
   border: none;
-  padding: 5px 15px;
+  padding: 5px 5px;
   border-radius: 3px;
+}
+.mater-ok-btn:hover{
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+
 }
 
 .mater-search-bar{
@@ -85,14 +100,15 @@
   flex-grow: 1; 
   text-align: right; 
   margin-right: 20px;
-  font-size: 16px;
-  color: #0772bc; 
+  font-size: 14px;
+  color: black; 
 }
 
 .mater-search-bar input {
   flex-grow: 1;
   padding: 5px;
-  width: 20px;
+  font-size: 14px;
+  /* width: 20px; */
   border: 1px solid #ccc;
 }
 
@@ -123,13 +139,19 @@
 
 
 .mater-print-btn {
-  background-color: #007bff;
+  background-color:var( --button-color);
   color: white;
   border: none;
-  padding: 5px 15px;
+  padding: 5px 5px;
+  border: 1px solid var( --button-hover-border-color);
   border-radius: 3px;
 }
+.mater-print-btn:hover{
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 
+}
 .maternity-table {
   overflow-x: auto;
 }

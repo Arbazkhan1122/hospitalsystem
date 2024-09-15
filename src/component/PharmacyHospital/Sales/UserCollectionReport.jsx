@@ -1,3 +1,4 @@
+/* Mohini_UserCollectionReport_WholePage_14/sep/2024 */
 import React from 'react';
 import './UserCollectionReport.css';
 
@@ -8,35 +9,39 @@ const UserCollectionReport = () => {
       <div className="user-collection-filter-section">
         <div className="user-collection-date-range">
           <label>From: </label>
-          <input className='user-collection-input' type="date" />
+          <input className="user-collection-date-input" type="date" />
           <label>To: </label>
           <input type="date" className="user-collection-date-input" />
           <button className="user-collection-filter-btn">★</button>
         </div>
-        <div className="user-collection-input-group">
-          <label>Select Dispensary:</label>
-          <input type="text" placeholder="Enter Dispensary Name" />
-        </div>
-        <div className="user-collection-select-group">
-          <label>Counter: </label>
-          <select>
-            <option>All</option>
-          </select>
-          <label>User: </label>
-          <select>
-            <option>All</option>
-          </select>
-        </div>
-        <button className="user-collection-show-report-btn">Show Report</button>
+       
       </div>
+                    <div className="item-wise-sales-filter-groups">
+                    <label>Select Dispensary:</label>
+                    <input type="text" placeholder="Enter Dispensary Name" />
+
+                    
+                    <label>Counter: </label>
+                  <select>
+                 <option>All</option>
+                 </select>
+                 <label>User: </label>
+               <select>
+             <option>All</option>
+              </select>
+              <button className="item-wise-sales-btn">Show Report</button>
+
+                </div>
+
+
       <div className="user-collection-table-actions">
-        <div className="-user-collectionsearch-container">
+        <div className="user-collectionsearch-container">
         <input type="text" className="user-collection-search-input" placeholder="Search" />
         <button className="user-collection-search-btn">🔍</button>
         </div>
         <div className="user-collection-export-buttons">
-          <button className="user-collection-export-btn">Export</button>
-          <button className="user-collection-print-btn">Print</button>
+          <button className="item-wise-sales-btn">Export</button>
+          <button className="item-wise-sales-btn">Print</button>
         </div>
       </div>
       <div className='user-collection-ta'>
@@ -78,3 +83,5 @@ const UserCollectionReport = () => {
 };
 
 export default UserCollectionReport;
+/* Mohini_UserCollectionReport_WholePage_14/sep/2024 */
+
