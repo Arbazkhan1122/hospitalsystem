@@ -1,12 +1,12 @@
 .reportTemplate-container {
-  background-color: #CAF2FF;
+  background-color:var(--background-color);
   padding: 10px;
   border-radius: 5px;
   font-family: Arial, Helvetica, sans-serif;
   /* width: 100%; */
   /* max-width: 1200px; */
   margin: 0 auto;
-  height: 450px;
+  height: 75vh;
 }
 .reportTemplate-firstRow{
   display: flex;
@@ -14,17 +14,26 @@
 }
 
 .reportTemplate-add-button {
-  background-color: #5867DD;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  padding: 7px 15px;
+  /* border: none; */
+  /* margin-right: 10px; */
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 15px;
-  font-size: 12px;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+
+.reportTemplate-add-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 .reportTemplate-search-bar{
-  margin-left: -15px;
+  margin-left: -35px;
   /* margin: 0; */
 }  
   .reportTemplate-search-bar input {
@@ -69,9 +78,9 @@
   /* display: flex;
   align-items: center; */
   /* padding-top: 10px; */
-  color: #008CBA;
-  font-size: 12px;
-  font-weight: bold;
+  /* color: #008CBA; */
+  font-size: var(--font-size);
+  /* font-weight: bold; */
   margin-right: 10px;
 }
 
@@ -79,30 +88,40 @@
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  font-size: 12px;
   background-color: white;
 }
 
 .reportTemplate-container th, .reportTemplate-container td {
-  padding: 5px;
-  text-align: left;
+  padding: 3px;
+  text-align: center;
   border: 1px solid #ddd;
-  color: rgb(78, 78, 78);
+  /* color: rgb(78, 78, 78); */
+  font-size: var(--font-size);
 }
 
 .reportTemplate-container th {
   background-color: #f2f2f2;
+  font-size: var(--heading-font);
 }
 
 .reportTemplate-edit-button, .reportTemplate-deactivate-button {
-  background-color: #0F63AF;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  font-size: 12px;
-  padding: 3px 8px;
-  border-radius: 10px;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
   cursor: pointer;
-  margin-right: 5px;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 1px 5px;
+}
+
+.reportTemplate-edit-button:hover, .reportTemplate-deactivate-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .reportTemplate-results-info {
@@ -111,13 +130,23 @@
 }
 
 .reportTemplate-print-button {
-  background-color: #659BE0;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  padding: 7px 15px;
+  /* border: none; */
+  /* margin-right: 10px; */
   border-radius: 5px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+
+.reportTemplate-print-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 /* Modal styles */
 .reportTemplate-modal {

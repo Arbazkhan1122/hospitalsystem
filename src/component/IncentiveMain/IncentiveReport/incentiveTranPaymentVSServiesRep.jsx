@@ -1,3 +1,4 @@
+ /* Ajhar Tamboli incentiveTranPaymentVSServiesRep.jsx 18-09-2024 */
 
 import React, { useState } from "react";
 import "../IncentiveReport/incentiveTranPaymentVSServiesRep.css"
@@ -16,6 +17,8 @@ const IncentiveTranPaymentVSServiesRep = () => {
           <input type="date" />
           <button className="incentiveTranPaymentVSServiesRep-icon-button incentiveTranPaymentVSServiesRep-star">★</button>
           <button className="incentiveTranPaymentVSServiesRep-icon-button incentiveTranPaymentVSServiesRep-dash">-</button>
+          <button className="incentiveTranPaymentVSServiesRep-ok-button">OK</button>
+        
         </div>
       <div className="incentiveTranPaymentVSServiesRep-Select-Doctor">
         <label htmlFor="">Select Doctor:</label>

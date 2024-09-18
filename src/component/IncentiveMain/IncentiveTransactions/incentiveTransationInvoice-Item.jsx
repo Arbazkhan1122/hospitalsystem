@@ -90,6 +90,9 @@
 // };
 
 // export default IncentiveTransationInvoiceItem;
+
+ /* Ajhar Tamboli IncentiveTransationInvoice.jsx 18-09-2024 */
+
 import React, { useState, useEffect } from "react";
 import "../IncentiveTransactions/incentiveTransationInvoice-Item.css";
 
