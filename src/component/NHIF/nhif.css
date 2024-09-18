@@ -8,9 +8,9 @@
 
 /* Header styles */
 .nhif-header {
-    background-color: #007bff; /* Primary blue color */
+    background-color: white; /* Primary blue color */
     padding: 10px 20px;
-    color: white;
+  
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,26 +25,28 @@
     display: flex;
 }
 
-.nhif-header-nav li {
-    margin: 0 15px;
-}
+
 
 .nhif-header-nav a {
+    background-color: var(--button-color);
     color: white;
     text-decoration: none;
     font-size: 16px;
-    padding: 8px 16px;
+    padding: 5px ;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+    margin-left: 20px;
 }
 
 .nhif-header-nav a:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: var(--button-hover-background-color) ;/* Darker blue on hover */
+    color: var(--button-hover-text-color);
+    border: 1px solid var(--button-hover-border-color);
 }
 
 /* Active link styling */
 .nhif-header-nav a.active {
-    background-color: #0056b3; /* Active state color */
+    background-color:var(--button-bg-color) /* Active state color */
 }
 
 /* Content area below the navigation bar */

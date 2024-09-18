@@ -50,9 +50,9 @@ function Transaction() {
       <div className='mkrt_transaction-search_main'>
         <div className="mkrt_transaction-search">
           <input type="text" placeholder="Search" />
-          <button className="mkrt_transaction-search-button">
+          {/* <button className="mkrt_transaction-search-button">
             <FaSearch />
-          </button>
+          </button> */}
           {/* <label htmlFor=""> showing {transactions.length}/{transactions.length} result</label> */}
         </div>
       </div>
