@@ -1,29 +1,30 @@
+/* Mohini_ReturnToSupplier_WholePage_14/sep/2024 */
 import React from 'react';
 import './ReturnToSupplier.css';
 
 const ReturnToSupplier = () => {
   return (
     <div className="return-to-supplier-container">
-      <h2 className="return-to-supplier-header-title">Return To Supplier</h2>
+      <h2 className="return-to-supplier-header-title">Return To Supplier Report</h2>
       
-      <div className="return-to-supplier-filters-container">
-        <div className="return-to-supplier-filter-group">
+      {/* <div className="return-to-supplier-filters-container"> */}
+        {/* <div className="return-to-supplier-filter-group">
           <label>Supplier :</label>
           <input type="text" placeholder="-- Search Supplier --" className="return-to-supplier-input-box" />
-        </div>
+        </div> */}
         
-        <div className="return-to-supplier-filter-group">
+        {/* <div className="return-to-supplier-filter-group">
           <label>GRNo :</label>
           <input type="number" className="return-to-supplier-input-box" value="0" />
-        </div>
+        </div> */}
         
-        <div className="return-to-supplier-filter-group">
+        {/* <div className="return-to-supplier-filter-group">
           <label>InvoiceNo :</label>
           <input type="text" className="return-to-supplier-input-box" />
-        </div>
+        </div> */}
 
-        <button className="return-to-supplier-search-button">Search</button>
-      </div>
+        {/* <button className="return-to-supplier-search-button">Search</button> */}
+      {/* </div> */}
       
       <div className="return-to-supplier-date-filter-container">
         <div className="return-to-supplier-date-filter">
@@ -41,18 +42,27 @@ const ReturnToSupplier = () => {
           <button className="return-to-supplier-minus-button">-</button>
           <button className="return-to-supplier-ok-button">OK</button>
         </div>
+        </div>
+        <div className="return-to-supplier-filters-container">     
+         <button className="return-to-supplier-search-button">Search</button>
+
       </div>
-      
+     
+     
+
+
+
       <div className="return-to-supplier-search-bar">
         <input type="text" placeholder="Search" className="return-to-supplier-search-input" />
         <button className="return-to-supplier-search-icon-button">
           <i className="fa fa-search"></i>
         </button>
-      </div>
-      <div className="return-to-supplier-print-container">
-        <span>Showing 0 / 0 results</span>
+        <div className="return-to-supplier-print-container">
+        <span >Showing 0 / 0 results</span>
         <button className="return-to-supplier-print-button">Print</button>
       </div>
+      </div>
+     
       <div className='return-to-supplier-retuurn-store-supplier'>
       <table className="return-to-supplier-data-table">
         <thead>
@@ -101,3 +111,4 @@ const ReturnToSupplier = () => {
 };
 
 export default ReturnToSupplier;
+/* Mohini_ReturnToSupplier_WholePage_14/sep/2024 */

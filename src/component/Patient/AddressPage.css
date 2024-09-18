@@ -1,4 +1,5 @@
-   /* AddressPage.css */
+ /* prachi parab user interface changed  14/9 */
+
 .address-page-container {
     display: flex;
     font-family: Arial, sans-serif;
@@ -7,7 +8,7 @@
   .address-page-main-content {
     flex-grow: 1;
     padding: 20px;
-    background-color: #e6f3f7;
+    background-color: #e3fffe;
   }
   
   .address-page-form-row {

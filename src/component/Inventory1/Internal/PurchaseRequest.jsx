@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './PurchaseRequest.css';
-import AddVendor from './AddVendor';
+import AddVendor from './AddVendor'
 import AddItem from './AddItem';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+
 
 const PurchaseRequest = () => {
   // State variables for the component
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [isCreatingRequest, setIsCreatingRequest] = useState(false);
   const [isVendorModalOpen, setIsVendorModalOpen] = useState(false);
   const [openAddItem, setOpenAddItem] = useState(false);
@@ -28,7 +32,7 @@ const PurchaseRequest = () => {
 
   // Fetch purchase requests when the component mounts
   useEffect(() => {
-    fetch('http://192.168.1.39:8080/api/purchase-requests/fetchAllPurchase')
+    fetch('http://localhost:8080/api/purchase-requests/fetchAllPurchase')
       .then(response => response.json())
       .then(data => {
         setPurchaseRequests(data);
@@ -97,8 +101,8 @@ const PurchaseRequest = () => {
   const openVendorModal = () => setIsVendorModalOpen(true);
   const closeVendorModal = () => setIsVendorModalOpen(false);
 
-  const openAddItemModel = () => setOpenAddItem(true);
-  const closeAddItemModel = () => setOpenAddItem(false);
+  const openAddItemModel =()=> setOpenAddItem(true);
+  const closeAddItemModel =()=> setOpenAddItem(false);
 
   // Display loading or error message if needed
   if (loading) return <div>Loading...</div>;
@@ -111,6 +115,7 @@ const PurchaseRequest = () => {
           <h2 className="purchase-request-header">Purchase Request</h2>
           <div>
             <div className='purchase-request-pur-subContent'>
+              <div>
               <label>Vendor:</label>
               <input
                 type="text"
@@ -118,31 +123,53 @@ const PurchaseRequest = () => {
                 onChange={(e) => setVendor(e.target.value)}
                 placeholder="Vendor Name"
               />
-              <button className='purchase-request-pur-subButton' onClick={openVendorModal}>?</button>
-
+             
+              <button className='pur-subButton' onClick={openVendorModal}>Add Vendor</button>
+              </div>
+              <div>
               <label>Request Date:</label>
               <input
                 type="date"
                 value={requestDate}
                 onChange={(e) => setRequestDate(e.target.value)}
               />
+              </div>
             </div>
           </div>
           <div className="purchase-request-table-container">
-            <table className="purchase-request-purchase-request-form-table">
-              <thead>
-                <tr>
-                  <th>PR Category</th>
-                  <th>Item Name</th>
-                  <th>Code</th>
-                  <th>UOM</th>
-                  <th>Quantity</th>
-                  <th>Available Qty</th>
-                  <th>Quantity Verified On</th>
-                  <th>Supply required before</th>
-                  <th>Item Remark</th>
-                </tr>
-              </thead>
+          <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "PR Category",
+  "Item Name",
+  "Code",
+  "UOM",
+  "Quantity",
+  "Available Qty",
+  "Quantity Verified On",
+  "Supply required before",
+  "Item Remark"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
               <tbody>
                 <tr>
                   <td>
@@ -162,7 +189,7 @@ const PurchaseRequest = () => {
                       onChange={(e) => setItemName(e.target.value)}
                       placeholder="Item Name"
                     />
-                    <button className='purchase-request-add-Item' onClick={openAddItemModel}>?</button>
+                     <button className='add-Item' onClick={openAddItemModel}>?</button>
                   </td>
                   <td>
                     <input
@@ -224,6 +251,7 @@ const PurchaseRequest = () => {
               <textarea
                 rows="4"
                 value={remarks}
+                className='purchase-remark'
                 onChange={(e) => setRemarks(e.target.value)}
                 placeholder="Enter any remarks"
               ></textarea>
@@ -241,6 +269,7 @@ const PurchaseRequest = () => {
           <button className="purchase-request-create-purchase-request" onClick={() => setIsCreatingRequest(true)}>
             Create Purchase Request
           </button>
+          <div className='purchase-request-filter'>
           <div className="purchase-request-date-range">
             <label>From: <input type="date" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} /></label>
             <label>To: <input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} /></label>
@@ -255,25 +284,45 @@ const PurchaseRequest = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button onClick={handleSearch}>🔍</button>
+            <button className='purchase-request-search-bar-button' onClick={handleSearch}>🔍</button>
+          </div>
           </div>
           <div className="purchase-request-purchase-results">
             <div>
-              <span>Showing {purchaseRequests.length} results</span>
-              <button onClick={handlePrint}>Print</button>
+              <span className='purchase-request-purchase-results-span'>Showing {purchaseRequests.length} results</span>
+              <button className='purchase-request-purchase-results-button' onClick={handlePrint}>Print</button>
             </div>
           </div>
-          <table className="purchase-request-results-table">
-            <thead>
-              <tr>
-                <th>Vendor</th>
-                <th>Request Date</th>
-                <th>Category</th>
-                <th>Item Name</th>
-                <th>Quantity</th>
-                <th>Status</th>
-              </tr>
-            </thead>
+          <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Vendor",
+  "Request Date",
+  "Category",
+  "Item Name",
+  "Quantity",
+  "Status"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
             <tbody>
               {purchaseRequests.map((request, index) => (
                 <tr key={index}>
@@ -289,12 +338,8 @@ const PurchaseRequest = () => {
           </table>
         </div>
       )}
-
-      {/* Add Vendor Modal */}
-      {isVendorModalOpen && <AddVendor onClose={closeVendorModal} />}
-
-      {/* Add Item Modal */}
-      {openAddItem && <AddItem onClose={closeAddItemModel} />}
+      <AddVendor isOpen={isVendorModalOpen} onClose={closeVendorModal} />
+      <AddItem isOpen={openAddItem} onClose={closeAddItemModel}/>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+/* Mohini_SettlementSummaryReport_WholePage_14/sep/2024 */
 import React from 'react';
 import './InvoiceBilling.css';
 
@@ -71,13 +72,13 @@ const SettlementSummaryReport = () => {
 </div>
       <div className="invoice-billing-pagination-container">
         
-        <div className="invoice-billing-pagination-buttons">
+        {/* <div className="invoice-billing-pagination-buttons">
           <button className="invoice-billing-pagination-button">First</button>
           <button className="invoice-billing-pagination-button">Previous</button>
           <span>Page 0 of 0</span>
           <button className="invoice-billing-pagination-button">Next</button>
           <button className="invoice-billing-pagination-button">Last</button>
-        </div>
+        </div> */}
       </div>
       </div>
 
@@ -86,3 +87,4 @@ const SettlementSummaryReport = () => {
 };
 
 export default SettlementSummaryReport;
+/* Mohini_SettlementSummaryReport_WholePage_14/sep/2024 */

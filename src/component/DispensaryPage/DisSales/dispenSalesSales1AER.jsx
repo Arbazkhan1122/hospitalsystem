@@ -127,7 +127,7 @@ const AddExternalReferral = ({ onClose }) => {
         <div className="addExternalReferral-modal-container">
             <div className="addExternalReferral-modal-header">
                 <h2>Add External Referral</h2>
-                <button className="addExternalReferral-close-button" onClick={onClose}>X</button>
+                <button className="addExternalReferral-close-button" onClick={onClose}>x</button>
             </div>
             <div className="addExternalReferral-modal-body">
                 <form onSubmit={handleSubmit}>

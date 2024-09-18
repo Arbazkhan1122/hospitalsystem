@@ -1,3 +1,4 @@
+/* Mohini_InsurancePatientReport_WholePage_14/sep/2024 */
 import React, { useState } from 'react';
 import './InsurancePatientReport.css';
 
@@ -68,14 +69,14 @@ function InsurancePatientReport() {
         </label>
         <button className="insurance-patient-report-show-report-btn">Show Report</button>
       </div>
-
-      <div className="insurance-patient-report-search-bar">
-        <input 
+      <input 
           type="text" 
           placeholder="Search" 
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+      <div className="insurance-patient-report-search-bar">
+        
         <span className="insurance-patient-report-results">Showing 0 / 0 results</span>
         <button className="insurance-patient-report-export-btn">Export</button>
         <button className="insurance-patient-report-print-btn">Print</button>
@@ -103,14 +104,14 @@ function InsurancePatientReport() {
         </tbody>
       </table>
 
-      <div className="insurance-patient-report-pagination">
+      {/* <div className="insurance-patient-report-pagination">
         <span>0 to 0 of 0</span>
         <button disabled>First</button>
         <button disabled>Previous</button>
         <span>Page 0 of 0</span>
         <button disabled>Next</button>
         <button disabled>Last</button>
-      </div>
+      </div> */}
       </div>
       <div className="insurance-patient-report-summary">
         <h3>Summary</h3>
@@ -121,3 +122,5 @@ function InsurancePatientReport() {
 }
 
 export default InsurancePatientReport;
+/* Mohini_InsurancePatientReport_WholePage_14/sep/2024 */
+

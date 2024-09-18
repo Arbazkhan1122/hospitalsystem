@@ -1,3 +1,4 @@
+/* Mohini_PurchaseSummaryReport_14/sep/2024 */
 import React, { useState } from 'react';
 import './ItemWisePurchaseReport.css';
 
@@ -24,15 +25,24 @@ const PurchaseSummaryReport = () => {
       <h2 className="iten-purchase-header"> ⚛ Purchase Summary Report</h2>
       
       <div className="iten-purchase-filterRow">
-        <div>
+        <div className='item-data-date'>
           <span>From: </span>
           <input type="date" defaultValue="2024-08-22" />
           <span> To: </span>
           <input type="date" defaultValue="2024-08-22" />
         </div>
-        
-       
+        <div className='item-span-item'>
+          <span>Supplier Name: </span>
+          <select>
+            <option>--Select Supplier--</option>
+          </select>
+        </div>
+       <div>
+              <button className="iten-purchase-show-bt">Show Report</button>
+
+       </div>
       </div>
+
       <div className="iten-purchase-searchRow">
         <input
           type="text"
@@ -43,11 +53,13 @@ const PurchaseSummaryReport = () => {
         />
       </div>
       
-      <div className="item-purchase-btn">
-        <span>Showing {filteredUsers.length} / {suppliers.length} results</span>
-        <button className="item-purchase-button">Export</button>
-        <button className="item-purchase-button">Print</button>
+      <div className='item-purchase-btn'>
+      <span>Showing 0 / 0 results</span>
+        <button className="iten-purchase-button">Export</button>
+        <button className="iten-purchase-button">Print</button>
       </div>
+      
+
       
       <div className="item-purchase-ta">
         <table className="iten-purchase-table">
@@ -88,3 +100,4 @@ const PurchaseSummaryReport = () => {
 };
 
 export default PurchaseSummaryReport;
+/* Mohini_PurchaseSummaryReport_14/sep/2024 */

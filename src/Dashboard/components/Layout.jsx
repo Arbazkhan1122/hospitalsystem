@@ -40,6 +40,8 @@ import PatientRouting from "../../component/Patient/PatientRouting";
 import NavigationBar from "../../component/Verification/NavigationBar";
 import VerificationRouting from "../../component/Verification/VerificationRouting";
 import SubstoreRouting from "../../component/SubStoreMainPage/SubstoreRouting";
+import { faL } from "@fortawesome/free-solid-svg-icons";
+import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRouting";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -74,6 +76,7 @@ const Layout = () => {
   const [showPatient, setShowPatient] = useState(false);
   const [showVerification, setShowVerification] = useState(false);
   const [showSubStore, setShowSubStore] = useState(false);
+  const [showMedicalRecord, setShowMedicalRecord] = useState(false);
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -107,6 +110,7 @@ const Layout = () => {
     setShowDynamicReport(false);
     setShowVerification(false);
     setShowSubStore(false);
+    setShowMedicalRecord(false);
   };
 
   const toggelAppointment = () => {
@@ -235,6 +239,10 @@ const Layout = () => {
     resetAllToggles();
     setShowSubStore(!showSubStore);
   };
+  const toggelMedicalRecord = () => {
+    resetAllToggles();
+    setShowMedicalRecord(!showMedicalRecord);
+  };
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -269,6 +277,7 @@ const Layout = () => {
         onPatient={toggelPatient}
         onVerification={toggelVerification}
         onSubstoreClick={toggelSubstore}
+        onMedicalRecord={toggelMedicalRecord}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
@@ -278,41 +287,40 @@ const Layout = () => {
         }`}
       >
         <Header />
-        <div className="hrmsLayout-center">
-          <main className="hrmsLayoutMainPadding">
-            {showAppointment && <AppointmentRouting />}
-            {showSetting && <AppRoutes />}
-            {showInventory && <Inventory />}
-            {showIncentive && <Incentive />}
-            {showLaboratory && <Lab />}
-            {showUtilites && <Utilitiesmain />}
-            {showEmergency && <Emergency />}
-            {showSystemAdmin && <SystemAdmin />}
-            {showSocialService && <SocialServicePage />}
-            {showDisprensary && <Disprensary />}
-            {showDynamicReport && <DynamicReport />}
-            {showReport && <ReportMainRouting />}
-            {showNurse && <NursingMainRouting />}
-            {showDoctor && <DoctorDashBoard />}
-            {showOprationTheater && <Otmain />}
-            {showNhif && <Nhif />}
-            {showADT && <HomePage />}
-            {showMKT && <Mkrtrefrrance />}
-            {showClinical && <Clinical />}
-            {showVaccination && <Vaccination />}
-            {showFixAssets && <FixedAssets />}
-            {showCSSD && <Cssd />}
-            {showAccounting && <AccountComponent />}
-            {showQueuemgnt && <PatientQueue />}
-            {showMaternity && <AppConfig />}
-            {showHelpDesk && <HelpDeskRouting />}
-            {showRadiology && <RadiologyRouting />}
-            {showPharmacy && <PharmacyRouting />}
-            {showPatient && <PatientRouting />}
-            {showVerification && <VerificationRouting />}
-            {showSubStore && <SubstoreRouting />}
-          </main>
-        </div>
+        <main className="hrmsLayoutMainPadding">
+          {showAppointment && <AppointmentRouting />}
+          {showSetting && <AppRoutes />}
+          {showInventory && <Inventory />}
+          {showIncentive && <Incentive />}
+          {showLaboratory && <Lab />}
+          {showUtilites && <Utilitiesmain />}
+          {showEmergency && <Emergency />}
+          {showSystemAdmin && <SystemAdmin />}
+          {showSocialService && <SocialServicePage />}
+          {showDisprensary && <Disprensary />}
+          {showDynamicReport && <DynamicReport />}
+          {showReport && <ReportMainRouting />}
+          {showNurse && <NursingMainRouting />}
+          {showDoctor && <DoctorDashBoard />}
+          {showOprationTheater && <Otmain />}
+          {showNhif && <Nhif />}
+          {showADT && <HomePage />}
+          {showMKT && <Mkrtrefrrance />}
+          {showClinical && <Clinical />}
+          {showVaccination && <Vaccination />}
+          {showFixAssets && <FixedAssets />}
+          {showCSSD && <Cssd />}
+          {showAccounting && <AccountComponent />}
+          {showQueuemgnt && <PatientQueue />}
+          {showMaternity && <AppConfig />}
+          {showHelpDesk && <HelpDeskRouting />}
+          {showRadiology && <RadiologyRouting />}
+          {showPharmacy && <PharmacyRouting />}
+          {showPatient && <PatientRouting />}
+          {showVerification && <VerificationRouting />}
+          {showSubStore && <SubstoreRouting />}
+          {showMedicalRecord && <MedicalReportRouting />}
+        </main>
       </div>
     </div>
   );

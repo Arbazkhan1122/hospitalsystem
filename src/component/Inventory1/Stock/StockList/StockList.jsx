@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import "./StockList.css";
 import StockManage from './StockManage'; // Import StockManage component
+import { startResizing } from '../../../TableHeadingResizing/resizableColumns';
+
 
 const StockList = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [subcategory, setSubcategory] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null); // Track selected item for StockManage
 
   useEffect(() => {
-    fetch('http://192.168.1.39:8080/api/items/getAllItem')
+    fetch('http://localhost:8080/api/items/getAllItem')
       .then(response => response.json())
       .then(data => setItems(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -84,19 +88,38 @@ const StockList = () => {
             </div>
           </div>
           <div className='stock-ta'>
-          <table className="stock-stock-table">
-            <thead>
-              <tr>
-                <th>Item Type</th>
-                <th>Sub Category</th>
-                <th>Item Name</th>
-                <th>Item Code</th>
-                <th>Unit</th>
-                <th>Available Quantity</th>
-                <th>Minimum Quantity</th>
-                <th>Action</th>
-              </tr>
-            </thead>
+          <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Item Type",
+  "Sub Category",
+  "Item Name",
+  "Item Code",
+  "Unit",
+  "Available Quantity",
+  "Minimum Quantity",
+  "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
             <tbody>
               {filteredItems.map(item => (
                 <tr key={item.id}>
@@ -120,14 +143,14 @@ const StockList = () => {
               ))}
             </tbody>
           </table>
-          <div className="stock-pagination">
+          {/* <div className="stock-pagination">
             <span>{`1 to ${filteredItems.length} of ${items.length}`}</span>
             <button disabled>First</button>
             <button disabled>Previous</button>
             <span>Page 1 of 1</span>
             <button disabled>Next</button>
             <button disabled>Last</button>
-          </div>
+          </div> */}
           </div>
         </>
       )}

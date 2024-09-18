@@ -1,3 +1,4 @@
+// neha-OT-ot-machine-14-9-24
 import React, { useState, useEffect } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import './ot_machine.css';
@@ -158,9 +159,7 @@ function Ot_machine() {
           value={searchTerm}
           onChange={handleSearchChange}
         />
-        <button className="ot_machine_filter_button">
-          <FaSearch />
-        </button>
+       
       </div>
 
       <table className="ot_machine_table">
@@ -189,13 +188,13 @@ function Ot_machine() {
         </tbody>
       </table>
 
-      <div className="ot_machine_pagination">
+      {/* <div className="ot_machine_pagination">
         <button>First</button>
         <button>Previous</button>
         <span>Page 1 of 4</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
     </div>
   );
 }

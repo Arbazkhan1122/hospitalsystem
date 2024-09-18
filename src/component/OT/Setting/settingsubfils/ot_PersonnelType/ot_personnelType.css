@@ -1,8 +1,11 @@
+ /* neha-OT-OT-Personaltype-14-9-24 */
 .ot_personnelType_main {
-    background-color: #e3f2fd;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+  background-color:var( --background-color);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-size: var(--font-size);
+
   }
   
   .ot_personnelType_table {
@@ -24,9 +27,9 @@
   
   .ot_personnelType_search_bar input[type="text"] {
     width: 300px;
-    padding: 8px;
+    padding: 2px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 5px;
   }
   
   .ot_personnelType_filter_button {
@@ -101,6 +104,12 @@
     gap: 5px;
     margin-left: 20px;
   }
+
+  .ot_personnelType_checkbox input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+
+  }
   
   .ot_personnelType_buttons {
     display: flex;
@@ -109,23 +118,25 @@
   }
   
   .ot_personnelType_save, .ot_personnelType_clear {
-    padding: 10px 15px;
+    padding:5px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     color: white;
     cursor: pointer;
     font-size: 16px;
   }
   
   .ot_personnelType_save {
-    background-color: green;
+    background-color: var(--button-color);
   }
   
   .ot_personnelType_clear {
-    background-color: orange;
+    background-color: var(--button-color);
   }
   
   .ot_personnelType_save:hover, .ot_personnelType_clear:hover {
-    background-color: blue;
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+    border: 1px solid var(--button-hover-border-color);
   }
   

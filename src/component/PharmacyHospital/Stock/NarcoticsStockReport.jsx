@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+  /* Mohini_NarcoticsStockReport_WholePage_14/sep/2024 */
+  import React, { useState } from 'react';
 import './NarcoticsStockReport.css';
 
 const NarcoticsStockReport = () => {
@@ -85,14 +86,14 @@ const NarcoticsStockReport = () => {
         </tbody>
       </table>
 
-      <div className="narcotics-stock-report-pagination">
+      {/* <div className="narcotics-stock-report-pagination">
         <span>1 to 6 of 6</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 1 of 1</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
       </div>
       <div className="narcotics-stock-report-summary">
         <h2>Summary</h2>
@@ -106,3 +107,4 @@ const NarcoticsStockReport = () => {
 };
 
 export default NarcoticsStockReport;
+  /* Mohini_NarcoticsStockReport_WholePage_14/sep/2024 */

@@ -1,3 +1,5 @@
+ /* prachi parab user interface changed  14/9 */
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './RequisitionList.css'; // Update to match the new CSS file
@@ -11,7 +13,7 @@ const RequisitionList = () => {
     useEffect(() => {
         const fetchRequisitions = async () => {
             try {
-                const response = await axios.get('http://192.168.1.37:1415/api/medications');
+                const response = await axios.get('http://192.168.1.39:1415/api/medications');
                 const data = response.data;
                 // Assuming you have pagination data in API response
                 // Update this logic based on actual API response
@@ -37,7 +39,7 @@ const RequisitionList = () => {
     return (
         <>
             <div className="RequisitionList-tableContainer">
-                <h2>Drugs Requisition List</h2>
+                <h5 style={{marginBottom:'20px'}}>Drugs Requisition List</h5>
                 <div className='RequisitionList-Header'>
                     <input type='text' placeholder='Search' className='RequisitionList-searchInput'/>
                     <div className="RequisitionList-actions">
@@ -57,6 +59,7 @@ const RequisitionList = () => {
                             <th>Item Name</th>
                             <th>Quantity</th>
                            
+                           
                             {/* <th>Actions</th> */}
                         </tr>
                     </thead>
@@ -72,15 +75,13 @@ const RequisitionList = () => {
                                 <td>{item.medicationName || 'N/A'}</td>
                                 <td>1</td>
                                 {/* <td>{item.comments || 'N/A'}</td> */}
-                                <td>
-                                    {/* <button className="RequisitionList-btn RequisitionList-consumption">View</button> */}
-                                </td>
+                               
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
-            <div className="RequisitionList-pagination">
+            {/* <div className="RequisitionList-pagination">
                 <button 
                     className="RequisitionList-pagination-btn" 
                     onClick={() => handlePageChange(1)}
@@ -112,7 +113,7 @@ const RequisitionList = () => {
                 >
                     Last
                 </button>
-            </div>
+            </div> */}
         </>
     );
 };

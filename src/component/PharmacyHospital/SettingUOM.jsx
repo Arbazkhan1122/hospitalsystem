@@ -1,3 +1,4 @@
+/* Mohini_SettingUOM_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
@@ -10,7 +11,7 @@ const SettingUOM = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [selectedUser, setSelectedUser] = useState({ name: '', description: '', isActive: true });
 
-  const apiUrl = 'http://192.168.1.37:1415/api/units-of-measurement';
+  const apiUrl = 'http://192.168.1.39:1415/api/units-of-measurement';
 
   useEffect(() => {
     // Fetch data from the API when the component mounts
@@ -163,3 +164,4 @@ const SettingUOM = () => {
 };
 
 export default SettingUOM;
+/* Mohini_SettingUOM_WholePage_14/sep/2024 */

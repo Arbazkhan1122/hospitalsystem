@@ -1,3 +1,4 @@
+/* Mohini_HospitalHeader_WholePage_14/sep/2024 */
 import React from 'react';
 import './SupplierInformation.css';
 
@@ -13,7 +14,7 @@ const SupplierInformationCom = () => {
     <div className="supplier-info-list-container">
       <div className="supplier-info-search-container">
         <input type="text" placeholder="Search" className="supplier-infosearch-input" />
-        <button className="supplier-info-search-button"><i className="fa fa-search"></i></button>
+        {/* <button className="supplier-info-search-button"><i className="fa fa-search"></i></button> */}
       </div>
       <div className='supplier-info-sale'>
       <div>Showing 4 / 4 results</div>
@@ -47,7 +48,7 @@ const SupplierInformationCom = () => {
         </tbody>
       </table>
 
-      <div className="supplier-info-pagination-container">
+      {/* <div className="supplier-info-pagination-container">
        
           <button className="supplier-info-pagination-button">First</button>
           <button className="supplier-info-pagination-button">Previous</button>
@@ -56,10 +57,11 @@ const SupplierInformationCom = () => {
           <button className="supplier-info-pagination-button">Last</button>
        
         
-      </div>
+      </div> */}
       </div>
     </div>
   );
 };
 
 export default SupplierInformationCom;
+/* Mohini_HospitalHeader_WholePage_14/sep/2024 */

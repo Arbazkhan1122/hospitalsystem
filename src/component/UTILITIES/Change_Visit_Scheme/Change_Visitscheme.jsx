@@ -1,3 +1,4 @@
+// neha-utilities-change_Visitscheme-14-9-24
 import React, { useState } from 'react';
 import './Change_Visitschememain.css';
 
@@ -81,19 +82,19 @@ function Change_Visitscheme() {
 
             <div className="change-form">
               <h3>Change To:</h3>
-              <div className="form-row">
+              <div className="visitschemeform-row">
                 <label>Select New Scheme:</label>
                 <select>
                   <option>---Select New Scheme---</option>
                 </select>
               </div>
-              <div className="form-row">
+              <div className="visitschemeform-rowform-row">
                 <label>Select New Price Category:</label>
                 <select>
                   <option>---Select New Price Category---</option>
                 </select>
               </div>
-              <div className="form-row">
+              <div className="visitschemeform-rowform-row">
                 <label>Remarks:</label>
                 <textarea></textarea>
               </div>
@@ -102,7 +103,7 @@ function Change_Visitscheme() {
         )}
 
         <div className="btn_Change_Visitschememain">
-          <button className="btn_Change_Visitschememainsave btn btn-success"  onClick={handleSaveClick}>Save</button>
+          <button className="btn_Change_Visitschememainsave "  onClick={handleSaveClick}>Save</button>
 
           
           <button className="btn_Change_Visitschememaindiscard">Discard</button>

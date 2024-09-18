@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './WriteOffItemList.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+
 
 const WriteOffItemsList = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [writeOffGoods, setWriteOffGoods] = useState([]);
   const [filteredGoods, setFilteredGoods] = useState([]);
@@ -10,7 +14,7 @@ const WriteOffItemsList = () => {
     // Fetch data from the API
     const fetchWriteOffGoods = async () => {
       try {
-        const response = await fetch('http://192.168.1.39:8080/api/writeoffgoods/getAllWriteOffGoods');
+        const response = await fetch('http://192.168.1.39:8888/api/writeoffgoods/getAllWriteOffGoods');
         if (response.ok) {
           const data = await response.json();
           setWriteOffGoods(data);
@@ -45,34 +49,54 @@ const WriteOffItemsList = () => {
 
   return (
     <div className='writeOffList-inventory-content'>
-      <div className="writeOffList-inventory-search-bar">
+      <div className="writeOffList-inventory-results">
+      <div>
         <input 
           type="text" 
           placeholder="Search" 
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <button onClick={handleSearch}>🔍</button>
+        <button className='writeOffList-inventory-results-search' onClick={handleSearch}>🔍</button>
       </div>
-      <div className="writeOffList-inventory-results">
         <div>
-          <span>Showing {filteredGoods.length} / {writeOffGoods.length} results</span>
-          <button onClick={handlePrint}>Print</button>
+          <span className='writeOffList-inventory-span'>Showing {filteredGoods.length} / {writeOffGoods.length} results</span>
+          <button className='writeOffList-inventory-button' onClick={handlePrint}>Print</button>
         </div>
       </div>
-      <div className='wite-off-tab'>
-      <table className="writeOffList-inventory-write-off-list-table">
-        <thead>
-          <tr>
-            <th>Item Name</th>
-            <th>Write Off Qty</th>
-            <th>Unit</th>
-            <th>Write Off Date</th>
-            <th>Rate</th>
-            <th>Total Amount</th>
-            <th>Remark</th>
-          </tr>
-        </thead>
+      <div className='table-container'>
+      <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Req.No",
+  "StoreName",
+  "Req.Date",
+  "Requested By",
+  "Received By",
+  "Status",
+  "Verification Status",
+  "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {filteredGoods.length > 0 ? (
             filteredGoods.map((item, index) => (
@@ -93,7 +117,7 @@ const WriteOffItemsList = () => {
           )}
         </tbody>
       </table>
-      <div className="writeOffList-inventory-writeOffList-pagination">
+      {/* <div className="writeOffList-inventory-writeOffList-pagination">
         <div className='writeOffList-inventory-writeOffList-pagination-div'>
           <span>0 to {filteredGoods.length} of {writeOffGoods.length}</span>
           <button>First</button>
@@ -102,7 +126,7 @@ const WriteOffItemsList = () => {
           <button>Next</button>
           <button>Last</button>
         </div>
-      </div>
+      </div> */}
       </div>
     </div>
   );

@@ -1,13 +1,16 @@
+/* Mohini_SupplierWisePurchaseReport_14/sep/2024 */
 .supplier-wise-purchase-report {
-    background-color: #e6f3ff;
+    background-color:var(--background-color);
     padding: 20px;
+    height: 90vh;
     font-family: Arial, sans-serif;
   }
-  
   .supplier-wise-purchase-report h1 {
-    color: #004080;
+    color: black;
     font-size: 16px;
-  }
+    text-align: left; /* Aligns the h1 text to the left */
+}
+
   
   .supplier-wise-purchase-date-range,
   .supplier-wise-purchase-supplier-selection,
@@ -15,7 +18,9 @@
   .supplier-wise-purchase-results-info {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    font-size: 14;
+    padding: 5px;
+    /* margin-bottom: 10px; */
   }
   
   .supplier-wise-purchase-report input,
@@ -23,18 +28,72 @@
   .supplier-wise-purchase-report button {
     margin: 0 5px;
     padding: 5px;
+    font-size: 14px;
   }
+  .supp-date {
+    display: flex;
+    align-items: center; /* Aligns items vertically in the center */
+    gap: 10px; /* Adds space between elements */
+    background-color: #f2f2f2; /* Change to desired background color */
+}
+
+.supp-date div {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Adds small gap between label and input */
+}
+
+.supplier-wise-purchase-star-btn, 
+.supplier-wise-purchase-dash-btn {
+    background-color: #fff; /* Button background color */
+    border: 1px solid #ccc; /* Optional: Adds a border */
+    padding: 5px; /* Optional: Adjust padding */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
   
-  .supplier-wise-purchase-show-report-btn,
-  .supplier-wise-purchase-export-btn,
-  .supplier-wise-purchase-print-btn {
-    background-color: #6495ED;
+  .supplier-wise-purchase-show-report-btn{
+    background-color:var( --button-color);
     color: white;
     border: none;
-    padding: 5px 10px;
+    margin-right: 10px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
+    margin-left: auto;
+    transition: background-color 0.3s ease;
+
+  }
+.supplier-wise-purchase-show-report-btn:hover{
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+
+}
+
+  .supplier-wise-purchase-export-btn,
+  .supplier-wise-purchase-print-btn {
+    background-color:var( --button-color);
+    color: white;
+    border: none;
+    margin-right: 10px;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: auto;
+    transition: background-color 0.3s ease;
+  }
+  .supplier-wise-purchase-export-btn:hover,
+  .supplier-wise-purchase-print-btn:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+
   }
   
+
   .supplier-wise-purchase-report-table {
     width: 100%;
     border-collapse: collapse;
@@ -111,21 +170,12 @@
 }
 
 .supplier-wise-purchase-results-info span {
-    font-size: 16px;
-    color: #5468ff;
+    font-size: 14px;
+    color: black;
     /* font-weight: 500; */
 }
 
-.supplier-wise-purchase-export-btn,
-.supplier-wise-purchase-print-btn {
-    font-size: 16px;
-    padding: 5px 10px;
-    background-color: #5468ff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+
 .supplier-wise-purchase-pagination {
     display: flex;
     justify-content: center; /* Center the pagination controls */
@@ -165,3 +215,4 @@
 .supplier-wise-purchase-summary div {
   margin: 5px 0; /* Add some spacing between the summary items */
 }
+/* Mohini_SupplierWisePurchaseReport_14/sep/2024 */

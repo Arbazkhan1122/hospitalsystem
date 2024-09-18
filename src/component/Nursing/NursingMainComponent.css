@@ -1,12 +1,13 @@
 .out-patient-container {
-    background-color: #e0f7fa;
+    background-color: #e3fffe;
     padding: 20px;
+    font-size: var( --font-size);
   }
   
-  .tabs, .sub-tabs {
+  /* .tabs, .sub-tabs {
     display: flex;
     margin-bottom: 10px;
-  }
+  } */
   
   .tab-button, .sub-tab {
     margin-right: 10px;
@@ -25,11 +26,28 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  .datefilter-from-to{
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .datefilter-from-to{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+
+
   }
   
-  .search-input, .department-input {
+  .nursing-search-input, .department-input {
   
-    width: 300px;
+    width: 30%;
 
 
     padding: 5px;
@@ -141,7 +159,7 @@
   width: 100%;
   overflow-x: auto;
   padding: 20px;
-  background-color: #e6f7ff;
+  background-color: #e3fffe;;
 }
 
 .OutPatient_PastDays-Header {
@@ -234,6 +252,7 @@
 .opd-triage-page .filter-options {
   display: flex;
   justify-content: space-around;
+  font-weight: bold;
   margin-top: 20px;
 }
 
@@ -242,6 +261,7 @@
   align-items: center;
   margin-right: 20px;
   font-size: 14px;
+  font-weight: bold;
 }
 
 /* Date filter container */
@@ -282,17 +302,18 @@
 
 /* Styling for the OK button */
  .date-filter button {
-  background-color: #4CAF50;
-  border: none;
+  background-color: var(--button-color);
   color: white;
-  padding: 8px 16px;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 4px;
-  font-size: 14px;
 }
 
  .date-filter button:hover {
-  background-color: #45a049;
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 }
 
 
@@ -326,4 +347,58 @@
   color: white; /* Text color for active tab */
   background-color: #2d68ea; /* Background color for active tab */
   border-radius: 5px; /* Optional: adds rounded corners */
+}
+
+.opd-tabs {
+  background-color:white; /* Light blue background */
+  padding: 10px 0;
+  display: flex;
+  justify-content: flex-start; /* Align the tabs to the left */
+}
+
+.opd-tab-item {
+  font-size: 16px;
+  color:black;
+  cursor: pointer;
+  padding: 10px 20px;
+  position: relative;
+  text-decoration: none;
+  margin-right: 20px; /* Add space between the tabs */
+}
+
+.opd-tab-item:hover,
+.opd-tab-item.active {
+  font-weight: bold;
+  
+}
+
+.opd-tab-item.active::after,
+.opd-tab-item:hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color:var( --button-bg-color);
+  bottom: 0;
+  left: 0;
+}
+.nursing-filter-options{
+  font-weight: 300px;
+  display: flex;
+}
+.nursing-filter-options label{
+  margin-right: 40px;
+}
+.OutPatient_PastDays-button{
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.OutPatient_PastDays-button:hover{
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }

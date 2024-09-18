@@ -1,15 +1,29 @@
+/* Swapnil Rokade requisition adding className 14/09 */
 .requisition-inventory-content {
     /* height: 100%; */
     margin: 0 auto;
+    height: 90vh;
+    overflow-y: scroll;
     padding: 10px;
-    background-color: #ccf2ff;
+    background-color: var(--background-color);
+  }
+  .requisition-inventory-content::-webkit-scrollbar {
+    display: none;
   }
   
 .requisition-inventory-direct-dispatch{
-  background-color: #2196F3;
+  background-color: var(--button-color);
+  color: white;
   border: none;
-  height: 30px;
+  /* height: 25px; */
+  padding: var(--input-box-padding);
   border-radius: 4px;
+}
+.requisition-inventory-direct-dispatch:hover
+{
+  background-color: var( --button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
 }
   .requisition-inventory-search-bar {
     display: flex;
@@ -20,7 +34,7 @@
   }
   
  
-  .requisition-inventory-search-bar button {
+  .requisition-inventory-search-bar-button {
     margin-bottom: 10px;
     padding: 0; /* Remove padding to prevent extra space around the icon */
     margin-left: -30px; /* Adjust margin if needed for alignment */
@@ -67,13 +81,13 @@
     word-wrap: break-word;
   }
   
-  /* Pagination */
+  /* Pagination
   .requisition-inventory-requisition-pagination {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: center; */
     /* margin-top: 10px; */
-
+/* 
   }
   
   .requisition-inventory-requisition-pagination-div {
@@ -83,21 +97,21 @@
     gap: 5px;
   }
   
-  .requisition-inventory-requisition-pagination-div button {
+  .requisition-inventory-requisition-pagination-div-button {
     background-color: #2196F3;
     padding: 5px 10px;
     height: 30px;
 
     border-radius: 5px;
     border: none;
-  }
+  } */
   
   /*  */
   .requisition-inventory-status-filter {
     display: flex;
     align-items: center;
     margin-right: 40px;
-    justify-content: flex-end; /* Aligns the content to the right */
+    justify-content: space-between; /* Aligns the content to the right */
 }
 
 .requisition-inventory-status-filter span {
@@ -114,21 +128,26 @@
   align-items: center; /* Vertically center items */
 }
 
-.requisition-inventory-results span {
+.requisition-inventory-results-span {
   margin-right: 10px; /* Add space between the text and the button */
   font-size: 16px;
-  color: #2196F3; /* Example background color */
+  color: var( --button-color); /* Example background color */
 
 }
 
-.requisition-inventory-results button {
+.requisition-inventory-results-print {
   font-size: 16px;
   border-radius: 5px;
   padding: 5px 10px; /* Adjust padding for the button */
   border: none; /* Remove default border */
-  background-color: #2196F3; /* Example background color */
+  background-color: var( --button-color); /* Example background color */
   color: #fff; /* Example text color */
   cursor: pointer; /* Change cursor to pointer for clickable button */
+}
+.requisition-inventory-results-print:hover{
+  background-color: var( --button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
 }
 
 /* Optional: Add specific styles for each button */
@@ -136,15 +155,21 @@
 
 
 .requisition-inventory-direct-button {
-  padding: 5px 10px; /* Adjust padding as needed */
+  padding: 5px; /* Adjust padding as needed */
   border: 1px solid #ddd; /* Border style */
-  border-radius: 15px; /* Rounded corners for the button */
-  background-color: #2196F3; /* Background color */
+  border-radius: 5px; /* Rounded corners for the button */
+  background-color: var(--button-color); /* Background color */
   font-size: 16px;
-  color: black; /* Text color */
+  color: white; /* Text color */
   cursor: pointer; /* Pointer cursor on hover */
   margin-right: 10px; /* Gap between buttons */
   display: inline-block; /* Ensure buttons are in line */
+}
+.requisition-inventory-direct-button:hover
+{
+  background-color: var( --button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
 }
 
 /* Remove margin from the last button to prevent extra space */
@@ -193,7 +218,7 @@
   padding: 8px;
   border: none;
   background: none; /* Removes any background */
-  color: #2196F3; /* Text color */
+  color: var(--button-color); /* Text color */
   cursor: pointer;
   font-size: 20px; /* Font size for star icon */
   display: inline-flex; /* Keeps it in line with other elements */
@@ -205,7 +230,7 @@
   padding: 8px;
   border: none;
   background: none; /* Removes any background */
-  color: #2196F3; /* Text color */
+  color: var(--button-color); /* Text color */
   cursor: pointer;
   font-size: 20px; /* Font size for star icon */
   display: inline-flex; /* Keeps it in line with other elements */
@@ -216,11 +241,17 @@
 .requisition-inventory-ok {
     padding: 5px 10px; /* Adjust padding */
     border: none;
-    background-color: #2196F3; /* Light green background */
+    background-color: var(--button-color); /* Light green background */
     color: white; /* Text color */
     cursor: pointer;
     border-radius: 4px; /* Rounded corners */
     font-size: 16px; /* Font size for OK text */
+}
+.requisition-inventory-ok:hover
+{
+  background-color: var( --button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
 }
 
 

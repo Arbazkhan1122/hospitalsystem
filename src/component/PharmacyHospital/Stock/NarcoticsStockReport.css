@@ -1,14 +1,17 @@
-.narcotics-stock-report-container {
-    background-color: #e6f3ff;
+  /* Mohini_NarcoticsStockReport_WholePage_14/sep/2024 */
+  .narcotics-stock-report-container {
+    background-color: var(--background-color);
     padding: 20px;
     font-family: Arial, sans-serif;
 }
 
 .narcotics-stock-report-container h1 {
-    color: #004080;
-    font-size: 18px;
-    margin-bottom: 20px;
-}
+    color: black; /* Keeps the current color */
+    font-size: 16px; /* Set font size to 18px */
+    margin-bottom: 20px; /* Space below the heading */
+    text-align: left; /* Aligns text to the left */
+  }
+  
 
 .narcotics-stock-report-report-controls {
     display: flex;
@@ -57,14 +60,21 @@
 
 .narcotics-stock-report-export-btn, 
 .narcotics-stock-report-print-btn {
-    background-color: #6495ED;
+    background-color:var( --button-color);
     color: white;
     border: none;
-    padding: 5px 10px;
+    border-radius: 5px;
+    padding: 5px 5px;
     margin-left: 10px;
     cursor: pointer;
 }
+.narcotics-stock-report-export-btn:hover, 
+.narcotics-stock-report-print-btn:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 
+}
 .narcotics-stock-report-stock-table {
     width: 100%;
     border-collapse: collapse;
@@ -154,11 +164,13 @@
   }
   
   .nacotics-stock-selection-btn {
-    padding: 8px 20px; /* Add padding for the button */
+    padding: 5px 5px; /* Add padding for the button */
     margin-left: 40px;
     justify-content: flex-end; /* Evenly distribute space between and around the items */
-
-    background-color: #6495ED; /* Set the button's background color */
+    background-color:var( --button-color);
+    color: white;
+    border: 1px solid var( --button-hover-border-color);
+    border: 1px solid var( --button-hover-border-color);
     border: none; /* Remove the border */
     border-radius: 4px; /* Slightly round the corners */
     cursor: pointer; /* Change cursor to pointer on hover */
@@ -166,6 +178,9 @@
   }
   
   .nacotics-stock-selection-btn:hover {
-    background-color: #4169E1; /* Change the background color slightly on hover */
-  }
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+}
   
+  /* Mohini_NarcoticsStockReport_WholePage_14/sep/2024 */
