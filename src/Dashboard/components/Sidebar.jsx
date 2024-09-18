@@ -8,7 +8,7 @@ import {
 import { TbUsers } from "react-icons/tb";
 import { FaClinicMedical, FaUserMd, FaFileInvoice } from "react-icons/fa";
 import "./Sidebar.css";
-import hospitallogo from "../Images/hospital.png";
+import hospitallogo from "../Images/hospitallogo.png";
 import { Link } from "react-router-dom";
 const Sidebar = ({
   isOpen,
@@ -208,11 +208,11 @@ const Sidebar = ({
         {isOpen ? (
           <span>
             <img
-              style={{ width: "30px" }}
+              style={{ width: "30px", marginRight: "10px" }}
               src={hospitallogo}
               alt="Hospital Logo"
             />
-            Hospital
+            <span>Hospital</span>
           </span>
         ) : (
           <img

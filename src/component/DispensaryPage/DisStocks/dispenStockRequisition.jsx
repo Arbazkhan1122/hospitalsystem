@@ -157,7 +157,7 @@ function DispenStockRequisition() {
 
   // Fetch requisitions from the backend API
   useEffect(() => {
-    fetch('http://192.168.1.40:3155/api/requisitions/fetch-all-requisitions')
+    fetch('http://localhost:1415/api/requisitions/fetch-all-requisitions')
       .then((response) => response.json())
       .then((data) => setRequisitions(data))
       .catch((error) => console.error('Error fetching requisitions:', error));

@@ -149,7 +149,7 @@ const DisPrescription = () => {
 
   const fetchPrescriptions = async () => {
     try {
-      const response = await axios.get('http://192.168.1.56:3155/api/hospital/fetch-all-prescription-data');
+      const response = await axios.get('http://localhost:1415/api/hospital/fetch-all-prescription-data');
       setPrescriptions(response.data);
       setLoading(false);
     } catch (err) {
