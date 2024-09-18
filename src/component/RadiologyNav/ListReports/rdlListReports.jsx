@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../ListReports/rdlListReports.css";
 import * as XLSX from "xlsx"; // Import xlsx library
 import RadiologyReportPopup from "./RadiologyReportPopup";
+import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
 function RDLListReports() {
+  const [columnWidths, setColumnWidths] = useState({});
   const [showAddReport, setShowAddReport] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [reportsData, setReportsData] = useState([]);
   const [filteredReportsData, setFilteredReportsData] = useState([]);
   const [filter, setFilter] = useState("--All--");
+  const tableRef = useRef(null);
 
   // Fetch radiology report data and patient data from the APIs
   useEffect(() => {
@@ -57,14 +60,12 @@ function RDLListReports() {
       [
         "Sr No",
         "Date",
-        "Hospital Number",
         "Patient Name",
         "Age/Sex",
         "Phone No",
         "Reporting Doctor",
         "Imaging Type",
         "Imaging Item",
-        "Report",
       ],
       ...filteredReportsData.map((report, index) => [
         index + 1,
@@ -79,7 +80,6 @@ function RDLListReports() {
         report.prescriberDTO?.employeeName,
         report.imagingTypeDTO?.imagingTypeName,
         report.imagingItemDTO?.imagingItemName,
-        "View",
       ]),
     ];
 
@@ -140,8 +140,8 @@ function RDLListReports() {
       </div>
       <div className="rDLListReport-search-N-results">
         <div className="rDLListReport-search-bar">
-          <i className="fa-solid fa-magnifying-glass"></i>
           <input type="text" placeholder="Search" />
+          <i className="fa-solid fa-magnifying-glass"></i>
         </div>
         <div className="rDLListReport-results-info">
           Showing {filteredReportsData.length} / {reportsData.length} results
@@ -156,19 +156,38 @@ function RDLListReports() {
           </button>
         </div>
       </div>
-      <div className="rDLListReport-table-N-paginat" id="table-to-print">
-        <table className="rd-list-report-table">
+      <div className="table-container" id="table-to-print">
+        <table ref={tableRef}>
           <thead>
             <tr>
-              <th>Sr No</th>
-              <th>Date</th>
-              <th>Patient Name</th>
-              <th>Age/Sex</th>
-              <th>Phone No</th>
-              <th>Reporting Doctor</th>
-              <th>Imaging Type</th>
-              <th>Imaging Item</th>
-              <th>Report</th>
+              {[
+                "Sr No",
+                "Date",
+                "Patient Name",
+                "Age/Sex",
+                "Phone No",
+                "Reporting Doctor",
+                "Imaging Type",
+                "Imaging Item",
+                "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>

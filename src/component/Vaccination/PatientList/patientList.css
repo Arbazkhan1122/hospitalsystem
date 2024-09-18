@@ -1,15 +1,21 @@
+/* Akash Pawar Vaccination 14/24 */
 .patientList {
   padding: 10px;
 }
 
 .patientList-create button {
   border: none;
-  background-color: #2D68EA;
+  background-color: var(--button-color);
   padding: 10px;
   border-radius: 5px;
   color: white;
   font-size: 14px;
   cursor: pointer;
+}
+.patientList-create button:hover {
+  background-color: var(--button-hover-background-color);
+  border:1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
 }
 
 .patientList-search-container {
@@ -36,66 +42,22 @@
 }
 
 .patientList-print-btn {
-  background-color: #2D68EA;
+  background-color: var(--button-color);
   color: white;
   padding: 6px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
+.patientList-print-btn:hover {
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+   border: 1px solid var(--button-hover-border-color);
+}
 
 .patientList-results-count {
-  color: #2D68EA;
   margin-left: 10px;
 }
-
-.patientList-table {
-  width: 100%;
-  background-color: #f2f2f2;
-  border-collapse: collapse;
-}
-
-.patientList-table th,
-.patientList-table td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: left;
-  font-size: 14px;
-  color: #333;
-}
-
-.patientList-table th {
-  position: relative;
-  user-select: none;
-  white-space: nowrap;
-  background-color: #e6e6e6;
-}
-
-.patientList-table th .header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.resizable-th {
-  position: relative;
-}
-
-.resizer {
-  width: 5px;
-  height: 100%;
-  position: absolute;
-  right: 0;
-  top: 0;
-  cursor: col-resize;
-  z-index: 1;
-  background-color: transparent;
-}
-
-.resizer:hover {
-  background-color: #aaa;
-}
-
 .no-show-patientList {
   text-align: center;
   font-style: italic;
@@ -103,7 +65,7 @@
 }
 
 .patientList-table-btn {
-  background-color: #2D68EA;
+  background-color: var(--button-bg-color);
   color: white;
   border-radius: 15px;
   border: none;
@@ -134,6 +96,7 @@
   background-color: white;
   /* padding: 20px; */
   border-radius: 10px;
+  top: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -146,12 +109,11 @@
     display: block;
     width: 100%;
     text-align: left;
-    padding: 10px;
+    padding: var(--input-box-padding);
     background: none;
     border: none;
     cursor: pointer;
   }
-
 .patientList-more-options button:hover {
   background-color: #f0f0f0;
 }

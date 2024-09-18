@@ -1,5 +1,4 @@
-/* fixedAssetsReport.css */
-
+/* Akash Pawar FixedAssests 14/24 */
 .fixed-asset-report {
     display: flex;
     flex-direction: column;
@@ -8,7 +7,6 @@
   
   .fixed-asset-report-nav {
     padding: 1rem;
-    /* border-bottom: 1px solid #ddd; */
   }
   .fixed-assets-btn{
     background-color: white;
@@ -16,36 +14,36 @@
     border-radius: 5px;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
+    padding: 5px 10px;
     text-decoration: none;
     gap: 10px;
     color: black;
     /* padding: 0; */
   }
   .fixed-assets-btn:hover{
-    background-color:#2d68ea;
+    background-color:var(--button-bg-color);
     color: white;
   }
   .fixed-assets-btn:hover> .fixed-assets-icon{
     background-color: white;
-    color: #2d68ea; 
   } 
   .fixed-assets-icon{
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    background-color: #2d68ea;
+    background-color: var(--button-bg-color);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: var(--font-size);
     color: white;
   }
   .fixed-assets-text{
-    font-size: 14px;
+    font-size: var(--font-size);
   }
   .fixed-assets-text h3{
     padding: 5px;
+    font-size: var(--heading-font);
     margin: 0;
   }
   .fixed-assets-text p{

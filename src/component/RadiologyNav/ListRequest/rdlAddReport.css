@@ -1,4 +1,4 @@
-   /* Modal overlay styling */
+/* Akash Pawar Radiology 14/24 */
    .rDLListRequest-modal-overlay {
     position: fixed;
     top: 0;
@@ -16,14 +16,16 @@
   
   /* Modal content styling */
   .rDLListRequest-modal-content {
-    background-color: #fff;
+    background: transparent;
     padding: 20px;
     width: 80%;
     border-radius: 8px;
-    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); */
     position: relative;
     overflow: auto;
-    height: 80%;
+    height: 90%;
+  }
+  .rDLListRequest-modal-content::-webkit-scrollbar {
+   display: none;
   }
   
   /* Close button styling */
@@ -31,14 +33,15 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background: transparent;
+    background: red;
     border: none;
-    font-size: 24px;
     cursor: pointer;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 12px;
   }
   
 .rDLListRequest-add-report-form {
-  font-family: Arial, sans-serif;
   margin: 0 auto;
   padding: 20px;
   background-color: #fff;
@@ -46,8 +49,8 @@
 }
 
 .rDLListRequest-add-report-form h2 {
-    background-color: #003366;
-    color: white;
+    color: black;
+    font-size: var(--heading-font);
     padding: 10px;
     margin: -20px -20px 20px -20px;
   }
@@ -70,7 +73,7 @@
   .rDLListRequest-add-report-link {
     color: #0066cc;
     text-decoration: none;
-    font-size: 0.9em;
+    font-size: var(--font-size);
   }
   
   .rDLListRequest-add-report-text-editor {
@@ -130,20 +133,34 @@
     align-items: center;
   }
   
-  .rDLListRequest-add-report-save-btn, .rDLListRequest-add-report-submit-print-btn {
-    padding: 10px 20px;
-    margin-right: 10px;
+  .rDLListRequest-add-report-save-btn,.rDLListRequest-add-report-submit-print-btn {
+    padding: 5px;
     border: none;
+    border-radius: 5px;
     color: white;
     cursor: pointer;
+    margin: 5px;
+    background-color: var(--button-color);
+  }
+  .rDLListRequest-add-report-save-btn:hover,.rDLListRequest-add-report-submit-print-btn:hover {
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+     border: 1px solid var(--button-hover-border-color);
   }
   
-  .rDLListRequest-add-report-save-btn {
-    background-color: #4CAF50;
+  .rDLListRequest-add-report-cancel-btn {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    background-color: red;
   }
-  
-  .rDLListRequest-add-report-submit-print-btn {
-    background-color: #008CBA;
+  .rDLListRequest-add-report-cancel-btn:hover {
+    background-color: var(--button-hover-background-color);
+    color: red;
+     border: 1px solid red;
   }
   .rDLListRequest-add-report-image-preview{
     margin-top: 10px;

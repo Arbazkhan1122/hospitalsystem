@@ -49,12 +49,17 @@
   
   .fixedAssetMovement-show-report {
     margin-left: auto;
-    background-color: #6495ed;
+    background-color: var(--button-color);
     color: white;
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
+  }
+  .fixedAssetMovement-show-report:hover {
+    background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+   border: 1px solid var(--button-hover-border-color);
   }
   
   .fixedAssetMovement-filters {
@@ -93,6 +98,7 @@
   .fixedAssetMovement-search-container{
     background-color: white;
     padding: 8px;
+    margin-top: 10px;
 }
 .fixedAssetMovement-search-container input[type="text"]{
    background-color: transparent;
@@ -108,17 +114,22 @@
   }
 
   .fixedAssetMovement-print-btn{
-    background-color: #007bff;
+    background-color: var(--button-color);
     color: white;
     margin-left: 10px;
     padding: 6px 15px;
     border: none;
     border-radius: 5px;
   }
-  .fixedAssetMovement-results-count{
-    color: #007bff;
+  .fixedAssetMovement-print-btn:hover{
+    background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+   border: 1px solid var(--button-hover-border-color);
   }
-  
+  /* .fixedAssetMovement-results-count{
+    color: var(--font-color);
+  }
+   */
   .fixedAssetMovement-pagination {
     display: flex;
     justify-content: center;
@@ -145,51 +156,6 @@
     border-radius: 4px;
     cursor: pointer;
   }
-
-    /* MedicareTable.css */
-    .fixedAssetMovement-table {
-      width: 100%;
-      background-color: #f2f2f2;
-      border-collapse: collapse;
-    }
-    
-    .fixedAssetMovement-table th,
-    .fixedAssetMovement-table td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      font-size: 14px;
-    }
-    
-    .fixedAssetMovement-table th {
-        text-align: left;
-      position: relative;
-      user-select: none; /* Disable text selection in header */
-      white-space: nowrap; /* Prevent text from wrapping */
-    }
-    
-    .fixedAssetMovement-table th .header-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    
-    .resizable-th {
-      position: relative;
-    }
-    
-    .resizer {
-      width: 5px;
-      height: 100%;
-      position: absolute;
-      right: 0;
-      top: 0;
-      cursor: col-resize;
-      z-index: 1;
-    }
-    
-    .fixedAssetMovement-table th .resizer:hover {
-      background-color: #aaa;
-    }
     
     .no-show-fixedAssetMovement {
         text-align: center;

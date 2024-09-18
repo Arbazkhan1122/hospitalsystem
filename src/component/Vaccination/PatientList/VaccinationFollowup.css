@@ -1,4 +1,4 @@
-/* VaccinationFollowup.css */
+/* Akash Pawar Vaccination 14/24 */
 .vaccination-followup-overlay {
     position: fixed;
     top: 0;
@@ -10,6 +10,7 @@
    display: flex;
    justify-content: center;
    align-items: start;
+   z-index: 120;
   }
   
   .vaccination-followup-modal {
@@ -38,6 +39,7 @@
     margin-top: 0;
     font-size: 16px;
     margin-bottom: 20px;
+  color: #000;  
   }
   
   .vaccination-followup-patient-info {
@@ -94,14 +96,16 @@
   }
   
   .vaccination-followup-save-button {
-    background-color: #4CAF50;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 5px;
     border-radius: 5px;
     cursor: pointer;
   }
   
   .vaccination-followup-save-button:hover {
-    background-color: #45a049;
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+     border: 1px solid var(--button-hover-border-color);
   }

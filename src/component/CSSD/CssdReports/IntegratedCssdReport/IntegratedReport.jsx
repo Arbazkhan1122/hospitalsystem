@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Integratedreport.css";
+import { startResizing } from "../../../../TableHeadingResizing/ResizableColumns";
 
 function IntegratedReport() {
   const [columnWidths, setColumnWidths] = useState({});
@@ -72,31 +73,6 @@ function IntegratedReport() {
       return matchesDisinfectionMethod && matchesSubstore;
     });
     setSearchResults(filteredData);
-  };
-
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
   };
 
   const handleDashClick = () => {
@@ -201,66 +177,72 @@ function IntegratedReport() {
           <i className="fas fa-search"></i>
         </div>
         <div className="IntegratedCssdReport-results">
-          <span>Showing {searchResults.length} / {dummyData.length} results</span>
+          <span>
+            Showing {searchResults.length} / {dummyData.length} results
+          </span>
           <button className="IntegratedCssdReport-export-btn">Export</button>
           <button className="IntegratedCssdReport-print-btn">Print</button>
         </div>
       </div>
-
-      <table className="IntegratedCssdReport-table" ref={tableRef}>
-        <thead>
-          <tr>
-            {[
-              "Request Date",
-              "Item Name",
-              "Code",
-              "Tag Number",
-              "Request From",
-              "Requested By",
-              "Disinfectant",
-              "Disinfected Date",
-              "Disinfected By",
-              "Action",
-            ].map((header, index) => (
-              <th
-                key={index}
-                style={{ width: columnWidths[index] }}
-                className="resizable-th"
-              >
-                <div className="header-content">
-                  <span>{header}</span>
-                  <div
-                    className="resizer"
-                    onMouseDown={startResizing(index)}
-                  ></div>
-                </div>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {searchResults.length > 0 ? (
-            searchResults.map((item, index) => (
-              <tr key={index}>
-                <td>{item.requestDate}</td>
-                <td>{item.itemName}</td>
-                <td>{item.code}</td>
-                <td>{item.tagNumber}</td>
-                <td>{item.requestFrom}</td>
-                <td>{item.requestedBy}</td>
-                <td>{item.disinfectant}</td>
-                <td>{item.disinfectedDate}</td>
-                <td>{item.disinfectedBy}</td>
-                <td>Action</td>
-              </tr>
-            ))
-          ) : (
+      <div className="table-container">
+        <table ref={tableRef}>
+          <thead>
             <tr>
-              <td colSpan="10">No data available</td>
+              {[
+                "Request Date",
+                "Item Name",
+                "Code",
+                "Tag Number",
+                "Request From",
+                "Requested By",
+                "Disinfectant",
+                "Disinfected Date",
+                "Disinfected By",
+                "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {searchResults.length > 0 ? (
+              searchResults.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.requestDate}</td>
+                  <td>{item.itemName}</td>
+                  <td>{item.code}</td>
+                  <td>{item.tagNumber}</td>
+                  <td>{item.requestFrom}</td>
+                  <td>{item.requestedBy}</td>
+                  <td>{item.disinfectant}</td>
+                  <td>{item.disinfectedDate}</td>
+                  <td>{item.disinfectedBy}</td>
+                  <td>Action</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="10">No data available</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
