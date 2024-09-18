@@ -64,7 +64,7 @@
   }
 
   /* Container for the date filter */
-.admission-date-filter {
+/* .admission-date-filter {
     display: flex;
     align-items: flex-start;
     padding: 10px;
@@ -72,22 +72,22 @@
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+} */
 
 /* Labels and input styling */
-.admission-date-filter label {
+/* .admission-date-filter label {
     margin-bottom: 10px;
     font-weight: bold;
     color: #333;
-}
+} */
 
-.admission-date-filter input[type="date"] {
+/* .admission-date-filter input[type="date"] {
     margin-left: 10px;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
-}
+} */
 
 /* Styling for the OK button */
 .Admitted-Patient-tableContainer button {
@@ -106,7 +106,7 @@
     background-color: blue;
 }
 
-.admission-date-filter button {
+/* .admission-date-filter button {
   padding: 8px 16px;
   background-color: #007bff;
   border: none;
@@ -116,7 +116,7 @@
   cursor: pointer;
   transition: background-color 0.3s;
   margin-left:5px;
-}
+} */
 
 .admission-date-filter button:hover {
   background-color: blue;
@@ -299,16 +299,16 @@
     
 }
 
-.admission-date-filter select {
+/* .admission-date-filter select {
     margin-left: 10px;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
-}
+} */
 
 /* Styling for the OK button */
-.admission-date-filter  button {
+/* .admission-date-filter  button {
     padding: 8px 16px;
     background-color: #007bff;
     border: none;
@@ -318,4 +318,4 @@
     cursor: pointer;
     transition: background-color 0.3s;
     margin-left:5px;
-}
+} */

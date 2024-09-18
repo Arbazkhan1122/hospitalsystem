@@ -2,18 +2,9 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import './UserCollectionReport.css';
 
-const DoctorsReport = () => {
+const CategoryWiseReport = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  // Example of how you might fetch or have data
-  const reportsData = []; // Replace this with your actual data source or API call
-
-  const VAT_RATE = 0.13;
-  const DISCOUNT_RATE = 0.10;
-
-  const calculateTotalVAT = (revenue) => revenue * VAT_RATE;
-  const calculateTotalDiscount = (revenue) => revenue * DISCOUNT_RATE;
 
   const handlePrint = () => {
     window.print(); // Simple print functionality using the browser's print dialog
@@ -30,18 +21,49 @@ const DoctorsReport = () => {
 
   const handleDateRangeSelection = (range) => {
     console.log('Selected Range:', range);
-    // Implement the logic to filter data based on the selected range
     setIsPopupOpen(false); // Close the popup after selection
   };
 
   const handleShowReport = () => {
-    setShowReport(true);
+    setShowReport(true); // Show the report when button is clicked
   };
+
+  const handleSearch = (searchTerm) => {
+    console.log('Search term:', searchTerm);
+    // Implement your search logic here
+  };
+
+  // Placeholder reports data
+  const reportsData = [
+    { date: "2024/05/12", CT_SCAN: 3, MRI: 0, X_RAY: 0 },
+    { date: "2024/06/10", CT_SCAN: 2, MRI: 0, X_RAY: 0 },
+    { date: "2024/06/14", CT_SCAN: 0, MRI: 0, X_RAY: 0 },
+    { date: "2024/06/19", CT_SCAN: 0, MRI: 2, X_RAY: 0 },
+    { date: "2024/06/27", CT_SCAN: 0, MRI: 0, X_RAY: 0 },
+    { date: "2024/07/10", CT_SCAN: 0, MRI: 0, X_RAY: 2 },
+    { date: "2024/07/12", CT_SCAN: 0, MRI: 0, X_RAY: 2 },
+    { date: "2024/07/13", CT_SCAN: 0, MRI: 0, X_RAY: 3 },
+    { date: "2024/07/22", CT_SCAN: 0, MRI: 0, X_RAY: 2 },
+    { date: "2024/07/26", CT_SCAN: 0, MRI: 0, X_RAY: 2 },
+    { date: "2024/07/27", CT_SCAN: 0, MRI: 0, X_RAY: 2 },
+    { date: "2024/07/30", CT_SCAN: 0, MRI: 0, X_RAY: 2 }
+  ];
+
+  // Process data to categorize quantities by type for each date
+  const aggregatedData = reportsData.reduce((acc, { date, type, quantity }) => {
+    if (!acc[date]) {
+      acc[date] = { date, 'CT-SCAN': 0, MRI: 0, 'X-RAY': 0 };
+    }
+    acc[date][type] += quantity;
+    return acc;
+  }, {});
+
+  const dataForTable = Object.values(aggregatedData);
 
   return (
     <div className="user-collection-report">
       <div className="user-collection-report-header">
-        <h3 className="user-collection-report-title">⚛ DoctorWise Patient Report</h3>
+        <h3 className="user-collection-report-title">⚛ Category Wise Imaging Report</h3>
         <div className="user-collection-report-filters">
           <div className="user-collection-report-date-filter">
             <label>From:</label>
@@ -62,14 +84,7 @@ const DoctorsReport = () => {
               </div>
             )}
           </div>
-          <div className="user-collection-report-doctor-filter">
-            <label>Doctor Name:</label>
-            <select>
-              <option value="">Select Doctor Name</option>
-              {/* Add options dynamically if needed */}
-            </select>
-            <button className="user-collection-report-show-btn" onClick={handleShowReport}>Show Report</button>
-          </div>
+          <button className="user-collection-report-show-btn" onClick={handleShowReport}>Show Report</button>
         </div>
       </div>
 
@@ -80,10 +95,10 @@ const DoctorsReport = () => {
               type="text"
               className="user-collection-report-search"
               placeholder="Search..."
-              onChange={(e) => console.log(e.target.value)} // Implement handleSearch function if needed
+              onChange={(e) => handleSearch(e.target.value)}
             />
             <div className="user-collection-page-results-info">
-              Showing {reportsData.length}/{reportsData.length} results
+              Showing {dataForTable.length}/{dataForTable.length} results
             </div>
             <button className="user-collection-report-print-btn" onClick={handlePrint}>Print</button>
             <button className="user-collection-report-print-btn" onClick={handleExport}>Export</button>
@@ -92,39 +107,27 @@ const DoctorsReport = () => {
             <table className="user-collection-report-table">
               <thead>
                 <tr>
-                  <th>Appointment Date</th>
-                  <th>Hospital No</th>
-                  <th>Hospital Dialysis No</th>
-                  <th>Patient Name</th>
-                  <th>Age/Sex</th>
-                  <th>Prescriber Name</th>
-                  <th>Total</th>
+                  <th>Date</th>
+                  <th>CT-SCAN</th>
+                  <th>MRI</th>
+                  <th>X-RAY</th>
                 </tr>
               </thead>
               <tbody>
-                {reportsData && reportsData.length > 0 ? (
-                  reportsData.map((row, index) => (
-                    <tr key={index}>
-                      <td>{row.date}</td>
-                      <td>{row.hospitalNo}</td>
-                      <td>{row.hospitalDialysisNo}</td>
-                      <td>{row.patientName}</td>
-                      <td>{row.ageSex}</td>
-                      <td>{row.prescriberName}</td>
-                      <td>{/* Add any additional calculations or totals here */}</td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="7" className="user-name-no-row">No Rows To Show</td>
+                {dataForTable.map((row, index) => (
+                  <tr key={index}>
+                    <td>{row.date}</td>
+                    <td>{row['CT-SCAN']}</td>
+                    <td>{row.MRI}</td>
+                    <td>{row['X-RAY']}</td>
                   </tr>
-                )}
+                ))}
               </tbody>
             </table>
             <div className="user-collection-report-page-no">
               <Button className="user-collection-report-pagination-btn">First</Button>
               <Button className="user-collection-report-pagination-btn">Previous</Button>
-              <span>Page 1 of 4</span>
+              {/* Add pagination functionality */}
               <Button className="user-collection-report-pagination-btn">Next</Button>
               <Button className="user-collection-report-pagination-btn">Last</Button>
             </div>
@@ -135,4 +138,4 @@ const DoctorsReport = () => {
   );
 };
 
-export default DoctorsReport;
+export default CategoryWiseReport;

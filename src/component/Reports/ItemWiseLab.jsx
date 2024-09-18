@@ -2,18 +2,26 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import './UserCollectionReport.css';
 
-const DoctorsReport = () => {
+const ItemWiseLab = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
-  // Example of how you might fetch or have data
-  const reportsData = []; // Replace this with your actual data source or API call
-
-  const VAT_RATE = 0.13;
-  const DISCOUNT_RATE = 0.10;
-
-  const calculateTotalVAT = (revenue) => revenue * VAT_RATE;
-  const calculateTotalDiscount = (revenue) => revenue * DISCOUNT_RATE;
+  const reportsData = [
+    { department: 'Biochemistry', testName: 'FASTING BLOOD SUGAR', unit: 23, totalAmount: 23000 },
+    { department: 'Biochemistry', testName: 'Sugar Fasting', unit: 15, totalAmount: 9000 },
+    { department: 'Biochemistry', testName: 'KIDNEY FUNCTION TESTS', unit: 11, totalAmount: 7700 },
+    { department: 'Biochemistry', testName: 'HIGH VAGINAL SWAB', unit: 8, totalAmount: 24000 },
+    { department: 'Biochemistry', testName: 'RBS (SUPPORT GROUP)', unit: 7, totalAmount: 3500 },
+    { department: 'Microbiology', testName: 'URIC ACID', unit: 6, totalAmount: 1800 },
+    { department: 'Biochemistry', testName: 'COVID 19 AG', unit: 6, totalAmount: 3000 },
+    { department: 'Biochemistry', testName: 'BRUCELLA', unit: 5, totalAmount: 15000 },
+    { department: 'Biochemistry', testName: 'MP SMEAR', unit: 5, totalAmount: 1500 },
+    { department: 'Serology', testName: 'CREATININE', unit: 3, totalAmount: 6000 },
+    { department: 'Serology', testName: 'PREGNANCY TEST', unit: 3, totalAmount: 2400 },
+    { department: 'Hematology', testName: 'UNKNOWN', unit: 2, totalAmount: 1000 },
+    { department: 'Biochemistry', testName: 'UNKNOWN', unit: 2, totalAmount: 100 },
+  ];
 
   const handlePrint = () => {
     window.print(); // Simple print functionality using the browser's print dialog
@@ -34,14 +42,18 @@ const DoctorsReport = () => {
     setIsPopupOpen(false); // Close the popup after selection
   };
 
-  const handleShowReport = () => {
-    setShowReport(true);
+  const handleSearch = (term) => {
+    setSearchTerm(term);
   };
+
+  const filteredData = reportsData.filter((row) =>
+    row.testName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="user-collection-report">
       <div className="user-collection-report-header">
-        <h3 className="user-collection-report-title">⚛ DoctorWise Patient Report</h3>
+        <h3 className="user-collection-report-title">⚛ Total Item Wise Lab Report</h3>
         <div className="user-collection-report-filters">
           <div className="user-collection-report-date-filter">
             <label>From:</label>
@@ -62,14 +74,7 @@ const DoctorsReport = () => {
               </div>
             )}
           </div>
-          <div className="user-collection-report-doctor-filter">
-            <label>Doctor Name:</label>
-            <select>
-              <option value="">Select Doctor Name</option>
-              {/* Add options dynamically if needed */}
-            </select>
-            <button className="user-collection-report-show-btn" onClick={handleShowReport}>Show Report</button>
-          </div>
+          <button className="user-collection-report-show-btn" onClick={() => setShowReport(true)}>Show Report</button>
         </div>
       </div>
 
@@ -80,10 +85,10 @@ const DoctorsReport = () => {
               type="text"
               className="user-collection-report-search"
               placeholder="Search..."
-              onChange={(e) => console.log(e.target.value)} // Implement handleSearch function if needed
+              onChange={(e) => handleSearch(e.target.value)}
             />
             <div className="user-collection-page-results-info">
-              Showing {reportsData.length}/{reportsData.length} results
+              Showing {filteredData.length}/{reportsData.length} results
             </div>
             <button className="user-collection-report-print-btn" onClick={handlePrint}>Print</button>
             <button className="user-collection-report-print-btn" onClick={handleExport}>Export</button>
@@ -92,33 +97,21 @@ const DoctorsReport = () => {
             <table className="user-collection-report-table">
               <thead>
                 <tr>
-                  <th>Appointment Date</th>
-                  <th>Hospital No</th>
-                  <th>Hospital Dialysis No</th>
-                  <th>Patient Name</th>
-                  <th>Age/Sex</th>
-                  <th>Prescriber Name</th>
-                  <th>Total</th>
+                  <th>Service Department</th>
+                  <th>Test Name</th>
+                  <th>Unit</th>
+                  <th>Total Amount</th>
                 </tr>
               </thead>
               <tbody>
-                {reportsData && reportsData.length > 0 ? (
-                  reportsData.map((row, index) => (
-                    <tr key={index}>
-                      <td>{row.date}</td>
-                      <td>{row.hospitalNo}</td>
-                      <td>{row.hospitalDialysisNo}</td>
-                      <td>{row.patientName}</td>
-                      <td>{row.ageSex}</td>
-                      <td>{row.prescriberName}</td>
-                      <td>{/* Add any additional calculations or totals here */}</td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="7" className="user-name-no-row">No Rows To Show</td>
+                {filteredData.map((row, index) => (
+                  <tr key={index}>
+                    <td>{row.department}</td>
+                    <td>{row.testName}</td>
+                    <td>{row.unit}</td>
+                    <td>{row.totalAmount.toFixed(2)}</td>
                   </tr>
-                )}
+                ))}
               </tbody>
             </table>
             <div className="user-collection-report-page-no">
@@ -135,4 +128,4 @@ const DoctorsReport = () => {
   );
 };
 
-export default DoctorsReport;
+export default ItemWiseLab;

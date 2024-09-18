@@ -2,26 +2,16 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import './UserCollectionReport.css';
 
-const DoctorsReport = () => {
+const TransferredPatient = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  // Example of how you might fetch or have data
-  const reportsData = []; // Replace this with your actual data source or API call
-
-  const VAT_RATE = 0.13;
-  const DISCOUNT_RATE = 0.10;
-
-  const calculateTotalVAT = (revenue) => revenue * VAT_RATE;
-  const calculateTotalDiscount = (revenue) => revenue * DISCOUNT_RATE;
-
   const handlePrint = () => {
-    window.print(); // Simple print functionality using the browser's print dialog
+    window.print();
   };
 
   const handleExport = () => {
     console.log('Export function not yet implemented');
-    // Implement your export logic here
   };
 
   const handlePopupToggle = () => {
@@ -30,9 +20,21 @@ const DoctorsReport = () => {
 
   const handleDateRangeSelection = (range) => {
     console.log('Selected Range:', range);
-    // Implement the logic to filter data based on the selected range
-    setIsPopupOpen(false); // Close the popup after selection
+    setIsPopupOpen(false);
   };
+
+  const reportsData = [
+    {
+      date: '31-Aug-2024',
+      totalPatientsTransferred: 1,
+      totalTransferred: 1,
+      orthoSurgeryWard: 1,
+      medicineGynoWard: 0,
+      preOperationWard: 0,
+      icuPostOpWard: 0,
+      emergencyWard: 0,
+    },
+  ];
 
   const handleShowReport = () => {
     setShowReport(true);
@@ -41,7 +43,7 @@ const DoctorsReport = () => {
   return (
     <div className="user-collection-report">
       <div className="user-collection-report-header">
-        <h3 className="user-collection-report-title">⚛ DoctorWise Patient Report</h3>
+        <h3 className="user-collection-report-title">⚛  Transferred Patients Report</h3>
         <div className="user-collection-report-filters">
           <div className="user-collection-report-date-filter">
             <label>From:</label>
@@ -62,14 +64,7 @@ const DoctorsReport = () => {
               </div>
             )}
           </div>
-          <div className="user-collection-report-doctor-filter">
-            <label>Doctor Name:</label>
-            <select>
-              <option value="">Select Doctor Name</option>
-              {/* Add options dynamically if needed */}
-            </select>
-            <button className="user-collection-report-show-btn" onClick={handleShowReport}>Show Report</button>
-          </div>
+          <button className="user-collection-report-show-btn" onClick={handleShowReport}>Show Report</button>
         </div>
       </div>
 
@@ -80,7 +75,7 @@ const DoctorsReport = () => {
               type="text"
               className="user-collection-report-search"
               placeholder="Search..."
-              onChange={(e) => console.log(e.target.value)} // Implement handleSearch function if needed
+              onChange={(e) => console.log(e.target.value)} // Implement handleSearch if needed
             />
             <div className="user-collection-page-results-info">
               Showing {reportsData.length}/{reportsData.length} results
@@ -88,43 +83,40 @@ const DoctorsReport = () => {
             <button className="user-collection-report-print-btn" onClick={handlePrint}>Print</button>
             <button className="user-collection-report-print-btn" onClick={handleExport}>Export</button>
           </div>
-          <div className='user-collection-report-tab'>
+
+          <div className="user-collection-report-tab">
             <table className="user-collection-report-table">
               <thead>
                 <tr>
-                  <th>Appointment Date</th>
-                  <th>Hospital No</th>
-                  <th>Hospital Dialysis No</th>
-                  <th>Patient Name</th>
-                  <th>Age/Sex</th>
-                  <th>Prescriber Name</th>
-                  <th>Total</th>
+                  <th>Date</th>
+                  <th>Total Patient Transferred</th>
+                  <th>Total Transferred</th>
+                  <th>OrthoSurgery Ward</th>
+                  <th>MedicineGyno Ward</th>
+                  <th>Pre-Operation Ward</th>
+                  <th>ICU & POST-OP Ward</th>
+                  <th>Emergency Ward</th>
                 </tr>
               </thead>
               <tbody>
-                {reportsData && reportsData.length > 0 ? (
-                  reportsData.map((row, index) => (
-                    <tr key={index}>
-                      <td>{row.date}</td>
-                      <td>{row.hospitalNo}</td>
-                      <td>{row.hospitalDialysisNo}</td>
-                      <td>{row.patientName}</td>
-                      <td>{row.ageSex}</td>
-                      <td>{row.prescriberName}</td>
-                      <td>{/* Add any additional calculations or totals here */}</td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="7" className="user-name-no-row">No Rows To Show</td>
+                {reportsData.map((row, index) => (
+                  <tr key={index}>
+                    <td>{row.date}</td>
+                    <td>{row.totalPatientsTransferred}</td>
+                    <td>{row.totalTransferred}</td>
+                    <td>{row.orthoSurgeryWard}</td>
+                    <td>{row.medicineGynoWard}</td>
+                    <td>{row.preOperationWard}</td>
+                    <td>{row.icuPostOpWard}</td>
+                    <td>{row.emergencyWard}</td>
                   </tr>
-                )}
+                ))}
               </tbody>
             </table>
             <div className="user-collection-report-page-no">
               <Button className="user-collection-report-pagination-btn">First</Button>
               <Button className="user-collection-report-pagination-btn">Previous</Button>
-              <span>Page 1 of 4</span>
+              <span>Page 1 of 1</span>
               <Button className="user-collection-report-pagination-btn">Next</Button>
               <Button className="user-collection-report-pagination-btn">Last</Button>
             </div>
@@ -135,4 +127,4 @@ const DoctorsReport = () => {
   );
 };
 
-export default DoctorsReport;
+export default TransferredPatient;

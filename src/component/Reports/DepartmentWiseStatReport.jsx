@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import './UserCollectionReport.css';
 
-const DoctorsReport = () => {
+const DepartmentWiseStatReport = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -41,7 +41,7 @@ const DoctorsReport = () => {
   return (
     <div className="user-collection-report">
       <div className="user-collection-report-header">
-        <h3 className="user-collection-report-title">⚛ DoctorWise Patient Report</h3>
+        {/* <h3 className="user-collection-report-title">⚛ Total Revenue From Lab Report</h3> */}
         <div className="user-collection-report-filters">
           <div className="user-collection-report-date-filter">
             <label>From:</label>
@@ -62,14 +62,7 @@ const DoctorsReport = () => {
               </div>
             )}
           </div>
-          <div className="user-collection-report-doctor-filter">
-            <label>Doctor Name:</label>
-            <select>
-              <option value="">Select Doctor Name</option>
-              {/* Add options dynamically if needed */}
-            </select>
-            <button className="user-collection-report-show-btn" onClick={handleShowReport}>Show Report</button>
-          </div>
+          <button className="user-collection-report-show-btn" onClick={handleShowReport}>Show Report</button>
         </div>
       </div>
 
@@ -80,7 +73,7 @@ const DoctorsReport = () => {
               type="text"
               className="user-collection-report-search"
               placeholder="Search..."
-              onChange={(e) => console.log(e.target.value)} // Implement handleSearch function if needed
+              onChange={(e) => handleSearch(e.target.value)} // Ensure the handleSearch function is defined
             />
             <div className="user-collection-page-results-info">
               Showing {reportsData.length}/{reportsData.length} results
@@ -92,31 +85,29 @@ const DoctorsReport = () => {
             <table className="user-collection-report-table">
               <thead>
                 <tr>
-                  <th>Appointment Date</th>
-                  <th>Hospital No</th>
-                  <th>Hospital Dialysis No</th>
-                  <th>Patient Name</th>
-                  <th>Age/Sex</th>
-                  <th>Prescriber Name</th>
+                  <th>Department</th>
+                  <th>New Male Adult</th>
+                  <th>New FeMale Adult</th>
+                  <th>New Male Child</th>
+                  <th>New FeMale Child</th>
+                  <th>Followup Male Adult</th>
+                  <th>Followup FeMale Adult</th>
+                  <th>Followup Male Child</th>
+                  <th>Followup FeMale Child</th>
                   <th>Total</th>
+                                 
                 </tr>
               </thead>
               <tbody>
                 {reportsData && reportsData.length > 0 ? (
                   reportsData.map((row, index) => (
                     <tr key={index}>
-                      <td>{row.date}</td>
-                      <td>{row.hospitalNo}</td>
-                      <td>{row.hospitalDialysisNo}</td>
-                      <td>{row.patientName}</td>
-                      <td>{row.ageSex}</td>
-                      <td>{row.prescriberName}</td>
-                      <td>{/* Add any additional calculations or totals here */}</td>
+                      {/* Render your data cells here */}
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="7" className="user-name-no-row">No Rows To Show</td>
+                    <td colSpan="13" className="user-name-no-row">No Rows To Show</td>
                   </tr>
                 )}
               </tbody>
@@ -135,4 +126,4 @@ const DoctorsReport = () => {
   );
 };
 
-export default DoctorsReport;
+export default DepartmentWiseStatReport;

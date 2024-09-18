@@ -2,18 +2,9 @@ import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import './UserCollectionReport.css';
 
-const DoctorsReport = () => {
+const FilmTypeCount = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-  // Example of how you might fetch or have data
-  const reportsData = []; // Replace this with your actual data source or API call
-
-  const VAT_RATE = 0.13;
-  const DISCOUNT_RATE = 0.10;
-
-  const calculateTotalVAT = (revenue) => revenue * VAT_RATE;
-  const calculateTotalDiscount = (revenue) => revenue * DISCOUNT_RATE;
 
   const handlePrint = () => {
     window.print(); // Simple print functionality using the browser's print dialog
@@ -30,18 +21,32 @@ const DoctorsReport = () => {
 
   const handleDateRangeSelection = (range) => {
     console.log('Selected Range:', range);
-    // Implement the logic to filter data based on the selected range
     setIsPopupOpen(false); // Close the popup after selection
   };
 
   const handleShowReport = () => {
-    setShowReport(true);
+    setShowReport(true); // Show the report when button is clicked
   };
+
+  const handleSearch = (searchTerm) => {
+    console.log('Search term:', searchTerm);
+    // Implement your search logic here
+  };
+
+  // Placeholder reports data
+  const reportsData = [
+    { filmType: "C.T.SCAN(14*7)", quantityUsed: 3 },
+    { filmType: "X-Ray(10*12)", quantityUsed: 2 },
+    { filmType: "X-Ray(14*17)", quantityUsed: 0 },
+    { filmType: "X-Ray(8*10).", quantityUsed: 1 },
+
+    
+  ];
 
   return (
     <div className="user-collection-report">
       <div className="user-collection-report-header">
-        <h3 className="user-collection-report-title">⚛ DoctorWise Patient Report</h3>
+        <h3 className="user-collection-report-title">⚛ Film Type Count Report</h3>
         <div className="user-collection-report-filters">
           <div className="user-collection-report-date-filter">
             <label>From:</label>
@@ -62,14 +67,14 @@ const DoctorsReport = () => {
               </div>
             )}
           </div>
-          <div className="user-collection-report-doctor-filter">
-            <label>Doctor Name:</label>
+          <div className="user-collection-report-counter-filter">
+            <label>Counter:</label>
             <select>
-              <option value="">Select Doctor Name</option>
-              {/* Add options dynamically if needed */}
+              <option value="All">All</option>
+              {/* Add more options as needed */}
             </select>
-            <button className="user-collection-report-show-btn" onClick={handleShowReport}>Show Report</button>
           </div>
+          <button className="user-collection-report-show-btn" onClick={handleShowReport}>Show Report</button>
         </div>
       </div>
 
@@ -80,7 +85,7 @@ const DoctorsReport = () => {
               type="text"
               className="user-collection-report-search"
               placeholder="Search..."
-              onChange={(e) => console.log(e.target.value)} // Implement handleSearch function if needed
+              onChange={(e) => handleSearch(e.target.value)}
             />
             <div className="user-collection-page-results-info">
               Showing {reportsData.length}/{reportsData.length} results
@@ -92,39 +97,23 @@ const DoctorsReport = () => {
             <table className="user-collection-report-table">
               <thead>
                 <tr>
-                  <th>Appointment Date</th>
-                  <th>Hospital No</th>
-                  <th>Hospital Dialysis No</th>
-                  <th>Patient Name</th>
-                  <th>Age/Sex</th>
-                  <th>Prescriber Name</th>
-                  <th>Total</th>
+                  <th>Film Type</th>
+                  <th>Film Quantity Used</th>
                 </tr>
               </thead>
               <tbody>
-                {reportsData && reportsData.length > 0 ? (
-                  reportsData.map((row, index) => (
-                    <tr key={index}>
-                      <td>{row.date}</td>
-                      <td>{row.hospitalNo}</td>
-                      <td>{row.hospitalDialysisNo}</td>
-                      <td>{row.patientName}</td>
-                      <td>{row.ageSex}</td>
-                      <td>{row.prescriberName}</td>
-                      <td>{/* Add any additional calculations or totals here */}</td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="7" className="user-name-no-row">No Rows To Show</td>
+                {reportsData.map((row, index) => (
+                  <tr key={index}>
+                    <td>{row.filmType}</td>
+                    <td>{row.quantityUsed}</td>
                   </tr>
-                )}
+                ))}
               </tbody>
             </table>
             <div className="user-collection-report-page-no">
               <Button className="user-collection-report-pagination-btn">First</Button>
               <Button className="user-collection-report-pagination-btn">Previous</Button>
-              <span>Page 1 of 4</span>
+              {/* Add pagination functionality */}
               <Button className="user-collection-report-pagination-btn">Next</Button>
               <Button className="user-collection-report-pagination-btn">Last</Button>
             </div>
@@ -135,4 +124,4 @@ const DoctorsReport = () => {
   );
 };
 
-export default DoctorsReport;
+export default FilmTypeCount;

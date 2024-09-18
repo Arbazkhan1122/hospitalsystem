@@ -1,14 +1,36 @@
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 import './UserCollectionReport.css';
 
-const DoctorsReport = () => {
+const TotalRevenueCom = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  // Example of how you might fetch or have data
-  const reportsData = []; // Replace this with your actual data source or API call
+  // Sample data including dates and revenue
+  const reportsData = [
+    { date: '09.Feb-2024', revenue: 2400 },
+    { date: '16.Feb-2024', revenue: 4000 },
+    { date: '19.Feb-2024', revenue: 600 },
+    { date: '16.Apr-2024', revenue: 600 },
+    { date: '12.May-2024', revenue: 1800 },
+    { date: '10.Jun-2024', revenue: 4200 },
+    { date: '11.Jun-2024', revenue: 1000 },
+    { date: '18.Jun-2024', revenue: 3000 },
+    { date: '19.Jun-2024', revenue: 16500 },
+    { date: '20.Jun-2024', revenue: 1000 },
+    { date: '27.Jun-2024', revenue: 2800 },
+    { date: '01.Jul-2024', revenue: 11000 },
+    { date: '11.Jul-2024', revenue: 1000 },
+    { date: '24.Jul-2024', revenue: 3600 },
+    { date: '01.Aug-2024', revenue: 1500 },
+    { date: '27.Aug-2024', revenue: 300 },
+    { date: '28.Aug-2024', revenue: 1700 },
+    { date: '29.Aug-2024', revenue: 1200 },
+    { date: '30.Aug-2024', revenue: 500 },
+    { date: '31.Aug-2024', revenue: 600 }
+  ];
 
+  // Calculate Total VAT (13%) and Total Discount (assuming a discount rate, e.g., 10%)
   const VAT_RATE = 0.13;
   const DISCOUNT_RATE = 0.10;
 
@@ -41,7 +63,7 @@ const DoctorsReport = () => {
   return (
     <div className="user-collection-report">
       <div className="user-collection-report-header">
-        <h3 className="user-collection-report-title">⚛ DoctorWise Patient Report</h3>
+        <h3 className="user-collection-report-title">⚛ Total Revenue From Lab Report</h3>
         <div className="user-collection-report-filters">
           <div className="user-collection-report-date-filter">
             <label>From:</label>
@@ -62,14 +84,7 @@ const DoctorsReport = () => {
               </div>
             )}
           </div>
-          <div className="user-collection-report-doctor-filter">
-            <label>Doctor Name:</label>
-            <select>
-              <option value="">Select Doctor Name</option>
-              {/* Add options dynamically if needed */}
-            </select>
-            <button className="user-collection-report-show-btn" onClick={handleShowReport}>Show Report</button>
-          </div>
+          <button className="user-collection-report-show-btn" onClick={handleShowReport}>Show Report</button>
         </div>
       </div>
 
@@ -80,7 +95,7 @@ const DoctorsReport = () => {
               type="text"
               className="user-collection-report-search"
               placeholder="Search..."
-              onChange={(e) => console.log(e.target.value)} // Implement handleSearch function if needed
+              onChange={(e) => handleSearch(e.target.value)} // Ensure the handleSearch function is defined
             />
             <div className="user-collection-page-results-info">
               Showing {reportsData.length}/{reportsData.length} results
@@ -92,33 +107,21 @@ const DoctorsReport = () => {
             <table className="user-collection-report-table">
               <thead>
                 <tr>
-                  <th>Appointment Date</th>
-                  <th>Hospital No</th>
-                  <th>Hospital Dialysis No</th>
-                  <th>Patient Name</th>
-                  <th>Age/Sex</th>
-                  <th>Prescriber Name</th>
-                  <th>Total</th>
+                  <th>Date</th>
+                  <th>Total Revenue</th>
+                  <th>Total VAT (13%)</th>
+                  <th>Total Discount (10%)</th>
                 </tr>
               </thead>
               <tbody>
-                {reportsData && reportsData.length > 0 ? (
-                  reportsData.map((row, index) => (
-                    <tr key={index}>
-                      <td>{row.date}</td>
-                      <td>{row.hospitalNo}</td>
-                      <td>{row.hospitalDialysisNo}</td>
-                      <td>{row.patientName}</td>
-                      <td>{row.ageSex}</td>
-                      <td>{row.prescriberName}</td>
-                      <td>{/* Add any additional calculations or totals here */}</td>
-                    </tr>
-                  ))
-                ) : (
-                  <tr>
-                    <td colSpan="7" className="user-name-no-row">No Rows To Show</td>
+                {reportsData.map((row, index) => (
+                  <tr key={index}>
+                    <td>{row.date}</td>
+                    <td>{row.revenue.toFixed(2)}</td>
+                    <td>{calculateTotalVAT(row.revenue).toFixed(2)}</td>
+                    <td>{calculateTotalDiscount(row.revenue).toFixed(2)}</td>
                   </tr>
-                )}
+                ))}
               </tbody>
             </table>
             <div className="user-collection-report-page-no">
@@ -135,4 +138,4 @@ const DoctorsReport = () => {
   );
 };
 
-export default DoctorsReport;
+export default TotalRevenueCom;

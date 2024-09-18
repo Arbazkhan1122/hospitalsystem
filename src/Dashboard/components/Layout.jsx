@@ -16,7 +16,7 @@ import SocialServicePage from "../../component/SocialServicesMain/SocialServiceP
 import Disprensary from "../../component/DispensaryPage/disprensaryRoute"
 import DynamicReport from "../../component/DynamicReport/DynamicReport";
 import Report from "../../component/Reports/Layout";
-import ReportMainRouting from "../../component/Reports/ReportMainRouting";
+// import ReportMainRouting from "../../component/Reports/ReportMainRouting";
 import NursingMainRouting from "../../component/Nursing/NursingMainRouting"
 import DoctorDashBoard from "../../component/DashBoards/DoctorDashBoard"
 import Otmain from "../../component/OT/otmain";
@@ -42,6 +42,7 @@ import VerificationRouting from "../../component/Verification/VerificationRoutin
 import SubstoreRouting from "../../component/SubStoreMainPage/SubstoreRouting";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRouting";
+import ReportRoute from "../../component/Reports/ReportRoute";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -295,7 +296,7 @@ const Layout = () => {
           {showSocialService && <SocialServicePage />}
           {showDisprensary && <Disprensary />}
           {showDynamicReport && <DynamicReport />}
-          {showReport && <ReportMainRouting />}
+          {showReport && <ReportRoute />}
           {showNurse && <NursingMainRouting />}
           {showDoctor && <DoctorDashBoard />}
           {showOprationTheater && <Otmain />}

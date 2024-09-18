@@ -33,7 +33,22 @@
     background-color: #e6f7ff;
   }
   
+  .Admission-patientsTable {
+    width: 70%;
+    border-collapse: collapse;
+  }
   
+  .Admission-patientsTable th,
+  .Admission-patientsTable td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    background-color:lightgray;
+  }
+  .Actions-actions {
+    display: flex;
+    gap: 5px;
+  }
   
   .Actions-btn {
     padding: 5px 10px;
@@ -112,13 +127,35 @@
     display: flex;
 }
 
+.InpatientCensus-report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .InpatientCensus-report-table th, .report-table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #c1e4f8;
+    background-color: #e4f4ff;
+  }
+  
+  .total-row {
+    background-color: #d3d3d3;
+    font-weight: bold;
+  }
+  
+  .info-icon {
+    font-size: 12px;
+    cursor: pointer;
+  }
 
   .Report-pagination{
     text-align: center;
   }
 
   .Report-pagination button{
-   background-color: #007bff;
+    background-color: #007bff;
   border: none;
   border-radius: 4px;
   color: white;
@@ -130,7 +167,7 @@
 
 
   
-  /* .InpatientCensus-report-table th {
+  .InpatientCensus-report-table th {
     background-color: #b4d8f1;
   }
   
@@ -141,8 +178,18 @@
   .InpatientCensus-report-table tr:nth-child(odd) {
     background-color: #e4f4ff;
   }
-  */
-  /* .print-button {
+  
+  .total-row {
+    background-color: #ada8a8;
+    font-weight: bold;
+  }
+  
+  .info-icon {
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  .print-button {
     background-color: #007bff;
     color: white;
     border: none;
@@ -150,15 +197,15 @@
     cursor: pointer;
     margin-top: 20px;
   }
-   */
-  /* .print-icon {
+  
+  .print-icon {
     margin-right: 5px;
   }
   .print-button-container {
     display: flex;
     justify-content: center;
     margin-top: 20px;
-  } */
+  }
 
   .Admitted-Patient-tableContainer{
     width: 100%;
@@ -175,9 +222,12 @@
     background-position: right 10px center;
   }
   .Admitted-Patient-searchInput{
+
+    
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
+
       width: 200px; /* Adjust the width as needed */
       padding: 5px 30px 8px 10px; /* Adjust padding to make room for the icon */
       border: 1px solid #ccc;
@@ -199,26 +249,37 @@
   .Admitted-Patient-results {
     margin-right: 15px;
     font-size: 14px;
-    color: #333;
+    /* background-color: #007bff; */
+    color: #007bff;
   }
 
   
-/* .OutPatient_PastDays-patientsTable {
+.OutPatient_PastDays-patientsTable {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-} */
+}
 
-/* .OutPatient_PastDays-patientsTable th, .report-table td {
+.OutPatient_PastDays-patientsTable th, .report-table td {
   text-align: left;
   padding: 10px;
   border: 1px solid #c1e4f8;
   background-color: #e4f4ff;
 }
- */
+
+.total-row {
+  background-color: #d3d3d3;
+  font-weight: bold;
+}
+
+.info-icon {
+  font-size: 12px;
+  cursor: pointer;
+}
 
 
-/* .OutPatient_PastDays-patientsTable th {
+
+.OutPatient_PastDays-patientsTable th {
   background-color: #f0f2f5;
 }
 
@@ -228,7 +289,7 @@
 
 .InpatientCensus-report-table tr:nth-child(odd) {
   background-color: #e4f4ff;
-} */
+}
 
   
 
