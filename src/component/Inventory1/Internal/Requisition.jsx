@@ -5,6 +5,7 @@ import DispatchTable from "./DispatchTable";
 import RequisitionDetail from "./RequisitionDetail";
 import axios from "axios";
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from "../../api/api";
 
 
 const Requisition = () => {
@@ -26,7 +27,7 @@ const Requisition = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/dispatch/getAllDispatches"
+          `${API_BASE_URL}/dispatch/getAllDispatches`
         );
         setData(response.data);
       } catch (error) {

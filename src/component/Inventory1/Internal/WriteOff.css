@@ -22,7 +22,7 @@
     overflow-x: auto;
 }
 .write-off-header{
-    font-size: 16px;
+    font-size: var(--heading-font);
     margin-left: 10px;
 }
 
@@ -32,14 +32,14 @@
     text-align: left;
     border: 1px solid #ccc;
     word-wrap: break-word;
-    font-size: 14px;
+    font-size: var(--font-size);
 }
 
 .writeOff-write-off-table th {
     background-color: #f2f2f2;
     color: black;
     position: sticky;
-    font-size: 16px;
+    font-size: var(--heading-font);
     top: 0;
     z-index: 1;
 }
@@ -101,7 +101,7 @@
     margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: var(--font-size);
 }
 
 .writeOff-totals input[type="text"] {
@@ -126,7 +126,7 @@
     border: none;
     cursor: pointer;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: var(--font-size);
     background-color: var(--button-color);
     color: white;
     transition: background-color 0.3s ease;
@@ -144,7 +144,7 @@
     border: none;
     cursor: pointer;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: var(--font-size);
     background-color: #d32f2f;
     color: white;
     transition: background-color 0.3s ease;
@@ -200,7 +200,7 @@
 .writeOff-total-field label {
     margin-right: 10px; /* Space between label and input */
     font-weight: bold;
-    font-size: 14px;
+    font-size: var(--font-size);
     flex-basis: 40%; /* Adjust if necessary */
 }
 
@@ -209,7 +209,7 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: var(--font-size);
     box-sizing: border-box;
     background-color: #f1f1f1;
     text-align: right;
@@ -227,7 +227,7 @@
     border: none;
     cursor: pointer;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: var(--font-size);
     background-color: var(--button-color);
     color: white;
     transition: background-color 0.3s ease;
@@ -244,7 +244,7 @@
     border: none;
     cursor: pointer;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: var(--font-size);
     background-color: #d32f2f;
     color: white;
     transition: background-color 0.3s ease;

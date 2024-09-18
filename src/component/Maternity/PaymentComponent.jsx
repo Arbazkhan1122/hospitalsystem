@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './PaymentComponent.css';
+import { API_BASE_URL } from "../api/api";
 
 function PaymentComponent({ patient }) {
   const [paymentReturn, setPaymentReturn] = useState(false);
@@ -12,7 +13,7 @@ function PaymentComponent({ patient }) {
     // Fetch payment history data from the API
     const fetchPaymentHistory = async () => {
       try {
-        const response = await fetch("http://localhost:1415/api/payments/fetch-all-data");
+        const response = await fetch(`${API_BASE_URL}/payments/fetch-all-data`);
         if (response.ok) {
           const data = await response.json();
           setPaymentHistory(data);
@@ -54,7 +55,7 @@ function PaymentComponent({ patient }) {
 
     try {
       // Make an API call to add the payment
-      const response = await fetch("http://localhost:1415/api/payments/addPayment", {
+      const response = await fetch(`${API_BASE_URL}/payments/addPayment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

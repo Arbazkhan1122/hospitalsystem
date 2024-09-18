@@ -31,7 +31,7 @@
     display: flex; /* Use flexbox for label alignment */
     align-items: center; /* Vertically center align items */
     gap: 10px; /* Space between the checkbox and label text */
-    font-size: 16px; /* Font size for the label text */
+    font-size: var(--heading-font); /* Font size for the label text */
     color: #333; /* Color for the label text */
 }
 
@@ -81,7 +81,7 @@
 .stock-stock-table th {
     background-color: #f2f2f2;
     color: black;
-    font-size: 16px;
+    font-size: var(--heading-font);
     position: sticky;
     top: 0;
 }
@@ -174,7 +174,7 @@
 }
 
 .stock-button-list span {
-    font-size: 14px; /* Font size for the result count */
+    font-size: var(--font-size); /* Font size for the result count */
     color: var(--button-color);
     flex-grow: 1; /* Allows the span to take up remaining space */
 }
@@ -203,7 +203,7 @@
     background-color: transparent; /* Remove background color */
     border: none; /* Remove default border */
     cursor: pointer; /* Change cursor to pointer */
-    font-size: 16px; /* Font size */
+    font-size: var(--heading-font); /* Font size */
     margin-left: 10px;
     display: flex; /* Center icon */
     align-items: center; /* Center icon vertically */

@@ -7,7 +7,7 @@
 }
 
 .purchase-request-header {
-  font-size: 16px;
+  font-size: var(--font-size); 
   /* margin-bottom: 20px; */
 }
 .purchase-request-star
@@ -17,7 +17,7 @@
   background: none; /* Removes any background */
   color: var(--button-color); /* Text color */
   cursor: pointer;
-  font-size: 20px; /* Font size for star icon */
+  font-size: var(--heading-font); /* Font size for star icon */
   display: inline-flex; /* Keeps it in line with other elements */
   align-items: center; /* Centers icon vertically */
   justify-content: center; 
@@ -28,7 +28,7 @@
   background: none; /* Removes any background */
   color: var(--button-color); /* Text color */
   cursor: pointer;
-  font-size: 20px; /* Font size for star icon */
+  font-size: var(--heading-font); /* Font size for star icon */
   display: inline-flex; /* Keeps it in line with other elements */
   align-items: center; /* Centers icon vertically */
   justify-content: center;
@@ -41,7 +41,7 @@
   color: white; /* Text color */
   cursor: pointer;
   border-radius: 4px; /* Rounded corners */
-  font-size: 16px; /* Font size for OK text */
+  font-size: var(--heading-font); /* Font size for OK text */
 }
 .purchase-request-ok:hover
 {
@@ -114,6 +114,10 @@
   border: 1px solid var(--button-hover-border-color);
 }
 
+.Inv-purchase-request-input
+{
+  width: 100%;
+}
 .purchase-request-discard-button:hover {
   background-color: #c82333;
 }
@@ -271,7 +275,7 @@
 }
 
 .modal-header {
-  font-size: 20px;
+  font-size: var(--heading-font);
   margin-bottom: 15px;
 }
 

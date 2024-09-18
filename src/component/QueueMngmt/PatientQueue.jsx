@@ -2,6 +2,7 @@
 import React, { useState,useEffect } from 'react';
 import axios from 'axios';
 import './PatientQueue.css';
+import { API_BASE_URL } from '../api/api';
 
 const PatientQueue = () => {
   const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ const PatientQueue = () => {
   const [selectedStatus, setSelectedStatus] = useState('all');
 
   useEffect(() => {
-    fetch('http://192.168.1.39:1415/api/queues/employee/role')
+    fetch(`${API_BASE_URL}/queues/employee/role`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -34,7 +35,7 @@ console.log(selectedDoctor);
       const selectedDoctorId = selectedDoctor; // Now this is the employeeId
 
       if (selectedDoctorId) {
-        fetch(`http://192.168.1.39:1415/api/queues/employee/${selectedDoctorId}`)
+        fetch(`${API_BASE_URL}/queues/employee/${selectedDoctorId}`)
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
@@ -61,7 +62,7 @@ console.log(selectedDoctor);
     };
 
     // Make a PUT request to update the status
-    axios.put(`http://192.168.1.39:1415/api/queues/update/${patientData.patientQueueId}`, updatedData)
+    axios.put(`${API_BASE_URL}/queues/update/${patientData.patientQueueId}`, updatedData)
       .then((response) => {
         console.log('Data updated successfully', response.data);
         // Update the local state to reflect the changes

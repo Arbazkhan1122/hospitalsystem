@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./DirectDispatch.css";
+import { API_BASE_URL } from '../../api/api';
 
 const DirectDispatch = () => {
   const [storeName, setStoreName] = useState('');
@@ -55,7 +56,7 @@ const DirectDispatch = () => {
     console.log(payload);
 
     try {
-      const response = await fetch('http://192.168.1.39:8080/api/dispatch/savedispatch', {
+      const response = await fetch(`${API_BASE_URL}/dispatch/savedispatch`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

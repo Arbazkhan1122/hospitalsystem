@@ -6,6 +6,7 @@ import VitalsPage from './ClinicalVitals';
 import ActionRecordPage from './ActionRecordPage';
 import { useNavigate } from 'react-router-dom';
 import Problems from './Problems';
+import { API_BASE_URL } from '../api/api';
 
 const Section = ({ title, handleAddClick, children }) => (
   <div className="firstBox">
@@ -32,7 +33,7 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
     // Fetch medications data from the API
     const fetchMedications = async () => {
       try {
-        const response = await fetch('http://192.168.1.39:1415/api/medications');
+        const response = await fetch(`${API_BASE_URL}/medications`);
         const data = await response.json();
         console.log(data);
         

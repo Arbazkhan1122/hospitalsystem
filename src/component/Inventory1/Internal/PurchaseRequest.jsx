@@ -3,6 +3,7 @@ import './PurchaseRequest.css';
 import AddVendor from './AddVendor'
 import AddItem from './AddItem';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../../api/api';
 
 
 const PurchaseRequest = () => {
@@ -72,7 +73,7 @@ const PurchaseRequest = () => {
       requestedBy
     };
 
-    fetch('http://192.168.1.39:8080/api/purchase-requests/addPurchase', {
+    fetch(`${API_BASE_URL}/purchase-requests/addPurchase`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -176,6 +177,7 @@ const PurchaseRequest = () => {
                     <select
                       value={prCategory}
                       onChange={(e) => setPrCategory(e.target.value)}
+                      className='Inv-purchase-request-input'
                     >
                       <option>Consumables</option>
                       <option>Capital Goods</option>
@@ -188,6 +190,7 @@ const PurchaseRequest = () => {
                       value={itemName}
                       onChange={(e) => setItemName(e.target.value)}
                       placeholder="Item Name"
+                      className='Inv-purchase-request-input'
                     />
                      <button className='add-Item' onClick={openAddItemModel}>?</button>
                   </td>
@@ -197,6 +200,7 @@ const PurchaseRequest = () => {
                       value={itemCode}
                       onChange={(e) => setItemCode(e.target.value)}
                       placeholder="Item Code"
+                      className='Inv-purchase-request-input'
                     />
                   </td>
                   <td>
@@ -205,6 +209,7 @@ const PurchaseRequest = () => {
                       value={uom}
                       onChange={(e) => setUom(e.target.value)}
                       placeholder="Unit of Measure"
+                      className='Inv-purchase-request-input'
                     />
                   </td>
                   <td>
@@ -212,6 +217,7 @@ const PurchaseRequest = () => {
                       type="number"
                       value={quantity}
                       onChange={(e) => setQuantity(e.target.value)}
+                      className='Inv-purchase-request-input'
                     />
                   </td>
                   <td>
@@ -220,6 +226,7 @@ const PurchaseRequest = () => {
                       value={availableQty}
                       onChange={(e) => setAvailableQty(e.target.value)}
                       placeholder="Available Qty"
+                      className='Inv-purchase-request-input'
                     />
                   </td>
                   <td>
@@ -227,10 +234,11 @@ const PurchaseRequest = () => {
                       type="date"
                       value={quantityVerifiedOn}
                       onChange={(e) => setQuantityVerifiedOn(e.target.value)}
+                      className='Inv-purchase-request-input'
                     />
                   </td>
                   <td>
-                    <select>
+                    <select className='Inv-purchase-request-input'>
                       <option>Choose...</option>
                       {/* Add more options as needed */}
                     </select>
@@ -241,6 +249,7 @@ const PurchaseRequest = () => {
                       value={remarks}
                       onChange={(e) => setRemarks(e.target.value)}
                       placeholder="Item Remark"
+                      className='Inv-purchase-request-input'
                     />
                   </td>
                 </tr>

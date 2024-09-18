@@ -4,6 +4,7 @@ import { FaStar, FaListAlt, FaSearch } from 'react-icons/fa';
 import './InPatient.css';
 import PatientDashboard from './PatientDashboard';
 import InPatientPage from './InPatientPage';
+import { API_BASE_URL } from '../api/api';
 
 const PatientList = () => {
   const [patients, setPatients] = useState([]);
@@ -18,7 +19,7 @@ const PatientList = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await fetch('http://192.168.1.39:1415/api/new-patient-visits');
+        const response = await fetch(`${API_BASE_URL}/new-patient-visits`);
         const data = await response.json();
         setPatients(data);
       } catch (error) {

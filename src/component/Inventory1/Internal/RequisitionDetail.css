@@ -28,7 +28,7 @@
     right: 10px;
     background: transparent;
     border: none;
-    font-size: 1.5rem;
+    font-size: var(--heading-font);
     cursor: pointer;
 }
 
@@ -40,7 +40,7 @@
 .inventory-requi-h2 {
     text-align: center;
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: var(--heading-font);
 }
 
 .inventory-requi-table {

@@ -19,7 +19,7 @@ const PackagingFile = ({onClose}) => {
 
     try {
       // Send POST request to the backend API
-      const response = await fetch('http://192.168.1.39:8080/api/packageType/savePackageType', {
+      const response = await fetch(`${API_BASE_URL}/packageType/savePackageType`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

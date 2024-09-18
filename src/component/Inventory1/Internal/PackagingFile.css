@@ -38,7 +38,7 @@
     display: block;
     color: #f0a500;
     margin-top: 5px;
-    font-size: 12px;
+    font-size: var(--font-size); 
 }
 
 .pkgingFormGroup input[type="checkbox"] {

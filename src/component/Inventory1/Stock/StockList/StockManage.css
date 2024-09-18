@@ -8,14 +8,14 @@
   }
   
   .StockManage-title {
-    font-size: 16px;
+    font-size: var(--heading-font);
     margin-left: 10px;
     margin-bottom: 10px;
     /* font-weight: bold; */
   }
   
   .StockManage-item-name {
-    font-size: 16px;
+    font-size: var(--heading-font);
     margin-left: 10px;
     margin-bottom: 10px;
   }

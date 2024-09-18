@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './CreateReturnToVendor.css';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../../api/api';
 
 const CreateReturnToVendor = ({ onCancel }) => { 
   const [columnWidths,setColumnWidths] = useState({});
@@ -89,7 +90,7 @@ const CreateReturnToVendor = ({ onCancel }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://192.168.1.38:8080/api/returnToVendor', {
+      const response = await fetch(`${API_BASE_URL}/returnToVendor`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -169,19 +170,19 @@ const CreateReturnToVendor = ({ onCancel }) => {
               {formData.items.map((item, index) => (
                 <tr key={index}>
                   <td><button type="button" className='create-render-to-remove' onClick={() => handleRemoveRow(index)}>X</button></td>
-                  <td><input type="text" name="itemName" value={item.itemName} onChange={e => handleChange(e, index)} /></td>
-                  <td><input type="text" name="batchNo" value={item.batchNo} onChange={e => handleChange(e, index)} /></td>
-                  <td><input type="text" name="goodReceiptNo" value={item.goodReceiptNo} onChange={e => handleChange(e, index)} /></td>
-                  <td><input type="number" name="availableQty" value={item.availableQty} onChange={e => handleChange(e, index)} /></td>
-                  <td><input type="number" name="itemRate" value={item.itemRate} onChange={e => handleChange(e, index)} /></td>
-                  <td><input type="number" name="returnRate" value={item.returnRate} onChange={e => handleChange(e, index)} /></td>
-                  <td><input type="number" name="quantity" value={item.quantity} onChange={e => handleChange(e, index)} /></td>
-                  <td><input type="number" name="subtotal" value={item.subtotal} onChange={e => handleChange(e, index)} /></td>
-                  <td><input type="number" name="returnDiscountAmt" value={item.returnDiscountAmt} onChange={e => handleChange(e, index)} /></td>
-                  <td><input type="number" name="returnVATAmt" value={item.returnVATAmt} onChange={e => handleChange(e, index)} /></td>
-                  <td><input type="number" name="returnCCAmt" value={item.returnCCAmt} onChange={e => handleChange(e, index)} /></td>
-                  <td><input type="number" name="totalAmount" value={item.totalAmount} onChange={e => handleChange(e, index)} /></td>
-                  <td><input type="text" name="remark" value={item.remark} onChange={e => handleChange(e, index)} /></td>
+                  <td><input className='Inv-Return-Input' type="text" name="itemName" value={item.itemName} onChange={e => handleChange(e, index)} /></td>
+                  <td><input className='Inv-Return-Input' type="text" name="batchNo" value={item.batchNo} onChange={e => handleChange(e, index)} /></td>
+                  <td><input className='Inv-Return-Input' type="text" name="goodReceiptNo" value={item.goodReceiptNo} onChange={e => handleChange(e, index)} /></td>
+                  <td><input className='Inv-Return-Input' type="number" name="availableQty" value={item.availableQty} onChange={e => handleChange(e, index)} /></td>
+                  <td><input className='Inv-Return-Input' type="number" name="itemRate" value={item.itemRate} onChange={e => handleChange(e, index)} /></td>
+                  <td><input className='Inv-Return-Input' type="number" name="returnRate" value={item.returnRate} onChange={e => handleChange(e, index)} /></td>
+                  <td><input className='Inv-Return-Input' type="number" name="quantity" value={item.quantity} onChange={e => handleChange(e, index)} /></td>
+                  <td><input className='Inv-Return-Input' type="number" name="subtotal" value={item.subtotal} onChange={e => handleChange(e, index)} /></td>
+                  <td><input className='Inv-Return-Input' type="number" name="returnDiscountAmt" value={item.returnDiscountAmt} onChange={e => handleChange(e, index)} /></td>
+                  <td><input className='Inv-Return-Input' type="number" name="returnVATAmt" value={item.returnVATAmt} onChange={e => handleChange(e, index)} /></td>
+                  <td><input className='Inv-Return-Input' type="number" name="returnCCAmt" value={item.returnCCAmt} onChange={e => handleChange(e, index)} /></td>
+                  <td><input className='Inv-Return-Input' type="number" name="totalAmount" value={item.totalAmount} onChange={e => handleChange(e, index)} /></td>
+                  <td><input className='Inv-Return-Input' type="text" name="remark" value={item.remark} onChange={e => handleChange(e, index)} /></td>
                   <td><button type="button" className='create-render-to-add' onClick={handleAddRow}>+</button></td>
                 </tr>
               ))}

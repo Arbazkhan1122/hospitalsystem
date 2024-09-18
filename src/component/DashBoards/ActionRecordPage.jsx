@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './patientDashboard_Action_Order.css';   // Import the MedicationOrder component
 import MedicationOrder from './MedicationOrder ';
+import { API_BASE_URL } from '../api/api';
 
 const ActionRecordPage = ({patientId,newPatientVisitId}) => {
   const [selectedOrderType, setSelectedOrderType] = useState('');
@@ -11,9 +12,9 @@ const ActionRecordPage = ({patientId,newPatientVisitId}) => {
 
   // API endpoints
   const apiEndpoints = {
-    lab: 'http://192.168.1.37:8888/',
+    lab: `${API_BASE_URL}`,
     imaging: 'https://api.example.com/imagingOrders',
-    medication: 'http://192.168.1.39:8888/api/add-items',
+    medication: `${API_BASE_URL}/add-items`,
     others: 'https://api.example.com/otherOrders',
   };
 

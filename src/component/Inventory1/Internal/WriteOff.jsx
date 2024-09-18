@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import "./WriteOff.css";
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../../api/api';
 
 const WriteOff = () => {
   const [columnWidths,setColumnWidths] = useState({});
@@ -64,7 +65,7 @@ const WriteOff = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://192.168.1.39:8080/api/writeoffgoods/createWriteOffGoods', {
+      const response = await fetch(`${API_BASE_URL}/writeoffgoods/createWriteOffGoods`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

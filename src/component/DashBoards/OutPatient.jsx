@@ -6,6 +6,7 @@ import OutPatientFollowUp from '../DashBoards/OutPatientFollowUp';
 import TableComponent from '../DashBoards/NewPatientsMyFavourite';
 import NewPatientFollowUpList from '../DashBoards/NewPatientFollowUpList';
 import PatientDashboard from '../DashBoards/PatientDashboard'; // Import the PatientDashboard component
+import { API_BASE_URL } from '../api/api';
 
 const OutPatient = () => {
   const [view, setView] = useState('newPatient');
@@ -41,7 +42,7 @@ const OutPatient = () => {
     const fetchPatientData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('http://192.168.1.39:1415/api/new-patient-visits');
+        const response = await fetch(`${API_BASE_URL}/new-patient-visits`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

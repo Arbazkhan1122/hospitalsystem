@@ -9,7 +9,7 @@
     padding: 10px;
     text-align: left; /* Aligns text to the left */
     border: 1px solid #dee2e6;
-    font-size: 14px;
+    font-size: var(--font-size); 
     color: #495057;
     vertical-align: middle; /* Aligns text vertically in the middle */
 }
@@ -22,7 +22,7 @@
 .direct-dispatch-dispatch-table td select {
     width: 100%;
     padding: 6px;
-    font-size: 14px;
+    font-size: var(--font-size); 
     border: 1px solid #ced4da;
     border-radius: 4px;
     box-sizing: border-box;
@@ -45,7 +45,7 @@
 
 .direct-dispatch-dispatch-date h1 {
     margin: 0;
-    font-size: 16px;
+    font-size: var(--heading-font);
     color: #333;
 }
 
@@ -53,13 +53,13 @@
     display: flex;
     align-items: center;
     margin: 0;
-    font-size: 14px;
+    font-size: var(--font-size); 
 }
 
 .direct-dispatch-dispatch-date input {
     margin-left: 10px;
     padding: 8px;
-    font-size: 14px;
+    font-size: var(--font-size); 
     border: 1px solid #ced4da;
     border-radius: 4px;
 }
@@ -81,7 +81,7 @@
 .direct-dispatch-store-name select {
     flex: 1; /* Takes up the remaining space */
     padding: 8px;
-    font-size: 14px;
+    font-size: var(--font-size); 
     border: 1px solid #ced4da;
     border-radius: 4px;
     box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
@@ -102,7 +102,7 @@
     width: 50%; /* Sets the width of the textarea to 50% of its container */
     height: 80px; /* Adjust the height to fit your design needs */
     padding: 10px; /* Adds padding inside the textarea */
-    font-size: 14px; /* Sets the font size for the text inside the textarea */
+    font-size: var(--font-size); /* Sets the font size for the text inside the textarea */
     border: 1px solid #ced4da; /* Adds a border around the textarea */
     border-radius: 4px; /* Rounds the corners of the textarea */
     box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
@@ -118,7 +118,7 @@
 
 .direct-dispatch-buttons button {
     padding: 5px;
-    font-size: 16px;
+    font-size: var(--heading-font);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -152,7 +152,7 @@
     border: none; /* Remove default border */
     border-radius: 4px; /* Round the corners */
     padding: 5px; /* Add some padding */
-    font-size: 16px; /* Set the font size */
+    font-size: var(--font-size); /* Set the font size */
     cursor: pointer; /* Show pointer cursor on hover */
     margin: 0; /* Remove default margin */
 }
@@ -164,7 +164,7 @@
     border: none; /* Remove default border */
     border-radius: 4px; /* Round the corners */
     padding: 5px; /* Add some padding */
-    font-size: 16px; /* Set the font size */
+    font-size: var(--font-size); /* Set the font size */
     cursor: pointer; /* Show pointer cursor on hover */
     margin: 0; /* Remove default margin */
 }

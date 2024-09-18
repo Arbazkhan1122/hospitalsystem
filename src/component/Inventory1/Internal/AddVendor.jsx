@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './AddVendor.css';
+import { API_BASE_URL } from '../../api/api';
 
 const AddVendor = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -48,7 +49,7 @@ const AddVendor = ({ isOpen, onClose }) => {
       setErrors(newErrors);
     } else {
       try {
-        const response = await fetch('http://192.168.1.39:8080/api/vendors/createVendor', {
+        const response = await fetch(`${API_BASE_URL}/vendors/createVendor`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

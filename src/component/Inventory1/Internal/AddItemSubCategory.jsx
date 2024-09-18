@@ -26,7 +26,7 @@ const AddItemSubCategory = ({onClose}) => {
     };
 
     try {
-      const response = await fetch('http://192.168.1.39:8080/api/subcategories/add', {
+      const response = await fetch(`${API_BASE_URL}/subcategories/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
