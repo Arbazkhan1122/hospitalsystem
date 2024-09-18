@@ -2,6 +2,8 @@
 .appointment-booking-list-container {
   width: 100%;
   margin: 0 auto;
+  height: 90vh;
+  overflow: scroll;
 }
 
 .appointment-booking-list-nav {
@@ -97,8 +99,8 @@
 
 .appointment-table-head th,
 .appointment-table-body td {
-  text-align: left;
-  padding: 10px;
+  text-align: center;
+  /* padding: 10px; */
   border-bottom: 1px solid #ddd;
 }
 
@@ -218,8 +220,7 @@
 }
 
 .appointments__table th, .appointments__table td {
-  padding: 10px;
-  text-align: left;
+  text-align: center;
   border: 1px solid #ccc;
 }
 

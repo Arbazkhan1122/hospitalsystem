@@ -1,16 +1,18 @@
-/* .patient-list {
+.new-patient-list {
   padding: 20px;
   font-family: Arial, sans-serif;
+  height: 80vh;
+  overflow-y: scroll;
 }
 
-.header {
+.new-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.header h3 {
+.new-header h3 {
   color: #007bff;
 }
 
@@ -22,38 +24,21 @@
   cursor: pointer;
 }
 
-.search-bar {
+.new-search-bar {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.search-bar input {
+.new-search-bar input {
   padding: 10px;
   width: 48%;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
 
-table th,
-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
-
-table th {
-  background-color: #f2f2f2;
-  color: black;
-}
-
-.action-button {
+.new-action-button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -61,13 +46,13 @@ table th {
   cursor: pointer;
 }
 
-.pagination {
+.new-pagination {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
 
-.pagination button {
+.new-pagination button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -75,15 +60,15 @@ table th {
   cursor: pointer;
 }
 
-.footer-buttons {
+.new-footer-buttons {
   display: flex;
   justify-content: center;
 }
 
-.footer-buttons button {
+.new-footer-buttons button {
   background-color: #007bff;
   color: white;
   border: none;
   padding: 10px;
   cursor: pointer;
-} */
+}

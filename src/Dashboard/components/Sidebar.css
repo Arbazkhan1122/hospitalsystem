@@ -2,7 +2,6 @@
   width: 13rem;
   background-color: var(--upperBar-bg-color);
   height: 100%;
-  padding-top: 1rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   color: white;
@@ -15,7 +14,7 @@
    max-height: calc(100vh - 60px); /* Adjust 60px based on the height of your logo container */
   overflow-y: auto;
   font-size: 13px;
-  margin-top: 10px;
+  /* margin-top: 20px; */
 }
 
 .custom-sidebar-links::-webkit-scrollbar {
@@ -43,8 +42,9 @@ display: none;
 .custom-toggle-button {
   position: absolute;
   top: 1rem;
+  color: white;
   right: -1rem; /* Adjust the right value to position it closer to the sidebar's edge */
-  background-color: white;
+  background-color: transparent;
   border-radius: 50%; /* Make the button circular */
   padding: 0.3rem; /* Slightly increased padding for better clickability */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for better visibility */
@@ -55,10 +55,11 @@ display: none;
 
 .custom-toggle-button:hover {
   background-color: #f0f0f0; /* Optional: Change background color on hover */
+  color: black;
 }
 
 .custom-sidebar-closed {
-  width: 4rem;
+  width: 3rem;
 }
 
 .custom-nav-link-content {

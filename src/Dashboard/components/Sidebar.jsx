@@ -3,7 +3,7 @@ import { LuChevronDown, LuChevronUp, LuChevronLeft, LuChevronRight } from "react
 import { TbUsers } from "react-icons/tb";
 import { FaClinicMedical, FaUserMd, FaFileInvoice } from "react-icons/fa";
 import './Sidebar.css';
-import hospitallogo from "../Images/hospital.png";
+import hospitallogo from "../Images/hospitallogo.png";
 import { Link } from "react-router-dom";
 const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,onIncentive,onLaboratory,onUtilites,onEmergency,onSystemAdmin,onSocialService,onDisprensary,onDynamicReport,onReport,onNurse,onDoctor,onOperationTheater,onNhif,onADT,onMKT,onClinical,onVaccination,onFixAssests,onCSSD,onAccounting,onQueueManagement,onMaternity,onHelpdesk,onRadiology,onPharmacy,onPatient,onVerification,onSubstoreClick,onMedicalRecord}) => {
   const [openMenus, setOpenMenus] = useState({});
@@ -170,8 +170,8 @@ const Sidebar = ({ isOpen, setIsOpen, onAppointmentClick,onSettings,onInventory,
       <div className="custom-logo-container">
         {isOpen ? (
           <span>
-            <img style={{ width: "30px" }} src={hospitallogo} alt="Hospital Logo" />
-            Hospital
+            <img style={{ width: "30px",marginRight:"10px" }} src={hospitallogo} alt="Hospital Logo" />
+            <span>Hospital</span>
           </span>
         ) : (
           <img style={{ width: "30px" }} src={hospitallogo} alt="Hospital Logo" />
