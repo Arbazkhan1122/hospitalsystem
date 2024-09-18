@@ -1,171 +1,3 @@
-// import React from 'react';
-// import "../LabSetting/labTest.css";
-
-// const LabTest = () => {
-//   return (
-//     <div className="lab-test">
-//       <h2>Lab Test</h2>
-//       <table>
-//         <thead>
-//           <tr>
-//             <th>Lab Test Name</th>
-//             <th>Reporting Name</th>
-//             <th>Category</th>
-//             <th>Is Active</th>
-//             <th>Display Sequence</th>
-//             <th>Actions</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           <tr>
-//             <td>Sugar Fasting</td>
-//             <td>Sugar Fasting</td>
-//             <td>Biochemistry</td>
-//             <td>True</td>
-//             <td>1000</td>
-//             <td>
-//               <button className="edit-btn">Edit</button>
-//               <button className="deactivate-btn">Deactivate</button>
-//             </td>
-//           </tr>
-//           {/* Add more rows as needed */}
-//         </tbody>
-//       </table>
-//     </div>
-//   );
-// };
-
-// export default LabTest;
-
-
-
-// // import React, { useState, useEffect } from 'react';
-// // // import './App.css';
-// // import "../LabSetting/labTest.css";
-
-// // function App() {
-// //   const [labTests, setLabTests] = useState([]);
-// //   const [searchTerm, setSearchTerm] = useState('');
-// //   const [activeFilter, setActiveFilter] = useState(true);
-// //   const [categoryFilter, setCategoryFilter] = useState('All');
-
-// //   useEffect(() => {
-// //     // Fetch lab test data from an API or other source
-// //     const fetchData = async () => {
-// //       const response = await fetch('https://api.example.com/lab-tests'); 
-// //       const data = await response.json();
-// //       setLabTests(data);
-// //     };
-
-// //     fetchData();
-// //   }, []);
-
-// //   const handleSearchChange = (event) => {
-// //     setSearchTerm(event.target.value);
-// //   };
-
-// //   const handleActiveFilterChange = (event) => {
-// //     setActiveFilter(event.target.checked);
-// //   };
-
-// //   const handleCategoryFilterChange = (event) => {
-// //     setCategoryFilter(event.target.value);
-// //   };
-
-// //   const filteredLabTests = labTests.filter((labTest) => {
-// //     // Filter by search term
-// //     if (searchTerm && !labTest.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-// //       return false;
-// //     }
-
-// //     // Filter by active status
-// //     if (activeFilter && !labTest.isActive) {
-// //       return false;
-// //     }
-
-// //     // Filter by category
-// //     if (categoryFilter !== 'All' && labTest.category !== categoryFilter) {
-// //       return false;
-// //     }
-
-// //     return true;
-// //   });
-
-// //   return (
-// //     <div className="container">
-// //       <h1>Lab Test Management</h1>
-
-// //       <div className="search-filters">
-// //         <input 
-// //           type="text" 
-// //           placeholder="Search" 
-// //           value={searchTerm} 
-// //           onChange={handleSearchChange} 
-// //         />
-
-// //         <div className="filter-checkbox">
-// //           <input
-// //             type="checkbox"
-// //             checked={activeFilter}
-// //             onChange={handleActiveFilterChange}
-// //           />
-// //           <label htmlFor="active-filter">Active</label>
-// //         </div>
-
-// //         <div className="filter-checkbox">
-// //           <input
-// //             type="checkbox"
-// //             checked={!activeFilter}
-// //             onChange={handleActiveFilterChange}
-// //           />
-// //           <label htmlFor="inactive-filter">Inactive</label>
-// //         </div>
-
-// //         <select value={categoryFilter} onChange={handleCategoryFilterChange}>
-// //           <option value="All">All</option>
-// //           <option value="Biochemistry">Biochemistry</option>
-// //           {/* Add more category options as needed */}
-// //         </select>
-// //       </div>
-
-// //       <div className="add-button">
-// //         <button>Add New Lab Test</button>
-// //       </div>
-
-// //       <table className="lab-tests-table">
-// //         <thead>
-// //           <tr>
-// //             <th>Lab Test Name</th>
-// //             <th>Reporting Name</th>
-// //             <th>Category</th>
-// //             <th>Is Active</th>
-// //             <th>Display Sequence</th>
-// //             <th>Actions</th>
-// //           </tr>
-// //         </thead>
-// //         <tbody>
-// //           {filteredLabTests.map((labTest) => (
-// //             <tr key={labTest.id}>
-// //               <td>{labTest.name}</td>
-// //               <td>{labTest.reportingName}</td>
-// //               <td>{labTest.category}</td>
-// //               <td>{labTest.isActive ? 'True' : 'False'}</td>
-// //               <td>{labTest.displaySequence}</td>
-// //               <td>
-// //                 <button onClick={() => handleEditLabTest(labTest.id)}>Edit</button>
-// //                 <button onClick={() => handleDeactivateLabTest(labTest.id)}>Deactivate</button>
-// //               </td>
-// //             </tr>
-// //           ))}
-// //         </tbody>
-// //       </table>
-// //     </div>
-// //   );
-// // }
-
-// // export default App;
-
-
 import React, { useState } from 'react';
 import "../LabSetting/labTest.css"
 import LSLabTestAddNLTest from './lSLabTestAddNLTest';
@@ -232,7 +64,7 @@ const LabTestSetting = () => {
         </div>
         <div className="labTestLS-results-info">
           <span>Showing 0 / 0 results</span>
-          <button className="labTestLS-print-button">Print</button>
+          <button className="labTestLS-print-button"><i class="fa-solid fa-print"></i> Print</button>
         </div>
         </div>
       <table >
@@ -262,14 +94,14 @@ const LabTestSetting = () => {
           ))}
         </tbody>
       </table>
-      <div className="labTestLS-pagination">
+      {/* <div className="labTestLS-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       {/* Modal Popup */}
       {showPopup && (
         <div className="labTestLS-modal">

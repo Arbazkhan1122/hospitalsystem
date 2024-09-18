@@ -1,3 +1,9 @@
+.labLIS-page {
+  background-color: var(--background-color);
+  padding: 1px 1px  1px 20px;
+  height: 75vh;
+  /* font-family: Arial, sans-serif; */
+}
 .labLIS-N-imu-btn{
     display: flex;
     gap: 10px;
@@ -5,19 +11,14 @@
     height: 37px;
     /* justify-content:space-between; */
   }
-  .labLIS-page {
-      background-color: #CAF2FF;
-      padding: 1px 1px  1px 20px;
-      font-family: Arial, sans-serif;
-    }
     
     .labLIS-tabs {
       margin-bottom: 20px;
     }
     
     .labLIS-tab {
-      background-color: #CAF2FF;
-      padding: 10px 20px;
+      background-color: var(--background-color);
+      padding: 5px 20px;
       border: none;
       /* background-color: #f0f0f0; */
       cursor: pointer;
@@ -27,33 +28,37 @@
       /* background-color: #007bff; */
       color: black;
       font-weight: bold;
-      border-bottom: 3px solid #2D68EA;
+      border-bottom: 5px solid var(--button-bg-color);
     }
     
     .labLIS-filters {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0px 10px 0 10px;
+      padding: 0px 10px 0 1px;
       margin-bottom: 20px;
     }
    
    
     .labLIS-show-data-btn {
-      height: 30px;
-      border-radius: 5px;
-      background-color: #26C281;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: bold;
-    }
-    .labLIS-show-data-btn:hover {
-    background-color: #008CBA;
-    }
-
+      background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
+    color: white;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .labLIS-show-data-btn:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
+   
 
     .labLIS-show-data-btn i{
       font-size: 14px;
@@ -70,14 +75,15 @@
     
     .labLIS-data-table th, .labLIS-data-table td {
       border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-      color:rgb(66, 66, 66);
-      font-size: 12px;
+      padding: 3px;
+      text-align: center;
+      /* color:rgb(66, 66, 66); */
+      font-size: var(--font-size);
     }
     
     .labLIS-data-table th {
       background-color: #f2f2f2;
+      font-size: var(--heading-font);
     }
     
     .labLIS-pagination {
@@ -94,13 +100,13 @@
       cursor: pointer;
       margin: 0 5px;
       border-radius: 5px;
-      font-size: 12px;
+      font-size: var(--font-size);
     }
     
     .labLIS-pagination span {
       margin: 0 10px;
-      color: gray;
-      font-size: 12px;
+      /* color: gray; */
+      font-size: var(--font-size);
     }
    
     .labLIS-table-N-paginationDiv{
@@ -120,7 +126,7 @@
   .labLIS-Not-search-bar{
     position: relative;
     margin-bottom: 10px;
-    /* padding-left: -10px; */
+    margin-left: -20px;
     /* opacity: 0; */
     /* animation: slideIn 1s forwards 0.8s; */
   }
@@ -136,15 +142,27 @@
     margin-top: 15px;
   }
   .labLIS-filter-findings span {
-color: #2D68EA;
-font-size: 12px;
-font-weight: bold;
+/* color: #2D68EA; */
+font-size: var(--font-size);
+margin-right:10px;
+
+/* font-weight: bold; */
   }
   .labLIS-filter-findings-Printbtn{
-    background-color: #659BE0;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
+    /* border: none; */
+    /* margin-right: 10px; */
     border-radius: 5px;
-    font-size: 12px;
-    padding: 8px 15px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .labLIS-filter-findings-Printbtn:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }

@@ -1,12 +1,12 @@
 .labTestLS-container {
-  background-color: #CAF2FF;
+  background-color: var(--background-color);
   padding: 10px;
   border-radius: 5px;
   font-family: Arial, Helvetica, sans-serif;
   /* width: 100%; */
   /* max-width: 1200px; */
   margin: 0 auto;
-  height: 450px;
+  height: 75vh;
 }
 .labTestLS-firstRow{
   display: flex;
@@ -14,21 +14,29 @@
 }
 
 .labTestLS-add-button {
-  background-color: #5867DD;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  padding: 7px 15px;
+  /* border: none; */
+  /* margin-right: 10px; */
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 15px;
-  font-size: 12px;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+
+.labTestLS-add-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 .labTestLS-search-bar{
-  margin-left: -15px;
   /* margin: 0; */
+  margin-left: -33px;
 }  
   .labTestLS-search-bar input {
-    /* margin-top: 10px; */
     /* padding: 5px; */
     width: 200px;
   }
@@ -57,25 +65,25 @@
 .labTestLS-filters {
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
+  font-size: var(--font-size);
   align-items: center;
   gap: 10px;
 }
 
 .labTestLS-filters label {
   /* font-weight: bold; */
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 
 .labTestLS-category-filter {
   display: flex;
-  font-size: 12px;
+  font-size: var(--font-size);
   align-items: center;
 }
 
 .labTestLS-category-filter label {
   margin-right: 5px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .labTestLS-category-filter select {
@@ -85,7 +93,7 @@
   width: 200px;
 }
 .labTestLS-category-filter option{
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 .labTestLS-search-N-result{
   margin-top: 10px;
@@ -102,9 +110,9 @@
   /* display: flex;
   align-items: center; */
   /* padding-top: 10px; */
-  color: #008CBA;
-  font-size: 12px;
-  font-weight: bold;
+  /* color: #008CBA; */
+  font-size: var(--font-size);
+  /* font-weight: bold; */
   margin-right: 10px;
 }
 
@@ -112,15 +120,15 @@
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  font-size: 12px;
   background-color: white;
 }
 
 .labTestLS-container th, .labTestLS-container td {
-  padding: 5px;
-  text-align: left;
+  font-size: var(--font-size);
+  padding:3px;
+  text-align: center;
   border: 1px solid #ddd;
-  color: rgb(78, 78, 78);
+  /* color: rgb(78, 78, 78); */
 }
 
 .labTestLS-container th {
@@ -128,29 +136,45 @@
 }
 
 .labTestLS-edit-button, .labTestLS-deactivate-button {
-  background-color: #0F63AF;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  font-size: 12px;
-  padding: 3px 8px;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-right: 5px;
-}
-
-.labTestLS-results-info {
-  margin-top: 10px;
-  margin-bottom: 15px;
-}
-
-.labTestLS-print-button {
-  background-color: #659BE0;
-  color: white;
-  border: none;
-  padding: 7px 15px;
+  /* border: none; */
+  /* margin-right: 10px; */
   border-radius: 5px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 1px 5px;
+}
+
+.labTestLS-edit-button:hover, .labTestLS-deactivate-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+
+
+
+.labTestLS-print-button {
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+
+.labTestLS-print-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 /* Modal styles */
 .labTestLS-modal {
@@ -189,11 +213,11 @@
   cursor: pointer;
   margin: 0 5px;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 
 .labTestLS-pagination span {
   margin: 0 10px;
-  color: gray;
-  font-size: 12px;
+  /* color: gray; */
+  font-size: var(--font-size);
 }

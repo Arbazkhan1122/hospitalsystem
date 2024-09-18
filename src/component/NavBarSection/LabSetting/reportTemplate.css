@@ -1,4 +1,4 @@
-.labTestLS-container {
+.reportTemplate-container {
   background-color: #CAF2FF;
   padding: 10px;
   border-radius: 5px;
@@ -8,12 +8,12 @@
   margin: 0 auto;
   height: 450px;
 }
-.labTestLS-firstRow{
+.reportTemplate-firstRow{
   display: flex;
   justify-content: space-between;
 }
 
-.labTestLS-add-button {
+.reportTemplate-add-button {
   background-color: #5867DD;
   color: white;
   border: none;
@@ -23,30 +23,30 @@
   margin-bottom: 15px;
   font-size: 12px;
 }
-.labTestLS-search-bar{
+.reportTemplate-search-bar{
   margin-left: -15px;
   /* margin: 0; */
 }  
-  .labTestLS-search-bar input {
+  .reportTemplate-search-bar input {
     /* margin-top: 10px; */
     /* padding: 5px; */
     width: 200px;
   }
-  .labTestLS-search-bar i{
+  .reportTemplate-search-bar i{
     position: relative;
     color:gray;
     top: 3px;
   left: 205px;
   }
 
-.labTestLS-search-filters {
+.reportTemplate-search-filters {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.labTestLS-search-box {
+.reportTemplate-search-box {
   display: block;
   width: 200px;
   padding: 10px;
@@ -54,18 +54,18 @@
   border-radius: 5px;
 }
 
-.labTestLS-search-N-result{
+.reportTemplate-search-N-result{
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.labTestLS-results-info {
+.reportTemplate-results-info {
   display: flex;
   align-items: center;
   /* padding-top: 10px; */
 }
-.labTestLS-results-info span {
+.reportTemplate-results-info span {
   /* display: flex;
   align-items: center; */
   /* padding-top: 10px; */
@@ -75,7 +75,7 @@
   margin-right: 10px;
 }
 
-.labTestLS-container table {
+.reportTemplate-container table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
@@ -83,18 +83,18 @@
   background-color: white;
 }
 
-.labTestLS-container th, .labTestLS-container td {
+.reportTemplate-container th, .reportTemplate-container td {
   padding: 5px;
   text-align: left;
   border: 1px solid #ddd;
   color: rgb(78, 78, 78);
 }
 
-.labTestLS-container th {
+.reportTemplate-container th {
   background-color: #f2f2f2;
 }
 
-.labTestLS-edit-button, .labTestLS-deactivate-button {
+.reportTemplate-edit-button, .reportTemplate-deactivate-button {
   background-color: #0F63AF;
   color: white;
   border: none;
@@ -105,12 +105,12 @@
   margin-right: 5px;
 }
 
-.labTestLS-results-info {
+.reportTemplate-results-info {
   margin-top: 10px;
   margin-bottom: 15px;
 }
 
-.labTestLS-print-button {
+.reportTemplate-print-button {
   background-color: #659BE0;
   color: white;
   border: none;
@@ -120,7 +120,7 @@
   font-size: 12px;
 }
 /* Modal styles */
-.labTestLS-modal {
+.reportTemplate-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -133,7 +133,7 @@
   z-index: 1000;
 }
 
-.labTestLS-modal-content {
+.reportTemplate-modal-content {
   /* padding: 20px; */
   background-color: #fff;
   border-radius: 8px;
@@ -143,13 +143,13 @@
   position: relative;
   margin-top: 20px;
 }
-.labTestLS-pagination {
+.reportTemplate-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.labTestLS-pagination button {
+.reportTemplate-pagination button {
   background-color: #008CBA;
   color: white;
   border: none;
@@ -160,7 +160,7 @@
   font-size: 12px;
 }
 
-.labTestLS-pagination span {
+.reportTemplate-pagination span {
   margin: 0 10px;
   color: gray;
   font-size: 12px;
