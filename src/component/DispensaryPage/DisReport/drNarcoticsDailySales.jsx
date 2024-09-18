@@ -163,7 +163,7 @@ function DrNarcoticsDailySales() {
 
   // Fetch narcotics summaries from the API
   useEffect(() => {
-    fetch("http://192.168.1.40:3155/api/hospital/fetch-all-narcotics-summary")
+    fetch("http://localhost:1415/api/hospital/fetch-all-narcotics-summary")
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");

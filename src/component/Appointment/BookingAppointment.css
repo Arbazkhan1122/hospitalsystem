@@ -44,6 +44,17 @@
   cursor: pointer;
 }
 
+.book-appointment{
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.book-appointment th, .book-appointment td {
+  text-align: center;
+  border: 1px solid #ccc;
+}
 /* table {
   width: 100%;
   border-collapse: collapse;

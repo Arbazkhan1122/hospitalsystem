@@ -374,7 +374,7 @@ function UserCollectionReport() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://192.168.1.40:3155/api/hospital/fetch-all-collections", {
+        const response = await fetch("http://localhost:1415/api/hospital/fetch-all-collections", {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'

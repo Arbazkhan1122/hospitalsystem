@@ -13,7 +13,7 @@ function DispenSalesSalesList() {
 
   // Fetch sales data from the API
   useEffect(() => {
-    fetch("http://192.168.1.40:3155/api/hospital/fetch-all-saleList")
+    fetch("http://localhost:1415/api/hospital/fetch-all-saleList")
       .then(response => response.json())
       .then(data => setSalesList(data))
       .catch(error => console.error("Error fetching sales data:", error));

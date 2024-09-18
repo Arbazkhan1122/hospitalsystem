@@ -124,7 +124,7 @@ const DispenPatientConsumption = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   useEffect(() => {
-    fetch("http://192.168.1.40:3155/api/patient-consumption/fetch-all-patient-consumption")
+    fetch("http://localhost:1415/api/patient-consumption/fetch-all-patient-consumption")
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");

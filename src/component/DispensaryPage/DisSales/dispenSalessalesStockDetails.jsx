@@ -70,7 +70,7 @@ const DispenSalessalesStockDetails = () => {
     useEffect(() => {
         const fetchMedicineStockDetails = async () => {
             try {
-                const response = await fetch("http://192.168.1.40:3155/api/hospital/fetch-fetch-medicine-details");
+                const response = await fetch("http://localhost:1415/api/hospital/fetch-fetch-medicine-details");
                 if (!response.ok) {
                     throw new Error("Failed to fetch medicine stock details.");
                 }

@@ -162,7 +162,7 @@ function DrSettlementSummaryReport() {
 
   // Fetch settlement summaries from the API
   useEffect(() => {
-    fetch("http://192.168.1.40:3155/api/settlement-summaries/fetch-all-settlement-summaries")
+    fetch("http://localhost:1415/api/settlement-summaries/fetch-all-settlement-summaries")
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");

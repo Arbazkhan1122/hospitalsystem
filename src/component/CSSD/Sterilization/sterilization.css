@@ -1,5 +1,7 @@
+/* Akash Pawar CSSD 14/24 */
 .sterilization-main {
     padding: 10px 20px;
+   
   }
   
   .sterilization-sub-nav {
@@ -37,7 +39,7 @@
     position: absolute;
     bottom: 0;
     height: 4px;
-    background-color: #2D68EA;
+    background-color: var(--button-bg-color);
     transition: left 0.3s ease, width 0.3s ease;
   }
   .sterilization-sub-nav ul li::after {
@@ -45,7 +47,7 @@
     position: absolute;
     left: 0;
     height: 4px;
-    background-color: #2D68EA;
+    background-color: var(--button-bg-color);
     transform: scaleX(1); /* Expands the underline width */
     transition: transform 0.3s ease-in-out;
   }
@@ -57,7 +59,7 @@
     left: 0; /* Start from the left */
     height: 4px; /* Thickness of the underline */
     width: 0; /* Initially, the underline is collapsed */
-    background-color: #2D68EA; /* Color of the underline */
+    background-color: var(--button-bg-color); /* Color of the underline */
     transition: width 0.3s ease-in-out; /* Smooth transition for width */
   }
   

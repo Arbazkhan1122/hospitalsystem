@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./pendingItem.css";
+import { startResizing } from "../../../../TableHeadingResizing/ResizableColumns";
 
 function PendingItemList() {
   const [columnWidths, setColumnWidths] = useState({});
@@ -8,7 +9,7 @@ function PendingItemList() {
   const [fromDate, setFromDate] = useState("2024-08-12");
   const [toDate, setToDate] = useState("2024-08-12");
   const [isModalOpen, setIsModalOpen] = useState(false); // State for Modal visibility
-  const [selectedItem, setSelectedItem] = useState(null)
+  const [selectedItem, setSelectedItem] = useState(null);
 
   // Dummy data for the hospital table
   const dummyData = [
@@ -22,7 +23,8 @@ function PendingItemList() {
     },
     {
       requestDate: "2024-08-11",
-      itemName: "MRI Machine Maintenance",
+      itemName:
+        "MRI Machine Maintenance fgsahdashdfgvsahbhjsdbfasgdgdgfyfhasbjbdhfajgtyeghdhbshcvahsdgfvygdhsbghsdvgdasfgfhdsghcvasdghvasghdvghc",
       code: "MRI456",
       tagNumber: "TAG002",
       requestFrom: "Radiology",
@@ -52,32 +54,103 @@ function PendingItemList() {
       requestFrom: "Surgery Department",
       requestedBy: "Dr. Emily Johnson",
     },
+    {
+      requestDate: "2024-08-14",
+      itemName: "Surgical Gloves",
+      code: "SG202",
+      tagNumber: "TAG005",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Emily Johnson",
+    },
+    {
+      requestDate: "2024-08-14",
+      itemName: "Surgical Gloves",
+      code: "SG202",
+      tagNumber: "TAG005",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Emily Johnson",
+    },
+    {
+      requestDate: "2024-08-14",
+      itemName: "Surgical Gloves",
+      code: "SG202",
+      tagNumber: "TAG005",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Emily Johnson",
+    },
+    {
+      requestDate: "2024-08-14",
+      itemName: "Surgical Gloves",
+      code: "SG202",
+      tagNumber: "TAG005",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Emily Johnson",
+    },
+    {
+      requestDate: "2024-08-14",
+      itemName: "Surgical Gloves",
+      code: "SG202",
+      tagNumber: "TAG005",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Emily Johnson",
+    },
+    {
+      requestDate: "2024-08-14",
+      itemName: "Surgical Gloves",
+      code: "SG202",
+      tagNumber: "TAG005",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Emily Johnson",
+    },
+    {
+      requestDate: "2024-08-14",
+      itemName: "Surgical Gloves",
+      code: "SG202",
+      tagNumber: "TAG005",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Emily Johnson",
+    },
+    {
+      requestDate: "2024-08-14",
+      itemName: "Surgical Gloves",
+      code: "SG202",
+      tagNumber: "TAG005",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Emily Johnson",
+    },
+    {
+      requestDate: "2024-08-14",
+      itemName: "Surgical Gloves",
+      code: "SG202",
+      tagNumber: "TAG005",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Emily Johnson",
+    },
+    {
+      requestDate: "2024-08-14",
+      itemName: "Surgical Gloves",
+      code: "SG202",
+      tagNumber: "TAG005",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Emily Johnson",
+    },
+    {
+      requestDate: "2024-08-14",
+      itemName: "Surgical Gloves",
+      code: "SG202",
+      tagNumber: "TAG005",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Emily Johnson",
+    },
+    {
+      requestDate: "2024-08-14",
+      itemName: "Surgical Gloves",
+      code: "SG202",
+      tagNumber: "TAG005",
+      requestFrom: "Surgery Department",
+      requestedBy: "Dr. Emily Johnson",
+    },
   ];
-
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
 
   const handleDashClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -109,7 +182,6 @@ function PendingItemList() {
     setIsModalOpen(false);
     setSelectedItem(null); // Clear selected item on close
   };
-
 
   return (
     <div className="pendingItem-main">
@@ -166,55 +238,66 @@ function PendingItemList() {
         </div>
       </div>
 
-      <table className="pendingItem-table" ref={tableRef}>
-        <thead>
-          <tr>
-            {[
-              "Request Date",
-              "Item Name",
-              "Code",
-              "Tag Number",
-              "Request From",
-              "Requested By",
-              "Action",
-            ].map((header, index) => (
-              <th
-                key={index}
-                style={{ width: columnWidths[index] }}
-                className="resizable-th"
-              >
-                <div className="header-content">
-                  <span>{header}</span>
-                  <div
-                    className="resizer"
-                    onMouseDown={startResizing(index)}
-                  ></div>
-                </div>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {dummyData.map((item, index) => (
-            <tr key={index}>
-              <td>{item.requestDate}</td>
-              <td>{item.itemName}</td>
-              <td>{item.code}</td>
-              <td>{item.tagNumber}</td>
-              <td>{item.requestFrom}</td>
-              <td>{item.requestedBy}</td>
-              <td>
-              <button
-                  className="pendingItem-action-btn"
-                  onClick={() => handleViewClick(item)}
+      <div className="table-container">
+        <table className="pendingItem-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Request Date",
+                "Item Name",
+                "Code",
+                "Tag Number",
+                "Request From",
+                "Requested By",
+                "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
                 >
-                  View
-                </button>
-              </td>
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {dummyData.map((item, index) => (
+              <tr key={index}>
+                <td>
+                  {item.requestDate}
+                  <span class="table-tooltiptext">{item.requestDate}</span>
+                </td>
+                <td>
+                  {item.itemName}
+                  <span class="table-tooltiptext">{item.itemName}</span>
+                </td>
+                <td>{item.code}</td>
+                <td>{item.tagNumber}</td>
+                <td>{item.requestFrom}</td>
+                <td>{item.requestedBy}</td>
+                <td>
+                  <button
+                    className="pendingItem-action-btn"
+                    onClick={() => handleViewClick(item)}
+                  >
+                    View
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {isModalOpen && (
         <div className="custom-modal-overlay">
@@ -232,10 +315,16 @@ function PendingItemList() {
               </>
             )}
             <div className="custom-modal-buttons">
-              <button onClick={handleCloseModal} className="custom-modal-close-btn">
+              <button
+                onClick={handleCloseModal}
+                className="custom-modal-close-btn"
+              >
                 Close
               </button>
-              <button onClick={handleCloseModal} className="custom-modal-confirm-btn">
+              <button
+                onClick={handleCloseModal}
+                className="custom-modal-confirm-btn"
+              >
                 Save
               </button>
             </div>
