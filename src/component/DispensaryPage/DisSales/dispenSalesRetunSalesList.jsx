@@ -11,7 +11,7 @@ function DispenSalesRetunSalesList() {
 
   useEffect(() => {
     // Fetch data from the backend API
-    fetch('http://192.168.1.40:3155/api/hospital/return-lists/fetch-all-returnList')
+    fetch('http://localhost:1415/api/hospital/return-lists/fetch-all-returnList')
       .then(response => response.json())
       .then(data => setReturnLists(data))
       .catch(error => console.error('Error fetching return list data:', error));

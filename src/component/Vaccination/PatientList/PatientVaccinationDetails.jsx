@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./PatientVaccinationDetail.css";
+import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
 const vaccineOptions = [
   "BCG",
@@ -64,30 +65,6 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
       setDoses(vaccineDoses[formData.vaccineName] || []);
     }
   }, [formData.vaccineName]);
-
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
 
   const handleEditClick = (vaccine) => {
     setIsEditing(true);
@@ -351,7 +328,10 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
                       <span>{header}</span>
                       <div
                         className="resizer"
-                        onMouseDown={startResizing(index)}
+                        onMouseDown={startResizing(
+                          tableRef,
+                          setColumnWidths
+                        )(index)}
                       ></div>
                     </div>
                   </th>

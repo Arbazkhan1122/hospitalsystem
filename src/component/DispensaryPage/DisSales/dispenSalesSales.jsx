@@ -22,7 +22,7 @@ const SalesSales = () => {
 
 
   useEffect(() => {
-    axios.get('http://192.168.1.40:3155/api/hospital/fetch-all-patients')
+    axios.get('http://localhost:1415/api/hospital/fetch-all-patients')
       .then(response => {
         // Extract only outPatientId and patientName
         const patientData = response.data.map(patient => ({

@@ -48,8 +48,8 @@ const NewVisitedList = () => {
 
   if (showPatientVisitForm) {
     return (
-      <div className="patient-visit-form-modal">
-        <div className="patient-visit-form-container">
+      <div className="new-patient-visit-form-modal">
+        <div className="new-patient-visit-form-container">
           <button className="close-btn" onClick={handleClosePatientVisitForm}>X</button>
           <AddNewPateint />
         </div>
@@ -58,12 +58,12 @@ const NewVisitedList = () => {
   }
 
   return (
-    <div className="patient-list">
-      <div className="header">
+    <div className="new-patient-list">
+      <div className="new-header">
         <h3>Patient List</h3>
         <button className="new-patient" onClick={handleNewPatient}>+ New Patient</button>
       </div>
-      <div className="search-bar">
+      <div className="new-search-bar">
         <input 
           type="text" 
           placeholder="Search (Atleast 3 characters)" 
@@ -96,13 +96,13 @@ const NewVisitedList = () => {
                 <td>{patient.address}</td>
                 <td>{patient.phone}</td>
                 <td>
-                  <button className="action-button" onClick={handleNewPatient}>Check In</button>
+                  <button className="new-action-button" onClick={handleNewPatient}>Check In</button>
                 </td>
               </tr>
             ))}
         </tbody>
       </table>
-      <div className="pagination">
+      <div className="new-pagination">
         <span>1 to 20 of 200</span>
         <button>First</button>
         <button>Previous</button>
@@ -110,7 +110,7 @@ const NewVisitedList = () => {
         <button>Next</button>
         <button>Last</button>
       </div>
-      <div className="footer-buttons">
+      <div className="new-footer-buttons">
         <button>Print</button>
       </div>
     </div>

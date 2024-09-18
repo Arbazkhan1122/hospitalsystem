@@ -164,7 +164,7 @@ function DrDailySalesReport() {
 
   // Fetch daily sales reports from the new API endpoint
   useEffect(() => {
-    fetch("http://192.168.1.40:3155/api/daily-sales/fetch-all-daily-sales-report")
+    fetch("http://localhost:1415/api/daily-sales/fetch-all-daily-sales-report")
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");

@@ -9,7 +9,7 @@ function DrStockSummaryReport() {
 
   // Fetch user collections from the API
   useEffect(() => {
-    fetch("http://192.168.1.40:3155/api/hospital/fetch-all-collections")
+    fetch("http://localhost:1415/api/hospital/fetch-all-collections")
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");

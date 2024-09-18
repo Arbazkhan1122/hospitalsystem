@@ -11,7 +11,7 @@ function DispenSalesProvisionalReturn() {
 
   // Fetching data from the API when the component mounts
   useEffect(() => {
-    fetch("http://192.168.1.40:3155/api/provisional-returns/fetch-all-provisional-returns")
+    fetch("http://localhost:1415/api/provisional-returns/fetch-all-provisional-returns")
       .then(response => response.json())
       .then(data => {
         setProvisionalReturns(data);

@@ -144,7 +144,7 @@ function DispenStockRequisitionCreateReq({ onClose }) {
       }));
 
       // API call to post data
-      const response = await fetch('http://192.168.1.40:3155/api/requisitions/save-requisitions', {
+      const response = await fetch('http://localhost:1415/api/requisitions/save-requisitions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

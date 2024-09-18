@@ -19,22 +19,22 @@ const OnlineAppointment = () => {
   };
 
   return (
-    <div className="appointment-list">
-      <div className="tab-header">
+    <div className="Online-appointment-list">
+      <div className="Online-tab-header">
         <div 
-          className={`tab ${activeTab === 'Initiated' ? 'active' : ''}`}
+          className={`Online-tab ${activeTab === 'Initiated' ? 'active' : ''}`}
           onClick={() => setActiveTab('Initiated')}
         >
           Initiated Appointment
         </div>
         <div 
-          className={`tab ${activeTab === 'Completed' ? 'active' : ''}`}
+          className={`Online-tab ${activeTab === 'Completed' ? 'active' : ''}`}
           onClick={() => setActiveTab('Completed')}
         >
           Completed Appointment
         </div>
       </div>
-      <div className="tab-content">
+      <div className="Online-tab-content">
         {renderTabContent()}
       </div>
     </div>
@@ -57,44 +57,44 @@ const OnlineAppointment = () => {
 
       return (
       <>
-      <div className="filters">
-        <div className="date-range">
+      <div className="Online-filters">
+        <div className="Online-date-range">
           <label>From:</label>
           <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
           <label>To:</label>
           <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} />
-          <button className="star-btn">☆</button>
-          <button className="minus-btn">-</button>
+          <button className="Online-star-btn">☆</button>
+          <button className="Online-minus-btn">-</button>
         </div>
-        <div className="filter-row">
-          <div className="filter-item">
+        <div className="Online-filter-row">
+          <div className="Online-filter-item">
             <label>Payment Status:</label>
             <select value={paymentStatus} onChange={(e) => setPaymentStatus(e.target.value)}>
               <option value="All">All</option>
               {/* Add other options here */}
             </select>
           </div>
-          <div className="filter-item">
+          <div className="Online-filter-item">
             <label>Department:</label>
             <input type="text" placeholder="Department Name" value={department} onChange={(e) => setDepartment(e.target.value)} />
           </div>
-          <div className="filter-item">
+          <div className="Online-filter-item">
             <label>Doctor:</label>
             <input type="text" placeholder="Doctor's Name" value={doctor} onChange={(e) => setDoctor(e.target.value)} />
           </div>
         </div>
       </div>
-      <button className="reload-btn">↻ Reload Data</button>
-      <div className="search-bar">
+      <button className="Online-reload-btn">↻ Reload Data</button>
+      <div className="Online-search-bar">
         <input type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-        <button className="search-btn">🔍</button>
+        <button className="Online-search-btn">🔍</button>
       </div>
-      <div className="results-actions">
+      <div className="Online-results-actions">
         <span>Showing results</span>
-        <button className="export-btn">Export</button>
-        <button className="print-btn">Print</button>
+        <button className="Online-export-btn">Export</button>
+        <button className="Online-print-btn">Print</button>
       </div>
-      <table className="appointments-table">
+      <table className="Online-appointments-table">
         <thead>
           <tr>
             <th>Status</th>
@@ -112,17 +112,17 @@ const OnlineAppointment = () => {
         </thead>
         <tbody>
           <tr>
-            <td colSpan="11" className="loading">Loading...</td>
+            <td colSpan="11" className="Online-loading">Loading...</td>
           </tr>
         </tbody>
       </table>
-      <div className="pagination">
+      <div className="Online-pagination">
         <span>0 to 0 of 0</span>
-        <button className="page-btn">First</button>
-        <button className="page-btn">Previous</button>
+        <button className="Online-page-btn">First</button>
+        <button className="Online-page-btn">Previous</button>
         <span>Page 0 of 0</span>
-        <button className="page-btn">Next</button>
-        <button className="page-btn">Last</button>
+        <button className="Online-page-btn">Next</button>
+        <button className="Online-page-btn">Last</button>
       </div>
     
     </>
@@ -143,28 +143,28 @@ const CompletedAppointments = () => {
 
       return (
       <>
-      <div className="filters">
-        <div className="date-range">
+      <div className="Online-filters">
+        <div className="Online-date-range">
           <label>From:</label>
           <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
           <label>To:</label>
           <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} />
-          <button className="star-btn">☆</button>
-          <button className="minus-btn">-</button>
+          <button className="Online-star-btn">☆</button>
+          <button className="Online-minus-btn">-</button>
         </div>
         
       </div>
-      <button className="reload-btn">↻ Reload Data</button>
-      <div className="search-bar">
+      <button className="Online-reload-btn">↻ Reload Data</button>
+      <div className="Online-search-bar">
         <input type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-        <button className="search-btn">🔍</button>
+        <button className="Online-search-btn">🔍</button>
       </div>
-      <div className="results-actions">
+      <div className="Online-results-actions">
         <span>Showing results</span>
-        <button className="export-btn">Export</button>
-        <button className="print-btn">Print</button>
+        <button className="Online-export-btn">Export</button>
+        <button className="Online-print-btn">Print</button>
       </div>
-      <table className="appointments-table">
+      <table className="Online-appointments-table">
         <thead>
           <tr>
             <th>Status</th>
@@ -182,17 +182,17 @@ const CompletedAppointments = () => {
         </thead>
         <tbody>
           <tr>
-            <td colSpan="11" className="loading">Loading...</td>
+            <td colSpan="11" className="Online-loading">Loading...</td>
           </tr>
         </tbody>
       </table>
-      <div className="pagination">
+      <div className="Online-pagination">
         <span>0 to 0 of 0</span>
-        <button className="page-btn">First</button>
-        <button className="page-btn">Previous</button>
+        <button className="Online-page-btn">First</button>
+        <button className="Online-page-btn">Previous</button>
         <span>Page 0 of 0</span>
-        <button className="page-btn">Next</button>
-        <button className="page-btn">Last</button>
+        <button className="Online-page-btn">Next</button>
+        <button className="Online-page-btn">Last</button>
       </div>
     
     </>

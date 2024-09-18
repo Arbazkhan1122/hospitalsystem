@@ -92,7 +92,7 @@ const AddExternalReferral = ({ onClose }) => {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://192.168.1.40:3155/api/hospital/save-external-referral", {
+            const response = await fetch("http://localhost:1415/api/hospital/save-external-referral", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

@@ -246,7 +246,7 @@ const DispenTransfer = () => {
     useEffect(() => {
         const fetchTransfers = async () => {
             try {
-                const response = await fetch('http://192.168.1.40:3155/api/transfers/fetch-all-transfers');
+                const response = await fetch('http://localhost:1415/api/transfers/fetch-all-transfers');
                 const data = await response.json();
                 setTransfers(data);
                 setFilteredTransfers(data); // Initialize filtered data

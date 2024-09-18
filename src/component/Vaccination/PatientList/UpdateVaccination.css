@@ -1,4 +1,4 @@
-/* UpdateVaccinationRegister.css */
+/* Akash Pawar Vaccination 14/24 */
 .UpdateVaccinationRegister__overlay {
     position: fixed;
     top: 0;
@@ -10,6 +10,7 @@
     /* justify-content: center; */
     /* align-items: center; */
     padding: 50px;
+    z-index: 150;
   }
   
   .UpdateVaccinationRegister__popup {
@@ -25,19 +26,24 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    font-size: 14px;
+    font-size: var(--heading-font);
+  }
+  
+  .UpdateVaccinationRegister__header h2{
+    font-size: var(--heading-font);
+    color: black;
   }
   
   .UpdateVaccinationRegister__closeButton {
     background: none;
     border: none;
-    font-size: 1.2rem;
     cursor: pointer;
     position: absolute;
     top: -10px;
     right: -10px;
     background-color: red;
     color: white;
+    padding: 5px 12px;
     border-radius: 50%;
   }
   
@@ -97,8 +103,13 @@
   }
   
   .UpdateVaccinationRegister__formActions button:last-child {
-    background-color: #4CAF50;
+    background-color: var(--button-color);
     color: white;
+  }
+  .UpdateVaccinationRegister__formActions button:last-child:hover {
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+     border: 1px solid var(--button-hover-border-color);
   }
   
   .UpdateVaccinationRegister__note {

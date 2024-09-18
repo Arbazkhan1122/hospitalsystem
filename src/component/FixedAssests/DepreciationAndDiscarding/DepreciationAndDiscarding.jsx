@@ -1,65 +1,52 @@
 import React, { useState, useRef } from "react";
 import "./DAD.css"; // Assuming you'll create a CSS file for styling
+import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
 const DepreciationAndDiscarding = () => {
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
 
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
+  // Dummy data for the table
+  const dummyData = [
+    {
+      itemCode: "IC001",
+      barCode: "BC001",
+      assetCode: "AC001",
+      itemName: "Laptop",
+      action: "Discard",
+    },
+    {
+      itemCode: "IC002",
+      barCode: "BC002",
+      assetCode: "AC002",
+      itemName: "Printer",
+      action: "Depreciate",
+    },
+    {
+      itemCode: "IC003",
+      barCode: "BC003",
+      assetCode: "AC003",
+      itemName: "Desk Chair",
+      action: "Depreciate",
+    },
+    {
+      itemCode: "IC004",
+      barCode: "BC004",
+      assetCode: "AC004",
+      itemName: "Projector",
+      action: "Discard",
+    },
+    {
+      itemCode: "IC005",
+      barCode: "BC005",
+      assetCode: "AC005",
+      itemName: "Whiteboard",
+      action: "Depreciate",
+    },
+  ];
 
   return (
     <div className="DAD">
-      {/* <section className="DAD-addCostCenter">
-        <form className="DAD-form">
-          <div>
-            <label>
-              <input type="checkbox" />
-              Show assets maintained by me
-            </label>
-          </div>
-          <div>
-            <label>
-              <strong>List by Status:</strong>
-            </label>
-            <label htmlFor="all">
-              <input name="status" id="all" defaultChecked type="radio" /> All
-            </label>
-            <label htmlFor="underrepair">
-              <input name="status" id="underrepair" type="radio" /> Under Repair
-            </label>
-            <label htmlFor="faulty">
-              <input name="status" id="faulty" type="radio" /> Faulty
-            </label>
-            <label htmlFor="service">
-              <input name="status" id="service" type="radio" /> Service
-            </label>
-          </div>
-        </form>
-      </section> */}
-
       <section className="DAD-costCenterList">
         <div className="DAD-search-bar">
           <div className="DAD-search-container">
@@ -68,7 +55,8 @@ const DepreciationAndDiscarding = () => {
           </div>
           <div>
             <span className="DAD-results-count">
-              Showing 0 / 0 results &nbsp;&nbsp;
+              Showing {dummyData.length} / {dummyData.length} results
+              &nbsp;&nbsp;
             </span>
             <button className="DAD-print-btn">Print</button>
           </div>
@@ -92,7 +80,10 @@ const DepreciationAndDiscarding = () => {
                     <span>{header}</span>
                     <div
                       className="resizer"
-                      onMouseDown={startResizing(index)}
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
                     ></div>
                   </div>
                 </th>
@@ -100,11 +91,23 @@ const DepreciationAndDiscarding = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="no-show-DAD" colSpan={5}>
-                No Row To Show
-              </td>
-            </tr>
+            {dummyData.length > 0 ? (
+              dummyData.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.itemCode}</td>
+                  <td>{item.barCode}</td>
+                  <td>{item.assetCode}</td>
+                  <td>{item.itemName}</td>
+                  <td>{item.action}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td className="no-show-DAD" colSpan={5}>
+                  No Row To Show
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </section>
