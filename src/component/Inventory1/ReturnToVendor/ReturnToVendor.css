@@ -1,7 +1,8 @@
 .returnToVendor-interface {
-    width: 97%;
+    width: 100%;
+    height: 90vh;
     padding: 20px;
-    background-color: #ccf2ff;
+    background-color: var( --background-color);
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -13,8 +14,8 @@
 }
 
 .returnToVendor-button .ret-button {
-    padding: 10px 20px;
-    background-color: #1e3a76;
+    padding: 5px;
+    background-color: var(--button-color);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -23,7 +24,9 @@
 }
 
 .returnToVendor-button .ret-button:hover {
-    background-color: #42a5f5;
+    background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+  border: 1px solid var(--button-hover-border-color);
 }
 
 .returnToVendor-searchBar {
@@ -53,7 +56,7 @@
 
 .returnToVendor-searchBar .ret-button {
     padding: 10px 20px;
-    background-color:#42a5f5 ;
+    background-color:var(--button-color) ;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -119,12 +122,17 @@
  /*  */
 
  .returnToVendor-ret-button {
-    background-color: #42a5f5; /* Sets the background color to blue */
+    background-color: var(--button-color); /* Sets the background color to blue */
     color: white; /* Sets the text color to white */
     border: none; /* Removes the default border */
-    padding: 8px 16px; /* Adds some padding for a better appearance */
+    padding: 5px; /* Adds some padding for a better appearance */
     border-radius: 15px; /* Rounds the corners slightly */
     cursor: pointer; /* Changes the cursor to a pointer on hover */
     transition: background-color 0.3s ease; /* Adds a smooth transition effect */
 
+  }
+  .returnToVendor-ret-button:hover{
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+    border: 1px solid var(--button-hover-border-color);
   }

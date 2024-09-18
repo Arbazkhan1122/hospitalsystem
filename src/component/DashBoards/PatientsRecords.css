@@ -10,7 +10,7 @@
   display: flex;
   margin-bottom: 10px;
 } */
-
+/* 
 nav button {
   padding: 10px 20px;
   border: none;
@@ -20,7 +20,7 @@ nav button {
 }
 
 nav button.active {
-  background-color: #2171cd;
+  background-color: var(--button-bg-color);
 }
 
 .date-range {
@@ -58,7 +58,6 @@ nav button.active {
 
 .actions button, .department-filter select, .print {
   padding: 5px 10px;
-  /* background-color: #4a90e2; */
   color: white;
   border: none;
   cursor: pointer;
@@ -125,4 +124,4 @@ td button {
 .print{
   color: black;
 
-} 
+}  */

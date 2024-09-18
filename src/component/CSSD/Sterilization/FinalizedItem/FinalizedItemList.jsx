@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./FinalizedItem.css";
+import { startResizing } from "../../../../TableHeadingResizing/ResizableColumns";
 
 function FinalizedItemList() {
   const [columnWidths, setColumnWidths] = useState({});
@@ -7,31 +8,6 @@ function FinalizedItemList() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [fromDate, setFromDate] = useState("2024-08-12");
   const [toDate, setToDate] = useState("2024-08-12");
-
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
 
   const handleDashClick = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -153,60 +129,67 @@ function FinalizedItemList() {
           <i className="fas fa-search"></i>
         </div>
         <div className="FinalizedItem-results">
-          <span>Showing {finalizedItems.length} / {finalizedItems.length} results</span>
+          <span>
+            Showing {finalizedItems.length} / {finalizedItems.length} results
+          </span>
           <button className="FinalizedItem-export-btn">Export</button>
           <button className="FinalizedItem-print-btn">Print</button>
         </div>
       </div>
 
-      <table className="FinalizedItem-table" ref={tableRef}>
-        <thead>
-          <tr>
-            {[
-              "Request Date",
-              "Item Name",
-              "Code",
-              "Tag Number",
-              "Request From",
-              "Requested By",
-              "Disinfectant",
-              "Disinfected Date",
-              "Disinfected By",
-              "Action",
-            ].map((header, index) => (
-              <th
-                key={index}
-                style={{ width: columnWidths[index] }}
-                className="resizable-th"
-              >
-                <div className="header-content">
-                  <span>{header}</span>
-                  <div
-                    className="resizer"
-                    onMouseDown={startResizing(index)}
-                  ></div>
-                </div>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {finalizedItems.map((item, index) => (
-            <tr key={index}>
-              <td>{item.requestDate}</td>
-              <td>{item.itemName}</td>
-              <td>{item.code}</td>
-              <td>{item.tagNumber}</td>
-              <td>{item.requestFrom}</td>
-              <td>{item.requestedBy}</td>
-              <td>{item.disinfectant}</td>
-              <td>{item.disinfectedDate}</td>
-              <td>{item.disinfectedBy}</td>
-              <td>{item.action}</td>
+      <div className="table-container">
+        <table className="FinalizedItem-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Request Date",
+                "Item Name",
+                "Code",
+                "Tag Number",
+                "Request From",
+                "Requested By",
+                "Disinfectant",
+                "Disinfected Date",
+                "Disinfected By",
+                "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {finalizedItems.map((item, index) => (
+              <tr key={index}>
+                <td>{item.requestDate}</td>
+                <td>{item.itemName}</td>
+                <td>{item.code}</td>
+                <td>{item.tagNumber}</td>
+                <td>{item.requestFrom}</td>
+                <td>{item.requestedBy}</td>
+                <td>{item.disinfectant}</td>
+                <td>{item.disinfectedDate}</td>
+                <td>{item.disinfectedBy}</td>
+                <td>{item.action}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

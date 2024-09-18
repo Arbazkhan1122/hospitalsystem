@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../ListRequest/rdlListRequest.css";
 import AddReportForm from "./rdlAddReport";
 import RDLAddScanDoneDetails from "./rdlScanDone";
+import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
 function RDLListRequest() {
+  const [columnWidths, setColumnWidths] = useState({});
   const [showAddReport, setShowAddReport] = useState(false);
   const [showScanDone, setShowScanDone] = useState(false);
   const [imagingRequests, setImagingRequests] = useState([]);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [selectedFilter, setSelectedFilter] = useState("--All--");
   const [searchQuery, setSearchQuery] = useState("");
+  const tableRef = useRef(null);
 
   useEffect(() => {
     // Fetch imaging requests and patients data
@@ -132,13 +135,13 @@ function RDLListRequest() {
       </div>
       <div className="rDLListRequest-search-N-results">
         <div className="rDLListRequest-search-bar">
-          <i className="fa-solid fa-magnifying-glass"></i>
           <input
             type="text"
             placeholder="Search"
             value={searchQuery}
             onChange={handleSearchChange}
           />
+          <i className="fa-solid fa-magnifying-glass"></i>
         </div>
         <div className="rDLListRequest-results-info">
           {filteredRequests.length > 0
@@ -146,17 +149,36 @@ function RDLListRequest() {
             : "No rows to show"}
         </div>
       </div>
-      <div className="rDLListRequest-table-N-paginat">
-        <table>
+      <div className="table-container">
+        <table ref={tableRef}>
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Patient Name</th>
-              <th>Age/Sex</th>
-              <th>Prescriber</th>
-              <th>Type</th>
-              <th>Imaging Name</th>
-              <th>Action</th>
+              {[
+                "Id",
+                "Patient Name",
+                "Age/Sex",
+                "Prescriber",
+                "Type",
+                "Imaging Name",
+                "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -172,7 +194,7 @@ function RDLListRequest() {
                   <td>
                     {request.status?.toLowerCase() === "pending" && (
                       <button
-                        className="rDLListRequest-action-button scan-done"
+                        className="rDLListRequest-scan-done"
                         onClick={() => handleScanDoneClick(request)}
                       >
                         Scan Done
@@ -180,7 +202,7 @@ function RDLListRequest() {
                     )}
                     {request.status?.toLowerCase() === "active" && (
                       <button
-                        className="rDLListRequest-action-button add-report"
+                        className="rDLListRequest-add-report"
                         onClick={() => handleAddReportClick(request)}
                       >
                         Add Report
@@ -222,12 +244,6 @@ function RDLListRequest() {
       {showScanDone && (
         <div className="rDLListRequest-modal-overlay">
           <div className="rDLListRequest-modal-content">
-            <button
-              className="rDLListRequest-close-modal"
-              onClick={closePopups}
-            >
-              &times;
-            </button>
             <RDLAddScanDoneDetails
               onClose={closePopups}
               onUpdateStatus={(scannedOn, filmType, quantity, remarks) => {

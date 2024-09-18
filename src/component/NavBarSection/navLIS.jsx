@@ -167,7 +167,7 @@ function NavLIS() {
 
             <div className="labLIS-filter-findings">
               <span>Showing Results </span>
-              <button className="labLIS-filter-findings-Printbtn">Print</button>
+              <button className="labLIS-filter-findings-Printbtn"><i class="fa-solid fa-print"></i> Print</button>
             </div>
           </div>
           <div className="labLIS-table-N-paginationDiv">
@@ -185,14 +185,14 @@ function NavLIS() {
               <tbody>{/* Table rows would go here */}</tbody>
             </table>
 
-            <div className="labLIS-pagination">
+            {/* <div className="labLIS-pagination">
               <span>0 to 0 of 0</span>
               <button>First</button>
               <button>Previous</button>
               <span>Page 0 of 0</span>
               <button>Next</button>
               <button>Last</button>
-            </div>
+            </div> */}
           </div>
         </div>
       ) : (

@@ -1,8 +1,9 @@
+/* Mohini_SettingRack_WholePage_14/sep/2024 */
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './SettingSupplier.css';
 
-const API_URL = 'http://192.168.1.37:1415/api/racks';
+const API_URL = 'http://192.168.1.39:1415/api/racks';
 
 const SettingRack = () => {
   const [suppliers, setSuppliers] = useState([]);
@@ -223,3 +224,4 @@ const SettingRack = () => {
 };
 
 export default SettingRack;
+/* Mohini_SettingRack_WholePage_14/sep/2024 */

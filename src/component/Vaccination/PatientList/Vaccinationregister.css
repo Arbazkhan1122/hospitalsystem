@@ -1,4 +1,4 @@
-/* VaccinationRegister.css */
+/* Akash Pawar Vaccination 14/24 */
 .vaccinationRegister__overlay {
   position: fixed;
   top: 0;
@@ -6,17 +6,16 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
   padding: 50px;
+  z-index: 55555;
 }
 
 .vaccinationRegister__popup {
   background-color: white;
   padding: 20px;
-  /* border-radius: 5px; */
-  /* width: 100%; */
   position: relative;
 }
 
@@ -25,13 +24,17 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  font-size: 14px;
+  font-size: var(--heading-font);
+}
+.vaccinationRegister__header h2{
+  color: black;
 }
 
 .vaccinationRegister__closeButton {
   background: none;
   border: none;
-  font-size: 1.2rem;
+  padding: 5px 12px;
+  /* font-size: 2rem; */
   cursor: pointer;
   position: absolute;
   top: -10px;
@@ -109,7 +112,7 @@
 
 .vaccinationRegister__openButton {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: var(--button-bg-color);
   color: white;
   border: none;
   border-radius: 5px;

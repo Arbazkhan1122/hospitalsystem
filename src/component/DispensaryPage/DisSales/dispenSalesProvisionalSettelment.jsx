@@ -38,21 +38,7 @@ function DispenSalesProvisionalSettelment() {
         <>
       {/* Rest of your code */}
       <header className='dispenSalesProvisionalSettelment-header'>
-         {/* <h4>* ACTIVE IMAGING R EQUEST</h4> */}
-         {/* <div className="dispenSalesProvisionalSettelment-checkBox">
-           <label>
-            <input type="checkbox" />
-             All
-           </label>
-           
-            <input type="checkbox" />
-            <label >Completed</label>
-            <input type="checkbox" />
-            <label >Pending</label>
-           
-
-             
-         </div> */}
+       
        </header>
        <div className="dispenSalesProvisionalSettelment-controls">
 
@@ -63,19 +49,7 @@ function DispenSalesProvisionalSettelment() {
             </select>
           </label>
         </div>
-         {/* <div className="dispenSalesProvisionalSettelment-date-range">
-           <label>
-             From:
-             <input type="date" defaultValue="2024-08-09" />
-           </label>
-           <label>
-             To:
-             <input type="date" defaultValue="2024-08-16" />
-           </label>
-           <button className="dispenSalesProvisionalSettelment-star-button">☆</button>
-           <button className="dispenSalesProvisionalSettelment-ok-button">OK</button>
-         </div> */}
-         {/* <button className='dispenSalesProvisionalSettelment-CreateRequisition'>Load Data</button> */}
+        
        </div>
        <div className="dispenSalesProvisionalSettelment-search-N-results">
          <div className="dispenSalesProvisionalSettelment-search-bar">

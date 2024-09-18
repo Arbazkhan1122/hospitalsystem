@@ -1,3 +1,4 @@
+/* Mohini_Stock_WholePage_14/sep/2024 */
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom"; // Ensure Link is imported correctly
@@ -154,3 +155,4 @@ const Stock = () => {
 };
 
 export default Stock;
+/* Mohini_Stock_WholePage_14/sep/2024 */

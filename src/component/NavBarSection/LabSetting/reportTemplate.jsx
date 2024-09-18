@@ -24,15 +24,15 @@ const ReportTemplate = () => {
   };
 
   return (
-    <div className="labTestLS-container">
-    <div className="labTestLS-firstRow">
-    <div className="labTestLS-addBtn">
-      <button className="labTestLS-add-button" onClick={handleAddNewLabTestClick}>+Add New Lab Template</button>
+    <div className="reportTemplate-container">
+    <div className="reportTemplate-firstRow">
+    <div className="reportTemplate-addBtn">
+      <button className="reportTemplate-add-button" onClick={handleAddNewLabTestClick}>+Add New Lab Template</button>
       </div>
         
       </div>
-      <div className='labTestLS-search-N-result'>
-      <div className="labTestLS-search-bar">
+      <div className='reportTemplate-search-N-result'>
+      <div className="reportTemplate-search-bar">
           <i className="fa-solid fa-magnifying-glass"></i>
           <input 
             type="text" 
@@ -40,9 +40,9 @@ const ReportTemplate = () => {
             
           />
         </div>
-        <div className="labTestLS-results-info">
+        <div className="reportTemplate-results-info">
           <span>Showing 0 / 0 results</span>
-          <button className="labTestLS-print-button">Print</button>
+          <button className="reportTemplate-print-button">Print</button>
         </div>
         </div>
       <table >
@@ -63,14 +63,14 @@ const ReportTemplate = () => {
               <td>{test.templateType}</td>
               <td>{test.displaySequence}</td>
               <td>
-                <button className="labTestLS-edit-button"onClick={handleAddNewLabTestClick}>Edit</button>
-                <button className="labTestLS-deactivate-button">Deactivate</button>
+                <button className="reportTemplate-edit-button"onClick={handleAddNewLabTestClick}>Edit</button>
+                <button className="reportTemplate-deactivate-button">Deactivate</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="labTestLS-pagination">
+      <div className="reportTemplate-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
@@ -80,8 +80,8 @@ const ReportTemplate = () => {
         </div>
       {/* Modal Popup */}
       {showPopup && (
-        <div className="labTestLS-modal">
-          <div className="labTestLS-modal-content">
+        <div className="reportTemplate-modal">
+          <div className="reportTemplate-modal-content">
             <LabReportTempAddNewLTC onClose={handleClosePopup} />
           </div>
         </div>

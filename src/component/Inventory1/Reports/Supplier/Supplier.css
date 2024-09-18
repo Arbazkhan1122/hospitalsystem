@@ -1,12 +1,15 @@
+/* Swapnil ROkade adding className And Applying colors 14/09 */
+
 .supplier-grid {
     display: flex;
+    padding:5px 0px ;
     flex-wrap: wrap;
     column-gap: 40px;
     row-gap: 20px;
   }
   
   .supplier-item {
-    background-color: #eaf4fe;
+    background-color: var(--background-color);
     padding: 20px;
     border-radius: 10px;
     display: flex;

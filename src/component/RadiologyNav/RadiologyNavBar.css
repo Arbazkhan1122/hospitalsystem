@@ -1,6 +1,8 @@
 
+  /* Akash Pawar Radiology 14/24 */
   .radiologyNav-bar {
-      background-color:#4CAF50;
+      background-color:white;
+      padding: 10px;
       font-family: Arial, sans-serif;
 
       /* padding: 10px; */
@@ -24,25 +26,23 @@
     }
     
     .radiologyNav-bar a {
-      color: #f7f8fa;
+      color: black;
       text-decoration: none;
-      font-weight: bold;
-      font-size: 12px;
+      /* font-weight: bold; */
+      font-size: var(--font-size);
       padding: 5px 5px;
       border-radius: 5px;
   
     }
     
     .radiologyNav-bar a:hover {
-      background-color: #0056b3;
-      color: white;
-      border: 1px solid gray;
-  
-      
+      background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+    border: 1px solid var(--button-hover-border-color);
     }
     
     .radiologyNav-bar .active {
-      background-color: #0AB897;
+      background-color: var(--button-bg-color);
       /* background-color: #0056b3; */
       color: white;
   

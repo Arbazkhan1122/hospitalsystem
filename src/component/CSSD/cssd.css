@@ -1,9 +1,9 @@
+/* Akash Pawar CSSD 14/24 */
 .cssd-component {
-    background-color: #CAF2FF;
     width: 100%;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    
   }
   
   .cssd-component-header {
@@ -13,6 +13,9 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0px;
+    z-index: 10;
   }
   
   .cssd-component-header ul {
@@ -24,7 +27,7 @@
   }
   
   .cssd-component-header ul li {
-    color: #1890ff;
+    color: black;
     /* margin-right: 20px; */
     cursor: pointer;
     font-size: 14px;
@@ -32,7 +35,15 @@
   }
   .cssd-component-header a{
     text-decoration: none;
-    color: #1890ff;
+    border-radius: var(--input-box-padding);
+    padding: var(--input-box-padding);
+    color: black;
+  }
+  
+  .cssd-component-header a:hover{
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+     border: 1px solid var(--button-hover-border-color);
   }
   
   .cssd-component-header ul li .active {
@@ -40,7 +51,7 @@
     font-weight: bold;
     color: white;
     padding: 5px 10px;
-    background-color: #2D68EA;
+    background-color: var(--button-bg-color);
   }
   
   .cssd-component-header-right {

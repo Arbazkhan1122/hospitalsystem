@@ -1,3 +1,4 @@
+/* Mohini_PharmacyCom_WholePage_14/sep/2024 */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './PharmacyCom.css';
@@ -125,3 +126,4 @@ const PharmacyComponent = () => {
 };
 
 export default PharmacyComponent;
+/* Mohini_PharmacyCom_WholePage_14/sep/2024 */

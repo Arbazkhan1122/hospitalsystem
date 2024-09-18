@@ -3,8 +3,6 @@ import React from 'react';
 import './Section.css'
 
 const Section = () => {
-
-
   return (
     <div className='outerSection'>
       <nav className="navbar">
@@ -129,13 +127,6 @@ const Section = () => {
 
             </div>
           </div>
-
-
-
-
-
-
-
         </aside>
 
         <div className='betweenSection'>
@@ -145,7 +136,6 @@ const Section = () => {
             <div className='firstBox'>
               <div className='subNav'>
                 <div className='labAndImg'>
-
                   <span className='spanText'>Labs</span>
                 </div>
                 <button className='btnAdd'>Add</button>
@@ -153,9 +143,7 @@ const Section = () => {
               <div className='inputSection'>
                 <input className='inputOne' placeholder='No Record Found'></input>
               </div>
-
             </div>
-
           </div>
 
           <div className='outOutDiv'>
@@ -196,13 +184,11 @@ const Section = () => {
             <div className='firstBox'>
               <div className='subNav'>
                 <div>
-
                   <span className='spanText'>Active Problems</span>
                 </div>
                 <button className='btnAdd'>Add</button>
               </div>
               <div>
-
                 <table>
                   <thead>
                     <tr>
@@ -217,9 +203,7 @@ const Section = () => {
                       <td>Intestinal infection due to Shigella</td>
                       <td>2024-09-05</td>
                       <td> <a href=''>Add Note</a></td>
-
                     </tr>
-
                   </tbody>
                 </table>
               </div>
@@ -253,18 +237,12 @@ const Section = () => {
               </div>
             </div>
           </div>
-
-
-
-
-
         </div>
 
 
 
         <aside className="aside-section right-aside">
           <div className='asideDivTwo'>
-
             <div className='asideNav'>
               <div className='navTextandBtn'>
                 <div className='navVitals'>
@@ -317,11 +295,7 @@ const Section = () => {
                       <td>Body Pain Data</td>
                     </tr>
                   </table>
-
-
                 </div>
-
-
               </div>
             </div>
             <div className=''>

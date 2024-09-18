@@ -8,7 +8,7 @@
 }
 
 .report-stock-report-item {
-  background-color: #eaf4fe;
+  background-color:var(--background-color);
   padding: 20px;
   border-radius: 10px;
   display: flex;

@@ -1,12 +1,7 @@
-
-
-
+/* Akash Pawar Radiology 14/24 */
   .rDLListRequest-active-imaging-request {
     font-family: Arial, sans-serif;
-    /* max-width: 1200px; */
-    /* margin: 0 auto; */
     padding: 10px;
-    background-color: #cee6ff;
   }
   
   .rDLListRequest-header {
@@ -17,8 +12,9 @@
   }
   
   .rDLListRequest-header h4 {
-    color: #3f8fdf;
+    color: black;
     margin: 0;
+    font-size: var(--heading-font);
   }
   
   /* .rDLListRequest-filter  {
@@ -65,7 +61,7 @@ font-weight: bold;
   }
   
   .rDLListRequest-ok-button {
-    background-color: #4CAF50;
+    background-color: var(--button-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -75,19 +71,21 @@ font-weight: bold;
   
   .rDLListRequest-search-bar {
     display: flex;
+    align-items: center;
+    background-color: #f2f2f2;
+    padding: 0 15px;
   }
   
   .rDLListRequest-search-bar input {
     flex-grow: 1;
     padding: 5px;
     width: 200px;
-
+    background-color: transparent;
+    border: none;
+    outline: none;
   }
   .rDLListRequest-search-bar i{
-    position: relative;
     color:gray;
-    top: 7px;
-  left: 170px;
   }
   
   .search-bar button {
@@ -99,34 +97,11 @@ font-weight: bold;
   
   .rDLListRequest-results-info {
     text-align: right;
-    color: #0011ff;
+    color: black;
     font-size: 12px;
     font-weight: bold;
   }
-  
-  .rDLListRequest-table-N-paginat table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-  }
-  
-  .rDLListRequest-table-N-paginat th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    font-size: 13px;
-    color: rgb(70, 69, 69);
-  }
-  
-  .rDLListRequest-table-N-paginat th {
-    /* background-color: red; */
-    background-color: #f2f2f2;
-  }
-  
-  .rDLListRequest-table-N-paginat tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
+
   .rDLListRequest-action-button {
     padding: 5px 10px;
     color: white;
@@ -137,11 +112,17 @@ font-weight: bold;
   }
   
   .rDLListRequest-add-report {
-    background-color: #008CBA;
+    color:white;
+    border-radius: 5px;
+    padding: 5px; 
+    background-color: var(--button-color);
   }
   
   .rDLListRequest-scan-done {
-    background-color: #008CBA;
+    color:white;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: var(--button-color);
   }
   
   .rDLListRequest-pagination {
@@ -150,19 +131,7 @@ font-weight: bold;
     align-items: center;
     margin-top: 20px;
   }
-  
-  .pagination button, .pagination span {
-    margin: 0 5px;
-    padding: 5px 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    color: #333;
-  }
-  
-  .pagination button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+
   .rDLListRequest-search-N-results{
     display: flex;
     justify-content: space-between;
@@ -175,17 +144,6 @@ font-weight: bold;
     align-items: center;
     margin-top: 50px;
   }
-  
-  .rDLListRequest-pagination button {
-    background-color: #008CBA;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin: 0 5px;
-    border-radius: 5px;
-  }
-  
   .rDLListRequest-pagination span {
     margin: 0 10px;
     color: gray;

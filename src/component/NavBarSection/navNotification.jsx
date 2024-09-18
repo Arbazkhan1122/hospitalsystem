@@ -34,28 +34,21 @@ function NavNotification() {
         <div className="labNotificationSms-content">
           
           <div className="labNotificationSms-filters">
-            <div className="labNotificationSms-date-filters">
-            <span>From:</span>
-              <DatePicker
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
-                selectsStart
-                startDate={startDate}
-                endDate={endDate}
-                className="labNotificationSms-date-picker"
-              />
-              <span>To:</span>
-              <DatePicker
-                selected={endDate}
-                onChange={(date) => setEndDate(date)}
-                selectsEnd
-                startDate={startDate}
-                endDate={endDate}
-                minDate={startDate}
-                className="labNotificationSms-date-picker"
-              />
-
-              </div>
+          <div className="labNotificationSms-controls">
+        {/* Your date range and button controls */}
+          <div className="labNotificationSms-date-range">
+            <label>
+              From:
+              <input type="date" defaultValue="2024-08-09" />
+            </label>
+            <label>
+              To:
+              <input type="date" defaultValue="2024-08-16" />
+            </label>
+            <button className="labNotificationSms-star-button">☆</button>
+            <button className="labNotificationSms-ok-button">OK</button>
+          </div>
+      </div>
 
               <div>
               <button className="labNotificationSms-show-data-btn">

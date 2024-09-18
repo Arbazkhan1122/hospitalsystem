@@ -25,7 +25,7 @@
       border: none;
       border-radius: 5px;
       padding: 0px 10px;
-      font-size: 12px;
+      font-size: var(--font-size);
       margin-left: 100px;
       height: 28px;
       text-align: center;
@@ -42,7 +42,7 @@
     width: 100px;
   }
   .dispenSalesProvisionalReturn-checkBox label {
-font-size: 14px;
+font-size: var(--font-size);
 font-weight: bold;
 color: green;
 }
@@ -56,36 +56,49 @@ color: green;
   .dispenSalesProvisionalReturn-date-range {
     display: flex;
     align-items: center;
-    width: 40%;
+    width: 50%;
     gap: 10px;
     background-color: #f0f0f0;
     margin-bottom: 10px;
   }
   .dispenSalesProvisionalReturn-date-range label{
+    display: flex;
+    align-items: center;
     margin-left: 20px;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: var(--font-size);
+    padding: 3px;
   }
   
   .dispenSalesProvisionalReturn-date-range input[type="date"] {
-    padding: 5px;
+    padding: 3px;
+    margin-left: 10px;
   }
   
   .dispenSalesProvisionalReturn-star-button {
     background: none;
     border: none;
-    font-size: 1.2em;
-    color: #0011ff;
+    font-size: 24px;
+    color:var(--button-color) ;
     cursor: pointer;
   }
   
   .dispenSalesProvisionalReturn-ok-button {
-    background-color: var(--button-color);
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
+    /* border: none; */
+    /* margin-right: 10px; */
     border-radius: 5px;
-    padding: 5px 15px;
     cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .dispenSalesProvisionalReturn-ok-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
   .dispenSalesProvisionalReturn-search-bar {
@@ -94,15 +107,15 @@ color: green;
   
   .dispenSalesProvisionalReturn-search-bar input {
     flex-grow: 1;
-    padding: 5px;
-    width: 200px;
+    padding: 3px;
+    width: 210px;
 
   }
   .dispenSalesProvisionalReturn-search-bar i{
     position: relative;
     color:gray;
-    top: 7px;
-  left: 205px;
+    top: 8px;
+  left: 203px;
   }
   
   /* .search-bar button {
@@ -115,19 +128,26 @@ color: green;
   .dispenSalesProvisionalReturn-results-info {
     text-align: right;
     color: black;
-    font-size: 12px;
+    font-size: var(--font-size);
 }
 .dispenSalesProvisionalReturn-print-btn{
-      margin-left: 10px;
-      /* gap: 10px; */
-    background-color: var(--button-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 12px;
-
-  }
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin-left: 10px;
+  transition: background-color 0.3s ease;
+  padding: 5px 10px;
+}
+.dispenSalesProvisionalReturn-print-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
   
   .dispenSalesProvisionalReturn-table-N-paginat table {
     width: 100%;
@@ -137,16 +157,16 @@ color: green;
 
 .dispenSalesProvisionalReturn-table-N-paginat th, td {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    font-size: 14px;
-    color: rgb(70, 69, 69);
+    padding: 3px;
+    text-align: center;
+    font-size: var(--font-size);
+    color: black;
 }
   
   .dispenSalesProvisionalReturn-table-N-paginat th {
     /* background-color: red; */
     background-color: #F3F3F3;
-    font-size: 16px;
+    font-size: var(--heading-font);
 
   }
   
@@ -205,7 +225,7 @@ color: green;
   .dispenSalesProvisionalReturn-pagination span {
     margin: 0 10px;
     color: gray;
-    font-size: 12px;
+    font-size: var(--font-size);
   }
   .dispenSalesProvisionalReturn-table-N-paginat{
     background-color: white ;
@@ -218,7 +238,7 @@ color: green;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;

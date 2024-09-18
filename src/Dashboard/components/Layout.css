@@ -3,13 +3,22 @@
 .hrmsLayout {
  display: flex;
  height: 100%;
+/* height: 100%; */
+height: 100vh;
+overflow: hidden;
 }
+.hrmsLayout-center{
+   width: 100%;
+   background-color: var(--background-color);
+   overflow: auto;
+   height: 92lvh;
 
+}
 .hrmsLayoutMainContent {
    flex: 1;
-transition: all 0.3s ease;
-width: 100%;
-overflow: hidden;
+   transition: all 0.3s ease;
+   width: 100%;
+   height: 70vh;
 }
 
 /* .hrmsLayoutMainContentClosed {

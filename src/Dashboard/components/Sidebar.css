@@ -1,12 +1,13 @@
 .custom-sidebar {
   width: 13rem;
   background-color: var(--upperBar-bg-color);
-  height: 100%;
   padding-top: 1rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   color: white;
-  position: relative;
+  position: sticky;
+  top: 0px;
+  z-index: 10;
 }
 
 .custom-sidebar-links {
@@ -14,7 +15,7 @@
   padding: 0;
    max-height: calc(100vh - 60px); /* Adjust 60px based on the height of your logo container */
   overflow-y: auto;
-  font-size: 13px;
+  font-size: var(--font-size);
   margin-top: 10px;
 }
 
@@ -29,7 +30,7 @@ display: none;
 }
 
 .custom-nav-item-active {
-  background-color: #10558d;
+  background-color: var(--button-color);
 }
 .custom-logo-container {
   display: flex;
@@ -43,14 +44,17 @@ display: none;
 .custom-toggle-button {
   position: absolute;
   top: 1rem;
-  right: -1rem; /* Adjust the right value to position it closer to the sidebar's edge */
+  right: -1rem;
   background-color: white;
-  border-radius: 50%; /* Make the button circular */
-  padding: 0.3rem; /* Slightly increased padding for better clickability */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for better visibility */
-  border: none; /* Removed border for a cleaner look */
-  z-index: 100; /* Ensure the toggle button stays on top */
-  transition: all 0.3s ease; /* Add smooth transition for hover effects */
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+  z-index: 100;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .custom-toggle-button:hover {
@@ -80,7 +84,6 @@ display: none;
   padding-left: 1.5rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-   /* background-color: #003f7f */
 }
 
 .custom-submenu li {
@@ -88,7 +91,7 @@ display: none;
   cursor: pointer;
 }
 .custom-submenu-active {
- background-color: #003f7f;
+ background-color: var(--button-color);
  }
 
 .custom-sidebar-closed .custom-nav-link-text,
@@ -110,12 +113,13 @@ display: none;
   padding: 10px 15px;
   border-bottom: 1px solid grey;
   transition: background-color 0.3s ease;
-  font-size: 12px;
+  font-size: var(--font-size);
 
 }
 
 .custom-submenu li a{
   color: #f2f2f2 ;
+  text-decoration: none;
 
 }
 
@@ -123,15 +127,18 @@ display: none;
   border-bottom: none;
 }
 
-.custom-submenu li:hover {
-  background-color: #1890ff;
+.custom-submenu li:hover{
+  background-color: var(--button-hover-background-color);
+  color: black;
+}
+.custom-submenu li:hover a{
+  color: var(--font-color);
 }
 
 
 
 .custom-submenu-active {
-  background-color: #e6f7ff;
-  border-left: 3px solid #1890ff;
+  background-color: var(--button-bg-color);
 }
 
 .custom-submenu-active a {

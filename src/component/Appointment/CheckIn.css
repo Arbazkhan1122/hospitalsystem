@@ -3,7 +3,8 @@
   padding: 20px;
   font-family: Arial, sans-serif;
   width: 100%;
-  height: 90vh;
+  height: 80vh;
+  overflow-y: scroll;
 }
 
 .checkIn__header {
@@ -50,6 +51,7 @@
   border-radius: 4px;
   flex: 1;
   border: 1px solid #ccc;
+  width: 100%;
 }
 
 .checkIn__section--patient {

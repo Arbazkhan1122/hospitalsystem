@@ -3,18 +3,15 @@
     /* max-width: 1200px; */
     /* margin: 0 auto; */
     padding: 10px;
-    height: 460px;
-    background-color: #CAF2FF;
+    height: 78vh;
+    background-color:var(--background-color);
   }
   
  .drPaymentModeWiseReport-report h4 {
     margin-top: 0;
-    color: rgb(66, 66, 66);
-    font-weight: 200;
+    font-size: var(--heading-font);
   }
-  .drPaymentModeWiseReport-report i {
-    color: #0F63AF
-  }
+ 
   
   .drPaymentModeWiseReport-filters {
     display: flex;
@@ -34,20 +31,21 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: var(--font-size);
     background-color: #EBF7FF;
     margin-left: 30px;
     padding: 2px 30px;
   }
-  
+  .drPaymentModeWiseReport-date-range input{
+  margin-left: 10px;
+  padding: 1px 10px;
+  }
   .drPaymentModeWiseReport-select-filters {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: var(--font-size);
     margin-left: 10px;
     /* border: 1px solid red; */
     /* width: 300px; */
@@ -68,23 +66,34 @@
   .drPaymentModeWiseReport-star-button {
     background: none;
     border: none;
-    font-size: 1.9em;
-    color: #0F63AF;
+    font-size: 24px;
+    color:var(--button-color) ;
     cursor: pointer;
   }
   
   .drPaymentModeWiseReport-show-report-button {
-    background-color: #5867DD;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    font-size: 12px;
-    padding: 8px 15px;
-    border-radius: 3px;
+    /* margin-right: 10px; */
+    border-radius: 5px;
     cursor: pointer;
+    font-size: var(--font-size);
     margin-right: 100px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
   }
+  .drPaymentModeWiseReport-show-report-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color); 
+  }
+  
   .drPaymentModeWiseReport-show-report-button i{
     color: white;
+  }
+  .drPaymentModeWiseReport-show-report-button i:hover{
+    color: var(--button-hover-text-color);
   }
   
   .drPaymentModeWiseReport-search-N-result{
@@ -119,8 +128,7 @@
     align-items: center; */
     /* padding-top: 10px; */
     color: #659BE0;
-    font-weight: bold;
-    font-size: 12px;
+    font-size: var(--font-size);
   }
 
   
@@ -144,7 +152,7 @@
     background-color: #659BE0;
     color: white;
     border: none;
-    font-size: 12px;
+    font-size: var(--font-size);
     border-radius: 5px;
     padding: 8px 15px;
     margin-left: 10px;
@@ -162,7 +170,7 @@
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    font-size: 12px;
+    font-size: var(--font-size);
   }
   
   .drPaymentModeWiseReport-report th {
@@ -191,13 +199,13 @@
     cursor: pointer;
     margin: 0 5px;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: var(--font-size);
   }
   
   .drPaymentModeWiseReport-pagination span {
     margin: 0 10px;
     color: gray;
-    font-size: 12px;
+    font-size: var(--font-size);
   }
  
   .drPaymentModeWiseReport-table-N-paginationDiv{
@@ -216,6 +224,5 @@ padding: 5px 10px;
   }
   .drPaymentModeWiseReport-Summary td{
     color: blue;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: var(--font-size);
   }

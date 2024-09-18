@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './CreateReturnToVendor.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const CreateReturnToVendor = ({ onCancel }) => { 
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [formData, setFormData] = useState({
     fiscalYear: '2024',
     vendor: '',
@@ -123,26 +126,45 @@ const CreateReturnToVendor = ({ onCancel }) => {
           <input type="date" name="returnOn" value={formData.returnOn} onChange={e => setFormData({ ...formData, returnOn: e.target.value })} required />
         </div>
         <div className="create-return-to-vendor-table-container">
-          <table className="create-return-to-vendor-item-table">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Item Name</th>
-                <th>Batch No</th>
-                <th>Good Receipt No</th>
-                <th>Available Qty</th>
-                <th>Item Rate</th>
-                <th>Return Rate</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-                <th>Return Discount Amt</th>
-                <th>Return VAT Amt</th>
-                <th>Return CC Amt</th>
-                <th>Total Amount</th>
-                <th>Remark</th>
-                <th></th>
-              </tr>
-            </thead>
+        <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "",
+                 "Item Name",
+                 "Batch No",
+                 "Good Receipt No",
+                 "Available Qty",
+                 "Item Rate",
+                 "Return Rate",
+                 "Quantity",
+                 "Subtotal",
+                 "Return Discount Amt",
+                 "Return VAT Amt",
+                 "Return CC Amt",
+                 "Total Amount",
+                 "Remark",
+                 ""
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
             <tbody>
               {formData.items.map((item, index) => (
                 <tr key={index}>
