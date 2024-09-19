@@ -1,3 +1,4 @@
+/* Ajhar Tamboli sSPharmacyNInven.jsx 19-09-24 */
 
 import React from 'react';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
@@ -19,9 +20,9 @@ const SSPharmacyNInven = () => {
           <li><NavLink to={`/SSIStock/${store}`}>Inventory</NavLink></li> {/* Link to SSIStock */}
         </div>
         <div className='sSPharmacyNInven-Acc-N-Log'>
-          <button className='sSPharmacyNInven-active-Accounts-btn'>{`Active Store: ${store}`}</button>
+          <button className='sSPharmacyNInven-active-Accounts-button'>{`Active Store: ${store}`}</button>
           <button 
-            className='-sSPharmacyNInven-active-Accounts-LogoutButton'
+            className='-sSPharmacyNInven-active-Accounts-Logout-button'
             onClick={handleLogoutButtonClick}
           >
             <i className="fa-solid fa-right-from-bracket"></i>

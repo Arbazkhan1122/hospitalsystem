@@ -1,3 +1,6 @@
+/* Ajhar tamboli sSPConsumption.jsx 19-09-24 */
+
+
 import React, { useEffect, useState } from 'react';
 import "../SSPharmacy/sSPConsumption.css";
 import { useParams } from 'react-router-dom';
@@ -38,14 +41,28 @@ function SSPConsumption() {
         </div>
       )}
       
-      <div className="sSPConsumption-search-bar">
-        <input type="text" placeholder="Search" />
-        <button type="button">🔍</button>
-      </div>
-      <div className="sSPConsumption-results-header">
+      
+      
+
+      <div className="sSPConsumption-search-N-results">
+          <div className="sSPConsumption-search-bar">
+            <i className="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search" />
+          </div>
+          <div className="sSPConsumption-results-info">
         <span>Showing {consumptions.length} / {consumptions.length} results</span>
-        <button className="sSPConsumption-btn-print">Print</button>
-      </div>
+            {/* Showing 2 / 2 results */}
+            <button className='sSPConsumption-print-btn' 
+            // onClick={handleExportToExcel}
+            >
+              <i className="fa-regular fa-file-excel"></i> Export
+            </button>
+            <button className='sSPConsumption-print-btn' 
+            // onClick={handlePrint}
+            ><i class="fa-solid fa-print"></i> Print</button>
+          </div>
+        </div>
+
       <table>
         <thead>
           <tr>
@@ -70,14 +87,14 @@ function SSPConsumption() {
           ))}
         </tbody>
       </table>
-      <div className="sSPConsumption-pagination">
+      {/* <div className="sSPConsumption-pagination">
         <span>1 to {consumptions.length} of {consumptions.length}</span>
         <button disabled>First</button>
         <button disabled>Previous</button>
         <button className="active">Page 1 of 1</button>
         <button disabled>Next</button>
         <button disabled>Last</button>
-      </div>
+      </div> */}
     </div>
   );
 }
