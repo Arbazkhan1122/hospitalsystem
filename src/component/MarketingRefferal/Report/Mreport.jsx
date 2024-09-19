@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react';
+// neha mktreffaral-mreport-19/09/24
+import React, { useEffect, useState,useRef } from 'react';
 import axios from 'axios';
 import './Mreport.css';
+import { startResizing } from '../../../TableHeadingResizing/ResizableColumns';
 
 const Mreport = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
 
   useEffect(() => {
-    // Fetch data from API
+   
     axios.get('http://localhost:5000/api.MktReport/fetch-all-MktReport')
       .then(response => {
-        setData(response.data); // Assuming response.data is an array of reports
+        setData(response.data); 
         setLoading(false);
       })
       .catch(error => {
@@ -59,19 +63,35 @@ const Mreport = () => {
       </div>
       
       {/* Report Table */}
-      <div className="mkrtref_report_table_container">
-        <table className="mkrtref_report_table">
+      <div className="table-container">
+        <table className="mkrtref_report_table" ref={tableRef}>
           <thead className="mkrtref_report_table_head">
             <tr>
-              <th className='mkrtref_report_table_head-th'>Referring Party</th>
-              <th className='mkrtref_report_table_head-th'>Party Group</th>
-              <th className='mkrtref_report_table_head-th'>Area Code</th>
-              <th className='mkrtref_report_table_head-th'>Referring Organization</th>
-              <th className='mkrtref_report_table_head-th'>Invoice Net Amount</th>
-              <th className='mkrtref_report_table_head-th'>Referral Amount</th>
-            </tr>
-          </thead>
-          <tbody>
+            {[
+  "Referring Party",
+  "Party Group",
+  "Area Code",
+  "Referring Organization",
+  "Invoice Net Amount",
+  "Referral Amount"
+].map((header, index) => (
+  <th
+    key={index}
+    style={{ width: columnWidths[index] }}
+    className="rd-resizable-th"
+  >
+    <div className="header-content">
+      <span>{header}</span>
+      <div
+        className="resizer"
+        onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+      ></div>
+    </div>
+  </th>
+))}
+</tr>
+</thead>
+<tbody>
             {loading ? (
               <tr>
                 <td colSpan="6" className="mkrtref_report_no_data">Loading...</td>
@@ -108,7 +128,7 @@ const Mreport = () => {
         </div> */}
         <div className="mkrtref_report_export_print">
          
-          <button className='mkrtref_report_export_print_btn' onClick={handlePrint}>Print</button>
+          {/* <button className='mkrtref_report_export_print_btn' onClick={handlePrint}>Print</button> */}
         </div>
       </div>
     </div>

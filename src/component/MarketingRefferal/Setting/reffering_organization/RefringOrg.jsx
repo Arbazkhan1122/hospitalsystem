@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
+/* neha-mktreffaral-referingorg-19/09/24 */
+import React, { useState, useEffect ,useRef} from 'react';
 import axios from 'axios';
 import { FaPlus, FaSearch } from 'react-icons/fa';
 import './refring_org.css';
+import { startResizing } from '../../../../TableHeadingResizing/ResizableColumns';
 
 const RefringOrg = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orgs, setOrgs] = useState([]);
+  const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
 
   useEffect(() => {
     // Fetch organizations from API
@@ -106,18 +110,35 @@ const RefringOrg = () => {
         </div>
       </div>
 
-      <table className="reffering_org_table">
+      <div className='table-container'>
+      <table className="reffering_org_table" ref={tableRef}>
         <thead>
           <tr>
-            <th className="reffering_org_tablehead">Organization Name</th>
-            <th className="reffering_org_tablehead">Address</th>
-            <th className="reffering_org_tablehead">Contact No</th>
-            <th className="reffering_org_tablehead">Contact Person</th>
-            <th className="reffering_org_tablehead">Is Active</th>
-            <th className="reffering_org_tablehead">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+          {[
+  "Organization Name",
+  "Address",
+  "Contact No",
+  "Contact Person",
+  "Is Active",
+  "Actions"
+].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="rd-resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+            <tbody>
           {filteredOrgs.map((org) => (
             <tr key={org.id}>
               <td className="reffering_org_tabledata">{org.organizationName}</td>
@@ -154,6 +175,7 @@ const RefringOrg = () => {
           ))}
         </tbody>
       </table>
+      </div>
 
       {/* <div className="reffering_org_pagination">
         <button disabled>First</button>
