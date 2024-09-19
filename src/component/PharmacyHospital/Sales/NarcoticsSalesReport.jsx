@@ -1,8 +1,10 @@
 /* Mohini_NarcoticsSalesReport_WholePage_14/sep/2024 */
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './InvoiceBilling.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const NarcoticsSalesReport = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   return (
     <div className="invoice-billing-report-container">
       <h1 className="invoice-billing-report-title">⚛ Narcotics Daily Sales Summary Report</h1>
@@ -44,26 +46,45 @@ const NarcoticsSalesReport = () => {
           <button className="invoice-billing-print-button">Print</button>
         </div>
       </div>
-      <div className='sales-invoice-billing-tab'>
-      <table className="invoice-billing-sales-table">
-        <thead>
-          <tr>
-            <th>InvoiceNo</th>
-            <th>date</th>
-            <th>Generic Name</th>
-            <th>MedicineName</th>
-            <th>Patient</th>
-            <th>Doctor</th>
-            <th>NMC No</th>
-            <th>Batch No</th>
-            <th>Quantity</th>
-            <th>SalePrice</th>
-            <th>TotalAmount</th>
-          </tr>
-        </thead>
+      <div className='table-container'>
+      <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "InvoiceNo",
+  "Date",
+  "Generic Name",
+  "MedicineName",
+  "Patient",
+  "Doctor",
+  "NMC No",
+  "Batch No",
+  "Quantity",
+  "SalePrice",
+  "TotalAmount"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           <tr>
-            <td colSpan="12" className="invoice-billing-no-rows">No Rows To Show</td>
+            <td colSpan="11" className="invoice-billing-no-rows">No Rows To Show</td>
           </tr>
         </tbody>
       </table>

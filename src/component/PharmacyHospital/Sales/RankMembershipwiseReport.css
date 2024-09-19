@@ -1,14 +1,14 @@
 /* Mohini_RankMembershipwiseReport_WholePage_14/sep/2024 */
 .rank-wise-saales-report-page-container {
-  background-color: #e6f3ff;
+  background-color: var(---background-color);
   padding: 20px;
-  font-family: Arial, sans-serif;
+  height: 90vh;
 }
 
 .rank-wise-saales-report-page-container h3 {
   font-size: 16px;
   margin-bottom: 15px;
-  color: #004080;
+  color: black;
 }
 
 .rank-wise-saales-filters-container {
@@ -29,10 +29,12 @@
 
 .rank-wise-saales-filter-item label {
   margin-right: 5px;
+  font-size: 14px;
 }
 
 .rank-wise-saales-filter-item input[type="date"] {
   padding: 5px;
+  font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 3px;
 }
@@ -67,14 +69,21 @@
   width: 200px;
 }
 
-.rank-wise-saalesfilter-item button {
-  padding: 8px 15px;
-  background-color: #6495ED;
+.rank-wise-saalesfilter-item {
+  padding: 5px  5px;
+  background-color:var( --button-color);
   color: white;
+  border-bottom:  1px solid var(--button-color);
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
 }
+.rank-wise-saalesfilter-item:hover{
+  color: var(---background-color);
+  background-color: white;
+  border-bottom:  1px solid var(--button-color);
+}
+
 
 /* Adjust the layout for smaller screens */
 @media (max-width: 768px) {

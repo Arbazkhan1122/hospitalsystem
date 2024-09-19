@@ -4,20 +4,22 @@ import './ItemWisePurchaseReport.css';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 
-const PurchaseSummaryReport = () => {
-  // const [suppliers, setSuppliers] = useState(usersData);
-  const [searchTerm, setSearchTerm] = useState('');
+const PurchaseOrderReport = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+
   const [columnWidths,setColumnWidths] = useState({});
   const tableRef=useRef(null);
-  // const filteredUsers = suppliers.filter((user) =>
-  //   Object.values(user).some((value) =>
-  //     value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-  //   )
-  // );
+
+
+//   const filteredUsers = suppliers.filter((user) =>
+//     Object.values(user).some((value) =>
+//       value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+//     )
+//   );
 
   return (
     <div className="iten-purchase-container">
-      <h2 className="iten-purchase-header"> ⚛ Purchase Summary Report</h2>
+      <h2 className="iten-purchase-header"> ⚛ PurchaseOrder Report</h2>
       
       <div className="iten-purchase-filterRow">
         <div className='item-data-date'>
@@ -27,9 +29,9 @@ const PurchaseSummaryReport = () => {
           <input type="date" defaultValue="2024-08-22" />
         </div>
         <div className='item-span-item'>
-          <span>Supplier Name: </span>
+          <span>Status  Name: </span>
           <select>
-            <option>--Select Supplier--</option>
+            <option>--Select Status--</option>
           </select>
         </div>
        <div>
@@ -61,7 +63,19 @@ const PurchaseSummaryReport = () => {
           <thead>
             <tr>
               {[
-                "Purchase", "Purchase Return", "Balance"   
+                 "PO No",
+                 "PO Date",
+                 "Delivery Date",
+                 "Supplier Name",
+                 "Contact No",
+                 "SubTotal",
+                 "Discount",
+                 "Tax",
+                 "CC Charge",
+                 "Total Amount",
+                 "PO Status",
+                 "Verification Status",
+                 "Actions"               
               ].map((header, index) => (
                 <th
                   key={index}
@@ -83,19 +97,12 @@ const PurchaseSummaryReport = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {filteredUsers.length > 0 ? (
-              filteredUsers.map((user, index) => (
-                <tr key={index}>
-                  <td>{user.purchase}</td>
-                  <td>{user.purchaseReturn}</td>
-                  <td>{user.balance}</td>
-                </tr>
-              ))
-            ) : ( */}
+          
+          
               <tr className="iten-purchase-noRows">
-                <td colSpan="3">No records found</td>
+                <td colSpan="13">No records found</td>
               </tr>
-            {/* )} */}
+        
           </tbody>
         </table>
         
@@ -111,5 +118,5 @@ const PurchaseSummaryReport = () => {
   );
 };
 
-export default PurchaseSummaryReport;
+export default PurchaseOrderReport;
 /* Mohini_PurchaseSummaryReport_14/sep/2024 */

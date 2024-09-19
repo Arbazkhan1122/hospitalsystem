@@ -1,7 +1,7 @@
   /* Mohini_StockSummaryReport_WholePage_14/sep/2024 */
-  import React, { useState } from 'react';
-import './StockSummaryReport.css';
-
+  import React, { useState, useEffect, useRef } from 'react';
+  import './StockSummaryReport.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const StockSummaryReport = () => {
   const [year, setYear] = useState('2024');
   const [fromDate, setFromDate] = useState('24-08-2024');
@@ -12,6 +12,8 @@ const StockSummaryReport = () => {
   const [openingValue, setOpeningValue] = useState('+0');
   const [includeProvisionalSales, setIncludeProvisionalSales] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   return (
     <div className="stock-summary-report-component">
@@ -98,33 +100,49 @@ const StockSummaryReport = () => {
         <button className="stock-summary-report-print-btn">Print</button>
       </div>
 
-      <div className="stock-summary-report-table-container">
-      <div className="stock-summary-report-stock-table-container">
-  <table className="stock-summary-report-stock-table">
-    <thead>
-      <tr>
-        <th>Store</th>
-        <th>Generic Name</th>
-        <th>Item Name</th>
-        <th>Unit</th>
-        <th>Batch</th>
-        <th>Expiry</th>
-        <th>CP</th>
-        <th>SP</th>
-        <th>Opening Value</th>
-        <th>Purchase Value</th>
-        <th>Purchase Return Value</th>
-        <th>Sales Value</th>
-        <th>Provisional Value</th>
-        <th>Sale Return value</th>
-        <th>Write-off Value</th>
-        <th>Consumption Value</th>
-        <th>closing value</th>
-
-
-
-      </tr>
-    </thead>
+      {/* <div className="stock-summary-report-table-container"> */}
+      <div className="table-container">
+      <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Store",
+  "Generic Name",
+  "Item Name",
+  "Unit",
+  "Batch",
+  "Expiry",
+  "CP",
+  "SP",
+  "Opening Value",
+  "Purchase Value",
+  "Purchase Return Value",
+  "Sales Value",
+  "Provisional Value",
+  "Sale Return Value",
+  "Write-off Value",
+  "Consumption Value",
+  "Closing Value"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
     <tbody>
       <tr>
         <td colSpan="17" className="stock-summary-report-no-rows">No Rows To Show</td>
@@ -142,7 +160,7 @@ const StockSummaryReport = () => {
         <button>Next</button>
         <button>Last</button>
       </div> */}
-      </div>
+      {/* </div> */}
 
       <div className="stock-summary-report-summary">
         <h2>Summary</h2>

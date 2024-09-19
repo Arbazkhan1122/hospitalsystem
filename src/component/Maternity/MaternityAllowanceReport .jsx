@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './MaternityAllowanceReport .css'; // Ensure this is the correct path
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const MaternityAllowanceReportComponent = () => {
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [showReport, setShowReport] = useState(false);
   const [isReceiptVisible, setReceiptVisible] = useState(false);
-
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   const handleClearButtonClick = () => {
     setPopupVisible(!isPopupVisible);
   };
@@ -77,22 +79,41 @@ const MaternityAllowanceReportComponent = () => {
               <button className="maternity-allowance-print-button"onClick={handlePrint}>Print</button>
               </div>
             <div className='maternity-report-allowance-table'>
-            <div className="maternity-report-table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Receipt</th>
-                    <th>Patient Name</th>
-                    <th>Hospital</th>
-                    <th>Age/Sex</th>
-                    <th>Type</th>
-                    <th>Paid Amount</th>
-                    <th>Return Amount</th>
-                    <th>User</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
+            {/* <div className="maternity-report-table-container"> */}
+            <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Date",
+  "Receipt",
+  "Patient Name",
+  "Hospital",
+  "Age/Sex",
+  "Type",
+  "Paid Amount",
+  "Return Amount",
+  "User",
+  "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                 <tbody>
                   {[
                     {
@@ -137,7 +158,7 @@ const MaternityAllowanceReportComponent = () => {
                   ))}
                 </tbody>
               </table>
-            </div>
+            {/* </div> */}
             <div className="maternity-report-pagination">
   {/* <ul className="maternity-report-page-numbers">
     <li><button disabled={true}>First</button></li>
@@ -171,14 +192,33 @@ const MaternityAllowanceReportComponent = () => {
             </div> */}
             <div className="maternity-report-summary">
               <h2>Summary</h2>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Particulars</th>
-                    <th>Patient Count</th>
-                    <th>Amount</th>
-                  </tr>
-                </thead>
+              <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Particulars",
+                 "Patient Count",
+                 "Amount"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                 <tbody>
                   <tr>
                     <td>Paid to Patient</td>

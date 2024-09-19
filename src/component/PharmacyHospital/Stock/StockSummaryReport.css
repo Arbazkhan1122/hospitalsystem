@@ -1,14 +1,17 @@
   /* Mohini_StockSummaryReport_WholePage_14/sep/2024 */
   .stock-summary-report-component {
-    background-color: #e6f3ff;
+    background-color: var(--background-color);
     padding: 20px;
+    height: 90vh;
+    overflow-y: scroll;
     font-family: Arial, sans-serif;
   }
   
   .stock-summary-report-component h1 {
     color: #333;
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 20px;
+    text-align: left; /* Aligns the text to the left */
   }
   
   .stock-summary-report-report-controls,
@@ -41,7 +44,7 @@
   }
   
   .stock-summary-report-show-report-btn {
-    background-color: #007bff;
+    background-color: var(--button-color);
     color: white;
     border: none;
     padding: 5px 10px;
@@ -82,13 +85,26 @@
   
   .stock-summary-report-export-btn,
   .stock-summary-report-print-btn {
-    background-color: #007bff;
+    background-color: var(--button-color);
     color: white;
     border: none;
     padding: 5px 10px;
     margin-left: 10px;
     cursor: pointer;
     border-radius: 3px;
+    border-radius: 1px solid var(--button-hover-border-color);
+
+  }
+  .stock-summary-report-export-btn:hover
+  {
+    color: var(--button-color);
+    background-color: white;
+    border-radius: 1px solid var(--button-hover-border-color);
+  }
+  .stock-summary-report-print-btn:hover{
+    color: var(--button-color);
+    background-color: white;
+    border-radius: 1px solid var(--button-hover-border-color);
   }
   
   .stock-summary-report-table-container {

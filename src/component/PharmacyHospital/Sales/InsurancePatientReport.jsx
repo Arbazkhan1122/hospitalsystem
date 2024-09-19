@@ -1,6 +1,7 @@
 /* Mohini_InsurancePatientReport_WholePage_14/sep/2024 */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './InsurancePatientReport.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 function InsurancePatientReport() {
   const [fromDate, setFromDate] = useState('23-08-2024');
@@ -10,7 +11,8 @@ function InsurancePatientReport() {
   const [counter, setCounter] = useState('All');
   const [user, setUser] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   return (
     <div className="insurance-patient-report-container">
       <div className="insurance-patient-report-report-header">
@@ -77,26 +79,45 @@ function InsurancePatientReport() {
         />
       <div className="insurance-patient-report-search-bar">
         
-        <span className="insurance-patient-report-results">Showing 0 / 0 results</span>
-        <button className="insurance-patient-report-export-btn">Export</button>
-        <button className="insurance-patient-report-print-btn">Print</button>
+        <span >Showing 0 / 0 results</span>
+        <button >Export</button>
+        <button >Print</button>
       </div>
-<div className='insurance-table-con'>
-      <table className='insurance-patient-report-table'>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Bill No</th>
-            <th>Hospital No</th>
-            <th>Patient</th>
-            <th>NHIF</th>
-            <th>ClaimCode</th>
-            <th>SubTotal</th>
-            <th>Total</th>
-            <th>User</th>
-            <th>Counter</th>
-          </tr>
-        </thead>
+<div className='table-container'>
+<table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Date",
+  "Bill No",
+  "Hospital No",
+  "Patient",
+  "NHIF",
+  "ClaimCode",
+  "SubTotal",
+  "Total",
+  "User",
+  "Counter"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           <tr>
             <td colSpan="10" className="insurance-patient-report-no-rows">No Rows To Show</td>

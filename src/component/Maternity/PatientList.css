@@ -1,5 +1,6 @@
 .patient-component{
-  height: 240vh; 
+  height: 90vh; 
+  overflow-y:scroll ;
   width: auto;  
   background-color: var(--background-color); 
   display: flex;
@@ -14,6 +15,7 @@
 .patient-list-container {
     font-family: Arial, sans-serif; 
     max-width: 1000px;
+
   }
   
   .patient-list-title {
@@ -87,17 +89,17 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .patient-component-table {
+  /* .patient-component-table {
     width: 100%;
     border-collapse: collapse;
   }
-  
-  .patient-component-table  th,
+   */
+  /* .patient-component-table  th,
   .patient-component-table  td {
     text-align: left;
     padding: 10px;
     border-bottom: 1px solid #ddd;
-  }
+  } */
   
   .patient-no-rows {
     text-align: center;
@@ -146,8 +148,9 @@
   }
   
   .patient-edit-info input {
-    width: 300px;
+    /* width: 300px; */
     padding: 5px;
+    font-size: 14px;
     margin-left: 10px;
     border: 1px solid #ccc;
     margin-right: 20px; 
@@ -195,8 +198,8 @@
     flex-grow: 1; 
     text-align: right; 
     margin-right: 20px;
-    font-size: 16px;
-    color: #0772bc; 
+    font-size: 14px;
+    color: black; 
   }
 
  
@@ -208,25 +211,29 @@
  
   
   .patient-print-btn{
-    background-color: #007bff;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 5px 15px;
-    border-radius: 3px;
+    padding: 5px 5px;
+    border-radius: 5px;
+  }
+  .patient-print-btn:hover{
+    background-color:white; /* Darker green on hover */
+  color: var( --button-color); /* Green background */
   }
   
-  .patient-table {
+  /* .patient-table {
     overflow-x: auto;
-  }
+  } */
   
-  .patient-table {
+  /* .patient-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
     table-layout: fixed;
   }
-  
-  .patient-component-table th, 
+   */
+  /* .patient-component-table th, 
   .patient-component-table td {
     border: 1px solid #ddd;
     padding: 8px;
@@ -234,14 +241,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
+  } */
   
-  .patient-component-table th {
+  /* .patient-component-table th {
     background-color: #f2f2f2;
     font-weight: normal;
-  }
+  } */
   
-  .patient-hosp-col { width: 10%; }
+  /* .patient-hosp-col { width: 10%; }
   .patient-name-col { width: 10%; }
   .patient-age-col { width: 5%; }
   .patient-address-col { width: 10%; }
@@ -252,7 +259,7 @@
   .patient-lmp-col { width: 10%; }
   .patient-edd-col { width: 10%; }
   .patient-action-col { width: 15%; }
-  
+   */
   .patient-no-rows {
     text-align: center;
     background-color: #fff3cd;
@@ -294,21 +301,23 @@
   
 
   .patient-payment-btn {
-    background-color: #0F63AF; /* Green background */
+    background-color: var( --button-color); /* Green background */
     color: white; /* White text */
     border: none; /* Remove borders */
-    padding: 8px 16px; /* Some padding */
+    padding: 5px 5px; /* Some padding */
     text-align: center; /* Center the text */
     text-decoration: none; /* Remove underline */
     display: inline-block; /* Inline block for alignment */
-    font-size: 16px; /* Text size */
+    font-size: 14px; /* Text size */
     margin: 4px 2px; /* Margins */
     cursor: pointer; /* Pointer cursor on hover */
-    border-radius: 15px; /* Rounded corners */
+    border-radius: 5px; /* Rounded corners */
   }
   
   .patient-payment-btn:hover {
-    background-color: #0F63AF; /* Darker green on hover */
+    background-color:white; /* Darker green on hover */
+  color: var( --button-color); /* Green background */
+
   }
   
 

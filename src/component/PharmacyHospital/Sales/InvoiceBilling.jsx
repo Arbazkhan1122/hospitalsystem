@@ -1,8 +1,10 @@
 /* Mohini_InvoiceBilling_WholePage_14/sep/2024 */
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './InvoiceBilling.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const InvoiceBilling = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   return (
     <div className="invoice-billing-report-container">
       <h1 className="invoice-billing-report-title">⚛ Bill-wise Sales Report</h1>
@@ -47,31 +49,50 @@ const InvoiceBilling = () => {
       </div>
       <div className='sales-invoice-billing-tab'>
       <div className='invpoice-sale-ta'>
-  <div className='invoice-billing-table-container'>
-    <table className="invoice-billing-sales-table">
-      <thead>
-        <tr>
-          <th>Invoice Date</th>
-          <th>Invoice Number</th>
-          <th>Hospital No.</th>
-          <th>Patient Name</th>
-          <th>SubTotal</th>
-          <th>Discount Amount</th>
-          <th>Total Amount</th>
-          <th>Received Amount</th>
-          <th>Credit Amount</th>
-          <th>Payment Mode</th>
-          <th>Store</th>
-          <th>User</th>
-        </tr>
-      </thead>
+  {/* <div className='invoice-billing-table-container'> */}
+  <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                  "Invoice Date",
+                  "Invoice Number",
+                  "Hospital No.",
+                  "Patient Name",
+                  "SubTotal",
+                  "Discount Amount",
+                  "Total Amount",
+                  "Received Amount",
+                  "Credit Amount",
+                  "Payment Mode",
+                  "Store",
+                  "User"          
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
       <tbody>
         <tr>
           <td colSpan="12" className="invoice-billing-no-rows">No Rows To Show</td>
         </tr>
       </tbody>
     </table>
-  </div>
+  {/* </div> */}
 </div>
 
       {/* <div className="invoice-billing-pagination-container">

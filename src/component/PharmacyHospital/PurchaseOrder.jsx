@@ -1,13 +1,15 @@
 /* Mohini_PurchaseOrder_WholePage_14/sep/2024 */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Modal } from 'react-bootstrap';
 import PurchaseOrderForm from './PurchaseOrderForm';
 import './PurchaseOrder.css';
-
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 const PurchaseOrder = () => {
     const [purchaseOrders, setPurchaseOrders] = useState([]);
     const [showEditModal, setShowEditModal] = useState(false);
+    const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
     const handleOpenModal = () => setShowEditModal(true);
     const handleCloseModal = () => setShowEditModal(false);
@@ -68,25 +70,41 @@ const PurchaseOrder = () => {
     </div>
 </div>
 
-            <div className="purchase-order-table-container">
-      <table className="purchase-order-tab">
-        <thead>
-          <tr>
-            <th>PO No</th>
-            <th>PO Date</th>
-            <th>Delivery Date</th>
-            <th>Supplier Name</th>
-            <th>Contact No</th>
-            <th>SubTotal</th>
-            <th>Discount</th>
-            <th>Tax</th>
-            <th>CC Charge</th>
-            <th>Total Amount</th>
-            <th>PO Status</th>
-            <th>Verification Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+            <div className="table-container">
+            <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Date",
+    "GenericName",
+    "ItemName",
+    "POStatus",
+    "Quantity",
+    "ReceivedQuantity",
+    "StandardRate",
+    "SubTotal",
+    "VATAmount",
+    "TotalAmount"      
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {Array.isArray(purchaseOrders) && purchaseOrders.length > 0 ? (
             purchaseOrders.map((order) => (
@@ -110,7 +128,7 @@ const PurchaseOrder = () => {
             ))
           ) : (
             <tr>
-              <td colSpan="13" className="purchase-order-no-rows">No Rows To Show</td>
+              <td colSpan="10 " className="purchase-order-no-rows">No Rows To Show</td>
             </tr>
           )}
         </tbody>
