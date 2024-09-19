@@ -1,11 +1,10 @@
-// src/Navbar.js
+// /* // neha-utilities-navbar-19-9-24*/
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './utilitiesmain.css';
-// neha-utilities-Utilitinavbar-14-9-24
-const UtilitiesNavbar = ({ handleNavigation }) => {
-  const location = useLocation(); // Access the current route
 
+const UtilitiesNavbar = ({ handleNavigation }) => {
+  const location = useLocation(); 
   return (
     <header className="utlt-header">
       <nav className="utlt-nav-links">

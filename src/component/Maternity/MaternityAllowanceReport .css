@@ -1,10 +1,9 @@
-.maternity-allowance-report {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  height: 90vh;
-  width: auto;
-  background-color: var(--background-color);
-}
+  .maternity-allowance-report {
+    padding: 20px;
+    height: 90vh;
+    width: auto;
+    background-color: var(--background-color);
+  }
 
 .maternity-allowance-container {
   max-width: 1200px;
@@ -21,8 +20,10 @@
 }
 
 .maternity-allowance-header h1 {
-  font-size: 18px; /* Sets the font size */
+  font-size: 16px; /* Sets the font size */
   margin-top: 20px;
+  text-align: left; /* Aligns the text to the left */
+
 }
 
 .maternity-allowance-filter-section {
@@ -36,14 +37,19 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size: 14px;
 }
 
 .maternity-allowance-date-filter label {
   margin-right: 5px;
+  font-size: 14px;
+
 }
 
 .maternity-allowance-date-filter input[type="date"] {
   padding: 5px;
+  font-size: 14px;
+
 }
 
 .maternity-allowance-favorite-button,
@@ -91,16 +97,22 @@
 
 /* Green color for Show Report button */
 .maternity-allow-report-button{
-  background-color: #28a745; /* Green color */
+  background-color: var(--button-color); /* Green color */
   border: none;
   height: 30px;
+  /* padding: 5px ; */
   color: white;
   margin-top: 10px;
   /* padding: 10px; */
   cursor: pointer;
+  border-bottom: 1px solid var(--button-color);
   text-align: center;
 }
-
+.maternity-allow-report-button:hover{
+  color: var(--button-color);
+  background-color: white;
+  border-bottom: 1px solid var(--button-color);
+}
 .maternity-report-container {
   margin-top: 20px;
 }
@@ -114,6 +126,7 @@
 .maternity-report-search-bar input {
   padding: 5px;
   flex: 1;
+  font-size: 14px;
 }
 
 .maternity-report-search-bar button {
@@ -143,14 +156,18 @@
 }
 
 .maternity-report-view-details-button {
-  background-color: #007bff; /* Blue color */
+  background-color: var(--button-color); /* Blue color */
   border: none;
   color: white;
-  padding: 5px 10px;
+  padding: 5px 5px;
   cursor: pointer;
   border-radius: 5px;
 }
-
+.maternity-report-view-details-button:hover{
+  color: var(--button-color);
+  background-color: white;
+  border-bottom: 1px solid var(--button-color);
+}
 .maternity-report-pagination {
   display: flex;
   justify-content: space-between;
@@ -165,9 +182,10 @@
 .maternity-report-export-button,
 .maternity-print-button {
   height: 30px;
-  background-color: #007bff; /* Blue color */
+  background-color: var(--button-color); /* Blue color */
   border: none;
   color: white;
+  border-bottom: 1px solid var(--button-color);
   cursor: pointer;
   display: flex; /* Use flexbox to align text */
   align-items: center; /* Center text vertically */
@@ -175,6 +193,11 @@
   padding: 0 10px; /* Optional: Adjust padding if needed */
   font-size: 14px; /* Optional: Adjust font size if needed */
   border-radius: 5px; /* Optional: Rounded corners for buttons */
+}
+.maternity-report-export-button:hover{
+  color: var(--button-color);
+  background-color: white;
+  border-bottom: 1px solid var(--button-color);
 }
 
 .maternity-report-page-numbers {
@@ -276,19 +299,7 @@
   align-items: center;
 }
 
-.maternity-allowance-print-button {
-  height: 30px;
-  background-color: #007bff; /* Blue color */
-  border: none;
-  color: white;
-  cursor: pointer;
-  display: flex; /* Use flexbox to align text */
-  align-items: center; /* Center text vertically */
-  justify-content: center; /* Center text horizontally */
-  padding: 0 10px; /* Optional: Adjust padding if needed */
-  font-size: 14px; /* Optional: Adjust font size if needed */
-  border-radius: 5px; /* Optional: Rounded corners for buttons */
-}
+
 .maternity-report-search-bar {
   display: flex;
   align-items: center;
@@ -331,31 +342,9 @@
   margin-right: 20px; /* Space between the span and buttons */
 }
 
-.maternity-report-export-button,
-.maternity-allowance-print-button {
-  height: 30px;
-  background-color: #007bff; /* Blue color */
-  border: none;
-  color: white;
-  cursor: pointer;
-  display: flex; /* Use flexbox to align text */
-  align-items: center; /* Center text vertically */
-  justify-content: center; /* Center text horizontally */
-  padding: 0 10px; /* Optional: Adjust padding if needed */
-  font-size: 14px; /* Optional: Adjust font size if needed */
-  border-radius: 5px; /* Optional: Rounded corners for buttons */
-}
 
-/* .maternity-allowance-print-button {
-  background-color: #28a745; 
-} */
-/* .maternity-report-allowance-table{
-  width: 30%;
-  height: 50%;
-} */
- .maternity-report-allowance-table{
-  background-color: #f1f1f1;
- }
+
+ 
  .maternity-report-pagination {
   display: flex;
   justify-content: center; /* Center align the pagination container */
@@ -422,7 +411,7 @@
 
 .maternity-report-export-button {
   height: 30px;
-  background-color: #007bff; /* Blue color */
+  background-color: var(--button-color); /* Blue color */
   border: none;
   color: white;
   cursor: pointer;
@@ -437,7 +426,7 @@
 
 .maternity-allowance-print-button {
   height: 30px;
-  background-color: #007bff; /* Blue color */
+  background-color: var(--button-color); /* Blue color */
   border: none;
   color: white;
   cursor: pointer;
@@ -447,6 +436,11 @@
   padding: 0 10px; /* Adjust padding if needed */
   font-size: 14px; /* Adjust font size if needed */
   border-radius: 5px; /* Rounded corners for buttons */
+}
+.maternity-allowance-print-button:hover{
+  color: var(--button-color);
+  background-color: white;
+  border-bottom: 1px solid var(--button-color);
 }
 .maternity-allowance-user-filter {
   display: flex;

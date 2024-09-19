@@ -20,7 +20,7 @@
   }
   
   .report-card:hover {
-    background-color: #2d68ea;
+    background-color:  var(--button-color);
     cursor: pointer;
   }
   

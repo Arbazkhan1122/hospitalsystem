@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+/* neha-mktreffaral-refering-party-19/09/24 */
+import React, { useState, useEffect ,useRef} from 'react';
 import axios from 'axios';
 import { FaPlus, FaSearch } from 'react-icons/fa';
 import './reffering.css';
+import { startResizing } from '../../../../TableHeadingResizing/ResizableColumns';
 
 const ReferringParty = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,6 +19,8 @@ const ReferringParty = () => {
   const [kraPin, setKraPin] = useState('');
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
 
   useEffect(() => {
     // Fetch referring parties from API
@@ -97,7 +101,7 @@ const ReferringParty = () => {
     }
 
     const newParty = {
-      partyId: parties.length + 1, // Consider changing this logic if ID uniqueness is critical.
+      partyId: parties.length + 1, 
       partyName,
       partyGroupName,
       organizationName,
@@ -163,22 +167,39 @@ const ReferringParty = () => {
         </div>
       </div>
 
-      <table className="referring_party_table">
+      <div className='table-container'>
+      <table className="referring_party_table" ref={tableRef}>
         <thead>
           <tr>
-            <th className="referring_party_tablehead">Party Name</th>
-            <th className="referring_party_tablehead">Group Name</th>
-            <th className="referring_party_tablehead">Organization Name</th>
-            <th className="referring_party_tablehead">Address</th>
-            <th className="referring_party_tablehead">Vehicle Number</th>
-            <th className="referring_party_tablehead">Contact Number</th>
-            <th className="referring_party_tablehead">Area Code</th>
-            <th className="referring_party_tablehead">KRA PIN</th>
-            <th className="referring_party_tablehead">Is Active</th>
-            <th className="referring_party_tablehead">Action</th>
-          </tr>
-        </thead>
-        <tbody>
+          {[
+  "Party Name",
+  "Group Name",
+  "Organization Name",
+  "Address",
+  "Vehicle Number",
+  "Contact Number",
+  "Area Code",
+  "KRA PIN",
+  "Is Active",
+  "Action"
+].map((header, index) => (
+  <th
+    key={index}
+    style={{ width: columnWidths[index] }}
+    className="rd-resizable-th"
+  >
+    <div className="header-content">
+      <span>{header}</span>
+      <div
+        className="resizer"
+        onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+      ></div>
+    </div>
+  </th>
+))}
+</tr>
+</thead>
+<tbody>
           {filteredParties.map((party) => (
             <tr key={party.id}>
               <td className="referring_party_tabledata">{party.partyName}</td>
@@ -219,6 +240,7 @@ const ReferringParty = () => {
           ))}
         </tbody>
       </table>
+      </div>
 
       {isModalOpen && (
         <div className="referring_party_modal">

@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+/* // neha-ADT-search-patient-19/09/24 */
+import React, { useState, useEffect,useRef } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './searchpatient.css';
 import { FaSearch } from 'react-icons/fa';
+import { startResizing } from '../../TableHeadingResizing/ResizableColumns';
 
 const SearchPatient = () => {
   const [patients, setPatients] = useState([]);
@@ -11,6 +13,8 @@ const SearchPatient = () => {
   const [patientsPerPage] = useState(20);
   const [showModal, setShowModal] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState(null);
+  const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
 
   // Fetch data from the new API
   useEffect(() => {
@@ -140,8 +144,8 @@ const SearchPatient = () => {
 
   return (
     <div className="search-patient-container">
-      <h2>Search Patient</h2>
-      <div className="search-bar">
+      <h5>Search Patient</h5>
+      <div >
         <input
           type="text"
           placeholder="Search by patient name..."
@@ -149,22 +153,37 @@ const SearchPatient = () => {
           onChange={handleSearch}
           className="search-input"
         />
-        <button className="search-button">
-          <FaSearch />
-        </button>
+        
       </div>
 
-      <table className="patient-table">
+      <div className='table-container'>
+      <table className="patient-table" ref={tableRef}>
         <thead>
           <tr>
-            <th className='search-patient-tablehead'>Hospital No</th>
-            <th className='search-patient-tablehead'>Name</th>
-            <th className='search-patient-tablehead'>Age</th>
-            <th className='search-patient-tablehead'>Gender</th>
-            <th className='search-patient-tablehead'>Phone</th>
-            <th className='search-patient-tablehead'>Address</th>
-            <th className='search-patient-tablehead'>Visit Type</th>
-            <th className='search-patient-tablehead'>Status</th>
+         { [
+                'Hospital No', 
+                'Name', 
+                'Age', 
+                'Gender', 
+                'Phone', 
+                'Address', 
+                'Visit Type', 
+                'Status'
+            ].map((header, index) => (
+              <th
+                key={index}
+                style={{ width: columnWidths[index] }}
+                className="rd-resizable-th"
+              >
+                <div className="rd-header-content">
+                  <span>{header}</span>
+                  <div
+                    className="rd-resizer"
+                    onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+                  ></div>
+                </div>
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
@@ -186,6 +205,7 @@ const SearchPatient = () => {
           ))}
         </tbody>
       </table>
+      </div>
 
       {/* Pagination */}
       <div className="pagination">

@@ -54,6 +54,8 @@ import StockTrasferReport from "../PharmacyHospital/Stock/StockTrasferReport";
 import ItemWisePurchaseReport from "../PharmacyHospital/Stock/ItemWisePurchaseReport";
 import StockTransferSummary from "../PharmacyHospital/Stock/StockTransferSummary";
 import HospitalHeader from "./HospitalHeader";
+import PurchaseOrderReport from "./Report/PurchaseOrderReport";
+import ReturnToSuppliers from "./Report/ReturnToSupplier";
 
 const PharmacyRouting = () => {
   return (
@@ -112,7 +114,11 @@ const PharmacyRouting = () => {
       <Route path="/stock-transfers" element={<StockTrasferReport />} />
       <Route path="/item-wise-ward-supply" element={<ItemWisePurchaseReport />} />
       <Route path="/stock-transfer-summary" element={<StockTransferSummary />} />
+      <Route path="/purchase-order-report" element={<PurchaseOrderReport/>}/>
+      {/* <Route path="/return-to-suppliers" element={<ReturnToSuppliers/>}/> */}
       {/* Add other routes here */}
+
+      <Route path="/rank-membership-wise-sales" element={<RankMembershipwiseReport/>}/>
     </Routes>
     </>
   );

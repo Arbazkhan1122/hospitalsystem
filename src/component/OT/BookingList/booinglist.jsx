@@ -1,10 +1,11 @@
 // neha-OT-BookingList-14-9-24
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './bookinglist.css'
 import { FaSearch, FaRedo, FaPlus } from 'react-icons/fa';
 import moment from 'moment';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
+import { startResizing } from '../../../TableHeadingResizing/ResizableColumns';
 
 function BookingList() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -17,6 +18,8 @@ function BookingList() {
   const [machineName, setMachineName] = useState('');
   const [status, setStatus] = useState('Booked'); // Default status
   const [otPatientList, setOtPatientList] = useState([]);
+  const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
 
    useEffect(() => {
     // Fetch existing bookings when the component mounts
@@ -93,23 +96,39 @@ function BookingList() {
         
       </div>
 
-      <table className="booking-list-ot-patient-table">
+      <div className='table-container'>
+      <table className="booking-list-ot-patient-table" ref={tableRef}>
         <thead>
           <tr>
-            <th>Sr.No</th>
-            <th>Patient Name</th>
-            <th>Age/Sex</th>
-            <th>OT Date & Time</th>
-              <th>Diagnosis</th>
-              <th>Procedure</th>
-              <th>Anesthesia</th>
-              <th>Machine</th>
-              <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-   {otPatientList.map((booking, index) => (
+          {[
+  "Sr.No",
+  "Patient Name",
+  "Age/Sex",
+  "OT Date & Time",
+  "Diagnosis",
+  "Procedure",
+  "Anesthesia",
+  "Machine",
+  "Status",
+  "Actions"
+].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="rd-resizable-th"
+                >
+                  <div className="rd-header-content">
+                    <span>{header}</span>
+                    <div
+                      className="rd-resizer"
+                      onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+            <tbody>  {otPatientList.map((booking, index) => (
             <tr key={index}>
               <td>{patient.hospitalNo}</td>
               <td>{patient.patient.name}</td>
@@ -129,6 +148,7 @@ function BookingList() {
           ))}
         </tbody>
       </table>
+      </div>
 
       {isPopupOpen && (
         <div className="booking-list-modal-overlay">

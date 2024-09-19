@@ -1,11 +1,13 @@
 /* Mohini_DispensaryStoreStockReport_WholePage_14/sep/2024 */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './NarcoticsStockReport.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const DispensaryStoreStockReport = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showZeroQuantity, setShowZeroQuantity] = useState(false);
   const [filterStore, setFilterStore] = useState('All');
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const stockData = [
     { itemName: '.OSMOLAX', batchNo: 'bat278', stockQty: 11, salePrice: 700, dispensary: 'Accounts' },
@@ -55,17 +57,36 @@ const DispensaryStoreStockReport = () => {
         <button className="narcotics-stock-report-export-btn">⬇ Export</button>
         <button className="narcotics-stock-report-print-btn">Print</button>
       </div>
-   <div className='narcotics-stock-report-narcotics-stock-ta'>
-      <table className="narcotics-stock-report-stock-table">
-        <thead>
-          <tr>
-          <th>Item Name</th>
-            <th>Batch No.</th>
-            <th>Stock Qty</th>
-            <th>Sale Price</th>
-            <th>Dispensary/Store Name</th>
-          </tr>
-        </thead>
+   <div className='table-container'>
+   <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Item Name",
+  "Batch No.",
+  "Stock Qty",
+  "Sale Price",
+  "Dispensary/Store Name"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {stockData.map((item, index) => (
             <tr key={index} className={index % 2 === 0 ? 'even' : 'odd'}>

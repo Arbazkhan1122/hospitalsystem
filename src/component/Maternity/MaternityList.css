@@ -1,7 +1,7 @@
 .maternity-component{
   height: 100vh; /* Full viewport height */
   width: 100wh;  /* Full viewport width */
-  background-color:var(--background-color); /* Light blue background color */
+  background-color:var(--background-color); 
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -107,6 +107,7 @@
 .mater-search-bar input {
   flex-grow: 1;
   padding: 5px;
+
   font-size: 14px;
   /* width: 20px; */
   border: 1px solid #ccc;

@@ -71,7 +71,7 @@ function BirthList() {
     
     <div className="MRInPatient-tableContainer">
     <button onClick={addDeathDetailsButton} className='AddNewBirthCertificate'> &#43;  Add Death Certificate</button>
-             <h3>Filter by Death Date:</h3>
+             <h5>Filter by Death Date:</h5>
             <div className="MROInPatient-date-filter">
                 <label>
                   From:
@@ -167,7 +167,7 @@ function BirthList() {
               </table>
 
 
-              <div className="MROut-pagination">
+              {/* <div className="MROut-pagination">
               <button 
                 className="MROut-pagination-btn" 
                 onClick={() => handlePageChange(1)}
@@ -199,7 +199,7 @@ function BirthList() {
               >
                 Last
               </button>
-            </div>
+            </div> */}
                     </>
                     
 
@@ -216,14 +216,14 @@ function BirthList() {
             addDeathDetails && isModalOpen && (
                 <div className="FinalDiagnosis-container deathReport">
    
-                  <div className="modal-overlaycert">
-                    <div className="modal-contentcert">
-                      <div className="modal-headercert">
+                  <div className="modal-overlay">
+                    <div className="modal-content">
+                      <div className="modal-header">
                         <button className="close-button" onClick={closeModal}>
                           &times;
                         </button>
                       </div>
-                        <h3>Add Death Details</h3>
+                        <h5>Add Death Details</h5>
                       <br></br>                 
                   
 

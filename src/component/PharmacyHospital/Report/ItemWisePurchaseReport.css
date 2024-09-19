@@ -226,5 +226,77 @@
   background-color: var(--button-hover-background-color);
 
 }
+
+/* Responsive media queries */
+@media (max-width: 768px) {
+  .iten-purchase-container {
+    padding: 10px;
+  }
+
+  .iten-purchase-header {
+    font-size: 14px; /* Adjust font size */
+    margin-bottom: 10px;
+  }
+
+  .iten-purchase-filterRow {
+    flex-direction: column; /* Stack filters vertically */
+  }
+
+  .iten-purchase-searchInput {
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+
+  .iten-purchase-button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .iten-purchase-table th,
+  .iten-purchase-table td {
+    padding: 6px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .iten-purchase-container {
+    padding: 5px;
+  }
+
+  .iten-purchase-header {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .iten-purchase-filterRow {
+    flex-direction: column;
+  }
+
+  .iten-purchase-searchInput {
+    font-size: 12px;
+  }
+
+  .iten-purchase-button {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .iten-purchase-table th,
+  .iten-purchase-table td {
+    font-size: 10px;
+    padding: 5px;
+  }
+  
+  .iten-purchase-table {
+    font-size: 10px;
+    overflow-x: auto;
+  }
+}
+
+
+/*  */
+
+
 /* Mohini_ItemWisePurchaseReport_14/sep/2024 */
 
