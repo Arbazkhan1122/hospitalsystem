@@ -41,12 +41,22 @@ function FinalReports() {
       <h4>Final Reports</h4>
       <div className="finalReports-header">
         <div className="finalReports-ReportingDate">Reporting Date:</div>
-        <div className="finalReports-date-range">
-          <label>From:</label>
-          <input type="date" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} />
-          <label>To:</label>
-          <input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} />
-        </div>
+      
+        <div className="finalReports-controls">
+        {/* Your date range and button controls */}
+          <div className="finalReports-date-range">
+            <label>
+              From:
+              <input type="date" defaultValue="2024-08-09" />
+            </label>
+            <label>
+              To:
+              <input type="date" defaultValue="2024-08-16" />
+            </label>
+            <button className="finalReports-star-button">☆</button>
+            <button className="finalReports-ok-button">OK</button>
+          </div>
+      </div>
         <div className="finalReports-category-select">
           <label>Category:</label>
           <select value={category} onChange={(e) => setCategory(e.target.value)}>
@@ -73,15 +83,19 @@ function FinalReports() {
       </div>
 
       <div className="finalReports-searchbar-N-showing">
+      
         <div className="finalReports-search-bar">
-        
-          <i className="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search..." />
-        </div>
+              <i className="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                placeholder="Search"
+                className="finalReports-search-input"
+              />
+            </div>
         <div className="finalReports-results-info">
           <span>Showing 0 / 0 results</span>
           <button className="finalReports-print-button" onClick={handlePrint}>
-            Print
+          <i class="fa-solid fa-print"></i> Print
           </button>
         </div>
       </div>
@@ -110,14 +124,14 @@ function FinalReports() {
           </tbody>
         </table>
 
-        <div className="finalReports-pagination">
+        {/* <div className="finalReports-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
         
       </div>
     </div>

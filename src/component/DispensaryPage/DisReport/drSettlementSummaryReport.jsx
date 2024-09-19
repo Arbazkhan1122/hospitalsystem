@@ -204,8 +204,8 @@ function DrSettlementSummaryReport() {
         </div>
         <div className="drSettlementSummaryReport-results-info">
           <span>Showing {settlementSummaries.length} / {settlementSummaries.length} results</span>
-          <button className="drSettlementSummaryReport-export-button">Export</button>
-          <button className="drSettlementSummaryReport-print-button">Print</button>
+          <button className="drSettlementSummaryReport-export-button"><i class="fa-regular fa-file-excel"></i> Export</button>
+          <button className="drSettlementSummaryReport-print-button"><i class="fa-solid fa-print"></i> Print</button>
         </div>
       </div>
       <div className='drSettlementSummaryReport-table-N-paginationDiv'>
@@ -253,14 +253,14 @@ function DrSettlementSummaryReport() {
             )}
           </tbody>
         </table>
-        <div className="drSettlementSummaryReport-pagination">
+        {/* <div className="drSettlementSummaryReport-pagination">
           <span>0 to {settlementSummaries.length} of {settlementSummaries.length}</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

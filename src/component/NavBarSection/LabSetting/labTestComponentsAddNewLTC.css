@@ -21,8 +21,8 @@
 
 .labTestComponentsAddNewLTC-header h3 {
   margin: 0;
-  font-size: 14px;
-color: #3a3a3a;
+  font-size: var(--heading-font);
+/* color: #3a3a3a; */
 }
 .labTestComponentsAddNewLTC-close-btn {
   background-color: #E52F3E;
@@ -30,7 +30,7 @@ color: #3a3a3a;
   border: none;
   border-radius:  14px;
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 1px 8px;
 }
 
 
@@ -48,7 +48,7 @@ color: #3a3a3a;
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  font-size: 12px;
+  font-size: var(--font-size);
   background-color: white;
 }
 
@@ -57,8 +57,8 @@ color: #3a3a3a;
   padding: 5px;
   text-align: center;
   border: 1px solid #ddd;
-  color: #4e4e4e;
-  font-size: 10px;
+  /* color: #4e4e4e; */
+  font-size: var(--font-size);
   padding: 10px;
 }
 
@@ -72,13 +72,17 @@ color: #3a3a3a;
   gap: 10px;
   align-items: center;
   padding: 8px;
-  font-size: 12px;
+  font-size: var(--font-size);
   border-bottom: 1px solid #ddd;
 }
 
 .labTestComponentsAddNewLTC-cell {
   display: flex;
   align-items: center;
+}
+.labTestComponentsAddNewLTC-cell-sub{
+  display: flex;
+  flex-direction: column;
 }
 
 .labTestComponentsAddNewLTC-cell input,
@@ -88,7 +92,7 @@ color: #3a3a3a;
   padding: 4px 6px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  font-size: 10px;
+  font-size: var(--font-size);
 }
 
 .labTestComponentsAddNewLTC-cell textarea {
@@ -103,7 +107,7 @@ color: #3a3a3a;
   border: 1px solid #ccc;
   border-radius: 3px;
   cursor: pointer;
-  font-size: 10px;
+  font-size: var(--font-size);
 }
 
 .labTestComponentsAddNewLTC-range-buttons button:hover {
@@ -111,13 +115,22 @@ color: #3a3a3a;
 }
 
 .labTestComponentsAddNewLTC-add-button {
-  background-color: #5867DD;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  border-radius: 3px;
-  padding: 6px 12px;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.labTestComponentsAddNewLTC-add-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .labTestComponentsAddNewLTC-add-footer-button {

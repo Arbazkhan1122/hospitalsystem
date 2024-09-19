@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Vaccinationreports.css";
+import { startResizing } from "../../../../TableHeadingResizing/ResizableColumns";
 
 function VaccinationsReports() {
   const [columnWidths, setColumnWidths] = useState({});
@@ -69,31 +70,6 @@ function VaccinationsReports() {
   useEffect(() => {
     fetchData();
   }, [selectedVaccines, selectedGender, fromDate, toDate]);
-
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
@@ -306,7 +282,10 @@ function VaccinationsReports() {
                   <span>{header}</span>
                   <div
                     className="resizer"
-                    onMouseDown={startResizing(index)}
+                    onMouseDown={startResizing(
+                      tableRef,
+                      setColumnWidths
+                    )(index)}
                   ></div>
                 </div>
               </th>

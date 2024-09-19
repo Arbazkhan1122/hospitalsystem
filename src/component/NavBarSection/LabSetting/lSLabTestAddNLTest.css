@@ -7,7 +7,7 @@
     background-color: white;
     border-radius: 8px;
     font-family: Arial, sans-serif;
-    color: rgb(82, 81, 81);
+    /* color: rgb(82, 81, 81); */
   }
   
   .lSLabTestAddNLTest-header {
@@ -19,9 +19,9 @@
     margin-bottom: 16px;
   }
   
-  .lSLabTestAddNLTest-header h3 {
+  .lSLabTestAddNLTest-header h4 {
+    font-size: var(--heading-font);
     margin: 0;
-    font-size: 14px;
   }
   
   .lSLabTestAddNLTest-close-btn {
@@ -45,7 +45,7 @@
     display: flex;
     text-align: center;
     align-items: center;
-    font-size: 12px;
+    font-size: var(--font-size);
     /* width: 220px; */
     /* border: 1px solid red; */
   }
@@ -53,7 +53,7 @@
   .lSLabTestAddNLTest-form-group label {
     display: block;
     margin-bottom: 4px;
-    font-weight: bold;
+    /* font-weight: bold; */
     width: 400px;
   }
   
@@ -71,7 +71,7 @@
       /* border: 1px solid #d40707; */
     display: flex;
     flex-wrap: wrap;
-    font-size: 12px;
+    font-size: var(--font-size);
     gap: 16px;
     margin-bottom: 16px;
 
@@ -100,25 +100,35 @@
   .lSLabTestAddNLTest-select-components-section table th,
   .lSLabTestAddNLTest-select-components-section table td {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+    padding: 3px;
+    text-align: center;
   }
   
   .lSLabTestAddNLTest-add-component-btn {
-    background-color: blue;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    border-radius: 4px;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
     cursor: pointer;
-    padding: 4px 8px;
+    font-size: var(--heading-font);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 1px 5px;
+  }
+  .lSLabTestAddNLTest-add-component-btn:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
   .lSLabTestAddNLTest-create-new-component {
     display: block;
     margin-top: 8px;
     color: #0F63AF;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: var(--font-size);
+    /* font-weight: bold; */
     text-decoration: none;
     cursor: pointer;
   }
@@ -126,18 +136,29 @@
   .lSLabTestAddNLTest-form-actions {
     display: flex;
     justify-content: flex-end;
-    font-size: 12px;
+    font-size: var(--font-size);
     gap: 8px;
     margin-top: 16px;
   }
   
   .lSLabTestAddNLTest-add-btn {
-    background-color: #0F63AF;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    border-radius: 4px;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
     cursor: pointer;
-    padding: 8px 16px;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  
+  .lSLabTestAddNLTest-add-btn:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   .lSLabTestAddNLTest-form-group-1row{
     display: flex;
@@ -160,7 +181,7 @@
   .lSLabTestAddNLTest-AddNew a{
     
     color: #0F63AF;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: var(--font-size);
+    /* font-weight: bold; */
     text-decoration: none;
   }

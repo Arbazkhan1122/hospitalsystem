@@ -4,10 +4,10 @@
 .queueInformation {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #CAF2FF;
+    background-color: var(--background-color);
     display: flex;
     flex-direction: column;
-    min-height: 90vh;
+    min-height: 80vh;
   }
   
   .queueInformation-header {
@@ -22,20 +22,35 @@
     align-items: center;
     margin-right: 20px;
 }
+.queueInformation-doctor-select span{
+  font-size: var(--font-size);
+}
 
 .queueInformation-doctor-select select {
+  font-size: var(--font-size);
       padding: 5px;
       width: 180px;
     margin: 0 8px;
   }
   
   .queueInformation-proceed-btn {
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    padding: 5px 15px;
-    cursor: pointer;
-  }
+      background-color:var( --button-color);
+      border: 1px solid var( --button-hover-border-color);
+      color: white;
+      /* border: none; */
+      /* margin-right: 10px; */
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: var(--font-size);
+      margin: 1px;
+      transition: background-color 0.3s ease;
+      padding: 5px 5px;
+    }
+    .queueInformation-proceed-btn:hover {
+      border: 1px solid var( --button-hover-border-color);
+      color: var(--button-hover-text-color);
+      background-color: var(--button-hover-background-color);
+    }
   
  
   
@@ -44,13 +59,13 @@
   }
   
   .queueInformation-banner {
-    background-color: #1F449B;
+    background-color: var(--button-bg-color);
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    font-weight: bold;
+    /* font-weight: bold; */
   }
   .queueInformation-main-div{
     padding: 10px;
@@ -80,14 +95,13 @@
   
   .queueInformation-table th {
     /* margin-top: 10px; */
-    text-align: left;
-    padding: 10px;
-    border-radius: 5px;
+    text-align: center;
+    padding: 3px 5px ;
     border-bottom: 1px solid #ddd;
   }
   .queueInformation-tr th{
     background-color: #F3F3F3;
-    color: #5a5858;
+    /* color: #5a5858; */
   }
   
   .queueInformation-footer {
@@ -98,7 +112,7 @@
     padding: 10px 20px;
     margin: 0 10px 0 10px;
     gap: 20px;
-    font-weight: bold;
+    /* font-weight: bold; */
     /* border: 1px solid red; */
     /* font-size: 100px; */
   }

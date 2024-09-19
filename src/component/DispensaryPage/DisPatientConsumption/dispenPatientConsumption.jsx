@@ -167,7 +167,7 @@ const DispenPatientConsumption = () => {
   return (
     <div className="dispenPatientConsumption-requisition">
       <div className="dispenPatientConsumption-header">
-        <button className="dispenPatientConsumption-collected" onClick={openPopup}>New Consumption</button>
+        <button className="dispenPatientConsumption-collected" onClick={openPopup}>New Consumption <i class="fa-solid fa-plus"></i> </button>
       </div>
       
       <div className="dispenPatientConsumption-filters">
@@ -232,14 +232,14 @@ const DispenPatientConsumption = () => {
           </tbody>
         </table>
         
-        <div className="dispenPatientConsumption-pagination">
+        {/* <div className="dispenPatientConsumption-pagination">
           <span>0 to {patientConsumptions.length} of {patientConsumptions.length}</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
 
       {/* Popup for New Consumption Entry */}

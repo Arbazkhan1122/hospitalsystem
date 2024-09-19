@@ -23,7 +23,7 @@
   }
   
   .hhBedInformation-stat-card h2 {
-    font-size: 16px;
+    font-size: var(--heading-font);
     margin-bottom: 10px;
   }
   
@@ -74,17 +74,19 @@ align-items: first baseline;
   .bedInformation-table-container table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 12px;
   }
   
   .bedInformation-table-container th, .bedInformation-table-container td {
-    padding: 10px;
-    text-align: left;
+    padding: 3px 5px;
+    /* padding: 10px; */
+    text-align: center;
     border-bottom: 1px solid #ddd;
+    font-size: var(--font-size);
   }
   
   .bedInformation-table-container th {
-    background-color: #599BE0;
+    font-size: var(--heading-font);
+    background-color: var( --button-bg-color);
     color: white;
   }
   
@@ -107,18 +109,39 @@ align-items: first baseline;
   }
   
   .bedInformation-print-btn {
-    background-color: #5867DD;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    font-size: 12px;
-font-weight: bold;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
   }
-  
+  .bedInformation-print-btn:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
   .bedInformation-export-btn {
-    background-color: #5867DD;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    font-size: 12px;
-    font-weight: bold;
-    /* gap: 10px; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .bedInformation-export-btn:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   .hhBedInformation-wardNameColumn{
     font-weight: bold;

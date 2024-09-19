@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import Home from "../pages/Home";
-import './Layout.css';
+import "./Layout.css";
 import AppointmentBookingList from "../../component/Appointment/AppointmentRouting";
 import AppointmentRouting from "../../component/Appointment/AppointmentRouting";
 import AppRoutes from "../../component/Employee/AppRoutes";
@@ -10,14 +10,13 @@ import Inventory from "../../component/Inventory1/Inventory";
 import Incentive from "../../component/IncentiveMain/incentiveApp";
 import Lab from "../../component/NavBarSection/Lab";
 import Emergency from "../../component/Emergency/Emergency"
-import Utilitiesmain from "../../component/UTILITIES/utilitiesmain";
-
+import Utilitiesmain from "../../component/Utilities/utilitiesmain";
 import SystemAdmin from "../../component/SystemAdmin/SystemAdmin"
 import SocialServicePage from "../../component/SocialServicesMain/SocialServicePage";
-import Disprensary from "../../component/DispensaryPage/disprensaryRoute"
+import Disprensary from "../../component/DispensaryPage/disprensaryRoute";
 import DynamicReport from "../../component/DynamicReport/DynamicReport";
 import Report from "../../component/Reports/Layout";
-// import ReportMainRouting from "../../component/Reports/ReportMainRouting";
+import ReportMainRouting from "../../component/Reports/ReportMainRouting";
 import NursingMainRouting from "../../component/Nursing/NursingMainRouting"
 import DoctorDashBoard from "../../component/DashBoards/DoctorDashBoard"
 import Otmain from "../../component/OT/otmain";
@@ -54,31 +53,31 @@ const Layout = () => {
   const [showLaboratory, setShowLaboratory] = useState(false);
   const [showUtilites, setShowUtilites] = useState(false);
   const [showEmergency, setShowEmergency] = useState(false);
-  const [showSystemAdmin, setShowSystemAdmin] = useState(false)
-  const [showSocialService, setShowSocialService] = useState(false)
-  const [showDisprensary, setShowDisprensary] = useState(false)
-  const [showDynamicReport, setShowDynamicReport] = useState(false)
-  const [showReport, setShowReport] = useState(false)
-  const [showNurse, setShowNurse] = useState(false)
-  const [showDoctor, setShowDoctor] = useState(false)
-  const [showOprationTheater, setShowOprationTheater] = useState(false)
-  const [showNhif, setShowNhif] = useState(false)
-  const [showADT, setShowATD] = useState(false)
-  const [showMKT, setShowMKT] = useState(false)
-  const [showClinical, setShowClinical] = useState(false)
-  const [showVaccination, setShowVaccination] = useState(false)
-  const [showFixAssets, setShowFixAssets] = useState(false)
-  const [showCSSD, setShowCSSD] = useState(false)
-  const [showAccounting, setShowAccounting] = useState(false)
-  const [showQueuemgnt, setShowQueuemgnt] = useState(false)
-  const [showMaternity, setShowMaternity] = useState(false)
-  const [showHelpDesk, setShowHelpDesk] = useState(false)
-  const [showRadiology, setShowRadiology] = useState(false)
-  const [showPharmacy, setShowPharmacy] = useState(false)
-  const [showPatient, setShowPatient] = useState(false)
-  const [showVerification, setShowVerification] = useState(false)
-  const [showSubStore, setShowSubStore] = useState(false)
-  const [showMedicalRecord,setShowMedicalRecord]=useState(false)
+  const [showSystemAdmin, setShowSystemAdmin] = useState(false);
+  const [showSocialService, setShowSocialService] = useState(false);
+  const [showDisprensary, setShowDisprensary] = useState(false);
+  const [showDynamicReport, setShowDynamicReport] = useState(false);
+  const [showReport, setShowReport] = useState(false);
+  const [showNurse, setShowNurse] = useState(false);
+  const [showDoctor, setShowDoctor] = useState(false);
+  const [showOprationTheater, setShowOprationTheater] = useState(false);
+  const [showNhif, setShowNhif] = useState(false);
+  const [showADT, setShowATD] = useState(false);
+  const [showMKT, setShowMKT] = useState(false);
+  const [showClinical, setShowClinical] = useState(false);
+  const [showVaccination, setShowVaccination] = useState(false);
+  const [showFixAssets, setShowFixAssets] = useState(false);
+  const [showCSSD, setShowCSSD] = useState(false);
+  const [showAccounting, setShowAccounting] = useState(false);
+  const [showQueuemgnt, setShowQueuemgnt] = useState(false);
+  const [showMaternity, setShowMaternity] = useState(false);
+  const [showHelpDesk, setShowHelpDesk] = useState(false);
+  const [showRadiology, setShowRadiology] = useState(false);
+  const [showPharmacy, setShowPharmacy] = useState(false);
+  const [showPatient, setShowPatient] = useState(false);
+  const [showVerification, setShowVerification] = useState(false);
+  const [showSubStore, setShowSubStore] = useState(false);
+  const [showMedicalRecord, setShowMedicalRecord] = useState(false);
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -87,33 +86,33 @@ const Layout = () => {
     setshowIncentive(false);
     setShowLaboratory(false);
     setShowUtilites(false);
-    setShowEmergency(false)
+    setShowEmergency(false);
     setShowSystemAdmin(false);
     setShowSocialService(false);
-    setShowDisprensary(false)
-    setShowReport(false)
-    setShowNurse(false)
-    setShowDoctor(false)
-    setShowOprationTheater(false)
-    setShowNhif(false)
-    setShowATD(false)
-    setShowMKT(false)
-    setShowClinical(false)
-    setShowVaccination(false)
-    setShowFixAssets(false)
-    setShowCSSD(false)
-    setShowAccounting(false)
-    setShowQueuemgnt(false)
-    setShowMaternity(false)
-    setShowHelpDesk(false)
-    setShowRadiology(false)
-    setShowPharmacy(false)
-    setShowPatient(false)
-    setShowDynamicReport(false)
-    setShowVerification(false)
-    setShowSubStore(false)
-    setShowMedicalRecord(false)
-  }
+    setShowDisprensary(false);
+    setShowReport(false);
+    setShowNurse(false);
+    setShowDoctor(false);
+    setShowOprationTheater(false);
+    setShowNhif(false);
+    setShowATD(false);
+    setShowMKT(false);
+    setShowClinical(false);
+    setShowVaccination(false);
+    setShowFixAssets(false);
+    setShowCSSD(false);
+    setShowAccounting(false);
+    setShowQueuemgnt(false);
+    setShowMaternity(false);
+    setShowHelpDesk(false);
+    setShowRadiology(false);
+    setShowPharmacy(false);
+    setShowPatient(false);
+    setShowDynamicReport(false);
+    setShowVerification(false);
+    setShowSubStore(false);
+    setShowMedicalRecord(false);
+  };
 
   const toggelAppointment = () => {
     resetAllToggles();
@@ -135,116 +134,116 @@ const Layout = () => {
   const toggelLaboratory = () => {
     resetAllToggles();
     setShowLaboratory(!showLaboratory);
-  }
+  };
   const toggelUtilites = () => {
     resetAllToggles();
-    setShowUtilites(!showUtilites)
-  }
+    setShowUtilites(!showUtilites);
+  };
   const toggelEmergency = () => {
     resetAllToggles();
-    setShowEmergency(!showEmergency)
-  }
+    setShowEmergency(!showEmergency);
+  };
 
   const toggelSystemAdmin = () => {
     resetAllToggles();
     setShowSystemAdmin(!showSystemAdmin);
-  }
+  };
   const toggelSocialService = () => {
     resetAllToggles();
-    setShowSocialService(!showSocialService)
-  }
+    setShowSocialService(!showSocialService);
+  };
   const toggelDisprensary = () => {
     resetAllToggles();
-    setShowDisprensary(!showDisprensary)
-  }
+    setShowDisprensary(!showDisprensary);
+  };
   const toggelDynamicReport = () => {
     resetAllToggles();
-    setShowDynamicReport(!showDynamicReport)
-  }
+    setShowDynamicReport(!showDynamicReport);
+  };
   const toggelReport = () => {
     resetAllToggles();
-    setShowReport(!showReport)
-  }
+    setShowReport(!showReport);
+  };
   const toggelNurse = () => {
     resetAllToggles();
-    setShowNurse(!showNurse)
-  }
+    setShowNurse(!showNurse);
+  };
   const toggelDoctor = () => {
-    resetAllToggles()
-    setShowDoctor(!showDoctor)
-  }
+    resetAllToggles();
+    setShowDoctor(!showDoctor);
+  };
   const toggelOprationTheater = () => {
-    resetAllToggles()
-    setShowOprationTheater(!showOprationTheater)
-  }
+    resetAllToggles();
+    setShowOprationTheater(!showOprationTheater);
+  };
   const toggelNhif = () => {
-    resetAllToggles()
-    setShowNhif(!showNhif)
-  }
+    resetAllToggles();
+    setShowNhif(!showNhif);
+  };
   const toggelADT = () => {
-    resetAllToggles()
-    setShowATD(!showADT)
-  }
+    resetAllToggles();
+    setShowATD(!showADT);
+  };
   const toggelMKT = () => {
-    resetAllToggles()
-    setShowMKT(!showMKT)
-  }
+    resetAllToggles();
+    setShowMKT(!showMKT);
+  };
   const toggelClinical = () => {
     resetAllToggles();
-    setShowClinical(!showClinical)
-  }
+    setShowClinical(!showClinical);
+  };
   const toggelVaccination = () => {
-    resetAllToggles()
-    setShowVaccination(!showVaccination)
-  }
+    resetAllToggles();
+    setShowVaccination(!showVaccination);
+  };
   const toggelFixAssests = () => {
-    resetAllToggles()
-    setShowFixAssets(!showFixAssets)
-  }
+    resetAllToggles();
+    setShowFixAssets(!showFixAssets);
+  };
   const toggelCSSD = () => {
-    resetAllToggles()
-    setShowCSSD(!showCSSD)
-  }
+    resetAllToggles();
+    setShowCSSD(!showCSSD);
+  };
   const toggelAccounting = () => {
-    resetAllToggles()
-    setShowAccounting(!showAccounting)
-  }
+    resetAllToggles();
+    setShowAccounting(!showAccounting);
+  };
   const toggelQueuemgnt = () => {
-    resetAllToggles()
-    setShowQueuemgnt(!showQueuemgnt)
-  }
+    resetAllToggles();
+    setShowQueuemgnt(!showQueuemgnt);
+  };
   const toggelMaternity = () => {
-    resetAllToggles()
-    setShowMaternity(!showMaternity)
-  }
+    resetAllToggles();
+    setShowMaternity(!showMaternity);
+  };
   const toggelHelpDesk = () => {
-    resetAllToggles()
-    setShowHelpDesk(!showHelpDesk)
-  }
+    resetAllToggles();
+    setShowHelpDesk(!showHelpDesk);
+  };
   const toggelRadiology = () => {
-    resetAllToggles()
-    setShowRadiology(!showRadiology)
-  }
+    resetAllToggles();
+    setShowRadiology(!showRadiology);
+  };
   const toggelPharmacy = () => {
-    resetAllToggles()
-    setShowPharmacy(!showPharmacy)
-  }
+    resetAllToggles();
+    setShowPharmacy(!showPharmacy);
+  };
   const toggelPatient = () => {
-    resetAllToggles()
-    setShowPatient(!showPatient)
-  }
+    resetAllToggles();
+    setShowPatient(!showPatient);
+  };
   const toggelVerification = () => {
-    resetAllToggles()
-    setShowVerification(!showVerification)
-  }
+    resetAllToggles();
+    setShowVerification(!showVerification);
+  };
   const toggelSubstore = () => {
-    resetAllToggles()
-    setShowSubStore(!showSubStore)
-  }
-  const toggelMedicalRecord=()=>{
-    resetAllToggles()
-    setShowMedicalRecord(!showMedicalRecord)
-  }
+    resetAllToggles();
+    setShowSubStore(!showSubStore);
+  };
+  const toggelMedicalRecord = () => {
+    resetAllToggles();
+    setShowMedicalRecord(!showMedicalRecord);
+  };
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -283,7 +282,11 @@ const Layout = () => {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
-      <div className={`hrmsLayoutMainContent ${isOpen ? "hrmsLayoutMainContentOpen" : "hrmsLayoutMainContentClosed"}`}>
+      <div
+        className={`hrmsLayoutMainContent ${
+          isOpen ? "hrmsLayoutMainContentOpen" : "hrmsLayoutMainContentClosed"
+        }`}
+      >
         <Header />
         <main className="hrmsLayoutMainPadding">
           {showAppointment && <AppointmentRouting />}
@@ -317,7 +320,7 @@ const Layout = () => {
           {showPatient && <PatientRouting />}
           {showVerification && <VerificationRouting />}
           {showSubStore && <SubstoreRouting />}
-          {showMedicalRecord && <MedicalReportRouting/>}
+          {showMedicalRecord && <MedicalReportRouting />}
         </main>
       </div>
     </div>

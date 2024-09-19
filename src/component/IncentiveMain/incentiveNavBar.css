@@ -1,10 +1,11 @@
 .activeincentiveNavBar-btn{
-    background-color: #0056b3;
+    background-color: var(--button-color);
     color: white;
-    height: 25px;
-    font-weight: bold;
-    font-size: 14px;
+    /* height: 25px; */
+    /* font-weight: bold; */
+    font-size: var(--heading-font);
     border: none;
+    padding: 5px 8px;
   }
   .incentiveNavBar-Navigation-bar {
       background-color: white;
@@ -30,25 +31,26 @@ font-size: 14px;
     }
     
     .incentiveNavBar-Navigation-bar a {
-      color: #007bff;
+      color: white;
+      background-color: var(--button-color);
       text-decoration: none;
-      font-weight: bold;
-      font-size: 12px;
-      padding: 5px 5px;
+      /* font-weight: bold; */
+      font-size: var(--heading-font);
+      padding: 7px 5px;
       border-radius: 5px;
   
     }
     
     .incentiveNavBar-Navigation-bar a:hover {
-      background-color: #0056b3;
-      color: white;
+      background-color:white;
+      color: var(--button-color);
       border: 1px solid gray;
   
       
     }
     
     .incentiveNavBar-Navigation-bar .active {
-      background-color: #0056b3;
+      background-color: var(--button-bg-color);
       color: white;
   
     }

@@ -53,14 +53,22 @@ const LabTestComponentsAddNewLTC = ({ onClose }) => {
               <option>Checkbox</option>
             </select>
           </div>
+          <div className="labTestComponentsAddNewLTC-cell-sub">
           <div className="labTestComponentsAddNewLTC-cell labTestComponentsAddNewLTC-description">
             <textarea placeholder="Description"></textarea>
           </div>
           <div className="labTestComponentsAddNewLTC-cell labTestComponentsAddNewLTC-range-buttons">
-            <button>Gen. Range</button>
-            <button>Male Range</button>
-            <button>Female Range</button>
-            <button>Child Range</button>
+            <samp>Gen. Range</samp>
+            <samp>Male Range</samp>
+            <samp>Female Range</samp>
+            <samp>Child Range</samp>
+          </div>
+          <div className="labTestComponentsAddNewLTC-cell labTestComponentsAddNewLTC-range-buttons">
+            <button> Range Value</button>
+            <button> Range Value</button>
+            <button> Range Value</button>
+            <button> Range Value</button>
+          </div>
           </div>
           <div className="labTestComponentsAddNewLTC-cell">
             <input type="text" placeholder="Method" />
