@@ -94,14 +94,14 @@ const IncentiveSettingProfileManage = () => {
             ))}
           </tbody>
         </table>
-        <div className="incentiveSettingProfileManage-pagination">
+        {/* <div className="incentiveSettingProfileManage-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
 
       {/* Conditionally render the popup */}

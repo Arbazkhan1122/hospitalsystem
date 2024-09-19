@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import axios from 'axios'; // Import axios for making HTTP requests
 import '../MedicalRec/MROutPatientList.css';
 import { useNavigate } from 'react-router-dom';
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 function RecordMedical() {
   const [isMenuVisible, setisMenuVisible] = useState(false);
@@ -27,6 +28,8 @@ function RecordMedical() {
   const [diseaseCategory, setDiseaseCategory] = useState('');
   const [diagnosis, setDiagnosis] = useState('');
   const [addFinalDiagnosisdata,setaddFinalDiagnosisdata]=useState('');
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   // modal popup
 
@@ -184,7 +187,7 @@ function RecordMedical() {
         </label>
       </div> */}
       <div className="MROutPatient-tableContainer">
-        <h3>Filter by Appointment Date:</h3>
+        <h5>Filter by Appointment Date:</h5>
         <div className="MROutPatient-date-filter">
           <label>
             From:
@@ -216,21 +219,40 @@ function RecordMedical() {
         {
           filterByAppointment && (
             <>
-              <table className="MROut-patientsTable">
-                <thead>
-                  <tr>
-                    <th>Hospital No</th>
-                    <th>Patient Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Doctor Name</th>
-                    <th>Appointment Date</th>
-                    <th>Department</th>
-                    <th>ICD Code</th>
-                    <th>Final Diagnosis</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
+             <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Serial No",
+              "Patient Name",
+              "Age",
+              "Gender",
+              "Doctor Name",
+              "Appointment Date",
+              "Department",
+              "ICD Code",
+              "Final Diagnosis",
+              "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                 <tbody>
                   {
                     outpatients.length > 0 ? (
@@ -256,7 +278,7 @@ function RecordMedical() {
                   }
                 </tbody>
               </table>
-              <div className="MROutPatient-pagination">
+              {/* <div className="MROutPatient-pagination">
                 <button
                   className="MROut-pagination-btn"
                   onClick={() => handlePageChange(1)}
@@ -286,7 +308,7 @@ function RecordMedical() {
                 >
                   Last
                 </button>
-              </div>
+              </div> */}
             </>
           )
         }

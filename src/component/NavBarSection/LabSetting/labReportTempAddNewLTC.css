@@ -7,7 +7,7 @@
   background-color: white;
   border-radius: 8px;
   font-family: Arial, sans-serif;
-  color: rgb(82, 81, 81);
+  /* color: rgb(82, 81, 81); */
 }
 
 .labReportTempAddNewLTC-header {
@@ -21,7 +21,7 @@
 
 .labReportTempAddNewLTC-header h3 {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--heading-font);
 }
 
 .labReportTempAddNewLTC-close-btn {
@@ -30,7 +30,7 @@
   border: none;
   border-radius: 14px;
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 1px 8px;
 }
 
 .labReportTempAddNewLTC-form .labReportTempAddNewLTC-labReportTempAddNewLTC-form-row {
@@ -45,7 +45,7 @@
   display: flex;
   /* text-align: center; */
   /* align-items: left; */
-  font-size: 12px;
+  font-size: var(--font-size);
   /* width: 220px; */
   /* border: 1px solid red; */
 }
@@ -53,7 +53,7 @@
 .labReportTempAddNewLTC-form-group label {
   display: block;
   margin-bottom: 4px;
-  font-weight: bold;
+  /* font-weight: bold; */
   width: 400px;
 }
 
@@ -65,8 +65,8 @@
   margin-bottom: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 12px;
-  color: gray;
+  font-size: var(--font-size);
+  /* color: gray; */
 }
 
 .labReportTempAddNewLTC-checkbox-row {
@@ -74,7 +74,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: nowrap;
-  font-size: 12px;
+  font-size: var(--font-size);
   gap: 16px;
   margin-bottom: 16px;
 
@@ -117,9 +117,9 @@
 .labReportTempAddNewLTC-create-new-component {
   display: block;
   margin-top: 8px;
-  color: #0F63AF;
-  font-size: 12px;
-  font-weight: bold;
+  /* color: #5b6d7e; */
+  font-size: var(--font-size);
+  /* font-weight: bold; */
   text-decoration: none;
   cursor: pointer;
 }
@@ -127,7 +127,7 @@
 .labReportTempAddNewLTC-form-actions {
   display: flex;
   justify-content: flex-end;
-  font-size: 12px;
+  font-size: var(--font-size);
   gap: 8px;
   margin-top: 16px;
   border-top: 1px solid #ddd;
@@ -135,14 +135,23 @@
 }
 
 .labReportTempAddNewLTC-add-btn {
-  margin-top: 10px;
-  background-color: #0F63AF;
-  font-size: 12px;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  border-radius: 4px;
+  /* border: none; */
+  margin-top: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  padding: 8px 16px;
+  font-size: var(--font-size);
+  /* margin: 1px; */
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+
+.reportTemplate-add-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 .labReportTempAddNewLTC-form-group-1row{
   display: flex;
@@ -161,8 +170,8 @@
   /* flex-wrap: nowrap; */
   justify-content: left;
   text-align: center;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: var(--font-size);
+  /* font-weight: bold; */
 }
 .labReportTempAddNewLTC-AddNew{
   display: flex;
@@ -171,7 +180,7 @@
 .labReportTempAddNewLTC-AddNew a{
   
   color: #0F63AF;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: var(--font-size);
+  /* font-weight: bold; */
   text-decoration: none;
 }

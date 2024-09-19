@@ -1,12 +1,12 @@
 .labCategories-container {
-  background-color: #CAF2FF;
+  background-color: var(--background-color);
   padding: 10px;
   border-radius: 5px;
   font-family: Arial, Helvetica, sans-serif;
   /* width: 100%; */
   /* max-width: 1200px; */
   margin: 0 auto;
-  height: 450px;
+  height: 75vh;
 }
 .labCategories-firstRow{
   display: flex;
@@ -14,17 +14,26 @@
 }
 
 .labCategories-add-button {
-  background-color: #5867DD;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  padding: 7px 15px;
+  /* border: none; */
+  /* margin-top: 10px; */
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 15px;
-  font-size: 12px;
+  font-size: var(--font-size);
+  /* margin: 1px; */
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+
+.labCategories-add-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 .labCategories-search-bar{
-  margin-left: -15px;
+  margin-left: -35px;
   /* margin: 0; */
 }  
   .labCategories-search-bar input {
@@ -69,9 +78,9 @@
   /* display: flex;
   align-items: center; */
   /* padding-top: 10px; */
-  color: #008CBA;
-  font-size: 12px;
-  font-weight: bold;
+  /* color: #008CBA; */
+  font-size: var(--font-size);
+  /* font-weight: bold; */
   margin-right: 10px;
 }
 
@@ -79,45 +88,64 @@
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  font-size: 12px;
   background-color: white;
 }
 
 .labCategories-container th, .labCategories-container td {
-  padding: 5px;
-  text-align: left;
+  font-size: var(--font-size);
+  padding: 3px;
+  text-align: center;
   border: 1px solid #ddd;
-  color: rgb(78, 78, 78);
+  /* color: rgb(78, 78, 78); */
 }
 
 .labCategories-container th {
+  font-size: var(--heading-font);
   background-color: #f2f2f2;
 }
 
 .labCategories-edit-button, .labCategories-deactivate-button {
-  background-color: #0F63AF;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  font-size: 12px;
-  padding: 3px 8px;
-  border-radius: 10px;
-  cursor: pointer;
+  /* border: none; */
   margin-right: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  /* margin: 1px; */
+  transition: background-color 0.3s ease;
+  padding: 1px 5px;
 }
 
+.labCategories-edit-button:hover, .labCategories-deactivate-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
 .labCategories-results-info {
   margin-top: 10px;
   margin-bottom: 15px;
 }
 
 .labCategories-print-button {
-  background-color: #659BE0;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  padding: 7px 15px;
+  /* border: none; */
+  /* margin-top: 10px; */
   border-radius: 5px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: var(--font-size);
+  /* margin: 1px; */
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+
+.labCategories-print-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 /* Modal styles */
 .labCategories-modal {
@@ -157,11 +185,11 @@
   cursor: pointer;
   margin: 0 5px;
   border-radius: 5px;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 
 .labCategories-pagination span {
   margin: 0 10px;
   color: gray;
-  font-size: 12px;
+  font-size: var(--font-size);
 }

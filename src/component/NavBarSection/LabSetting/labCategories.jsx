@@ -86,7 +86,7 @@ const LabCategories = () => {
     <div className="labCategories-container">
     <div className="labCategories-firstRow">
     <div className="labCategories-addBtn">
-      <button className="labCategories-add-button" onClick={handleAddNewLabTestClick}>+Add New Lab Categories</button>
+      <button className="labCategories-add-button" onClick={handleAddNewLabTestClick}>+ Add New Lab Categories</button>
       </div>
         
       </div>
@@ -101,7 +101,7 @@ const LabCategories = () => {
         </div>
         <div className="labCategories-results-info">
           <span>Showing 0 / 0 results</span>
-          <button className="labCategories-print-button">Print</button>
+          <button className="labCategories-print-button"><i class="fa-solid fa-print"></i> Print</button>
         </div>
         </div>
       <table >
@@ -125,14 +125,14 @@ const LabCategories = () => {
           ))}
         </tbody>
       </table>
-      <div className="labCategories-pagination">
+      {/* <div className="labCategories-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       {/* Modal Popup */}
       {showPopup && (
         <div className="labCategories-modal">

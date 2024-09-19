@@ -34,7 +34,7 @@ function InsentiveSettingsEISEditBtn() {
         </div>
         <div className="insentiveSettingsEISEditBtn-pagination-info">
          <span> Showing 0 / 0 results</span>
-          <button className="insentiveSettingsEISEditBtn-print-btn">Print</button>
+          <button className="insentiveSettingsEISEditBtn-print-btn"><i className="fa-solid fa-print"></i> Print</button>
         </div>
         </div>
         <table className="insentiveSettingsEISEditBtn-table">

@@ -1,3 +1,4 @@
+ /* Ajhar Tamboli incentiveReport.jsx 18-09-2024 */
 
 import React, { useState } from "react";
 // import "../IncentiveTransactions/incentiveTransation.css";
@@ -8,7 +9,7 @@ import IncentiveTranRefralSummaryReport from "./incentiveTranRefralSummaryReport
 import IncentiveTranHospitalIncome from "./incentiveTranHospitalIncome";
 // import IncentiveTransationInvoiceItem from "./incentiveTransationInvoice-Item";
 // import IncentiveTransactionsBillScan from "./incentiveTransactionsBillScan";
-// import IncentiveTransationPayment from "./incentiveTransationPayment";
+// import incentiveReportNew from "./incentiveReportNew";
 
 const IncentiveReport = () => {
   const [selectedTab, setSelectedTab] = useState("Invoice"); // State to manage the selected tab
@@ -27,6 +28,8 @@ const IncentiveReport = () => {
           <input type="date" />
           <button className="incentiveReportNew-icon-button incentiveReportNew-star">★</button>
           <button className="incentiveReportNew-icon-button incentiveReportNew-dash">-</button>
+          <button className="incentiveReportNew-ok-button">OK</button>
+
         </div>
       <div className="incentiveReportNew-Select-Doctor">
         <label htmlFor="">Select Doctor:</label>

@@ -1,9 +1,10 @@
  //prachi parab search Patient 13/9
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './SearchPatient.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 function SearchPatient() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -12,6 +13,8 @@ function SearchPatient() {
   const [currentPage, setCurrentPage] = useState(1);
   const patientsPerPage = 5;
   const navigate = useNavigate();
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   useEffect(() => {
     // Fetch patients from the API when the component mounts
@@ -75,17 +78,36 @@ function SearchPatient() {
         </div>
       </div>
 
-      <table className="patients-table">
-        <thead>
-          <tr>
-            <th>Serial No</th>
-            <th>Patient Name</th>
-            <th>Age/Sex</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+      <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Serial No",
+                "Patient Name",
+                "Age/Sex",
+                "Address",
+                "Phone",
+                "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {displayedPatients.map((patient, index) => (
             <tr key={index}>
