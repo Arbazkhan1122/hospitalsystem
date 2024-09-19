@@ -1,7 +1,7 @@
-
+/* Swapnil ROkade inventory-internal adding className And Applying colors 14/09 */
   .inventory-internal-tabs {
     display: flex;
-    background-color: #ccf2ff;
+    background-color: var(--background-color);
   }
   
   .inventory-internal-tabs button {
@@ -12,7 +12,7 @@
   }
   
   .inventory-internal-tabs .active {
-    border-bottom: 2px solid #2196F3;
+    border-bottom: 2px solid var(--button-bg-color);
   }
   
   .inventory-internal-tabs-content {

@@ -370,7 +370,7 @@ const SalesStockDetails = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://192.168.1.40:3155/api/hospital/fetch-fetch-medicine-details'); // API call to the backend
+                const response = await axios.get('http://localhost:1415/api/hospital/fetch-fetch-medicine-details'); // API call to the backend
                 setSalesData(response.data); // Update state with the fetched data
                 setLoading(false); // Set loading to false
                 console.log(response.data);

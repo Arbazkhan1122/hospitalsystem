@@ -53,14 +53,22 @@ function NavExternalLabs() {
       <h5>External Lab Test List</h5>
       <div className="labExternalLab-filters">
         
-        <div className="labExternalLab-date-range">
-          <label>From:</label>
-          <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
-          <label>To:</label>
-          <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} />
-          <button className="labExternalLab-star-btn">☆</button>
-          <button className="labExternalLab-more-btn">-</button>
-        </div>
+        
+        <div className="labExternalLab-controls">
+        {/* Your date range and button controls */}
+          <div className="labExternalLab-date-range">
+            <label>
+              From:
+              <input type="date" defaultValue="2024-08-09" />
+            </label>
+            <label>
+              To:
+              <input type="date" defaultValue="2024-08-16" />
+            </label>
+            <button className="labExternalLab-star-button">☆</button>
+            <button className="labExternalLab-ok-button">OK</button>
+          </div>
+      </div>
         <div className="labExternalLab-hospital-no">
           <label>Hospital No:</label>
           <input type="text" placeholder="Enter Hospital Number..." />

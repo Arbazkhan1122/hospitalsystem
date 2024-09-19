@@ -19,7 +19,6 @@
 
     width: 0%;
     margin: 5px 5px;
-    /* Margin between asides */
     border: 1px solid black;
     border: none;
 
@@ -31,7 +30,6 @@
     border: 1px solid black;
     width: 100%;
     margin-top: 5px;
-    /* background-color: #c5d2ee; */
     border: none;
 
 
@@ -106,8 +104,7 @@
     width: 30%;
     height: auto;
 
-    /* padding-top: 15px; */
-    /* padding-bottom: 15px; */
+    
     border: 1px solid black;
     border: none;
     font-size: 14px;
@@ -144,7 +141,6 @@
 
 .outDiv {
     padding-bottom: 10px;
-    /* background-color: blue; */
     border: 1px solid black;
     border: none;
 
@@ -268,7 +264,6 @@ img {
     padding-left: 15px;
     padding-top: 15px;
 
-    /* background-color: blue; */
     height: 100px;
     font-size: 14px;
     border: 1px solid black;
@@ -311,7 +306,6 @@ img {
 table {
     width: 100%;
     border-collapse: collapse;
-    /* margin: 20px 0;  */
 
 
 }
@@ -324,7 +318,6 @@ th {
 }
 
 td {
-    /* background-color: #f2f2f2; */
     text-align: center;
     padding: 8px;
 
@@ -428,7 +421,6 @@ td {
     display: flex;
     border: 1px solid black;
     border: none;
-    /* width: 100%; */
     justify-content: space-between;
     align-items: center;
     padding: 10px;
@@ -451,7 +443,6 @@ td {
 }
 
 .inputSecTwo {
-    /* padding: 10px; */
     padding: 10px 0px 10px 0px;
     border: 1px solid black;
     border: none;
@@ -496,7 +487,6 @@ td {
 
     .left-aside,
     .right-aside {
-        /* flex: 1; */
         margin-bottom: 10px;
     }
 
@@ -506,8 +496,7 @@ td {
 
     .left-aside {
         width: 100%;
-        /* padding-right: 5px; */
-        /* flex: 1; */
+      
         margin-bottom: 5px;
         margin-top: 5px;
         margin-left: 8px;
@@ -557,4 +546,4 @@ td {
     .inputSection {
         padding-right: 15px;
     }
-}
+} */

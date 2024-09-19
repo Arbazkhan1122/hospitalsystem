@@ -1,3 +1,4 @@
+/*  Swapnil ROkade adding className And Applying colors 14/09 */ */
 .direct-dispatch-dispatch-table {
     width: 100%;
     border-collapse: collapse;
@@ -116,7 +117,7 @@
 }
 
 .direct-dispatch-buttons button {
-    padding: 10px 20px;
+    padding: 5px;
     font-size: 16px;
     border: none;
     border-radius: 4px;
@@ -126,11 +127,13 @@
 }
 
 .direct-dispatch-buttons-direct-dispatch {
-    background-color: #28a745; /* Green color for submit button */
+    background-color:var(--button-color); /* Green color for submit button */
 }
 
 .direct-dispatch-buttons-direct-dispatch:hover {
-    background-color: #218838; /* Darker green for hover effect */
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+    border: 1px solid var(--button-hover-border-color);
 }
 
 .direct-dispatch-buttons-discard-change {
@@ -148,7 +151,7 @@
     color: white; /* White text color */
     border: none; /* Remove default border */
     border-radius: 4px; /* Round the corners */
-    padding: 8px 12px; /* Add some padding */
+    padding: 5px; /* Add some padding */
     font-size: 16px; /* Set the font size */
     cursor: pointer; /* Show pointer cursor on hover */
     margin: 0; /* Remove default margin */
@@ -156,11 +159,11 @@
 
 /* Style for the Remove button (X) */
 .direct-dispatch-buttons-remove {
-    background-color: green; /* Green background color */
+    background-color:var(--button-color); /* Green background color */
     color: white; /* White text color */
     border: none; /* Remove default border */
     border-radius: 4px; /* Round the corners */
-    padding: 8px 12px; /* Add some padding */
+    padding: 5px; /* Add some padding */
     font-size: 16px; /* Set the font size */
     cursor: pointer; /* Show pointer cursor on hover */
     margin: 0; /* Remove default margin */
@@ -172,5 +175,7 @@
 }
 
 .direct-dispatch-buttons-remove:hover {
-    background-color: darkgreen; /* Darker green on hover */
+    background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+  border: 1px solid var(--button-hover-border-color);
 }

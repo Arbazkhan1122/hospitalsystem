@@ -34,24 +34,24 @@ const AppointmentForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="appointment-form">
-      <div className="form-group">
+      <div className="Appointment-form-group">
         <label htmlFor="firstName">First Name *</label>
         <input type="text" id="firstName" name="firstName" value={formData.firstName} onChange={handleChange} required />
       </div>
 
-      <div className="form-group">
+      <div className="Appointment-form-group">
         <label htmlFor="middleName">Middle Name</label>
         <input type="text" id="middleName" name="middleName" value={formData.middleName} onChange={handleChange} />
       </div>
 
-      <div className="form-group">
+      <div className="Appointment-form-group">
         <label htmlFor="lastName">Last Name *</label>
         <input type="text" id="lastName" name="lastName" value={formData.lastName} onChange={handleChange} required />
       </div>
 
-      <div className="form-group">
+      <div className="Appointment-form-group">
         <label>Gender *</label>
-        <div className="radio-group">
+        <div className="Appointment-radio-group">
           <input type="radio" id="male" name="gender" value="Male" onChange={handleChange} />
           <label htmlFor="male">Male</label>
           <input type="radio" id="female" name="gender" value="Female" onChange={handleChange} />
@@ -61,7 +61,7 @@ const AppointmentForm = () => {
         </div>
       </div>
 
-      <div className="form-group">
+      <div className="Appointment-form-group">
         <label htmlFor="age">Age *</label>
         <input type="number" id="age" name="age" value={formData.age} onChange={handleChange} required />
         <select name="ageUnit" value={formData.ageUnit} onChange={handleChange}>
@@ -71,37 +71,37 @@ const AppointmentForm = () => {
         </select>
       </div>
 
-      <div className="form-group">
+      <div className="Appointment-form-group">
         <label htmlFor="reason">Reason</label>
         <input type="text" id="reason" name="reason" value={formData.reason} onChange={handleChange} />
       </div>
 
-      <div className="form-group">
+      <div className="Appointment-form-group">
         <label htmlFor="contactNumber">Contact Number *</label>
         <input type="tel" id="contactNumber" name="contactNumber" value={formData.contactNumber} onChange={handleChange} required />
       </div>
 
-      <div className="form-group">
+      <div className="Appointment-form-group">
         <label htmlFor="appointmentDate">Appointment Date *</label>
         <input type="date" id="appointmentDate" name="appointmentDate" value={formData.appointmentDate} onChange={handleChange} required />
       </div>
 
-      <div className="form-group">
+      <div className="Appointment-form-group">
         <label htmlFor="appointmentTime">Appointment Time</label>
         <input type="time" id="appointmentTime" name="appointmentTime" value={formData.appointmentTime} onChange={handleChange} />
       </div>
 
-      <div className="form-group">
+      <div className="Appointment-form-group">
         <label htmlFor="department">Department</label>
         <input type="text" id="department" name="department" value={formData.department} onChange={handleChange} />
       </div>
 
-      <div className="form-group">
+      <div className="Appointment-form-group">
         <label htmlFor="doctor">Doctor</label>
         <input type="text" id="doctor" name="doctor" value={formData.doctor} onChange={handleChange} />
       </div>
 
-      <div className="form-group">
+      <div className="Appointment-form-group">
         <label htmlFor="visitType">Select Visit Type</label>
         <select id="visitType" name="visitType" value={formData.visitType} onChange={handleChange}>
           <option value="New Patient">New Patient</option>
@@ -109,7 +109,7 @@ const AppointmentForm = () => {
         </select>
       </div>
 
-      <button type="submit" className="submit-button">Add Appointment</button>
+      <button type="submit" className="Appointment-submit-button">Add Appointment</button>
     </form>
   );
 };

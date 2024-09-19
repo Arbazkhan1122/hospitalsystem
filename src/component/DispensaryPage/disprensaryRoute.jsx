@@ -16,6 +16,13 @@ import DispenReportList from '../DispensaryPage/DisReport/dispenReports';
 import DispenPatientConsump from '../DispensaryPage/DisPatient/dispenPatientConsump';
 
 import DispenPatientConsumption from '../DispensaryPage/DisPatientConsumption/dispenPatientConsumption';
+
+import UserCollectionReport from './DisReport/userCollectionReport';
+import DrNarcoticsDailySales from './DisReport/drNarcoticsDailySales';
+import DrDailySalesReport from './DisReport/drDailySalesReport';
+import DrSettlementSummaryReport from './DisReport/drSettlementSummaryReport';
+import DrPaymentModeWiseReport from './DisReport/drPaymentModeWiseReport';
+import DrStockSummaryReport from './DisReport/drStockSummaryReport';
 function Disprensary() {
 
   return (
@@ -35,7 +42,16 @@ function Disprensary() {
                    
           <Route path="/dispenPatientConsump" element={<DispenPatientConsump />} />   
 
-          <Route path="/dispenPatientConsumption" element={<DispenPatientConsumption />} />          
+          <Route path="/dispenPatientConsumption" element={<DispenPatientConsumption />} /> 
+
+          <Route path="/user-collection-report" element={<UserCollectionReport />} /> 
+          <Route path="/dr-Narcotics-Daily-Sales" element={<DrNarcoticsDailySales />} /> 
+          <Route path="/dr-Daily-Sales-Report" element={<DrDailySalesReport />} /> 
+          <Route path="/dr-SettlementSummary-Report" element={<DrSettlementSummaryReport />} /> 
+          <Route path="dr-PaymentModeWise-Report" element={<DrPaymentModeWiseReport />} /> 
+          <Route path="dr-StockSummary-Report" element={<DrStockSummaryReport />} /> 
+                   
+
         </Routes>
       </div>
     </>

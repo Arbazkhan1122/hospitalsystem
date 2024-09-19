@@ -88,8 +88,8 @@ const AddVendor = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className='modal-overlay'>
-      <div className='modal-content'>
+    <div className='inv-modal-overlay'>
+      <div className='inv-modal-content'>
         <button className="vendddCloseButton" onClick={onClose}>
           &times;
         </button>

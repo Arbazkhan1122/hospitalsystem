@@ -374,7 +374,7 @@ function UserCollectionReport() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://192.168.1.40:3155/api/hospital/fetch-all-collections", {
+        const response = await fetch("http://localhost:1415/api/hospital/fetch-all-collections", {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -441,8 +441,8 @@ function UserCollectionReport() {
         </div>
         <div className="userCollectionReport-results-info">
           <span>Showing {userCollections.length} / {userCollections.length} results</span>
-          <button className="userCollectionReport-export-button">Export</button>
-          <button className="userCollectionReport-print-button" >Print</button>
+          <button className="userCollectionReport-export-button"><i class="fa-regular fa-file-excel"></i> Export</button>
+          <button className="userCollectionReport-print-button" ><i class="fa-solid fa-print"></i> Print</button>
         </div>
       </div>
       <div className='userCollectionReport-table-N-paginationDiv'>
@@ -498,14 +498,14 @@ function UserCollectionReport() {
             )}
           </tbody>
         </table>
-        <div className="userCollectionReport-pagination">
+        {/* <div className="userCollectionReport-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -158,7 +158,7 @@ function DispenSalesProvisionalBill() {
 
   // Fetch data from API when component mounts
   useEffect(() => {
-    axios.get('http://192.168.1.40:3155/api/provisional-bills/fetch-all-provisional-bills')
+    axios.get('http://localhost:1415/api/provisional-bills/fetch-all-provisional-bills')
       .then(response => {
         setBills(response.data);
         setIsLoading(false);

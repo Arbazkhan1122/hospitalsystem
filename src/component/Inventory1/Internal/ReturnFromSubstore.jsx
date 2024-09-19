@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import "./Requisition.css"; // Updated to match the provided file
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const ReturnFromSubstore = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [dateFrom, setDateFrom] = useState('2024-08-07');
   const [dateTo, setDateTo] = useState('2024-08-07');
   const [searchQuery, setSearchQuery] = useState('');
@@ -46,31 +49,50 @@ const ReturnFromSubstore = () => {
       </div>
    
       <div className="requisition-inventory-results"> {/* Updated class name */}
-        <span>Showing 0 / 0 results</span>
-        <button onClick={handlePrint}>Print</button>
+        <span className='requisition-inventory-results-span'>Showing 0 / 0 results</span>
+        <button className='requisition-inventory-results-print' onClick={handlePrint}>Print</button>
       </div>
       <div className="requisition-ta">
-      <table className="requisition-inventory-requisition-table"> {/* Updated class name */}
-        <thead>
-          <tr>
-            <th>Returned Date</th>
-            <th>Returned By</th>
-            <th>Substore From</th>
-            <th>Status</th>
-            <th>Received By</th>
-            <th>Received Date</th>
-            <th>Remarks</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+      <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Returned Date",
+                 "Returned By",
+                 "Substore From",
+                 "Status",
+                 "Received By",
+                 "Received Date",
+                 "Remarks",
+                 "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           <tr>
             <td  className='return-from-substore-no-row' colSpan="8">No Rows To Show</td>
           </tr>
         </tbody>
       </table>
-      <div className="requisition-inventory-requisition-pagination"> {/* Updated class name */}
-        <div className="requisition-inventory-requisition-pagination-div"> {/* Updated class name */}
+      {/* <div className="requisition-inventory-requisition-pagination"> 
+        <div className="requisition-inventory-requisition-pagination-div"> 
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
@@ -78,7 +100,7 @@ const ReturnFromSubstore = () => {
           <button>Next</button>
           <button>Last</button>
         </div>
-      </div>
+      </div> */}
       </div>
     </div>
   );

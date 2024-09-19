@@ -1,8 +1,9 @@
 /* PatientQueue_Mohini_4/9/2024/css_startLine_1_to_EndLine_406 */
 
+/* Mohini queue-management ADDED CLASSNAME AND COLOR 14/09 */
 
 .patient-queue-management-container {
-  background-color: #ccefff;
+  background-color:var(--background-color);
   width: 100%;
   height: 100%;
   /* padding: 10px; */
@@ -21,7 +22,7 @@
   }
   
   .queue-management-header-button {
-    background-color: #005eb8;
+    background-color: var(--button-color);
     color: white;
     padding: 8px 8px;
     border: none;
@@ -85,17 +86,19 @@
   }
   
   .queue-management-load-data-button {
-    background-color: #5d9cec;
+    background-color: var(--button-color);
     color: white;
     font-size: 14px;
-    padding: 10px 10px;
+    padding: 5px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
   
   .queue-management-load-data-button:hover {
-    background-color: #4a8cd4;
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+    border: 1px solid var(--button-hover-border-color);
   }
   
   .queue-management-table-section {
@@ -174,7 +177,7 @@
   }
   
   .queue-management-pagination-button {
-    padding: 5px 10px;
+    padding: 5px;
     margin: 0 5px;
     font-size: 14px;
     border: none;
@@ -192,10 +195,10 @@
 
 
 .que-complete-button {
-  background-color: #4CAF50; /* Green */
+  background-color: var(--button-color); /* Green */
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 5px;
   margin: 5px;
   font-size: 14px;
   cursor: pointer;
@@ -203,7 +206,9 @@
 }
 
 .que-complete-button:hover {
-  background-color: #45a049; /* Darker green on hover */
+  background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+    border: 1px solid var(--button-hover-border-color);
 }
 
 .que-skipped-button {
@@ -301,15 +306,15 @@
 /*  */
 
 
-.patient-queue-management-container {
+/* .patient-queue-management-container {
   background-color: #ccefff;
   width: 100%;
-  height: 100%;
+  height: 100%; */
   /* padding: 20px; */
-  box-sizing: border-box;
+  /* box-sizing: border-box;
   display: flex;
   flex-direction: column;
-}
+} */
 
 .patient-queue-management-header {
   background-color: white;
@@ -321,7 +326,7 @@
   text-align: left;
 }
 
-.queue-management-header-button {
+/* .queue-management-header-button {
   background-color: #005eb8;
   color: white;
   padding: 8px 8px;
@@ -329,7 +334,7 @@
   font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
-}
+} */
 
 .queue-management-content {
   /* padding: 20px; */
@@ -347,7 +352,7 @@
 
 .queue-management-table-section {
   /* margin-top: 20px; */
-  max-height: 400px; /* Adjust the height as needed */
+  max-height: 500px; /* Adjust the height as needed */
   overflow-y: auto; /* Only vertical scrollbar when needed */
 }
 

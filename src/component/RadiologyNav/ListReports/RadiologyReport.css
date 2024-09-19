@@ -1,3 +1,4 @@
+/* Akash Pawar Radiology 14/24 */
 .RadiologyReportPopup {
     font-family: Arial, sans-serif;
     width: 100%;
@@ -9,6 +10,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 100;
   }
   
   .RadiologyReportPopup-popup-content {
@@ -23,12 +25,13 @@
     background-color: red !important;
     top: -10px;
     right: -10px;
-    font-size: 1.2rem;
+    padding: 5px 12px;
     border-radius: 50% !important;
   }
   .RadiologyReportPopup h2 {
     margin-top: 0;
-    font-size: 14px;
+    color: black;
+    font-size: var(--heading-font);
   }
   
   .RadiologyReportPopup-actions {
@@ -39,11 +42,16 @@
   
   .RadiologyReportPopup button {
     padding: 5px 10px;
-    background-color: #6c5ce7;
+    background-color: var(--button-color);
     color: white;
     border: none;
     border-radius: 3px;
     cursor: pointer;
+  }
+  .RadiologyReportPopup button:hover {
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+     border: 1px solid var(--button-hover-border-color);
   }
   
   .RadiologyReportPopup-report-content {
@@ -91,7 +99,12 @@
   }
   
   .RadiologyReportPopup-close {
-    background-color: #95a5a6;
+    background-color: red !important;
+  }
+  .RadiologyReportPopup-close:hover {
+    background-color: var(--button-hover-background-color) !important;
+    color: red !important;
+     border:1px solid red !important;
   }
   .RadiologyReportPopup-image{
     width: 500px;

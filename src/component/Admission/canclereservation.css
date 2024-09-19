@@ -1,75 +1,37 @@
-.employee-pagination {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .employee-pagination button {
-    margin: 0 5px;
-    padding: 5px 10px;
-    background-color: #0F63AF;
-    color: white;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .employee-pagination span {
-    margin: 0 10px;
-    font-size: 14px;
+/* // neha-ADT-canclereservation-19/09/24 */
+.canclereservation{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-right: 10px;
+ 
+}
+.cancelreservation-page{
+  background-color: var(--background-color);
+  padding: 20px
+
+}
+  .cancledatabtn,.canclereservation-print-button{
+    padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--button-color);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
   }
 
-  .canclereservationtable{
-    margin-top: 20px;
-    width: 100%;
-    /* border-collapse: collapse; */
-    border: 1px solid black;
+  .canclereservation-print-button:hover,.cancledatabtn:hover{
+    background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+  border:1px solid var(--button-hover-border-color);
   }
 
-  .canclehead{
-    background-color: #ccc;
-    border: 1px solid black;
-    padding: 0px 8px;
-    
-  }
 
-  .cancledata{
-    border: 1px solid black;
-    padding: 3px 8px;
 
-  }
-  .cancledatabtn,.print-button{
-    background-color: #0F63AF;
-    color: white;
-    height: 30px;
-    padding: auto;
-    border-radius: 15px;
-  }
-
-  .print-button{
-    background-color: #0F63AF;
-    color: white;
-    height: 30px;
-    padding: auto;
-    border-radius:  5px;
-  }
-
-  .cancle-reservation-search-bar{
-    height: 30px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-
-  .icon-btn{
-    height: 30px;
-    padding: 0px 10px;
-    border: none;
-
-  }
 
   .cancle-reservation-search-input{
     border-radius: 5px;
     height: 30px;
+    width: 300px;
   }

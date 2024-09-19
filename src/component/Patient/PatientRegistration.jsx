@@ -93,13 +93,24 @@ const PatientRegistration = ({sendpatientdata,patientData}) => {
           <label>Salutation:</label>
             <div className="patient-registration-data">
             <div className="form-group">
+                
+                Mr. &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="maritalStatus" value="Married" onChange={handleChange} /> 
+                Ms. &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="maritalStatus" value="Unmarried" onChange={handleChange} />
+                Mrs. &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="maritalStatus" value="Unmarried" onChange={handleChange} />
+               
+         
+        </div>
+            {/* <div className="form-group">
                 <label className="radio-label">Mr.</label>
                 <input type="radio" name="salutation" value="Mr" onChange={handleChange} /> 
                 <label className="radio-label">Ms.</label>
                 <input type="radio" name="salutation" value="Ms" onChange={handleChange} /> 
                 <label className="radio-label">Mrs.</label>
                 <input type="radio" name="salutation" value="Mrs" onChange={handleChange} />
-            </div>
+            </div> */}
         </div>
         </div>
           <div className="form-group">

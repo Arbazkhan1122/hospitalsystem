@@ -30,6 +30,7 @@ function HHWardInformation() {
 
   return (
     <div className="wardInformation-container">
+      <div className="wardInformation-heading-N-print-btn">
       <div className="wardInformation-heading">
         <h3>List Of Wards:</h3>
       </div>
@@ -38,6 +39,7 @@ function HHWardInformation() {
         <button className="wardInformation-print-btn" onClick={handlePrint}>
           <i className="fa-solid fa-print"></i> Print
         </button>
+      </div>
       </div>
 
       <table>

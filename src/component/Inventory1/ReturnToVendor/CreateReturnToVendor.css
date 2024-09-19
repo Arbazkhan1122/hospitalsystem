@@ -1,7 +1,7 @@
 .create-ReturnToVendor {
   width: 100%;
   padding: 20px;
-  background-color: #e0f7fa;
+  background-color:var(--background-color);
   border-radius: 8px;
   /* box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); */
 }
@@ -53,7 +53,7 @@
 }
 
 .create-return-to-vendor-item-table th {
-  background-color: #006da7;
+  background-color: var(--button-color);
   color: white;
 }
 
@@ -68,7 +68,7 @@
 }
 
 .create-return-to-vendor-return-btn {
-  background-color: #4caf50;
+  background-color: var(--button-color);
   color: white;
   padding: 10px 20px;
   border: none;
@@ -77,7 +77,9 @@
 }
 
 .create-return-to-vendor-return-btn:hover {
-  background-color: #45a049;
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+  border: 1px solid var(--button-hover-border-color);
 }
 
 .create-return-to-vendor-cancel-btn {
@@ -112,7 +114,7 @@
 /*  */
 
 .create-render-to-add {
-  background-color: #4caf50; /* Green background */
+  background-color: var(--button-color); /* Green background */
   color: white; /* White text color */
   border: none; /* Remove default border */
   border-radius: 5px; /* Optional: rounded corners */
@@ -169,23 +171,25 @@
 }
 
 .create-return-to-vendor-form-row-submit-btn {
-  background-color: green; /* Green background for submit button */
+  background-color: var(--button-color); /* Green background for submit button */
   color: white; /* White text color */
   border: none; /* Remove border */
-  padding: 10px 20px; /* Padding for button */
+  padding: 5px; /* Padding for button */
   border-radius: 5px; /* Rounded corners */
   cursor: pointer; /* Pointer cursor on hover */
 }
 
 .create-return-to-vendor-form-row-submit-btn:hover {
-  background-color: darkgreen; /* Darker green on hover */
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+  border: 1px solid var(--button-hover-border-color);
 }
 
 .create-return-to-vendor-form-row-cancel {
   background-color: red; /* Red background for cancel button */
   color: white; /* White text color */
   border: none; /* Remove border */
-  padding: 10px 20px; /* Padding for button */
+  padding: 5px; /* Padding for button */
   border-radius: 5px; /* Rounded corners */
   cursor: pointer; /* Pointer cursor on hover */
 }

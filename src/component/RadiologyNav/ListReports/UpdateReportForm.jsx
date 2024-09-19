@@ -221,9 +221,6 @@ function UpdateReportForm({ onClose, selectedRequest }) {
           >
             Submit & Print
           </button>
-          <label>
-            <input type="checkbox" /> All images
-          </label>
         </div>
       </div>
     </div>

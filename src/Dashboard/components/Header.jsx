@@ -1,13 +1,11 @@
 import React from "react";
 import { GoBell } from "react-icons/go";
-import './Header.css';
+import "./Header.css";
 
 const Header = () => {
   return (
     <div className="hrmsDashSidebarHeader">
-      <div>
-        {/* Add content if needed */}
-      </div>
+      <div>{/* Add content if needed */}</div>
       <div className="hrmsDashHeaderRight">
         <div className="hrmsDashHeaderRight">
           <button className="hrmsDashNotificationButton">

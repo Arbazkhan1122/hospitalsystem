@@ -164,7 +164,7 @@ function DrDailySalesReport() {
 
   // Fetch daily sales reports from the new API endpoint
   useEffect(() => {
-    fetch("http://192.168.1.40:3155/api/daily-sales/fetch-all-daily-sales-report")
+    fetch("http://localhost:1415/api/daily-sales/fetch-all-daily-sales-report")
       .then(response => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");
@@ -218,8 +218,8 @@ function DrDailySalesReport() {
         </div>
         <div className="drDailySalesReport-results-info">
           <span>Showing {dailySalesReports.length} / {dailySalesReports.length} results</span>
-          <button className="drDailySalesReport-export-button">Export</button>
-          <button className="drDailySalesReport-print-button">Print</button>
+          <button className="drDailySalesReport-export-button"><i class="fa-regular fa-file-excel"></i> Export</button>
+          <button className="drDailySalesReport-print-button"><i class="fa-solid fa-print"></i> Print</button>
         </div>
       </div>
       <div className='drDailySalesReport-table-N-paginationDiv'>
@@ -275,14 +275,14 @@ function DrDailySalesReport() {
             )}
           </tbody>
         </table>
-        <div className="drDailySalesReport-pagination">
+        {/* <div className="drDailySalesReport-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -1,20 +1,19 @@
 :root {
   --sideBar-bg-color: #007973;
   --upperBar-bg-color: #00968f;
-  --button-bg-color: #00968f; /* Active */
-  --button-color: #00c9c0; /*button color*/
-
-  --background-color:#e3fffe; /* /background-color/ */
-  --heading-font:16px; /* Heading font size */
-  --font-size:14px ; /* For all text size  */
-  --button-hover-border-color:#00c9c0;  /* For all button hover color */
-  --button-hover-text-color:#00c9c0; /* when hover on button then use that color for text */
+  --button-bg-color: #00968f;
+  --button-color: #00c9c0;
+  --background-color: #e3fffe;
+  --heading-font: 16px;
+  --font-size: 14px;
+  --button-hover-border-color:#00c9c0;
+  --button-hover-text-color:#00c9c0;
   --button-hover-background-color:white ;
+  --input-box-padding:5px;
 }
 
+/* Akash Pawar Table related All Css 14/24 */
 
-
-/* Table Styling */
 .table-container {
   max-width: 100%; /* Ensure container does not exceed viewport width */
   max-height: 60vh;
@@ -118,3 +117,5 @@ td:hover .table-tooltiptext {
   opacity: 1;
   transform: translateX(-50%) translateY(10px);
 }
+
+/* Akash Pawar Table related All Css 14/24 */

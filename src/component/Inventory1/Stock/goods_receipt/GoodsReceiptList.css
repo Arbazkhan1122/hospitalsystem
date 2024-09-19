@@ -20,8 +20,8 @@
 }
 
 .goods-receipt-ok-button {
-  padding: 8px 15px;
-  background-color: #4caf50;
+  padding: 5px;
+  background-color: var(--button-color);
   color: white;
   border: none;
   border-radius: 5px;
@@ -51,13 +51,24 @@
 }
 
 .goods-receipt-export-btn {
-  background-color: #42a5f5;
+  background-color: var(--button-color);
   color: white;
+}
+.goods-receipt-export-btn:hover
+{
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+  border: 1px solid var(--button-hover-border-color);
 }
 
 .goods-receipt-print {
-  background-color: #42a5f5;
+  background-color: var(--button-color);
   color: white;
+}
+.goods-receipt-print:hover{
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+  border: 1px solid var(--button-hover-border-color);
 }
 
 

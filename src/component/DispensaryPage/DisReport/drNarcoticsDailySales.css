@@ -3,24 +3,22 @@
     /* max-width: 1200px; */
     /* margin: 0 auto; */
     padding: 10px;
-    height: 460px;
-    background-color: #CAF2FF;
+    height: 78vh;
+    background-color:var(--background-color);
   }
   
  .drNarcoticsDailySales-report h4 {
     margin-top: 0;
-    color: rgb(66, 66, 66);
-    font-weight: 200;
+ font-size: var(--heading-font);
   }
-  .drNarcoticsDailySales-report i {
-    color: #0F63AF
-  }
+
   
   .drNarcoticsDailySales-filters {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
+    font-size: var(--font-size);
   }
   .drNarcoticsDailySales-filters-second {
     display: flex;
@@ -34,32 +32,37 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: var(--font-size);
     background-color: #EBF7FF;
     margin-left: 30px;
     padding: 2px 30px;
   }
-  
+  .drNarcoticsDailySales-date-range label{
+    font-size: var(--font-size);
+  }
+  .drNarcoticsDailySales-date-range input{
+    margin-left: 10px;
+
+  }
   .drNarcoticsDailySales-select-filters {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: var(--font-size);
     margin-left: 10px;
     /* border: 1px solid red; */
     /* width: 300px; */
   }
   .drNarcoticsDailySales-select-filters select{
     width: 200px;
+    padding: 1px 10px !important;
   }
   .drNarcoticsDailySales-select-filters label{
   margin-right: 30px;
   }
   .drNarcoticsDailySales-select-filters input[type="date"], input[type="text"], select {
-    padding: 5px;
+    padding: 1px 10px !important;
     border: 1px solid #ccc;
     border-radius: 3px;
     margin-left: 20px;
@@ -68,21 +71,30 @@
   .drNarcoticsDailySales-star-button {
     background: none;
     border: none;
-    font-size: 1.9em;
-    color: #0F63AF;
+    font-size: 24px;
+    color:var(--button-color) ;
     cursor: pointer;
   }
   
   .drNarcoticsDailySales-show-report-button {
-    background-color: #5867DD;
+       background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    font-size: 12px;
-    padding: 8px 15px;
-    border-radius: 3px;
+    /* margin-right: 10px; */
+    border-radius: 5px;
     cursor: pointer;
+    font-size: var(--font-size);
     margin-right: 100px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
   }
+  .drNarcoticsDailySales-show-report-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  
+  }
+
   
   .drNarcoticsDailySales-search-N-result{
     margin-top: 10px;
@@ -115,9 +127,8 @@
     /* display: flex;
     align-items: center; */
     /* padding-top: 10px; */
-    color: #659BE0;
-    font-weight: bold;
-    font-size: 12px;
+    
+    font-size: var(--font-size);
   }
 
   
@@ -131,21 +142,31 @@
     margin-left: 10px;
   } */
   
-  .results-info {
+  /* .results-info {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-  }
+  } */
   
   .drNarcoticsDailySales-export-button, .drNarcoticsDailySales-print-button {
-    background-color: #659BE0;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    font-size: 12px;
+    /* margin-right: 10px; */
     border-radius: 5px;
-    padding: 8px 15px;
-    margin-left: 10px;
     cursor: pointer;
+    font-size: var(--font-size);
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .drNarcoticsDailySales-export-button:hover,
+  .drNarcoticsDailySales-print-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  
+  
   }
   
   .drNarcoticsDailySales-report table {
@@ -157,14 +178,14 @@
   
   .drNarcoticsDailySales-report th, .drNarcoticsDailySales-report td {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    font-size: 12px;
+    padding: 3px;
+    text-align: center;
+    font-size: var(--font-size);
   }
   
   .drNarcoticsDailySales-report th {
     background-color: #F3F3F3;
-    color: #333333;
+    /* color: #333333; */
   }
   
   /* .no-data {
@@ -188,13 +209,13 @@
     cursor: pointer;
     margin: 0 5px;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: var(--font-size);
   }
   
   .drNarcoticsDailySales-pagination span {
     margin: 0 10px;
     color: gray;
-    font-size: 12px;
+    font-size: var(--font-size);
   }
  
   .drNarcoticsDailySales-table-N-paginationDiv{

@@ -116,7 +116,7 @@ const AddNewPatient = ({ onClose, counterId }) => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://192.168.1.40:3155/api/hospital/save-out-patient/1`, {
+            const response = await fetch(`http://localhost:1415/api/hospital/save-out-patient/1`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

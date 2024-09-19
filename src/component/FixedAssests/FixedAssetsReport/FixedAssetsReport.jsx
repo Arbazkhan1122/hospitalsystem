@@ -19,7 +19,7 @@ const FixedAssetReport = () => {
   // Update navigation visibility based on the current path
   useEffect(() => {
     // Show the navigation only if the pathname matches exactly and should be shown
-    if (location.pathname.startsWith("/fixedassets/Reports")) {
+    if (location.pathname === "/Reports") {
       setNavVisible(true);
     } else {
       setNavVisible(false);
@@ -39,7 +39,7 @@ const FixedAssetReport = () => {
           <ul>
             <li>
               <NavLink
-                to="FixedAssetsMovement"
+                to="/Reports/FixedAssetsMovement"
                 className={({ isActive }) =>
                   `fixed-assets-btn ${isActive ? "active" : ""}`
                 }
@@ -58,17 +58,12 @@ const FixedAssetReport = () => {
           </ul>
         </nav>
       )}
-      {!navVisible && (
-        <div className="fixed-asset-report-content">
-          <Routes>
-            <Route
-              path="FixedAssetsMovement"
-              element={<FixedAssetsMovement />}
-            />
-            {/* Other nested routes can be added here */}
-          </Routes>
-        </div>
-      )}
+
+      <div className="fixed-asset-report-content">
+        <Routes>
+          <Route path="FixedAssetsMovement" element={<FixedAssetsMovement />} />
+        </Routes>
+      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@
     /* max-width: 1200px; */
     /* margin: 0 auto; */
     padding: 10px;
-    background-color: #CAF2FF;
+    background-color: var(--background-colo);
   }
   
   .dispenSalesReturnFromCust-options{
@@ -26,11 +26,12 @@
     align-items: center;
   }
   .dispenSalesReturnFromCust-checkbox-group label{
-    font-size: 14px;
+    font-size: var(--font-size);
   }
   
   .dispenSalesReturnFromCust-checkbox-group input[type="checkbox"] {
-      margin-right: 5px;
+    /* margin-right: 5px; */
+    margin: 0 10px;
     }
     
     .dispenSalesReturnFromCust-form-group-two{
@@ -42,7 +43,7 @@
         display: flex;
         align-items: center;
         text-align: center;
-        font-size: 14px;
+        font-size: var(--font-size);
         /* margin-left: 10px; */
         padding: 10px 0;
         
@@ -50,22 +51,33 @@
     /* margin-bott  om: 15px; */
   }
   .dispenSalesReturnFromCust-form-group-fs label{
-    font-size: 14px;
+    font-size: var(--font-size);
     /* color: red; */
     padding: 0 10px;
   }
-  .dispenSalesReturnFromCust-btn-manual-return {
-    background-color: var(--button-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    height: 29px;
-    /* padding: 8px 15px; */
-    font-size: 14px;
-
+  .dispenSalesReturnFromCust-form-group-fs select{
+    padding: 3px;
   }
-  .dispenSalesReturnFromCust-form h5{
-    padding-top: 20px;
+  .dispenSalesReturnFromCust-btn-manual-return {
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
+    color: white;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    margin: 10px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .dispenSalesReturnFromCust-btn-manual-return:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
+    .dispenSalesReturnFromCust-form h5{
+      padding-top: 20px;
     font-size: 16px;
     color: black;
     margin: 0px;
@@ -73,7 +85,7 @@
   .dispenSalesReturnFromCust-patient-info{
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: var(--font-size);
   }
   .dispenSalesReturnFromCust-patient-info label {
     margin-right: 20px;
@@ -95,7 +107,7 @@
   .dispenSalesReturnFromCust-form-group input,
   .dispenSalesReturnFromCust-form-group select,
   .dispenSalesReturnFromCust-form-group textarea {
-    padding: 8px;
+    padding: 3px;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
@@ -116,7 +128,7 @@
   
   .dispenSalesReturnFromCust-error-messages {
     color: red;
-    font-size: 14px;
+    font-size: var(--font-size);
     margin-top: 5px;
   }
   
@@ -130,16 +142,16 @@
   .dispenSalesReturnFromCust-return-table th,
   .dispenSalesReturnFromCust-return-table td {
     border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
-    color: #6d6c6c;
-    font-size: 14px;
+    padding: 3px;
+    text-align: center;
+    color: black;
+    font-size: var(--font-size);
     background-color: white;
 }
 
 .dispenSalesReturnFromCust-return-table th {
     background-color: #F5F5F5;
-    font-size: 16px;
+    font-size: var(--heading-font);
 
 
   }
@@ -155,45 +167,82 @@
   }
   
   .dispenSalesReturnFromCust-btn-search {
-    background-color:var(--button-color) ;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
+    /* border: none; */
+    /* margin-right: 10px; */
     border-radius: 5px;
-    height: 29px;
+    cursor: pointer;
+    font-size: var(--font-size);
     margin: 10px;
-    padding: 0 10px;
-    font-size: 14px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .dispenSalesReturnFromCust-btn-search:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
-  
-  
   .dispenSalesReturnFromCust-btn-remove {
-    background-color: #E31D2D;
+    background-color:#E31D2D;
+    border: 1px solid #E31D2D;
     color: white;
-    border: none;
+    /* border: none; */
+    /* margin-right: 10px; */
     border-radius: 5px;
-    padding: 7px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    margin: 10px;
+    transition: background-color 0.3s ease;
+    padding: 5px 10px;
+  }
+  .dispenSalesReturnFromCust-btn-remove:hover {
+    border: 1px solid #E31D2D;
+    color: #E31D2D;
+    background-color: var(--button-hover-background-color);
   }
   
   .dispenSalesReturnFromCust-btn-add {
-    background-color: #4d79ff;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
+    /* border: none; */
+    /* margin-right: 10px; */
     border-radius: 5px;
-    padding: 7px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    margin: 10px;
+    transition: background-color 0.3s ease;
+    padding: 5px 10px;
+  }
+  .dispenSalesReturnFromCust-btn-add:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   .dispenSalesReturnFromCust-PRB{
     display: flex;
     justify-content: center;
   }
   .dispenSalesReturnFromCust-btn-print {
-    background-color: var(--button-color);
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    margin-top: 20px;
-    border: none;
-    height: 29px;
+    /* border: none; */
+    /* margin-right: 10px; */
     border-radius: 5px;
-    font-size: 14px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    margin: 10px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .dispenSalesReturnFromCust-btn-print:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
   .dispenSalesReturnFromCust-remarks {
@@ -212,7 +261,7 @@
     display: flex;
   }
 .dispenSalesReturnFromCust-form-group-remarks label{
-    font-size: 14px;
+    font-size: var(--font-size);
 }
 .dispenSalesReturnFromCust-form-group-remarks textarea{
     margin-left: 100px;

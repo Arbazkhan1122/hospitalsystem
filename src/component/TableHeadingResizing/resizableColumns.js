@@ -1,6 +1,10 @@
 
+
+
+
 export const startResizing = (tableRef, setColumnWidths) => (index) => (e) => {
-    e.preventDefault();
+    
+  e.preventDefault();
   
     const startX = e.clientX;
     const startWidth = tableRef.current

@@ -28,6 +28,7 @@
 // };
 
 // export default IncentiveTransationPayment;
+ /* Ajhar Tamboli IncentiveTransationPayment.jsx 18-09-2024 */
 
 import React, { useState } from "react";
 import "../IncentiveTransactions/incentiveTransationPayment.css";
@@ -94,6 +95,8 @@ const IncentiveTransationPayment = () => {
           <button className="incentiveTransationPayment-icon-button incentiveTransationPayment-dash">
             -
           </button>
+          <button className="incentiveTransationPayment-ok-button">OK</button>
+
         </div>
         <div className="incentiveTransationPayment-Select-Doctor">
           <label>Select Doctor:</label>

@@ -86,8 +86,8 @@ const BillingLedger = () => {
       </table>
 
       {isModalOpen && (
-        <div className="modal-overlay">
-          <div className="modal-content">
+        <div className="billing-modal-overlay">
+          <div className="billing-modal-content">
             <button className="close-btn" onClick={closeModal}>
               &times;
             </button>
