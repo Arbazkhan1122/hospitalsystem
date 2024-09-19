@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './UserCollectionReport.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const TestStatusDetailsReport = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  
+const [columnWidths, setColumnWidths] = useState({});
+const tableRef = useRef(null);
 
   // Manage checkbox states
   const [checkboxStates, setCheckboxStates] = useState({
@@ -378,27 +382,46 @@ const TestStatusDetailsReport = () => {
             <button className="user-collection-report-print-btn" onClick={handleExport}>Export</button>
           </div>
           <div className='user-collection-report-tab'>
-            <table className="user-collection-report-table">
-              <thead>
-                <tr>
-                  <th>Hospital No</th>
-                  <th>Membership    </th>
-                  <th>Rank</th>
-                  <th>Patient Name</th>
-                  <th>Age/Sex</th>
-                  <th>Requested On</th>
-                  <th>Test Name</th>
-                  <th>Run No</th>
-                  <th>Ward Name</th>
-                  <th>Bill Status </th>
-                  <th>Sample Collected By</th>
-                  <th>Prescriber</th>
-                  <th>Test Status </th>
-                  <th>Bill Cancelled By</th>
-                  <th>Bill Cancelled On</th>
+          <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Hospital No",
+                "Membership",
+                "Rank",
+                "Patient Name",
+                "Age/Sex",
+                "Requested On",
+                "Test Name",
+                "Run No",
+                "Ward Name",
+                "Bill Status",
+                "Sample Collected By",
+                "Prescriber",
+                "Test Status",
+                "Bill Cancelled By",
+                "Bill Cancelled On"
 
-                </tr>
-              </thead>
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
               <tbody>
                 {reportsData.map((row, index) => (
                   <tr key={index}>

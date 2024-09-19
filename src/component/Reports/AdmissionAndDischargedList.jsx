@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 import './UserCollectionReport.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const AdmissionAndDischargedList = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('');
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   // Sample data for doctors and departments
   const doctors = ['Dr. Smith', 'Dr. Johnson', 'Dr. Williams']; // Example doctor list
@@ -173,25 +176,45 @@ const AdmissionAndDischargedList = () => {
             <button className="user-collection-report-print-btn" onClick={handleExport}>Export</button>
           </div>
           <div className='user-collection-report-tab'>
-            <table className="user-collection-report-table">
-              <thead>
-                <tr>
-                  <th>S.N</th>
-                  <th>Category</th>
-                  <th>Count</th>
-                  <th>Patient Name</th>
-                  <th>Hospital No</th>
-                  <th>IP Number</th>
-                  <th>Admitted On</th>
-                  <th>Discharged On</th>
-                  <th>Requesting Department</th>
-                  <th>Admitting Doctor</th>
-                  <th>Ward</th>
-                  <th>Bed Feature</th>
-                  <th>Admission Status</th>
-                  <th>Discharge Time</th>
-                </tr>
-              </thead>
+          <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "S.N",
+                "Category",
+                "Count",
+                "Patient Name",
+                "Hospital No",
+                "IP Number",
+                "Admitted On",
+                "Discharged On",
+                "Requesting Department",
+                "Admitting Doctor",
+                "Ward",
+                "Bed Feature",
+                "Admission Status",
+                "Discharge Time"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+		  
               <tbody>
                 {reportsData.map((row, index) => (
                   <tr key={index}>

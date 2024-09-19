@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import './UserCollectionReport.css';
+
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const RegistrationReport = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [filteredReportsData, setFilteredReportsData] = useState([]);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   const handlePrint = () => {
     window.print(); // Simple print functionality using the browser's print dialog
@@ -396,23 +400,42 @@ const RegistrationReport = () => {
 
               <div className='user-collection-report-tab'>
                 <div className="table-scroll-container">
-                  <table className="user-collection-report-table">
-                    <thead>
-                      <tr>
-                        <th>Registered Date</th>
-                        <th>Patient Name</th>
-                        <th>Date of Birth</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Phone Number</th>
-                        <th>Country</th>
-                        <th>Address</th>
-                        <th>Scheme Name</th>
-                        <th>Blood Group</th>
-                        <th>Email</th>
-                        <th>Insurance No</th>
-                      </tr>
-                    </thead>
+                <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Registered Date",
+                "Patient Name",
+                "Date of Birth",
+                "Age",
+                "Gender",
+                "Phone Number",
+                "Country",
+                "Address",
+                "Scheme Name",
+                "Blood Group",
+                "Email",
+                "Insurance No"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                     <tbody>
                       {filteredReportsData.map((row, index) => (
                         <tr key={index}>

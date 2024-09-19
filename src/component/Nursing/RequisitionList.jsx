@@ -1,14 +1,18 @@
  /* prachi parab user interface changed  14/9 */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import axios from 'axios';
 import './RequisitionList.css'; // Update to match the new CSS file
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const RequisitionList = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1); // Assuming you may want to calculate this based on API response
     const [requisitions, setRequisitions] = useState([]);
     const itemsPerPage = 10; // Adjust this as needed
+    const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
+
 
     useEffect(() => {
         const fetchRequisitions = async () => {
@@ -48,21 +52,36 @@ const RequisitionList = () => {
                         <button className="RequisitionList-button">Print</button>
                     </div>
                 </div>
-                <table className="RequisitionList-patientsTable">
-                    <thead>
-                        <tr>
-                            <th>Patient Name</th>
-                            {/* <th>Hospital Number</th> */}
-                            <th>Contact No</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Item Name</th>
-                            <th>Quantity</th>
-                           
-                           
-                            {/* <th>Actions</th> */}
-                        </tr>
-                    </thead>
+                <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Patient Name",
+                "Contact No",
+                "Date",
+                "Status",
+                "Item Name",
+                "Quantity"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                     <tbody>
                         {currentItems.map((item, index) => (
                             <tr key={index} className="RequisitionList-tableRow">

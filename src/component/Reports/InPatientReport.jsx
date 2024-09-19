@@ -1,7 +1,15 @@
-import React from 'react';
+import React,{useState,useRef} from 'react';
 import './InPatientReport.css';
+// import { startResizing } from "../../../TableHeadingResizing/resizableColumns";
 
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
+// D:\157 Career\HIMSFrontEndFiles\hospitalsystem\src\component\TableHeadingResizing\resizableColumns.js
 const InpatientCensus = () => {
+
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
+
+
   return (
     <div className="inpatient-census-report-range-container">
         <h3 className="user-collection-report-title">⚛ Inpatient Census Report</h3>
@@ -25,18 +33,40 @@ const InpatientCensus = () => {
         <h3>Inpatient Census (All Wards) for the selected dates</h3>
       </div>
 
-      <table className="inpatient-census-report-range-census-table">
-        <thead>
-          <tr>
-            <th>Ward Name</th>
-            <th>In Bed <i className="inpatient-census-report-range-info-icon">i</i></th>
-            <th>New Admission</th>
-            <th>Trans IN</th>
-            <th>Trans OUT</th>
-            <th>Discharged</th>
-            <th>Total Pt. <i className="inpatient-census-report-range-info-icon">i</i></th>
-          </tr>
-        </thead>
+
+      <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Ward Name",
+                "In Bed",
+                "New Admission",
+                "Trans IN",
+                "Trans OUT",
+                "Discharged",
+                "Total Pt.",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+
+      
         <tbody>
           <tr>
             <td>Brain Ward</td>

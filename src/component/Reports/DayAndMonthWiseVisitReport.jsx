@@ -1,12 +1,15 @@
 
 
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import './UserCollectionReport.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const DayAndMonthWiseVisitReport = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   // Example of how you might fetch or have data
   const reportsData = []; // Replace this with your actual data source or API call
@@ -105,20 +108,37 @@ const DayAndMonthWiseVisitReport = () => {
             <button className="user-collection-report-print-btn" onClick={handleExport}>Export</button>
           </div>
           <div className='user-collection-report-tab'>
-            <table className="user-collection-report-table">
-              <thead>
-                <tr>
-                  <th>Department Name</th>
-                  <th>VisitDate</th>
-                  <th>Month</th>
-                  <th>Days</th>
-                  <th>NewTotal</th>
-                  <th>Followup Total </th>
-                
-                  <th>Total</th>
-                                 
-                </tr>
-              </thead>
+  
+<table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Department Name",
+                "Visit Date",
+                "Month",
+                "Days",
+                "New Total",
+                "Follow-up Total"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
               <tbody>
                 {reportsData && reportsData.length > 0 ? (
                   reportsData.map((row, index) => (

@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import './UserCollectionReport.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const InPatientOutstandingReport = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [showReport, setShowReport] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [doctors, setDoctors] = useState(['Dr. Smith', 'Dr. Johnson', 'Dr. Williams']); // Example doctors list
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   // Example data for the table
   const reportsData = [
@@ -390,32 +393,54 @@ const InPatientOutstandingReport = () => {
           </div>
           <div className='user-collection-report-tab'>
             <div className='in-patient-ta'>
-            <table className="user-collection-report-table">
-              <thead>
-                <tr>
-                  <th>Scheme</th>
-                  <th>Price Category</th>
-                  <th>Hospital No</th>
-                  <th>IP Number</th>
-                  <th>Policy/Member</th>
-                  <th>Patient Name</th>
-                  <th>Age/Sex</th>
-                  <th>Contact No</th>
-                  <th>Address</th>
-                  <th>Ward/Bed</th>
-                  <th>Admitted On</th>
-                  <th>Days Of Stay</th>
-                  <th>Credit Pharmacy</th>
-                  <th>Provisional Pharmacy</th>
-                  <th>Credit Service</th>
-                  <th>Provisional Service</th>
-                  <th>Total Amount</th>
-                  <th>Total Deposit</th>
-                  <th>Due Amount</th>
-                  <th>Care Person Name</th>
-                  <th>Care Person Contact</th>
-                </tr>
-              </thead>
+
+            <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Scheme",
+              "Price Category",
+              "Hospital No",
+              "IP Number",
+              "Policy/Member",
+              "Patient Name",
+              "Age/Sex",
+              "Contact No",
+              "Address",
+              "Ward/Bed",
+              "Admitted On",
+              "Days Of Stay",
+              "Credit Pharmacy",
+              "Provisional Pharmacy",
+              "Credit Service",
+              "Provisional Service",
+              "Total Amount",
+              "Total Deposit",
+              "Due Amount",
+              "Care Person Name",
+              "Care Person Contact"
+
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+
               <tbody>
                 {reportsData.map((data, index) => (
                   <tr key={index}>

@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import './UserCollectionReport.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const DepositeTransaction = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('');
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   // Sample data for reports
   const reportsData = [
@@ -194,22 +197,41 @@ const DepositeTransaction = () => {
           </div>
           <div className="user-collection-report-tab">
             <div className="table-scroll-container">
-              <table className="user-collection-report-table">
-                <thead>
-                  <tr>
-                    <th>Deposit No</th>
-                    <th>Receipt No</th>
-                    <th>Hospital No</th>
-                    <th>Patient Name</th>
-                    <th>Age/Sex</th>
-                    <th>Contact No</th>
-                    <th>Deposit Received</th>
-                    <th>Deposit Deducted</th>
-                    <th>Deposit Returned</th>
-                    <th>User Name</th>
-                    <th>Counter</th>
-                  </tr>
-                </thead>
+            <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+              "Deposit No",
+              "Receipt No",
+              "Hospital No",
+              "Patient Name",
+              "Age/Sex",
+              "Contact No",
+              "Deposit Received",
+              "Deposit Deducted",
+              "Deposit Returned",
+              "User Name",
+              "Counter"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                 <tbody>
                   {reportsData.map((row, index) => (
                     <tr key={index}>

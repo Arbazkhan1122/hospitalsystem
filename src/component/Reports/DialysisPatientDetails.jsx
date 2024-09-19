@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 import './UserCollectionReport.css';
 
 const DialysisPatientDetails = () => {
   const [showReport, setShowReport] = useState(false);
+  
+const [columnWidths, setColumnWidths] = useState({});
+const tableRef = useRef(null);
 
 
   
@@ -131,18 +135,36 @@ const DialysisPatientDetails = () => {
     </div>
 <div className='user-collection-report-tab'>
   
-<table className="user-collection-report-table">
-            <thead>
-              <tr>
-                <th>Date</th>
-               
-                <th>Hospital No</th>
-                <th>HospitalDialysis</th>
-                <th>Patient Name</th>
-                <th>Age/Sex</th>
-              <th>Prescriber Name</th>
-              </tr>
-            </thead>
+<table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+             "Date",
+            "Hospital No",
+            "HospitalDialysis",
+            "Patient Name",
+            "Age/Sex",
+            "Prescriber Name"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
             <tbody>
               {reportsData.map((row, index) => (
                 <tr key={index}>
