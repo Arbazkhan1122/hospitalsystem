@@ -1,8 +1,10 @@
 /* Mohini_ItemWiseSalesReport_WholePage_14/sep/2024 */
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './ItemWiseSalesReport.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const ItemWiseSalesReport = () => {
+    const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
     return (
         <div className="item-wise-sales-report-container">
             <h2 className="item-wise-sales-report-title"> ⚛ Item-wise Sales Report</h2>
@@ -55,27 +57,45 @@ const ItemWiseSalesReport = () => {
 
                 </div>
                 <div className='item-wise-sales-table'>
-                <table className='item-wise-sales-ta'>
-                    <thead>
-                        <tr>
-                            <th>Bill No</th>
-                            <th>Transaction Type</th>
-                            <th>Date</th>
-                            <th>Generic Name</th>
-                            <th>Medicine Name</th>
-                            <th>Patient</th>
-                            <th>Batch No</th>
-                            <th>Expiry</th>
-                            <th>Sales Rate</th>
-                            
-                            <th>Sales Value</th>
-                            <th>Stock Value </th>
-                            <th>Store</th>
-                            <th>Counter</th>
-                            <th>User</th>
-                            <th>Remark</th>
-                        </tr>
-                    </thead>
+                <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                  "Bill No",
+                  "Transaction Type",
+                  "Date",
+                  "Generic Name",
+                  "Medicine Name",
+                  "Patient",
+                  "Batch No",
+                  "Expiry",
+                  "Sales Rate",
+                  "Sales Value",
+                  "Stock Value",
+                  "Store",
+                  "Counter",
+                  "User",
+                  "Remark"        
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                     <tbody>
                         <tr>
                             <td colSpan="17" className="item-wise-sales-no-rows">No Rows To Show</td>

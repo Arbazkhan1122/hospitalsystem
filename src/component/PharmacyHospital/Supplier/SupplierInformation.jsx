@@ -1,8 +1,10 @@
 /* Mohini_HospitalHeader_WholePage_14/sep/2024 */
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './SupplierInformation.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const SupplierInformationCom = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   const suppliers = [
     { name: 'Naynesh', contact: '123456', city: '', pan: '', address: 'kenya', email: '' },
     { name: 'Vishal', contact: '785623', city: '', pan: '', address: 'Dubai', email: '' },
@@ -22,18 +24,37 @@ const SupplierInformationCom = () => {
           <button className="supplier-info-export-button">Export</button>
           <button className="supplier-info-print-button">Print</button>
         </div>
-        <div className='supplier-info-supplier-info-com'>
-      <table className="supplier-info-supplier-table">
-        <thead>
-          <tr>
-            <th>SupplierName</th>
-            <th>Contact No</th>
-            <th>City</th>
-            <th>Pan No.</th>
-            <th>ContactAddress</th>
-            <th>Email</th>
-          </tr>
-        </thead>
+        <div className='table-container'>
+        <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "SupplierName",
+                 "Contact No",
+                 "City",
+                 "Pan No.",
+                 "ContactAddress",
+                 "Email"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {suppliers.map((supplier, index) => (
             <tr key={index}>

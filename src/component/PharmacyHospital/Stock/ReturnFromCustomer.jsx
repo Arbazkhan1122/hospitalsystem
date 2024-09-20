@@ -1,7 +1,7 @@
 /* Mohini_ReturnFromCustomer_WholePage_14/sep/2024 */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './PharmacyExpiryReport.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const ReturnFromCustomer = () => {
   const [fromDate, setFromDate] = useState('24-08-2024');
   const [toDate, setToDate] = useState('24-08-2024');
@@ -11,6 +11,9 @@ const ReturnFromCustomer = () => {
   const [nearlyExpired, setNearlyExpired] = useState(false);
   const [expired, setExpired] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
+
 
   return (
     <div className="pharmacy-expiry-report-container">
@@ -65,31 +68,48 @@ const ReturnFromCustomer = () => {
         <button className="pharmacy-expiry-report-export-btn">⬇ Export</button>
         <button className="pharmacy-expiry-report-print-btn">Print</button>
       </div>
-   <div className='pharmacy-expiry-report-ta'>
-      <table className="pharmacy-expiry-report-expiry-table">
-        <thead>
-          <tr>
-            <th>Returned Data</th>
-            <th>CRN No</th>
-            <th>Reference No</th>
-            <th>Hospital No</th>
-            <th>Patient</th>
-            <th>Generic Name</th>
-            <th>Item Name</th>
-            <th>Batch No</th>
-            <th>Expiry Date</th>
-            <th>Ret.Qty</th>
-            <th> Sales Price</th>
-            <th>Ret.Amount</th>
-            <th>Dispensary</th>
-            <th>User</th>
-            <th>Counter</th>
-
-          </tr>
-        </thead>
+   <div className='table-container'>
+   <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Returned Data",
+                 "CRN No",
+                 "Reference No",
+                 "Hospital No",
+                 "Patient",
+                 "Generic Name",
+                 "Item Name",
+                 "Batch No",
+                 "Expiry Date",
+                 "Ret.Qty",
+                 "Sales Price",
+                 "Ret.Amount",
+                 "Dispensary",
+                 "User"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           <tr>
-            <td colSpan="15" className="pharmacy-expiry-report-no-rows">No Rows To Show</td>
+            <td colSpan="14" className="pharmacy-expiry-report-no-rows">No Rows To Show</td>
           </tr>
         </tbody>
       </table>

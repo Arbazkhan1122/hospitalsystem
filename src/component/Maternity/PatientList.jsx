@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import "./PatientList.css";
 import PaymentComponent from "./PaymentComponent";
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
+
 // import PaymentComponent from "./PaymentComponent";
 
 const PatientComponent = () => {
   const [showAllPatients, setShowAllPatients] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState(null);
   const [showPayment, setShowPayment] = useState(false);
-
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   const handleCheckboxChange = () => {
     setShowAllPatients(!showAllPatients);
     setShowPayment(false); // Hide the PaymentComponent when checkbox is toggled
@@ -67,20 +70,39 @@ const PatientComponent = () => {
           <span className='patient-span'>Showing {showAllPatients ? patientsData.length : 0} / {patientsData.length} results</span>
           <button className="patient-print-btn"onClick={handlePrint}>Print</button>
         </div>
-        <div className='patient-table'>
-          <table className="patient-component-table">
-            <thead>
-              <tr>
-                <th className="patient-hosp-col">Hosp No</th>
-                <th className="patient-name-col">Name</th>
-                <th className="patient-age-col">Age/Sex</th>
-                <th className="patient-address-col">Address</th>
-                <th className="patient-phone-col">Phone</th>
-                <th className="patient-husband-col">IP Number</th>
-                <th className="patient-discharge-col">Discharge Date</th>
-                <th className="patient-action-col">Action</th>
-              </tr>
-            </thead>
+        {/* <div className='patient-table'> */}
+        <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Hospital No.",
+  "Patient Name",
+  "Age/Sex",
+  "Contact No.",
+  "Address",
+  "IP Number",
+  "Discharge Date",
+  "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
             <tbody>
               {showAllPatients ? (
                 patientsData.map((patient, index) => (
@@ -112,7 +134,7 @@ const PatientComponent = () => {
             <button>Next</button>
             <button>Last</button>
           </div> */}
-        </div>
+        {/* </div> */}
       </div>
     ) : (
       <div className="payment-container">

@@ -217,27 +217,35 @@
   font-size: 14px; /* Font size for the span text */
 }
 
-.insurance-patient-report-export-btn,
-.insurance-patient-report-print-btn {
+
+.insurance-patient-report-search-bar {
+  display: flex;
+  justify-content: flex-end; /* Aligns all elements to the right */
+  align-items: center; /* Vertically aligns the elements */
+  gap: 10px; /* Adds space between the elements */
+}
+
+.insurance-patient-report-search-bar span {
+  font-size: 14px; /* Adjust text size */
+  color: #333; /* Optional: Text color */
+}
+
+.insurance-patient-report-search-bar button {
   background-color:var( --button-color);
   color: white;
   border: none;
-  margin-right: 10px;
+  margin-right: 1px;
   padding: 5px 5px;
   border-radius: 5px;
-  cursor: pointer;
   font-size: 14px;
-  margin-left: auto;
-  transition: background-color 0.3s ease;
+  border: 1px solid var( --button-hover-border-color);
 
 }
 
-.insurance-patient-report-export-btn:hover,
-.insurance-patient-report-print-btn:hover {
+.insurance-patient-report-search-bar button:hover {
   border: 1px solid var( --button-hover-border-color);
   color: var(--button-hover-text-color);
   background-color: var(--button-hover-background-color);
 }
-
 
 /* Mohini_InsurancePatientReport_WholePage_14/sep/2024 */

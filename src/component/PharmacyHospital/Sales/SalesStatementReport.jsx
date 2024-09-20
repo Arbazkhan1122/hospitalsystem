@@ -1,8 +1,10 @@
 /* Mohini_SalesStatementReport_WholePage_14/sep/2024 */
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './InvoiceBilling.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const SalesStatementReport = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   return (
     <div className="invoice-billing-report-container">
       <h1 className="invoice-billing-report-title">⚛ Sales Statement Report</h1>
@@ -44,19 +46,37 @@ const SalesStatementReport = () => {
           <button className="invoice-billing-print-button">Print</button>
         </div>
       </div>
-      <div className='sales-invoice-billing-tab'>
-      <table className="invoice-billing-sales-table">
-        <thead>
-          <tr>
-            <th>Store</th>
-            <th>Sale Value</th>
-            <th>Sale Cost</th>
-            <th>Sale Return Value</th>
-            <th>Sale Return Cost </th>
-            <th>Profit</th>
-          
-          </tr>
-        </thead>
+      <div className='table-container'>
+      <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Store",
+  "Sale Value",
+  "Sale Cost",
+  "Sale Return Value",
+  "Sale Return Cost",
+  "Profit"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           <tr>
             <td colSpan="6" className="invoice-billing-no-rows">No Rows To Show</td>

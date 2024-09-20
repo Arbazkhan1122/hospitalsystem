@@ -1,78 +1,102 @@
 /* General Styles */
-.ssp-container {
-  width: 98%;
+
+/* Ajhar tamboli sSPRequisition.css 19-09-24 */
+
+.sSPRequisition-container {
+  /* width: 98%; */
+  /* border-radius: 5px; */
   margin: 0 auto;
   background-color: white;
-  padding: 20px;
-  border-radius: 5px;
+  padding: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.ssp-create-requisition {
-  background-color: #79C879;
+.sSPRequisition-create-requisition {
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  padding: 10px 20px;
+  /* border: none; */
+  margin-bottom: 10px;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 20px;
+  font-size: var(--font-size);
+  /* margin: 1px; */
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
 }
-
-.ssp-search-bar {
-  display: flex;
-  margin-bottom: 20px;
+.sSPRequisition-create-requisition:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
-
-.ssp-search-bar input {
-  flex-grow: 1;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-right: none;
-  border-radius: 5px 0 0 5px;
-}
-
-.ssp-search-bar button {
-  padding: 5px 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-}
-
-.ssp-results-header {
+.sSPRequisition-search-N-results{
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
-
-.ssp-btn-print {
-  background-color: #79C879;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
+.sSPRequisition-search-bar {
+  display: flex;
+  margin-left: -30px;
 }
 
+.sSPRequisition-search-bar input {
+  flex-grow: 1;
+  padding: 5px;
+  width: 200px;
+
+}
+.sSPRequisition-search-bar i{
+  position: relative;
+  color:gray;
+  top: 7px;
+left: 205px;
+}
+.sSPRequisition-results-info {
+  text-align: right;
+  font-size: var(--font-size);
+  margin-left: 10px;
+  /* color: #0011ff; */
+  /* font-weight: bold; */
+}
+.sSPRequisition-print-btn{
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.sSPRequisition-print-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
 /* Table Styles */
-.ssp-table {
+.sSPRequisition-table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
 }
 
-.ssp-table th, .ssp-table td {
+.sSPRequisition-table th, .sSPRequisition-table td {
   border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+  padding: 3px;
+  text-align: center;
+  font-size: var(--font-size);
 }
 
-.ssp-table th {
+.sSPRequisition-table th {
+  font-size: var(--heading-font);
   background-color: #f2f2f2;
 }
 
-.ssp-btn-view, .ssp-btn-receive {
+.sSPRequisition-btn-view, .sSPRequisition-btn-receive {
   background-color: #79C879;
   color: white;
   border: none;
@@ -83,13 +107,13 @@
 }
 
 /* Pagination Styles */
-.ssp-pagination {
+.sSPRequisition-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.ssp-pagination button {
+.sSPRequisition-pagination button {
   margin: 0 5px;
   padding: 5px 10px;
   background-color: #fff;
@@ -98,18 +122,18 @@
   border-radius: 5px;
 }
 
-.ssp-pagination button.ssp-active {
+.sSPRequisition-pagination button.sSPRequisition-active {
   background-color: #79C879;
   color: white;
 }
 
-.ssp-pagination button:disabled {
+.sSPRequisition-pagination button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
 /* Modal Styles */
-.ssp-modal-overlay {
+.sSPRequisition-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -122,7 +146,7 @@
   z-index: 1000;
 }
 
-.ssp-modal-content {
+.sSPRequisition-modal-content {
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
@@ -130,12 +154,18 @@
   width: 80%;
 }
 
-.ssp-close-button {
+.sSPRequisition-close-button {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: none;
+  background-color: #f44336;
+  color: white;
   border: none;
-  font-size: 1.5rem;
+  padding: 2px 8px;
+  border-radius: 18px;
+  /* float: right; */
+  /* background: none; */
+  /* border: none; */
+  font-size: var(--font-size);
   cursor: pointer;
 }

@@ -1,3 +1,4 @@
+/* // neha-ADT-homepage-19/09/24 */
 .home-page-dashboard-cards {
   display: flex;
   justify-content: space-between;
@@ -22,62 +23,33 @@
 }
 
 .home-page-card-icon {
-  font-size: 48px;
-  margin-right: 20px;
+  font-size: 40px;
+  margin-right: 15px;
 }
 
-.home-page-adttable {
-  width: 100%;
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-
-.home-page-adttablehead {
-  background-color: #ccc;
-  border: 1px solid black;
-  padding: 0px 8px;
-}
-
-.home-page-adttabledata {
-  border: 1px solid black;
-  padding: 3px 8px;
-}
 
 .home-page-table-actions {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   gap: 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
 .home-page-table-actions button {
-  padding: 0px 10px;
+  padding: 5px;
   border: none;
   border-radius: 5px;
-  background-color: #48b34b;
+  background-color: var(--button-color);
   color: white;
   cursor: pointer;
   font-size: 14px;
 }
 
 .home-page-table-actions button:hover {
-  background-color: #4752b3;
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+  border:1px solid var(--button-hover-border-color);
 }
 
-.home-page-adttable thead {
-  background-color: #3598dc;
-  color: white;
-  font-size: 16px;
-}
-
-.home-page-adttable th,
-.home-page-adttable td {
-  padding: 12px;
-  text-align: left;
-  color: black;
-  border-collapse: collapse;
-}
-
-.home-page-adttable tbody tr:hover {
-  background-color: #f1f1f1;
-}

@@ -1,6 +1,7 @@
 
 
 
+
 export const startResizing = (tableRef, setColumnWidths) => (index) => (e) => {
     
   e.preventDefault();

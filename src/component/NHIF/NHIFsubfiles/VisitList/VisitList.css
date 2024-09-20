@@ -1,11 +1,13 @@
+
+/*neha HI-visitlist-19/09/24 */
 .visit_list_main {
-    background-color: #e3f2fd;
+    background-color: var(--background-color);
     display: flex;
     flex-direction: column;
     padding: 20px;
 }
 
-.visit_list_table {
+/* .visit_list_table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -21,20 +23,15 @@
 .visit_list_tabledata {
     background-color: white;
     border: 1px solid #ddd;
-}
+} */
 
-.visit_list_filter_content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #e3f2fd;
-    border-radius: 4px;
-}
+
 
 .visit_list_search_bar {
     display: flex;
     align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .visit_list_search_bar input[type="text"] {
@@ -46,22 +43,26 @@
 }
 
  .visit_list_filter_button  {
-    background-color: #007bff;
+    background-color: var(--button-color);
     color: white;
-    font-size: 16px;
+    font-size: 14px;
     padding: 4px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     margin-right: 10px;
+    margin-top: 10px;
 }
 
 .visit_list_filter_button:hover {
-    background-color: #45a049;
+    background-color: var(--button-hover-background-color) ;
+    color: var(--button-hover-text-color);
+    border: 1px solid var(--button-hover-border-color);
 } 
 
 .visit_list_search_bar label {
     margin-right: 200px; /* Space between label and print button */
+   
 }
 
 .visit_list_search_bar button {
@@ -71,44 +72,35 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    
 }
 
 
 
-.visit_list_pagination {
-    margin: 20px 0;
-    text-align: center;
-}
-
-.visit_list_pagination button {
-    background-color: #ddd;
-    color: black;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 0 4px;
-}
-
-.visit_list_pagination button:hover {
-    background-color: #ccc;
-}
 
 .visit_list_edit_button {
-    background-color: #007bff;
+    background-color: var(--button-color);
     color: white;
-    padding: 5px 10px;
+    font-size: 14px;
+    padding: 4px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    margin-right: 10px;
 }
+
+.visit_list_edit_button:hover {
+    background-color: var(--button-hover-background-color) ;
+    color: var(--button-hover-text-color);
+    border: 1px solid var(--button-hover-border-color);
+} 
 
 .visit_list_container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #e3f2fd;
+    background-color: white;
     border-radius: 4px;
 }
 
@@ -161,6 +153,6 @@
     justify-content: space-between;
 }
 
-.Admitted_Patient_List{
-    font-size: 20px;
+.nhif-Admitted_Patient_List{
+    font-size: 16px;
 }

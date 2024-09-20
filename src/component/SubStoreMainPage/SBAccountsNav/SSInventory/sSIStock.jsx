@@ -1,3 +1,6 @@
+/* Ajhar Tamboli sSIStock.jsx 19-09-24 */
+
+
 import React, { useState, useEffect } from 'react';
 import * as XLSX from 'xlsx'; // Import the xlsx library
 import "../SSInventory/sSIStock.css";
@@ -162,14 +165,14 @@ function SSIStock() {
                 )}
               </tbody>
             </table>
-            <div className="sSIStock-pagination">
+            {/* <div className="sSIStock-pagination">
               <span>0 to {filteredRequisitions.length} of {filteredRequisitions.length}</span>
               <button>First</button>
               <button>Previous</button>
               <span>Page 1 of 1</span>
               <button>Next</button>
               <button>Last</button>
-            </div>
+            </div> */}
           </div>
         );
       case 'Inventory Requisition':
@@ -193,37 +196,37 @@ function SSIStock() {
       <nav>
         <ul>
           <li
-            className={activeTab === 'Stock' ? 'active' : ''}
+            className={activeTab === 'Stock' ? 'sSIStock-container-active' : ''}
             onClick={() => setActiveTab('Stock')}
           >
             Stock
           </li>
           <li
-            className={activeTab === 'Inventory Requisition' ? 'active' : ''}
+            className={activeTab === 'Inventory Requisition' ? 'sSIStock-container-active' : ''}
             onClick={() => setActiveTab('Inventory Requisition')}
           >
             Inventory Requisition
           </li>
           <li
-            className={activeTab === 'Consumption' ? 'active' : ''}
+            className={activeTab === 'Consumption' ? 'sSIStock-container-active' : ''}
             onClick={() => setActiveTab('Consumption')}
           >
             Consumption
           </li>
           <li
-            className={activeTab === 'Reports' ? 'active' : ''}
+            className={activeTab === 'Reports' ? 'sSIStock-container-active' : ''}
             onClick={() => setActiveTab('Reports')}
           >
             Reports
           </li>
           <li
-            className={activeTab === 'Patient Consumption' ? 'active' : ''}
+            className={activeTab === 'Patient Consumption' ? 'sSIStock-container-active' : ''}
             onClick={() => setActiveTab('Patient Consumption')}
           >
             Patient Consumption
           </li>
           <li
-            className={activeTab === 'Return' ? 'active' : ''}
+            className={activeTab === 'Return' ? 'sSIStock-container-active' : ''}
             onClick={() => setActiveTab('Return')}
           >
             Return

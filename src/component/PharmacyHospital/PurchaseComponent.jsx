@@ -9,7 +9,7 @@ const PurchaseComponent = () => {
     <div className="purchase-report-container">
       <div className="report-grid">
         <div className="reports-cont">
-          <Link to="/purchase-order" className="report-purchase-report-details-link">
+          <Link to="/purchase-order-report" className="report-purchase-report-details-link">
             <div className="report-icon-container">
               <i className="fa-solid fa-circle-dot"></i>
             </div>

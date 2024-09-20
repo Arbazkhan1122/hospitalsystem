@@ -1,7 +1,10 @@
+/* Ajhar Tamboli sSIRetunReturnItemBtn.css 19-09-24 */
+
+
 .sSIRetunReturnItemBtn-entry {
-  background-color: #d0f0ff;
+  background-color: var(--background-color);
   padding: 20px;
-  width: 90%;
+  width: 85%;
   margin: 20px auto;
   border-radius: 8px;
   /* align-items: left; */
@@ -10,10 +13,10 @@
 }
 
 .sSIRetunReturnItemBtn-title {
-  font-size: 16px;
+  font-size: var(--heading-font);
   margin-bottom: 20px;
-  color: #333333;
-  font-weight: bold;
+  /* color: #333333; */
+  /* font-weight: bold; */
 }
 
 .sSIRetunReturnItemBtn-form-section {
@@ -24,17 +27,17 @@
 }
 
 .sSIRetunReturnItemBtn-form-section label {
-  font-size: 14px;
+  font-size: var(--font-size);
   margin-right: 10px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .ssi-return-return-input[type="date"],
 .ssi-return-return-input[type="text"] {
-  padding: 5px;
+  padding: 3px 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: var(--font-size);
 } 
 
 .sSIRetunReturnItemBtn-back-btn {
@@ -57,11 +60,12 @@
 .sSIRetunReturnItemBtn-table-header {
   display: flex;
   justify-content: space-between;
-  /* grid-template-columns: 2fr 1fr 1fr 1fr 1fr; */
   background-color: #F5F5F5;
-  color: rgb(88, 88, 88);
   padding: 10px  60px;
-  font-weight: bold;
+  font-size: var(--heading-font);
+  /* grid-template-columns: 2fr 1fr 1fr 1fr 1fr; */
+  /* color: rgb(88, 88, 88); */
+  /* font-weight: bold; */
 
 }
 
@@ -74,7 +78,27 @@ justify-content: space-between;
   background-color: white;
 }
 
-.sSIRetunReturnItemBtn-delete-btn, .sSIRetunReturnItemBtn-add-btn {
+.sSIRetunReturnItemBtn-delete-btn {    
+background-color: #e74c3c;
+border: 1px solid #e74c3c;
+color: white;
+margin-left: 10px;
+/* border: none; */
+/* margin-right: 10px; */
+border-radius: 5px;
+cursor: pointer;
+font-size: var(--font-size);
+margin-bottom: 10px;
+transition: background-color 0.3s ease;
+padding: 5px 5px;
+}
+.sSIRetunReturnItemBtn-delete-btn:hover {
+border: 1px solid var( --button-hover-border-color);
+color: var(--button-hover-text-color);
+background-color: var(--button-hover-background-color);
+}
+
+.sSIRetunReturnItemBtn-add-btn {
   background-color: #6666ff;
   color: white;
   border: none;
@@ -122,20 +146,40 @@ justify-content: space-between;
   gap: 10px;
 }
 
-.sSIRetunReturnItemBtn-save-btn {
-  background-color: #2ecc71;
-  color: white;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.sSIRetunReturnItemBtn-save-button {
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
+    color: white;
+    /* border: none; */
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .sSIRetunReturnItemBtn-save-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
+  .sSIRetunReturnItemBtn-discard-button {
+    background-color: #e74c3c;
+    border: 1px solid #e74c3c;
+    color: white;
+    margin-left: 10px;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
 }
-
-.sSIRetunReturnItemBtn-discard-btn {
-  background-color: #e74c3c;
-  color: white;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.sSIRetunReturnItemBtn-discard-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }

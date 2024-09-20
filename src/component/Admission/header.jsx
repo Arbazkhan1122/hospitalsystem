@@ -1,4 +1,4 @@
-// src/Navbar.js
+/* // neha-ADT-header-19/09/24 */
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './navbar.css'; // Add your CSS styles here
@@ -9,7 +9,7 @@ const Navbar = ({ handleNavigation }) => {
   return (
     <header className="header">
       <div className="logo">
-        <Link to="/">🏠</Link>
+        <Link to="/"><i className="fa-solid fa-house-chimney" ></i></Link>
       </div>
       <nav className="nav-links">
         <Link

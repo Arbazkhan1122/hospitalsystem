@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+/* neha-mktreffaral-transaction-19/09/24 */
+import React, { useState, useEffect ,useRef} from 'react';
 import { FaSearch } from 'react-icons/fa';
 import './transaction.css';
+import { startResizing } from '../../../TableHeadingResizing/ResizableColumns';
 
 function Transaction() {
   const [transactions, setTransactions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTransaction, setSelectedTransaction] = useState(null);
+  const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
 
   // Fetch data from API
   useEffect(() => {
@@ -50,28 +54,44 @@ function Transaction() {
       <div className='mkrt_transaction-search_main'>
         <div className="mkrt_transaction-search">
           <input type="text" placeholder="Search" />
-          <button className="mkrt_transaction-search-button">
+          {/* <button className="mkrt_transaction-search-button">
             <FaSearch />
-          </button>
+          </button> */}
           {/* <label htmlFor=""> showing {transactions.length}/{transactions.length} result</label> */}
         </div>
       </div>
-      <div className="mkrt_transaction-table-container">
-        <table className="mkrt_transaction-table">
+      <div className="table-container">
+        <table className="mkrt_transaction-table" ref={tableRef}>
           <thead>
             <tr>
-              <th>Invoice Date</th>
-              <th>Invoice No</th>
-              <th>Hospital No</th>
-              <th>Patient Name</th>
-              <th>Age/Sex</th>
-              <th>Invoice Amount</th>
-              <th>Return Amount</th>
-              <th>Net Amount</th>
-              <th>Entered?</th>
+            {[
+  "Invoice Date",
+  "Invoice No",
+  "Hospital No",
+  "Patient Name",
+  "Age/Sex",
+  "Invoice Amount",
+  "Return Amount",
+  "Net Amount",
+  "Entered?"
+].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="rd-resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
-          <tbody>
+            <tbody>
             {transactions.map(transaction => (
               <tr key={transaction.transactionId}>
                 <td>{transaction.invoiceDate}</td>

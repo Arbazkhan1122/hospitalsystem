@@ -1,19 +1,15 @@
-/* body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  } */
+/* Ajhar tamboli sSPStock.css 19-09-24 */
+
   
   .sSPStock-stock-container {
     margin: 0 auto;
-    /* padding: 20px; */
-    /* background-color: red; */
-
+    
   }
   .sSPStock-stock-nav
   {
+    /* padding: 0 10px; */
     width: 100%;
-
+    
   }
   
   .sSPStock-stock-container ul {
@@ -24,66 +20,83 @@
     display: flex;
     gap: 20px;
     /* color: red; */
-    font-size: 14px;
-    background-color: #e6f3ff;
+    font-size: var(--heading-font);
+    background-color: var(--background-color);
+    /* background-color: red; */
     border-bottom: 1px solid #ccc;
   }
   
   .sSPStock-stock-container  li {
-    padding: 10px 20px;
+    padding: 8px 20px;
     cursor: pointer;
+    font-size: var(--heading-font);
   }
   
   .sSPStock-stock-nav li.active {
-    background-color: #007bff;
-    color: white;
+    /* background-color: #007bff; */
+    font-weight: bold;
+    border-bottom: 5px solid var(--button-bg-color);
+    /* color: white; */
   }
   
   .sSPStock-stock-content {
+    padding: 10px;
     /* background-color: #fff; */
-    background-color: #e6f3ff;
-
+    background-color: var(--background-color);
     padding: 10px;
     border-radius: 0 0 5px 5px;
+    height: 75vh;
       /* border: 1px solid red; */
 
   }
-  
-  .sSPStock-stock-search-bar {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  
-  .sSPStock-stock-search-bar input {
-    flex-grow: 1;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-right: none;
-  }
-  
-  .sSPStock-stock-search-bar button {
-    padding: 5px 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    cursor: pointer;
-  }
-  
-  .sSPStock-stock-results-header {
+  .sSPStock-stock-search-N-results{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
   }
-  
-  .sSPStock-stock-btn-blue {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    margin-left: 10px;
-    cursor: pointer;
+  .sSPStock-stock-search-bar {
+    display: flex;
+    margin-left: -30px;
   }
   
+  .sSPStock-stock-search-bar input {
+    flex-grow: 1;
+    padding: 5px;
+    width: 200px;
+  
+  }
+  .sSPStock-stock-search-bar i{
+    position: relative;
+    color:gray;
+    top: 7px;
+  left: 205px;
+  }
+  .sSPStock-stock-results-info {
+    text-align: right;
+    font-size: var(--font-size);
+    margin-left: 10px;
+    /* color: #0011ff; */
+    /* font-weight: bold; */
+  }
+  .sSPStock-stock-print-btn{
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
+    color: white;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .sSPStock-stock-print-btn:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
   .sSPStock-stock {
     width: 100%;
     border-collapse: collapse;
@@ -91,12 +104,14 @@
   
   .sSPStock-stock th, td {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+    padding: 3px;
+    text-align: center;
+    font-size: var(--font-size);
   }
   
   .sSPStock-stock th {
     background-color: #f2f2f2;
+    font-size: var(--heading-font);
   }
   
   .sSPStock-stock-pagination {

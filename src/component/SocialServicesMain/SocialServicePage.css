@@ -4,18 +4,23 @@
     font-family: Arial, sans-serif;
     /* max-width: 1200px; */
     margin: 0 auto;
-    background-color: #e6f3ff;
+    background-color: var(--background-color);
+    height: 75vh;
   }
   .ssuPatient-bttn{
-    background-color: #2D68EA;
+    background-color: var(--button-color);
     color: white;
-    font-size: 12px;
-    border: none;
+    font-size: var(--heading-font);
+    border: 1px solid var(--button-color);
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin: 10px;
     padding: 8px;
   }
-  
+  .ssuPatient-bttn:hover{
+  background-color: white;
+  color: var(--button-color);
+    border: 1px solid gray;
+  }
   .ssu-patient-list h2 {
     background-color: #f0f0f0;
     margin: 0;
@@ -36,23 +41,39 @@
   }
   
   .socialService-register-button {
-    background-color: #26C281;
-    border-radius:5px ;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    padding: 10px 20px;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
     cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
   }
-  
+  .socialService-register-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
+  /* .socialService-edit-patient{
+    display: flex;
+  } */
+  .socialService-edit-patient span{
+    font-size: var(--font-size);
+  }
   .socialService-edit-patient input {
     padding: 5px;
+    font-size: var(--font-size);
     margin-left: 10px;
-    width: 200px;
+    width: 300px;
   }
   .socialService-patient-status{
     display: flex;
-    font-size: 13px;
-    font-weight: bold;
+    font-size: var(--font-size);
+    /* font-weight: bold; */
   }
   .socialService-patient-status span{
    white-space: nowrap;
@@ -95,18 +116,28 @@
     gap: 10px;
   }
   .socialService-results-info span{
-color: #008CBA;  
-font-size: 12px;
+/* color: #008CBA;   */
+font-size: var(--font-size);
 }
 
   
   .socialService-print-button {
-    background-color: #008CBA;
-    border-radius: 5px;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    padding: 5px 10px;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
     cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .socialService-print-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
  .socialService-table-N-bttns table {
@@ -117,16 +148,17 @@ font-size: 12px;
   
   .socialService-table-N-bttns th,.socialService-table-N-bttns td {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    font-size: 12px;
+    padding: 3px;
+    text-align: center;
+    font-size: var(--font-size);
   }
   
   .socialService-table-N-bttns th {
     background-color: #f2f2f2;
+    font-size: var(--heading-font);
   }
   
-  .no-data {
+  .socialService-no-data {
     text-align: center;
     padding: 20px;
     background-color: #FFE6A0;
@@ -152,7 +184,7 @@ font-size: 12px;
   .socialService-pagination span {
     margin: 0 10px;
     color: gray;
-    font-size: 12px;
+    font-size: var(--font-size);
     margin-top: 20px;
   }
   .socialService-search-N-result{
@@ -237,7 +269,7 @@ font-size: 12px;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: var(--heading-font);
     border-radius: 50%;
   }
   .socialService-table-editBtn{
