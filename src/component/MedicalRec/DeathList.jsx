@@ -1,8 +1,9 @@
 
 import React, { useState } from 'react';
-import '../MedicalRec/BirthList.css';
+// import '../MedicalRec/BirthList.css';
 import { useNavigate } from 'react-router-dom';
 import { Modal, Button, Form, Row, Col } from 'react-bootstrap';
+import '../MedicalRec/DeathList.css';
 
 
 function BirthList() {
@@ -94,7 +95,7 @@ function BirthList() {
 
                   )
                 }
-                <button onClick={handleFilterData} style={{backgroundColor:'#32c5d2'}}>OK</button>
+                <button onClick={handleFilterData} >OK</button>
                 
 
               </div>
@@ -218,7 +219,7 @@ function BirthList() {
    
                   <div className="modal-overlay">
                     <div className="modal-content">
-                      <div className="modal-header">
+                      <div className="modal-header-deathlist" style={{textAlign:'right'}}>
                         <button className="close-button" onClick={closeModal}>
                           &times;
                         </button>
@@ -252,7 +253,7 @@ function BirthList() {
                                       
                      
                       <div className="footer-buttons">
-                        <button className="submit-button">Add Death Details</button>
+                        <button className="submit-button-death">Add Death Details</button>
                         <button className="cancel-button" onClick={closeModal}>Cancel</button>
                       </div>
                     </div>
@@ -322,7 +323,7 @@ function BirthList() {
         <Button variant="primary" onClick={handleCloseCertificateModal}>
           Save and Print
         </Button>
-        <Button variant="secondary" onClick={handleCloseCertificateModal}>
+        <Button variant="primary" onClick={handleCloseCertificateModal}>
           Cancel
         </Button>
       </Modal.Footer>

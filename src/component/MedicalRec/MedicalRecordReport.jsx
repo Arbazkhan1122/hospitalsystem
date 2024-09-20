@@ -8,8 +8,8 @@ const LabReport=()=>{
     const ReportCard=({icon,title,subtitle})=>{
         return(
             <div className="report-card">
-                <div className="icon"> {icon}</div>
-                <div className="content">
+                <div className="icon-css"> {icon}</div>
+                <div className="content-md">
                     <h3>{title}</h3>
                     <p>{subtitle}</p>
                 </div>
@@ -33,7 +33,7 @@ const LabReport=()=>{
 
 
       return(
-        <div className="dashboard">
+        <div className="dashboard-medical-record">
       {reports.length > 0 ? (
         reports.map((report, index) => (
           <ReportCard
