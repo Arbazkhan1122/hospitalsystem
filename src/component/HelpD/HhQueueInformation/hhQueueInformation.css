@@ -54,10 +54,10 @@
   
  
   
-  main {
+  /* main {
     flex-grow: 1;
   }
-  
+   */
   .queueInformation-banner {
     background-color: var(--button-bg-color);
     color: white;
