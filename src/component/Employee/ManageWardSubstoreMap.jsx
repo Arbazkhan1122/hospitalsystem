@@ -28,7 +28,7 @@ const ManageWardSubstoreMap = () => {
     <div className="manage-ward-substore-page">
       <div className="manage-ward--substore-table-container">
         <div className="manage-ward-substore-manage-section">
-          <Button className="ward-manage-add-substore-btn">+ Add Ward Substore Map</Button>
+          <h1 className="ward-manage-add-substore-btn">+ Add Ward Substore Map</h1>
         </div>
 
         <input type="text" placeholder="Search" className="ward-manage-substore-search-input" />
