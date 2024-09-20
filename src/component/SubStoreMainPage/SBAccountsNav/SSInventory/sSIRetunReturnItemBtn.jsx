@@ -1,3 +1,6 @@
+/* Ajhar Tamboli sSIRetunReturnItemBtn.jsx 19-09-24 */
+
+
 import React, { useState, useEffect } from 'react';
 import '../SSInventory/sSIRetunReturnItemBtn.css';
 import { useParams } from 'react-router-dom';
@@ -218,7 +221,7 @@ const SSIRetunReturnItemBtn = ({ onBack }) => {
           <div>Returned By*</div> {/* Added header */}
         </div>
         <div className="sSIRetunReturnItemBtn-table-row">
-          <button className="delete-btn" onClick={handleDiscard}>❌</button>
+          <button className="sSIRetunReturnItemBtn-delete-btn" onClick={handleDiscard}>x</button>
 
           {/* Item Category */}
           <select
@@ -351,8 +354,8 @@ const SSIRetunReturnItemBtn = ({ onBack }) => {
 
       {/* Button Section */}
       <div className="sSIRetunReturnItemBtn-buttons">
-        <button className="sSIRetunReturnItemBtn-save" onClick={handleSave}>Save</button>
-        <button className="sSIRetunReturnItemBtn-discard" onClick={handleDiscard}>Discard</button>
+        <button className="sSIRetunReturnItemBtn-save-button" onClick={handleSave}>Save</button>
+        <button className="sSIRetunReturnItemBtn-discard-button" onClick={handleDiscard}>Discard</button>
       </div>
     </div>
   );

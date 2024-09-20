@@ -1,3 +1,6 @@
+/* Ajhar Tamboli sSIReturn.jsx 19-09-24 */
+
+
 import React, { useState, useRef, useEffect } from 'react';
 import * as XLSX from 'xlsx'; // Import the xlsx library
 import "../SSInventory/sSIReturn.css";
@@ -104,30 +107,21 @@ function SSIReturn() {
 </div>
         </header>
         <div className="sSIReturn-controls">
-          <div className="sSIReturn-date-range">
-            <label>
-              From:
-              <input type="date" defaultValue="2024-08-09" />
-            </label>
-            <label>
-              To:
-              <input type="date" defaultValue="2024-08-16" />
-            </label>
-            <button className="sSIReturn-star-button">☆</button>
-            <button className="sSIReturn-ok-button">OK</button>
-          </div>
-          <div className="sSIReturn-filter">
-            {/* <label>SubCategory</label>
-            <select>
-              <option value="">ALL</option>
-              <option value="">Some Sub Category</option>
-              <option value="">Tissue</option>
-              <option value="">Cotton</option>
-              <option value="">Soap</option>
-            </select> */}
-            {/* <button className='sSIReturn-print-btn'>Show Report</button> */}
-          </div>
-        </div>
+
+<div className="sSIReturn-date-range">
+      <label>
+        From:
+        <input type="date" defaultValue="2024-08-09" />
+      </label>
+      <label>
+        To:
+        <input type="date" defaultValue="2024-08-16" />
+      </label>
+      <button className="sSIReturn-star-button">☆</button>
+    <button className="sSIReturn-more-btn">-</button>
+      <button className="sSIReturn-ok-button">OK</button>
+    </div>
+    </div>
         <div className="sSIReturn-search-N-results">
           <div className="sSIReturn-search-bar">
             <i className="fa-solid fa-magnifying-glass"></i>
@@ -138,7 +132,7 @@ function SSIReturn() {
             <button className='sSIReturn-print-btn' onClick={handleExportToExcel}>
               <i className="fa-regular fa-file-excel"></i> Export
             </button>
-            <button className='sSIReturn-print-btn' onClick={handlePrint}>Print</button>
+            <button className='sSIReturn-print-btn' onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
           </div>
         </div>
         <div style={{ display: 'none' }}>
@@ -208,14 +202,14 @@ function SSIReturn() {
             )}
           </tbody>
           </table>
-          <div className="sSIReturn-pagination">
+          {/* <div className="sSIReturn-pagination">
             <span>0 to 0 of 0</span>
             <button>First</button>
             <button>Previous</button>
             <span>Page 0 of 0</span>
             <button>Next</button>
             <button>Last</button>
-          </div>
+          </div> */}
         </div>
       </>
       ) : (
