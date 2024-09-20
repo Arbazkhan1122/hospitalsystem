@@ -1,4 +1,4 @@
-/* Swapnil ROkade adding new css 13/09 */
+/* swapnil Rokade Patient-Dashboard Adding className And color and table css 18/09 */
 
 /* * {
   margin: 0;
@@ -7,17 +7,24 @@
 } */
 
 
-.main-section {
+.Patient-Dashboard-main-section {
   display: flex;
   justify-content: space-between;
-  height: 80vh;
+  height: 75vh;
   overflow-y: scroll;
   border: 1px solid #ddd;
   border: none;
 }
+.Patient-Dashboard-btnAddBack
+{
+  padding: 5px;
+  background-color: var(--button-color);
+  border: 1px solid var(--button-color);
+  border-radius: 5px;
+  color: white;
+}
 
-
-.aside-section {
+.Patient-Dashboard-aside-section {
 
 
   width: 0%;
@@ -29,7 +36,7 @@
 
 }
 
-.betweenSection {
+.Patient-Dashboard-betweenSection {
 
   border: 1px solid black;
   width: 100%;
@@ -41,62 +48,64 @@
 
 }
 
-.navLogoOne {
+.Patient-Dashboard-navLogoOne {
   height: 40px;
   width: 40px;
   border: 1px solid white;
   border-radius: 50%;
 }
 
-.firstBox {
+.Patient-Dashboard-firstBox {
   padding: 5px 0 5px 5px;
   border: 1px solid black;
   background-color: white;
   border: none;
 }
 
-.subNav {
+.Patient-Dashboard-subNav {
   border: 1px solid black;
   display: flex;
   height: 40px;
-
   justify-content: space-between;
   padding-right: 5px;
   padding-left: 5px;
   align-items: center;
-  background-color: #eee6e6;
+  color: white;
+  background-color: var( --upperBar-bg-color);
   border: none;
 
 }
 
 
-.btnAdd {
+.Patient-Dashboard-btnAdd {
   height: 25px;
   width: 65px;
   border-radius: 5px;
-  border: none;
-  background-color: #00968f;
+  border: 1px solid var(--button-hover-border-color);
+  background-color:var(--button-color);
   color: white;
 }
 
-.btnAdd:hover {
-  background-color: white;
-  color: #00968f;
+.Patient-Dashboard-btnAdd:hover {
+  border: 1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+
 }
 
-.spanText {
+.Patient-Dashboard-spanText {
   font-weight: bold;
   font-size: 16px;
 }
 
-.inputSection {
+.Patient-Dashboard-inputSection {
   padding-top: 15px;
 }
 
-.inputOne {
+.Patient-Dashboard-inputOne {
   height: 40px;
-  width: 96%;
-  background-color: rgb(198, 238, 198);
+  width: 100%;
+  background-color: var(--background-color);
   padding-right: 15px;
   padding-left: 15px;
   border: none;
@@ -105,7 +114,7 @@
 
 }
 
-.left-aside {
+.Patient-Dashboard-left-aside {
   width: 30%;
   height: auto;
 
@@ -113,19 +122,19 @@
   /* padding-bottom: 15px; */
   border: 1px solid black;
   border: none;
-  font-size: 14px;
+  font-size: var(--font-size);
 
 
 }
 
-.outOutDiv {
+.Patient-Dashboard-outOutDiv {
 
   border: 1px solid black;
-  background-color: #007973;
+  background-color: var(--upperBar-bg-color);
   border: none;
 }
 
-.logoOne {
+.Patient-Dashboard-logoOne {
   border: 1px solid white;
   border-radius: 50%;
   height: 70px;
@@ -134,7 +143,7 @@
 
 }
 
-.divOne {
+.Patient-Dashboard-divOne {
   padding-left: 15px;
   display: flex;
   justify-content: space-between;
@@ -144,14 +153,14 @@
   border: none;
 }
 
-.outDiv {
+.Patient-Dashboard-outDiv {
   padding-bottom: 10px;
   /* background-color: blue; */
   border: 1px solid black;
   border: none;
 }
 
-.btnIpd {
+.Patient-Dashboard-btnIpd {
   background-color: rgb(231, 217, 12);
   height: 25px;
   width: 50px;
@@ -161,28 +170,24 @@
 
 }
 
-.textName {
+.Patient-Dashboard-textName {
   color: rgb(231, 217, 12);
-  font-size: 16px;
+  font-size: var( --heading-font);
   font-weight: bold;
-
   padding-left: 15px;
-
-
-
 }
 
 
 
-.ageGen {
-  font-size: 14px;
+.Patient-Dashboard-ageGen {
+  font-size: var(--font-size);
   color: white;
   padding-left: 15px;
 
 
 }
 
-.right-aside {
+.Patient-Dashboard-right-aside {
   width: 55%;
   height: auto;
 
@@ -191,7 +196,7 @@
 
 
 
-.outerSection {
+.Patient-Dashboard-outerSection {
   width: 100%;
   height: auto;
   border: 1px solid black;
@@ -200,20 +205,20 @@
 
 }
 
-.navbar {
-
+.Patient-Dashboard-navbar {
   height: 50px;
+  padding: 5px;
   width: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #007973;
+  background-color: var(--upperBar-bg-color);
   border: 1px solid black;
   border: none;
 
 }
 
-.navText {
+.Patient-Dashboard-navText {
   color: white;
   font-size: 1.3rem;
   font-weight: bold;
@@ -229,7 +234,7 @@ img {
 }
 
 
-.btnOne {
+.Patient-Dashboard-btnOne {
   margin-right: 30px;
   background-color: rgb(231, 217, 12);
 
@@ -240,7 +245,7 @@ img {
 
 }
 
-.Leftaside {
+.Patient-Dashboard-Leftaside {
   width: 100%;
   padding-right: 15px;
   margin-right: 15px;
@@ -251,18 +256,18 @@ img {
   border: none;
 }
 
-.asideFirstBox {
+.Patient-Dashboard-asideFirstBox {
   display: flex;
   justify-content: space-between;
 }
 
-.textName {
-  font-size: 16px;
+.Patient-Dashboard-textName {
+  font-size: var(--heading-font);
   font-weight: bold;
 
 }
 
-.divTwoDetails {
+.Patient-Dashboard-divTwoDetails {
   color: white;
   height: auto;
   padding-left: 15px;
@@ -270,33 +275,33 @@ img {
 
   /* background-color: blue; */
   height: 100px;
-  font-size: 14px;
+  font-size: var(--font-size);
   border: 1px solid black;
   border: none;
 
 }
 
-.detailHeading {
+.Patient-Dashboard-detailHeading {
   color: rgb(231, 217, 12);
   font-weight: bold;
 }
 
-.ward {
+.Patient-Dashboard-ward {
   padding-top: 5px;
   padding-bottom: 5px;
 
 }
 
-.attending {
+.Patient-Dashboard-attending {
   padding-bottom: 5px;
 }
 
-.detailsBox {
+.Patient-Dashboard-detailsBox {
   padding: 10px 0px;
 
 }
 
-.boxOne {
+.Patient-Dashboard-boxOne {
   height: 10px;
   border: 1px solid black;
   display: flex;
@@ -307,31 +312,31 @@ img {
   border: none;
 }
 
-.patient-table {
+.Patient-Dashboard-patient-table {
   width: 100%;
   border-collapse: collapse;
   /* margin: 20px 0;  */
 }
 
-.patient-th {
+.Patient-Dashboard-th {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
   background-color: #f2f2f2;
 }
 
-.patient-td {
+.Patient-Dashboard-td {
   /* background-color: #f2f2f2; */
   text-align: center;
   padding: 8px;
 }
-.navTextandBtn {
+.Patient-Dashboard-navTextandBtn {
   padding-right: 0px;
   border: 1px solid black;
   border: none;
 }
 
-.navVitals {
+.Patient-Dashboard-navVitals {
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -341,7 +346,7 @@ img {
 }
 
 
-.twoBtns {
+.Patient-Dashboard-twoBtns {
 
   width: 250px;
   display: flex;
@@ -353,33 +358,35 @@ img {
 
 }
 
-.oneBtnNormal {
+.Patient-Dashboard-oneBtnNormal {
   height: 30px;
   width: 100px;
-  border: none;
+  border: 1px solid var(--button-hover-border-color);
   border-radius: 5px;
   background-color: white;
-  color: #00968f;
+  color: var(--button-hover-text-color);
+
 
 }
 
-.oneBtnNormal:hover {
-  background-color: #00968f;
+.Patient-Dashboard-oneBtnNormal:hover {
+  background-color: var(--button-color);
   color: white;
 }
 
-.secBtnBlue {
+.Patient-Dashboard-secBtnBlue {
   height: 30px;
   width: 100px;
-  background-color: #00968f;
+  background-color: var(--button-color);
   color: white;
-  border: none;
+  border: 1px solid var(--button-color);
   border-radius: 5px;
 }
 
-.secBtnBlue:hover {
-  background-color: white;
-  color: #00968f;
+.Patient-Dashboard-secBtnBlue:hover {
+  border: 1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .patient-table {
@@ -389,13 +396,13 @@ img {
   
 }
 
-.patient-td {
+.Patient-Dashboard-td {
   border: none;
   padding: 8px;
   text-align: left;
 }
 
-.cheifComplaints {
+.Patient-Dashboard-cheifComplaints {
 
   height: auto;
   width: 100%;
@@ -404,7 +411,7 @@ img {
   padding: 5px;
 }
 
-.navComplaints {
+.Patient-Dashboard-navComplaints {
 
   border: 1px solid black;
 
@@ -414,7 +421,7 @@ img {
 
 }
 
-.contentNav {
+.Patient-Dashboard-contentNav {
   display: flex;
   border: 1px solid black;
   border: none;
@@ -426,7 +433,7 @@ img {
 
 }
 
-.btnComplaints {
+.Patient-Dashboard-btnComplaints {
   height: 25px;
   width: 130px;
   background-color: #00968f;
@@ -435,12 +442,12 @@ img {
   border-radius: 5px;
 }
 
-.btnComplaints:hover {
+.Patient-Dashboard-btnComplaints:hover {
   background-color: white;
   color: #00968f;
 }
 
-.inputSecTwo {
+.Patient-Dashboard-inputSecTwo {
   /* padding: 10px; */
   padding: 10px 0px 10px 0px;
   border: 1px solid black;
@@ -448,7 +455,7 @@ img {
 
 }
 
-.inputTwo {
+.Patient-Dashboard-inputTwo {
   width: 100%;
   height: 40px;
   background-color: rgb(198, 238, 198);
@@ -456,17 +463,17 @@ img {
 }
 
 @media (max-width: 1106px) {
-  .btnIpd {
+  .Patient-Dashboard-btnIpd {
       margin-top: 25px;
   }
 
-  .textSurname {
+  .Patient-Dashboard-textSurname {
       padding-left: 5px;
   }
 }
 
 @media(max-width:1046px) {
-  .divTwoDetails {
+  .Patient-Dashboard-divTwoDetails {
       height: auto;
   }
 }
@@ -474,27 +481,27 @@ img {
 
 
 @media (max-width: 880px) {
-  .navbar {
+  .Patient-Dashboard-navbar {
       width: 102%;
 
   }
 
-  .main-section {
+  .Patient-Dashboard-main-section {
       flex-direction: column;
       margin-right: 5px;
   }
 
-  .left-aside,
-  .right-aside {
+  .Patient-Dashboard-left-aside,
+  .Patient-Dashboard-right-aside {
       /* flex: 1; */
       margin-bottom: 10px;
   }
 
-  .btnAdd {
+  .Patient-Dashboard-btnAdd {
       width: 100px;
   }
 
-  .left-aside {
+  .Patient-Dashboard-left-aside {
       width: 100%;
       /* padding-right: 5px; */
       /* flex: 1; */
@@ -504,11 +511,11 @@ img {
 
   }
 
-  .right-aside {
+  .Patient-Dashboard-right-aside {
       width: 100%;
   }
 
-  .divOne {
+  .Patient-Dashboard-divOne {
       display: flex;
       align-items: center;
 
@@ -519,15 +526,15 @@ img {
 
 
 @media (max-width: 480px) {
-  .navbar {
+  .Patient-Dashboard-navbar {
       padding: 10px;
 
   }
-  .btnAdd {
+  .Patient-Dashboard-btnAdd {
       width: 80px;
   }
 
-  .main-section {
+  .Patient-Dashboard-main-section {
       gap: 5px; 
       margin-right:-5px;
 
@@ -535,13 +542,13 @@ img {
 }
 
 @media(max-width:375px) {
-  .inputSection {
+  .Patient-Dashboard-inputSection {
       padding-right: 15px;
   }
 }
 
 @media(max-width:390px) {
-  .inputSection {
+  .Patient-Dashboard-inputSection {
       padding-right: 15px;
   }
 }

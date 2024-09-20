@@ -1,4 +1,7 @@
+/* swapnil Rokade action_record Adding className And color and table css 18/09 */
 .action_record_container {
+  height: 80vh;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -6,10 +9,11 @@
 }
 
 .action_record_orders {
+  height: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #e0f7fa;
+  background-color: var(--background-color);
   gap: 5px;
   padding: 20px;
   border-radius: 8px;
@@ -22,24 +26,29 @@
   justify-content: space-between;
   gap: 5px;
 }
+.action-records-h2
+{
+  font-size: var(--heading-font);
+}
 .selected-order-header-right
 {
   width: 50%;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   gap: 5px;
 }
 .remove_order_button
 {
-  padding: 10px;
+  padding: 5px;
   background-color: red;
   color:#f2f2f2;
   border-radius: 5px;
 }
 .proceed_order_button
 {
-  padding: 10px;
-  background-color: green;
+  padding: 5px;
+  background-color: var(--button-color);
   color:#f2f2f2;
   border-radius: 5px;
 }
@@ -51,7 +60,6 @@
 }
 .action_record_new_orders{
   width: 50%;
-  height: 40%;
   background-color: white;
   padding: 20px;
   border-radius: 8px;
@@ -91,7 +99,7 @@
 }
 .action_record_search_button {
   padding: 8px 16px;
-  background-color: #007bff;
+  background-color: var(--button-color);
   color: white;
   border: none;
   border-radius: 4px;
@@ -103,8 +111,8 @@
 }
 
 .action_record_print_button {
-  padding: 10px 20px;
-  background-color: #673ab7;
+  padding: 5px;
+  background-color: var(--button-color);
   color: white;
   border: none;
   border-radius: 4px;

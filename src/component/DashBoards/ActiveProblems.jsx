@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './Activeproblems.css'; // Import the CSS file for styling
 import { Label } from 'recharts';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const ActiveProblems = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); 
   const [activeProblems, setActiveProblems] = useState([]); 
   const [newProblem, setNewProblem] = useState({}); 
@@ -63,48 +66,93 @@ const ActiveProblems = () => {
       {/* Active Medical Problems Section */}
       <div className='active-problem-main'>
       <div className='actproblem-table'>
-      <section className="problems-section">
+      <section className="activeproblems-problems-section">
+        <div className='activeproblems-subdiv'>
         <label className='activeproblems-sectionh5 '>Active Medical Problems</label>
-        <button className="add-button" onClick={handleOpenModal}>
+        <button className="activeproblems-add-button" onClick={handleOpenModal}>
           ➕ Add
         </button>
-        <table className="problems-table">
+        </div>
+        <div className='table-container'>
+        <table className="patientList-table" ref={tableRef}>
           <thead>
             <tr>
-              <th>ICD-11 Description</th>
-              <th>Date</th>
-              <th>Notes</th>
-              <th>Resolved</th>
-              <th>Edit</th>
+              {[
+                "ICD-11 Description",
+  "Date",
+  "Notes",
+  "Resolved",
+  "Edit"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
             {activeProblems.map((problem, index) => (
               <tr key={index}>
-                <td className='actproblemtabledata'>{problem.description}</td>
-                <td className='actproblemtabledata'>{problem.date}</td>
-                <td className='actproblemtabledata'>{problem.notes}</td>
-                <td className='actproblemtabledata'>
+                <td className='actproblem-tabledata'>{problem.description}</td>
+                <td className='actproblem-tabledata'>{problem.date}</td>
+                <td className='actproblem-tabledata'>{problem.notes}</td>
+                <td className='actproblem-tabledata'>
                   <input type="checkbox" disabled checked={problem.resolved} />
                 </td>
-                <td className='actproblemtabledata'><button>Edit</button></td>
+                <td className='actproblem-tabledata'><button>Edit</button></td>
               </tr>
             ))}
           </tbody>
         </table>
+        </div>
       </section>
 
       {/* Past Medical Problems Section */}
-      <section className="problems-section">
+      <section className="activeproblems-problems-section">
+      <div className='activeproblems-subdiv'>
         <label className='activeproblems-sectionh5 '>Past Medical Problems</label>
-        <button className="add-button" onClick={handleOpenPastModal}>➕ Add</button>
-        <table className="problems-table">
+        <button className="activeproblems-add-button" onClick={handleOpenPastModal}>➕ Add</button>
+        </div>
+        <div className='table-container'>
+        <table className="patientList-table" ref={tableRef}>
           <thead>
             <tr>
-              <th>ICD-11 Description</th>
-              <th>On Set Date</th>
-              <th>Resolved Date</th>
-              <th>Set As Active</th>
+              {[
+                 "ICD-11 Description",
+                 "On Set Date",
+                 "Resolved Date",
+                 "Set As Active"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -117,6 +165,7 @@ const ActiveProblems = () => {
             </tr>
           </tbody>
         </table>
+        </div>
       </section>
       </div>
 

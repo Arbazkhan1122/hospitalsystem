@@ -43,10 +43,12 @@ const SocialHistory = () => {
       <div className="social-history-main">
         <div className='socialhist'>
           <section className="social-history-section">
+          <div className='social-history-subdiv'>
             <label>Social History Problem List</label>
-            <button className="add-button" onClick={handleOpenModal}>
+            <button className="social-history-add-button" onClick={handleOpenModal}>
               ➕ Add
             </button>
+            </div>
             <table className="social-history-table">
               <thead>
                 <tr>

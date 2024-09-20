@@ -1,11 +1,11 @@
 .vitals-page {
     font-family: Arial, sans-serif;
     background-color: #f0f8ff;
-    padding: 20px;
     position: relative;
   }
   
   .tab-navigation {
+    width: 100%;
     display: flex;
     margin-bottom: 20px;
   }
@@ -14,12 +14,11 @@
     padding: 10px 15px;
     background-color: #e0e0e0;
     border: none;
-    margin-right: 5px;
     cursor: pointer;
   }
   
   .tab.active {
-    background-color: #4169e1;
+    background-color: var(--button-color);
     color: white;
   }
   

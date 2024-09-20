@@ -1,6 +1,7 @@
+/* swapnil Rokade ReferralSource Adding className And color and table css 18/09 */
 .hist-container {
     width: 100%;
-    padding: 20px;
+    padding: 10px;
     background-color: #f5f6fa; /* Light gray background color */
   }
   
@@ -20,24 +21,24 @@
   }
   
   .hist-title {
-    font-size: 18px;
+    font-size: var(--heading-font);
     font-weight: bold;
-    color: #0d47a1; /* Dark blue color */
+    color: black; /* Dark blue color */
   }
   
   .hist-add-button {
-    background-color: #7f5af0; /* Purple background color */
+    background-color: var(--button-color); /* Purple background color */
     color: white;
-    padding: 10px 20px;
+    padding: 5px;
     border: none;
-    border-radius: 20px;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
     transition: background-color 0.3s ease;
   }
   
   .hist-add-button:hover {
-    background-color: #6a47e0; /* Darker purple on hover */
+    background-color: var(--button-hover-background-color); /* Darker purple on hover */
   }
   
   .hist-problem-list-table {

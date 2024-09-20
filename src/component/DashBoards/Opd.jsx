@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './Opd.css';
 import OpdRecordApp from './PatientDashboard';
 import OpdRecordMyFavourites from '../DashBoards/OpdRecordMyFavourite'; 
 import OpdRecordFollowUpList from '../DashBoards/OpdRecordFollowUpList';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const OpdList = () => {
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [selectedPatient, setSelectedPatient] = useState(null);
-  const [showFavourites, setShowFavourites] = useState(false);
-  const [showFollowUp, setShowFollowUp] = useState(false);
+  const [view, setView] = useState('patients'); // New state to manage view
 
   const patients = [
     // Your patient data here
@@ -18,13 +20,11 @@ const OpdList = () => {
   };
 
   const handleFavouritesClick = () => {
-    setShowFavourites(true);
-    setShowFollowUp(false);
+    setView('favourites');
   };
 
   const handleFollowUpClick = () => {
-    setShowFollowUp(true);
-    setShowFavourites(false);
+    setView('followUp');
   };
 
   const printTable = () => {
@@ -39,18 +39,6 @@ const OpdList = () => {
     printWindow.print();
   };
 
-  if (selectedPatient) {
-    return <OpdRecordApp patient={selectedPatient} />;
-  }
-
-  if (showFavourites) {
-    return <OpdRecordMyFavourites />;
-  }
-
-  if (showFollowUp) {
-    return <OpdRecordFollowUpList />;
-  }
-
   return (
     <div className="opd-patient-list">
       <div className="opd-top-buttons">
@@ -58,57 +46,83 @@ const OpdList = () => {
         <button className="opd-follow-up" onClick={handleFollowUpClick}>Follow Up List</button>
       </div>
 
-      <div className="opd-filters">
-        <select defaultValue="This Month">
-          <option>Today</option>
-          <option>Last Week</option>
-          <option>This Month</option>
-          <option>Custom</option>
-        </select>
-        <div className="opd-search-bar">
-          <input type="text" placeholder="Search" />
-          <button>🔍</button>
-        </div>
-        <span className="opd-results">Showing 32 / 32 results</span>
-        <button className="opd-print" onClick={printTable}>Print</button>
-      </div>
+      {selectedPatient ? (
+        <OpdRecordApp patient={selectedPatient} />
+      ) : (
+        <>
+        {view === 'patients' && (
+          <>
+          <div className="opd-filters">
+            <select defaultValue="This Month">
+              <option>Today</option>
+              <option>Last Week</option>
+              <option>This Month</option>
+              <option>Custom</option>
+            </select>
+            <div className="opd-search-bar">
+              <input type="text" placeholder="Search" />
+              <button>🔍</button>
+            </div>
+            <span className="opd-results">Showing 32 / 32 results</span>
+            <button className="opd-print" onClick={printTable}>Print</button>
+          </div>
 
-      <table className='opd-list-table'>
-        <thead>
-          <tr>
-            <th>Hospital No.</th>
-            <th>Name</th>
-            <th>Age/Sex</th>
-            <th>VisitType</th>
-            <th>Performer Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {patients.map((patient, index) => (
-            <tr key={index}>
-              <td>{patient.hospitalNo}</td>
-              <td>{patient.name}</td>
-              <td>{patient.ageSex}</td>
-              <td>{patient.visitType}</td>
-              <td>{patient.performerName}</td>
-              <td>
-                <button onClick={() => handlePatientClick(patient)}>👤</button>
-                <button>📄</button>
-                <button>♡</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      {/* <div className="paginat">
-        <span>0 to 0 of 0</span>
-        <button>First</button>
-        <button>Previous</button>
-        <span>Page 0 of 0</span>
-        <button>Next</button>
-        <button>Last</button>
-      </div> */}
+          
+            <table className="opd-results-table" ref={tableRef}>
+              <thead>
+                <tr>
+                  {[
+                    "Hospital No.",
+                    "Name",
+                    "Age/Sex",
+                    "VisitType",
+                    "Performer Name",
+                    "Actions"
+                  ].map((header, index) => (
+                    <th
+                      key={index}
+                      style={{ width: columnWidths[index] }}
+                      className="resizable-th"
+                    >
+                      <div className="header-content">
+                        <span>{header}</span>
+                        <div
+                          className="resizer"
+                          onMouseDown={startResizing(
+                            tableRef,
+                            setColumnWidths
+                          )(index)}
+                        ></div>
+                      </div>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {patients.map((patient, index) => (
+                  <tr key={index}>
+                    <td>{patient.hospitalNo}</td>
+                    <td>{patient.name}</td>
+                    <td>{patient.ageSex}</td>
+                    <td>{patient.visitType}</td>
+                    <td>{patient.performerName}</td>
+                    <td>
+                      <button onClick={() => handlePatientClick(patient)}>👤</button>
+                      <button>📄</button>
+                      <button>♡</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            </>
+          )}
+
+          {view === 'favourites' && <OpdRecordMyFavourites />}
+
+          {view === 'followUp' && <OpdRecordFollowUpList />}
+        </>
+      )}
     </div>
   );
 };

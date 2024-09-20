@@ -7,16 +7,17 @@ import ActionRecordPage from './ActionRecordPage';
 import { useNavigate } from 'react-router-dom';
 import Problems from './Problems';
 import { API_BASE_URL } from '../api/api';
+import AddVitalsForm from './AddVitals';
 
 const Section = ({ title, handleAddClick, children }) => (
-  <div className="firstBox">
-  <div className='subNav'>
-    <div className='labAndImg'>
-                  <span className='spanText'>{title}</span>
+  <div className="Patient-Dashboard-firstBox">
+  <div className='Patient-Dashboard-subNav'>
+    <div className='Patient-Dashboard-labAndImg'>
+                  <span className='Patient-Dashboard-spanText'>{title}</span>
                 </div>
-    <button className='btnAdd' onClick={handleAddClick}>+ Add</button>
+    <button className='Patient-Dashboard-btnAdd' onClick={handleAddClick}>+ Add</button>
     </div>
-    {children || <div className='inputOne'>No Records Found</div>}
+    {children || <div className='Patient-Dashboard-inputOne'>No Records Found</div>}
     </div>
 );
 
@@ -44,7 +45,7 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
     };
 
     fetchMedications();
-  }, []);
+  }, [activeSection]);
 
  console.log(medications);
  
@@ -70,60 +71,62 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
       case 'clinical':
         return <VitalsPage patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId} />;
       case 'actionRecord':
-        return <ActionRecordPage patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId} />;
+        return <ActionRecordPage patientId={patient.patientId} setActiveSection={setActiveSection} newPatientVisitId={patient.newPatientVisitId} />;
       case 'problems':
         return <Problems patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId} />;
+        case 'Vitals':
+          return <AddVitalsForm patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId}  />
       default:
         return renderDashboard();
     }
   };
   const renderDashboard = () => (
-    <div className="main-section">
-      <aside className="aside-section left-aside">
-        <div className="outOutDiv">
-          <div className="outDiv">
-            <div className="divOne">
-              <div className="logoOne"></div>
-              <button className="btnIpd">IPD</button>
+    <div className="Patient-Dashboard-main-section">
+      <aside className="Patient-Dashboard-aside-section  Patient-Dashboard-left-aside">
+        <div className="Patient-Dashboard-outOutDiv">
+          <div className="Patient-Dashboard-outDiv">
+            <div className="Patient-Dashboard-divOne">
+              <div className="Patient-Dashboard-logoOne"></div>
+              <button className="Patient-Dashboard-btnIpd">IPD</button>
             </div>
-            <span className="textName">{`${patient.firstName} ${patient.lastName}`}</span>
+            <span className="Patient-Dashboard-textName">{`${patient.firstName} ${patient.lastName}`}</span>
             <br></br>
-            <span className="ageGen">{`${patient.age}/${patient.gender}`}</span>
+            <span className="Patient-Dashboard-ageGen">{`${patient.age}/${patient.gender}`}</span>
           </div>
 
           <hr></hr>
-          <div className="divTwoDetails">
-            <span className="detailHeading">Hospital No:</span>
+          <div className="Patient-Dashboard-divTwoDetails">
+            <span className="Patient-Dashboard-detailHeading">Hospital No:</span>
             <span> 2406003766</span>
             <br></br>
-            <div className="ward">
-              <span className="detailHeading">Ward/Bed:</span>
+            <div className="Patient-Dashboard-ward">
+              <span className="Patient-Dashboard-detailHeading">Ward/Bed:</span>
               <span> Private Ward/09</span>
               <br></br>
             </div>
-            <div className="attending">
-              <span className="detailHeading">Attending:</span>
+            <div className="Patient-Dashboard-attending">
+              <span className="Patient-Dashboard-detailHeading">Attending:</span>
               <span>{`${patient.employeeDTO.salutation} ${patient.employeeDTO.firstName} ${patient.employeeDTO.lastName}`}</span>
             </div>
           </div>
         </div>
-        <div className="detailsBox">
-          <div className="boxOne">
-            <div className="textAndLogo">
-              <span className="textOne">OPD Summary</span>
+        <div className="Patient-Dashboard-detailsBox">
+          <div className="Patient-Dashboard-boxOne">
+            <div className="Patient-Dashboard-textAndLogo">
+              <span className="Patient-Dashboard-textOne">OPD Summary</span>
             </div>
           </div>
 
-          <div className="boxOne">
-            <div className="textAndLogo">
-              <span className="textOne">Patient Overview</span>
+          <div className="Patient-Dashboard-boxOne">
+            <div className="Patient-Dashboard-textAndLogo">
+              <span className="Patient-Dashboard-textOne">Patient Overview</span>
             </div>
           </div>
 
-          <div className="boxOne">
-            <div className="textAndLogo">
+          <div className="Patient-Dashboard-boxOne">
+            <div className="Patient-Dashboard-textAndLogo">
               <span
-                className="textOne"
+                className="Patient-Dashboard-textOne"
                 onClick={() => {
                   setActiveSection("problems");
                   setPrevAction(...activeSection);
@@ -134,34 +137,34 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
             </div>
           </div>
 
-          <div className="boxOne">
-            <div className="textAndLogo">
-              <span className="textOne">Current Medications</span>
+          <div className="Patient-Dashboard-boxOne">
+            <div className="Patient-Dashboard-textAndLogo">
+              <span className="Patient-Dashboard-textOne">Current Medications</span>
             </div>
           </div>
 
-          <div className="boxOne">
-            <div className="textAndLogo">
-              <span className="textOne">Encounter History</span>
+          <div className="Patient-Dashboard-boxOne">
+            <div className="Patient-Dashboard-textAndLogo">
+              <span className="Patient-Dashboard-textOne">Encounter History</span>
             </div>
           </div>
 
-          <div className="boxOne">
-            <div className="textAndLogo">
-              <span className="textOne">Orders</span>
+          <div className="Patient-Dashboard-boxOne">
+            <div className="Patient-Dashboard-textAndLogo">
+              <span className="Patient-Dashboard-textOne">Orders</span>
             </div>
           </div>
 
-          <div className="boxOne">
-            <div className="textAndLogo">
-              <span className="textOne">Clinical Documents</span>
+          <div className="Patient-Dashboard-boxOne">
+            <div className="Patient-Dashboard-textAndLogo">
+              <span className="Patient-Dashboard-textOne">Clinical Documents</span>
             </div>
           </div>
 
-          <div className="boxOne">
-            <div className="textAndLogo">
+          <div className="Patient-Dashboard-boxOne">
+            <div className="Patient-Dashboard-textAndLogo">
               <span
-                className="textOne"
+                className="Patient-Dashboard-textOne"
                 onClick={() => {
                   setActiveSection("clinical");
                   setPrevAction(...activeSection);
@@ -171,21 +174,21 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
               </span>
             </div>
           </div>
-          <div className="boxOne">
-            <div className="textAndLogo">
-              <span className="textOne">Notes</span>
+          <div className="Patient-Dashboard-boxOne">
+            <div className="Patient-Dashboard-textAndLogo">
+              <span className="Patient-Dashboard-textOne">Notes</span>
             </div>
           </div>
-          <div className="boxOne">
-            <div className="textAndLogo">
-              <span className="textOne">Scanned images</span>
+          <div className="Patient-Dashboard-boxOne">
+            <div className="Patient-Dashboard-textAndLogo">
+              <span className="Patient-Dashboard-textOne">Scanned images</span>
             </div>
           </div>
         </div>
       </aside>
 
-      <main className="betweenSection">
-        <div className="outOutDiv">
+      <main className="Patient-Dashboard-betweenSection">
+        <div className="Patient-Dashboard-outOutDiv">
             <Section
               title="🧪 Labs"
               handleAddClick={() => {
@@ -195,21 +198,21 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
             />
         </div>
 
-        <div className="outOutDiv">
+        <div className="Patient-Dashboard-outOutDiv">
             <Section
               title="🖼 Imaging"
               handleAddClick={() => setActiveSection("actionRecord")}
             />
         </div>
 
-        <div className="outOutDiv">
+        <div className="Patient-Dashboard-outOutDiv">
             <Section
               title="⚠ Active Problems"
               handleAddClick={() => setActiveSection("problems")}
             />
         </div>
 
-        <div className="outOutDiv">
+        <div className="Patient-Dashboard-outOutDiv">
             <Section
               title="🧪 Medication"
               handleAddClick={() => {
@@ -217,21 +220,21 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
                 setActiveSection("actionRecord");
               }}
               children={<> {filteredMedications.length > 0 ? (
-                <div className='inputSection'>
+                <div className='Patient-Dashboard-inputSection'>
               <table border="1" cellPadding="10" cellSpacing="0" className='patient-table'>
                 <thead>
                   <tr>
-                    <th className='patient-th'>Medication Name</th>
-                    <th className='patient-th'>Frequency</th>
-                    <th className='patient-th'>Last Taken</th>
+                    <th className='Patient-Dashboard-th'>Medication Name</th>
+                    <th className='Patient-Dashboard-th'>Frequency</th>
+                    <th className='Patient-Dashboard-th'>Last Taken</th>
                   </tr>
                 </thead>
                 <tbody>
                   {filteredMedications.map((medication) => (
                     <tr key={medication.medicationId}>
-                      <td className='patient-td'>{medication.medicationName}</td>
-                      <td className='patient-td'>{medication.frequency}</td>
-                      <td className='patient-td'>{medication.lastTaken}</td>
+                      <td className='Patient-Dashboard-td'>{medication.medicationName}</td>
+                      <td className='Patient-Dashboard-td'>{medication.frequency}</td>
+                      <td className='Patient-Dashboard-td'>{medication.lastTaken}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -246,55 +249,55 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
         </div>
       </main>
 
-      <aside className="aside-section right-aside">
-        <div className="asideDivTwo">
-          <div className="asideNav">
-            <div className="navTextandBtn">
-              <div className="navVitals">
-                <span className="spanText">Last Vitals</span>
-                <div className="twoBtns">
-                  <button className="oneBtnNormal">Show Graph</button>
-                  <button className="secBtnBlue">Add Vitals</button>
+      <aside className="Patient-Dashboard-aside-section  Patient-Dashboard-right-aside">
+        <div className="Patient-Dashboard-asideDivTwo">
+          <div className="Patient-Dashboard-asideNav">
+            <div className="Patient-Dashboard-navTextandBtn">
+              <div className="Patient-Dashboard-navVitals">
+                <span className="Patient-Dashboard-spanText">Last Vitals</span>
+                <div className="Patient-Dashboard-twoBtns">
+                  <button className="Patient-Dashboard-oneBtnNormal">Show Graph</button>
+                  <button className="Patient-Dashboard-secBtnBlue" onClick={()=> setActiveSection('Vitals')}>Add Vitals</button>
                 </div>
               </div>
-              <div className="tableRecord">
-                <table className='patient-table'>
+              <div className="Patient-Dashboard-tableRecord">
+                <table className='Patient-Dashboard-patient-table'>
                   <tr>
-                    <td className='patient-td'>Recoreded On</td>
-                    <td className='patient-td'>2024-06-18 03:22 PM</td>
+                    <td className='Patient-Dashboard-td'>Recoreded On</td>
+                    <td className='Patient-Dashboard-td'>2024-06-18 03:22 PM</td>
                   </tr>
                   <tr>
-                    <td className='patient-td'>Height</td>
-                    <td className='patient-td'>200 cm</td>
+                    <td className='Patient-Dashboard-td'>Height</td>
+                    <td className='Patient-Dashboard-td'>200 cm</td>
                   </tr>
                   <tr>
-                    <td className='patient-td'>Weight</td>
-                    <td className='patient-td'>40kg</td>
+                    <td className='Patient-Dashboard-td'>Weight</td>
+                    <td className='Patient-Dashboard-td'>40kg</td>
                   </tr>
                   <tr>
-                    <td className='patient-td'>BMI</td>
-                    <td className='patient-td'>10</td>
+                    <td className='Patient-Dashboard-td'>BMI</td>
+                    <td className='Patient-Dashboard-td'>10</td>
                   </tr>
                   <tr>
-                    <td className='patient-td'>Temprature</td>
+                    <td className='Patient-Dashboard-td'>Temprature</td>
                   </tr>
                   <tr>
-                    <td className='patient-td'>Pulse</td>
+                    <td className='Patient-Dashboard-td'>Pulse</td>
                   </tr>
                   <tr>
-                    <td className='patient-td'>Blood Pressure</td>
+                    <td className='Patient-Dashboard-td'>Blood Pressure</td>
                   </tr>
                   <tr>
-                    <td className='patient-td'>Respiratory Rate</td>
+                    <td className='Patient-Dashboard-td'>Respiratory Rate</td>
                   </tr>
                   <tr>
-                    <td className='patient-td'>SpO2</td>
+                    <td className='Patient-Dashboard-td'>SpO2</td>
                   </tr>
                   <tr>
-                    <td className='patient-td'>O2 Deliver Method</td>
+                    <td className='Patient-Dashboard-td'>O2 Deliver Method</td>
                   </tr>
                   <tr>
-                    <td className='patient-td'>Body Pain Data</td>
+                    <td className='Patient-Dashboard-td'>Body Pain Data</td>
                   </tr>
                 </table>
               </div>
@@ -319,12 +322,12 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
         isPatientOPEN ? "isPatientDetailsActive" : "isPatientDetailsInActive"
       }`}
     >
-      <nav className="navbar">
-        <div className="navText">
-          <div className="navLogoOne"></div>
+      <nav className="Patient-Dashboard-navbar">
+        <div className="Patient-Dashboard-navText">
+          <div className="Patient-Dashboard-navLogoOne"></div>
           <span onClick={() => setIsPatientOPEN(false)}> 🏠 Home</span>
         </div>
-        <button className="btnAddBack" onClick={() => setActiveSection(prevAction)}>Back</button>
+        <button className="Patient-Dashboard-btnAddBack" onClick={() => setActiveSection(prevAction)}>Back</button>
       </nav>
       {renderContent()}
     </div>

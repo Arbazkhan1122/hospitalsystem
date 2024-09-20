@@ -110,7 +110,6 @@ const WriteOff = () => {
                  "Available Qty",
                  "Write-Off Qty *",
                  "Write-Off Date *",
-                 "",
                  "Remark *",
                  "Item Rate",
                  "Sub Total",
@@ -141,18 +140,18 @@ const WriteOff = () => {
             <tr key={index}>
               <td>
                 <button className="writeOff-remove-row" onClick={() => handleRemoveRow(index)}>✖</button>
+                <button className='writeOff-add-row' onClick={handleAddRow}>+</button>
               </td>
-              <td><input type="text" placeholder="Item Name" value={row.itemName} onChange={(e) => handleChange(index, 'itemName', e.target.value)} /></td>
-              <td><input type="text" value={row.code} onChange={(e) => handleChange(index, 'code', e.target.value)} /></td>
-              <td><input type="text" value={row.availableQty} onChange={(e) => handleChange(index, 'availableQty', e.target.value)} /></td>
-              <td><input type="text" value={row.writeOffQty} onChange={(e) => handleChange(index, 'writeOffQty', e.target.value)} /></td>
-              <td><input type="date" value={row.writeOffDate} onChange={(e) => handleChange(index, 'writeOffDate', e.target.value)} /></td>
-              <td><button className="writeOff-add-row" onClick={handleAddRow}>+</button></td>
-              <td><input type="text" value={row.remark} onChange={(e) => handleChange(index, 'remark', e.target.value)} /></td>
-              <td><input type="text" value={row.itemRate} onChange={(e) => handleChange(index, 'itemRate', e.target.value)} /></td>
-              <td><input type="text" value={row.subTotal} readOnly /></td>
-              <td><input type="text" value={row.vat} readOnly /></td>
-              <td><input type="text" value={row.totalAmount} readOnly /></td>
+              <td><input className='writeOff-input'  type="text" placeholder="Item Name" value={row.itemName} onChange={(e) => handleChange(index, 'itemName', e.target.value)} /></td>
+              <td><input className='writeOff-input' type="text" value={row.code} onChange={(e) => handleChange(index, 'code', e.target.value)} /></td>
+              <td><input className='writeOff-input' type="text" value={row.availableQty} onChange={(e) => handleChange(index, 'availableQty', e.target.value)} /></td>
+              <td><input className='writeOff-input' type="text" value={row.writeOffQty} onChange={(e) => handleChange(index, 'writeOffQty', e.target.value)} /></td>
+              <td><input className='writeOff-input' type="date" value={row.writeOffDate} onChange={(e) => handleChange(index, 'writeOffDate', e.target.value)} /></td>
+              <td><input className='writeOff-input' type="text" value={row.remark} onChange={(e) => handleChange(index, 'remark', e.target.value)} /></td>
+              <td><input className='writeOff-input' type="text" value={row.itemRate} onChange={(e) => handleChange(index, 'itemRate', e.target.value)} /></td>
+              <td><input className='writeOff-input' type="text" value={row.subTotal} readOnly /></td>
+              <td><input className='writeOff-input' type="text" value={row.vat} readOnly /></td>
+              <td><input className='writeOff-input' type="text" value={row.totalAmount} readOnly /></td>
             </tr>
           ))}
           <tr>

@@ -1,7 +1,8 @@
 /* Problems Navbar Styles */
+/* swapnil Rokade problems Adding className And color and table css 18/09 */
 .problems-navbar {
-    background-color: #f8f9fa; 
-    padding: 0px;
+    background-color: var(--background-color); 
+    padding: 5px;
     border-bottom: 2px solid #e0e0e0; 
     display: flex; 
   }
@@ -20,7 +21,7 @@
   
   .problems-navbar button {
     background-color: transparent; 
-    color: #007bff; 
+    color: black; 
     border: none; 
     /* padding: 10px 15px;  */
     cursor: pointer; 
@@ -30,13 +31,13 @@
   }
   
   .problems-navbar button:hover {
-    color: #0056b3; /* Darker text color on hover */
-    border-bottom-color: #0056b3;
+    color: var( --upperBar-bg-color); /* Darker text color on hover */
+    border-bottom-color: var( --upperBar-bg-color);
   }
   
   .problems-navbar .problems-active {
-    border-bottom-color: #007bff; 
-    color: #0056b3; 
+    color: var( --upperBar-bg-color); /* Darker text color on hover */
+    border-bottom-color: var( --upperBar-bg-color);
   }
   
   

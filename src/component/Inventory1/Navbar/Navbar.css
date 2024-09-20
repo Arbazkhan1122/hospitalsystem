@@ -8,10 +8,11 @@
   
   .inventory-home-button {
     border: none;
-    background: white;
-    color: var( --button-bg-color);
+    background: var( --upperBar-bg-color);
+    color:white;
     font-size: var(--heading-font);
     cursor: pointer;
+    border-radius: 5px;
     margin-right: 10px; /* Gap between home button and the rest */
   }
   .inventory-home-button.active
@@ -36,7 +37,7 @@
   
   .inventory-nav-links button.active {
     border-bottom: 4px solid var(--sideBar-bg-color);
-    color: white; /* Active button text color */
+    color: var(--sideBar-bg-color); /* Active button text color */
     border-radius: 4px;
   }
   

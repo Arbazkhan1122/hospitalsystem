@@ -1,52 +1,96 @@
-import React from 'react';
-import './ClinicalAllergy.css';
+import React, { useState } from 'react';
+import './ClinicalAllergy.css'; // Separate CSS file
 
-const AllergyList = () => {
-  const allergies = [
-    {
-      recordedOn: '2024-08-13 13:20',
-      allergen: 'test',
-      severity: 'Mild',
-      reaction: 'ANNAPHYLAXIS',
-      verified: false,
-      comments: 't'
-    }
-  ];
+const Allergy = () => {
+  const [showForm, setShowForm] = useState(false);
+
+  const handleAddNew = () => {
+    setShowForm(true);
+  };
+
+  const handleCloseForm = () => {
+    setShowForm(false);
+  };
 
   return (
     <div className="allergy-container">
-      <div className="allergy-header">
-        <h2>Allergy List</h2>
-        <button className="add-new-btn">+ Add New</button>
-      </div>
-      <table className="allergy-table">
-        <thead>
-          <tr>
-            <th>Recorded On</th>
-            <th>Allergen</th>
-            <th>Severity</th>
-            <th>Reaction</th>
-            <th>Verified</th>
-            <th>Comments</th>
-            <th>Edit</th>
-          </tr>
-        </thead>
-        <tbody>
-          {allergies.map((allergy, index) => (
-            <tr key={index}>
-              <td>{allergy.recordedOn}</td>
-              <td>{allergy.allergen}</td>
-              <td>{allergy.severity}</td>
-              <td>{allergy.reaction}</td>
-              <td>{allergy.verified.toString()}</td>
-              <td>{allergy.comments}</td>
-              <td><button className="edit-btn">Edit</button></td>
+      <div className="allergy-list">
+        <div className='allergy-list-subdiv'>
+        <h3>Allergy List</h3>
+        <button className="allergy-add-new-button" onClick={handleAddNew}>
+          + Add New
+        </button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Recorded On</th>
+              <th>Allergen</th>
+              <th>Severity</th>
+              <th>Reaction</th>
+              <th>Verified</th>
+              <th>Comments</th>
+              <th>Edit</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {/* Allergy data rows will go here */}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="allergy-add-new-section">
+        {showForm && (
+          <div className="add-allergy-form">
+            <div className="allergy-form-header">
+              <h3>Add Allergy</h3>
+              <button className="allergy-close-button" onClick={handleCloseForm}>
+                ✖
+              </button>
+            </div>
+            <form>
+              <div className="allergy-form-row">
+                <label>Type Of Allergy*:</label>
+                <div className='allergy-form-row-subdiv'>
+                <input type="checkbox" /> Medication
+                <input type="checkbox" /> Non Medication
+                <input type="checkbox" /> Food
+                <input type="checkbox" /> AdvRec
+                </div>
+              </div>
+              <div className="allergy-form-row">
+                <label>Severity:</label>
+                <div className='allergy-form-row-subdiv'>
+                <input type="checkbox" /> Mild
+                <input type="checkbox" /> Moderate
+                <input type="checkbox" /> Severe
+                </div>
+              </div>
+              <div className="allergy-form-row">
+                <label>Verified:</label>
+                <div className='allergy-form-row-subdiv'>
+                <input type="checkbox" /> Unknown
+                <input type="checkbox" /> Yes
+                <input type="checkbox" checked /> No
+                </div>
+              </div>
+              <div className="allergy-form-row">
+                <label>Reaction*:</label>
+                <input type="text" placeholder="Reaction" />
+              </div>
+              <div className="allergy-form-row">
+                <label>Comments:</label>
+                <textarea placeholder="Comments"></textarea>
+              </div>
+              <button type="button" className="allergy-add-button">
+                Add
+              </button>
+            </form>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
-export default AllergyList;
+export default Allergy;

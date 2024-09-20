@@ -6,7 +6,9 @@ import ClinicalMedication from '../DashBoards/ClinicalMedication';
 import ClinicalBloodSugarMonitoring from '../DashBoards/ClinicalBloodSugarMonitoring';
 import AddVitalsForm from '../DashBoards/AddVitals'; // Import the AddVitalsForm component
 
-const VitalsPage = () => {
+const VitalsPage = ({patientId,newPatientVisitId}) => {
+  console.log(patientId +" "+newPatientVisitId +"------------------");
+  
   const [activeTab, setActiveTab] = useState('vitals');
   const [showAddVitalsForm, setShowAddVitalsForm] = useState(false); // State to manage form visibility
 
@@ -27,27 +29,30 @@ const VitalsPage = () => {
       return <ClinicalBloodSugarMonitoring />;
     }
     return (
-      <div className="vitals-list">
-        <h2>Vitals List</h2>
-        <button className="new-vitals-btn" onClick={() => setShowAddVitalsForm(true)}>
-          + New Vitals
-        </button>
-        <ul>
-          <li>Recorded On</li>
-          <li>Taken On</li>
-          <li>Height</li>
-          <li>Weight</li>
-          <li>BMI</li>
-          <li>Temperature</li>
-          <li>Pulse</li>
-          <li>Blood Pressure</li>
-          <li>Respiratory Rate</li>
-          <li>SpO2</li>
-          <li>O₂ Delivery Method</li>
-          <li>Body Pain Data</li>
-          <li>Action</li>
-        </ul>
-      </div>
+      <>
+      <AddVitalsForm patientId={patientId} newPatientVisitId={newPatientVisitId}/>
+      </>
+      // <div className="vitals-list">
+      //   <h2>Vitals List</h2>
+      //   <button className="new-vitals-btn" onClick={() => setShowAddVitalsForm(true)}>
+      //     + New Vitals
+      //   </button>
+      //   <ul>
+      //     <li>Recorded On</li>
+      //     <li>Taken On</li>
+      //     <li>Height</li>
+      //     <li>Weight</li>
+      //     <li>BMI</li>
+      //     <li>Temperature</li>
+      //     <li>Pulse</li>
+      //     <li>Blood Pressure</li>
+      //     <li>Respiratory Rate</li>
+      //     <li>SpO2</li>
+      //     <li>O₂ Delivery Method</li>
+      //     <li>Body Pain Data</li>
+      //     <li>Action</li>
+      //   </ul>
+      // </div>
     );
   };
 

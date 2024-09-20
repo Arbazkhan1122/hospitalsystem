@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './familyhistory.css'; 
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const FamilyHistory = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); 
   const [familyHistories, setFamilyHistories] = useState([]); 
   const [newFamilyHistory, setNewFamilyHistory] = useState({}); 
@@ -30,20 +33,41 @@ const FamilyHistory = () => {
       <div className="family-history-main">
         <div className='family'>
         <section className="family-history-section">
+          <div className='family-history-subdiv'>
           <label>Family History Problem List</label>
-          <button className="add-button" onClick={handleOpenModal}>
+          <button className="family-history-add-button" onClick={handleOpenModal}>
             ➕ Add
           </button>
-          <table className="family-history-table">
-            <thead>
-              <tr>
-                <th>ICD-11 Description</th>
-                <th>ICD-11 code </th>
-                <th>Relationship</th>
-                <th>Note</th>
-                <th>Edit</th>
-              </tr>
-            </thead>
+          </div>
+          <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "ICD-11 Description",
+  "ICD-11 Code",
+  "Relationship",
+  "Note",
+  "Edit"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
             <tbody>
               {familyHistories.map((history, index) => (
                 <tr key={index}>
@@ -70,19 +94,19 @@ const FamilyHistory = () => {
               </button>
               <div className="family-history-form-group">
                 <label>Search Problem*:</label>
-                <input type="text" name="description" placeholder="ICD-11" onChange={handleInputChange} />
+                <input className='family-history-form-group-input' type="text" name="description" placeholder="ICD-11" onChange={handleInputChange} />
               </div>
               <div className="family-history-form-group">
                 <label>ICD-11*:</label>
-                <input type="text" name="icd11" placeholder="ICD-11" onChange={handleInputChange} />
+                <input  className='family-history-form-group-input' type="text" name="icd11" placeholder="ICD-11" onChange={handleInputChange} />
               </div>
               <div className="family-history-form-group">
                 <label>Relationship*:</label>
-                <input type="text" name="relationship" onChange={handleInputChange} />
+                <input  className='family-history-form-group-input' type="text" name="relationship" onChange={handleInputChange} />
               </div>
               <div className="family-history-form-group">
                 <label>Note:</label>
-                <textarea name="note" onChange={handleInputChange}></textarea>
+                <textarea  className='family-history-form-group-input' name="note" onChange={handleInputChange}></textarea>
               </div>
               <button className="family-history-add-button" onClick={handleAddFamilyHistory}>
                 Add Family History

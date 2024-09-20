@@ -44,13 +44,8 @@
     z-index: 1;
 }
 
-.writeOff-write-off-table input[type="text"],
-.writeOff-write-off-table input[type="date"] {
+.writeOff-input{
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Ensure the input width includes padding */
 }
 
 .writeOff-remove-row {

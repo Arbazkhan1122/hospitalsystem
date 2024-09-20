@@ -1,5 +1,14 @@
+/* swapnil Rokade activeproblems Adding className And color and table css 18/09 */
 .activeproblems-container {
   padding: 20px;
+}
+.activeproblems-subdiv
+{
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* .activeproblems-section {
@@ -17,15 +26,13 @@
   font-size: 12px;
   color: black;
   font-weight: bold;
-
-
 }
 
 
 .activeproblems-add-button {
-  background-color: #3578e5;
+  background-color: var(--button-color);
   color: white;
-  padding: 8px;
+  padding: 5px;
   /* margin-bottom: 10px; */
   border: none;
   border-radius: 5px;
@@ -34,7 +41,9 @@
 }
 
 .activeproblems-add-button:hover {
-  background-color: #3578e5;
+  border: 1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .activeproblems-table {
@@ -117,14 +126,13 @@ width: 50%;
 }
 
 .activeproblems-add-problem-button {
-  background-color: #8e44ad;
+  background-color: var(--button-color);
   color: white;
   border: none;
   padding: 0px 8px;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20PX;
-  
 }
 
 

@@ -2,8 +2,12 @@ import React, { useState, useRef } from 'react';
 import ReactToPrint from 'react-to-print';
 import PatientRecordAction from './PatientRecordAction'; 
 import './PatientsRecords.css';
+import PatientDashboard from './PatientDashboard';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const PatientRecord = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [selectedPatient, setSelectedPatient] = useState(null);
   const [showPatientRecordAction, setShowPatientRecordAction] = useState(false);
   const [filterFavourites, setFilterFavourites] = useState(false);
@@ -55,55 +59,81 @@ const PatientRecord = () => {
 
   return (
     <div className="patient-record">
-      <div className="date-range">
-        <div>
-          <label>From:</label>
-          <input type="date" value="2024-08-11" />
+      <div className="patient-record-actions">
+        <div className='patient-record-actions-subdiv'>
+        <button className="patient-record-favorites" onClick={handleFavouritesClick}>★ My Favorites</button>
+        <button className="patient-record-pending" onClick={handlePendingListClick}>Pending List</button>
         </div>
-        <div>
-          <label>To:</label>
-          <input type="date" value="2024-08-18" />
-        </div>
-        <button className="star">☆</button>
-        <button className="reset">-</button>
-        <button className="ok">OK</button>
-      </div>
-
-      <div className="actions">
-        <button className="favorites" onClick={handleFavouritesClick}>★ My Favorites</button>
-        <button className="pending" onClick={handlePendingListClick}>Pending List</button>
-        <div className="department-filter">
+        <div className="patient-record-department-filter">
           <label>Department Filter :</label>
-          <select>
+          <select className='patient-record-select'>
             <option>ALL</option>
           </select>
         </div>
       </div>
+      <div className="patient-record-date-range">
+        <div>
+          <label>From:</label>
+          <input type="date" value="2024-08-11" />
+          <label>To:</label>
+          <input type="date" value="2024-08-18" />
+        </div>
+        <div>
+        <button className="patient-record-star">☆</button>
+        <button className="patient-record-reset">-</button>
+        <button className="patient-record-ok">OK</button>
+        </div>
+      </div>
 
-      <div className="search-bar">
-        <input type="text" placeholder="Search" />
+      
+
+      <div className="patient-record-search-bar">
+        <div className='patient-record-sub-div'>
+        <input className='patient-record-select' type="text" placeholder="Search" />
         <button>🔍</button>
-        <span className="results">Showing {filteredPatients.length} / {patients.length} results</span>
+        </div>
+        <div>
+        <span className="patient-record-results">Showing {filteredPatients.length} / {patients.length} results</span>
         <ReactToPrint
-          trigger={() => <button className="print">Print</button>}
+          trigger={() => <button className="patient-record-print">Print</button>}
           content={() => componentRef.current}
         />
+        </div>
       </div>
 
       {/* The content to be printed */}
-      <div ref={componentRef}>
-        <table>
+      <div ref={componentRef} className='table-container'>
+       <table className="patientList-table" ref={tableRef}>
           <thead>
             <tr>
-              <th>Hospital No.</th>
-              <th>Name</th>
-              <th>Age/Sex</th>
-              <th>Admission Status</th>
-              <th>Admitted On</th>
-              <th>Ward-Bed</th>
-              <th>Dept</th>
-              <th>Provider Name</th>
-              <th>Actions</th>
+              {[
+               "Hospital No.",
+  "Name",
+  "Age/Sex",
+  "Admission Status",
+  "Admitted On",
+  "Ward-Bed",
+  "Dept",
+  "Provider Name",
+  "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -118,11 +148,11 @@ const PatientRecord = () => {
                 <td>{patient.dept}</td>
                 <td>{patient.providerName}</td>
                 <td>
-                  <button onClick={() => handleViewPatientClick(patient.id)}>👤</button>
-                  <button>🔔</button>
-                  <button>🖼</button>
-                  <button>📄</button>
-                  <button>♥</button>
+                  <button className="patient-record-action" onClick={() => handleViewPatientClick(patient.id)}>👤</button>
+                  <button className="patient-record-action" >🔔</button>
+                  <button className="patient-record-action" >🖼</button>
+                  <button className="patient-record-action" >📄</button>
+                  <button className="patient-record-action" >♥</button>
                 </td>
               </tr>
             ))}
@@ -130,18 +160,18 @@ const PatientRecord = () => {
         </table>
       </div>
 
-      <div className="pagination">
+      {/* <div className="pagination">
         <span>1 to {filteredPatients.length} of {filteredPatients.length}</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 1 of 1</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
 
       {showPatientRecordAction && (
         <div className="patient-record-action-modal">
-          <PatientRecordAction patient={selectedPatient} />
+          <PatientDashboard patient={selectedPatient} />
           <button onClick={handleClosePatientRecordAction}>Close</button>
         </div>
       )}

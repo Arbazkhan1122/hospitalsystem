@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './SurgicalHistory.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const SurgicalHistory = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [surgicalHistories, setSurgicalHistories] = useState([]);
   const [newSurgicalHistory, setNewSurgicalHistory] = useState({});
@@ -29,21 +32,42 @@ const SurgicalHistory = () => {
       <div className="surgical-history-main">
         <div className='surgicalhist'>
         <section className="surgical-history-section">
+          <div className='surgical-history-subdiv'>
           <label>Surgical History List</label>
-          <button className="add-button" onClick={handleOpenModal}>
+          <button className="surgical-history-add-button" onClick={handleOpenModal}>
             ➕ Add
           </button>
-          <table className="surgical-history-table">
-            <thead>
-              <tr>
-                <th>Surgery Type</th>
-                <th>ICD-11 Description</th>
-                <th>ICD-11 Code</th>
-                <th>Surgery Date</th>
-                <th>Note</th>
-                <th>Edit</th>
-              </tr>
-            </thead>
+          </div>
+          <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                  "Surgery Type",
+                  "ICD-11 Description",
+                  "ICD-11 Code",
+                  "Surgery Date",
+                  "Note",
+                  "Edit"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
             <tbody>
               {surgicalHistories.map((history, index) => (
                 <tr key={index}>

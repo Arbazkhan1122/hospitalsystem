@@ -3,7 +3,7 @@ import './patientDashboard_Action_Order.css';   // Import the MedicationOrder co
 import MedicationOrder from './MedicationOrder ';
 import { API_BASE_URL } from '../api/api';
 
-const ActionRecordPage = ({patientId,newPatientVisitId}) => {
+const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
   const [selectedOrderType, setSelectedOrderType] = useState('');
   const [orderData, setOrderData] = useState([]);
   const [selectedOrders, setSelectedOrders] = useState([]);
@@ -44,7 +44,7 @@ const ActionRecordPage = ({patientId,newPatientVisitId}) => {
     };
 
     fetchOrders();
-  }, [selectedOrderType]);
+  }, [selectedOrderType,showMedicationOrder]);
 
   const handleOrderTypeChange = (e) => {
     setSelectedOrderType(e.target.value);
@@ -78,7 +78,7 @@ const ActionRecordPage = ({patientId,newPatientVisitId}) => {
   };
 
   if (showMedicationOrder) {
-    return <MedicationOrder selectedOrders={selectedOrders}  patientId={patientId} newPatientVisitId={newPatientVisitId}/>;  // Pass selected orders to MedicationOrder
+    return <MedicationOrder selectedOrders={selectedOrders} setActiveSection={setActiveSection} patientId={patientId} newPatientVisitId={newPatientVisitId}/>;  // Pass selected orders to MedicationOrder
   }
 
   return (
@@ -88,7 +88,7 @@ const ActionRecordPage = ({patientId,newPatientVisitId}) => {
         <div className='action-records-selected-container'>
           <div className="selected_orders">
             <div className='selected-order-header'>
-              <h2>Selected Orders</h2>
+              <h2 className='action-records-h2'>Selected Orders</h2>
               <div className='selected-order-header-right'>
                 <span className='remove_order_button' onClick={() => setSelectedOrders([])}>Cancel</span>
                 <span className='proceed_order_button' onClick={handleProceed}>Proceed</span>
@@ -108,7 +108,7 @@ const ActionRecordPage = ({patientId,newPatientVisitId}) => {
 
           {/* Active Orders Section */}
           <div className="action_record_active_orders">
-            <h2>🔍 Active Orders</h2>
+            <h2 className='action-records-h2'>🔍 Active Orders</h2>
             <table className="action_record_table">
               <thead>
                 <tr>
@@ -135,7 +135,7 @@ const ActionRecordPage = ({patientId,newPatientVisitId}) => {
         
         {/* New Orders Section */}
         <div className="action_record_new_orders">
-          <h2>➕ New Orders</h2>
+          <h2 className='action-records-h2'>➕ New Orders</h2>
           <div className="action_record_new_order_controls">
             
             <div className="action-dropdown-container">

@@ -2,8 +2,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./MedicationOrder.css";
+import { API_BASE_URL } from "../api/api";
 
-const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId }) => {
+const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiveSection }) => {
+  console.log(patientId +""+ newPatientVisitId);
+  
   const [medicationList, setMedicationList] = useState(
     selectedOrders.map(order => ({
       type: order?.genericNameDTO?.genericName || "", // Pre-fill generic name from selected order
@@ -13,6 +16,8 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId }) => {
       frequency: 0,
       lastTaken: "",
       comments: "",
+      status:"pending",
+      medicationDate:new Date().toLocaleDateString()
     }))
   );
 
@@ -25,20 +30,21 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId }) => {
   };
 
   const handleSubmit = async () => {
-    // Loop through each medication and make individual API calls
+    console.log(medicationList);
     for (let i = 0; i < medicationList.length; i++) {
       const medication = medicationList[i];
       const formData =
         patientId > 0
           ? { ...medication, patientDTO: { patientId } }
           : { ...medication, newPatientVisitDTO: { newPatientVisitId } };
-
       try {
         const response = await axios.post(
           `${API_BASE_URL}/medications/save-medication-details`,
           formData
         );
+        setActiveSection('dashboard')
         console.log(`Success for medication ${i + 1}:`, response.data);
+
       } catch (error) {
         console.error(`Error submitting medication ${i + 1}:`, error);
       }

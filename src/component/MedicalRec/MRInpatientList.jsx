@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../MedicalRec/MRInpatientList.css';
 import { useNavigate } from 'react-router-dom';
-import Modal from 'react-modal';
+import Modal from 'react-modal'
 
 function RecordMedical() {
   const [isMenuVisible, setisMenuVisible] = useState(false);

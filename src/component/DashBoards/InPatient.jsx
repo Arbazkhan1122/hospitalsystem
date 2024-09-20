@@ -5,8 +5,10 @@ import './InPatient.css';
 import PatientDashboard from './PatientDashboard';
 import InPatientPage from './InPatientPage';
 import { API_BASE_URL } from '../api/api';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const PatientList = () => {
+  const [columnWidths,setColumnWidths] = useState({});
   const [patients, setPatients] = useState([]);
   const [selectedPatient, setSelectedPatient] = useState(null);
   const [showOrders, setShowOrders] = useState(false);
@@ -67,11 +69,11 @@ const PatientList = () => {
   }
 
   return (
-    <div className="PatientList">
-      <div className="PatientContainer">
-        <div className="PatientLeftSection">
-          <div className="PatientFilterSection">
-            <div className="PatientFilterItem" onClick={toggleFavouriteFilter}>
+    <div className="InPatient-PatientList">
+      <div className="InPatient-PatientContainer">
+        <div className="InPatient-PatientLeftSection">
+          <div className="InPatient-PatientFilterSection">
+            <div className="InPatient-PatientFilterItem" onClick={toggleFavouriteFilter}>
               <FaStar className={`PatientIcon ${filterFavourite ? 'active' : ''}`} />
               <label>★ My Favourite</label>
             </div>
@@ -81,10 +83,10 @@ const PatientList = () => {
             </div>
           </div>
         </div>
-        <div className="PatientRightSection">
-          <div className="PatientSearchBar">
+        <div className="InPatient-PatientRightSection">
+          <div className="InPatient-PatientSearchBar">
             <select
-              className="PatientDepartmentFilter"
+              className="InPatient-PatientDepartmentFilter"
               value={selectedDept}
               onChange={(e) => setSelectedDept(e.target.value)}
             >
@@ -103,20 +105,39 @@ const PatientList = () => {
         </div>
       </div>
 
-      <table ref={tableRef} className="PatientTable">
-        <thead>
-          <tr>
-            <th>Hospital No</th>
-            <th>Name</th>
-            <th>Age/Sex</th>
-            <th>Admission Status</th>
-            <th>Admitted On</th>
-            <th>Ward/Bed</th>
-            <th>Department</th>
-            <th>Provider Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+      <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Hospital No",
+                 "Name",
+                 "Age/Sex",
+                 "Admission Status",
+                 "Admitted On",
+                 "Ward/Bed",
+                 "Department",
+                 "Provider Name",
+                 "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {filteredPatients.map((patient, index) => (
             <tr key={index}>

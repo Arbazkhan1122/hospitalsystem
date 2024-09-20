@@ -15,7 +15,7 @@ const SchemeRefundList = () => {
 
   const [searchPatient, setSearchPatient] = useState("");
   const [ipNo, setIpNo] = useState("");
-  const [refundScheme, setRefundScheme] = useState("");
+  const [refuntScheme, setRefuntScheme] = useState("");
   const [amount, setAmount] = useState("");
   const [remark, setRemark] = useState("");
 
@@ -24,7 +24,7 @@ const SchemeRefundList = () => {
     const fetchRefundData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/Search-Patient/fetch-all-search-patient"
+          "http://192.168.1.57:5000/api/Search-Patient/fetch-all-search-patient"
         );
         setSchemeRefundList(response.data);
       } catch (error) {
@@ -59,21 +59,27 @@ const SchemeRefundList = () => {
       const payload = {
         searchPatient,
         ipNo,
-        refundScheme,
+        refuntScheme,
         amount,
         remark,
       };
 
-      const response = await axios.post("http://localhost:5000/api/Search-Patient/save-search-patient", payload);
+      const response = await axios.post("http://192.168.1.57:5000/api/Search-Patient/save-search-patient", payload);
 
       if (response.status === 200) {
         alert("Data saved successfully!");
+
+        // Update the state with the new data
         setSchemeRefundList((prevList) => [...prevList, payload]);
+
+        // Clear input fields after saving
         setSearchPatient("");
         setIpNo("");
         setAmount("");
         setRemark("");
-        setRefundScheme("");
+        setRefuntScheme("");
+
+        // Close the modal after saving
         closeSchemeReturnEntryModal(); 
       }
     } catch (error) {
@@ -120,12 +126,16 @@ const SchemeRefundList = () => {
         <tbody>
           {schemeRefundList.map((item, index) => (
             <tr key={index}>
+              {/* <td>{item.receiptNo}</td> */}
               <td>{moment(item.refundDate).format("YYYY-MM-DD")}</td>
               <td>{item.receiptNo}</td>
-              <td>{item.refundScheme}</td>
+              <td>{item.refuntScheme}</td>
+              {/* <td>{item.hosNo}</td> */}
               <td>{item.searchPatient}</td>
+              {/* <td>{item.ageSex}</td> */}
               <td>{item.amount}</td>
               <td>{item.ipNo}</td>
+              {/* <td>{item.enteredBy}</td> */}
               <td>{item.remark}</td>
               <td>
                 <button className="btn btn-primary" onClick={() => printSchemeRefundDetails(item.receiptNo)}>
@@ -167,10 +177,10 @@ const SchemeRefundList = () => {
             <div className="form-group">
               <label>Scheme:</label>
               <select
-                className="form-control"
-                value={refundScheme}
-                onChange={(e) => setRefundScheme(e.target.value)}
-              >
+                  className="utlt-form-control"
+                  value={refuntScheme}
+                  onChange={(e) => setRefuntScheme(e.target.value)}
+                >
                 <option value="">Select Scheme</option>
                 <option value="ASTRA">ASTRA</option>
                 <option value="BRITAM">BRITAM</option>
@@ -209,7 +219,34 @@ const SchemeRefundList = () => {
           </Modal.Footer>
         </Modal>
       )}
-      
+      {showReceipt && (
+        <div className="utlt modal show d-block" tabIndex="-1" role="dialog">
+          <div className="utlt-modal-dialog" role="document">
+            <div className="utlt-modal-content">
+              <div className="utlt-modal-header">
+                <h5 className="utlt-modal-title">Scheme Refund Receipt</h5>
+              </div>
+              <div className="utlt-modal-body">
+                {printSchemeRefund && (
+                  <div>
+                    <p>Receipt No: {receiptNo}</p>
+                    <p>Refund Date: {schemeRefundList.find((item) => item.receiptNo === receiptNo)?.refundDate}</p>
+                    <p>Amount: {schemeRefundList.find((item) => item.receiptNo === receiptNo)?.amount}</p>
+                  </div>
+                )}
+              </div>
+              <div className="utlt-modal-footer">
+                <button type="button" className="utlt-btn btn btn-secondary" onClick={closeSchemeRefundReceiptPopUp}>
+                  Close
+                </button>
+                <button type="button" className="utlt-btn btn btn-primary">
+                  Print
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
