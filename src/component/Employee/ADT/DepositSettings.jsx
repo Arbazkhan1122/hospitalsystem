@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 // import './DepositeSettings.css';
 
 const DepositeSettings = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   // Sample data
   const data = [
@@ -38,19 +41,38 @@ const DepositeSettings = () => {
         <input type="text" placeholder="Search" className="manage-add-ward-search-input" />
         <div className="manage-add-ward-results-info">Showing {data.length} / {data.length} results</div>
 
-        <div className='manage-ward-ta'>
-          <table className="manage-add-ward-table">
-            <thead>
-              <tr>
-                <th>Bed Features</th>
-                <th>Schemes</th>
-                <th>Deposit Head</th>
-                <th>Minimum Deposit</th>
-                <th>Is Only Minimum</th>
-                <th>Is Active</th>
-                <th>Action</th>
-              </tr>
-            </thead>
+        <div className='table-container'>
+        <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Bed Features",
+                 "Schemes",
+                 "Deposit Head",
+                 "Minimum Deposit",
+                 "Is Only Minimum",
+                 "Is Active",
+                 "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
             <tbody>
               {data.map((item, index) => (
                 <tr key={index}>
@@ -69,13 +91,13 @@ const DepositeSettings = () => {
             </tbody>
           </table>
 
-          <div className="manage-add-ward-pagination">
+          {/* <div className="manage-add-ward-pagination">
             <Button className="manage-add-ward-pagination-btn">First</Button>
             <Button className="manage-add-ward-pagination-btn">Previous</Button>
             <span>Page 1 of 3</span>
             <Button className="manage-add-ward-pagination-btn">Next</Button>
             <Button className="manage-add-ward-pagination-btn">Last</Button>
-          </div>
+          </div> */}
         </div>
       </div>
 

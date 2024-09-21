@@ -46,6 +46,7 @@ import Schemes from './Billing/Schemes';
 import ReportingItemsMapping from './Billing/ReportingItemsMapping';
 import RegistrationSticker from './Billing/RegistrationSticker';
 import EmployeeHeader from './EmployeeHeader';
+import ManageMunicipalityCom from './Geolocation/ManageMunicipality';
 
 
 const AppRoutes = () => {
@@ -93,6 +94,7 @@ const AppRoutes = () => {
      <Route path="schemes" element={<Schemes/>}/>
      <Route path="reporting-items-mapping" element={<ReportingItemsMapping/>}/>
      <Route path="registration-sticker" element={<RegistrationSticker/>}/>
+     <Route path="manage-municipalitys" element={<ManageMunicipalityCom/>}/>
 
     </Routes>
     </>

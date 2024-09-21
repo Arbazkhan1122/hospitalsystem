@@ -22,7 +22,7 @@ const DispensaryNavBar = () => {
           <li><NavLink to="/salesStockDetails">Stock</NavLink></li>
           <li><NavLink to="/dispenCouter">Counter</NavLink></li>
           <li><NavLink to="/dispenReportList">Reports</NavLink></li>
-          <li><NavLink to="/dispenPatientConsump">Patient Consumption</NavLink></li>
+          {/* <li><NavLink to="/dispenPatientConsump">Patient Consumption</NavLink></li> */}
           <li><NavLink to="/dispenPatientConsumption">Patient Consumption</NavLink></li>
         </div>
         <div className='dispensary-Activebtn-N-LogOut'>

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './ManageAutoAddBillingItems.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const ManageAutoAddBillingItems = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   // Sample data
   const data = [
     {
@@ -73,21 +76,40 @@ const ManageAutoAddBillingItems = () => {
         <input type="text" placeholder="Search" className="manage-auto-billing-search-input" />
         <div className="manage-auto-billing-results-info">Showing {currentItems.length} / {data.length} results</div>
 
-        <div className='manage-auto-table'>
-          <table className="manage-auto-billing-table">
-            <thead>
-              <tr>
-                <th>Bed Feature</th>
-                <th>Scheme</th>
-                <th>Service Item</th>
-                <th>Minimum Charge Amount</th>
-                <th>Use Percentage Of Bed Charge?</th>
-                <th>Percentage Of Bed Charge</th>
-                <th>Is Repeatable?</th>
-                <th>Is Active</th>
-                <th>Action</th>
-              </tr>
-            </thead>
+        <div className='table-container'>
+        <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Bed Feature",
+  "Scheme",
+  "Service Item",
+  "Minimum Charge Amount",
+  "Use Percentage Of Bed Charge?",
+  "Percentage Of Bed Charge",
+  "Is Repeatable?",
+  "Is Active",
+  "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
             <tbody>
               {currentItems.map((item, index) => (
                 <tr key={index}>
@@ -108,14 +130,13 @@ const ManageAutoAddBillingItems = () => {
             </tbody>
           </table>
 
-          <div className="manage-auto-billing-pagination">
-            <span>Showing {indexOfFirstItem + 1} to {indexOfLastItem} of {data.length} results</span>
+          {/* <div className="manage-auto-billing-pagination">
             <button onClick={goToFirstPage} className="manage-auto-billing-pagination-btn">First</button>
             <button onClick={goToPreviousPage} className="manage-auto-billing-pagination-btn">Previous</button>
             <span>Page {currentPage} of {totalPages}</span>
             <button onClick={goToNextPage} className="manage-auto-billing-pagination-btn">Next</button>
             <button onClick={goToLastPage} className="manage-auto-billing-pagination-btn">Last</button>
-          </div>
+          </div> */}
         </div>
       </div>
 

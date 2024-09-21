@@ -124,7 +124,7 @@
 
 // export default DisPrescription;
 
-
+// Ajhar Tamboli disPrescription.jsx 19-09-24
 import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -235,7 +235,7 @@ const DisPrescription = () => {
         </div>
         <div className="disPrescription-results-info">
           <span>Showing {filteredPrescriptions.length} / {prescriptions.length} results</span>
-          <button className="disPrescription-print-button" onClick={handlePrint}>Print</button>
+          <button className="disPrescription-print-button" onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
         </div>
       </div>
 

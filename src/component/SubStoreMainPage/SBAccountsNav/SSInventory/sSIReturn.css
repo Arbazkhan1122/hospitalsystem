@@ -67,9 +67,9 @@ font-size: var(--font-size);
   padding: 10px;
   font-size: var(--font-size);
 }
-.sSIReturn-status-filters h4{
-  /* color: #474747; */
-}
+/* .sSIReturn-status-filters h4{
+  color: #474747;
+} */
 .sSIReturn-filter {
   display: flex;
   /* justify-content: space-between; */

@@ -69,14 +69,19 @@
 
 /* Edit button */
 .manage-ward-store-edit-btn {
-  background-color: #0F63AF;
+  background-color: var(--button-color);
   color: white;
   border: none;
-  padding: 4px 8px; /* Reduced padding */
+  padding: 5px 5px; /* Reduced padding */
   border-radius: 3px;
   cursor: pointer;
   font-size: 11px; /* Reduced font size */
 
+}
+.manage-ward-store-edit-btn:hover{
+  color: var(--button-color);
+  background-color: white;
+  border-bottom: 1px solid var(--button-color);
 }
 
 /* Pagination styles */
@@ -138,11 +143,12 @@
   border-collapse: collapse;
   margin-bottom: 20px;
 } */
-.ward-manage-substore-results-info{
-  color: #0F63AF;
-    font-size: 16px;
-justify-content: flex-start;
+.ward-manage-substore-results-info {
+  color: black;
+  font-size: 14px;
+  text-align: right;
 }
+
 /* Container for the entire modal */
 .manage-ward-modal-container {
   position: absolute;

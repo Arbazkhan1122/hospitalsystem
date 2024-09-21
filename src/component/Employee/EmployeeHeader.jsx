@@ -109,7 +109,7 @@ const EmployeeHeader = ({ onNavClick }) => {
       {activeNav === 'geolocation' && (  /* Added Geolocation sub-nav */
         <div className="geolocation-sub-nav">
           <ul>
-            <li><Link to="/manage-municipality" >Manage Municipality</Link></li>
+            <li><Link to="/manage-municipalitys" >Manage Municipality</Link></li>
             <li><Link to="/manage-country" >Manage Country</Link></li>
             <li><Link to="/manage-subdivision" >Manage SubDivision</Link></li>
           </ul>

@@ -1,19 +1,24 @@
+ /* Ajhar Tamboli disPrescription.css 19-09-24 */
+
+
 .disPrescription-list-requisition {
-  /* background-color: #CAF2FF; */
-  padding: 0px 10px;
+  background-color: var(--background-color);
+  padding: 10px 10px;
   font-family: Arial, sans-serif;
   height: 80vh;
-  overflow-y: scroll;
-  border: 1px solid #CAF2FF;
+  margin: 0;
+  /* overflow-y: scroll; */
+  /* border: 1px solid #CAF2FF; */
 }
 
 .disPrescription-search-bar {
-  margin-left: -15px;
+  margin-left: -35px;
 }
 
 .disPrescription-search-bar input {
-  height: 25px;
-  font-size: 14px;
+  /* height: 25px; */
+  padding: 5px;
+  font-size: var(--font-size);
   width: 200px;
   border: 1px solid gray;
   border-radius: 5px;
@@ -23,7 +28,7 @@
   position: relative;
   color: gray;
   top: 2px;
-  left: 190px;
+  left: 210px;
 }
 
 .disPrescription-results-info {
@@ -32,20 +37,26 @@
 }
 
 .disPrescription-results-info span {
-  color: black;
-  font-size: 14px;
+  /* color: black; */
+  font-size: var(--font-size);
 }
 
 .disPrescription-print-button {
   background-color: var(--button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
+  /* border: none; */
   border-radius: 5px;
   padding: 5px 10px;
   cursor: pointer;
   margin-left: 10px;
 }
-
+.disPrescription-print-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
+   
 .disPrescription-table-wrapper {
   width: 100%;
   overflow-x: auto; /* Enables horizontal scrolling */
@@ -60,11 +71,11 @@
 
 .disPrescription-requisition-table th {
   border: 1px solid #ddd;
-  padding: 5px 0;
+  padding: 3px 0;
   text-align: center;
   background-color: #F3F3F3;
-  font-size: 16px;
-  color: #383737;
+  font-size: var(--heading-font);
+  /* color: #383737; */
   white-space: nowrap;
 }
 /* .disPrescription-requisition-tableBody{
@@ -75,8 +86,8 @@
   border: 1px solid #ddd;
   padding: 5px 0;
   text-align: center;
-  font-size: 14px;
-  color: #3f3e3e;
+  font-size: var(--font-size);
+  /* color: #3f3e3e; */
   white-space: nowrap;
 }
 
@@ -98,12 +109,12 @@
 
 .disPrescription-pagination span {
   margin: 0 10px;
-  color: gray;
-  font-size: 12px;
+  /* color: gray; */
+  font-size: var(--font-size);
 }
 
 .disPrescription-search-N-result {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
