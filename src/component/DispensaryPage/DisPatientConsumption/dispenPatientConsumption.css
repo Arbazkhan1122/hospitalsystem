@@ -1,5 +1,5 @@
 .dispenPatientConsumption-requisition {
-    background-color: #CAF2FF;
+    background-color: var(--background-color);
     padding: 0px 10px 0px 10px;
     font-family: Arial, sans-serif;
     height: 500px;

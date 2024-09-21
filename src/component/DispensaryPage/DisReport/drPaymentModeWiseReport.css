@@ -56,7 +56,9 @@
   .drPaymentModeWiseReport-select-filters label{
   margin-right: 30px;
   }
-  .drPaymentModeWiseReport-select-filters input[type="date"], input[type="text"], select {
+  .drPaymentModeWiseReport-select-filters input[type="date"], 
+  .drPaymentModeWiseReport-select-filters input[type="text"], 
+  .drPaymentModeWiseReport-select-filters select {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;

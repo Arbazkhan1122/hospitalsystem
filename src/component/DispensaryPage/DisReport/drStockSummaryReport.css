@@ -1,3 +1,6 @@
+ /* Ajhar Tamboli drStockSummaryReport.css 19-09-24 */
+
+
 .drStockSummaryReport-report {
     font-family: Arial, sans-serif;
     /* max-width: 1200px; */
@@ -56,7 +59,9 @@
   .drStockSummaryReport-select-filters label{
   margin-right: 30px;
   }
-  .drStockSummaryReport-select-filters input[type="date"], input[type="text"], select {
+  .drStockSummaryReport-select-filters input[type="date"], 
+  .drStockSummaryReport-select-filters input[type="text"], 
+  .drStockSummaryReport-select-filters select {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
