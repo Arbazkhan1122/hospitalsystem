@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import './EmployeeTable.css';
 import UpdateEmployeeForm from './UpdateEmployeeForm'; // Ensure this path is correct
 import AddEmployeeForm from './AddEmployeeForm';
-
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 const Employeecomponent = () => {
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const handleEditClick = (employee) => {
     setSelectedEmployee(employee);
@@ -36,27 +38,48 @@ const Employeecomponent = () => {
       <div className="employee-table-container">
         <div className="employee-manage-section">
         <Button  className="add-employee-role-role-btn" onClick={handleOpenAddModal}>+ Add Employee</Button>
-        <input type="text" placeholder="Search" className="employee-search-input" />
         </div>
-        <table className="employee-table">
+        <input type="text" placeholder="Search" className="employee-search-input" />
+
+        <div className='table-container'>
+        <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Gender</th>
-              <th>Department</th>
-              <th>Role</th>
-              <th>Contact No</th>
-              <th>Action</th>
-              <th>IsActive</th>
-              <th>Type</th>
-              <th>DOB</th>
-              <th>Joined On</th>
-              <th>Contact Address</th>
-              <th>Email</th>
-              <th>Room No</th>
-              <th>Extension</th>
-              <th>Speed Dial</th>
-              <th>Office Hour</th>
+              {[
+                 "Name",
+                 "Gender",
+                 "Department",
+                 "Role",
+                 "Contact No",
+                 "Action",
+                 "IsActive",
+                 "Type",
+                 "DOB",
+                 "Joined On",
+                 "Contact Address",
+                 "Email",
+                 "Room No",
+                 "Extension",
+                 "Speed Dial",
+                 "Office Hour"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -90,6 +113,7 @@ const Employeecomponent = () => {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
 
       {selectedEmployee && (
@@ -126,13 +150,13 @@ const Employeecomponent = () => {
         </Modal>
       )}
 
-      <div className="employee-pagination">
+      {/* <div className="employee-pagination">
         <Button>First</Button>
         <Button>Previous</Button>
         <span>Page 1 of 4</span>
         <Button>Next</Button>
         <Button>Last</Button>
-      </div>
+      </div> */}
     </div>
   );
 };

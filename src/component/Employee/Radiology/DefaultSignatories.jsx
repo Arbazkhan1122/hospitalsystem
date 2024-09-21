@@ -10,7 +10,7 @@ const DefaultSignatories  = () => {
           <div className="default-signatories-list">
             <label className="default-signatories-item">
               <input type="checkbox" />
-              Dr. ANN NJOKI THIONGO
+              Dr. Ann Njoki Thiongo
             </label>
             <label className="default-signatories-item">
               <input type="checkbox" />

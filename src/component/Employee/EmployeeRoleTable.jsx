@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import './EmployeeRoleTable.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 // import AddEmployeeForm from './AddEmployeeForm';
 import AddEmployeeRoleForm from './AddEmployeeRole';
 
 const EmployeeRoleComponent = () => {
   const [showAddRoleModal, setShowAddRoleModal] = useState(false);
   const [roleData, setRoleData] = useState({ role: '', description: '' });
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const handleOpenAddRoleModal = (role = '', description = '') => {
     setRoleData({ role, description });
@@ -34,15 +37,33 @@ const EmployeeRoleComponent = () => {
           >
             +Add Role
           </Button>
-          <input type="text" placeholder="Search" className="emp-search-input" />
         </div>
-       <div className='emp-main'>
-       <table className="employee-role-table">
+        <input type="text" placeholder="Search" className="emp-search-input" />
+
+       <div className='table-container'>
+       <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Role</th>
-              <th>Description</th>
-              <th>Action</th>
+              {[
+               "Role", "Description", "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -65,13 +86,13 @@ const EmployeeRoleComponent = () => {
         </table>
        </div>
       </div>
-      <div className="employee-pagination">
+      {/* <div className="employee-pagination">
         <Button>First</Button>
         <Button>Previous</Button>
         <span>Page 1 of 4</span>
         <Button>Next</Button>
         <Button>Last</Button>
-      </div>
+      </div> */}
 
       {/* AddEmployeeRoleForm Modal */}
       <AddEmployeeRoleForm

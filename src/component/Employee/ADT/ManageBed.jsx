@@ -1,8 +1,9 @@
 // src/DepartmentTable.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './ManageWard.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const ManageBed = () => {
   const [showEditModal, setShowEditModal] = useState(false);
@@ -11,6 +12,8 @@ const ManageBed = () => {
   const [bedNumber, setBedNumber] = useState('');
   const [bedCode, setBedCode] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const handleEditClick = (bed) => {
     setSelectedBed(bed);
@@ -63,17 +66,37 @@ const ManageBed = () => {
         </div>
         <input type="text" placeholder="Search" className="manage-add-ward-search-input" />
         <div className="manage-add-ward-results-info">Showing {data.length} results</div>
-
-        <table className="manage-add-ward-table">
+        
+         <div className='table-container'>
+         <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Ward</th>
-              <th>Bed Features</th>
-              <th>Bed Number</th>
-              <th>Bed Code</th>
-              <th>Is Active</th>
-              <th>Status</th>
-              <th>Action</th>
+              {[
+                 "Ward",
+                 "Bed Features",
+                 "Bed Number",
+                 "Bed Code",
+                 "Is Active",
+                 "Status",
+                 "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -97,14 +120,15 @@ const ManageBed = () => {
             ))}
           </tbody>
         </table>
+        </div>
 
-        <div className="manage-add-ward-pagination">
+        {/* <div className="manage-add-ward-pagination">
           <Button className="manage-add-ward-pagination-btn">First</Button>
           <Button className="manage-add-ward-pagination-btn">Previous</Button>
           <span>Page 1 of 4</span>
           <Button className="manage-add-ward-pagination-btn">Next</Button>
           <Button className="manage-add-ward-pagination-btn">Last</Button>
-        </div>
+        </div> */}
       </div>
 
       <Modal show={showEditModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">
