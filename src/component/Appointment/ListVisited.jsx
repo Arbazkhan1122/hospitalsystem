@@ -12,7 +12,7 @@ const ListVisited = () => {
     // Fetch data from the API when the component mounts
     const fetchAppointments = async () => {
       try {
-        const response = await axios.get('http://localhost:1415/api/new-patient-visits');
+        const response = await axios.get('http://192.168.42.16:1415/api/new-patient-visits');
         setAppointments(response.data); // Assume the data is in response.data
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -27,8 +27,8 @@ const ListVisited = () => {
   };
 
   return (
-    <div className="appointment-visited-list">
-      <div className='appointment-visited-d-flex' style={{alignItems:"center", justifyContent:"space-between"}}>
+    <div className="appointment-list">
+      <div className='d-flex' style={{alignItems:"center", justifyContent:"space-between"}}>
         <div>
           <h3>Patient Visit List</h3>
           <p>* Followup is valid up to 10 days of last visit with same doctor</p>
@@ -38,8 +38,8 @@ const ListVisited = () => {
           <Button variant="primary">Reload</Button>
         </div>
       </div>
-      <div className='appointment-visited-d-flex' style={{alignItems:"center", justifyContent:"space-between"}} >
-      <div className="appointment-visited-search-bar">
+      <div className='d-flex' style={{alignItems:"center", justifyContent:"space-between"}} >
+      <div className="search-bar">
         <input 
           type="text" 
           placeholder="Search (Atleast 3 characters)" 

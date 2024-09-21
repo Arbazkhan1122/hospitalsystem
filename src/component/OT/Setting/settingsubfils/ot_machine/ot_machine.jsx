@@ -17,7 +17,7 @@ function Ot_machine() {
 
   const fetchMachines = async () => {
     try {
-      const response = await fetch('http://localhost:8888/api/ot-machines');
+      const response = await fetch('http://localhost:1415/api/ot-machines');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

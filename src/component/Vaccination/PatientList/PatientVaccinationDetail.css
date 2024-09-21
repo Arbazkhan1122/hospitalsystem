@@ -1,3 +1,4 @@
+/* Akash Pawar Vaccination 14/24 */
 .PatientVaccinationDetail-overlay {
     position: fixed;
     top: 0;
@@ -9,6 +10,7 @@
     justify-content: center;
     align-items: center; */
     padding: 50px;
+    z-index: 150;
   }
   
   .PatientVaccinationDetail-popup {
@@ -23,8 +25,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 14px;
     margin-bottom: 20px;
+  }
+  .PatientVaccinationDetail-header h2 {
+   font-size: var(--heading-color);
+    color: black;
   }
   
   .PatientVaccinationDetail-closeBtn {
@@ -61,11 +66,17 @@
   }
   
   .PatientVaccinationDetail-updateBtn,.PatientVaccinationDetail-submitBtn {
-    background-color: #4CAF50;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 5px 10px;
+    border-radius: 5px;
+    padding: 5px;
     cursor: pointer;
+  }
+  .PatientVaccinationDetail-updateBtn:hover,.PatientVaccinationDetail-submitBtn:hover {
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+     border: 1px solid var(--button-hover-border-color);
   }
   
   .PatientVaccinationDetail-newVaccine {

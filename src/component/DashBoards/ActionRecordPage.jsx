@@ -11,9 +11,9 @@ const ActionRecordPage = ({patientId,newPatientVisitId}) => {
 
   // API endpoints
   const apiEndpoints = {
-    lab: 'http://192.168.1.37:8888/',
+    lab: 'http://localhost:1415/',
     imaging: 'https://api.example.com/imagingOrders',
-    medication: 'http://192.168.1.39:8888/api/add-items',
+    medication: 'http://localhost:1415/api/add-items',
     others: 'https://api.example.com/otherOrders',
   };
 

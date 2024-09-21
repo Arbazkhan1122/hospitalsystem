@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../EditDoctors/relEditDoctors.css";
 import TransactionDetails from "./rdlEditDrEditBtn";
 import * as XLSX from "xlsx";
+import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
 function RDLEditDoctors() {
+  const [columnWidths, setColumnWidths] = useState({});
   const [showPopup, setShowPopup] = useState(false);
   const [imagingData, setImagingData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [selectedFilter, setSelectedFilter] = useState("--All--"); // State for filter
+  const tableRef = useRef(null);
 
   // Function to fetch data from API
   useEffect(() => {
-    fetch("http://localhost:8888/api/patient-imaging-requisitions/all")
+    fetch("http://localhost:1415/api/patient-imaging-requisitions/all")
       .then((response) => response.json())
       .then((data) => {
         setImagingData(data);
@@ -96,7 +99,6 @@ function RDLEditDoctors() {
       </div>
       <div className="relEditDoctors-search-N-results">
         <div className="relEditDoctors-search-bar">
-          <i className="fa-solid fa-magnifying-glass"></i>
           <input
             type="text"
             placeholder="Search"
@@ -115,6 +117,7 @@ function RDLEditDoctors() {
               );
             }}
           />
+          <i className="fa-solid fa-magnifying-glass"></i>
         </div>
         <div className="relEditDoctors-results-info">
           Showing {filteredData.length} / {imagingData.length} results
@@ -132,20 +135,37 @@ function RDLEditDoctors() {
           </button>
         </div>
       </div>
-      <div className="relEditDoctors-table-N-paginat" id="table-to-print">
-        <table>
+      <div className="table-container" id="table-to-print">
+        <table ref={tableRef}>
           <thead>
             <tr>
-              <th>Date</th>
-              {/* <th>Invoice Number</th> */}
-              <th>Patient Name</th>
-              <th>Age/Sex</th>
-              <th>Type</th>
-              <th>Imaging Name</th>
-              <th>Prescriber Name</th>
-              <th>Radiologist/Reporting Doctor</th>
-              {/* <th>Bill Status</th> */}
-              <th>Action</th>
+              {[
+                "Date",
+                "Patient Name",
+                "Age/Sex",
+                "Type",
+                "Imaging Name",
+                "Prescriber Name",
+                "Radiologist/Reporting Doctor",
+                "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>

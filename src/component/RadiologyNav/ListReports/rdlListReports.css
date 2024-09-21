@@ -1,25 +1,17 @@
-
-
-
+/* Akash Pawar Radiology 14/24 */
 .rDLListReport-active-imaging-request {
-    font-family: Arial, sans-serif;
-    /* max-width: 1300px; */
-    /* margin: 0 auto; */
-    /* padding: 20px; */
-    /* background-color: #cee6ff; */
-    background-color: #ffffff;
-  }
+  padding: 10px;
+}
   
  .rDLListReport-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* margin-bottom: 20px; */
-    background-color: #01A889;
   }
   
   .rDLListReport-header h4 {
-    color: white;
+    color: black;
+    font-size: var(--heading-font);
     margin: 0;
   }
   
@@ -67,7 +59,7 @@ font-weight: bold;
   }
   
   .rDLListReport-ok-button {
-    background-color: #4CAF50;
+    background-color: var(--button-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -75,21 +67,27 @@ font-weight: bold;
     cursor: pointer;
   }
   
-  .rDLListReport-search-bar {
+    .rDLListReport-search-N-results{
     display: flex;
-  }
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 10px; */
+}
+.rDLListReport-search-bar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f2f2;
+  padding: 5px;
+}
+.rDLListReport-search-bar i{
+  color: gray;
+}
   
   .rDLListReport-search-bar input {
-    flex-grow: 1;
-    padding: 5px;
-    width: 200px;
-
-  }
-  .rDLListReport-search-bar i{
-    position: relative;
-    color:gray;
-    top: 7px;
-  left: 175px;
+    background-color: transparent;
+    border: none;
+    outline: none;
   }
   
   .rDLListReport-search-button {
@@ -120,45 +118,6 @@ font-weight: bold;
     font-weight: bold;
     margin-top: 5px;
 }
-
-.rd-list-report-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-    background-color: white;
-}
-
-.rd-list-report-table th, .rd-list-report-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    font-size: 13px;
-    color: rgb(70, 69, 69);
-}
-
-.rd-list-report-table th {
-    background-color: #E7F7F3;
-    font-weight: bold;
-}
-
-.rd-list-report-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-  .rDLListReport-table-N-paginat{
-    background-color: white ;
-  }
-
-  
-  .rDLListReport-table-N-paginat th {
-    /* background-color: #f2f2f2; */
-    /* background-color: #E7F7F3; */
-    background-color: #E7F7F3;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
   .action-button {
     padding: 5px 10px;
     color: white;
@@ -175,65 +134,33 @@ font-weight: bold;
   .scan-done {
     background-color: #008CBA;
   }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .pagination button, .pagination span {
-    margin: 0 5px;
-    padding: 5px 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    color: #333;
-  }
-  
   .pagination button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
-  .rDLListReport-search-N-results{
+  /* .rDLListReport-search-N-results{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
 }
-.rDLListReport-pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-  }
-  
-  .rDLListReport-pagination button {
-    background-color: #0B9D84;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin: 0 5px;
-    border-radius: 5px;
-  }
-  
-  .rDLListReport-pagination span {
-    margin: 0 10px;
-    color: gray;
-    font-size: 12px;
-  }
- 
-
+.rDLListReport-search-bar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
   .rDLListReport-ex-pri-buttons{
-    background-color: #0B9D84;
+    background-color: var(--button-color);
     color: white;
     margin: 5px;
     border: none;
+    font-size: var(--font-size);
     padding: 5px;
     border-radius: 5px;
   }
   .rDLListReport-action-button-add-reports{
-    background-color: #0B9D84;
+    background-color: var(--button-color);
     color: white;
+    border-radius: 5px;
+    padding: 5px;
   }

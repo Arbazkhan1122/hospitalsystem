@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./PatientVaccinationDetail.css";
+import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
 const vaccineOptions = [
   "BCG",
@@ -43,7 +44,7 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
     const fetchVaccines = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8888/api/vaccinations/get-all-vaccination/doses/${patient?.vaccinationId}`
+          `http://localhost:1415/api/vaccinations/get-all-vaccination/doses/${patient?.vaccinationId}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -64,30 +65,6 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
       setDoses(vaccineDoses[formData.vaccineName] || []);
     }
   }, [formData.vaccineName]);
-
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
 
   const handleEditClick = (vaccine) => {
     setIsEditing(true);
@@ -351,7 +328,10 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
                       <span>{header}</span>
                       <div
                         className="resizer"
-                        onMouseDown={startResizing(index)}
+                        onMouseDown={startResizing(
+                          tableRef,
+                          setColumnWidths
+                        )(index)}
                       ></div>
                     </div>
                   </th>

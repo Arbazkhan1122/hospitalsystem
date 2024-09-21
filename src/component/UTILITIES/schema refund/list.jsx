@@ -24,7 +24,7 @@ const SchemeRefundList = () => {
     const fetchRefundData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/Search-Patient/fetch-all-search-patient"
+          "http://localhost:1415/api/Search-Patient/fetch-all-search-patient"
         );
         setSchemeRefundList(response.data);
       } catch (error) {
@@ -64,7 +64,7 @@ const SchemeRefundList = () => {
         remark,
       };
 
-      const response = await axios.post("http://localhost:5000/api/Search-Patient/save-search-patient", payload);
+      const response = await axios.post("http://localhost:1415/api/Search-Patient/save-search-patient", payload);
 
       if (response.status === 200) {
         alert("Data saved successfully!");

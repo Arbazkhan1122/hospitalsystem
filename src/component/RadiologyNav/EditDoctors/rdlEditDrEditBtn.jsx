@@ -9,7 +9,7 @@ function TransactionDetails({ onClose, selectedRequest }) {
     const imagingId = selectedRequest.imagingId;
 
     fetch(
-      `http://localhost:8888/api/patient-imaging-requisitions/update-prescriber?prescriberId=${prescriberId}&imagingId=${imagingId}`,
+      `http://localhost:1415/api/patient-imaging-requisitions/update-prescriber?prescriberId=${prescriberId}&imagingId=${imagingId}`,
       {
         method: "POST",
       }

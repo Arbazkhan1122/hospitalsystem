@@ -1,3 +1,4 @@
+/* Akash Pawar Radiology 14/24 */
 .rDLListRequest-ScanDone-modal-backdrop {
     position: fixed;
     top: 0;
@@ -9,9 +10,9 @@
     justify-content: center;
     align-items: center;
   }
-  .rDLListRequest-ScanDone-modal form{
+  /* .rDLListRequest-ScanDone-modal form{
 margin-left: 20px
-  }
+  } */
   
   .rDLListRequest-ScanDone-modal {
     background-color: white;
@@ -31,9 +32,11 @@ margin-left: 20px
   }
   
   .rDLListRequest-ScanDone-form-group {
-  display: flex;
-
+    display: flex;
     margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /* width: 270px; */
   }
   
@@ -42,7 +45,7 @@ margin-left: 20px
     margin-bottom: 5px;
     width: 100px;
     color: black;
-    font-size: 12px;
+    font-size: var(--font-size);
   }
   
  .rDLListRequest-ScanDone-form-group input, 
@@ -75,29 +78,36 @@ margin-left: 20px
   
   .rDLListRequest-ScanDone-done-btn {
     gap: 10px;
-    background-color: #4a90e2;
+    background-color: var(--button-color);
     color: white;
-    padding: 7px;
     margin-right: 5px;
     border-radius: 5px;
     border: none;
+    padding: 5px;
     
+  }
+  .rDLListRequest-ScanDone-done-btn:hover {
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+     border: 1px solid var(--button-hover-border-color);
   }
   
   .rDLListRequest-ScanDone-cancel-btn {
-    border: 1px solid #4a90e2;
+    border: 1px solid red;
     border-radius: 5px;
+    padding: 5px;
     background-color: white;
-    color: #4a90e2;
+    color: red;
   }
   
   .rDLListRequest-ScanDone-close-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: -10px;
+    right: -10px;
     background: red;
     border: 1px solid red;
-    font-size: 1.5em;
+    padding: 5px 12px;
+    border-radius: 50%;
     cursor: pointer;
     color: white;
     

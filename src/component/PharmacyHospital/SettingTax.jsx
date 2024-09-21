@@ -13,7 +13,7 @@ const SettingTax = () => {
 
   useEffect(() => {
     // Fetch data from API
-    axios.get('http://192.168.1.39:1415/api/taxes')
+    axios.get('http://localhost:1415/api/taxes')
       .then(response => {
         setSuppliers(response.data);
       })
@@ -47,7 +47,7 @@ const SettingTax = () => {
     event.preventDefault();
     if (isEditMode) {
       // Update the existing item
-      axios.put(`http://192.168.1.39:1415/api/taxes/${selectedUser.id}`, selectedUser)
+      axios.put(`http://localhost:1415/api/taxes/${selectedUser.id}`, selectedUser)
         .then(response => {
           setSuppliers(suppliers.map(supplier =>
             supplier.id === selectedUser.id ? response.data : supplier
@@ -59,7 +59,7 @@ const SettingTax = () => {
         });
     } else {
       // Add a new item
-      axios.post('http://192.168.1.39:1415/api/taxes', selectedUser)
+      axios.post('http://localhost:1415/api/taxes', selectedUser)
         .then(response => {
           setSuppliers([...suppliers, response.data]);
           handleCloseModal();

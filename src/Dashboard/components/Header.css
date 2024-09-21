@@ -9,6 +9,8 @@
   background-color: var(--upperBar-bg-color);
   color: #fff;
   width: 100%;
+  position: sticky;
+  top: 0;
   height: 60px;
 }
 

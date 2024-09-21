@@ -149,8 +149,10 @@ const DisPrescription = () => {
 
   const fetchPrescriptions = async () => {
     try {
-      const response = await axios.get('http://localhost:1415/api/hospital/fetch-all-prescription-data');
-      setPrescriptions(response.data);
+      const response = await axios.get('http://localhost:1415/api/medications');
+      console.log(response.data);
+      
+      // setPrescriptions(response.data);
       setLoading(false);
     } catch (err) {
       setError('Failed to fetch prescriptions');
@@ -250,7 +252,7 @@ const DisPrescription = () => {
               <th className="disPrescription-action-column">Actions</th>
             </tr>
           </thead>
-          <tbody className="disPrescription-requisition-tableBody">
+          {/* <tbody className="disPrescription-requisition-tableBody">
             {filteredPrescriptions.map((prescription, index) => (
               <tr key={index}>
                 <td>{prescription.code}</td>
@@ -267,7 +269,7 @@ const DisPrescription = () => {
                 </td>
               </tr>
             ))}
-          </tbody>
+          </tbody> */}
         </table>
 
         {/* <div className="disPrescription-pagination">

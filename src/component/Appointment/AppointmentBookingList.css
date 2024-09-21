@@ -2,14 +2,11 @@
 .appointment-booking-list-container {
   width: 100%;
   margin: 0 auto;
-  height: 90vh;
-  overflow: scroll;
 }
 
 .appointment-booking-list-nav {
   background-color: #fff;
   padding: 10px;
-  font-size: 16px;
   margin-bottom: 10px;
   height: 10%;
 }
@@ -49,6 +46,7 @@
 .appointment-search-form-label {
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .appointment-search-form-input,
@@ -99,8 +97,8 @@
 
 .appointment-table-head th,
 .appointment-table-body td {
-  text-align: center;
-  /* padding: 10px; */
+  text-align: left;
+  padding: 10px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -220,7 +218,8 @@
 }
 
 .appointments__table th, .appointments__table td {
-  text-align: center;
+  padding: 10px;
+  text-align: left;
   border: 1px solid #ccc;
 }
 

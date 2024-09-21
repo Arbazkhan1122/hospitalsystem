@@ -69,7 +69,7 @@ const AdmittedPatient = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.39:1415/api/admissions/fetch');
+        const response = await axios.get('http://localhost:1415/api/admissions/fetch');
         setPatients(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);

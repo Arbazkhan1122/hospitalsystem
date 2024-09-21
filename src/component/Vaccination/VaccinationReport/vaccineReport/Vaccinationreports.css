@@ -1,3 +1,4 @@
+/* Akash Pawar Vaccination 14/24 */
 .vaccinationsReports-header {
     position: relative;
     display: flex;
@@ -90,9 +91,14 @@
     padding: 6px 10px;
     border-radius: 5px;
     border: none;
-    background-color: #4caf50;
+    background-color: var(--button-bg-color);
     color: white;
     cursor: pointer;
+}
+.vaccinationsReports-ok-btn:hover {
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+   border: 1px solid var(--button-hover-border-color);
 }
 .vaccinationsReports-main {
     border-radius: 5px;
@@ -120,11 +126,10 @@
   }
   .vaccinationsReports-dash-btn{
     background-color: #007bff5b;
-    /* background-color: transparent; */
     color: #007bff;
     font-size: 18px;
     border: none;
-    /* position: relative; */
+    padding: 0 10px;
   }
   .vaccinationsReports-form-input-group input,.vaccinationsReports-form-input-group select{
     border: 1px solid #c2cad8;
@@ -143,9 +148,11 @@
   .vaccinationsReports-search-bar {
     margin-bottom: 10px;
     color: gray;
-    width: 200px;
+    /* width: 200px; */
     background-color: #f2f2f2;
     padding: 2px 8px;
+    display: flex;
+    align-items: center;
   }
   
   .vaccinationsReports-search-bar input {
@@ -160,71 +167,26 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    color: #007bff;
     font-size: 14px;
     gap: 10px;
   }
   
   .vaccinationsReports-export-btn, .vaccinationsReports-print-btn {
     padding: 5px 15px;
-    background-color: #3498db;
+    background-color: var(--button-color);
     color: white;
     border: none;
     cursor: pointer;
   }
   
-   /* MedicareTable.css */
-   .vaccinationsReports-table {
-    width: 100%;
-    background-color: #f2f2f2;
-    border-collapse: collapse;
-  }
-  
-  .vaccinationsReports-table th,
-  .vaccinationsReports-table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    font-size: 14px;
-  }
-  
-  .vaccinationsReports-table th {
-    text-align: left;
-    position: relative;
-    user-select: none; /* Disable text selection in header */
-    white-space: nowrap; /* Prevent text from wrapping */
-  }
-  
-  .vaccinationsReports-table th .header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  /* .resizable-th {
-    position: relative;
-  }
-  
-  .resizer {
-    width: 5px;
-    height: 100%;
-    position: absolute;
-    right: 0;
-    top: 0;
-    cursor: col-resize;
-    z-index: 1;
-  } */
-  
-  .vaccinationsReports-table th .resizer:hover {
-    background-color: #aaa;
-  }
-  /* Custom styling for table text */
-  .vaccinationsReports-table th span {
-    font-size: 14px;
-    color: #333;
+  .vaccinationsReports-export-btn:hover, .vaccinationsReports-print-btn:hover {
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+     border: 1px solid var(--button-hover-border-color);
   }
   
 .vaccinationsReports-table-btn{
-    background-color: #007bff;
+    background-color: var(--button-bg-color);
     color: white;
     border-radius: 15px;
     border: none;

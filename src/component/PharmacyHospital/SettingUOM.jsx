@@ -11,7 +11,7 @@ const SettingUOM = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [selectedUser, setSelectedUser] = useState({ name: '', description: '', isActive: true });
 
-  const apiUrl = 'http://192.168.1.39:1415/api/units-of-measurement';
+  const apiUrl = 'http://localhost:1415/api/units-of-measurement';
 
   useEffect(() => {
     // Fetch data from the API when the component mounts

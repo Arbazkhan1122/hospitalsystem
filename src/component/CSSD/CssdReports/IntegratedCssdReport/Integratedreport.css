@@ -5,9 +5,14 @@
     padding: 6px 10px;
     border-radius: 5px;
     border: none;
-    background-color: #4caf50;
+    background-color: var(--button-color);
     color: white;
     cursor: pointer;
+}
+.IntegratedCssdReport-ok-btn:hover {
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+   border: 1px solid var(--button-hover-border-color);
 }
 .IntegratedCssdReport-main {
       
@@ -37,6 +42,7 @@
     color: #007bff;
     font-size: 18px;
     border: none;
+    padding: 0 10px;
     /* position: relative; */
   }
   .IntegratedCssdReport-form-input-group input,.IntegratedCssdReport-form-input-group select{
@@ -51,7 +57,6 @@
     /* width: 100%; */
     display: flex;
     gap: 50px;
-    /* justify-content: space-between; */
     margin-bottom: 15px;
   }
   
@@ -82,9 +87,6 @@
   .IntegratedCssdReport-dropdown-options div:hover {
     background-color: #f2f2f2;
   }
-  
-
-
   .IntegratedCssdReport-search{
       display: flex;
       align-items: center;
@@ -93,9 +95,10 @@
   .IntegratedCssdReport-search-bar {
     margin-bottom: 10px;
     color: gray;
-    width: 200px;
     background-color: #f2f2f2;
     padding: 2px 8px;
+    display: flex;
+    align-items: center;
   }
   
   .IntegratedCssdReport-search-bar input {
@@ -110,74 +113,22 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    color: #007bff;
     font-size: 14px;
     gap: 10px;
   }
   
   .IntegratedCssdReport-export-btn, .IntegratedCssdReport-print-btn {
     padding: 5px 15px;
-    background-color: #3498db;
+    background-color: var(--button-color);
     color: white;
     border: none;
     cursor: pointer;
   }
-  
-   /* MedicareTable.css */
-   .IntegratedCssdReport-table {
-    width: 100%;
-    background-color: #f2f2f2;
-    border-collapse: collapse;
+  .IntegratedCssdReport-export-btn:hover, .IntegratedCssdReport-print-btn:hover {
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+     border: 1px solid var(--button-hover-border-color);
   }
-  
-  .IntegratedCssdReport-table th,
-  .IntegratedCssdReport-table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    
-  }
-  .IntegratedCssdReport-table td {
-    background-color: white;
-    font-size: 14px;
-  }
-  .IntegratedCssdReport-table th {
-    text-align: left;
-    position: relative;
-    user-select: none; /* Disable text selection in header */
-    white-space: nowrap; /* Prevent text from wrapping */
-    font-size: 16px;
-    font-weight: 700;
-  }
-  
-  .IntegratedCssdReport-table th .header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  /* .resizable-th {
-    position: relative;
-  }
-  
-  .resizer {
-    width: 5px;
-    height: 100%;
-    position: absolute;
-    right: 0;
-    top: 0;
-    cursor: col-resize;
-    z-index: 1;
-  } */
-  
-  .IntegratedCssdReport-table th .resizer:hover {
-    background-color: #aaa;
-  }
-  /* Custom styling for table text */
-  .IntegratedCssdReport-table th span {
-    font-size: 14px;
-    color: #333;
-  }
-  
 .IntegratedCssdReport-table-btn{
     background-color: #007bff;
     color: white;
@@ -187,12 +138,7 @@
     margin: 0 5px;
     cursor: pointer;
 }
-  
-  .IntegratedCssdReport-no-rows {
-    text-align: center;
-    background-color: #fff9c4;
-    color: #efb005;
-  }
+
   .IntegratedCssdReport-dropdown {
     position: absolute;
     background-color: white;

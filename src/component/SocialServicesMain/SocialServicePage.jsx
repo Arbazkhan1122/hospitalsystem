@@ -9,7 +9,7 @@ function SocialServicePage() {
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
 
   useEffect(() => {
-    fetch("http://192.168.1.37:7676/api/patients/show-all-patient-details")
+    fetch("http://localhost:1415/api/patients/show-all-patient-details")
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.log(err));

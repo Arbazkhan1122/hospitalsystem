@@ -27,7 +27,7 @@ function ManageOtChecklist() {
   const fetchChecklists = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8888/api/otchecklists');
+      const response = await fetch('http://localhost:1415/api/otchecklists');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

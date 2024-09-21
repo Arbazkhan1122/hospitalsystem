@@ -90,7 +90,7 @@ function AddReportForm({ onClose, selectedRequest }) {
     formDataToSend.append("requisition", JSON.stringify(requisition));
 
     fetch(
-      `http://localhost:8888/api/patient-imaging-requisitions/update/${selectedRequest.imagingId}`,
+      `http://localhost:1415/api/patient-imaging-requisitions/update/${selectedRequest.imagingId}`,
       {
         method: "PUT",
         body: formDataToSend, // Send the FormData object
@@ -229,10 +229,18 @@ function AddReportForm({ onClose, selectedRequest }) {
           )}
         </div>
         <div className="rDLListRequest-add-report-form-buttons">
-          <button type="button" onClick={onClose}>
+          <button
+            type="button"
+            className="rDLListRequest-add-report-cancel-btn"
+            onClick={onClose}
+          >
             Cancel
           </button>
-          <button type="submit" onClick={handleSubmit}>
+          <button
+            type="submit"
+            className="rDLListRequest-add-report-save-btn"
+            onClick={handleSubmit}
+          >
             Save
           </button>
         </div>
