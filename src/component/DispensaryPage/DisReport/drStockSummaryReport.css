@@ -59,13 +59,11 @@
   .drStockSummaryReport-select-filters label{
   margin-right: 30px;
   }
-  .drStockSummaryReport-select-filters input[type="date"], 
-  .drStockSummaryReport-select-filters input[type="text"], 
-  .drStockSummaryReport-select-filters select {
+  .drStockSummaryReport-select-filters input[type="date"], input[type="text"], select {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    margin-left: 20px;
+    margin-left: 0px;
   }
   
   .drStockSummaryReport-star-button {

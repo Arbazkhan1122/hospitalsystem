@@ -242,7 +242,7 @@ function RecordMedical() {
                 </tbody>
               </table>
 
-              <div className="MROut-pagination">
+              {/* <div className="MROut-pagination">
               <button 
                 className="MROut-pagination-btn" 
                 onClick={() => handlePageChange(1)}
@@ -274,7 +274,7 @@ function RecordMedical() {
               >
                 Last
               </button>
-            </div>
+            </div> */}
 
             
 
@@ -289,7 +289,7 @@ function RecordMedical() {
   {
     addFinalDiagnosis && isModalOpen && (
 
-      <div className="FinalDiagnosis-container emergencyPatient">
+      <div className="FinalDiagnosis-containers emergencyPatient">
    
       
      

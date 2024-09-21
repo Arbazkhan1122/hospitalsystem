@@ -227,22 +227,77 @@ margin-left:5px;
 
 /* Modal */
 
+/* FinalDiagnosis Modal Styles */
 
-.FinalDiagnosis-container {
-  padding: 20px;
+.MROUT-container {
+  position: relative;
 }
 
-.open-modal-button {
+.MROUT-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MROUT-modal-content {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 600px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.MROUT-modal-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.FinalDiagnosis-close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.FinalDiagnosis-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.FinalDiagnosis-form-group {
+  margin-bottom: 15px;
+}
+
+.FinalDiagnosis-footer-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.FinalDiagnosis-submit-button,
+.FinalDiagnosis-cancel-button {
   padding: 10px 20px;
-  background-color: #6c63ff;
+  background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
 }
 
-.modal-overlay {
+.FinalDiagnosis-cancel-button {
+  background-color: #6c757d;
+  margin-left: 10px;
+}
+
+/* BirthDetails Modal Styles */
+.BirthDetails-modal-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -250,107 +305,72 @@ margin-left:5px;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   z-index: 1000;
 }
 
-.modal-content {
-  background-color: white;
-  border-radius: 5px;
-  padding: 20px;
-  width: 1150px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+.BirthDetails-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.modal-header {
+.BirthDetails-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.BirthDetails-modal-header {
   display: flex;
   justify-content: flex-end;
 }
 
-.close-button {
+.BirthDetails-close-button {
   background: none;
   border: none;
   font-size: 24px;
   cursor: pointer;
 }
 
-.header {
+.BirthDetails-form-container {
   display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
+  flex-direction: column;
 }
 
-.patient-name {
-  font-weight: bold;
+.BirthDetails-form-group {
+  margin-bottom: 15px;
 }
 
-.patient-details {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border: 1px solid #ccc;
-  margin: 10px 0;
-}
-
-.patient-details div {
-  flex: 1;
-}
-
-.patient-details span {
-  font-weight: bold;
-}
-
-.diagnosis-form {
-  padding: 10px;
-}
-
-.form-group {
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-}
-
-.form-group label {
-  width: 200px;
-  font-weight: bold;
-}
-/* 
-.form-group input[type="text"],
-.form-group select {
-  padding: 5px;
-  width: 200px;
-  margin-left: 10px;
-} */
-
-.footer-buttons {
+.BirthDetails-footer-buttons {
   display: flex;
   justify-content: flex-end;
-  padding: 10px;
+  margin-top: 20px;
 }
 
-.submit-button {
-  background-color: #6c63ff;
-  color: white;
+.BirthDetails-submit-button,
+.BirthDetails-cancel-button {
   padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
   border: none;
-  margin-right: 10px;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-.cancel-button {
-  background-color: #ff6b6b;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.BirthDetails-cancel-button {
+  background-color: #6c757d;
+  margin-left: 10px;
 }
-.MROutPatient-pagination{
-  text-align: center;
-}
+
 
 
 .MROutPatient-pagination button{
