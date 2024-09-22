@@ -1,4 +1,5 @@
 
+ /* Ajhar Tamboli dispenSalesRetunSalesList.css 19-09-24 */
 
 
 .dispenSalesRetunSalesList-active-imaging-request {
@@ -105,6 +106,8 @@ color: green;
   
   .dispenSalesRetunSalesList-search-bar {
     display: flex;
+    margin-left:-35px;
+
   }
   
   .dispenSalesRetunSalesList-search-bar input {

@@ -148,7 +148,6 @@ function SSIInventoryRequisition() {
         </div>
       </header>
       <div className="sSIInventoryRequisition-controls">
-
       <div className="sSIInventoryRequisition-date-range">
             <label>
               From:
