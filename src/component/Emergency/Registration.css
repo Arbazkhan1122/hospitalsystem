@@ -1,23 +1,26 @@
-/* .container {
+ /* Dhanashree_EmergencyPatientRegistration_19/09 */
+
+.PatientRegistration-container {
     max-width: 1200px;
     margin: 20px auto;
     padding: 10px;
-    border: 2px solid #000;
+    border: 2px solid #000; 
     border-radius: 5px;
     background-color: #fff;
 }
 
-.header {
+
+.PatientRegistration-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #5a67d8;
+    background-color: var(--button-bg-color);
     color: white;
     padding: 10px;
     border-radius: 5px 5px 0 0;
 }
 
-.close-button {
+.PatientRegistration-close-button {
     background-color: transparent;
     border: none;
     color: white;
@@ -25,59 +28,60 @@
     cursor: pointer;
 }
 
-.form {
+.PatientRegistration-form {
     padding: 20px;
 }
 
-.form-group {
+.PatientRegistration-form-group {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
 }
 
-.form-group label {
+.PatientRegistration-form-group label {
     min-width: 150px;
     margin-right: 10px;
 }
 
-.form-group input, 
-.form-group select {
+.PatientRegistration-form-group input, 
+.PatientRegistration-form-group select {
     flex: 1;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.required {
+.PatientRegistration-required {
     color: red;
 }
 
-.form-section {
+.PatientRegistration-form-section {
     display: flex;
     justify-content: space-between;
 }
 
-.form-left, .form-right {
+.PatientRegistration-form-left, 
+.PatientRegistration-form-right {
     width: 48%;
 }
 
-.age-group {
+.PatientRegistration-age-group {
     display: flex;
     align-items: center;
 }
 
-.age-group input {
+.PatientRegistration-age-group input {
     max-width: 70px;
     margin-right: 10px;
 }
 
-.buttons {
+.PatientRegistration-buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
 
-.add-button {
+.PatientRegistration-add-button {
     background-color: #38a169;
     color: white;
     padding: 10px 20px;
@@ -86,7 +90,8 @@
     cursor: pointer;
 }
 
-.register-button {
+
+.PatientRegistration-register-button {
     background-color: #38a169;
     color: white;
     padding: 10px 20px;
@@ -95,6 +100,26 @@
     cursor: pointer;
 }
 
-.add-button:hover, .register-button:hover {
+
+.PatientRegistration-add-button:hover, 
+.PatientRegistration-register-button:hover {
     background-color: #2f855a;
-} */
+}
+
+
+.PatientRegistration-submit-button {
+    background-color: var(--button-color); /* Set the background color to red */
+    color: white; /* Set the text color to white for contrast */
+    border: none; /* Remove any default border */
+    padding: 10px 20px; /* Add some padding for size */
+    font-size: 16px; /* Adjust the font size */
+    border-radius: 5px; /* Optional: add rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+  .PatientRegistration-submit-button:hover {
+    background-color: white; /* Change the background to white on hover */
+    color: var(--button-hover-text-color); /* Set the text color to the hover variable */
+    border: 2px solid var(--button-hover-border-color); /* Add a border with the hover color */
+  }
+  
+   /* Dhanashree_EmergencyPatientRegistration_19/09 */
