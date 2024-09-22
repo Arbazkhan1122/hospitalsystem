@@ -1,8 +1,10 @@
 /* Mohini_ReturnInvestment_WholePage_14/sep/2024 */
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './ItemWiseSalesReport.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const ReturnInvestment = () => {
+    const [columnWidths,setColumnWidths] = useState({});
+    const tableRef=useRef(null);
     return (
         <div className="item-wise-sales-report-container">
             <h2 className="item-wise-sales-report-title"> ⚛ Return On Investment Report</h2>
@@ -50,33 +52,52 @@ const ReturnInvestment = () => {
             <div className="item-wise-sales-report-table">
                 <input type="text" placeholder="Search" className="item-wise-sales-search-bar" />
                 </div>
-                <div className='item-wise-sales-table'>
-                <div className='item-wise-sales-table-container'>
-  <table className='item-wise-sales-ta'>
-    <thead>
-      <tr>
-        <th>Txn Date</th>
-        <th>GR No</th>
-        <th>Supplier Name</th>
-        <th>Item Name</th>
-        <th>Batch No</th>
-        <th>Item Rate</th>
-        <th>Rate After Dis</th>
-        <th>InvoiceQty</th>
-        <th>FreeQty</th>
-        <th>TotalQty</th>
-        <th>TotalTax</th>
-        <th>Other Charges</th>
-        <th>DisAmt</th>
-        <th>Total Amount</th>
-        <th>C.P/Unit</th>
-        <th>StockValue</th>
-        <th>Sales Value</th>
-        <th>Profit</th>
-        <th>Profit100%</th>
-        <th>ROI%</th>
-      </tr>
-    </thead>
+                {/* <div className='item-wise-sales-table'> */}
+                <div className='table-container'>
+                <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Txn Date",
+                 "GR No",
+                 "Supplier Name",
+                 "Item Name",
+                 "Batch No",
+                 "Item Rate",
+                 "Rate After Dis",
+                 "InvoiceQty",
+                 "FreeQty",
+                 "TotalQty",
+                 "TotalTax",
+                 "Other Charges",
+                 "DisAmt",
+                 "Total Amount",
+                 "C.P/Unit",
+                 "StockValue",
+                 "Sales Value",
+                 "Profit",
+                 "Profit100%",
+                 "ROI%"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
     <tbody>
       <tr>
         <td colSpan="20" className="item-wise-sales-no-rows">No Rows To Show</td>
@@ -92,7 +113,7 @@ const ReturnInvestment = () => {
                     <button>Next</button>
                     <button>Last</button>
                 </div> */}
-                </div>
+                {/* </div> */}
 
             <div className="item-wise-sales-summary-section">
                 <div className="item-wise-sales-summary-item">

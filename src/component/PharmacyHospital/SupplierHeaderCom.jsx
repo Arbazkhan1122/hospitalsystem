@@ -1,9 +1,11 @@
 /* Mohini_SupplierHeaderCom_WholePage_14/sep/2024 */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './SettingSupplier.css'; 
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const usersData = [
+
     {
       name: 'Naynesh',
       contactNo: '123456',
@@ -55,6 +57,8 @@ const SettingSupplierComponent = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const filteredUsers = suppliers.filter(user =>
     user.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -91,19 +95,38 @@ const SettingSupplierComponent = () => {
       <div className='setting-supplier-span'>
         <span>Showing {filteredUsers.length} / {suppliers.length} results</span>
       </div>
-      <div className='setting-supplier-tab'>
-        <table className="setting-suppliers-users-table">
+      <div className='table-container'>
+      <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Supplier Name</th>
-              <th>Contact No</th>
-              <th>Description</th>
-              <th>City</th>
-              <th>KRA PIN</th>
-              <th>Contact Address</th>
-              <th>Email</th>
-              <th>Credit Period</th>
-              <th>Action</th>
+              {[
+                "Supplier Name",
+                "Contact No",
+                "Description",
+                "City",
+                "KRA PIN",
+                "Contact Address",
+                "Email",
+                "Credit Period",
+                "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>

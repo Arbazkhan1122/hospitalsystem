@@ -5,7 +5,7 @@ const LSLabTestAddNLTest = ({ onClose }) => {
   return (
     <div className="lSLabTestAddNLTest-container">
       <div className="lSLabTestAddNLTest-header">
-        <h3>Add Lab Test</h3>
+        <h4>Add Lab Test</h4>
         <button className="lSLabTestAddNLTest-close-btn"onClick={onClose}>X</button>
       </div>
 

@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+// neha HI-patientlist-19/09/24
+import React, { useState ,useRef} from 'react';
 import { FaSearch, FaPlus } from 'react-icons/fa';
 import './patient_list.css';
+import { startResizing } from '../../../../TableHeadingResizing/ResizableColumns';
 
 function PatientList() {
   const [showModal, setShowModal] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
   const [patients, setPatients] = useState([
     {
       hospitalNo: 'H001',
@@ -83,7 +87,7 @@ function PatientList() {
     <div className='patient_list_main'>
       <div className="patient_list_container">
         <div className="patient_list_new_patient">
-          <button className="patient_list_new_patient_button" onClick={handleOpenModal}>
+          <button className="nhif-new-ptn" onClick={handleOpenModal}>
             <FaPlus className="patient_list_button_icon" />
             New Insurance Patient
           </button>
@@ -108,33 +112,45 @@ function PatientList() {
             value={searchTerm}
             onChange={handleSearchChange}
           />
-          {/* <button className="patient_list_filter_button">
-            <FaSearch />
-          </button> */}
-          {/* <div>
-            <label htmlFor="">showing {filteredPatients.length}/5 results</label>
-          </div> */}
+          
           <div>
-            <button>Print</button>
+            <button className='nhif-new-ptn'>Print</button>
           </div>
         </div>
       </div>
 
-      <table className="patient_list_table">
+     <div className='table-container'>
+     <table ref={tableRef}>
         <thead>
           <tr>
-            <th className='patient_list_tablehead'>Hospital No</th>
-            <th className='patient_list_tablehead'>Patient Name</th>
-            <th className='patient_list_tablehead'>HIF Code</th>
-            <th className='patient_list_tablehead'>Age/Sex</th>
-            <th className='patient_list_tablehead'>Phone</th>
-            <th className='patient_list_tablehead'>Address</th>
-            <th className='patient_list_tablehead'>Balance Amount</th>
-            <th className='patient_list_tablehead'>Latest Claim Code</th>
-            <th className='patient_list_tablehead'>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+          {[
+  "Hospital No",
+  "Patient Name",
+  "HIF Code",
+  "Age/Sex",
+  "Phone",
+  "Address",
+  "Balance Amount",
+  "Latest Claim Code",
+  "Actions"
+].map((header, index) => (
+  <th
+    key={index}
+    style={{ width: columnWidths[index] }}
+    className="rd-resizable-th"
+  >
+    <div className="header-content">
+      <span>{header}</span>
+      <div
+        className="resizer"
+        onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+      ></div>
+    </div>
+  </th>
+))}
+</tr>
+</thead>
+<tbody>
           {filteredPatients.map((patient, index) => (
             <tr key={index}>
               <td className='patient_list_tabledata'>{patient.hospitalNo}</td>
@@ -152,14 +168,15 @@ function PatientList() {
           ))}
         </tbody>
       </table>
+     </div>
 
-      <div className="patient_list_pagination">
+      {/* <div className="patient_list_pagination">
         <button>First</button>
         <button>Previous</button>
         <span>Page 1 of 1</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
 
       {/* Modal */}
       {showModal && (

@@ -1,3 +1,5 @@
+ /* Ajhar Tamboli incentiveReportPaymentReport.jsx 18-09-2024 */
+
 import React from "react";
 import "../IncentiveReport/incentiveReportPaymentReport.css"
 
@@ -13,8 +15,10 @@ const IncentiveReportPaymentReport = () => {
           <input type="date" />
           <button className="incentiveReportPaymentReport-icon-button incentiveReportPaymentReport-star">★</button>
           <button className="incentiveReportPaymentReport-icon-button incentiveReportPaymentReport-dash">-</button>
+          <button className="incentiveTranHospitalIncome-ok-button">OK</button>
+
         </div>
-        <button className="incentiveReportPaymentReport-load-button"><i class="fa-solid fa-rotate"></i> Sync Billing to Incentive</button>
+        <button className="incentiveReportPaymentReport-load-button"><i class="fa-solid fa-magnifying-glass"></i> Show Report</button>
       </div>
 
       

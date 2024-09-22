@@ -362,4 +362,81 @@
 .invoice-billing-show-report-button {
   margin-left: 10px;
 }
+
+/* Mobile View Responsive */
+@media (max-width: 768px) {
+
+  .invoice-billing-report-container {
+    padding: 10px;
+    height: auto;
+  }
+
+  .invoice-billing-filters-container {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .invoice-billing-show-report-button {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .invoice-billing-search-export-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .invoice-billing-search-bar {
+    width: 100%;
+  }
+
+  .invoice-billing-export-print-buttons {
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .invoice-billing-sales-table {
+    font-size: 12px;
+  }
+
+  .invoice-billing-pagination-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .invoice-billing-filters-container,
+  .sales-invoice-number {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .sales-invoice-number input {
+    width: 100%;
+  }
+
+  .invoice-billing-sales-table {
+    min-width: unset;
+    overflow-x: auto;
+  }
+
+  .invoice-billing-sales-table th,
+  .invoice-billing-sales-table td {
+    padding: 5px;
+  }
+
+  .invoice-billing-from-to {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .invoice-billing-favorite-btn,
+  .invoice-billing-reset-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 /* Mohini_InvoiceBilling_WholePage_14/sep/2024 */

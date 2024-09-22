@@ -1,3 +1,6 @@
+/* Ajhar tamboli sSPRequisition.jsx 19-09-24 */
+
+
 import React, { useEffect, useState } from 'react';
 import "../SSPharmacy/sSPRequisition.css";
 import { useParams } from 'react-router-dom';
@@ -39,15 +42,15 @@ function SSPRequisition() {
   }, [store]);
 
   return (
-    <div className="ssp-container">
-      <button className="ssp-create-requisition" onClick={handleOpenPopup}>
-        <i className="fa-solid fa-plus"></i>Create Requisition
+    <div className="sSPRequisition-container">
+      <button className="sSPRequisition-create-requisition" onClick={handleOpenPopup}>
+        <i className="fa-solid fa-plus"></i> Create Requisition
       </button>
       
       {isPopupOpen && (
-        <div className="ssp-modal-overlay">
-          <div className="ssp-modal-content">
-            <button className="ssp-close-button" onClick={handleClosePopup}>
+        <div className="sSPRequisition-modal-overlay">
+          <div className="sSPRequisition-modal-content">
+            <button className="sSPRequisition-close-button" onClick={handleClosePopup}>
               &times;
             </button>
             <SSPharmacyReqCreateReq />
@@ -55,22 +58,31 @@ function SSPRequisition() {
         </div>
       )}
 
-      <div className="ssp-search-bar">
-        <input type="text" placeholder="Search" />
-        <button type="button">🔍</button>
-      </div>
-
-      <div className="ssp-results-header">
+       <div className="sSPRequisition-search-N-results">
+          <div className="sSPRequisition-search-bar">
+            <i className="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search" />
+          </div>
+          <div className="sSPRequisition-results-info">
         <span>Showing {requisitions.length} / {requisitions.length} results</span>
-        <button className="ssp-btn-print">Print</button>
-      </div>
+            {/* Showing 2 / 2 results */}
+            <button className='sSPRequisition-print-btn' 
+            // onClick={handleExportToExcel}
+            >
+              <i className="fa-regular fa-file-excel"></i> Export
+            </button>
+            <button className='sSPRequisition-print-btn' 
+            // onClick={handlePrint}
+            ><i class="fa-solid fa-print"></i> Print</button>
+          </div>
+        </div>
 
       {loading ? (
         <p>Loading requisitions...</p>
       ) : error ? (
         <p>Error: {error}</p>
       ) : (
-        <table className="ssp-table">
+        <table className="sSPRequisition-table">
           <thead>
             <tr>
               <th>Req No.</th>
@@ -88,9 +100,9 @@ function SSPRequisition() {
                 <td>{req.requestedDate}</td>
                 <td>{req.status}</td>
                 <td>
-                  <button className="ssp-btn-view">View</button>
+                  <button className="sSPRequisition-btn-view">View</button>
                   {req.status === 'pending' ? null : (
-                    <button className="ssp-btn-receive">Receive Items</button>
+                    <button className="sSPRequisition-btn-receive">Receive Items</button>
                   )}
                 </td>
               </tr>
@@ -99,14 +111,14 @@ function SSPRequisition() {
         </table>
       )}
 
-      <div className="ssp-pagination">
+      {/* <div className="sSPRequisition-pagination">
         <span>1 to {requisitions.length} of {requisitions.length}</span>
         <button disabled>First</button>
         <button disabled>Previous</button>
-        <button className="ssp-active">Page 1 of 1</button>
+        <button className="sSPRequisition-active">Page 1 of 1</button>
         <button disabled>Next</button>
         <button disabled>Last</button>
-      </div>
+      </div> */}
     </div>
   );
 }

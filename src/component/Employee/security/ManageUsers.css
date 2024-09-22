@@ -1,10 +1,12 @@
 /* Manage Users Styles */
 .manage-users-container {
-    background-color: #d4f1f9;
+    background-color: var(--background-color);
     padding: 20px;
     border-radius: 5px;
+    overflow-y: scroll;
     font-family: Arial, sans-serif;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 90vh;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
   }
   
   .manage-users-header {
@@ -14,15 +16,20 @@
   }
   
   .manage-users-add-user-button {
-    background-color: #5b73e8;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 6px 12px; /* Adjusted padding */
-    border-radius: 4px;
-    font-weight: bold;
+    padding: 5px 5px; /* Adjusted padding */
+    border-radius: 5px;
     cursor: pointer;
+    border-bottom: 1px solid var(--button-color);
+
   }
-  
+  .manage-users-add-user-button:hover{
+    color: var(--button-color);
+    background-color: white;
+    border-bottom: 1px solid var(--button-color);
+  }
   .manage-users-search-input {
     padding: 6px; /* Adjusted padding */
     border: 1px solid #ccc;
@@ -68,15 +75,20 @@
   }
   
   .manage-users-action-button {
-    background-color: #5b73e8;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 4px 8px; /* Adjusted padding */
-    border-radius: 3px;
+    padding: 5px 5px; /* Adjusted padding */
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 11px; /* Adjusted font size */
+    border-bottom: 1px solid var(--button-color);
+
   }
-  
+  .manage-users-action-button:hover{
+    color: var(--button-color);
+    background-color: white;
+    border-bottom: 1px solid var(--button-color);
+  }
   .manage-users-pagination {
     margin-top: 15px; /* Adjusted margin */
     display: flex;
@@ -122,8 +134,8 @@
   }
   .manage-user-span {
     text-align: right;
-    color: #0772bc;
-    font-size: 16px;
+    color: black;
+    font-size: 14px;
     margin-top: 10px;
   }
   .manage-user-tab{

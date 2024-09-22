@@ -10,9 +10,9 @@
 }
 
 .insentiveSettingsEISNewEI-header {
-  font-size: 14px;
-  font-weight: bold;
- color: rgb(78, 78, 78);
+  font-size: var(--heading-font);
+  /* font-weight: bold; */
+ /* color: rgb(78, 78, 78); */
   margin-bottom: 10px;
 }
 .insentiveSettingsEISNewEI-PriceCategory{
@@ -21,11 +21,11 @@
   margin-bottom: 10px;
 }
 .insentiveSettingsEISNewEI-PriceCategory label{
-  font-size: 12px;
-  font-weight: bold;
+  font-size: var(--font-size);
+  /* font-weight: bold; */
 }
 .insentiveSettingsEISNewEI-PriceCategory select{
-  font-size: 12px;
+  font-size: var(--font-size);
   /* font-weight: bold; */
 }
 .insentiveSettingsEISNewEI-EmployeeName{
@@ -38,8 +38,8 @@
   display: flex;
   /* flex-direction: column; */
   justify-content: left;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: var(--font-size);
+  /* font-weight: bold; */
   /* align-items: center; */
   margin-bottom: 15px;
 }
@@ -51,7 +51,7 @@
 .insentiveSettingsEISNewEI-form-select, .insentiveSettingsEISNewEI-form-input {
   margin-right: 10px;
   padding: 5px;
-  font-size: 14px;
+  font-size: var(--font-size);
   border-radius: 4px;
   border: 1px solid #ccc;
 }
@@ -64,13 +64,22 @@
 }
 
 .insentiveSettingsEISNewEI-save-button {
-  background-color: #2D68EA;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  padding: 5px 20px;
-  margin-left: 10px;
-  border-radius: 4px;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
   cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.insentiveSettingsEISNewEI-save-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 /* Checkbox Section */
@@ -92,9 +101,8 @@
 .insentiveSettingsEISNewEI-profile-table {
   width: 30%;
   border-collapse: collapse;
-  font-size: 14px;
   font-weight: bold;
-  color: #464545;
+  /* color: #464545; */
   background-color: #DDE3E9;
   /* display: flex; */
   justify-content: center;
@@ -105,39 +113,68 @@
   border: 1px solid #ddd;
   padding: 8px;
   text-align: center;
+  font-size: var(--font-size);
+}
+.insentiveSettingsEISNewEI-profile-table th{
+  
+  font-size: var(--heading-font);
 }
 
 .insentiveSettingsEISNewEI-preview-button {
-  background-color: #5867DD;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
   cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 1px 5px;
+}
+.insentiveSettingsEISNewEI-preview-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 /* Action Buttons */
 .insentiveSettingsEISNewEI-action-buttons {
   display: flex;
   justify-content: center;
+  gap: 5px;
   margin-top: 15px;
 }
 
 .insentiveSettingsEISNewEI-discard-button, .insentiveSettingsEISNewEI-ok-button {
   border: none;
   padding: 5px 15px;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 .insentiveSettingsEISNewEI-discard-button {
+  font-size: var(--font-size);
   background-color: #E31D2D;
   color: white;
 }
 
 .insentiveSettingsEISNewEI-ok-button {
-  background-color: #2D68EA;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  margin-left: 10px;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
 }
-
+.insentiveSettingsEISNewEI-ok-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}

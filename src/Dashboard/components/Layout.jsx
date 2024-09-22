@@ -9,16 +9,16 @@ import AppRoutes from "../../component/Employee/AppRoutes";
 import Inventory from "../../component/Inventory1/Inventory";
 import Incentive from "../../component/IncentiveMain/incentiveApp";
 import Lab from "../../component/NavBarSection/Lab";
-import Emergency from "../../component/Emergency/Emergency";
-import Utilitiesmain from "../../component/UTILITIES/utilitiesmain";
-import SystemAdmin from "../../component/SystemAdmin/SystemAdmin";
+import Emergency from "../../component/Emergency/Emergency"
+// import Utilitiesmain from "../../component/Utilities/utilitiesmain";
+import SystemAdmin from "../../component/SystemAdmin/SystemAdmin"
 import SocialServicePage from "../../component/SocialServicesMain/SocialServicePage";
 import Disprensary from "../../component/DispensaryPage/disprensaryRoute";
 import DynamicReport from "../../component/DynamicReport/DynamicReport";
 import Report from "../../component/Reports/Layout";
-import ReportMainRouting from "../../component/Reports/ReportMainRouting";
-import NursingMainRouting from "../../component/Nursing/NursingMainRouting";
-import DoctorDashBoard from "../../component/DashBoards/DoctorDashBoard";
+// import ReportMainRouting from "../../component/Reports/ReportMainRouting";
+import NursingMainRouting from "../../component/Nursing/NursingMainRouting"
+import DoctorDashBoard from "../../component/DashBoards/DoctorDashBoard"
 import Otmain from "../../component/OT/otmain";
 import Nhif from "../../component/NHIF/nhif";
 import HomePage from "../../component/Admission/adt-main";
@@ -42,6 +42,7 @@ import VerificationRouting from "../../component/Verification/VerificationRoutin
 import SubstoreRouting from "../../component/SubStoreMainPage/SubstoreRouting";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRouting";
+import ReportRoute from "../../component/Reports/ReportRoute";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -299,7 +300,7 @@ const Layout = () => {
           {showSocialService && <SocialServicePage />}
           {showDisprensary && <Disprensary />}
           {showDynamicReport && <DynamicReport />}
-          {showReport && <ReportMainRouting />}
+          {showReport && <ReportRoute />}
           {showNurse && <NursingMainRouting />}
           {showDoctor && <DoctorDashBoard />}
           {showOprationTheater && <Otmain />}

@@ -63,7 +63,7 @@ const HHEmpInformation = () => {
         </div>
         <div className="hh-results-info">
           <span>Showing {filteredEmployees.length} / {employees.length} results</span>
-          <button className="hh-print-button" onClick={handlePrint}>Print</button>
+          <button className="hh-print-button" onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
         </div>
       </div>
 
@@ -96,14 +96,14 @@ const HHEmpInformation = () => {
             ))}
           </tbody>
         </table>
-        <div className="hhEmpInfo-pagination">
+        {/* <div className="hhEmpInfo-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

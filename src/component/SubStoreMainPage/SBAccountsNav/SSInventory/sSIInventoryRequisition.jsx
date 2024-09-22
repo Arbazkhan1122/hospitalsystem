@@ -1,3 +1,6 @@
+/* Ajhar Tamboli sSIInventoryRequisition.jsx 19-09-24 */
+
+
 import React, { useState, useEffect, useRef } from 'react';
 import "../SSInventory/sSIInventoryRequisition.css";
 import { useReactToPrint } from 'react-to-print';
@@ -145,19 +148,24 @@ function SSIInventoryRequisition() {
         </div>
       </header>
       <div className="sSIInventoryRequisition-controls">
-        <div className="sSIInventoryRequisition-date-range">
-          <label>
-            From:
-            <input type="date" defaultValue="2024-08-09" />
-          </label>
-          <label>
-            To:
-            <input type="date" defaultValue="2024-08-16" />
-          </label>
-          <button className="sSIInventoryRequisition-star-button">☆</button>
-          <button className="sSIInventoryRequisition-ok-button">OK</button>
-        </div>
-      </div>
+
+      <div className="sSIInventoryRequisition-date-range">
+            <label>
+              From:
+              <input type="date" defaultValue="2024-08-09" />
+            </label>
+            <label>
+              To:
+              <input type="date" defaultValue="2024-08-16" />
+            </label>
+            <button className="sSIInventoryRequisition-star-button">☆</button>
+          <button className="sSIInventoryRequisition-more-btn">-</button>
+            <button className="sSIInventoryRequisition-ok-button">OK</button>
+          </div>
+          </div>
+
+
+
       <div className="sSIInventoryRequisition-search-N-results">
         <div className="sSIInventoryRequisition-search-bar">
           <i className="fa-solid fa-magnifying-glass"></i>
@@ -165,7 +173,7 @@ function SSIInventoryRequisition() {
         </div>
         <div className="sSIInventoryRequisition-results-info">
           Showing {filteredRequisitions.length} / {filteredRequisitions.length} results
-          <button className='sSIInventoryRequisition-print-btn' onClick={handlePrint}>Print</button>
+          <button className='sSIInventoryRequisition-print-button' onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
         </div>
       </div>
       <div style={{ display: 'none' }}>
@@ -226,14 +234,14 @@ function SSIInventoryRequisition() {
             ))}
           </tbody>
         </table>
-        <div className="sSIInventoryRequisition-pagination">
+        {/* <div className="sSIInventoryRequisition-pagination">
           <span>0 to {filteredRequisitions.length} of {filteredRequisitions.length}</span>
           <button disabled>First</button>
           <button disabled>Previous</button>
           <span>Page 1 of 1</span>
           <button disabled>Next</button>
           <button disabled>Last</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

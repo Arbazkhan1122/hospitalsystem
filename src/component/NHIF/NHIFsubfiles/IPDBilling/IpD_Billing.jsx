@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+// neha HI-ipd/billing-19/09/24
+import React, { useState, useRef } from 'react';
 import { FaSearch, FaUser, FaSync } from 'react-icons/fa';
-import './IPD_Billing.css'; // Make sure to create and use the corresponding CSS file
+import './IPD_Billing.css'; 
+import { startResizing } from '../../../../TableHeadingResizing/ResizableColumns';
+
 
 function IPD_billing() {
     const [searchTerm, setSearchTerm] = useState('');
+    const tableRef = useRef(null);
+    const [columnWidths, setColumnWidths] = useState(0);
     const [patients, setPatients] = useState([
         {
             date: '2024-08-20',
@@ -89,7 +94,7 @@ function IPD_billing() {
         <div className='ipd_billing_main'>
             <div className="ipd_billing_container">
                 <div className="ipd_billing_new_patient">
-                    <FaUser style={{ color: 'blue', fontSize: '24px', marginRight: '10px' }} />
+                    <FaUser style={{ color: 'blue', fontSize: '16px', marginRight: '10px' }} />
                     <p className='Admitted_Patient_List'>Admitted Patient List</p>
                 </div>
             </div>
@@ -118,24 +123,41 @@ function IPD_billing() {
                 </div>
             </div>
 
-            <table className="ipd_billing_table">
+            <div className='table-container'>
+            <table className="ipd_billing_table" ref={tableRef}>
                 <thead>
                     <tr>
-                        <th className='ipd_billing_tablehead'>Date</th>
-                        <th className='ipd_billing_tablehead'>Time</th>
-                        <th className='ipd_billing_tablehead'>Hospital No</th>
-                        <th className='ipd_billing_tablehead'>Name</th>
-                        <th className='ipd_billing_tablehead'>Age/Sex</th>
-                        <th className='ipd_billing_tablehead'>HIF No</th>
-                        <th className='ipd_billing_tablehead'>Department</th>
-                        <th className='ipd_billing_tablehead'>Claim Code</th>
-                        <th className='ipd_billing_tablehead'>Visit Type</th>
-                        <th className='ipd_billing_tablehead'>Appt. Type</th>
-                        <th className='ipd_billing_tablehead'>Days Passed</th>
-                        <th className='ipd_billing_tablehead'>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+                    {[
+  "Date",
+  "Time",
+  "Hospital No",
+  "Name",
+  "Age/Sex",
+  "HIF No",
+  "Department",
+  "Claim Code",
+  "Visit Type",
+  "Appt. Type",
+  "Days Passed",
+  "Action"
+].map((header, index) => (
+    <th
+      key={index}
+      style={{ width: columnWidths[index] }}
+      className="rd-resizable-th"
+    >
+      <div className="header-content">
+        <span>{header}</span>
+        <div
+          className="resizer"
+          onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+        ></div>
+      </div>
+    </th>
+  ))}
+</tr>
+</thead>
+<tbody>
                     {filteredPatients.map((patient, index) => (
                         <tr key={index}>
                             <td className='ipd_billing_tabledata'>{patient.date}</td>
@@ -157,13 +179,14 @@ function IPD_billing() {
                 </tbody>
             </table>
 
-            <div className="ipd_billing_pagination">
+            </div>
+            {/* <div className="ipd_billing_pagination">
                 <button>First</button>
                 <button>Previous</button>
                 <span>Page 1 of 1</span>
                 <button>Next</button>
                 <button>Last</button>
-            </div>
+            </div> */}
         </div>
     );
 }

@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import './EmployeeTypeTable.css'; // Assuming your CSS is included here
 import AddEmployeeType from './AddEmployeeType'; // Import the AddEmployeeType component
-
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 const EmployeeTypeComponent = () => {
   const [showAddTypeModal, setShowAddTypeModal] = useState(false);
   const [typeData, setTypeData] = useState({ role: '', description: '' });
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
+    
 
   const handleOpenAddTypeModal = (role = '', description = '') => {
     setTypeData({ role, description });
@@ -15,8 +18,8 @@ const EmployeeTypeComponent = () => {
   const handleCloseAddTypeModal = () => setShowAddTypeModal(false);
 
   const roles = [
-    { role: 'Account Manager', description: 'Handles all account-related tasks.' },
-    { role: 'Marketing Manager', description: 'Oversees marketing strategies and campaigns.' },
+    { role: 'Full Time', description: '' },
+    { role: 'Part Time', description: '' },
     // Other roles
   ];
   // Example JavaScript to toggle the class
@@ -42,14 +45,33 @@ function closeModal() {
           >
             +Add Type
           </Button>
-          <input type="text" placeholder="Search" className="emp-search-input" />
         </div>
-        <table className="employee-Type-table">
+        <input type="text" placeholder="Search" className="emp-search-input" />
+
+       <div className='table-container'>
+       <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Role</th>
-              <th>Description</th>
-              <th>Action</th>
+              {[
+               "Type", "Description", "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -70,14 +92,15 @@ function closeModal() {
             ))}
           </tbody>
         </table>
+       </div>
       </div>
-      <div className="add-employee-pagination">
+      {/* <div className="add-employee-pagination">
         <Button>First</Button>
         <Button>Previous</Button>
         <span>Page 1 of 4</span>
         <Button>Next</Button>
         <Button>Last</Button>
-      </div>
+      </div> */}
 
       {/* AddEmployeeType Modal */}
       <AddEmployeeType

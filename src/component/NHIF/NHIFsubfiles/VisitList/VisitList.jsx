@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+
+// neha HI-visitlist-19/09/24
+import React, { useState,useRef } from 'react';
 import { FaSearch, FaUser, FaSync } from 'react-icons/fa';
+import { startResizing } from '../../../../TableHeadingResizing/ResizableColumns';
 
 import './VisitList.css';
 
 function VisitList() {
     const [searchTerm, setSearchTerm] = useState('');
+    const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
     const [patients, setPatients] = useState([
         {
             date: '2024-08-20',
@@ -90,10 +95,9 @@ function VisitList() {
         <div className='visit_list_main'>
             <div className="visit_list_container">
                 <div className="visit_list_new_patient">
-                    <FaUser style={{ color: 'blue', fontSize: '24px', marginRight: '10px' }} />
-                    <p className='Admitted_Patient_List'>Insurance Patient Visit List</p>
+                    <FaUser style={{ color: 'blue', fontSize: '16px', marginRight: '10px' }} />
+                    <p className='nhif-Admitted_Patient_List'>Insurance Patient Visit List</p>
                 </div>
-
                 <div className="visit_list_edit_info">
                      <button className='visit_list_filter_button'> 
                         <FaSync style={{ marginRight: '5px' }} /> Reload
@@ -125,25 +129,41 @@ function VisitList() {
                 </div>
             </div>
 
-            <table className="visit_list_table">
+           <div className='table-container'>
+           <table className="visit_list_table" ref={tableRef}>
                 <thead>
                     <tr>
-                        <th className='visit_list_tablehead'>Date</th>
-                        <th className='visit_list_tablehead'>Time</th>
-                        <th className='visit_list_tablehead'>Hospital No</th>
-                        <th className='visit_list_tablehead'>Name</th>
-                        <th className='visit_list_tablehead'>Age/Sex</th>
-                        <th className='visit_list_tablehead'>HIF No</th>
-                        <th className='visit_list_tablehead'>Department</th>
-                        <th className='visit_list_tablehead'>Claim Code</th>
-                        <th className='visit_list_tablehead'>Visit Type</th>
-                        <th className='visit_list_tablehead'>Appt. Type</th>
-                        <th className='visit_list_tablehead'>Days Passed</th>
-                        <th className='visit_list_tablehead'>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredPatients.map((patient, index) => (
+                    {[
+  "Date",
+  "Time",
+  "Hospital No",
+  "Name",
+  "Age/Sex",
+  "HIF No",
+  "Department",
+  "Claim Code",
+  "Visit Type",
+  "Appt. Type",
+  "Days Passed",
+  "Action"
+].map((header, index) => (
+    <th
+      key={index}
+      style={{ width: columnWidths[index] }}
+      className="rd-resizable-th"
+    >
+      <div className="header-content">
+        <span>{header}</span>
+        <div
+          className="resizer"
+          onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+        ></div>
+      </div>
+    </th>
+  ))}
+</tr>
+</thead>
+<tbody>                   {filteredPatients.map((patient, index) => (
                         <tr key={index}>
                             <td className='visit_list_tabledata'>{patient.date}</td>
                             <td className='visit_list_tabledata'>{patient.time}</td>
@@ -163,16 +183,17 @@ function VisitList() {
                     ))}
                 </tbody>
             </table>
+           </div>
 
-            <div className="visit_list_pagination">
+            {/* <div className="visit_list_pagination">
                 <button>First</button>
                 <button>Previous</button>
                 <span>Page 1 of 1</span>
                 <button>Next</button>
                 <button>Last</button>
-            </div>
+            </div> */}
         </div>
     );
-}
+}   
 
 export default VisitList;

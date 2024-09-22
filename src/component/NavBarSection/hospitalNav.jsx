@@ -8,6 +8,7 @@ const NavigationBar = () => {
     <nav className="navigation-bar">
       <ul>
         <li><NavLink to="/notification">Notification</NavLink></li>
+        <li><NavLink to="/OpdLadbilling">OPD Billing</NavLink></li>
         <li><NavLink to="/navHome"><i className="fa-solid fa-house-chimney" ></i></NavLink></li>
         <li><NavLink to="/sampleCollection">Sample Collection</NavLink></li>
         <li><NavLink to="/add-results">Add Results</NavLink></li>

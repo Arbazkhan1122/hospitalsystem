@@ -1,7 +1,9 @@
 /* Styles for the page */
 .manage-ward-substore-page {
   padding: 20px;
-  background-color: #e3f2fd;
+  background-color: var(--background-color);
+  height: 90vh;
+  overflow-y: scroll;
 }
 /* .manage-ward-modal-container{
   background-color: #3598dc;
@@ -10,7 +12,24 @@
 /* Table container */
 .manage-ward--substore-table-container {
   margin-top: 20px;
-  background-color: #e3f2fd;
+  background-color: var(--background-color);
+}
+.ward-manage-add-substore-btn {
+  background-color: var(--button-color); /* Use button color variable */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  padding: 5px 5px; /* Add padding */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 18px; /* Font size */
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+  display: inline-block; /* Keeps button inline */
+}
+
+.ward-manage-add-substore-btn:hover {
+  background-color: white; /* Change background color on hover */
+  color: var(--button-color); /* Change text color on hover */
+  border: 1px solid var(--button-color); /* Add border on hover */
 }
 
 /* Header section for the add button and search info */
@@ -21,16 +40,7 @@
   margin-bottom: 10px;
 }
 
-.ward-manage-add-substore-btn {
-  background-color: #6200ea;
-  color: white;
-  border: none;
-  padding: 6px 12px; /* Reduced padding */
-  border-radius: 4px;
-  font-weight: bold;
-  cursor: pointer;
 
-}
 
 .ward-manage-substore-search-input {
   margin-bottom: 15px;
@@ -59,14 +69,19 @@
 
 /* Edit button */
 .manage-ward-store-edit-btn {
-  background-color: #0F63AF;
+  background-color: var(--button-color);
   color: white;
   border: none;
-  padding: 4px 8px; /* Reduced padding */
+  padding: 5px 5px; /* Reduced padding */
   border-radius: 3px;
   cursor: pointer;
   font-size: 11px; /* Reduced font size */
 
+}
+.manage-ward-store-edit-btn:hover{
+  color: var(--button-color);
+  background-color: white;
+  border-bottom: 1px solid var(--button-color);
 }
 
 /* Pagination styles */
@@ -128,11 +143,12 @@
   border-collapse: collapse;
   margin-bottom: 20px;
 } */
-.ward-manage-substore-results-info{
-  color: #0F63AF;
-    font-size: 16px;
-justify-content: flex-start;
+.ward-manage-substore-results-info {
+  color: black;
+  font-size: 14px;
+  text-align: right;
 }
+
 /* Container for the entire modal */
 .manage-ward-modal-container {
   position: absolute;

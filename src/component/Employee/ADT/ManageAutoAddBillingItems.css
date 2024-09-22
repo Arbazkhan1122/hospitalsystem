@@ -1,7 +1,9 @@
 /* General Styles */
 .manage-auto-billing-page {
-    background-color: #e3f2fd; /* Light blue background */
+    background-color: var(--background-color); /* Light blue background */
     padding: 15px;
+    height: 90vh ;
+    overflow-y: scroll;
 }
 
 .manage-auto-billing-table-container {
@@ -19,13 +21,17 @@
 }
 
 .manage-auto-billing-btn {
-    background-color: #6200ea;
+    background-color:var(--button-color);
     color: white;
     border: none;
-    padding: 6px 12px; 
-    border-radius: 4px;
-    font-weight: bold;
+    padding: 5px 5px; 
+    border-radius: 5px;
     cursor: pointer;
+}
+.manage-auto-billing-btn:hover{
+    color: var(--button-color);
+    background-color: white;
+    border-bottom: 1px solid var(--button-color);
 }
 
 .manage-auto-billing-search-input {
@@ -38,7 +44,7 @@
 .manage-auto-billing-results-info {
     font-size: 14px;
     margin-bottom: 10px;
-    color: #0F63AF; /* Adjusted color to match the theme */
+    color: black; /* Adjusted color to match the theme */
     display: flex;
     justify-content: flex-end; /* Aligns the text to the right */
 }
@@ -69,24 +75,38 @@
 }
 
 .manage-auto-billing-edit-btn {
-    background-color: #0F63AF;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 4px 8px; /* Reduced padding */
-    border-radius: 3px;
+    padding: 5px 5px; /* Reduced padding */
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 11px; /* Reduced font size */
-    margin-right: 5px;
+    font-size: 14px; /* Reduced font size */
+    margin-right: 10px; /* Increased margin for spacing */
+    border-bottom: 1px solid var(--button-color);
+}
+
+.manage-auto-billing-edit-btn:hover {
+    color: var(--button-color);
+    background-color: white;
+    border-bottom: 1px solid var(--button-color);
 }
 
 .manage-auto-billing-deactivate-btn {
-    background-color: #0F63AF;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 4px 8px; /* Reduced padding */
-    border-radius: 3px;
+    padding: 5px 5px; /* Reduced padding */
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 11px; /* Reduced font size */
+    font-size: 14px; /* Reduced font size */
+    border-bottom: 1px solid var(--button-color);
+}
+
+.manage-auto-billing-deactivate-btn:hover {
+    color: var(--button-color);
+    background-color: white;
+    border-bottom: 1px solid var(--button-color);
 }
 
 .manage-auto-billing-pagination {

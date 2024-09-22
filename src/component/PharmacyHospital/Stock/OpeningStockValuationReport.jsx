@@ -1,7 +1,7 @@
 /* Mohini_OpeningStockValuationReport_WholePage_14/sep/2024 */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './PharmacyExpiryReport.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const OpeningStockValuationReport = () => {
   const [fromDate, setFromDate] = useState('24-08-2024');
   const [toDate, setToDate] = useState('24-08-2024');
@@ -11,6 +11,8 @@ const OpeningStockValuationReport = () => {
   const [nearlyExpired, setNearlyExpired] = useState(false);
   const [expired, setExpired] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   return (
     <div className="pharmacy-expiry-report-container">
@@ -64,20 +66,37 @@ const OpeningStockValuationReport = () => {
         <button className="pharmacy-expiry-report-export-btn">⬇ Export</button>
         <button className="pharmacy-expiry-report-print-btn">Print</button>
       </div>
-   <div className='pharmacy-expiry-report-ta'>
-      <table className="pharmacy-expiry-report-expiry-table">
-        <thead>
-          <tr>
-            <th>Store</th>
-            <th>Sales Value</th>
-            <th>Purchase Value</th>
-          
-
-          </tr>
-        </thead>
+   <div className='table-container'>
+   <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Store",
+                "Sales Value",
+                "Purchase Value"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           <tr>
-            <td colSpan="15" className="pharmacy-expiry-report-no-rows">No Rows To Show</td>
+            <td colSpan="3" className="pharmacy-expiry-report-no-rows">No Rows To Show</td>
           </tr>
         </tbody>
       </table>

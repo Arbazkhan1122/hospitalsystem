@@ -42,7 +42,7 @@ const ReportTemplate = () => {
         </div>
         <div className="reportTemplate-results-info">
           <span>Showing 0 / 0 results</span>
-          <button className="reportTemplate-print-button">Print</button>
+          <button className="reportTemplate-print-button"><i class="fa-solid fa-print"></i> Print</button>
         </div>
         </div>
       <table >
@@ -70,14 +70,14 @@ const ReportTemplate = () => {
           ))}
         </tbody>
       </table>
-      <div className="reportTemplate-pagination">
+      {/* <div className="reportTemplate-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       {/* Modal Popup */}
       {showPopup && (
         <div className="reportTemplate-modal">

@@ -1,3 +1,6 @@
+ /* Ajhar Tamboli userCollectionReport.css 19-09-24 */
+
+
 .userCollectionReport-report {
     font-family: Arial, sans-serif;
     /* max-width: 1200px; */
@@ -46,7 +49,8 @@
     /* margin-left: 10px; */
     }
     .userCollectionReport-date-range input{
-    padding: 1px 10px !important;
+    padding: 1px 10px ;
+    /* padding: 1px 10px !important; */
     margin-left: 10px;
     }
   .userCollectionReport-select-filters {
@@ -65,8 +69,11 @@
   .userCollectionReport-select-filters label{
   margin-right: 30px;
   }
-  .userCollectionReport-select-filters input[type="date"], input[type="text"], select {
-    padding: 1px 10px !important;
+  .userCollectionReport-select-filters input[type="date"], 
+  .userCollectionReport-select-filters input[type="text"], 
+  .userCollectionReport-select-filters select {
+    padding: 1px 10px ;
+    /* padding: 1px 10px !important; */
     border: 1px solid #ccc;
     border-radius: 3px;
     margin-left: 20px;
@@ -111,9 +118,11 @@
 .userCollectionReport-search-bar input {
   /* margin-top: 10px; */
   /* padding: 5px; */
-  padding: 1px 10px !important;
+  padding: 1px 10px ;
+  /* padding: 1px 10px !important; */
     width: 200px;
-    margin: 1px !important;
+    margin: 1px ;
+    /* margin: 1px !important; */
   }
   .userCollectionReport-search-bar i{
     position: relative;

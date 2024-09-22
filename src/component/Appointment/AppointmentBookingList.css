@@ -14,7 +14,7 @@
   height: 10%;
 }
 
-.appointment-booking-list-nav-link {
+/* .appointment-booking-list-nav-link {
   background: none;
   border: none;
   padding: 5px 10px;
@@ -22,12 +22,37 @@
   cursor: pointer;
   color: #0066cc;
   text-decoration: none;
+} */
+
+/* .appointment-booking-list-nav-link.active {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+} */
+
+.appointment-booking-list-navigation-link {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 10px;
 }
 
-.appointment-booking-list-nav-link.active {
-  background-color: #0066cc;
-  color: white;
-  border-radius: 5px;
+.appointment-booking-list-navigation-link:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+.appointment-booking-list-navigation-link.active {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .appointment-search-form {
@@ -124,10 +149,14 @@
 .appointment-table-pagination-info {
   margin: 0 10px;
 }
-.appointment-booking-list-nav-link.active {
-  background-color: #007bff; /* Or any color you prefer */
-  color: white;
-}
+/* .appointment-booking-list-nav-link {
+  background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+} */
 
 .appointments__container {
   background-color: #d7f2f7;
@@ -171,13 +200,19 @@
 }
 
 .appointments__show-patient-btn {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 7px 15px;
-  cursor: pointer;
-  font-size: 14px;
-  border-radius: 4px;
+  background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.appointments__show-patient-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+
 }
 
 .appointments__upcoming-appointments {
@@ -204,12 +239,12 @@
 }
 
 .appointments__search-btn {
-  padding: 7px 15px;
-  border: 1px solid #ccc;
-  background-color: #007bff;
-  color: #fff;
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 0 4px 4px 0;
 }
 
 .appointments__table {

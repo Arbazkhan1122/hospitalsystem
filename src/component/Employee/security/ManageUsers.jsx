@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './ManageUsers.css'; 
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const usersData = [
   { employeeName: "Mr. Accounting Module", userName: "jacqueline", department: "Account", email: "jaqueline@istl.com" },
@@ -14,6 +15,8 @@ const ManageUsers = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   
   const filteredUsers = usersData.filter(user =>
     user.employeeName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -54,15 +57,34 @@ const ManageUsers = () => {
       <div className='manage-user-span'>
         <span>Showing {filteredUsers.length} / {usersData.length} results</span>
       </div>
-      <div className='manage-user-tab'>
-        <table className="manage-users-users-table">
+      <div className='table-container'>
+      <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Employee Name</th>
-              <th>User Name</th>
-              <th>Department Name</th>
-              <th>Email</th>
-              <th>Action</th>
+              {[
+                  "Employee Name",
+                  "User Name",
+                  "Department Name",
+                  "Email",
+                  "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -81,7 +103,7 @@ const ManageUsers = () => {
             ))}
           </tbody>
         </table>
-        <div className="manage-users-pagination">
+        {/* <div className="manage-users-pagination">
           <div className="manage-users-pagination-controls">
             <button>First</button>
             <button>Previous</button>
@@ -89,7 +111,7 @@ const ManageUsers = () => {
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Modal show={showEditModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">

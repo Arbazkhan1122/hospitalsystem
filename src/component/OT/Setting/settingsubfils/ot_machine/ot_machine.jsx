@@ -1,7 +1,8 @@
 // neha-OT-ot-machine-14-9-24
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useRef} from 'react';
 import { FaSearch } from 'react-icons/fa';
 import './ot_machine.css';
+import { startResizing } from '../../../../../TableHeadingResizing/ResizableColumns';
 
 function Ot_machine() {
   const [machines, setMachines] = useState([]);
@@ -9,6 +10,9 @@ function Ot_machine() {
   const [editingMachine, setEditingMachine] = useState(null);
   const [machineName, setMachineName] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
+
 
   // Fetch machines from API
   useEffect(() => {
@@ -165,12 +169,29 @@ function Ot_machine() {
       <table className="ot_machine_table">
         <thead>
           <tr>
-            <th className='ot_machine_tablehead'>Machine Name</th>
-            <th className='ot_machine_tablehead'>IsActive</th>
-            <th className='ot_machine_tablehead'>Actions</th>
+           
+            {[
+              'Machine Name',
+              'IsActive',
+              'Action'
+            ].map((header, index) => (
+              <th
+                key={index}
+                style={{ width: columnWidths[index] }}
+                className="rd-resizable-th"
+              >
+                <div className="header-content">
+                  <span>{header}</span>
+                  <div
+                    className="resizer"
+                    onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+                  ></div>
+                </div>
+              </th>
+            ))}
           </tr>
         </thead>
-        <tbody>
+          <tbody>
           {filteredMachines.map((machine) => (
             <tr key={machine.id}>
               <td className='ot_machine_tabledata'>{machine.machineName}</td>

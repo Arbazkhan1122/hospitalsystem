@@ -1,3 +1,4 @@
+/* // neha-ADT-homepage-19/09/24 */
 .header {
   background-color: white;
   height: 50px;
@@ -9,27 +10,25 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
+
 
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 
-.nav-links a {
-  color: #3598dc;
+.nav-links a ,.logo{
+  background-color: var(--button-color);
+  color: white;
   text-decoration: none;
-  font-size: 1rem;
-  padding: 10px 15px;
+  font-size: 16px;
+  padding: 5px;
   position: relative;
 }
 
-.nav-links a:hover {
-  background-color: #3598dc;
-  color: white;
+.nav-links a:hover,.logo:hover {
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
   border-radius: 5px;
 }
 
@@ -38,7 +37,7 @@
   position: absolute;
   width: 0;
   height: 2px;
-  background-color: #3598dc;
+  /* background-color: #3598dc; */
   left: 0;
   bottom: 0;
   transition: width 0.3s ease;
@@ -62,6 +61,6 @@
 .adt-header-button:hover,
 .adt-header-button.active {
   color: #fff; /* White text for hover and active link */
-  background-color: #007bff; /* Blue background for hover and active link */
+  background-color: var(--button-bg-color); /* Blue background for hover and active link */
 }
 
