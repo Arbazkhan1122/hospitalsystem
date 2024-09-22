@@ -1,10 +1,12 @@
+/* Dhanashree_ButtonPanel_19/09 */
+
 import React, { useState } from 'react';
 import './SystemAdmin.css';
-import DatabaseBackup from '../SystemAdmin/DataBaseBackup'; // Import the DatabaseBackup component
-import MaterializedSalesView from '../SystemAdmin/Materialized'; // Import the MaterializedSalesView component
-import SalesBookDetails from '../SystemAdmin/SalesBook'; // Import the SalesBookDetails component
-import NewSales from '../SystemAdmin/NewSales'; // Import the NewSales component
-import AuditTrails from '../SystemAdmin/AuditTrial'; // Import the AuditTrails component
+import DatabaseBackup from './DataBaseBackup'; // Import the DatabaseBackup component
+import MaterializedSalesView from './Materialized'; // Import the MaterializedSalesView component
+import SalesBookDetails from './SalesBook'; // Import the SalesBookDetails component
+import NewSales from './NewSales'; // Import the NewSales component
+import AuditTrails from './AuditTrial'; // Import the AuditTrails component
 
 const ButtonPanel = () => {
   const [activeButton, setActiveButton] = useState(0); // Initialize the first button as active
@@ -18,12 +20,12 @@ const ButtonPanel = () => {
   ];
 
   return (
-    <div className="button-panel-container">
-      <div className="button-panel">
+    <div className="ButtonPanel-button-panel-container">
+      <div className="ButtonPanel-button-panel">
         {buttons.map((text, index) => (
           <button 
             key={index} 
-            className={`button ${index === activeButton ? 'active' : ''}`}
+            className={`ButtonPanel-button ${index === activeButton ? 'ButtonPanel-active' : ''}`}
             onClick={() => setActiveButton(index)} // Update the active button index on click
           >
             {text}
@@ -42,3 +44,5 @@ const ButtonPanel = () => {
 };
 
 export default ButtonPanel;
+
+/* Dhanashree_ButtonPanel_19/09 */

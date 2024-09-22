@@ -52,7 +52,7 @@
 }
 
 /* Header of the modal */
-.deathReport .modal-header {
+.modal-header-deathlist {
   display: flex;
   justify-content: flex-end; /* Ensures the close button is aligned to the right */
 }
@@ -102,7 +102,7 @@
 }
 
 .deathReport .submit-button,
-.deathReport .cancel-button {
+.deathReport .cancel-button,.submit-button-death {
   background-color: var(--button-color);
   color: white;
   border: none;
@@ -114,7 +114,7 @@
 
 
 /* Optional: Add hover effects for buttons */
-.deathReport .submit-button:hover {
+.deathReport .submit-button:hover,.submit-button-death:hover {
   border: 1px solid var( --button-hover-border-color);
     color: var(--button-hover-text-color);
     background-color: var(--button-hover-background-color);

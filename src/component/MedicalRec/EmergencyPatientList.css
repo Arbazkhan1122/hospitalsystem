@@ -6,7 +6,7 @@
     margin: 10px 0;
   }
   .MROUt-medical-record{
-    background-color: #e0f7fa;
+    background-color: #e3fffe;
   }
   
   .filters-medical-record .filter-group {
@@ -64,7 +64,7 @@
 
   .MROutPatient-tableContainer{
     padding: 20px;
-    background-color: #e6f7ff;
+    background-color:  #e3fffe;
   }
   .MROutPatient-date-filter{
     display: flex;
@@ -215,7 +215,7 @@
 
 }
 
-.FinalDiagnosis-container{
+.FinalDiagnosis-containers{
   width: 800px;
   margin: auto;
   border: 1px solid #ccc;
@@ -228,7 +228,7 @@
 /* Modal */
 
 
-.FinalDiagnosis-container {
+.FinalDiagnosis-containers {
   padding: 20px;
 }
 
@@ -330,7 +330,7 @@
   padding: 10px;
 }
 
-.submit-button {
+.submit-button-emergency {
   background-color: var(--button-color);
     color: white;
     border: none;

@@ -63,7 +63,7 @@
 
   .Birth-tableContainer{
     padding: 20px;
-    background-color: #e6f7ff;
+    background-color: #e3fffe;
   }
   .Birth-date-filter{
     display: flex;
@@ -350,131 +350,120 @@ margin-left:5px;
     /* General styling for the component */
     font-family: Arial, sans-serif;
   }
-  
-  .birthlist .FinalDiagnosis-container {
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
+  /* Container for modal and birth details */
+  .AddBirthDetails-container {
+    position: relative;
   }
   
-  .birthlist .modal-overlay {
+  .AddBirthDetails-modal-overlay {
     position: fixed;
-    top: 15;
-    left: 5;
+    top: 0;
+    left: 0;
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    
   }
   
-  .birthlist .modal-content {
-    background: #fff;
-    padding: 20px;
+  .AddBirthDetails-modal-content {
+    background: white;
     border-radius: 8px;
-    max-width: 700px;
-    width: 100%;
-    position: relative;
+    padding: 20px;
+    width: 600px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
   
-  .birthlist .modal-header {
+  .AddBirthDetails-modal-header {
     display: flex;
     justify-content: flex-end;
   }
   
-  .birthlist .close-button {
+  .AddBirthDetails-close-button {
     background: transparent;
     border: none;
     font-size: 24px;
-    cursor: pointer;
   }
   
-  .birthlist h3 {
-    margin-top: 0;
+  .AddBirthDetails-title {
+    margin: 0 0 20px;
+  }
+  
+  .AddBirthDetails-form-container {
     margin-bottom: 20px;
   }
   
-  .birthlist .header {
-    margin-bottom: 20px;
-  }
-  
-  .birthlist #birthListTable {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .birthlist #birthListTable th,
-  .birthlist #birthListTable td {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  .birthlist #birthListTable th {
-    background-color: #f4f4f4;
-  }
-  
-  .birthlist .select-mother-searchInput {
-    padding: 8px;
-    width: calc(100% - 20px);
-    border-radius: 4px;
-    border: 1px solid #ddd;
-  }
-  
-  .birthlist .form-container {
-    margin-top: 20px;
-  }
-  
-  .birthlist .form-group {
+  .AddBirthDetails-form-group {
     margin-bottom: 15px;
+    position: relative;
   }
   
-  .birthlist .form-group label {
-    display: block;
-    margin-bottom: 5px;
+  .AddBirthDetails-form-group label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transition: 0.2s ease all;
+    pointer-events: none;
   }
   
-  .birthlist .form-group input,
-  .birthlist .form-group select {
-    width: 60%;
-    padding: 8px;
+  .AddBirthDetails-form-group input,
+  .AddBirthDetails-form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    border: 1px solid #ddd;
+    font-size: 16px;
   }
   
-  .birthlist .submit-button {
-    background-color: var(--button-color);
-    color: white;
-    border: none;
-    padding: 5px 5px;
-    border-radius: 5px;
-    cursor: pointer;
+  .AddBirthDetails-form-group input:focus,
+  .AddBirthDetails-form-group select:focus {
+    border-color: #007bff;
   }
   
-  .birthlist .cancel-button {
-    background-color: var(--button-color);
-    color: white;
-    border: none;
-    padding: 5px 5px;
-    border-radius: 5px;
-    cursor: pointer;
+  .AddBirthDetails-form-group input:focus + label,
+  .AddBirthDetails-form-group select:focus + label,
+  .AddBirthDetails-form-group input:not(:placeholder-shown) + label,
+  .AddBirthDetails-form-group select:not(:placeholder-shown) + label {
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    color: #007bff;
   }
-  .birthlist .submit-button:hover,.birthlist .cancel-button:hover {
-    border: 1px solid var( --button-hover-border-color);
-    color: var(--button-hover-text-color);
-    background-color: var(--button-hover-background-color);
-  }
-
   
-  .birthlist .footer-buttons {
-    margin-top: 20px;
+  .AddBirthDetails-footer-buttons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
   
+  .AddBirthDetails-submit-button,
+  .AddBirthDetails-cancel-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .AddBirthDetails-submit-button {
+    background: #007bff;
+    color: white;
+  }
+  
+  .AddBirthDetails-cancel-button {
+    background: #dc3545;
+    color: white;
+  }
+  
+  .AddBirthDetails-submit-button:hover {
+    background: #0056b3;
+  }
+  
+  .AddBirthDetails-cancel-button:hover {
+    background: #c82333;
+  }
+  
+
 
 
   /* BirthReport */
@@ -574,4 +563,23 @@ margin-left:5px;
 
 .birth-certificate-nav-bar button:hover {
   background-color: #f0f0f0;
+}
+
+
+.submit-button-popup,.cancel-button-popup {
+  background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.submit-button-popup:hover,.cancel-button-popup:hover {
+
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+
+
 }

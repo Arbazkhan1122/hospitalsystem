@@ -1,7 +1,7 @@
-.dashboard {
+.dashboard-medical-record {
     display: flex;
     flex-wrap: wrap;
-    background-color: #e0f7fa;
+    background-color: #e3fffe;
     padding: 20px;
     justify-content: center;
     gap: 10px;
@@ -24,19 +24,19 @@
     cursor: pointer;
   }
   
-  .icon {
+  .icon-css {
     margin-right: 15px;
     font-size: 24px;
     color: #0059ff;
   }
   
-  .content h3 {
+  .content-md h3 {
     margin: 0;
     font-size: var(--heading-font);
     color: #333;
   }
   
-  .content p {
+  .content-md p {
     margin: 0;
     font-size: 14px;
     color: #777;

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './MapSchemeAndPrice.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const usersData = [
     {
@@ -30,6 +31,8 @@ const MapSchemeAndPrice = () => {
     const [showEditModal, setShowEditModal] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
+    const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
     const filteredData = usersData.filter(item =>
         item.SchemeName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -68,17 +71,36 @@ const MapSchemeAndPrice = () => {
             <div className="map-scheme-reaction-span">
                 <span>Showing {filteredData.length}/{usersData.length} results</span>
             </div>
-            <div className="map-scheme-reaction-tab">
-                <table className="map-scheme-reaction-users-table">
-                    <thead>
-                        <tr>
-                            <th>Scheme Name</th>
-                            <th>Price Category Name</th>
-                            <th>Is Default</th>
-                            <th>Is Active</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+            <div className="table-container">
+            <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Scheme Name",
+  "Price Category Name",
+  "Is Default",
+  "Is Active",
+  "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                     <tbody>
                         {filteredData.map((item, index) => (
                             <tr key={index}>
@@ -101,14 +123,14 @@ const MapSchemeAndPrice = () => {
                         ))}
                     </tbody>
                 </table>
-                <div className="map-scheme-reaction-pagination">
+                {/* <div className="map-scheme-reaction-pagination">
                     <div className="map-scheme-reaction-pagination-controls">
                         <button>First</button>
                         <button>Previous</button>
                         <button>Next</button>
                         <button>Last</button>
                     </div>
-                </div>
+                </div> */}
             </div>
 
             <Modal show={showEditModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">

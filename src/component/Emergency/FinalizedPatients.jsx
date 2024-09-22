@@ -1,130 +1,120 @@
-import React, { useState, useRef } from 'react';
+ /* Dhanashree_FinalizedPatients_19/09 */
+
+
+import React, { useState, useEffect, useRef } from 'react';
 import ReactToPrint from 'react-to-print';
 import './FinalizedPatients.css';
+import LAMA from './LAMA'; 
+import Transferred from './Transferred'; 
+import Discharge from './Discharge'; 
+import Admitted from './Admitted'; 
+import Death from './Death'; 
+import DOR from './DOR'; 
 
-// Component for the table that will be printed
-const PrintTable = React.forwardRef((props, ref) => (
-  <div ref={ref} className="print-table">
-    <table className="patient-table">
-      <thead>
-        <tr>
-          <th>Hospital Number</th>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Gender</th>
-          <th>Finalized DateTime</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td colSpan="6" className="no-data">No Rows To Show</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-));
+// Reusable NavTab component
+const NavTab = ({ tabName, selectedTab, setSelectedTab }) => (
+  <a 
+    href={`http://localhost:5174/finalizedPatients/${tabName}`}
+    className={selectedTab === tabName ? 'FinalizedPatients-active' : ''}
+    onClick={(e) => {
+      e.preventDefault();
+      setSelectedTab(tabName);
+    }}
+  >
+    {tabName}
+  </a>
+);
 
 const FinalizedPatients = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('All');
   const [selectedTab, setSelectedTab] = useState('LAMA');
+  const [patients, setPatients] = useState([]);
   const printRef = useRef();
 
+  useEffect(() => {
+    const fetchPatients = async () => {
+      try {
+        const response = await fetch(`http://localhost:3107/api/finalize/finalize-patient/${selectedTab}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        setPatients(data);
+      } catch (error) {
+        console.error('Error fetching patients:', error.message);
+      }
+    };
+
+    fetchPatients();
+  }, [selectedTab]);
+
   return (
-    <div className="finalized-patients">
-      <nav className="tab-nav">
-        <a 
-          href="#" 
-          className={selectedTab === 'LAMA' ? 'active' : ''} 
-          onClick={() => setSelectedTab('LAMA')}
-        >
-          LAMA
-        </a>
-        <a 
-          href="#" 
-          className={selectedTab === 'Transferred' ? 'active' : ''} 
-          onClick={() => setSelectedTab('Transferred')}
-        >
-          Transferred
-        </a>
-        <a 
-          href="#" 
-          className={selectedTab === 'Discharged' ? 'active' : ''} 
-          onClick={() => setSelectedTab('Discharged')}
-        >
-          Discharged
-        </a>
-        <a 
-          href="#" 
-          className={selectedTab === 'Admitted' ? 'active' : ''} 
-          onClick={() => setSelectedTab('Admitted')}
-        >
-          Admitted
-        </a>
-        <a 
-          href="#" 
-          className={selectedTab === 'Death' ? 'active' : ''} 
-          onClick={() => setSelectedTab('Death')}
-        >
-          Death
-        </a>
-        <a 
-          href="#" 
-          className={selectedTab === 'DOR' ? 'active' : ''} 
-          onClick={() => setSelectedTab('DOR')}
-        >
-          DOR
-        </a>
+    <div className="FinalizedPatients-finalized-patients">
+      <nav className="FinalizedPatients-tab-nav">
+        {/* Render NavTabs dynamically */}
+        {['LAMA', 'Transferred', 'Discharged', 'Admitted', 'Death', 'DOR'].map((tab) => (
+          <NavTab key={tab} tabName={tab} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+        ))}
       </nav>
 
-      <div className="content">
-        <div className="search-filter">
-          <div className="search-bar">
-            <input 
-              type="text" 
-              placeholder="Search" 
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <button className="search-icon">🔍</button>
+      <div className="FinalizedPatients-content">
+        {/* Conditionally render the correct component based on the selected tab */}
+        {selectedTab === 'LAMA' ? (
+          <LAMA />  
+        ) : selectedTab === 'Transferred' ? (
+          <Transferred />  
+        ) : selectedTab === 'Discharged' ? (
+          <Discharge />  
+        ) : selectedTab === 'Admitted' ? (
+          <Admitted />  
+        ) : selectedTab === 'Death' ? (
+          <Death />  
+        ) : selectedTab === 'DOR' ? (
+          <DOR />  
+        ) : (
+          <div>
+            <div className="FinalizedPatients-search-filter">
+              <div className="FinalizedPatients-search-bar">
+                <input 
+                  type="text" 
+                  placeholder="Search" 
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <button className="FinalizedPatients-search-icon">🔍</button>
+              </div>
+              <select 
+                value={filter} 
+                onChange={(e) => setFilter(e.target.value)}
+                className="FinalizedPatients-filter-dropdown"
+              >
+                <option value="All">All</option>
+                <option value="General">General</option>
+                <option value="Dog Bite">Dog Bite</option>
+                <option value="Snake Bite">Snake Bite</option>
+                <option value="Animal Bite">Animal Bite</option>
+                <option value="Emergency Labour">Emergency Labour</option>
+                <option value="Medico-Legal">Medico-Legal</option>
+              </select>
+            </div>
+
+            <div className="FinalizedPatients-results-info">
+              <span>Showing {patients.length} results</span>
+              <ReactToPrint
+                trigger={() => <button className="FinalizedPatients-print-btn">Print</button>}
+                content={() => printRef.current}
+              />
+            </div>
+
+            {/* Print Table component can go here */}
           </div>
-          <select 
-            value={filter} 
-            onChange={(e) => setFilter(e.target.value)}
-            className="filter-dropdown"
-          >
-            <option value="All">All</option>
-            <option value="General">General</option>
-            <option value="Dog Bite">Dog Bite</option>
-            <option value="Snake Bite">Snake Bite</option>
-            <option value="Animal Bite">Animal Bite</option>
-            <option value="Emergency Labour">Emergency Labour</option>
-            <option value="Medico-Legal">Medico-Legal</option>
-          </select>
-        </div>
-
-        <div className="results-info">
-          <span>Showing 0 / 0 results</span>
-          <ReactToPrint
-            trigger={() => <button className="print-btn">Print</button>}
-            content={() => printRef.current}
-          />
-        </div>
-
-        <PrintTable ref={printRef} />
-
-        <div className="pagination">
-          <span>0 to 0 of 0</span>
-          <button className="pagination-btn">First</button>
-          <button className="pagination-btn">Previous</button>
-          <span>Page 0 of 0</span>
-          <button className="pagination-btn">Next</button>
-          <button className="pagination-btn">Last</button>
-        </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default FinalizedPatients;
+
+ /* Dhanashree_FinalizedPatients_19/09 */

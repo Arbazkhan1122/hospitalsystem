@@ -1,6 +1,8 @@
+/* Dhanashree_NewSales_19/09 */
+
 import React, { useState, useRef } from 'react';
-import './SalesBook.css';
-import DetailsSalesReport from '../SystemAdmin/ShowReport'; // Adjust path as necessary
+import './NewSales.css';
+import DetailsSalesReport from './ShowReport'; // Adjust path as necessary
 import { useReactToPrint } from 'react-to-print';
 
 const NewSales = () => {
@@ -16,21 +18,21 @@ const NewSales = () => {
   });
 
   return (
-    <div className="sales-book-container">
-      <div className="sales-book-details">
-        <h2 className="header">SALES BOOK DETAILS</h2>
-        <div className="date-range">
-          <div className="date-input">
+    <div className="NewSales-sales-book-container">
+      <div className="NewSales-sales-book-details">
+        <h2 className="NewSales-header">SALES BOOK DETAILS</h2>
+        <div className="NewSales-date-range">
+          <div className="NewSales-date-input">
             <label>From:</label>
             <input type="date" defaultValue="2024-08-13" />
           </div>
-          <div className="date-input">
+          <div className="NewSales-date-input">
             <label>To:</label>
             <input type="date" defaultValue="2024-08-13" />
           </div>
-          <button className="star-button">☆</button>
-          <button className="minus-button">-</button>
-          <button className="show-report-button" onClick={handleShowReport}>
+          <button className="NewSales-star-button">☆</button>
+          <button className="NewSales-minus-button">-</button>
+          <button className="NewSales-show-report-button" onClick={handleShowReport}>
             Show Report
           </button>
         </div>
@@ -40,7 +42,7 @@ const NewSales = () => {
       {showReport && (
         <div>
           <DetailsSalesReport ref={printRef} />
-          <button className="print-button" onClick={() => handlePrint()}>
+          <button className="NewSales-print-button" onClick={() => handlePrint()}>
             Print
           </button>
         </div>
@@ -50,3 +52,5 @@ const NewSales = () => {
 };
 
 export default NewSales;
+
+/* Dhanashree_NewSales_19/09 */

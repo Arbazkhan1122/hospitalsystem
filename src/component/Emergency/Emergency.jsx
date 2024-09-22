@@ -1,6 +1,9 @@
+ /* Dhanashree_NavBar_19/09 */
+
 import React, { useState } from 'react';
 import './Emergency.css';
 import { FaHome } from 'react-icons/fa';
+import { NavLink, Routes, Route } from 'react-router-dom'; 
 import Dashboard from '../Emergency/EmergencyDashboard';
 import PatientList from '../Emergency/Patient';
 import TriagedPatients from '../Emergency/TriagedPatients';
@@ -8,64 +11,62 @@ import FinalizedPatients from '../Emergency/FinalizedPatients';
 import WardOccupancy from '../Emergency/BedInfo';
 
 const NavBar = () => {
-    const [currentView, setCurrentView] = useState('dashboard');
-
-    const handleViewChange = (view) => {
-        setCurrentView(view);
-    };
-
     return (
         <div>
-            <NavMenu currentView={currentView} onClick={handleViewChange} />
-            {currentView === 'dashboard' && <Dashboard />}
-            {currentView === 'newPatients' && <PatientList />}
-            {currentView === 'triagedPatients' && <TriagedPatients />}
-            {currentView === 'finalizedPatients' && <FinalizedPatients />}
-            {currentView === 'bedInfo' && <WardOccupancy />}
+            <NavMenu />
+            <Routes>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/newPatients" element={<PatientList />} />
+                <Route path="/triagedPatients" element={<TriagedPatients />} />
+                <Route path="/finalizedPatients" element={<FinalizedPatients />} />
+                <Route path="/bedInfo" element={<WardOccupancy />} />
+            </Routes>
         </div>
     );
 };
 
-const NavMenu = ({ currentView, onClick }) => {
+const NavMenu = () => {
     return (
-        <nav className="nav-menu">
-            <a 
-                href="#" 
-                className={`home-icon ${currentView === 'dashboard' ? 'active' : ''}`} 
-                onClick={() => onClick('dashboard')}
+        <nav className="EmergencyNavBar-nav-menu">
+            <NavLink 
+                to="/dashboard" 
+                className="EmergencyNavBar-button"
+                activeClassName="EmergencyNavBar-active"
             >
                 <FaHome />
-            </a>
-            <a 
-                href="#" 
-                className={`nav-item ${currentView === 'newPatients' ? 'active' : ''}`} 
-                onClick={() => onClick('newPatients')}
+            </NavLink>
+            <NavLink 
+                to="/newPatients" 
+                className="EmergencyNavBar-button"
+                activeClassName="EmergencyNavBar-active"
             >
                 New Patients
-            </a>
-            <a 
-                href="#" 
-                className={`nav-item ${currentView === 'triagedPatients' ? 'active' : ''}`} 
-                onClick={() => onClick('triagedPatients')}
+            </NavLink>
+            <NavLink 
+                to="/triagedPatients" 
+                className="EmergencyNavBar-button"
+                activeClassName="EmergencyNavBar-active"
             >
                 Triaged Patients
-            </a>
-            <a 
-                href="#" 
-                className={`nav-item ${currentView === 'finalizedPatients' ? 'active' : ''}`} 
-                onClick={() => onClick('finalizedPatients')}
+            </NavLink>
+            <NavLink 
+                to="/finalizedPatients" 
+                className="EmergencyNavBar-button"
+                activeClassName="EmergencyNavBar-active"
             >
                 Finalized Patients
-            </a>
-            <a 
-                href="#" 
-                className={`nav-item ${currentView === 'bedInfo' ? 'active' : ''}`} 
-                onClick={() => onClick('bedInfo')}
+            </NavLink>
+            <NavLink 
+                to="/bedInfo" 
+                className="EmergencyNavBar-button"
+                activeClassName="EmergencyNavBar-active"
             >
                 Bed Information
-            </a>
+            </NavLink>
         </nav>
     );
 };
 
 export default NavBar;
+
+ /* Dhanashree_NavBar_19/09 */

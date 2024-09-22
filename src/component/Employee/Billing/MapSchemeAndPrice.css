@@ -1,11 +1,12 @@
 /* src/MaanageReaction.css */
 
 .map-scheme-reaction-container {
-    background-color: #d4f1f9;
+    background-color: var(--background-color);
     padding: 20px;
+    height: 90vh;
     border-radius: 5px;
     font-family: Arial, sans-serif;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
 }
 
 .map-scheme-reaction-header {
@@ -15,15 +16,20 @@
 }
 
 .map-scheme-reaction-add-button {
-    background-color: #5b73e8;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-weight: bold;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
-}
+    border-bottom:1px solid var(--button-color);
 
+}
+.map-scheme-reaction-add-button:hover{
+    color: var(--button-color);
+    background-color: white;
+    border-bottom:1px solid var(--button-color);
+}
 .map-scheme-reaction-search-input {
     padding: 6px;
     border: 1px solid #ccc;
@@ -33,8 +39,8 @@
 
 .map-scheme-reaction-span {
     text-align: right;
-    color: #0F63AF;
-    font-size: 16px;
+    color: black;
+    font-size: 14px;
     margin-top: 10px;
 }
 
@@ -73,13 +79,20 @@
 }
 
 .map-scheme-reaction-action-button {
-    background-color: #5b73e8;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 4px 8px;
-    border-radius: 3px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 14px;
+    border-bottom:  1px solid var(--button-color);
+
+}
+.map-scheme-reaction-action-button:hover{
+    color: var(--button-color);
+    background-color: white;
+    border-bottom:  1px solid var(--button-color);
 }
 
 .map-scheme-reaction-pagination {

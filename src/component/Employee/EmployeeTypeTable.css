@@ -1,13 +1,15 @@
 /* General Page Styles */
 .employee-Type-page {
-    background-color: #e3f2fd;
+    background-color: var(--background-color);
     padding: 20px;
+    height: 90vh;
+    overflow-y: scroll;
   }
   
   .employee-Type-table-container {
-    background-color: white;
+    /* background-color: white; */
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    /* box-shadow: 0 2px 4px rgba(0,0,0,0.1); */
     padding: 20px;
   }
   
@@ -18,13 +20,19 @@
   }
   
   .add-employee-Type-role-btn {
-    background-color: #6200ea;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 8px 15px;
-    border-radius: 4px;
-    font-weight: bold;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
+    border-bottom:  1px solid var(--button-color);
+
+  }
+  .add-employee-Type-role-btn:hover{
+    color: var(--button-color);
+    background-color: white;
+    border-bottom:  1px solid var(--button-color);
   }
   
   .emp-search-input {
@@ -58,13 +66,20 @@
   }
   
   .emp-role-btn {
-    background-color: #0F63AF;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 3px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--button-color);
+
+  }
+  .emp-role-btn:hover{
+    color: var(--button-color);
+    background-color: white;
+   border-bottom: 1px solid var(--button-color);
   }
   
   /* Pagination Styles */

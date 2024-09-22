@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './ManageUsers.css'; 
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const usersData = [
   {
@@ -86,6 +87,8 @@ const ManageRole = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedRole, setSelectedRole] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   
   const filteredRoles = usersData.filter(role =>
     role.roleName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -127,16 +130,35 @@ const ManageRole = () => {
       <div className="manage-user-span">
         <span>Showing {filteredRoles.length} / {usersData.length} results</span>
       </div>
-      <div className="manage-user-tab">
-        <table className="manage-users-users-table">
+      <div className="table-container">
+      <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Role Name</th>
-              <th>Employee Name</th>
-              <th>User Name</th>
-              <th>Department Name</th>
-              <th>Email</th>
-              <th>Action</th>
+              {[
+                  "Role Name",
+                  "Employee Name",
+                  "User Name",
+                  "Department Name",
+                  "Email",
+                  "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -155,7 +177,7 @@ const ManageRole = () => {
             ))}
           </tbody>
         </table>
-        <div className="manage-users-pagination">
+        {/* <div className="manage-users-pagination">
           <div className="manage-users-pagination-controls">
             <button>First</button>
             <button>Previous</button>
@@ -163,7 +185,7 @@ const ManageRole = () => {
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
       </div>
       
     </div>

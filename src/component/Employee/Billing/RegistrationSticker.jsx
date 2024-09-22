@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './MapSchemeAndPrice.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const usersData = [
     { name: "General-OPD", report: "General outpatient", unit: "", isActive: true },
     { name: "General-IPD", report: "General inpatient", unit: "", isActive: true },
@@ -20,6 +20,8 @@ const usersData = [
 ];
 
 const RegistrationSticker = () => {
+    const [columnWidths,setColumnWidths] = useState({});
+    const tableRef=useRef(null);
     return (
         <div className="map-scheme-reaction-container">
             <div className="map-scheme-reaction-header">
@@ -29,17 +31,36 @@ const RegistrationSticker = () => {
             <div className="map-scheme-reaction-span">
                 <span>Showing {usersData.length}/{usersData.length} results</span>
             </div>
-            <div className="map-scheme-reaction-tab">
-                <table className="map-scheme-reaction-users-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Report</th>
-                            <th>Unit</th>
-                            <th>Is Active</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+            <div className="table-container">
+            <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Name",
+               "Report",
+               "Unit",
+               "Is Active",
+               "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                     <tbody>
                         {usersData.map((user, index) => (
                             <tr key={index}>
@@ -55,14 +76,14 @@ const RegistrationSticker = () => {
                         ))}
                     </tbody>
                 </table>
-                <div className="map-scheme-reaction-pagination">
+                {/* <div className="map-scheme-reaction-pagination">
                     <div className="map-scheme-reaction-pagination-controls">
                         <button>First</button>
                         <button>Previous</button>
                         <button>Next</button>
                         <button>Last</button>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );
