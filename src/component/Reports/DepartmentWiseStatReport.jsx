@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import './UserCollectionReport.css';
+
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const DepartmentWiseStatReport = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
+
 
   // Example of how you might fetch or have data
   const reportsData = []; // Replace this with your actual data source or API call
@@ -82,22 +87,40 @@ const DepartmentWiseStatReport = () => {
             <button className="user-collection-report-print-btn" onClick={handleExport}>Export</button>
           </div>
           <div className='user-collection-report-tab'>
-            <table className="user-collection-report-table">
-              <thead>
-                <tr>
-                  <th>Department</th>
-                  <th>New Male Adult</th>
-                  <th>New FeMale Adult</th>
-                  <th>New Male Child</th>
-                  <th>New FeMale Child</th>
-                  <th>Followup Male Adult</th>
-                  <th>Followup FeMale Adult</th>
-                  <th>Followup Male Child</th>
-                  <th>Followup FeMale Child</th>
-                  <th>Total</th>
-                                 
-                </tr>
-              </thead>
+          <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Department",
+              "New Male Adult",
+              "New Female Adult",
+              "New Male Child",
+              "New Female Child",
+              "Follow-up Male Adult",
+              "Follow-up Female Adult",
+              "Follow-up Male Child",
+              "Follow-up Female Child",
+              "Total"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
               <tbody>
                 {reportsData && reportsData.length > 0 ? (
                   reportsData.map((row, index) => (

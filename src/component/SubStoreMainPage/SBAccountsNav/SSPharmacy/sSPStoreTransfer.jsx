@@ -1,3 +1,6 @@
+/* Ajhar tamboli sSPStoreTransfer.jsx 19-09-24 */
+
+
 import React from 'react'
 import "../SSPharmacy/sSPStoreTransfer.css"
 function SSPStoreTransfer() {

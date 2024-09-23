@@ -256,7 +256,7 @@ const handleSubmit = async (e) => {
     <div className="checkIn__container">
      
       <div className="checkIn__header">
-        <h2>New Visit</h2>
+        <h5>New Visit</h5>
       </div>
 
       <div className="checkIn__topbar">

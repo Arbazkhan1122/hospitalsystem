@@ -1,26 +1,31 @@
 /* Container styling */
 .manage-imaging-type-container {
-    background-color: #e3f2fd; /* Light blue background */
+    background-color: var(--background-color); /* Light blue background */
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
     padding: 15px; 
+    height: 90vh;
+    overflow-y: scroll;
     box-sizing: border-box;
 }
 
 /* Button styling */
 .manage-imaging-type-btn {
-    background-color: #6200ea; /* Purple color */
+    background-color:var(--button-color); /* Purple color */
     color: white;
     border: none;
-    padding: 6px 12px; /* Reduced padding */
+    padding:5px 5px; /* Reduced padding */
     border-radius: 4px;
-    font-weight: bold;
     cursor: pointer;
     margin-bottom: 10px;
+    border-bottom: 1px solid var(--button-color);
+
 }
 
 .manage-imaging-type-btn:hover {
-    background-color: #4a00b3; /* Darker purple on hover */
+    background-color: white; /* Darker purple on hover */
+    color: var(--button-color);
+    border-bottom: 1px solid var(--button-color);
 }
 
 /* Search bar styling */
@@ -59,17 +64,21 @@
 
 /* Edit button styling */
 .manage-imaging-type-edit-button {
-    background-color: #0F63AF; /* Blue color */
+    background-color: var(--button-color); /* Blue color */
     color: white;
     border: none;
-    padding: 4px 8px; /* Reduced padding */
-    border-radius: 3px;
+    padding: 5px 5px; /* Reduced padding */
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 11px; /* Reduced font size */
+    border-bottom: 1px solid var(--button-color);
+
+    font-size: 14px; /* Reduced font size */
 }
 
 .manage-imaging-type-edit-button:hover {
-    background-color: #0d5ca6; /* Darker blue on hover */
+    background-color: white; /* Darker blue on hover */
+    color: var(--button-color);
+    border-bottom: 1px solid var(--button-color);
 }
 
 /* Pagination styling */

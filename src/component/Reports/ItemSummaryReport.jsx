@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState ,useRef} from 'react';
 import { Button } from 'react-bootstrap';
 import './UserCollectionReport.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const ItemSummaryReport = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   const handlePrint = () => {
     window.print(); // Simple print functionality using the browser's print dialog
@@ -118,16 +121,35 @@ const ItemSummaryReport = () => {
             <button className="user-collection-report-print-btn" onClick={handleExport}>Export</button>
           </div>
           <div className='user-collection-report-tab'>
-            <table className="user-collection-report-table">
-              <thead>
-                <tr>
-                  <th>Department</th>
-                  <th>Item Name</th>
-                  <th>Quantity</th>
-                  <th>Discount Amount</th>
-                  <th>Total Amount</th>
-                </tr>
-              </thead>
+          <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Department",
+                "Item Name",
+                "Quantity",
+                "Discount Amount",
+                "Total Amount"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
               <tbody>
                 {reportsData.map((data, index) => (
                   <tr key={index}>

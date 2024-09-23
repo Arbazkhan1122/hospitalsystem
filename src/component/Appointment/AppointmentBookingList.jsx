@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import './AppointmentBookingList.css';
 import { Link } from 'react-router-dom';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const AppointmentBookingList = () => {
   const [appointments, setAppointments] = useState([]);
   const [error, setError] = useState(null);
   const [newPatientVisit,setnewPatientVisit]=useState([]);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
 
   useEffect(() => {
@@ -111,18 +114,37 @@ const AppointmentBookingList = () => {
           <button className="appointments__search-btn">🔍</button>
         </div>
 
-        <table className="appointments__table">
+        <table className="patientList-table" ref={tableRef}>
           <thead>
             <tr>
-              <th>Status</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Appointment ID</th>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Doctor</th>
-              <th>Visit Type</th>
-              <th>Actions</th>
+              {[
+                "Status",
+                "Date",
+                "Time",
+                "Appointment ID",
+                "Name",
+                "Phone",
+                "Doctor",
+                "Visit Type",
+                "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -130,7 +152,7 @@ const AppointmentBookingList = () => {
           </tbody>
         </table>
 
-        <div className="appointments__pagination-section">
+        {/* <div className="appointments__pagination-section">
           <p>Showing {appointments.length} / {appointments.length} results</p>
           <div className="appointments__pagination-buttons">
             <button>First</button>
@@ -138,7 +160,7 @@ const AppointmentBookingList = () => {
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
 
         <div className="appointments__summary-report">
           <h3 className="appointments__summary-title">Summary Report</h3>

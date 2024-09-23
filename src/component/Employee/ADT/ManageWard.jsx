@@ -1,7 +1,8 @@
 // src/DepartmentTable.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 import './ManageWard.css';
 
 const ManageWard = () => {
@@ -12,6 +13,8 @@ const ManageWard = () => {
   const [wardLocation, setWardLocation] = useState('');
   const [subStore, setSubStore] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const handleEditClick = (ward) => {
     setSelectedWard(ward);
@@ -127,19 +130,39 @@ const ManageWard = () => {
         <input type="text" placeholder="Search" className="manage-add-ward-search-input" />
         <div className="manage-add-ward-results-info">Showing {wardsData.length} results</div>
 
-        <table className="manage-add-ward-table">
+        <div className='table-container'>
+        <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Code</th>
-              <th>Parent Substore</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Address</th>
-              <th>Label</th>
-              <th>Verification</th>
-              <th>Is Active</th>
-              <th>Action</th>
+              {[
+                "Name",
+                "Code",
+                "Parent Substore",
+                "Email",
+                "Phone",
+                "Address",
+                "Label",
+                "Verification",
+                "Is Active",
+                "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -166,14 +189,15 @@ const ManageWard = () => {
             ))}
           </tbody>
         </table>
+        </div>
 
-        <div className="manage-add-ward-pagination">
+        {/* <div className="manage-add-ward-pagination">
           <Button className="manage-add-ward-pagination-btn">First</Button>
           <Button className="manage-add-ward-pagination-btn">Previous</Button>
           <span>Page 1 of 1</span>
           <Button className="manage-add-ward-pagination-btn">Next</Button>
           <Button className="manage-add-ward-pagination-btn">Last</Button>
-        </div>
+        </div> */}
       </div>
 
       <Modal show={showEditModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">

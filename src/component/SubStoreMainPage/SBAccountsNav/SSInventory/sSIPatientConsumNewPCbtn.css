@@ -1,5 +1,8 @@
+/* Ajhar Tamboli sSIPatientConsumNewPCbtn.css 19-09-24 */
+
+
 .sSIPatientConsumNewPCbtn-entry {
-  background-color: #d0f0ff;
+  background-color: var(--background-color);
   padding: 20px;
   width: 60%;
   margin: 20px auto;
@@ -10,10 +13,10 @@
 }
 
 .sSIPatientConsumNewPCbtn-title {
-  font-size: 16px;
+  font-size: var(--heading-font);
   margin-bottom: 20px;
-  color: #333333;
-  font-weight: bold;
+  /* color: #333333; */
+  /* font-weight: bold; */
 }
 
 .sSIPatientConsumNewPCbtn-form-section {
@@ -24,27 +27,45 @@
 }
 
 .sSIPatientConsumNewPCbtn-form-section label {
-  font-size: 14px;
+  font-size: var(--font-size);
   margin-right: 10px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
-
-.sSIPatientConsumNewPCbtn-form-section input[type="date"],
-.sSIPatientConsumNewPCbtn-form-section input[type="text"] {
-  padding: 5px;
+.sSIPatientConsumNewPCbtn-form-section input[type="date"]{
+  padding: 3px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 14px;
+  /* width: 50%; */
+  font-size: var(--font-size);
+  
+}
+
+.sSIPatientConsumNewPCbtn-form-section input[type="text"] {
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 50%;
+  font-size: var(--font-size);
 }
 
 .sSIPatientConsumNewPCbtn-back-btn {
   margin-left: auto;
-  background-color: #5867DD;
-  color: #fff;
-  padding: 5px 10px;
-  border: none;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
   border-radius: 5px;
   cursor: pointer;
+  font-size: var(--font-size);
+  /* margin-bottom: 10px; */
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.sSIPatientConsumNewPCbtn-back-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .sSIPatientConsumNewPCbtn-table-section {
@@ -121,12 +142,22 @@
 }
 
 .sSIPatientConsumNewPCbtn-save-btn {
-  background-color: #2ecc71;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  padding: 8px 15px;
-  border: none;
+  /* border: none; */
+  /* margin-right: 10px; */
   border-radius: 5px;
   cursor: pointer;
+  font-size: var(--font-size);
+  /* margin-bottom: 10px; */
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.sSIPatientConsumNewPCbtn-save-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .sSIPatientConsumNewPCbtn-discard-btn {

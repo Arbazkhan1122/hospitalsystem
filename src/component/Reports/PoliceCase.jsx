@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import './UserCollectionReport.css';
-
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 const PoliceCase = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [dischargedOnly, setDischargedOnly] = useState(false); // State for the "Discharged Only" checkbox
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
+
 
   const handlePrint = () => {
     window.print(); // Simple print functionality using the browser's print dialog
@@ -112,16 +115,36 @@ const PoliceCase = () => {
             <button className="user-collection-report-print-btn" onClick={handlePrint}>Print</button>
           </div>
           <div className='user-collection-report-tab'>
-            <table className="user-collection-report-table">
-              <thead>
-                <tr>
-                  <th>IP Number</th>
-                  <th>Patient Name</th>
-                  <th>Hospital No.</th>
-                  <th>Admitted On</th>
-                  <th>Discharged on</th>
-                </tr>
-              </thead>
+            
+<table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "IP Number",
+                "Patient Name",
+                "Hospital No.",
+                "Admitted On",
+                "Discharged on"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
               <tbody>
                 {filteredData.length === 0 ? (
                   <tr>

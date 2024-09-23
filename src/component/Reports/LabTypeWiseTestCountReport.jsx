@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import './UserCollectionReport.css';
+
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const LabTypeWiseTestCountReport = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedDoctor, setSelectedDoctor] = useState('');
   const [doctors, setDoctors] = useState(['Dr. Smith', 'Dr. Johnson', 'Dr. Williams']); // Example doctors list
   const [showReport, setShowReport] = useState(false); // State to toggle report display
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   // Manage checkbox states
   const [checkboxStates, setCheckboxStates] = useState({
@@ -190,16 +194,35 @@ const LabTypeWiseTestCountReport = () => {
             <button className="user-collection-report-print-btn" onClick={handleExport}>Export</button>
           </div>
           <div className="user-collection-report-tab">
-            <table className="user-collection-report-table">
-              <thead>
-                <tr>
-                  <th>Category Name</th>
-                  <th>Last Test Name</th>
-                  <th>Op-LabTest Count</th>
-                  <th>ER-LabTest Count No</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
+          <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Category Name",
+                "Last Test Name",
+                "Op-LabTest Count",
+                "ER-LabTest Count No",
+                "Total"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
               <tbody>
                 {reportsData.map((row, index) => (
                   <tr key={index}>

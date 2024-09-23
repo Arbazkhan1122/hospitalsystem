@@ -30,7 +30,7 @@ display: none;
 }
 
 .custom-nav-item-active {
-  background-color: var(--button-color);
+  /* background-color: var(--button-color); */
 }
 .custom-logo-container {
   display: flex;

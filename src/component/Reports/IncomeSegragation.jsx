@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './UserCollectionReport.css';
-
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 const IncomeSegragation = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  
+const [columnWidths, setColumnWidths] = useState({});
+const tableRef = useRef(null);
 
   // Sample data for reports
   const reportsData = [
@@ -197,24 +200,43 @@ const IncomeSegragation = () => {
 
           <div className="user-collection-report-tab">
             <div className="income-segragation-tab">
-              <table className="user-collection-report-table">
-                <thead>
-                  <tr>
-                    <th>Department</th>
-                    <th>Cash Sales</th>
-                    <th>Cash Discount</th>
-                    <th>Credit Discount</th>
-                    <th>Gross Sales</th>
-                    <th>Total Discount</th>
-                    <th>Return Cash Sales</th>
-                    <th>Return Cash Discount</th>
-                    <th>Return Credit Sales</th>
-                    <th>Return Credit Discount</th>
-                    <th>Total Sales Return</th>
-                    <th>Total Return Discount</th>
-                    <th>Net Sales</th>
-                  </tr>
-                </thead>
+            <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Department",
+                "Cash Sales",
+                "Cash Discount",
+                "Credit Discount",
+                "Gross Sales",
+                "Total Discount",
+                "Return Cash Sales",
+                "Return Cash Discount",
+                "Return Credit Sales",
+                "Return Credit Discount",
+                "Total Sales Return",
+                "Total Return Discount",
+                "Net Sales"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                 <tbody>
                   {reportsData.map((row, index) => (
                     <tr key={index}>

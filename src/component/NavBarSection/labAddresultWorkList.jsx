@@ -21,21 +21,18 @@ const LabAddResultWorkList = ({ onClose }) => {
       <div className="labAddresultWorkList-filters">
         <div className="labAddresultWorkList-date-range">
           <span>Sample Collection Date:</span>
-          <div className="labAddresultWorkList-date-picker">
-            <span>From:</span>
-            <DatePicker
-              className='labAddresultWorkList-datepicker'
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              dateFormat="MM/dd/yyyy"
-            />
-            <span>To:</span>
-            <DatePicker
-              className='labAddresultWorkList-datepicker'
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
-              dateFormat="MM/dd/yyyy"
-            />
+         
+          <div className="labAddresultWorkList-date-range">
+            <label>
+              From:
+              <input type="date" defaultValue="2024-08-09" />
+            </label>
+            <label>
+              To:
+              <input type="date" defaultValue="2024-08-16" />
+            </label>
+            {/* <button className="labAddresultWorkList-star-button">☆</button> */}
+            {/* <button className="labAddresultWorkList-ok-button">OK</button> */}
           </div>
         </div>
 

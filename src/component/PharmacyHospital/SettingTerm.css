@@ -33,12 +33,12 @@
   border-radius: 5px;
 }
 
-.search-icon {
+/* .search-icon {
   position: absolute;
   right: 5px;
   top: 50%;
   transform: translateY(-50%);
-}
+} */
 
 .setting-terms-results-print {
   display: flex;

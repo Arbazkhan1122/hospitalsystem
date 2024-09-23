@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 import './UserCollectionReport.css';
-
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 const DiscountSchemeReport = () => {
   const [showReport, setShowReport] = useState(false);
+  
+const [columnWidths, setColumnWidths] = useState({});
+const tableRef = useRef(null);
 
 
   
@@ -139,19 +142,39 @@ const DiscountSchemeReport = () => {
     </div>
 <div className='user-collection-report-tab'>
   
-<table className="user-collection-report-table">
-            <thead>
-              <tr>
-                <th>Scheme Name</th>
-                <th>Cash Amount</th>
-                <th>Credit Amount</th>
-                <th>Total Amount</th>
-                <th>Free Cons Amount</th>
-                <th>Net Refund Amount</th>
-                <th>Discount Refund</th>
-                <th>NetAmount</th>
-              </tr>
-            </thead>
+
+<table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+            "Scheme Name",
+            "Cash Amount",
+            "Credit Amount",
+            "Total Amount",
+            "Free Cons Amount",
+            "Net Refund Amount",
+            "Discount Refund",
+            "NetAmount"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
             <tbody>
               {reportsData.map((row, index) => (
                 <tr key={index}>

@@ -1,3 +1,4 @@
+/* neha-mktreffaral-transaction-19/09/24 */
 .mkrt_transaction_main_container {
     
     padding: 10px;
@@ -8,7 +9,7 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
-    background-color: #ccc;
+    background-color: #f4f4f4;
     padding: 10px;
     border-radius: 5px;
     padding: 5px;
@@ -49,6 +50,7 @@
     width: 200px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    margin-bottom: 10px;
   }
   
   .mkrt_transaction-table-container {
@@ -65,12 +67,12 @@
   
   .mkrt_transaction-table th, .mkrt_transaction-table td {
     border: 1px solid #ccc;
-    padding: 8px;
+    padding: 5px;
     text-align: left;
   }
   
   .mkrt_transaction-table th {
-    background-color: #ccc;
+    background-color: #f4f4f4;
     color: black;
     font-size: 14px;
   }

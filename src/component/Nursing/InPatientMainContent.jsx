@@ -501,7 +501,7 @@ useEffect(() => {
   return (
     <>
       <div className="hospital-wards-container" onClick={showPatientwardwise}>
-        <h2>Select your Ward</h2>
+        <h5>Select your Ward</h5>
         <div className="ward-info-grid">
           {wards.map((ward, index) => (
             <WardInfoCard

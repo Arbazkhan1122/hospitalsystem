@@ -88,6 +88,9 @@
 
 // export default IncentiveTransation;
 
+
+// Ajhar Tamboli IncentiveTransaction.jsx 18-09-2024
+
 import React, { useState, useEffect } from "react";
 import "../IncentiveTransactions/incentiveTransation.css";
 import IncentiveTransationInvoiceItem from "./incentiveTransationInvoice-Item";
@@ -179,6 +182,8 @@ const fetchInvoices = async () => {
                 />
                 <button className="incentiveTransation-icon-button incentiveTransation-star">★</button>
                 <button className="incentiveTransation-icon-button incentiveTransation-dash">-</button>
+            <button className="incentiveTransation-ok-button">OK</button>
+
               </div>
               <button className="incentiveTransation-load-button" onClick={fetchInvoices}>
                 <i className="fa-solid fa-rotate"></i> Load

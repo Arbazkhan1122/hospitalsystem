@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import './UserCollectionReport.css';
+
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const ItemWiseLab = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   const reportsData = [
     { department: 'Biochemistry', testName: 'FASTING BLOOD SUGAR', unit: 23, totalAmount: 23000 },
@@ -94,15 +98,34 @@ const ItemWiseLab = () => {
             <button className="user-collection-report-print-btn" onClick={handleExport}>Export</button>
           </div>
           <div className='user-collection-report-tab'>
-            <table className="user-collection-report-table">
-              <thead>
-                <tr>
-                  <th>Service Department</th>
-                  <th>Test Name</th>
-                  <th>Unit</th>
-                  <th>Total Amount</th>
-                </tr>
-              </thead>
+          <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+           "Service Department",
+          "Test Name",
+          "Unit",
+          "Total Amount"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
               <tbody>
                 {filteredData.map((row, index) => (
                   <tr key={index}>

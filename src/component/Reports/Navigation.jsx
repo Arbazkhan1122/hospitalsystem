@@ -7,6 +7,7 @@ function Navigation() {
     const [isRadiologySubNavOpen, setRadiologySubNavOpen] = useState(false);
     const [isAdmissionSubNavOpen, setAdmissionSubNavOpen] = useState(false); 
     const [isAppointmentSubNavOpen, setAppointmentSubNavOpen] = useState(false); // State for Appointment sub-nav
+    const [isBillingReportsSubNavOpen,setBillingReportsSubNavOpen]=useState(false);
     const location = useLocation();
 
     const handlePatientClick = () => {
@@ -37,6 +38,13 @@ function Navigation() {
         if (isAdmissionSubNavOpen) setAdmissionSubNavOpen(false); // Close Admission sub-nav if open
     };
 
+    const handleBillingClick=()=>{
+        setBillingReportsSubNavOpen(prevState => !prevState);
+        if (isRadiologySubNavOpen) setRadiologySubNavOpen(false);
+        if (isAdmissionSubNavOpen) setAdmissionSubNavOpen(false); 
+        if (isAppointmentSubNavOpen) setAppointmentSubNavOpen(false); // Close Appointment sub-nav if open
+    }
+
     return (
         <div>
             <nav className="reports-tabs-nav">
@@ -47,7 +55,15 @@ function Navigation() {
                 >
                     Admission
                 </NavLink>
-                <NavLink to="/BillingReports" className="reports-nav-link">Billing Reports</NavLink>
+                {/* <NavLink to="/BillingReports" className="reports-nav-link">Billing Reports</NavLink> */}
+                <NavLink 
+                    to="/BillingReports" 
+                    className={`reports-nav-link ${location.pathname.startsWith('/BillingReports') ? 'active' : ''}`}
+                    onClick={handleBillingClick}
+                >
+                    Billing Reports
+                </NavLink>
+
                 <NavLink 
                     to="/AppointmentReport" 
                     className={`reports-nav-link ${location.pathname.startsWith('/AppointmentReport') ? 'active' : ''}`}

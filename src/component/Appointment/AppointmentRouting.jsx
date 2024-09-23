@@ -17,7 +17,7 @@ const AppointmentRouting = () => {
         <NavLink 
           to="/appointment-booking-list" 
           className={({ isActive }) => 
-            isActive ? "appointment-booking-list-nav-link active" : "appointment-booking-list-nav-link"
+            isActive ? "appointment-booking-list-navigation-link active" : "appointment-booking-list-navigation-link"
           }
         >
           Appointment Booking List
@@ -25,7 +25,7 @@ const AppointmentRouting = () => {
         <NavLink 
           to="/book-appointment" 
           className={({ isActive }) => 
-            isActive ? "appointment-booking-list-nav-link active" : "appointment-booking-list-nav-link"
+            isActive ? "appointment-booking-list-navigation-link active" : "appointment-booking-list-navigation-link"
           }
         >
           Book Appointment
@@ -33,7 +33,7 @@ const AppointmentRouting = () => {
         <NavLink 
           to="/list-visits" 
           className={({ isActive }) => 
-            isActive ? "appointment-booking-list-nav-link active" : "appointment-booking-list-nav-link"
+            isActive ? "appointment-booking-list-navigation-link active" : "appointment-booking-list-navigation-link"
           }
         >
           List Visits
@@ -41,7 +41,7 @@ const AppointmentRouting = () => {
         <NavLink 
           to="/new-visit" 
           className={({ isActive }) => 
-            isActive ? "appointment-booking-list-nav-link active" : "appointment-booking-list-nav-link"
+            isActive ? "appointment-booking-list-navigation-link active" : "appointment-booking-list-navigation-link"
           }
         >
           New Visit
@@ -49,19 +49,19 @@ const AppointmentRouting = () => {
         <NavLink 
           to="/online-appointment" 
           className={({ isActive }) => 
-            isActive ? "appointment-booking-list-nav-link active" : "appointment-booking-list-nav-link"
+            isActive ? "appointment-booking-list-navigation-link active" : "appointment-booking-list-navigation-link"
           }
         >
           Online Appointment
         </NavLink>
-        <NavLink 
+        {/* <NavLink 
           to="/ssf-claim" 
           className={({ isActive }) => 
             isActive ? "appointment-booking-list-nav-link active" : "appointment-booking-list-nav-link"
           }
         >
           SSF Claim
-        </NavLink>
+        </NavLink> */}
         
         
        

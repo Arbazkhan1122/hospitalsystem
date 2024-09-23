@@ -11,14 +11,15 @@ import Lab from "../../component/NavBarSection/Lab";
 import Emergency from "../../component/Emergency/Emergency";
 import Utilitiesmain from "../../component/Utilities/utilitiesmain";
 import SystemAdmin from "../../component/SystemAdmin/SystemAdmin";
+
 import SocialServicePage from "../../component/SocialServicesMain/SocialServicePage";
 import Disprensary from "../../component/DispensaryPage/disprensaryRoute";
 import DynamicReport from "../../component/DynamicReport/DynamicReport";
 import Report from "../../component/Reports/Layout";
 
 // import ReportMainRouting from "../../component/Reports/ReportMainRouting";
-import NursingMainRouting from "../../component/Nursing/NursingMainRouting";
-import DoctorDashBoard from "../../component/DashBoards/DoctorDashBoard";
+import NursingMainRouting from "../../component/Nursing/NursingMainRouting"
+import DoctorDashBoard from "../../component/DashBoards/DoctorDashBoard"
 import Otmain from "../../component/OT/otmain";
 import Nhif from "../../component/NHIF/nhif";
 import HomePage from "../../component/Admission/adt-main";

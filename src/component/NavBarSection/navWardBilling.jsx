@@ -17,8 +17,8 @@ const patients = [
   { hospitalNo: '2406003723', name: 'Taimi Jayde', ageSex: '23 Y/F', contact: '0789191273', admittedDate: '2024-06-13 16:14', admittingDoctor: 'Mr. COLLINS KIPKEMEI', inpatientNo: 'H2400011', wardBed: 'MATERNITY WA...' },
   { hospitalNo: '2406003726', name: 'Maddalen Maimu', ageSex: '65 Y/M', contact: '0738929191', admittedDate: '2024-06-13 16:13', admittingDoctor: 'Dr. Amit Shah', inpatientNo: 'H2400010', wardBed: 'Male Ward-002' },
   { hospitalNo: '2406003703', name: 'Stocazzo Coidenti', ageSex: '40 Y/F', contact: '0663666544', admittedDate: '2024-06-10 14:31', admittingDoctor: 'Prof. Dr. Hannah Benta', inpatientNo: 'H2400009', wardBed: 'Female Ward-...' },
-  { hospitalNo: '2402003692', name: 'LUCY Ndolo', ageSex: '24 Y/F', contact: '726356972', admittedDate: '2024-05-17 21:44', admittingDoctor: 'INNOCENT TENGO', inpatientNo: 'H2400006', wardBed: 'Male Ward-003' },
-  { hospitalNo: '2402000028', name: 'Joseph Stalin', ageSex: '34 Y/M', contact: '0876676676', admittedDate: '2024-03-01 08:19', admittingDoctor: 'INNOCENT TENGO', inpatientNo: 'H2400003', wardBed: 'Male Ward-005' },
+  // { hospitalNo: '2402003692', name: 'LUCY Ndolo', ageSex: '24 Y/F', contact: '726356972', admittedDate: '2024-05-17 21:44', admittingDoctor: 'INNOCENT TENGO', inpatientNo: 'H2400006', wardBed: 'Male Ward-003' },
+  // { hospitalNo: '2402000028', name: 'Joseph Stalin', ageSex: '34 Y/M', contact: '0876676676', admittedDate: '2024-03-01 08:19', admittingDoctor: 'INNOCENT TENGO', inpatientNo: 'H2400003', wardBed: 'Male Ward-005' },
 ];
 
 function NavWardBilling() {
@@ -78,9 +78,10 @@ function NavWardBilling() {
           <i className="fa-solid fa-magnifying-glass"></i>
           <input type="text" placeholder="Search" className="navWardBilling-search-input" />
         </div>
+        
         <div className="navWardBilling-results-info">
           <span>Showing 13 / 13 results</span>
-          <button className="navWardBilling-print-btn" onClick={handlePrint}>Print</button>
+          <button className="navWardBilling-print-btn" onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
         </div>
       </div>
       <table className="navWardBilling-patient-table">
@@ -109,20 +110,19 @@ function NavWardBilling() {
               <td>{patient.inpatientNo}</td>
               <td>{patient.wardBed}</td>
               <td><button className="navWardBilling-view-btn"onClick={() => handleViewDetail(patient)}>
-                <i className="fa-regular fa-eye"></i>
-                 View Detail</button></td>
+                <i className="fa-regular fa-eye"></i> View Detail</button></td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="navWardBilling-pagination">
+      {/* <div className="navWardBilling-pagination">
         <span>0 to 0 of 0</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 0 of 0</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
       {showViewDetails && (
         <div className="navWardBilling-popup-overlay">
           <div className="navWardBilling-popup-content">

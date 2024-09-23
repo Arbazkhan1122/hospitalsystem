@@ -24,3 +24,34 @@
 .table .btn {
   margin-right: 5px;
 }
+
+
+.appointment-visited-d-flex {
+  display: flex;
+  align-items: center; /* Vertically aligns items in the center */
+  justify-content: space-between; /* Adjusts the space between elements */
+  gap: 10px; /* Adds space between the buttons and search bar */
+}
+
+.appointment-visited-search-bar input {
+  padding: 5px;
+  width: 250px; /* Adjust width as per your requirement */
+}
+
+.reload-button,
+.appointment-visited-d-flex .btn-primary {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.reload-button:hover,
+.appointment-visited-d-flex .btn-primary:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+
+}

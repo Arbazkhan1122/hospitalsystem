@@ -1,13 +1,16 @@
 /* Employee Table Styles */
 .employee-page-table {
-  background-color: #e3f2fd;
+  background-color: var(--background-color);
   padding: 20px;
+  height: 90vh;
+  overflow-y: scroll;
+
 }
 
 .employee-table-container {
-  background-color: white;
+  background-color:var(--background-color);
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
   padding: 20px;
 }
 
@@ -18,13 +21,19 @@
 }
 
 .add-employee-role-role-btn {
-  background-color: #6200ea;
+  background-color: var(--button-color);
   color: white;
   border: none;
-  padding: 8px 15px;
-  border-radius: 4px;
-  font-weight: bold;
+  padding: 5px 5px;
+  border-radius: 5px;
   cursor: pointer;
+  border-bottom: 1px solid var(--button-color);
+
+}
+.add-employee-role-role-btn:hover{
+  color: var(--button-color);
+  background-color: white;
+  border-bottom: 1px solid var(--button-color);
 }
 
 .employee-search-input {
@@ -58,13 +67,20 @@
 }
 
 .employee-edit-btn {
-  background-color: #0F63AF;
+  background-color: var(--button-color);
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
+  padding: 5px 5px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--button-color);
+
+}
+.employee-edit-btn:hover{
+  color: var(--button-color);
+  background-color: white;
+  border-bottom: 1px solid var(--button-color);
 }
 
 .employee-pagination {
@@ -74,7 +90,7 @@
   align-items: center;
 }
 
-.employee-pagination button {
+/* .employee-pagination button {
   margin: 0 5px;
   padding: 5px 10px;
   background-color: #0F63AF;
@@ -83,7 +99,7 @@
   border-radius: 3px;
   cursor: pointer;
   font-size: 14px;
-}
+} */
 
 .employee-pagination span {
   margin: 0 10px;
@@ -95,35 +111,60 @@
   background-color: white;
   color: #3598dc;
   padding: 0;
+  width: 90%;
   font-size: 16px;
   position: static;
+  /* overflow-x: scroll;  */
+  white-space: nowrap; 
 }
+
+.employee-header-form::-webkit-scrollbar {
+  display: none;
+    scrollbar-width: 5px;    
+
+}
+
+/* .employee-header {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;    
+} */
+
 
 .employee-header-form {
   list-style-type: none;
   display: flex;
   padding: 0;
   margin: 0;
-  overflow-x: auto;
+  overflow-x: scroll;
 }
 
 .employee-header-form li {
-  color: #3598dc;
+  
   padding: 10px 15px;
   cursor: pointer;
-  white-space: nowrap;
-  font-size: 16px;
-}
-
-.employee-header-form li:hover, .employee-header-form li.active {
-  background-color: #3598dc;
+  /* white-space: nowrap; */
+  /* font-size: 16px; */
+  background-color: var( --button-color);
+  text-decoration: none;
   color: white;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 8px;
+  margin-left: 5px;
 }
 
-
+.employee-header-form li:hover {
+  background-color:white;
+  color:var(--button-color);
+}
+.employee-header-form li.active {
+  background-color: var(--button-bg-color); /* Background color when active */
+  color: white; /* Text color when active */
+}
 
 .employee-sub-nav,.department-sub-nav  {
-  background-color: #e3f2fd;
+  background-color: var(--background-color);
   padding: 0;
 }
 
@@ -141,11 +182,11 @@
 }
 
 .employee-sub-nav li:hover, .employee-sub-nav li.active {
-  background-color: #bbdefb;
+  background-color: var(--background-color);
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .employee-header-form {
     flex-direction: column;
   }
@@ -168,10 +209,8 @@
     align-items: flex-start;
   }
 
-  .add-employee-role-role-btn {
-    margin-bottom: 10px;
-  }
-}
+ 
+} */
 
 
 /*  */
@@ -226,7 +265,7 @@
   bottom: 0;
   width: 100%;
   height: 4px;
-  background-color: blue; /* Blue underline */
+  background-color: var(--button-bg-color); /* Blue underline */
   transform: scaleX(0); /* Start with 0 width for the animation */
   transform-origin: bottom right; /* Origin for the animation */
   transition: transform 0.3s ease; /* Smooth transition */
@@ -250,7 +289,7 @@
 .geolocation-sub-nav,
 .clinical-sub-nav,
 .dynamic-templates-sub-nav {
-  background-color: #e3f2fd;
+  background-color: var(--background-color);
   padding: 0;
 }
 
@@ -289,7 +328,7 @@
 .clinical-sub-nav li.active,
 .dynamic-templates-sub-nav li:hover,
 .dynamic-templates-sub-nav li.active {
-  background-color: #bbdefb;
+  background-color: var(--background-color);
 }
 
 /* Link Styles for ADT and Other Sub-navs */
@@ -319,7 +358,7 @@
   bottom: 0;
   width: 100%;
   height: 4px;
-  background-color: blue;
+  background-color: var(--button-bg-color); /* Blue underline */
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease;
@@ -383,7 +422,7 @@
   bottom: 0;
   width: 100%;
   height: 4px;
-  background-color: blue; /* Blue underline */
+  background-color: var( --button-bg-color); /* Blue underline */
   transform: scaleX(0); /* Start with 0 width for the animation */
   transform-origin: bottom right; /* Origin for the animation */
   transition: transform 0.3s ease; /* Smooth transition */
@@ -396,7 +435,7 @@
 
 /* Billing Sub-navigation Styles */
 .billing-sub-nav {
-  background-color: #e3f2fd; /* Background color for billing sub-nav */
+  background-color: var(--background-color); /* Background color for billing sub-nav */
   padding: 0;
 }
 
@@ -414,7 +453,7 @@
 
 .billing-sub-nav li:hover,
 .billing-sub-nav li.active {
-  background-color: #bbdefb; /* Background color on hover or active state */
+  background-color: var(--background-color); /* Background color on hover or active state */
 }
 
 /* Link Styles for Billing Sub-nav */
@@ -434,7 +473,7 @@
   bottom: 0;
   width: 100%;
   height: 4px;
-  background-color: blue;
+  background-color: var(--button-bg-color);
   transform: scaleX(0);
   transform-origin: bottom right;
   transition: transform 0.3s ease;

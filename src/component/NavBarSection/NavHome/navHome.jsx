@@ -16,38 +16,46 @@ const Dashboard = () => {
 
   return (
     <div className="labNavHome-dashboard">
-      <div className="labNavHome-date-range">
-        <span>From:</span>
-        <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
-        <span>To:</span>
-        <DatePicker selected={endDate} onChange={date => setEndDate(date)} />
-        <button className="labNavHome-ok-button"> <i class="fa-regular fa-square-check"></i> Ok</button>
+          <div className="labNavHome-controls">
+        {/* Your date range and button controls */}
+          <div className="labNavHome-date-range">
+            <label>
+              From:
+              <input type="date" defaultValue="2024-08-09" />
+            </label>
+            <label>
+              To:
+              <input type="date" defaultValue="2024-08-16" />
+            </label>
+            <button className="labNavHome-star-button">☆</button>
+            <button className="labNavHome-ok-button">OK</button>
+          </div>
       </div>
       
       <div className="labNavHome-stats-container">
         <div className="labNavHome-stat-box-dengue">
-          <h4>Dengue Overall Stats</h4>
+          <h6>Dengue Overall Stats</h6>
           <p>Total: 0 Positive: 0 Negative: 0 Pending: 0</p>
           <h5>Dengue Today's Stats</h5>
           <p>Total: 0 Positive: 0 Negative: 0 Pending: 0</p>
         </div>
         
         <div className="labNavHome-stat-box-covid">
-          <h4>Covid Overall Stats</h4>
+          <h6>Covid Overall Stats</h6>
           <p>Total: 0 Positive: 0 Negative: 0 Pending: 0</p>
           <h5>Covid Today's Stats</h5>
           <p>Total: 0 Positive: 0 Negative: 0 Pending: 0</p>
         </div>
         
         <div className="labNavHome-stat-box-test-requests-today">
-          <h4>Test Requests Today</h4>
+          <h6>Test Requests Today</h6>
           <p>Total: 0 Positive: 0 Negative: 0 Pending: 0</p>
           <p>New: 0 Result Pending: 0 Completed: 0</p>
           <p>Cancelled: 0 Returned: 0</p>
         </div>
         
         <div className="labNavHome-stat-box-test-requests-till-date">
-          <h4>Test Requests Till Date</h4>
+          <h6>Test Requests Till Date</h6>
           <p>Total: 45 Positive: 0 Negative: 0 Pending: 31</p>
           <p>New: 76 Result Pending: 9 Completed: 35</p>
           <p>Cancelled: 0 Returned: 0</p>

@@ -1,3 +1,5 @@
+/* Ajhar tamboli sSPharmacyReqCreateReq.jsx 19-09-24 */
+
 import React, { useState } from 'react';
 import { Calendar } from 'lucide-react';
 import "../SSPharmacy/sSPharmacyReqCreateReq.css";
@@ -103,7 +105,7 @@ const SSPharmacyReqCreateReq = ({ onClose }) => {
 
   return (
     <div className="sSPharmacyReqCreateReq-form">
-      <button className="sSPharmacyReqCreateReq-close-button" onClick={onClose}>X</button>
+      {/* <button className="sSPharmacyReqCreateReq-close-button" onClick={onClose}>X</button> */}
       <h2 className="sSPharmacyReqCreateReq-form-title">Add Requisition</h2>
       <form onSubmit={handleSubmit}>
         {/* General Information */}
@@ -224,6 +226,8 @@ const SSPharmacyReqCreateReq = ({ onClose }) => {
         </table>
 
         {/* Verification Section */}
+        <div className="sSPharmacyReqCreateReq-nedd-N-textarea">
+        <div className="sSPharmacyReqCreateReq-nedd-N-btn">
         <div className="sSPharmacyReqCreateReq-form-group sSPharmacyReqCreateReq-checkbox-group">
           <input
             type="checkbox"
@@ -245,10 +249,10 @@ const SSPharmacyReqCreateReq = ({ onClose }) => {
           </button>
           <button
             type="button"
-            className="sSPharmacyReqCreateReq-btn btn-checked"
+            className="sSPharmacyReqCreateReq-btn-checked"
             onClick={() => { /* Handle if needed */ }}
           >
-            Checked By
+            Chief Pharmaceutical Service
           </button>
           <input
             type="text"
@@ -263,6 +267,7 @@ const SSPharmacyReqCreateReq = ({ onClose }) => {
             +
           </button>
         </div>
+        </div>
 
         {/* Remarks */}
         <div className="sSPharmacyReqCreateReq-form-group">
@@ -273,6 +278,7 @@ const SSPharmacyReqCreateReq = ({ onClose }) => {
             onChange={(e) => setRemarks(e.target.value)}
             rows="4"
           ></textarea>
+        </div>
         </div>
 
         {/* Form Actions */}

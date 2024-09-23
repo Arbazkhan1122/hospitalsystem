@@ -91,6 +91,7 @@
 
 // export default SSPStock;
 
+/* Ajhar tamboli sSPStock.jsx 19-09-24 */
 
 
 import React, { useState, useEffect } from 'react';
@@ -141,17 +142,25 @@ function SSPStock() {
       case 'Stock':
         return (
           <div className="sSPStock-stock-content">
-            <div className="sSPStock-stock-search-bar">
-              <input type="text" placeholder="Search" />
-              <button type="button">🔍</button>
-            </div>
-            <div className="sSPStock-stock-results-header">
+           
+            <div className="sSPStock-stock-search-N-results">
+          <div className="sSPStock-stock-search-bar">
+            <i className="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search" />
+          </div>
+          <div className="sSPStock-stock-results-info">
               <span>Showing {stockData.length} / {stockData.length} results</span>
-              <div>
-                <button className="sSPStock-stock-btn-blue">Export</button>
-                <button className="sSPStock-stock-btn-blue">Print</button>
-              </div>
-            </div>
+            {/* Showing 2 / 2 results */}
+            <button className='sSPStock-stock-print-btn' 
+            // onClick={handleExportToExcel}
+            >
+              <i className="fa-regular fa-file-excel"></i> Export
+            </button>
+            <button className='sSPStock-stock-print-btn' 
+            // onClick={handlePrint}
+            ><i class="fa-solid fa-print"></i> Print</button>
+          </div>
+        </div>
             {loading ? (
               <p>Loading data...</p>
             ) : error ? (
@@ -208,9 +217,9 @@ function SSPStock() {
   };
 
   return (
-    <div className="sSPStock-container">
+    <div className="sSPStock-stock-container">
     <SSPharmacyNInven/>
-    <nav className='sSPStock-nav'>
+    <nav className='sSPStock-stock-nav'>
       <ul>
         <li className={activeTab === 'Stock' ? 'active' : ''} onClick={() => setActiveTab('Stock')}>Stock</li>
         <li className={activeTab === 'Requisition' ? 'active' : ''} onClick={() => setActiveTab('Requisition')}>Requisition</li>

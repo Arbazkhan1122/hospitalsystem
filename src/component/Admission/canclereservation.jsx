@@ -1,11 +1,13 @@
-// src/CancelBedReservation.js
-import React, { useState } from 'react';
+/* // neha-ADT-canclereservation-19/09/24 */
+import React, { useState,useRef } from 'react';
 import { Modal, Button,Table } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
 import './canclereservation.css'; 
-
+import { startResizing } from '../../TableHeadingResizing/ResizableColumns';
 const CancelReservation = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -28,61 +30,74 @@ const CancelReservation = () => {
   );
 
   return (
-    <div className="page">
+    <div className="cancelreservation-page">
       
       {/* <h1>Cancel Bed Reservation</h1> */}
-     <div className='canclereservation' style={{display:"flex",justifyContent:"space-between"}}>
-     <div>
+     <div className='canclereservation' >
+     
       <input
           type="text"
         
          
           placeholder="Search ....."
-          style={{width:"500px"}}
+          
           className="cancle-reservation-search-input"
         />
-          <button className='icon-btn'> <FaSearch style={{ color: 'gray', fontSize: '18px' }} /></button>
-        </div>
+        <button className="canclereservation-print-button" onClick={handlePrint}>Print</button>
+       
       
-      <button className="print-button" onClick={handlePrint}>Print</button>
      </div>
-      <table className='canclereservationtable'>
+     <div className='table-container'>
+      
+     <table ref={tableRef}>
         <thead>
-          <tr className='canclehead'>
-            <th className='canclehead'>Hospital No</th>
-            <th class="bg-gray">Patient Name</th>
-            <th className='canclehead'>Age/Sex</th>
-            <th className='canclehead'>Phone</th>
-            <th className='canclehead'>Address</th>
-            <th className='canclehead'>Ward/Bed</th>
-            <th className='canclehead'>Action</th>
-          </tr>
-        </thead>
-        <tbody>
+          <tr>
+           
+            {[
+  
+    'Hospital No',
+    'Patient Name',
+    'Age/Sex',
+    'Phone No.',
+    'Address',
+    'Ward/Bed',
+    'Action'
+  ].map((header, index) => (
+    <th
+      key={index}
+      style={{ width: columnWidths[index] }}
+      className="resizable"
+    >
+      <div className="rd-header-content">
+        <span>{header}</span>
+        <div
+          className="rd-resizer"
+          onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+        ></div>
+      </div>
+    </th>
+  ))}
+  </tr>
+  </thead>
+  <tbody>
           {filteredData.map((item, index) => (
             <tr key={index}>
-              <td className='cancledata'>{item.hospitalNo}</td>
-              <td className='cancledata'>{item.name}</td>
-              <td className='cancledata'>{item.ageSex}</td>
-              <td className='cancledata'>{item.phone}</td>
-              <td className='cancledata'>{item.address}</td>
-              <td className='cancledata'>{item.wardBed}</td>
-              <td className='cancledata'>
+              <td >{item.hospitalNo}</td>
+              <td >{item.name}</td>
+              <td >{item.ageSex}</td>
+              <td >{item.phone}</td>
+              <td >{item.address}</td>
+              <td >{item.wardBed}</td>
+              <td>
                 <button className='cancledatabtn'>Cancel</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+     </div>
 
-      <div className="employee-pagination">
-        <Button>First</Button>
-        <Button>Previous</Button>
-        <span>Page 1 of 4</span>
-        <Button>Next</Button>
-        <Button>Last</Button>
-      </div>
-      
+     
     </div>
   );
 };

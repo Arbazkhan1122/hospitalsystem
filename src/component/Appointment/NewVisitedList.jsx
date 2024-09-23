@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import axios from 'axios';
 import './NewVisitedList.css';
 import AddNewPateint from './AddNewPateint';
 import { useNavigate } from 'react-router-dom';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const NewVisitedList = () => {
   const [patients, setPatients] = useState([]);
   const [search, setSearch] = useState('');
   const [showPatientVisitForm, setShowPatientVisitForm] = useState(false);
   const navigate = useNavigate();
-  
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   useEffect(() => {
     // Fetch data from the API when the component mounts
@@ -58,9 +60,10 @@ const NewVisitedList = () => {
   }
 
   return (
-    <div className="patient-list">
-      <div className="header">
-        <h3>Patient List</h3>
+
+    <div className="new-patient-list">
+      <div className="new-header">
+        <h5>Patient List</h5>
         <button className="new-patient" onClick={handleNewPatient}>+ New Patient</button>
       </div>
       <div className="search-bar">
@@ -71,17 +74,36 @@ const NewVisitedList = () => {
           onChange={handleSearchChange} 
         />
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Patient Number</th>
-            <th>Patient Name</th>
-            <th>Age/Sex</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+      <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Patient Number",
+                "Patient Name",
+                "Age/Sex",
+                "Address",
+                "Phone",
+                "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {patients
              .filter((patient) => 
@@ -102,15 +124,17 @@ const NewVisitedList = () => {
             ))}
         </tbody>
       </table>
-      <div className="pagination">
+
+      {/* <div className="new-pagination">
         <span>1 to 20 of 200</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 1 of 10</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
-      <div className="footer-buttons">
+
+      </div> */}
+      <div className="new-footer-buttons">
         <button>Print</button>
       </div>
     </div>

@@ -1,24 +1,19 @@
 /* Mohini_PurchaseSummaryReport_14/sep/2024 */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './ItemWisePurchaseReport.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
-const usersData = [
-  {
-    purchase: 0,
-    purchaseReturn: 0,
-    balance: 0
-  }
-];
 
 const PurchaseSummaryReport = () => {
-  const [suppliers, setSuppliers] = useState(usersData);
+  // const [suppliers, setSuppliers] = useState(usersData);
   const [searchTerm, setSearchTerm] = useState('');
-
-  const filteredUsers = suppliers.filter((user) =>
-    Object.values(user).some((value) =>
-      value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-    )
-  );
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
+  // const filteredUsers = suppliers.filter((user) =>
+  //   Object.values(user).some((value) =>
+  //     value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+  //   )
+  // );
 
   return (
     <div className="iten-purchase-container">
@@ -62,16 +57,33 @@ const PurchaseSummaryReport = () => {
 
       
       <div className="item-purchase-ta">
-        <table className="iten-purchase-table">
+      <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Purchase</th>
-              <th>Purchase Return</th>
-              <th>Balance</th>
+              {[
+                "Purchase", "Purchase Return", "Balance"   
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
-            {filteredUsers.length > 0 ? (
+            {/* {filteredUsers.length > 0 ? (
               filteredUsers.map((user, index) => (
                 <tr key={index}>
                   <td>{user.purchase}</td>
@@ -79,11 +91,11 @@ const PurchaseSummaryReport = () => {
                   <td>{user.balance}</td>
                 </tr>
               ))
-            ) : (
+            ) : ( */}
               <tr className="iten-purchase-noRows">
                 <td colSpan="3">No records found</td>
               </tr>
-            )}
+            {/* )} */}
           </tbody>
         </table>
         

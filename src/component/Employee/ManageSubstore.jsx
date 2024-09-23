@@ -1,14 +1,16 @@
 // src/DepartmentTable.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 import './ManageSubstore.css';
 
 const ManageSubstore = () => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [selectedSubstore, setSelectedSubstore] = useState(null);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   const data = [
     { name: 'Accounts', code: '0010', parentSubStore: '', email: '', phone: '', address: '', label: '', verification: 0, isActive: true },
     { name: 'Brain Operations Store', code: '2001', parentSubStore: '', email: '', phone: '', address: '', label: '', verification: 0, isActive: true },
@@ -35,26 +37,45 @@ const ManageSubstore = () => {
     <div className="manage-substore-page">
     <div className="manage-substore-table-container">
       <div className="manage-substore-manage-section">
-        <Button className="manage-add-substore-btn">+ Add Substore</Button>
+        <h1 className="manage-add-substore-btn">+ Add Substore</h1>
         <div className="manage-substore-results-info">Showing 10 / 10 results</div>
       </div>
       <input type="text" placeholder="Search" className="manage-substore-search-input" />
 
-      <table className="manage-substore-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Code</th>
-            <th>Parent Substore</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>Label</th>
-            <th>Verification</th>
-            <th>Is Active</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+      <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Name",
+               "Code",
+               "Parent Substore",
+               "Email",
+               "Phone",
+               "Address",
+               "Label",
+               "Verification",
+               "Is Active",
+               "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {data.map((item, index) => (
             <tr key={index}>

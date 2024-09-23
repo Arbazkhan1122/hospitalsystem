@@ -15,7 +15,7 @@ const RankMembershipwiseReport = () => {
 
   return (
     <div className="rank-wise-saales-report-page-container">
-      <h3>⚛ Rank-Membershipwise Sales Report</h3>
+      <h3><i className="fa-solid fa-star-of-life"></i>   Rank-Membershipwise Sales Report</h3>
       <div className="rank-wise-saales-filters-container">
         <div className="rank-wise-saales-filter-item">
           <label>From:</label>
@@ -25,6 +25,7 @@ const RankMembershipwiseReport = () => {
             onChange={(e) => setFromDate(e.target.value)}
           />
         </div>
+        <div></div>
         <div className="rank-wise-saales-filter-item">
           <label>To:</label>
           <input
@@ -37,7 +38,22 @@ const RankMembershipwiseReport = () => {
        
         <button className="rank-membershipfavorite-btn">★</button>
         <button className="rank-membership-reset-btn">-</button>
+        <div className="rank-wise-saales-filter-item">
+          <label>Rank:</label>
+          {/* <input
+            type="text"
+            value={rank}
+            onChange={(e) => setRank(e.target.value)}
+          /> */}
+
+
+           <div >
+          <button className="rank-wise-saalesfilter-item" onClick={handleShowReport}>Show Report</button>
+        </div>
+        </div>
       </div>
+     
+      
       <div className="rank-memeber-range">
       <div className="rank-wise-saales-filter-item">
           <label>Membership:</label>
@@ -51,19 +67,7 @@ const RankMembershipwiseReport = () => {
             {/* Add other membership options as needed */}
           </select>
         </div>
-        <div className="rank-wise-saales-filter-item">
-          <label>Rank:</label>
-          {/* <input
-            type="text"
-            value={rank}
-            onChange={(e) => setRank(e.target.value)}
-          /> */}
-
-
-           <div className="rank-wise-saalesfilter-item">
-          <button onClick={handleShowReport}>Show Report</button>
-        </div>
-        </div>
+       
 
 
         </div>

@@ -1,8 +1,8 @@
 // src/DepartmentTable.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 import './ManageWard.css';
 
 const ManageBedFeatureScheme = () => {
@@ -11,6 +11,8 @@ const ManageBedFeatureScheme = () => {
   const [role, setRole] = useState('');
   const [description, setDescription] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const handleEditClick = (type) => {
     setSelectedImagingType(type);
@@ -61,14 +63,34 @@ const ManageBedFeatureScheme = () => {
         <input type="text" placeholder="Search" className="manage-add-ward-search-input" />
         <div className="manage-add-ward-results-info">Showing 17/17 results</div>
 
-        <table className="manage-add-ward-table">
+      <div className='table-container'>
+      <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Code</th>
-              <th>Bed Feature</th>
-              <th>Full Name</th>
-              <th>IsActive</th>
-              <th>Action</th>
+              {[
+                "Code",
+                "Bed Feature",
+                "Full Name",
+                "IsActive",
+                "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -90,6 +112,7 @@ const ManageBedFeatureScheme = () => {
             ))}
           </tbody>
         </table>
+      </div>
 
         <div className="manage-add-ward-pagination">
           <Button className="manage-add-ward-pagination-btn">First</Button>

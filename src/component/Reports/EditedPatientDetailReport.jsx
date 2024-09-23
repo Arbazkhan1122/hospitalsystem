@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import './UserCollectionReport.css';
+
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const EditedPatientDetailReport = () => {
   const [showReport, setShowReport] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   const handlePrint = () => {
     window.print(); // Simple print functionality using the browser's print dialog
@@ -268,18 +272,38 @@ const EditedPatientDetailReport = () => {
             <button className="user-collection-report-print-btn" onClick={handleExport}>Export</button>
           </div>
           <div className='user-collection-report-tab'>
-            <table className="user-collection-report-table">
-              <thead>
-                <tr>
-                  <th>Hospital No</th>
-                  <th>Patient Old Name</th>
-                  <th>Patient New Name</th>
-                  <th>Registered By</th>
-                  <th>Edit By</th>
-                  <th>Registered Date</th>
-                  <th>Edited Date</th>
-                </tr>
-              </thead>
+          <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Hospital No",
+                "Patient Old Name",
+                "Patient New Name",
+                "Registered By",
+                "Edit By",
+                "Registered Date",
+                "Edited Date"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+		  
               <tbody>
                 {reportsData.map((row, index) => (
                   <tr key={index}>

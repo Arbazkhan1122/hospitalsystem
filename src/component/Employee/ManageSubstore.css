@@ -2,12 +2,14 @@
 
 /* General Styles */
 .manage-substore-page {
-  background-color: #e3f2fd;
+  background-color: var(--background-color);
   padding: 15px;
+  height: 90vh;
+  overflow-y: scroll;
 }
 
 .manage-substore-table-container {
-  background-color: #e3f2fd;
+  background-color: var(--background-color);
   border-radius: 5px;
 }
 
@@ -18,13 +20,17 @@
 }
 
 .manage-add-substore-btn {
-  background-color: #6200ea;
+  background-color:var(--button-color);
   color: white;
   border: none;
   padding: 6px 12px; /* Reduced padding */
   border-radius: 4px;
   font-weight: bold;
   cursor: pointer;
+}
+.manage-add-substore-btn :hover{
+  color: var(--button-color);
+  background-color: white;
 }
 
 .manage-substore-search-input {
@@ -47,11 +53,7 @@
   font-size: 13px; /* Reduced font size */
 }
 
-.manage-substore-table th {
-  background-color: #f5f5f5;
-  font-weight: bold;
-  color: #333;
-}
+
 
 /* Hover effect for table rows */
 .manage-substore-table tbody tr:hover {
@@ -59,7 +61,7 @@
 }
 
 .manage-store-edit-btn {
-  background-color: #0F63AF;
+  background-color: var(--button-color);
   color: white;
   border: none;
   padding: 4px 8px; /* Reduced padding */
@@ -75,21 +77,6 @@
   align-items: center;
 }
 
-.manage-store-pagination-btn {
-  margin: 0 4px; /* Reduced margin */
-  padding: 4px 8px; /* Reduced padding */
-  background-color: #0F63AF;
-  color: white;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 13px; /* Reduced font size */
-}
-
-.manage-store-pagination span {
-  margin: 0 8px; /* Reduced margin */
-  font-size: 13px; /* Reduced font size */
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -112,8 +99,8 @@
 }
 
 .manage-substore-results-info {
-  color: #0F63AF;
-  font-size: 16px;
+  color: black;
+  font-size: 14px;
 }
 
 /* Modal Styles */
@@ -148,6 +135,24 @@
   font-size: 24px;
   color: #333;
 }
+.manage-add-substore-btn {
+  background-color: var(--button-color); /* Use button color variable */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  padding: 5px 5px; /* Add padding */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  font-size: 16px; /* Font size */
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+  display: inline-block; /* Ensure button stays inline */
+}
+
+.manage-add-substore-btn:hover {
+  background-color: white; /* Change background color on hover */
+  color: var(--button-color); /* Text color on hover */
+  border: 1px solid var(--button-color); /* Add border on hover */
+}
+
 
 .update-substore-close-btn {
   background: none;
@@ -172,7 +177,7 @@
 }
 
 .update-substore-update-btn {
-  background-color: #007bff;
+  background-color: var(--button-color);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -182,5 +187,6 @@
 }
 
 .update-substore-update-btn:hover {
-  background-color: #0056b3;
+  background-color: white;
+  color: var(--button-color);
 }

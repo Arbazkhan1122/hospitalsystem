@@ -6,7 +6,7 @@
     margin: 10px 0;
   }
   .MROUt-medical-record{
-    background-color: #e0f7fa;
+    background-color: #e3fffe;
   }
   
   .filters-medical-record .filter-group {
@@ -64,7 +64,7 @@
 
   .MROutPatient-tableContainer{
     padding: 20px;
-    background-color: #e6f7ff;
+    background-color:  #e3fffe;
   }
   .MROutPatient-date-filter{
     display: flex;
@@ -91,19 +91,18 @@
 }
 
 .MROutPatient-date-filter button {
-  padding: 8px 16px;
-  background-color: #007bff;
-  border: none;
-  border-radius: 4px;
+  background-color: var(--button-color);
   color: white;
-  font-weight: bold;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  margin-left:5px;
 }
 
 .MROutPatient-date-filter button:hover {
-  background-color: blue;
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 /* Search */
 .MROut-Patient-Header{
@@ -183,18 +182,18 @@
 }
 
 .edit-final-diaggnosois {
- 
-  background-color: #007bff;
-  border: none;
-  color: white;
-  cursor: pointer;
-  border-radius: 6px;
-  margin-bottom: 5px;
-
+  background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .edit-final-diaggnosois:hover {
-  background-color: #0056b3;
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .MROut-pagination{
@@ -202,17 +201,21 @@
 }
 
 .MROut-pagination button{
-  background-color: #007bff;
-border: none;
-border-radius: 4px;
-color: white;
-font-weight: bold;
-cursor: pointer;
-transition: background-color 0.3s;
-margin-left:5px;
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.MROut-pagination button:hover{
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+
 }
 
-.FinalDiagnosis-container{
+.FinalDiagnosis-containers{
   width: 800px;
   margin: auto;
   border: 1px solid #ccc;
@@ -225,7 +228,7 @@ margin-left:5px;
 /* Modal */
 
 
-.FinalDiagnosis-container {
+.FinalDiagnosis-containers {
   padding: 20px;
 }
 
@@ -314,12 +317,12 @@ margin-left:5px;
   font-weight: bold;
 }
 
-.form-group input[type="text"],
+/* .form-group input[type="text"],
 .form-group select {
   padding: 5px;
   width: 200px;
   margin-left: 10px;
-}
+} */
 
 .footer-buttons {
   display: flex;
@@ -327,21 +330,27 @@ margin-left:5px;
   padding: 10px;
 }
 
-.submit-button {
-  background-color: #6c63ff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  margin-right: 10px;
-  border-radius: 5px;
-  cursor: pointer;
+.submit-button-emergency {
+  background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .cancel-button {
-  background-color: #ff6b6b;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.submit-button:hover,.cancel-button:hover {
+
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+    
 }

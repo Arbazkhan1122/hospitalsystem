@@ -5,7 +5,7 @@
   /* padding: 10px; */
   /* background-color: red; */
   /* background-color: red; */
-  height: 490px;
+  height: 75vh;
 }
 
 .sSIIReportsReqTC-header {
@@ -15,10 +15,11 @@
   /* margin-bottom: 20px; */
 }
 
-/* .sSIIReportsReqTC-header h4 {
-  color: #3f8fdf;
+.sSIIReportsReqTC-header h4 {
+  /* color: #3f8fdf; */
+  font-size: var(--heading-font);
   margin: 0;
-} */
+}
 .sSIIReportsReqTC-CreateRequisition{
   margin-left: 10px;
     /* gap: 10px; */

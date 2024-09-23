@@ -1,95 +1,206 @@
 /* sampleCollection.css */
 
-.labContainer {
+.sampleCollection-Container {
   padding: 16px;
   background-color: #e0f7fa;
   height: 80vh;
   overflow-y: scroll;
 }
 
-.labHeader {
+.sampleCollection-Header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
 }
 
-.labTitle {
-  font-size: 1.25rem;
-  font-weight: bold;
+.sampleCollection-Title {
+  font-size: var(--heading-font);
+  /* font-weight: bold; */
+}
+.sampleCollection-list-btn{
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.sampleCollection-list-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+
+}
+.sampleCollection-controls {
+  display: flex;
+}
+.sampleCollection-date-range {
+  display: flex;
+  align-items: center;
+  /* width: 95%; */
+  gap: 10px;
+  background-color: #f0f0f0;
+  padding: 3px;
+}
+.sampleCollection-date-range label{
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  font-size: var(--font-size);
 }
 
-.labButton {
-  padding: 8px 16px;
+.sampleCollection-date-range input[type="date"] {
+  padding: 3px;
+  margin-left: 10px;
+}
+.sampleCollection-star-button {
+  background: none;
   border: none;
-  border-radius: 4px;
+  font-size: 24px;
+  color:var(--button-color) ;
   cursor: pointer;
 }
-
-.labButtonGreen {
-  background-color: #4caf50;
+.sampleCollection-ok-button {
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
 }
-
-.labButtonPrint {
-  background-color: #2196f3;
+.sampleCollection-ok-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+.sampleCollection-search-bar{
+  margin-left: -15px;
+  position: relative;
+  /* margin-bottom: 10px; */
+  /* padding-left: -10px; */
+  /* opacity: 0; */
+  /* animation: slideIn 1s forwards 0.8s; */
+}
+.sampleCollection-search-bar i{
+  position: absolute;
+  top: 8px;
+  left: 180px;
+  /* display: flex;
+  justify-content: ; */
+  color: gray;
+}
+.sampleCollection-search-input {
+  padding: 5px;
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+.sampleCollection-print-btn{
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
 }
-
-.labDateFilters {
+.sampleCollection-print-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+.sampleCollection-search-N-print{
   display: flex;
-  gap: 16px;
-  margin-bottom: 16px;
+    justify-content: space-between;
+    margin-top: 10px;
 }
-
-.labDateFilterLabel {
-  font-weight: 500;
-}
-
-.labSearchPrint {
+.sampleCollection-results-info {
   display: flex;
-  gap: 16px;
-  margin-bottom: 16px;
+  align-items: center;
+  /* padding-top: 10px; */
 }
-
-.labSearchInput {
-  flex: 1;
+.sampleCollection-results-info span {
+  /* display: flex;
+align-items: center; */
+  /* padding-top: 10px; */
+  /* color: #008cba; */
+  font-size: var(--font-size);
+  margin-right: 10px;
+  /* font-weight: bold; */
 }
-
-.labTableWrapper {
+.sampleCollection-TableWrapper {
   overflow-x: auto;
 }
 
-.labTable {
+.sampleCollection-Table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
+  margin-top: 10px;
 }
 
-.labTableHeader {
+.sampleCollection-TableHeader {
   background-color: #f1f1f1;
+  text-align: center;
+  padding: 3px;
+  font-size: var(--heading-font);
 }
 
-.labTableCell {
-  padding: 8px;
+.sampleCollection-TableCell {
+  padding: 3px;
   border-bottom: 1px solid #ddd;
+  text-align: center;
+  font-size: var(--font-size);
+}
+.sampleCollection-viewDetails{
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 2px 3px;
+}
+.sampleCollection-viewDetails:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
-.labPagination {
+/* .labPagination {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 16px;
-}
+} */
 
-.labPaginationControls {
+/* .labPaginationControls {
   display: flex;
   gap: 8px;
-}
+} */
 
-.labPaginationButton {
+/* .labPaginationButton {
   padding: 4px 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
   cursor: pointer;
-}
+} */

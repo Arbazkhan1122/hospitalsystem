@@ -274,8 +274,8 @@
     max-height: 90vh;
     overflow: auto;
     border-radius: 2px;
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    /* background-color: #fff; */
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); */
     display: flex;
     flex-direction: column;
 }
@@ -333,15 +333,15 @@
 
 .purchase-order-table-container {
     margin-top: 5px;
-    background-color: white;
+    /* background-color: white; */
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     overflow-x: auto;
     max-width: 100%;
 }
 
 .purchase-order-table-container {
-    background-color: white;
+    /* background-color: white; */
     padding: 10px;
   }
   
@@ -398,4 +398,59 @@
     color: black;
     margin-right: 10px;
   }
+
+
+  /*  */
+  
+  @media (max-width: 768px) {
+
+    /* Adjustments for flexbox */
+    .purchase-order-header,
+    .purchase-order-status-filters,
+    .purchase-order-filters,
+    .purchase-order-date-range,
+    .purchase-order-search-container,
+    .purchase-order-supplier-filter,
+    .purchase-order-button {
+      flex-direction: column;
+      gap: 10px; /* Maintain a reasonable gap without adding too much vertical space */
+      align-items: flex-start;
+    }
+  
+    /* Responsive buttons and inputs */
+    .purchase-order-add-purchase-order-button,
+    .purchase-order-date-range input[type="date"],
+    .purchase-order-search-box,
+    .purchase-order-print-button {
+      width: 100%; /* Make inputs and buttons take full width */
+      font-size: 14px; /* Ensure font size remains readable */
+    }
+  
+    /* Responsive table container */
+    .purchase-order-table-container {
+      max-width: 100%;
+      overflow-x: auto; /* Allow horizontal scroll if needed */
+      margin-top: 5px; /* Avoid large vertical spaces */
+    }
+  
+    /* Responsive modal content */
+    .purchase-order-modal .modal-dialog {
+      margin: 10px;
+      width: 100%; /* Ensure the modal is full width */
+    }
+  
+    /* Responsive form in modal */
+    .purchase-order-form-horizontal {
+      flex-direction: column; /* Stack form fields vertically */
+      gap: 10px; /* Minimal gap between form fields */
+    }
+  
+    .purchase-order-form-horizontal > div {
+      width: 100%;
+      min-width: unset;
+    }
+  
+   
+  }
+  
 /* Mohini_PurchaseOrder_WholePage_14/sep/2024 */

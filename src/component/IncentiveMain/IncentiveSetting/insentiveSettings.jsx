@@ -375,6 +375,12 @@
 // };
 
 // export default InsentiveSettings;
+
+
+
+ /* Ajhar Tamboli insentiveSettings.jsx 18-09-2024 */
+
+
 import React, { useState } from "react";
 import "../IncentiveSetting/insentiveSettings.css";
 import InsentiveSettingsEISNewEI from "./insentiveSettingsEISNewEI";
@@ -398,9 +404,9 @@ const InsentiveSettings = () => {
       case "Invoice":
         return (
           <div>
-            <div className="incentiveReport-filters">
+            <div className="insentiveSettings-filters">
               <button
-                className="incentiveReport-load-button"
+                className="insentiveSettings-load-button"
                 onClick={() => setShowPopup(true)} // Open New Employee Incentive popup on button click
               >
                 <i className="fa-solid fa-plus"></i> New Employee Incentive
@@ -474,14 +480,14 @@ const InsentiveSettings = () => {
                   {/* Add more rows as needed */}
                 </tbody>
               </table>
-              <div className="insentiveSettings-pagination">
+              {/* <div className="insentiveSettings-pagination">
                 <span>0 to 0 of 0</span>
                 <button>First</button>
                 <button>Previous</button>
                 <span>Page 0 of 0</span>
                 <button>Next</button>
                 <button>Last</button>
-              </div>
+              </div> */}
             </div>
           </div>
         );
@@ -497,19 +503,19 @@ const InsentiveSettings = () => {
   };
 
   return (
-    <div className="incentiveReport-container">
-      <div className="incentiveReport-tabs">
+    <div className="insentiveSettings-container">
+      <div className="insentiveSettings-tabs">
         <div
-          className={`incentiveReport-tab ${
-            selectedTab === "Invoice" ? "incentiveReport-selected" : ""
+          className={`insentiveSettings-tab ${
+            selectedTab === "Invoice" ? "insentiveSettings-selected" : ""
           }`}
           onClick={() => setSelectedTab("Invoice")}
         >
           Employee Items Setup
         </div>
         <div
-          className={`incentiveReport-tab ${
-            selectedTab === "Invoice-Items" ? "incentiveReport-selected" : ""
+          className={`insentiveSettings-tab ${
+            selectedTab === "Invoice-Items" ? "insentiveSettings-selected" : ""
           }`}
           onClick={() => setSelectedTab("Invoice-Items")}
         >
@@ -522,10 +528,10 @@ const InsentiveSettings = () => {
 
       {/* Conditionally render the New Employee Incentive popup */}
       {showPopup && (
-        <div className="incentiveReport-popup-overlay">
-          <div className="incentiveReport-popup-content">
+        <div className="insentiveSettings-popup-overlay">
+          <div className="insentiveSettings-popup-content">
             <button
-              className="incentiveReport-close-button"
+              className="insentiveSettings-close-button"
               onClick={() => setShowPopup(false)} // Close New Employee Incentive popup
             >
               x

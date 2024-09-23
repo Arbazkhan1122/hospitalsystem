@@ -35,13 +35,19 @@
 }
 
 .user-collection-report-show-btn {
-  background-color: #2ca0de;
+  background-color: var(--button-color);
   color: white;
   border: none;
-  margin-left: 20px;
-  padding: 8px 12px;
+  padding: 5px 5px;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 4px;
+}
+
+.user-collection-report-show-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+
 }
 .user-collection-report-tab{
   background-color: white;
@@ -74,10 +80,22 @@
 
 .user-collection-report-print-btn,
 .user-collection-report-export-btn {
-  padding: 5px 10px;
-  margin-left: 10px; /* Adds spacing between the buttons */
-  cursor: pointer;
+  background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
 }
+
+.user-collection-report-print-btn:hover,
+.user-collection-report-export-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+
 
 .user-collection-report-table th,
 .user-collection-report-table td {
@@ -89,36 +107,6 @@
 
 
 
-
-.user-collection-report-print-btn {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 5px 15px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.user-collection-report-print-btn {
-  background-color: #007bff; /* Primary button color */
-  color: #fff; /* Text color */
-  border: none; /* Remove default border */
-  border-radius: 4px; /* Rounded corners */
-  padding: 10px 20px; /* Padding inside the button */
-  font-size: 16px; /* Font size */
-  font-weight: bold; /* Font weight */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.user-collection-report-print-btn:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
-
-.user-collection-report-print-btn:focus {
-  outline: none; /* Remove default focus outline */
-  box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5); /* Custom focus outline */
-}
 .net-cash-collection-header{
   font-size: 16px;
 }
@@ -154,31 +142,6 @@
   font-weight: bold; /* Bold text for the last row (Total Collection) */
 }
 
-.user-collection-report-print-btn {
-  background-color: #007bff; /* Primary button color */
-  color: #fff; /* Text color */
-  border: none; /* Remove default border */
-  border-radius: 4px; /* Rounded corners */
-  padding: 10px 10px; /* Padding inside the button */
-  height: 30px; /* Button height */
-  font-size: 14px; /* Font size */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-  text-align: center; /* Center text horizontally */
-  display: flex; /* Enable flexbox */
-  align-items: center; /* Center content vertically */
-  justify-content: center; /* Center content horizontally */
-}
-
-
-.user-collection-report-print-btn:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
-
-.user-collection-report-print-btn:focus {
-  outline: none; /* Remove default focus outline */
-  box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5); /* Custom focus outline */
-}
 
 
 /*  */
@@ -192,19 +155,18 @@
 }
 
 .user-collection-report-pagination-btn {
-  background-color: #007bff; /* Primary button color */
-  border: none; /* Remove default border */
-  color: #fff; /* White text color */
-  padding: 8px 8px; /* Padding inside the button */
-  font-size: 14px; /* Font size */
-  height: 30px;
-  border-radius: 4px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth background color transition */
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .user-collection-report-pagination-btn:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
 }
 
 .user-collection-report-page-no span {

@@ -49,21 +49,36 @@ input[type="date"], input[type="text"], select {
   border-radius: 3px;
 }
 
-.star-btn, .minus-btn {
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  padding: 5px 10px;
+
+.Online-star-btn, .Online-minus-btn {
+  background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
   margin-left: 5px;
 }
 
-.reload-btn {
-  background-color: #007bff;
+.Online-star-btn:hover, .Online-minus-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+
+.Online-reload-btn {
+  background-color: var(--button-color);
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 5px 5px;
   border-radius: 5px;
   cursor: pointer;
   float: right;
+}
+.Online-reload-btn:hover{
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .search-bar {
@@ -82,23 +97,32 @@ input[type="date"], input[type="text"], select {
   padding: 5px 10px;
 }
 
-.results-actions {
-  display: flex;
-  justify-content: space-between;
+
+.Online-results-actions {
+float: right;
   align-items: center;
   margin-bottom: 10px;
+ 
 }
 
-.export-btn, .print-btn {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 5px 15px;
-  border-radius: 3px;
-  cursor: pointer;
-}
 
-.appointments-table {
+.Online-export-btn, .Online-print-btn {
+  background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.Online-export-btn:hover, .Online-print-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+
+
+}
+.Online-appointments-table {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;

@@ -1,6 +1,7 @@
 // AppointmentList.js
-import React, { useState } from 'react';
+import React, { useState,useRef } from 'react';
 import './OnlineAppointment.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const OnlineAppointment = () => {
   
@@ -51,7 +52,9 @@ const OnlineAppointment = () => {
       const [department, setDepartment] = useState('');
       const [doctor, setDoctor] = useState('');
       const [searchTerm, setSearchTerm] = useState('');
-
+      const [columnWidths, setColumnWidths] = useState({});
+      const tableRef = useRef(null);
+      
 
 
 
@@ -94,29 +97,53 @@ const OnlineAppointment = () => {
         <button className="export-btn">Export</button>
         <button className="print-btn">Print</button>
       </div>
-      <table className="appointments-table">
-        <thead>
-          <tr>
-            <th>Status</th>
-            <th>Date/Time</th>
-            <th>Patient Name</th>
-            <th>Age/Gender</th>
-            <th>Phone N...</th>
-            <th>Address</th>
-            <th>Department</th>
-            <th>Doctor</th>
-            <th>Payment St...</th>
-            <th>Payment M...</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+
+      <div className='table-container'>
+      <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Status",
+              "Date/Time",
+              "Patient Name",
+              "Age/Gender",
+              "Phone N...",
+              "Address",
+              "Department",
+              "Doctor",
+              "Payment St...",
+              "Payment M...",
+              "Actions"
+
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           <tr>
             <td colSpan="11" className="loading">Loading...</td>
           </tr>
         </tbody>
       </table>
-      <div className="pagination">
+
+      </div>
+      {/* <div className="Online-pagination">
         <span>0 to 0 of 0</span>
         <button className="page-btn">First</button>
         <button className="page-btn">Previous</button>
@@ -124,7 +151,7 @@ const OnlineAppointment = () => {
         <button className="page-btn">Next</button>
         <button className="page-btn">Last</button>
       </div>
-    
+     */}
     </>
   );
 };
@@ -137,6 +164,9 @@ const CompletedAppointments = () => {
       const [department, setDepartment] = useState('');
       const [doctor, setDoctor] = useState('');
       const [searchTerm, setSearchTerm] = useState('');
+      const [columnWidths, setColumnWidths] = useState({});
+      const tableRef = useRef(null);
+      
 
 
 
@@ -159,41 +189,66 @@ const CompletedAppointments = () => {
         <input type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
         <button className="search-btn">🔍</button>
       </div>
-      <div className="results-actions">
-        <span>Showing results</span>
-        <button className="export-btn">Export</button>
-        <button className="print-btn">Print</button>
+
+      <div className="Online-results-actions">
+       
+        <button className="Online-export-btn">Export</button>
+        <button className="Online-print-btn">Print</button>
       </div>
-      <table className="appointments-table">
-        <thead>
-          <tr>
-            <th>Status</th>
-            <th>Date/Time</th>
-            <th>Patient Name</th>
-            <th>Age/Gender</th>
-            <th>Phone N...</th>
-            <th>Address</th>
-            <th>Department</th>
-            <th>Doctor</th>
-            <th>Payment St...</th>
-            <th>Payment M...</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+      <div className='table-container'>
+      <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Status",
+              "Date/Time",
+              "Patient Name",
+              "Age/Gender",
+              "Phone N...",
+              "Address",
+              "Department",
+              "Doctor",
+              "Payment St...",
+              "Payment M...",
+              "Actions"
+              ,
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           <tr>
             <td colSpan="11" className="loading">Loading...</td>
           </tr>
         </tbody>
       </table>
-      <div className="pagination">
+
+      </div>
+      {/* <div className="Online-pagination">
         <span>0 to 0 of 0</span>
         <button className="page-btn">First</button>
         <button className="page-btn">Previous</button>
         <span>Page 0 of 0</span>
-        <button className="page-btn">Next</button>
-        <button className="page-btn">Last</button>
-      </div>
+
+        <button className="Online-page-btn">Next</button>
+        <button className="Online-page-btn">Last</button>
+      </div> */}
     
     </>
   );
