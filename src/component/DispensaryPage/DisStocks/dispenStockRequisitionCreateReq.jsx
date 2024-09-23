@@ -91,6 +91,9 @@
 
 // export default DispenStockRequisitionCreateReq;
 
+ /* Ajhar Tamboli dispenStockRequisitionCreateReq.jsx 19-09-24 */
+
+
 import React, { useState } from 'react';
 import "../DisStocks/dispenStockRequisitionCreateReq.css";
 
@@ -199,7 +202,7 @@ function DispenStockRequisitionCreateReq({ onClose }) {
                 <button className="dispenStockRequisitionCreateReq-remove-btn" onClick={() => removeItem(index)}>X</button>
               </td>
               <td>
-                <select
+                <select className='dispenStockRequisitionCreateReq-select'
                   name="genericName"
                   value={item.genericName}
                   onChange={(e) => handleInputChange(index, e)}
@@ -210,7 +213,7 @@ function DispenStockRequisitionCreateReq({ onClose }) {
                 </select>
               </td>
               <td>
-                <input
+                <input className='dispenStockRequisitionCreateReq-input'
                   type="text"
                   name="genericItemName"
                   value={item.genericItemName}
@@ -218,7 +221,7 @@ function DispenStockRequisitionCreateReq({ onClose }) {
                 />
               </td>
               <td>
-                <input
+                <input className='dispenStockRequisitionCreateReq-input'
                   type="text"
                   name="genericCode"
                   value={item.genericCode}
@@ -226,7 +229,7 @@ function DispenStockRequisitionCreateReq({ onClose }) {
                 />
               </td>
               <td>
-                <input
+                <input className='dispenStockRequisitionCreateReq-input'
                   type="text"
                   name="genericQty"
                   value={item.genericQty}
@@ -234,7 +237,7 @@ function DispenStockRequisitionCreateReq({ onClose }) {
                 />
               </td>
               <td>
-                <input
+                <input className='dispenStockRequisitionCreateReq-input'
                   type="number"
                   name="availableQty"
                   value={item.availableQty}
@@ -242,7 +245,7 @@ function DispenStockRequisitionCreateReq({ onClose }) {
                 />
               </td>
               <td>
-                <input
+                <input className='dispenStockRequisitionCreateReq-input'
                   type="number"
                   name="requestingQuantity"
                   value={item.requestingQuantity}
@@ -250,7 +253,7 @@ function DispenStockRequisitionCreateReq({ onClose }) {
                 />
               </td>
               <td>
-                <input
+                <input className='dispenStockRequisitionCreateReq-input'
                   type="text"
                   name="genericRemark"
                   value={item.genericRemark}

@@ -1,11 +1,14 @@
+ /* Ajhar Tamboli dispenStockTransferNewTrans.css 19-09-24 */
+
+
 .dispenStockTransferNewTrans-container {
     width: 100%;
-    /* max-width: 900px; */
-    /* margin: 0 auto; */
     background-color: white;
-    /* padding: 20px; */
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* max-width: 900px; */
+    /* margin: 0 auto; */
+    /* padding: 20px; */
   }
   
   .dispenStockTransferNewTrans-header {
@@ -21,18 +24,18 @@
   
   .dispenStockTransferNewTrans-header h2 {
     margin: 0;
-    color: black;
-    font-size: 0.9em;
+    /* color: black; */
+    font-size: var(--heading-font)
   }
   .dispenStockTransferNewTrans-date{
 
-      font-size: 13px;
-      font-weight: bold;
+      font-size: var(--font-size);
+      /* font-weight: bold; */
   }
   
   .dispenStockTransferNewTrans-date span {
-    font-size: 12px;
-    font-weight: none;
+    font-size: var(--font-size);
+    /* font-weight: none; */
   }
   
   .dispenStockTransferNewTrans-details {
@@ -40,13 +43,13 @@
   }
   
   .dispenStockTransferNewTrans-details label {
-    font-size: 12px;
-    font-weight: bold;
+    font-size: var(--font-size);
+    /* font-weight: bold; */
   }
   
   .dispenStockTransferNewTrans-input-store {
-    width: 200px;
-    padding: 5px;
+    width: 20%;
+    padding: 3px;
     margin-left: 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
@@ -59,49 +62,78 @@
     border:none;
 }
 
-.dispenStockTransferNewTrans-item-entry th,
+
 .dispenStockTransferNewTrans-item-entry td {
       border:none;
-    padding: 8px;
-    text-align: left;
+    padding: 3px;
+    text-align: center;
     border-bottom: 1px solid #ddd;
     border-top: 1px solid #ddd;
+    font-size: var(--heading-font);
   }
   
   .dispenStockTransferNewTrans-item-entry th {
+    font-size: var(--heading-font);
     background-color: #f2f2f2;
-    color: #535353;
+    border:none;
+    padding: 3px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    /* color: #535353; */
   }
   
   .dispenStockTransferNewTrans-item-entry input {
     width: 70%;
-    padding: 5px;
+    padding: 3px;
+    width: 100%;
     border-radius: 4px;
     border: 1px solid #ccc;
   }
   
   .dispenStockTransferNewTrans-delete-btn{
     background-color: #e74c3c;
+    /* background-color:var( --button-color); */
+    border: 1px solid #e74c3c;
     color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
-    cursor: pointer; 
+    /* border: none; */
+    /* margin-left: 5px; */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    /* margin: 1px; */
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .dispenStockTransferNewTrans-delete-btn:hover {
+    border: 1px solid #e74c3c;
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   .dispenStockTransferNewTrans-add-item-btn  {
-    background-color: #2D68EA;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 5px 10px;
+    /* border: none; */
+    /* margin-left: 5px; */
+    border-radius: 5px ;
     cursor: pointer;
+    font-size: var(--heading-font);
+    /* margin: 1px; */
+    transition: background-color 0.3s ease;
+    padding: 5px 10px;
+  }
+  .dispenStockTransferNewTrans-add-item-btn:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
   .dispenStockTransferNewTrans-add-item-btn {
     display: flex;
     justify-content: flex-end;
-    font-size: 14px;
-    font-weight: bolder;
+    font-size: var(--font-size);
+    /* font-weight: bolder; */
     /* margin-bottom: 20px; */
   }
   
@@ -110,8 +142,8 @@
   }
   
   .dispenStockTransferNewTrans-remarks-section label {
-    font-weight: bold;
-    font-size: 12px;
+    /* font-weight: bold; */
+    font-size: var(--font-size);
     padding: 10px;
   }
   
@@ -131,18 +163,32 @@
   
   .dispenStockTransferNewTrans-save-btn,
   .dispenStockTransferNewTrans-discard-btn {
-    padding: 5px 10px;
+    padding: 5px ;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: var(--font-size);
     margin-bottom: 10px;
   }
   
   .dispenStockTransferNewTrans-save-btn {
-    background-color: #27ae60;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
+    /* border: none; */
+    /* margin-left: 5px; */
+    border-radius: 5px ;
+    cursor: pointer;
+    font-size: var(--font-size);
+    /* margin: 1px; */
+    transition: background-color 0.3s ease;
+    padding: 5px ;
   }
-  
+  .dispenStockTransferNewTrans-save-btn:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
   .dispenStockTransferNewTrans-discard-btn {
     background-color: #e74c3c;
     color: white;
