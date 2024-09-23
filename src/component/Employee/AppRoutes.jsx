@@ -20,7 +20,7 @@ import DepositeSettings from './ADT/DepositSettings';
 import ManageTax from './Manage Tax/ManageTax';
 import ExternalReferrals from './ExternalReferrals/ExternalReferrals';
 import CoreCfgParameter from './CoreCfgParameter/CoreCfgParameter';
-import ManageImagingType from "./Radiology/ManageImagingType";
+import ManageImagingType from './Radiology/ManageImagingType';
 import ManageImagingItem from './Radiology/ManageImagingItem';
 import ManageRadiologyTempltate from './Radiology/ManageRadiologyTempltate';
 import DefaultSignatories from './Radiology/DefaultSignatories';
@@ -45,8 +45,12 @@ import CreaditOrganizations from './Billing/CreaditOrganizations';
 import Schemes from './Billing/Schemes';
 import ReportingItemsMapping from './Billing/ReportingItemsMapping';
 import RegistrationSticker from './Billing/RegistrationSticker';
+import AddBank from './Bank/AddBank';
+import Printers from './Bank/Printers';
+import PaymentModeSetting from './Bank/PaymentModeSetting';
+import PriceCategory from './Bank/PriceCategory';
+import PaymentExportConfiguration from './Bank/PaymentExportConfiguration';
 import EmployeeHeader from './EmployeeHeader';
-import ManageMunicipalityCom from './Geolocation/ManageMunicipality';
 
 
 const AppRoutes = () => {
@@ -94,7 +98,11 @@ const AppRoutes = () => {
      <Route path="schemes" element={<Schemes/>}/>
      <Route path="reporting-items-mapping" element={<ReportingItemsMapping/>}/>
      <Route path="registration-sticker" element={<RegistrationSticker/>}/>
-     <Route path="manage-municipalitys" element={<ManageMunicipalityCom/>}/>
+     <Route path="manage-banks" element={<AddBank/>}/>
+     <Route path="manage-printers" element={<Printers/>}/>
+     <Route path="payment-mode-settings" element={<PaymentModeSetting/>}/>
+     <Route path="price-category" element={<PriceCategory/>}/>
+     <Route path="print-export-configuration" element={<PaymentExportConfiguration/>}/>
 
     </Routes>
     </>

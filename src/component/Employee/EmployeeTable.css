@@ -163,16 +163,23 @@
   color: white; /* Text color when active */
 }
 
-.employee-sub-nav,.department-sub-nav  {
+.employee-sub-nav,.department-sub-nav{
   background-color: var(--background-color);
   padding: 0;
 }
 
-.employee-sub-nav ul,.department-sub-nav ul {
+.employee-sub-nav ul,.department-sub-nav ul,.SettingLinks{
   list-style-type: none;
   display: flex;
   padding: 0;
   margin: 0;
+}
+.SettingLinks{
+  text-decoration: none;
+  color: white;
+}
+.SettingLinks:hover{
+  color:var(--button-color);
 }
 
 .employee-sub-nav li,.department-sub-nav li {
@@ -520,5 +527,5 @@
 }
 
 .more-dropdown li a:hover {
-  background-color: #f1f1f1;
+  background-color:#f1f1f1;
 }

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 
 import './ManageMunicipality.css'; 
@@ -151,6 +152,8 @@ const usersData = [
 const ManageCountry = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const handleCloseModal = () => setShowEditModal(false);
   const handleShowModal = (country) => {
@@ -172,17 +175,32 @@ const ManageCountry = () => {
             <div className="manage-municipality-span">
                 <span>Showing {usersData.length} / {usersData.length} results</span>
             </div>
-            <div className="manage-municipality-tab">
-                <table className="manage-municipality-users-table">
-                    <thead>
-                        <tr>
-                            <th>Country Symbol</th>
-                            <th>Name</th>
-                            <th>ISD Code</th>
-                            <th>Is Active</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+            <div className="table-container">
+            <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+             'Country Symbol', 'Name', 'ISD Code', 'Is Active', 'Action'
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                     <tbody>
                         {usersData.map((country, index) => (
                             <tr key={index}>

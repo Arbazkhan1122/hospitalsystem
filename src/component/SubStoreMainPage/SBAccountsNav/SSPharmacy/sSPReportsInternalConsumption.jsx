@@ -1,3 +1,6 @@
+/* Ajhar Tamboli sSPReportsInternalConsumption.jsx 19-09-24 */
+
+
 import React, { useState, useEffect, useRef } from 'react';
 import * as XLSX from 'xlsx'; // Import the xlsx library
 import "../SSPharmacy/sSPReportsInternalConsumption.css";
@@ -71,16 +74,20 @@ function SSPReportsInternalConsumption() {
         </div>
       </header>
       <div className="sSPReportsInternalConsumption-controls">
-        <div className="sSPReportsInternalConsumption-date-range">
-          <label>
-            From:
-            <input type="date" defaultValue="2024-08-09" />
-          </label>
-          <label>
-            To:
-            <input type="date" defaultValue="2024-08-16" />
-          </label>
-        </div>
+      <div className="sSPReportsInternalConsumption-date-range">
+      <label>
+        From:
+        <input type="date" defaultValue="2024-08-09" />
+      </label>
+      <label>
+        To:
+        <input type="date" defaultValue="2024-08-16" />
+      </label>
+      <button className="sSPReportsInternalConsumption-star-button">☆</button>
+    <button className="sSPReportsInternalConsumption-more-btn">-</button>
+      <button className="sSPReportsInternalConsumption-ok-button">OK</button>
+    </div>
+
         <div className="sSPReportsInternalConsumption-filter">
           <button className='sSPReportsInternalConsumption-print-btn'>Show Report</button>
         </div>
@@ -95,7 +102,7 @@ function SSPReportsInternalConsumption() {
           <button className='sSPReportsInternalConsumption-print-btn' onClick={handleExportToExcel}>
             <i className="fa-regular fa-file-excel"></i> Export
           </button>
-          <button className='sSPReportsInternalConsumption-print-btn' onClick={handlePrint}>Print</button>
+          <button className='sSPReportsInternalConsumption-print-btn' onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
         </div>
       </div>
       <div style={{ display: 'none' }}>
@@ -149,14 +156,14 @@ function SSPReportsInternalConsumption() {
             ))}
           </tbody>
         </table>
-        <div className="sSPReportsInternalConsumption-pagination">
+        {/* <div className="sSPReportsInternalConsumption-pagination">
           <span>0 to {internalConsumptionData.length} of {internalConsumptionData.length}</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 1 of 1</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

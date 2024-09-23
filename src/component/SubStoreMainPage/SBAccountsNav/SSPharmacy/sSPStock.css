@@ -57,20 +57,20 @@
   }
   .sSPStock-stock-search-bar {
     display: flex;
-    margin-left: -30px;
+    margin-left: -15px;
   }
   
   .sSPStock-stock-search-bar input {
     flex-grow: 1;
-    padding: 5px;
+    padding: 3px;
     width: 200px;
   
   }
   .sSPStock-stock-search-bar i{
     position: relative;
     color:gray;
-    top: 7px;
-  left: 205px;
+    top: 8px;
+  left: 190px;
   }
   .sSPStock-stock-results-info {
     text-align: right;
