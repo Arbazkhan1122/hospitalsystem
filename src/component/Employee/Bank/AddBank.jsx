@@ -6,6 +6,7 @@ const AddBank = () => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
   const [isEditMode, setIsEditMode] = useState(false);
+  
   const [columnWidths,setColumnWidths] = useState({});
   const tableRef=useRef(null);
   const [formData, setFormData] = useState({

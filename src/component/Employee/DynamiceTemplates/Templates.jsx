@@ -1,8 +1,8 @@
 // src/ManageUsers.jsx
 
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import './Templates.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const templatesData = [
   {
     "Template Type": "Discharge Summary",
@@ -55,6 +55,8 @@ const templatesData = [
 ];
 
 const Templates = () => {
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   return (
     <div className="template-users-container">
       <div className="template-users-header">
@@ -64,15 +66,24 @@ const Templates = () => {
       <div className='template-user-span'>
         <span>Showing {templatesData.length} / {templatesData.length} results</span>
       </div>
-      <div className='template-user-tab'>
-        <table className="template-users-users-table">
+      <div className='table-container'>
+      <table ref={tableRef}>
           <thead>
             <tr>
-              <th>Template Code</th>
-              <th>Template Name</th>
-              <th>Description</th>
-              <th>Is Active</th>
-              <th>Action</th>
+              {[ "Template Code",
+  "Template Name",
+  "Description",
+  "Is Active",
+  "Action"
+    ]
+  .map((header, index) => (
+                <th key={index} style={{ width: columnWidths[index] }} className="resizable-th">
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div className="resizer" onMouseDown={startResizing(tableRef, setColumnWidths)(index)}></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -93,14 +104,14 @@ const Templates = () => {
             ))}
           </tbody>
         </table>
-        <div className="template-users-pagination">
+        {/* <div className="template-users-pagination">
           <div className="template-users-pagination-controls">
             <button>First</button>
             <button>Previous</button>
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
