@@ -1,10 +1,17 @@
+// Dhanashree_MaterializedSalesView_19/09
+
 import React, { useState, useRef } from 'react';
 import ReactToPrint from 'react-to-print';
 import './Materialized.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const MaterializedSalesView = () => {
   // State to control the visibility of the table
   const [showTable, setShowTable] = useState(false);
+
+
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   
   // Reference to the table for printing
   const componentRef = useRef();
@@ -63,64 +70,85 @@ const MaterializedSalesView = () => {
   };
 
   return (
-    <div className="materialized-sales-view">
-      <h2 className="header">MATERIALIZED SALES VIEW</h2>
+    <div className="MaterializedSalesView-materialized-sales-view">
+      <h2 className="MaterializedSalesView-header">MATERIALIZED SALES VIEW</h2>
       
-      <div className="date-range">
-        <div className="date-input">
+      <div className="MaterializedSalesView-date-range">
+        <div className="MaterializedSalesView-date-input">
           <label>From:</label>
           <input type="date" value="2024-08-13" />
         </div>
-        <div className="date-input">
+        <div className="MaterializedSalesView-date-input">
           <label>To:</label>
           <input type="date" value="2024-08-13" />
         </div>
-        <button className="star-button">☆</button>
-        <button className="minus-button">-</button>
-        <button className="show-report-button" onClick={handleShowReport}>Show Report</button>
+        <button className="MaterializedSalesView-star-button">☆</button>
+        <button className="MaterializedSalesView-minus-button">-</button>
+        <button className="MaterializedSalesView-show-report-button" onClick={handleShowReport}>Show Report</button>
       </div>
       
-      <div className="search-bar">
+      <div className="MaterializedSalesView-search-bar">
         <input type="text" placeholder="Search" />
-        <button className="search-button">🔍</button>
+        <button className="MaterializedSalesView-search-button">🔍</button>
       </div>
       
-      <div className="results-info">
+      <div className="MaterializedSalesView-results-info">
         <span>Showing {showTable ? dummyData.length : 0} / {showTable ? dummyData.length : 0} results</span>
-        <button className="export-btn">Export</button>
+        <button className="MaterializedSalesView-export-btn">Export</button>
         <ReactToPrint
-          trigger={() => <button className="print-btn" disabled={!showTable}>Print</button>}
-          content={() => componentRef.current}
-        />
+  trigger={() => <button className="MaterializedSalesView-print-btn" style={{ backgroundColor: ' #00c9c0', color: 'white' }} disabled={!showTable}>Print</button>}
+  content={() => componentRef.current}
+/>
+
       </div>
       
       {showTable && (
-        <div className="sales-table-container">
-          <table className="sales-table" ref={componentRef}>
-            <thead>
-              <tr>
-                <th>Fiscal Year</th>
-                <th>Bill_No</th>
-                <th>Customer_Name</th>
-                <th>Customer_Pan</th>
-                <th>Bill_Date</th>
-                <th>Amount</th>
-                <th>Discount</th>
-                <th>Taxable_Amount</th>
-                <th>Tax_Amount</th>
-                <th>Total_Amount</th>
-                <th>Sync With IRD</th>
-                <th>IS_Bill_Printed</th>  
-                <th>IS_Bill_Active</th>
-                <th>Printed_Time</th>
-                <th>Entered_By</th>
-                <th>Printed_By</th>
-                <th>Is_realtime</th>
-                <th>Payment_Method</th>
-                <th>VAT_Refund_Aount</th>
-                <th>Transaction_Id</th>
-              </tr>
-            </thead>
+        <div className="MaterializedSalesView-sales-table-container">
+          <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Fiscal Year",
+  "Bill_No",
+  "Customer_Name",
+  "Customer_Pan",
+  "Bill_Date",
+  "Amount",
+  "Discount",
+  "Taxable_Amount",
+  "Tax_Amount",
+  "Total_Amount",
+  "Sync With IRD",
+  "IS_Bill_Printed",
+  "IS_Bill_Active",
+  "Printed_Time",
+  "Entered_By",
+  "Printed_By",
+  "Is_realtime",
+  "Payment_Method",
+  "VAT_Refund_Amount",
+  "Transaction_Id"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+
             <tbody>
               {dummyData.map((data, index) => (
                 <tr key={index}>
@@ -151,16 +179,18 @@ const MaterializedSalesView = () => {
         </div>
       )}
       
-      <div className="pagination">
+      {/* <div className="MaterializedSalesView-pagination">
         <span>0 to {showTable ? dummyData.length : 0} of {showTable ? dummyData.length : 0}</span>
-        <button className="page-btn" disabled={!showTable}>First</button>
-        <button className="page-btn" disabled={!showTable}>Previous</button>
+        <button className="MaterializedSalesView-page-btn" disabled={!showTable}>First</button>
+        <button className="MaterializedSalesView-page-btn" disabled={!showTable}>Previous</button>
         <span>Page 1 of 1</span>
-        <button className="page-btn" disabled={!showTable}>Next</button>
-        <button className="page-btn" disabled={!showTable}>Last</button>
-      </div>
+        <button className="MaterializedSalesView-page-btn" disabled={!showTable}>Next</button>
+        <button className="MaterializedSalesView-page-btn" disabled={!showTable}>Last</button>
+      </div> */}
     </div>
   );
 };
 
 export default MaterializedSalesView;
+
+// Dhanashree_MaterializedSalesView_19/09

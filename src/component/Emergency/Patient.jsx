@@ -1,16 +1,30 @@
-import React, { useState, useRef } from 'react';
+ /* Dhanashree_PatientList_19/09 */
+
+import React, { useState, useEffect, useRef } from 'react';
 import './Patient.css';
 import EmergencyPatientRegistration from '../Emergency/Registration';
 import { useReactToPrint } from 'react-to-print';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const PatientList = () => {
+  const [patients, setPatients] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('All');
   const [showRegistration, setShowRegistration] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(null); // State to track the visible dropdown
-  const tableRef = useRef();
+
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
+
+  // Fetch data from the API
+  useEffect(() => {
+    fetch('http://localhost:3107/api/patients')
+      .then(response => response.json())
+      .then(data => setPatients(data))
+      .catch(error => console.error('Error fetching patients:', error));
+  }, []);
 
   const handleNewRegistrationClick = () => {
     setShowRegistration(true);
@@ -32,16 +46,43 @@ const PatientList = () => {
     <div className="dropdown-menu">
       <select className="dropdown-container">
         <option value="Contains">Contains</option>
-
       </select>
       <input
         type="text"
         placeholder="Filter"
         className="dropdown-textbox"
       />
-      {/* Add more dropdown items as needed */}
     </div>
   );
+
+  // Function to update the status of a patient
+  const updatePatientStatus = (patientId, newStatus) => {
+    const updatedPatient = patients.find(patient => patient.id === patientId);
+    if (!updatedPatient) return;
+
+    // Update the patient status locally
+    updatedPatient.status = newStatus;
+    setPatients([...patients]);
+
+    // Make the PUT request to update the status in the API
+    fetch(`http://localhost:3107/api/patients/${patientId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedPatient),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to update patient status');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Patient status updated:', data);
+      })
+      .catch(error => console.error('Error updating patient status:', error));
+  };
 
   if (showRegistration) {
     return <EmergencyPatientRegistration />;
@@ -62,7 +103,12 @@ const PatientList = () => {
             className="filter-dropdown"
           >
             <option value="All">All</option>
-            {/* Add more options as needed */}
+            <option value="General">General</option>
+            <option value="Dog Bite">Dog Bite</option>
+            <option value="Snake Bite">Snake Bite</option>
+            <option value="Animal Bite">Animal Bite</option>
+            <option value="Emergency Labour">Emergency Labour</option>
+            <option value="Medico-Legal">Medico-Legal</option>
           </select>
         </div>
         <button className="new-registration-btn" onClick={handleNewRegistrationClick}>
@@ -81,86 +127,90 @@ const PatientList = () => {
       </div>
 
       <div className="results-info">
-        <span>Showing 0 / 0 results</span>
-        <button className="print-btn" onClick={handlePrint}>Print</button>
+        <span>Showing {patients.length} / {patients.length} results</span>
+        <button className="Emergency-print-btn" onClick={handlePrint}>Print</button>
       </div>
 
-      <table className="patient-table" ref={tableRef}>
-        <thead>
-          <tr>
-            <th>
-              Hospital No.
-              <FontAwesomeIcon 
-                icon={faBars} 
-                className="header-icon" 
-                onClick={() => toggleDropdown(0)}
-              />
-              {dropdownVisible === 0 && renderDropdown()}
-            </th>
-            <th>
-              Name
-              <FontAwesomeIcon 
-                icon={faBars} 
-                className="header-icon" 
-                onClick={() => toggleDropdown(1)}
-              />
-              {dropdownVisible === 1 && renderDropdown()}
-            </th>
-            <th>
-              Age
-              <FontAwesomeIcon 
-                icon={faBars} 
-                className="header-icon" 
-                onClick={() => toggleDropdown(2)}
-              />
-              {dropdownVisible === 2 && renderDropdown()}
-            </th>
-            <th>
-              Gender
-              <FontAwesomeIcon 
-                icon={faBars} 
-                className="header-icon" 
-                onClick={() => toggleDropdown(3)}
-              />
-              {dropdownVisible === 3 && renderDropdown()}
-            </th>
-            <th>
-              Visit Date Time
-              <FontAwesomeIcon 
-                icon={faBars} 
-                className="header-icon" 
-                onClick={() => toggleDropdown(4)}
-              />
-              {dropdownVisible === 4 && renderDropdown()}
-            </th>
-            <th>
-              Actions
-              <FontAwesomeIcon 
-                icon={faBars} 
-                className="header-icon" 
-                onClick={() => toggleDropdown(5)}
-              />
-              {dropdownVisible === 5 && renderDropdown()}
-            </th>
-          </tr>
-        </thead>
+
+
+      <table  ref={tableRef}>
+          <thead>
+            <tr>
+              { [
+  "Hospital No.",
+  "Name",
+  "Age",
+  "Gender",
+  "Visit Date Time",
+  "Actions"
+].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+
+
         <tbody>
-          <tr>
-            <td colSpan="6" className="no-data">No Rows To Show</td>
-          </tr>
+          {patients.map(patient => (
+            <tr key={patient.id}>
+              <td>{patient.id}</td>
+              <td>{`${patient.firstName} ${patient.middleName} ${patient.lastName}`}</td>
+              <td>{patient.age}</td>
+              <td>{patient.gender}</td>
+              <td>{new Date().toLocaleString()}</td>
+              <td>
+
+    
+                <button 
+                  className="action-btn" 
+                  onClick={() => updatePatientStatus(patient.id, 'Triaged')}
+                >
+                  Triaged Patients
+                </button>
+
+                {/* 
+                <button 
+                  className="action-btn" 
+                  onClick={() => updatePatientStatus(patient.id, 'Finalized')}
+                >
+                  Finalized Patients
+                </button> */}
+
+              </td>
+
+
+            </tr>
+          ))}
         </tbody>
       </table>
 
-      <div className="pagination">
-        <span>0 to 0 of 0</span>
+      {/* <div className="pagination">
+        <span>0 to {patients.length} of {patients.length}</span>
         <button className="pagination-btn">First</button>
         <button className="pagination-btn">Previous</button>
-        <span>Page 0 of 0</span>
+        <span>Page 1 of 1</span>
         <button className="pagination-btn">Next</button>
         <button className="pagination-btn">Last</button>
-      </div>
+      </div> */}
     </div>
   );
 };
 
 export default PatientList;
+
+ /* Dhanashree_PatientList_19/09 */

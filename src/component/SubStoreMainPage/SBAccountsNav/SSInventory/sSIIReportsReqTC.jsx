@@ -1,3 +1,4 @@
+ /* Ajhar Tamboli sSIIReportsReqTC.jsx 19-09-24 */
 
 
 import React, { useState, useRef } from 'react';
@@ -61,7 +62,7 @@ function SSIIReportsReqTC() {
           </div>
         </header>
         <div className="sSIIReportsReqTC-controls">
-          <div className="sSIIReportsReqTC-date-range">
+        <div className="sSIIReportsReqTC-date-range">
             <label>
               From:
               <input type="date" defaultValue="2024-08-09" />
@@ -71,8 +72,10 @@ function SSIIReportsReqTC() {
               <input type="date" defaultValue="2024-08-16" />
             </label>
             <button className="sSIIReportsReqTC-star-button">☆</button>
+          <button className="sSIIReportsReqTC-more-btn">-</button>
             <button className="sSIIReportsReqTC-ok-button">OK</button>
           </div>
+
           <div className="sSIIReportsReqTC-filter">
             <label>SubCategory</label>
             <select>
@@ -95,7 +98,7 @@ function SSIIReportsReqTC() {
             <button className='sSIIReportsReqTC-print-btn' onClick={handleExportToExcel}>
               <i className="fa-regular fa-file-excel"></i> Export
             </button>
-            <button className='sSIIReportsReqTC-print-btn' onClick={handlePrint}>Print</button>
+            <button className='sSIIReportsReqTC-print-btn' onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
           </div>
         </div>
         <div style={{ display: 'none' }}>
@@ -183,14 +186,14 @@ function SSIIReportsReqTC() {
               </tr>
             </tbody>
           </table>
-          <div className="sSIIReportsReqTC-pagination">
+          {/* <div className="sSIIReportsReqTC-pagination">
             <span>0 to 0 of 0</span>
             <button>First</button>
             <button>Previous</button>
             <span>Page 0 of 0</span>
             <button>Next</button>
             <button>Last</button>
-          </div>
+          </div> */}
         </div>
       </>
     </div>
