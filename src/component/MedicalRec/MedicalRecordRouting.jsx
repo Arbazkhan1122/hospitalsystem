@@ -9,7 +9,12 @@ import DeathList from '../MedicalRec/DeathList';
 import MedicalRecordReport from '../MedicalRec/MedicalRecordReport';
 import EmergencyPatientList from '../MedicalRec/EmergencyPatientList';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import HospitalServiceSummaryReport from '../MedicalRec/HospitalServiceSummaryReport';
+import InpatientMorbidityReport from '../MedicalRec/InpatientMorbidityReport';
+import HospitalMortalityReport from '../MedicalRec/HospitalMortalityReport';
+import EmergencyPMReport from '../MedicalRec/EmergencyPMReport';
+import OutPatientMorbidityReport from '../MedicalRec/OutPatientMorbidityReport';
+import LabServiceReport from '../MedicalRec/LabServiceReport';
 function MedicalReportRouting() {
 
   return (
@@ -23,6 +28,12 @@ function MedicalReportRouting() {
             <Route path='/DeathList' element={<DeathList/>}></Route>
             <Route path='/MedicalRecordReport' element={<MedicalRecordReport/>}></Route>
             <Route path='/EmergencyPatientList' element={<EmergencyPatientList/>}></Route>
+            <Route path='/HospitalServiceSummaryReport' element={<HospitalServiceSummaryReport/>}></Route>
+            <Route path='/InpatientMorbidityReport' element={<InpatientMorbidityReport/>}></Route>
+            <Route path='/HospitalMortalityReport' element={<HospitalMortalityReport/>}></Route>
+            <Route path='/EmergencyPMReport' element={<EmergencyPMReport/>}></Route>
+            <Route path='/OutPatientMorbidityReport' element={<OutPatientMorbidityReport/>}></Route>
+            <Route path='/LabServiceReport' element={<LabServiceReport/>}></Route>
           </Routes>
         </Layout>
       
