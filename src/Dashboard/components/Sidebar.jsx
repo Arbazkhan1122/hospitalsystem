@@ -45,7 +45,8 @@ const Sidebar = ({
   onVerification,
   onSubstoreClick,
   onMedicalRecord,
-  onProcurement
+  onProcurement,
+  onBilling
 }) => {
   const [openMenus, setOpenMenus] = useState({});
   const [activeLink, setActiveLink] = useState(null);
@@ -202,6 +203,11 @@ const Sidebar = ({
   const handleProcurement=()=>{
     handleLinkClick("procurement");
     onProcurement();
+  }
+
+  const handleBilling=()=>{
+    handleLinkClick("billing");
+    onBilling();
   }
 
   return (
@@ -410,6 +416,77 @@ const Sidebar = ({
             </ul>
           )}
         </li>
+
+
+
+
+
+
+
+
+
+
+
+        <li className={`custom-nav-item ${
+            activeLink === "billing-submenu1" ||
+            activeLink === "billing-submenu2" 
+       
+              ? "custom-nav-item-active"
+              : ""
+          }`}
+        >
+          <div
+            className="custom-nav-link-content"
+            onClick={handleBilling}
+          >
+            <span>
+              <FaClinicMedical />
+            </span>
+            {isOpen && (
+              <span className="custom-nav-link-text">Billing</span>
+            )}
+            <span className="custom-dropdown-icon">
+              {openMenus.billing ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.billing && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("billing", "submenu1")}
+                className={
+                  activeLink === "billing-submenu1"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/ipbilling">Ip Billing</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("billing", "submenu2")}
+                className={
+                  activeLink === "billing-submenu2"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/Search_Patient">Op Billing</Link>
+              </li>
+             
+            </ul>
+          )}
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+
 
         <li
           className={`custom-nav-item ${

@@ -17,7 +17,7 @@ const RequisitionList = () => {
     useEffect(() => {
         const fetchRequisitions = async () => {
             try {
-                const response = await axios.get('http://192.168.1.39:1415/api/medications');
+                const response = await axios.get('http://localhost:1415/api/medications');
                 const data = response.data;
                 // Assuming you have pagination data in API response
                 // Update this logic based on actual API response

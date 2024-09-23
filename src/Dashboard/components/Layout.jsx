@@ -44,6 +44,7 @@ import SubstoreRouting from "../../component/SubStoreMainPage/SubstoreRouting";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRouting";
 import ReportRoute from "../../component/Reports/ReportRoute";
+import Billing from "../../component/Billing/billing"
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -80,6 +81,7 @@ const Layout = () => {
   const [showSubStore, setShowSubStore] = useState(false);
   const [showMedicalRecord, setShowMedicalRecord] = useState(false);
   const [showProcurement,setShowProcurement]=useState(false)
+  const [showBilling,setShowBilling]=useState(false)
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -115,6 +117,7 @@ const Layout = () => {
     setShowSubStore(false);
     setShowMedicalRecord(false);
     setShowProcurement(false);
+    setShowBilling(false)
   };
 
   const toggelAppointment = () => {
@@ -251,6 +254,10 @@ const Layout = () => {
     resetAllToggles();
     setShowProcurement(!showProcurement);
   }
+  const toggelBilling=()=>{
+    resetAllToggles();
+    setShowBilling(!showBilling);
+  }
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -287,6 +294,7 @@ const Layout = () => {
         onSubstoreClick={toggelSubstore}
         onMedicalRecord={toggelMedicalRecord}
         onProcurement={toggelProcurement}
+        onBilling={toggelBilling}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
@@ -329,6 +337,7 @@ const Layout = () => {
           {showVerification && <VerificationRouting />}
           {showSubStore && <SubstoreRouting />}
           {showMedicalRecord && <MedicalReportRouting />}
+          {showBilling && <Billing/>}
         </main>
       </div>
     </div>
