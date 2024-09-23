@@ -17,7 +17,7 @@ const NewVisitedList = () => {
     // Fetch data from the API when the component mounts
     const fetchPatients = async () => {
       try {
-        const response = await axios.get('http://localhost:1415/api/new-patient-visits');
+        const response = await axios.get('http://192.168.42.16:1415/api/new-patient-visits');
         // Transform API data to fit the table structure
         const formattedData = response.data.map(patient => ({
           patientNo: patient.newPatientVisitId, // Assuming `id` is used as hospital number
@@ -50,8 +50,8 @@ const NewVisitedList = () => {
 
   if (showPatientVisitForm) {
     return (
-      <div className="new-patient-visit-form-modal">
-        <div className="new-patient-visit-form-container">
+      <div className="patient-visit-form-modal">
+        <div className="patient-visit-form-container">
           <button className="close-btn" onClick={handleClosePatientVisitForm}>X</button>
           <AddNewPateint />
         </div>
@@ -60,12 +60,13 @@ const NewVisitedList = () => {
   }
 
   return (
+
     <div className="new-patient-list">
       <div className="new-header">
         <h5>Patient List</h5>
         <button className="new-patient" onClick={handleNewPatient}>+ New Patient</button>
       </div>
-      <div className="new-search-bar">
+      <div className="search-bar">
         <input 
           type="text" 
           placeholder="Search (Atleast 3 characters)" 
@@ -117,12 +118,13 @@ const NewVisitedList = () => {
                 <td>{patient.address}</td>
                 <td>{patient.phone}</td>
                 <td>
-                  <button className="new-action-button" onClick={handleNewPatient}>Check In</button>
+                  <button className="action-button" onClick={handleNewPatient}>Check In</button>
                 </td>
               </tr>
             ))}
         </tbody>
       </table>
+
       {/* <div className="new-pagination">
         <span>1 to 20 of 200</span>
         <button>First</button>
@@ -130,6 +132,7 @@ const NewVisitedList = () => {
         <span>Page 1 of 10</span>
         <button>Next</button>
         <button>Last</button>
+
       </div> */}
       <div className="new-footer-buttons">
         <button>Print</button>

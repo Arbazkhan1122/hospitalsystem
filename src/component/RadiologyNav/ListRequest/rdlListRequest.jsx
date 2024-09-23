@@ -19,7 +19,7 @@ function RDLListRequest() {
 
   useEffect(() => {
     // Fetch imaging requests and patients data
-    fetch("http://localhost:8888/api/patient-imaging-requisitions/all")
+    fetch("http://localhost:1415/api/patient-imaging-requisitions/all")
       .then((response) => response.json())
       .then((data) => {
         setImagingRequests(data);
@@ -30,7 +30,7 @@ function RDLListRequest() {
 
   const updateStatus = (id, filmTypeId, quantity, status, scannedOn) => {
     fetch(
-      `http://localhost:8888/api/patient-imaging-requisitions/update-film-type-and-quantity?filmTypeId=${filmTypeId}&quantity=${quantity}&imagingId=${id}&status=${status}&scannedOn=${scannedOn}`,
+      `http://localhost:1415/api/patient-imaging-requisitions/update-film-type-and-quantity?filmTypeId=${filmTypeId}&quantity=${quantity}&imagingId=${id}&status=${status}&scannedOn=${scannedOn}`,
       {
         method: "PUT",
         headers: {

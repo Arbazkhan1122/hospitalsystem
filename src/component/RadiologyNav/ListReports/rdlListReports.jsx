@@ -18,7 +18,7 @@ function RDLListReports() {
 
   // Fetch radiology report data and patient data from the APIs
   useEffect(() => {
-    fetch("http://localhost:8888/api/patient-imaging-requisitions/all")
+    fetch("http://localhost:1415/api/patient-imaging-requisitions/all")
       .then((response) => response.json())
       .then((data) => {
         setReportsData(data);

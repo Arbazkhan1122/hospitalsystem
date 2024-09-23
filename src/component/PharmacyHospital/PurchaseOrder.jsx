@@ -23,7 +23,7 @@ const PurchaseOrder = () => {
 
     const fetchPurchaseOrders = async () => {
         try {
-            const response = await axios.get('http://192.168.1.39:8888/api/order-purchase-orders');
+            const response = await axios.get('http://localhost:1415/api/order-purchase-orders');
             console.log('API Response:', response.data); // Log the API response
             setPurchaseOrders(response.data); // Set the data in state
             console.log('Purchase Orders State:', purchaseOrders); // Log the state to ensure it's updated

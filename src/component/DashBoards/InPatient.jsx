@@ -18,7 +18,7 @@ const PatientList = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await fetch('http://192.168.1.39:1415/api/new-patient-visits');
+        const response = await fetch('http://localhost:1415/api/new-patient-visits');
         const data = await response.json();
         setPatients(data);
       } catch (error) {

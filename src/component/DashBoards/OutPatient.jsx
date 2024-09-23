@@ -41,7 +41,7 @@ const OutPatient = () => {
     const fetchPatientData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('http://192.168.1.39:1415/api/new-patient-visits');
+        const response = await fetch('http://localhost:1415/api/new-patient-visits');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

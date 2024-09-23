@@ -18,7 +18,7 @@ function RDLEditDoctors() {
 
   // Function to fetch data from API
   useEffect(() => {
-    fetch("http://localhost:8888/api/patient-imaging-requisitions/all")
+    fetch("http://localhost:1415/api/patient-imaging-requisitions/all")
       .then((response) => response.json())
       .then((data) => {
         setImagingData(data);
