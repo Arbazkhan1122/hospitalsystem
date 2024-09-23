@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-// import './ManageBedPriceCategory.css';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const ManageBedPriceCategory = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [columnWidths,setColumnWidths] = useState({});
-  const tableRef=useRef(null);
+  const [isEditing, setIsEditing] = useState(false); // New state for edit mode
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   // Sample data
   const data = [
@@ -18,18 +18,31 @@ const ManageBedPriceCategory = () => {
 
   const handleEditClick = (item) => {
     setSelectedItem(item);
+    setIsEditing(true); // Set to true for edit mode
+    setShowEditModal(true);
+  };
+
+  const handleAddClick = () => {
+    setSelectedItem({
+      bedFeature: '',
+      scheme: '',
+      priceCategory: '',
+      isActive: true
+    });
+    setIsEditing(false); // Set to false for add mode
     setShowEditModal(true);
   };
 
   const handleCloseModal = () => {
     setShowEditModal(false);
     setSelectedItem(null);
+    setIsEditing(false); // Reset editing state
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here
-    console.log('Updated:', selectedItem);
+    console.log(isEditing ? 'Updated:' : 'Added:', selectedItem);
     handleCloseModal();
   };
 
@@ -37,41 +50,36 @@ const ManageBedPriceCategory = () => {
     <div className="manage-add-ward-page">
       <div className="manage-add-ward-table-container">
         <div className="manage-add-ward-manage-section">
-          <Button className="manage-add-ward-btn">+ Add Bed Feature Scheme And Price Category</Button>
+          <Button className="manage-add-ward-btn" onClick={handleAddClick}>
+            + Add Bed Feature Scheme And Price Category
+          </Button>
         </div>
         <input type="text" placeholder="Search" className="manage-add-ward-search-input" />
         <div className="manage-add-ward-results-info">Showing {data.length} / {data.length} results</div>
 
         <div className='table-container'>
-        <table  ref={tableRef}>
-          <thead>
-            <tr>
-              {[
-                "Bed Feature",
-                "Scheme",
-                "Price Category",
-                "Is Active",
-                "Action"
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
-                    ></div>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
+          <table ref={tableRef}>
+            <thead>
+              <tr>
+                {[
+                  "Bed Feature",
+                  "Scheme",
+                  "Price Category",
+                  "Is Active",
+                  "Action"
+                ].map((header, index) => (
+                  <th key={index} style={{ width: columnWidths[index] }} className="resizable-th">
+                    <div className="header-content">
+                      <span>{header}</span>
+                      <div
+                        className="resizer"
+                        onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+                      ></div>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
             <tbody>
               {data.map((item, index) => (
                 <tr key={index}>
@@ -87,21 +95,15 @@ const ManageBedPriceCategory = () => {
               ))}
             </tbody>
           </table>
-
-          {/* <div className="manage-add-ward-pagination">
-            <Button className="manage-add-ward-pagination-btn">First</Button>
-            <Button className="manage-add-ward-pagination-btn">Previous</Button>
-            <span>Page 1 of 3</span>
-            <Button className="manage-add-ward-pagination-btn">Next</Button>
-            <Button className="manage-add-ward-pagination-btn">Last</Button>
-          </div> */}
         </div>
       </div>
 
       <Modal show={showEditModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">
         <div className="manage-modal-dialog">
           <div className="manage-modal-modal-header">
-            <div className="manage-modal-modal-title">Update Bed Feature Scheme And Price Category</div>
+            <div className="manage-modal-modal-title">
+              {isEditing ? 'Update Bed Feature Scheme And Price Category' : 'Add Bed Feature Scheme And Price Category'}
+            </div>
             <Button onClick={handleCloseModal} className="manage-modal-employee-role-btn">X</Button>
           </div>
           <div className="manage-modal-modal-body">
@@ -142,9 +144,9 @@ const ManageBedPriceCategory = () => {
                 />
               </Form.Group>
 
-              
-
-              <Button type="submit" className="manage-modal-employee-btn">Update</Button>
+              <Button type="submit" className="manage-modal-employee-btn">
+                {isEditing ? 'Update' : 'Add'}
+              </Button>
             </Form>
           </div>
         </div>

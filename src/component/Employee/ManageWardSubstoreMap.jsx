@@ -22,6 +22,11 @@ const ManageWardSubstoreMap = () => {
     setShowEditModal(true);
   };
 
+  const handleAddClick = () => {
+    setSelectedWard(null); // No ward is selected when adding a new ward
+    setShowEditModal(true);
+  };
+
   const handleCloseModal = () => {
     setShowEditModal(false);
     setSelectedWard(null);
@@ -31,7 +36,7 @@ const ManageWardSubstoreMap = () => {
     <div className="manage-ward-substore-page">
       <div className="manage-ward-substore-table-container">
         <div className="manage-ward-substore-manage-section">
-          <h1 className="ward-manage-add-substore-btn">+ Add Ward Substore Map</h1>
+          <h1 className="ward-manage-add-substore-btn" onClick={handleAddClick}>+ Add Ward Substore Map</h1>
         </div>
 
         <input type="text" placeholder="Search" className="ward-manage-substore-search-input" />
@@ -113,8 +118,8 @@ const WardSubstoreMap = ({ selectedWard, onClose }) => {
   return (
     <div className="manage-ward-modal-container">
       <div className="manage-ward-modal-header">
-        <h2>Edit Ward Substore Map</h2>
-        <h3>{selectedWard ? selectedWard.wardName : 'Ward'}</h3>
+        <h2>{selectedWard ? 'Edit Ward Substore Map' : 'Add Ward Substore Map'}</h2>
+        <h3>{selectedWard ? selectedWard.wardName : 'New Ward'}</h3>
         <button className="manage-ward-close-button" onClick={onClose}>
           X
         </button>
@@ -168,7 +173,7 @@ const WardSubstoreMap = ({ selectedWard, onClose }) => {
       </div>
       <div className="manage-ward-modal-footer">
         <button className="manage-ward-update-button" onClick={onClose}>
-          Update
+          {selectedWard ? 'Update' : 'Add'}
         </button>
       </div>
     </div>

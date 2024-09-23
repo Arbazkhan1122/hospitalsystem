@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './ExternalReferrals.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const ExternalReferrals = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   const data = [
     { name: 'ram', address: 'ttki', contact: '589632147', isActive: 'true' },
     { name: 'Dr.pal', address: '', contact: '1324', isActive: 'true' },
@@ -29,18 +32,36 @@ const ExternalReferrals = () => {
        <span>Showing 4 / 4 results</span>
 
        </div>
-     <div className='external-referal-tab'>
-     <table className="external-reference-custom-table">
-        
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Contact No.</th>
-            <th>Is Active</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+     <div className='table-container'>
+     <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Name",
+                 "Address",
+                 "Contact No.",
+                 "Is Active",
+                 "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {data.map((item, index) => (
             <tr key={index}>
@@ -55,7 +76,7 @@ const ExternalReferrals = () => {
           ))}
         </tbody>
       </table>
-      <div className="external-reference-pagination">
+      {/* <div className="external-reference-pagination">
         <div>
           <button className="external-reference-pagination-button">First</button>
           <button className="external-reference-pagination-button">Previous</button>
@@ -63,7 +84,7 @@ const ExternalReferrals = () => {
           <button className="external-reference-pagination-button">Next</button>
           <button className="external-reference-pagination-button">Last</button>
         </div>
-      </div>
+      </div> */}
      </div>
      
     </div>

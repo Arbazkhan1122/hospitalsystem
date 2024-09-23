@@ -5,21 +5,23 @@ import { Modal, Button } from 'react-bootstrap';
 import UpdateDepartmentForm from './UpdateDepartmentForm';
 import './ManageDepartment.css';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+
 const ManageDepartment = () => {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
-  const [columnWidths,setColumnWidths] = useState({});
-  const tableRef=useRef(null);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   const handleShowUpdateModal = (department) => {
-    setSelectedDepartment(department);
+    setSelectedDepartment(department); // Set department if editing, null if adding
     setShowUpdateModal(true);
   };
 
   const handleCloseUpdateModal = () => {
     setShowUpdateModal(false);
-    setSelectedDepartment(null);
+    setSelectedDepartment(null); // Reset selection on close
   };
+
   const data = [
     { code: 'ACC', name: 'Account', parent: '', description: '', isActive: true, isAppointment: false },
     { code: 'Admin', name: 'ADMINISTRATION', parent: '', description: 'For hospital admins, etc.', isActive: true, isAppointment: false },
@@ -47,67 +49,68 @@ const ManageDepartment = () => {
     <div className="manage-department-page">
       <div className="manage-department-table-container">
         <div className="manage-department-manage-section">
-          <h1 className="manage-add-department-btn">+ Add Department</h1>
+          <h1 className="manage-add-department-btn" onClick={() => handleShowUpdateModal(null)}>
+            + Add Department
+          </h1>
           <div className="manage-department-results-info">Showing 76 / 76 results</div>
         </div>
-       <div className='sett-search-bar'>
-       <input type="text" placeholder="Search" className="manage-department-search-input" />
-
-       </div>
-       <div className='table-container'>
-       <table  ref={tableRef}>
-          <thead>
-            <tr>
-              {[
-               "Code",
-               "Name",
-               "Parent Department",
-               "Description",
-               "Is Active",
-               "Is Appointment",
-               "Action"
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
-                    ></div>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => (
-              <tr key={index}>
-                <td>{item.code}</td>
-                <td>{item.name}</td>
-                <td>{item.parent}</td>
-                <td>{item.description}</td>
-                <td>{item.isActive.toString()}</td>
-                <td>{item.isAppointment.toString()}</td>
-                <td>
-                  <Button
-                    className="manage-department-edit-btn"
-                    onClick={() => handleShowUpdateModal(item)}
+        <div className='sett-search-bar'>
+          <input type="text" placeholder="Search" className="manage-department-search-input" />
+        </div>
+        <div className='table-container'>
+          <table ref={tableRef}>
+            <thead>
+              <tr>
+                {[
+                  "Code",
+                  "Name",
+                  "Parent Department",
+                  "Description",
+                  "Is Active",
+                  "Is Appointment",
+                  "Action"
+                ].map((header, index) => (
+                  <th
+                    key={index}
+                    style={{ width: columnWidths[index] }}
+                    className="resizable-th"
                   >
-                    Edit
-                  </Button>
-                </td>
+                    <div className="header-content">
+                      <span>{header}</span>
+                      <div
+                        className="resizer"
+                        onMouseDown={startResizing(
+                          tableRef,
+                          setColumnWidths
+                        )(index)}
+                      ></div>
+                    </div>
+                  </th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
-       </div>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index}>
+                  <td>{item.code}</td>
+                  <td>{item.name}</td>
+                  <td>{item.parent}</td>
+                  <td>{item.description}</td>
+                  <td>{item.isActive.toString()}</td>
+                  <td>{item.isAppointment.toString()}</td>
+                  <td>
+                    <Button
+                      className="manage-department-edit-btn"
+                      onClick={() => handleShowUpdateModal(item)}
+                    >
+                      Edit
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         {/* <div className="manage-department-pagination">
           <Button className="manage-department-pagination-btn">First</Button>
@@ -118,8 +121,8 @@ const ManageDepartment = () => {
         </div> */}
       </div>
 
-     {/* Modal for UpdateDepartmentForm */}
-     <Modal
+      {/* Modal for UpdateDepartmentForm */}
+      <Modal
         show={showUpdateModal}
         onHide={handleCloseUpdateModal}
         dialogClassName="update-manage-modal-dialog" // Custom class for the dialog
@@ -130,15 +133,19 @@ const ManageDepartment = () => {
           {/* <h5>Update Department</h5> */}
         </Modal.Header>
         <Modal.Body>
-          {selectedDepartment && (
+          {selectedDepartment !== null ? (
             <UpdateDepartmentForm
               department={selectedDepartment}
-              onClose={handleCloseUpdateModal} // Ensure this is passed correctly if used inside UpdateDepartmentForm
+              onClose={handleCloseUpdateModal}
+            />
+          ) : (
+            <UpdateDepartmentForm
+              department={{ code: '', name: '', parent: '', description: '', isActive: true, isAppointment: false }} // Empty form for adding
+              onClose={handleCloseUpdateModal}
             />
           )}
         </Modal.Body>
       </Modal>
-
     </div>
   );
 };
