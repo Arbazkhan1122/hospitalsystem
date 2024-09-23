@@ -38,23 +38,18 @@ const EmployeeHeader = ({ onNavClick }) => {
             >Geolocation</li> {/* Added onClick */}
             <li onClick={() => handleNavClick('clinical')}              className={activeNav === 'clinical' ? 'active' : ''}
             >Clinical</li> {/* Added onClick */}
-            <li onClick={() => window.location.href = '/manage-tax'}>Manage Tax</li> {/* Direct navigation */}
+            <li><Link to= '/manage-tax' className='SettingLinks'>Manage Tax</Link></li> {/* Direct navigation */}
             <li onClick={() => handleNavClick('dynamicTemplates')}              className={activeNav === 'dynamicTemplates' ? 'active' : ''}
             >Dynamic Templates</li> {/* Added onClick */}
-            <li onClick={() => window.location.href = '/external-referrals'}>External Referrals</li>
-            <li onClick={() => window.location.href = '/core-cfg-prmeter'}>Core CFG Parameters</li>
-            <li onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}>More...</li>
-{moreDropdownOpen && (
-  <div className="more-dropdown">
-    <ul>
-      <li><Link to="/manage-banks" onClick={() => onNavClick('ManageBanks')}>Banks</Link></li>
-      <li><Link to="/manage-printers" onClick={() => onNavClick('ManagePrinters')}>Printers</Link></li>
-      <li><Link to="/print-export-configuration" onClick={() => onNavClick('PrintExportConfiguration')}>PrintExport Configuration</Link></li>
-      <li><Link to="/payment-mode-settings" onClick={() => onNavClick('PaymentModeSettings')}>Payment Mode Settings</Link></li>
-      <li><Link to="/price-category" onClick={() => onNavClick('PriceCategory')}>PriceCategory</Link></li>
-    </ul>
-  </div>
-)}
+            <li><Link to= '/external-referrals' className='SettingLinks'>External Referrals</Link></li>
+            <li><Link to= '/core-cfg-prmeter' className='SettingLinks'>Core CFG Parameters</Link></li>
+            
+      <li><Link to="/manage-banks" className='SettingLinks'>Banks</Link></li>
+      <li><Link to="/manage-printers" className='SettingLinks'>Printers</Link></li>
+      <li><Link to="/print-export-configuration" className='SettingLinks'>PrintExport Configuration</Link></li>
+      <li><Link to="/payment-mode-settings" className='SettingLinks'>Payment Mode Settings</Link></li>
+      <li><Link to="/price-category" className='SettingLinks'>PriceCategory</Link></li>
+
           </ul>
         </nav>
       </header>
@@ -109,7 +104,7 @@ const EmployeeHeader = ({ onNavClick }) => {
       {activeNav === 'geolocation' && (  /* Added Geolocation sub-nav */
         <div className="geolocation-sub-nav">
           <ul>
-            <li><Link to="/manage-municipalitys" >Manage Municipality</Link></li>
+            <li><Link to="/manage-municipality" >Manage Municipality</Link></li>
             <li><Link to="/manage-country" >Manage Country</Link></li>
             <li><Link to="/manage-subdivision" >Manage SubDivision</Link></li>
           </ul>
