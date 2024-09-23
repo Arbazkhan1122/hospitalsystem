@@ -1,3 +1,6 @@
+ /* Ajhar Tamboli dispenSalesReturnFromCust.jsx 19-09-24 */
+
+
 import React, { useState } from 'react';
 import { Calendar, Search } from 'lucide-react';
 import '../DisSales/dispenSalesReturnFromCust.css'
@@ -13,6 +16,15 @@ const DispenSalesReturnFromCust = () => {
   const [returnedQty, setReturnedQty] = useState(0);
   const [salePrice, setSalePrice] = useState(0);
   const [remarks, setRemarks] = useState('');
+  const [returncustomLists, setReturncustomLists] = useState([]);
+
+  // useEffect(() => {
+  //   // Fetch data from the backend API
+  //   fetch('http://localhost:1415/api/hospital/return-lists/fetch-all-returnList')
+  //     .then(response => response.json())
+  //     .then(data => setReturncustomLists(data))
+  //     .catch(error => console.error('Error fetching return list data:', error));
+  // }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();

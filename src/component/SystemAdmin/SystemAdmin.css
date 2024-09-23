@@ -1,22 +1,27 @@
-/* .button-panel {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .button {
-    padding: 10px 20px;
-    background-color: lightgray;
-    border: none;
-    color: black;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .button.active {
-    background-color:#0d6efd ;
-    color: white;
-  }
-  
-  .button:hover {
-    background-color: darkgray;
-  } */
+/* Dhanashree_ButtonPanel_19/09 */
+
+.ButtonPanel-button-panel {
+  display: flex;
+  gap: 10px;
+}
+
+.ButtonPanel-button {
+  padding: 10px 20px;
+  background-color: var( --button-color);
+  border: none;
+  color: White;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ButtonPanel-button.active {
+  background-color: #0d6efd; /* Set the background color to blue for the active button */
+  color: white;
+}
+
+.ButtonPanel-button:hover {
+  background-color: white; /* Optional: Add hover effect for buttons */
+  color: var(--button-hover-text-color);
+}
+
+/* Dhanashree_ButtonPanel_19/09 */

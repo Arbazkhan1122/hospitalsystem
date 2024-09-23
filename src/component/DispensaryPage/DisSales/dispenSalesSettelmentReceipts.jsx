@@ -1,3 +1,5 @@
+ /* Ajhar Tamboli dispenSalesSettelmentReceipts.jsx 19-09-24 */
+
 
 import React, { useState, useRef } from 'react';
 // import "../DisStocks/dispenSalesProvisionalBill.css"

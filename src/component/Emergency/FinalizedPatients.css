@@ -1,118 +1,158 @@
-/* .finalized-patients {
+ /* Dhanashree_FinalizedPatients_19/09 */
+
+.FinalizedPatients-finalized-patients {
   font-family: Arial, sans-serif;
-  background-color: #e6f7ff;
-  padding: 20px;
+  background-color: var( --background-color);
+  padding: 5px;
 }
 
-.tab-nav {
+.FinalizedPatients-tab-nav {
   display: flex;
   margin-bottom: 20px;
 }
 
-.tab-nav a {
-  padding: 10px 20px;
+.FinalizedPatients-tab-nav a {
+  padding: 5px 10px;
   text-decoration: none;
   color: #333;
   border-bottom: 2px solid transparent;
 }
 
-.tab-nav a.active {
-  border-bottom-color: #1890ff;
-  color: #1890ff;
+.FinalizedPatients-tab-nav a.FinalizedPatients-active {
+  border-bottom-color: var(--upperBar-bg-color);
+  color: var(--upperBar-bg-color);
 }
 
-.search-filter {
+.FinalizedPatients-search-filter {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-  
 }
 
-.search-bar {
+.FinalizedPatients-search-bar {
   display: flex;
   border: 1px solid #ccc;
   border-radius: 4px;
   overflow: hidden;
 }
 
-.search-bar input {
+.FinalizedPatients-search-bar input {
   border: none;
-  padding: 10px;
+  padding: 5px;
   flex-grow: 1;
 }
 
-.search-icon {
+.FinalizedPatients-search-icon {
   background: none;
   border: none;
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
 }
 
-.filter-dropdown {
-  padding: 10px;
+.FinalizedPatients-filter-dropdown {
+  padding: 5px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
-.results-info {
+.FinalizedPatients-results-info {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
 }
 
-.print-btn {
+.FinalizedPatients-print-btn {
   background-color: #1890ff;
   color: white;
   border: none;
-  padding: 5px 15px;
+  padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.patient-table {
+.FinalizedPatients-patient-table {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
   margin-bottom: 20px;
 }
 
-.patient-table th, .patient-table td {
+.FinalizedPatients-patient-table th, 
+.FinalizedPatients-patient-table td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 5px;
   text-align: left;
+  height: 40px;
 }
 
-.patient-table th {
+.FinalizedPatients-patient-table th {
   background-color: #f2f2f2;
-  color: black; 
+  color: black; /* Set text color to black */
 }
 
-.patient-table td {
-  color: black;
+.FinalizedPatients-patient-table td {
+  color: black; /* Set text color to black */
 }
 
-.no-data {
+.FinalizedPatients-no-data {
   text-align: center;
   background-color: #fff9e6;
   color: #8c6d1f;
 }
 
-.pagination {
+.FinalizedPatients-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.pagination-btn {
+.FinalizedPatients-pagination-btn {
   background-color: #1890ff;
   color: white;
   border: none;
-  padding: 5px 15px;
+  padding: 5px 10px;
   margin: 0 5px;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.pagination span {
+.FinalizedPatients-pagination span {
   margin: 0 10px;
+}
+
+
+.FinalizedPatients-edit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.FinalizedPatients-edit-button:hover {
+  background-color: #0056b3;
+}
+
+/* 
+.FinalizedPatients-content {
+  background-color: red;
 } */
+
+.FinalizedPatients-print-btn {
+  color: black;
+  border: 2px solid black;
+  padding: 10px 20px;
+  background-color: white; /* Optional: Set background if needed */
+  cursor: pointer;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.FinalizedPatients-print-btn:hover {
+  color: red;
+  border-color: red;
+}
+
+
+ /* Dhanashree_FinalizedPatients_19/09 */

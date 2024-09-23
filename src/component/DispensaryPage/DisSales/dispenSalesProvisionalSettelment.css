@@ -1,5 +1,4 @@
-
-
+ /* Ajhar Tamboli dispenSalesProvisionalSettelment.css 19-09-24 */
 
 .dispenSalesProvisionalSettelment-active-imaging-request {
     font-family: Arial, sans-serif;
@@ -164,12 +163,14 @@ color: green;
   
   .dispenSalesProvisionalSettelment-search-bar {
     display: flex;
+    margin-left: -45px;
   }
   
   .dispenSalesProvisionalSettelment-search-bar input {
-    flex-grow: 1;
+    /* flex-grow: 1; */
     padding: 5px;
     width: 200px;
+
 
   }
   .dispenSalesProvisionalSettelment-search-bar i{

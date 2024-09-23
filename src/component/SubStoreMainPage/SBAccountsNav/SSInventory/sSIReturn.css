@@ -59,7 +59,7 @@ font-size: var(--font-size);
 /* font-weight: bold; */
 }
 .sSIReturn-filterBySubCategory select{
-  padding: 10px;
+  padding: 5px;
   font-size: var(--font-size);
 }
 .sSIReturn-filterBySubCategory option{
@@ -161,7 +161,7 @@ color: green;
 
 .sSIReturn-search-bar {
   display: flex;
-  margin-left: -33px;
+  margin-left: -15px;
 }
 
 .sSIReturn-search-bar input {
@@ -174,7 +174,7 @@ color: green;
   position: relative;
   color:gray;
   top: 7px;
-left: 205px;
+left: 190px;
 }
 
 /* .search-bar button {

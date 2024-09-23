@@ -1,3 +1,4 @@
+ /* Ajhar Tamboli sSIIReportsConsumReport.jsx 19-09-24 */
 
 
 import React, { useState, useRef } from 'react';
@@ -60,7 +61,7 @@ function SSIIReportsConsumReport() {
           </div>
         </header>
         <div className="sSIIReportsConsumReport-controls">
-          <div className="sSIIReportsConsumReport-date-range">
+        <div className="sSIIReportsConsumReport-date-range">
             <label>
               From:
               <input type="date" defaultValue="2024-08-09" />
@@ -70,8 +71,10 @@ function SSIIReportsConsumReport() {
               <input type="date" defaultValue="2024-08-16" />
             </label>
             <button className="sSIIReportsConsumReport-star-button">☆</button>
+          <button className="sSIIReportsConsumReport-more-btn">-</button>
             <button className="sSIIReportsConsumReport-ok-button">OK</button>
           </div>
+
           <div className="sSIIReportsConsumReport-filter">
             <label>SubCategory</label>
             <select>
@@ -117,7 +120,7 @@ function SSIIReportsConsumReport() {
             <button className='sSIIReportsConsumReport-print-btn' onClick={handleExportToExcel}>
               <i className="fa-regular fa-file-excel"></i> Export
             </button>
-            <button className='sSIIReportsConsumReport-print-btn' onClick={handlePrint}>Print</button>
+            <button className='sSIIReportsConsumReport-print-btn' onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
           </div>
         </div>
         <div style={{ display: 'none' }}>
@@ -193,14 +196,14 @@ function SSIIReportsConsumReport() {
               </tr>
             </tbody>
           </table>
-          <div className="sSIIReportsConsumReport-pagination">
+          {/* <div className="sSIIReportsConsumReport-pagination">
             <span>0 to 0 of 0</span>
             <button>First</button>
             <button>Previous</button>
             <span>Page 0 of 0</span>
             <button>Next</button>
             <button>Last</button>
-          </div>
+          </div> */}
         </div>
       </>
     </div>

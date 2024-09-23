@@ -104,7 +104,7 @@
     align-items: center;
   }
 .drSettlementSummaryReport-search-bar{
-  margin-left: -35px;
+  margin-left: -15px;
 }  
   .drSettlementSummaryReport-search-bar input {
     /* margin-top: 10px; */
@@ -116,7 +116,7 @@
     position: relative;
     color:gray;
     top: 3px;
-  left: 205px;
+  left: 190px;
   }
   
   .drSettlementSummaryReport-results-info {
