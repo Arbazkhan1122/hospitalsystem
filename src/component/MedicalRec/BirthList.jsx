@@ -121,7 +121,7 @@ function BirthList() {
     
     <div className="Birth-tableContainer">
     <button onClick={addBirthDetailsButton} className='AddNewBirthCertificate'> &#43;  Add New Birth Certificate</button>
-             <h3>Filter by Birth Date:</h3>
+             <h5>Filter by Birth Date:</h5>
             <div className="Birth-date-filter">
                 <label>
                   From:

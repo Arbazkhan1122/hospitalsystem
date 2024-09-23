@@ -1,8 +1,10 @@
 /* Mohini_StoreDetailsListCom_WholePage_14/sep/2024 */
-import React from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import "./PurchaseOrder.css"; // Ensure you have this CSS file
-
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 const SubstoreDispatchCom = () => {
+    const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
     return (
         <div className="purchase-order-container">
             <div className="purchase-order-header">
@@ -39,19 +41,37 @@ const SubstoreDispatchCom = () => {
 
 
 
-            <div className="purchase-order-table-container">
-                <table className='purchase-order-tab'>
-                    <thead>
-                        <tr>
-                        <th>Req.No</th>
-                            <th>Requested By</th>
-                            <th>Requested From</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-
-                        </tr>
-                    </thead>
+            <div className="table-container">
+            <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Req.No",
+  "Requested By",
+  "Requested From",
+  "Date",
+  "Status",
+  "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                     <tbody>
                         <tr>
                             <td colSpan="6" className="purchase-order-no-rows">No Rows To Show</td>

@@ -41,12 +41,22 @@ function PendingReports() {
     <div className="pendingReports-work-list">
       <h4>Pending Reports</h4>
       <div className="pendingReports-header">
-        <div className="pendingReports-date-range">
-          <label>From:</label>
-          <input type="date" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} />
-          <label>To:</label>
-          <input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} />
-        </div>
+    
+        <div className="pendingReports-controls">
+        {/* Your date range and button controls */}
+          <div className="pendingReports-date-range">
+            <label>
+              From:
+              <input type="date" defaultValue="2024-08-09" />
+            </label>
+            <label>
+              To:
+              <input type="date" defaultValue="2024-08-16" />
+            </label>
+            <button className="pendingReports-star-button">☆</button>
+            <button className="pendingReports-ok-button">OK</button>
+          </div>
+      </div>
         <div className="pendingReports-category-select">
           <label>Category:</label>
           <select value={category} onChange={(e) => setCategory(e.target.value)}>
@@ -63,16 +73,21 @@ function PendingReports() {
             {/* Add more options here */}
           </select>
         </div>
-        <button className="pendingReports-load-button">Load <i className="fa-brands fa-instalod"></i></button>
+        <button className="pendingReports-load-button">Load <i className="fa fa-refresh" /></button>
       </div>
       <div className="pendingReports-searchbar-N-showing">
+        
         <div className="pendingReports-search-bar">
-          <i className="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search..." />
-        </div>
+              <i className="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                placeholder="Search"
+                className="pendingReports-search-input"
+              />
+            </div>
         <div className="pendingReports-results-info">
           <span>Showing 0 / 0 results</span>
-          <button className="pendingReports-print-button" onClick={handlePrint}>Print</button>
+          <button className="pendingReports-print-button" onClick={handlePrint}><i className="fa-solid fa-print"></i> Print</button>
         </div>
       </div>
       <div className="pendingReports-work-table">
@@ -96,14 +111,14 @@ function PendingReports() {
             </tr>
           </tbody>
         </table>
-        <div className="pendingReports-pagination">
+        {/* <div className="pendingReports-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

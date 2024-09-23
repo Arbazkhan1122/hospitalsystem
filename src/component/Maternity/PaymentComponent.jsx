@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import './PaymentComponent.css';
 import { API_BASE_URL } from "../api/api";
+import { startResizing } from "../TableHeadingResizing/resizableColumns";
 
 function PaymentComponent({ patient }) {
   const [paymentReturn, setPaymentReturn] = useState(false);
@@ -8,6 +9,8 @@ function PaymentComponent({ patient }) {
   const [inWords, setInWords] = useState("");
   const [remarks, setRemarks] = useState("");
   const [paymentHistory, setPaymentHistory] = useState([]);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   useEffect(() => {
     // Fetch payment history data from the API
@@ -156,14 +159,33 @@ function PaymentComponent({ patient }) {
           <input type="text" placeholder="Search" className="maternity-form-input"/>
           <span className="pay-span">Showing {paymentHistory.length} / {paymentHistory.length} results</span>
         </div>
-        <table className="maternity-table">
+        <table  ref={tableRef}>
           <thead>
             <tr>
-              <th className="maternity-table-header">Type</th>
-              <th className="maternity-table-header">Date</th>
-              <th className="maternity-table-header">Amount</th>
-              <th className="maternity-table-header">User</th>
-              <th className="maternity-table-header">Remarks</th>
+              {[
+                "Type",
+                "Date",
+                "Amount",
+                "User",
+                "Remarks"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>

@@ -1,7 +1,8 @@
 .incentiveSettingProfileManage-container {
-  background-color: #cdeeff;
+  background-color: var(--background-color);
   padding: 10px;
-  font-family: Arial, sans-serif;
+  height: 75vh;
+  /* font-family: Arial, sans-serif; */
   /* width: 100%; */
 }
 
@@ -13,20 +14,29 @@
 }
 
 .incentiveSettingProfileManage-add-profile-button {
-  background-color: #5A68D0;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  padding: 8px 12px;
-  font-size: 12px;
-  font-weight: bold;
+  /* border: none; */
+  /* margin-right: 10px; */
   border-radius: 5px;
   cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.incentiveSettingProfileManage-add-profile-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .incentiveSettingProfileManage-search-container {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  margin-left: -20px;
 }
 
 .incentiveSettingProfileManage-search-input {
@@ -35,7 +45,7 @@
   border-radius: 3px;
 }
 
-.search-icon {
+.incentiveSettingProfileManage-search-input i {
   margin-left: -25px;
   cursor: pointer;
   color: #999;
@@ -45,9 +55,9 @@
   justify-content: space-between;
 }
 .incentiveSettingProfileManage-Showing span{
-  color: #0F63AF;
-  font-size: 12px;
-  font-weight: bold;
+  /* color: #0F63AF; */
+  font-size: var(--font-size);
+  /* font-weight: bold; */
 }
 .incentiveSettingProfileManage-profile-table-N-pagination{
   background-color: white;
@@ -61,33 +71,46 @@
 .incentiveSettingProfileManage-profile-table th,
 .incentiveSettingProfileManage-profile-table td {
   border: 1px solid #ddd;
-  padding: 5px;
-  text-align: left;
-  font-size: 12px;background-color:white;
-  color: #4d4c4c;
+  padding: 3px;
+  text-align: center;
+  font-size: var(--font-size);
+  background-color:white;
+  /* color: #4d4c4c; */
 }
 
 .incentiveSettingProfileManage-profile-table th {
+  font-size: var(--heading-font);
   background-color: #f2f2f2;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .incentiveSettingProfileManage-action-button {
-  padding: 5px 10px;
-  margin: 2px;
-  border: none;
-  border-radius: 15px;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 1px 5px;
 }
-
+.incentiveSettingProfileManage-action-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
 .iSPM-rename-button {
-  background-color: #0F63AF;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
 }
 
 .iSPM-edit-items-button {
-  background-color: #0F63AF;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
 }
 
@@ -116,7 +139,7 @@
 .incentiveSettingProfileManage-pagination span {
   margin: 0 10px;
   color: gray;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 
 
@@ -136,7 +159,7 @@
 
 .incentiveSettingProfileManage-popup-content {
   background-color: white;
-  /* padding: 20px; */
+  margin-top: 20px;
   border-radius: 8px;
   width: 90%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -154,5 +177,5 @@
   cursor: pointer;
   background-color: #E63744;
   color: white;
-  padding: 5px 10px;
+  padding: 3px 10px;
 }

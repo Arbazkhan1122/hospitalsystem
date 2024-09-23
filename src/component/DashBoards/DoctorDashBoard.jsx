@@ -19,7 +19,7 @@ const DrDashboard = () => {
   return (
     
     <div className="dashboard-container">
-      <div className="button-group">
+      <div className="doctor-dashboard-button-group">
         <button
           className="dashboard-button"
           onClick={() => handleButtonClick('outPatient')}

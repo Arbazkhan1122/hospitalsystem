@@ -2,10 +2,9 @@
     padding: 20px;
   }
    */
-   .button-group {
+   .doctor-dashboard-button-group{
     display: flex;
     gap: 10px;
-    margin-bottom: 20px;
   }
   
   .dashboard-button {

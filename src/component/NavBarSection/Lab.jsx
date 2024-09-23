@@ -25,6 +25,7 @@ import MapGovernmentItemxs from './LabSetting/mapGovernmentItems';
 // import SampleCollection from './NavBarSection/sampleCollection';
 import HospitalNav from "./hospitalNav"
 import CollectSample from './CollectSample';
+import Opdlab from './OPDBillingLab/opdlab';
 const Lab = () => {
 
   return (
@@ -55,6 +56,7 @@ const Lab = () => {
           <Route path="/labCategories" element={<LabCategories />} />
           <Route path="/mapGovernmentItemxs" element={<MapGovernmentItemxs />} />
           <Route path="/collect-sample/:id" element={<CollectSample />}></Route>
+          <Route path="/OpdLadbilling" element={<Opdlab/>}></Route>
 
 
         </Routes>

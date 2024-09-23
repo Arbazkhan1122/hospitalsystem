@@ -1,7 +1,8 @@
 .navWardBilling {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background-color: #e6f2ff;
+    background-color: var(--background-color);
+    height: 80vh;
   }
   .navWardBilling-search-results{
     display: flex;
@@ -11,12 +12,13 @@
   .navWardBilling-search-container {
     display: flex;
     margin-bottom: 10px;
+    margin-left: -35px;
   }
   .navWardBilling-search-container i{
     position: relative;
     color:gray;
-    top: 5px;
-   left: 205px;
+    top: 6px;
+   left: 215px;
   }
   
   .navWardBilling-search-container input {
@@ -41,20 +43,29 @@
     
   }
   .navWardBilling-results-info span {
-    color: #007bff;
-    font-size: 12px;
-    font-weight: bold;
+    /* color: #007bff; */
+    font-size: var(--font-size);
+    /* font-weight: bold; */
     margin-right: 10px;
 
   }
   .navWardBilling-print-btn {
-    background-color: #659BE0;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
+    /* border: none; */
+    /* margin-right: 10px; */
     border-radius: 5px;
-    padding: 5px 10px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .navWardBilling-print-btn:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
   .navWardBilling-patient-table {
@@ -64,25 +75,34 @@
   
   .navWardBilling-patient-table th, .navWardBilling-patient-table td {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    font-size: 12px;
+    padding: 3px;
+    text-align: center;
+    font-size: var(--font-size);
     background-color: white;
   }
   
   .navWardBilling-patient-table th {
     background-color: #f2f2f2;
+    font-size: var(--heading-font);
   }
   
   .navWardBilling-view-btn {
-    background-color: #0F63AF;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 5px 10px;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 10px;
-
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 2px 5px;
+  }
+  .navWardBilling-view-btn:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
   .navWardBilling-pagination {
@@ -105,7 +125,7 @@
    .navWardBilling-pagination span {
     margin: 0 10px;
     color: gray;
-    font-size: 12px;
+    font-size: var(--font-size);
    }
 
    .navWardBilling-popup-overlay {

@@ -1,3 +1,6 @@
+/* Ajhar Tamboli sSSIInvenReqCreateReq.jsx 19-09-24 */
+
+
 import React, { useEffect, useState } from "react";
 import { Calendar } from "lucide-react";
 import "../SSInventory/sSSIInvenReqCreateReq.css";
@@ -109,18 +112,18 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
   };
 
   return (
-    <div className="requisition-form">
+    <div className="sSSIInvenReqCreateReq-form">
       <button
-        className="sSIInventoryRequisition-close-button"
+        className="sSSIInvenReqCreateReq-close-button"
         onClick={onClose}
       >
         X
       </button>{" "}
       {/* Close button */}
-      <h2 className="form-title">Create Requisition</h2>
+      <h2 className="sSSIInvenReqCreateReq-form-title">Create Requisition</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-row">
-          <div className="form-group">
+        <div className="sSSIInvenReqCreateReq-form-row">
+          <div className="sSSIInvenReqCreateReq-form-group">
             <label htmlFor="targetInventory">Target Inventory : *</label>
             <input
               type="text"
@@ -131,9 +134,9 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="sSSIInvenReqCreateReq-form-group">
             <label htmlFor="requisitionDate">Requisition Date :</label>
-            <div className="date-input">
+            <div className="sSSIInvenReqCreateReq-date-input">
               <input
                 type="date"
                 id="requisitionDate"
@@ -143,7 +146,7 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
               />
             </div>
           </div>
-          <div className="form-group">
+          <div className="sSSIInvenReqCreateReq-form-group">
             <label htmlFor="issueNo">Issue No :</label>
             <input
               type="text"
@@ -154,7 +157,7 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
           </div>
         </div>
 
-        <table className="inventory-table">
+        <table className="sSSIInvenReqCreateReq-inventory-table">
           <thead>
             <tr>
               <th>Item Category</th>
@@ -172,7 +175,7 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
               <tr key={index}>
                 <td>
                   <td>
-                    <select
+                    <select className="sSSIInvenReqCreateReq-table-select"
                       value={row.itemCategory}
                       onChange={(e) =>
                         handleRowChange(index, "itemCategory", e.target.value)
@@ -185,7 +188,7 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
                   </td>
                 </td>
                 <td>
-                  <input
+                  <input className="sSSIInvenReqCreateReq-table-input"
                     type="text"
                     value={row.itemName}
                     onChange={(e) =>
@@ -194,7 +197,7 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
                   />
                 </td>
                 <td>
-                  <input
+                  <input className="sSSIInvenReqCreateReq-table-input"
                     type="text"
                     value={row.specification}
                     onChange={(e) =>
@@ -203,7 +206,7 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
                   />
                 </td>
                 <td>
-                  <input
+                  <input className="sSSIInvenReqCreateReq-table-input"
                     type="text"
                     value={row.unit}
                     onChange={(e) =>
@@ -212,7 +215,7 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
                   />
                 </td>
                 <td>
-                  <input
+                  <input className="sSSIInvenReqCreateReq-table-input"
                     type="number"
                     value={row.availableQty}
                     onChange={(e) =>
@@ -221,7 +224,7 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
                   />
                 </td>
                 <td>
-                  <input
+                  <input className="sSSIInvenReqCreateReq-table-input"
                     type="text"
                     value={row.code}
                     onChange={(e) =>
@@ -230,7 +233,7 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
                   />
                 </td>
                 <td>
-                  <input
+                  <input className="sSSIInvenReqCreateReq-table-input"
                     type="number"
                     value={row.requiredQuantity}
                     onChange={(e) =>
@@ -239,7 +242,7 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
                   />
                 </td>
                 <td>
-                  <input
+                  <input className="sSSIInvenReqCreateReq-table-input"
                     type="text"
                     value={row.remark}
                     onChange={(e) =>
@@ -248,7 +251,7 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
                   />
                 </td>
                 <td>
-                  <button type="button" onClick={() => removeRow(index)}>
+                  <button className="sSSIInvenReqCreateReq-min-buttonFs" type="button" onClick={() => removeRow(index)}>
                     -
                   </button>
                 </td>
@@ -256,7 +259,7 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
             ))}
             <tr>
               <td colSpan="9">
-                <button type="button" onClick={addRow}>
+                <button className="sSSIInvenReqCreateReq-addrow-button" type="button" onClick={addRow}>
                   Add Row
                 </button>
               </td>
@@ -264,7 +267,9 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
           </tbody>
         </table>
 
-        <div className="form-group checkbox-group">
+        <div className="sSSIInvenReqCreateReq-form-group-needVerification-N-Remark">
+        <div className="sSSIInvenReqCreateReq-form-group-needVerification">
+        <div className="sSSIInvenReqCreateReq-form-group checkbox-group">
           <input
             type="checkbox"
             id="needVerification"
@@ -274,14 +279,15 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
           <label htmlFor="needVerification">Need Verification</label>
         </div>
 
-        <div className="checked-by">
-          <button className="btn btn-remove">-</button>
-          <button className="btn btn-checked">Checked By</button>
+        <div className="sSSIInvenReqCreateReq-checked-by">
+          <button className="sSSIInvenReqCreateReq-btn-remove">-</button>
+          <button className="sSSIInvenReqCreateReq-btn-checked">Checked By</button>
           <input type="text" value={checkedBy} readOnly />
-          <button className="btn btn-add">+</button>
+          <button className="sSSIInvenReqCreateReq-btn-add">+</button>
+        </div>
         </div>
 
-        <div className="form-group">
+        <div className="sSSIInvenReqCreateReq-form-group">
           <label htmlFor="remarks">Remarks:</label>
           <textarea
             id="remarks"
@@ -289,12 +295,13 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
             onChange={(e) => setRemarks(e.target.value)}
           ></textarea>
         </div>
+        </div>
 
-        <div className="form-actions">
-          <button type="submit" className="btn btn-request">
+        <div className="sSSIInvenReqCreateReq-form-actions">
+          <button type="submit" className="sSSIInvenReqCreateReq-btn-request">
             Request
           </button>
-          <button type="button" className="btn btn-discard">
+          <button type="button" className="sSSIInvenReqCreateReq-btn-discard">
             Discard Changes
           </button>
         </div>

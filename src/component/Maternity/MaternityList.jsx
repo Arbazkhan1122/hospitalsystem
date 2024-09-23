@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './MaternityList.css';
 import NewPatientRegistrationForm from './NewPatientRegistrationForm';
 import { API_BASE_URL } from '../api/api';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const MaternityList = () => {
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [patients, setPatients] = useState([]);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   useEffect(() => {
     // Fetch patient data from the API
@@ -75,23 +78,41 @@ const MaternityList = () => {
             <button className="mater-print-btn" onClick={handlePrint}>Print</button>
           </div>
 
-          <div className="maternity-table">
-            <table className="mater-table">
-              <thead>
-                <tr>
-                  <th className="mater-hosp-col">Hosp No</th>
-                  <th className="mater-name-col">Name</th>
-                  <th className="mater-age-col">Age/Sex</th>
-                  <th className="mater-address-col">Address</th>
-                  <th className="mater-phone-col">Phone No</th>
-                  <th className="mater-husband-col">Husband's Name</th>
-                  <th className="mater-h-col">Ht</th>
-                  <th className="mater-w-col">Wt</th>
-                  <th className="mater-lmp-col">LMP</th>
-                  <th className="mater-edd-col">EDD</th>
-                
-                </tr>
-              </thead>
+          {/* <div className="maternity-table"> */}
+          <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Hosp No",
+                 "Name",
+                 "Age/Sex",
+                 "Address",
+                 "Phone No",
+                 "Husband's Name",
+                 "Ht",
+                 "Wt",
+                 "LMP",
+                 "EDD"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
               <tbody>
                 {patients.length > 0 ? (
                   patients.map((patient) => (
@@ -114,7 +135,7 @@ const MaternityList = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="11" className="mater-no-rows">No Rows To Show</td>
+                    <td colSpan="10" className="mater-no-rows">No Rows To Show</td>
                   </tr>
                 )}
               </tbody>
@@ -128,7 +149,7 @@ const MaternityList = () => {
               <button>Next</button>
               <button>Last</button>
             </div> */}
-          </div>
+          {/* </div> */}
         </div>
       </div>
 

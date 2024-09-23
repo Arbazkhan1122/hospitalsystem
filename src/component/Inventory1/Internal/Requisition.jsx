@@ -82,7 +82,7 @@ const Requisition = () => {
               >
                 Direct Dispatch ➚
               </button>
-              <div>
+              <div className="requisition-inventory-direct-dispatch-filters">
                 <span>List by Requisition Status:</span>
                 {["Pending", "Complete", "Cancelled", "All"].map((s) => (
                   <label key={s}>
@@ -118,6 +118,7 @@ const Requisition = () => {
                 <button className="requisition-inventory-minus">-</button>
                 <button className="requisition-inventory-ok">✓ OK</button>
               </div>
+              <div className="requisition-inventory-search-bar-container">
               <div className="requisition-inventory-search-bar">
                 <input
                   type="text"
@@ -130,6 +131,7 @@ const Requisition = () => {
               <div className="requisition-inventory-results">
                 <span className="requisition-inventory-results-span">Showing {data.length} results</span>
                 <button className="requisition-inventory-results-print" onClick={handlePrint}>Print</button>
+              </div>
               </div>
               <div className="requisition-ta">
               <table className="patientList-table" ref={tableRef}>

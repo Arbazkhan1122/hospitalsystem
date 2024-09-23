@@ -1,14 +1,18 @@
-.sSPharmacyNInven-active-Accounts-btn{
-    background-color: #0056b3;
+/* Ajhar Tamboli sSPharmacyNInven.jsx 19-09-24 */
+
+.sSPharmacyNInven-active-Accounts-button{
+    background-color: var(--button-color);
     color: white;
-    font-weight: bold;
-    font-size: 14px;
+    /* font-weight: bold; */
+    font-size: var(--heading-font);
     border: none;
+    margin-right: 10px;
+  padding:  5px;
   }
-  .sSPharmacyNInven-active-Accounts-LogoutButton{
+  .sSPharmacyNInven-active-Accounts-Logout-button{
     /* grid-area: 10px; */
     margin:0 10px 0 10px;
-    font-size: 20px;
+    font-size: var(--heading-font);
     border: none;
   }
   .sSPharmacyNInven-Acc-N-Log{
@@ -60,25 +64,28 @@
     }
     
     .sSPharmacyNInven-bar a {
-      color: #007bff;
+      color: white;
+      background-color: var(--button-color);
       text-decoration: none;
-      font-weight: bold;
-      font-size: 12px;
-      padding: 5px 5px;
+      /* font-weight: bold; */
+      font-size: var(--heading-font);
+      border: 1px solid var(--button-color);
+      padding: 7px 5px;
       border-radius: 5px;
   
     }
     
     .sSPharmacyNInven-bar a:hover {
-      background-color: #0056b3;
-      color: white;
+      background-color: white;
+      color: var(--button-color);
+      border: 1px solid var(--button-color);
       /* border: 1px solid gray; */
   
       
     }
     
     .sSPharmacyNInven-bar .active {
-      background-color: #0056b3;
+      background-color: var(--button-bg-color);
       color: white;
   
     }

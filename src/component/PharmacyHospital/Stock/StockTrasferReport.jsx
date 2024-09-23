@@ -1,7 +1,7 @@
 /* Mohini_StockTransferSummary_WholePage_14/sep/2024 */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './PharmacyExpiryReport.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const StockTrasferReport = () => {
   const [fromDate, setFromDate] = useState('24-08-2024');
   const [toDate, setToDate] = useState('24-08-2024');
@@ -11,7 +11,8 @@ const StockTrasferReport = () => {
   const [nearlyExpired, setNearlyExpired] = useState(false);
   const [expired, setExpired] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   return (
     <div className="pharmacy-expiry-report-container">
       <h1>⚛ Stock Transfers Report</h1>
@@ -72,30 +73,49 @@ const StockTrasferReport = () => {
         <button className="pharmacy-expiry-report-print-btn">Print</button>
       </div>
      
-   <div className='pharmacy-expiry-report-ta'>
-   <div className='pharmacy-expiry-report-table-container'>
-    <table className="pharmacy-expiry-report-expiry-table">
-      <thead>
-        <tr>
-          <th>Generic Name</th>
-          <th>Item Name</th>
-          <th>Batch No</th>
-          <th>Purchase Rate</th>
-          <th>Sales Rate</th>
-          <th>TrasferQty</th>
-          <th>Transferred By</th>
-          <th>Transferred On</th>
-          <th>Transferred From</th>
-          <th>Transferred To</th>
-          <th>Received By</th>
-          <th>Received On</th>
-          <th>Approved By</th>
-          <th>Approved On</th>
-        </tr>
-      </thead>
+   {/* <div className='pharmacy-expiry-report-ta'> */}
+   <div className='table-container'>
+   <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Generic Name",
+                 "Item Name",
+                 "Batch No",
+                 "Purchase Rate",
+                 "Sales Rate",
+                 "TransferQty",
+                 "Transferred By",
+                 "Transferred On",
+                 "Transferred From",
+                 "Transferred To",
+                 "Received By",
+                 "Received On",
+                 "Approved By",
+                 "Approved On"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
       <tbody>
         <tr>
-          <td colSpan="15" className="pharmacy-expiry-report-no-rows">No Rows To Show</td>
+          <td colSpan="14" className="pharmacy-expiry-report-no-rows">No Rows To Show</td>
         </tr>
       </tbody>
     </table>
@@ -108,7 +128,7 @@ const StockTrasferReport = () => {
         <button>Next</button>
         <button>Last</button>
       </div> */}
-      </div>
+      {/* </div> */}
       <div className="pharmacy-expiry-report-summary">
         <h2>Summary</h2>
         <div>

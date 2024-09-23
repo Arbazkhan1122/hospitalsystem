@@ -25,7 +25,7 @@ const VendorsLab = () => {
     <div className="vendors-lab-container">
     <div className="vendors-lab-firstRow">
     <div className="vendors-lab-addBtn">
-      <button className="vendors-lab-add-button" onClick={handleAddNewLabTestClick}>+Add New External Vendor</button>
+      <button className="vendors-lab-add-button" onClick={handleAddNewLabTestClick}>+ Add New External Vendor</button>
       </div>
         
       </div>
@@ -40,7 +40,7 @@ const VendorsLab = () => {
         </div>
         <div className="vendors-lab-results-info">
           <span>Showing 0 / 0 results</span>
-          <button className="vendors-lab-print-button">Print</button>
+          <button className="vendors-lab-print-button"><i class="fa-solid fa-print"></i> Print</button>
         </div>
         </div>
       <table >
@@ -74,14 +74,14 @@ const VendorsLab = () => {
           ))}
         </tbody>
       </table>
-      <div className="vendors-lab-pagination">
+      {/* <div className="vendors-lab-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       {/* Modal Popup */}
       {showPopup && (
         <div className="vendors-lab-modal">

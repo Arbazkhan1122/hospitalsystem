@@ -1,3 +1,4 @@
+ /* Ajhar Tamboli incentiveTranHospitalIncome.jsx 18-09-2024 */
 
 import React, { useState } from "react";
 import "../IncentiveReport/incentiveTranHospitalIncome.css"
@@ -16,6 +17,8 @@ const IncentiveTranHospitalIncome = () => {
           <input type="date" />
           <button className="incentiveTranHospitalIncome-icon-button incentiveTranHospitalIncome-star">★</button>
           <button className="incentiveTranHospitalIncome-icon-button incentiveTranHospitalIncome-dash">-</button>
+          <button className="incentiveTranRefralSummaryReport-ok-button">OK</button>
+
         </div>
       <div className="incentiveTranHospitalIncome-Select-Doctor">
         <label htmlFor="">Select Doctor:</label>

@@ -3,15 +3,17 @@
     font-family: Arial, sans-serif;
     /* max-width: 1200px; */
     margin: 10px 0px 10px 0px ;
-    padding: 10px 30px 10px 30px;
-    background-color: #CAF2FF;
+    padding: 10px 20px;
+    background-color: var(--background-color);
+    height: 75vh;
   }
   
   .hh-employee-list h4 {
-    color: #532C7B;
-    font-weight: 100;
+    /* color: #532C7B; */
+    /* font-weight: 100; */
     padding-bottom: 10px;
     margin: 0;
+    font-size: var(--heading-font);
   }
   .hh-search-container-N-search{
     display: flex;
@@ -25,6 +27,7 @@
   
   .hh-search-container {
     display: flex;
+    margin-left: -20px;
 }
 .hh-search-container i{
     margin-left: -16px;
@@ -37,7 +40,7 @@
 .hh-search-input {
       /* border: 1px solid red; */
     flex-grow: 1;
-    padding: 8px;
+    padding: 3px;
     width: 200px;
     border: 1px solid #ccc;
     border-radius: 4px 0 0 4px;
@@ -57,42 +60,53 @@
     justify-content: space-between;
     align-items: center;
     /* margin-bottom: 10px; */
-    font-size: 14px;
-    color: #666;
+    font-size: var(--heading-font);
+    /* color: #666; */
     gap: 7px;
   }
   .hh-results-info span{
-    color: #0056b3;
+    /* color: #0056b3; */
+    margin-right: 10px;
   }
   
   .hh-print-button {
-    padding: 6px 12px;
-    background-color: #4a90e2;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    border-radius: 4px;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
     cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .hh-print-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
   .hhEmpInfo-table-N-paginat table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 12px;
+    /* font-size: 12px; */
   }
   
   .hhEmpInfo-table-N-paginat th, .hhEmpInfo-table-N-paginat td {
-    padding: 10px;
-    text-align: left;
-    font-size: 13px;
-    color: #696565;
+    padding: 3px 5px;
+    text-align: center;
+    font-size: var(--font-size);
+    /* color: #696565; */
     border: 1px solid #cac3c3;
   }
   
   .hhEmpInfo-table-N-paginat th {
     background-color: #F3F3F3;
-    font-weight: bold;
-    font-size: 14px;
-    color: #474646;
+    font-size: var(--heading-font);
+    /* font-weight: bold; */
+    /* color: #474646; */
   }
   
   /* tr:nth-child(even) {
@@ -122,7 +136,7 @@
   .hhEmpInfo-pagination span {
     margin: 0 10px;
     color: gray;
-    font-size: 12px;
+    font-size: var(--font-size);
   }
   .hhEmpInfo-table-N-paginat{
     background-color: white;

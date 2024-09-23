@@ -1,3 +1,5 @@
+/* Ajhar Tamboli sSIPatientConsumption.jsx 19-09-24 */
+
 import React, { useState, useRef, useEffect } from 'react';
 import * as XLSX from 'xlsx'; // Import the xlsx library
 import "../SSInventory/sSIPatientConsumption.css";
@@ -105,31 +107,23 @@ function SSIPatientConsumption() {
 >+ New Patient Consumption</button>
           </div>
         </header>
-        <div className="sSIPatientConsumption-controls">
-          <div className="sSIPatientConsumption-date-range">
-            <label>
-              From:
-              <input type="date" defaultValue="2024-08-09" />
-            </label>
-            <label>
-              To:
-              <input type="date" defaultValue="2024-08-16" />
-            </label>
-            <button className="sSIPatientConsumption-star-button">☆</button>
-            <button className="sSIPatientConsumption-ok-button">OK</button>
-          </div>
-          <div className="sSIPatientConsumption-filter">
-            {/* <label>SubCategory</label>
-            <select>
-              <option value="">ALL</option>
-              <option value="">Some Sub Category</option>
-              <option value="">Tissue</option>
-              <option value="">Cotton</option>
-              <option value="">Soap</option>
-            </select> */}
-            {/* <button className='sSIPatientConsumption-print-btn'>Show Report</button> */}
-          </div>
-        </div>
+          
+          <div className="sSIPatientConsumption-controls">
+
+<div className="sSIPatientConsumption-date-range">
+      <label>
+        From:
+        <input type="date" defaultValue="2024-08-09" />
+      </label>
+      <label>
+        To:
+        <input type="date" defaultValue="2024-08-16" />
+      </label>
+      <button className="sSIPatientConsumption-star-button">☆</button>
+    <button className="sSIPatientConsumption-more-btn">-</button>
+      <button className="sSIPatientConsumption-ok-button">OK</button>
+    </div>
+    </div>
         <div className="sSIPatientConsumption-search-N-results">
           <div className="sSIPatientConsumption-search-bar">
             <i className="fa-solid fa-magnifying-glass"></i>
@@ -140,7 +134,7 @@ function SSIPatientConsumption() {
             <button className='sSIPatientConsumption-print-btn' onClick={handleExportToExcel}>
               <i className="fa-regular fa-file-excel"></i> Export
             </button>
-            <button className='sSIPatientConsumption-print-btn' onClick={handlePrint}>Print</button>
+            <button className='sSIPatientConsumption-print-btn' onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
           </div>
         </div>
         <div style={{ display: 'none' }}>
@@ -210,14 +204,14 @@ function SSIPatientConsumption() {
             )}
           </tbody>
           </table>
-          <div className="sSIPatientConsumption-pagination">
+          {/* <div className="sSIPatientConsumption-pagination">
             <span>0 to 0 of 0</span>
             <button>First</button>
             <button>Previous</button>
             <span>Page 0 of 0</span>
             <button>Next</button>
             <button>Last</button>
-          </div>
+          </div> */}
         </div>
       </>
       ) : (

@@ -1,3 +1,6 @@
+/* Ajhar tamboli sSPReports.css 19-09-24 */
+
+
 /* src/components/ReportList.css */
 .SSp-dis-report-list {
     display: flex;
@@ -5,7 +8,7 @@
     gap: 20px;
     padding: 20px;
     width: auto;
-    background-color: #e6f7ff;
+    background-color:var(--background-color);
   }
   
   .SSp-dis-report-item {
@@ -15,24 +18,24 @@
     display: flex;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: calc(20.33% - 20px);
+    width: calc(25.33% - 20px);
   }
   
   .SSp-dis-report-icon {
     width: 35px;
     height:35px;
     border-radius: 50%;
-    background-color: #1890ff;
+    background-color:var(--button-color);
     margin-right: 10px;
   }
   
   .SSp-dis-report-info h3 {
     margin: 0;
-    font-size: 14px;
+    font-size: var(--heading-font);
   }
   
   .SSp-dis-report-info p {
     margin: 5px 0 0;
-    font-size: 12px;
-    color: #8c8c8c;
+    font-size: var(--font-size);
+    /* color: #8c8c8c; */
   }

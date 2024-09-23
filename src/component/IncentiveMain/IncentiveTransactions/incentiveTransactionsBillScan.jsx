@@ -24,6 +24,7 @@
 
 // export default IncentiveTransactionsBillScan;
 
+ /* Ajhar Tamboli IncentiveTransactionsBillScan.jsx 18-09-2024 */
 
 import React, { useState } from "react";
 import "../IncentiveTransactions/incentiveTransactionsBillScan.css";
@@ -85,6 +86,8 @@ const IncentiveTransactionsBillScan = () => {
           <button className="incentiveTransactionsBillScan-icon-button incentiveTransactionsBillScan-dash">
             -
           </button>
+          <button className="incentiveTransactionsBillScan-ok-button">OK</button>
+
         </div>
         <button
           className="incentiveTransactionsBillScan-load-button"

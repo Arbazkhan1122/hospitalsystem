@@ -26,7 +26,7 @@ const LookUps = () => {
     <div className="looksUps-container">
     <div className="looksUps-firstRow">
     <div className="looksUps-addBtn">
-      <button className="looksUps-add-button" onClick={handleAddNewLabTestClick}>+Add New Look-Up</button>
+      <button className="looksUps-add-button" onClick={handleAddNewLabTestClick}>+ Add New Look-Up</button>
       </div>
         
       </div>
@@ -41,7 +41,7 @@ const LookUps = () => {
         </div>
         <div className="looksUps-results-info">
           <span>Showing 0 / 0 results</span>
-          <button className="looksUps-print-button">Print</button>
+          <button className="looksUps-print-button"><i class="fa-solid fa-print"></i> Print</button>
         </div>
         </div>
       <table >
@@ -70,14 +70,14 @@ const LookUps = () => {
           ))}
         </tbody>
       </table>
-      <div className="looksUps-pagination">
+      {/* <div className="looksUps-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       {/* Modal Popup */}
       {showPopup && (
         <div className="looksUps-modal">

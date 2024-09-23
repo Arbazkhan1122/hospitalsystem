@@ -192,21 +192,21 @@ border-bottom:5px solid  var(--sideBar-bg-color);
 
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .hospital-nav-list-module {
       flex-direction: column;
-      gap: 5px; /* Reduce gap for smaller screens */
+      gap: 5px; 
   }
 
   .hospital-nav-item-module {
       padding: 10px;
       font-size: 14px;
-      margin-left: 0; /* Remove margin for better alignment */
+      margin-left: 0; 
   }
 
   .pharmacy-sub-nav-module ul {
       flex-direction: column;
-      gap: 5px; /* Reduce gap for smaller screens */
+      gap: 5px;
   }
 
   .pharmacy-sub-nav-module li {
@@ -217,23 +217,23 @@ border-bottom:5px solid  var(--sideBar-bg-color);
 
 @media (max-width: 480px) {
   .hospital-header-container-module {
-      padding: 10px; /* Add padding for mobile */
+      padding: 10px; 
   }
 
   .hospital-nav-item-module {
-      font-size: 14px; /* Smaller font for better readability on small screens */
-      padding: 8px 10px; /* Increase padding for better touch targets */
+      font-size: 14px; 
+      padding: 8px 10px; 
   }
 
   .pharmacy-sub-nav-module li {
       padding: 10px;
-      font-size: 14px; /* Smaller font size for sub-navigation items */
+      font-size: 14px; 
   }
 
   .pharmacy-sub-nav-module a {
       font-size: 14px;
   }
-}
+} */
 
 
 

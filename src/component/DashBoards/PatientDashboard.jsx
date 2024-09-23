@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import Problems from './Problems';
 import { API_BASE_URL } from '../api/api';
 import AddVitalsForm from './AddVitals';
+import PatientDischargeForm from './DischargeSummary';
+import Allergy from './ClinicalAllergy';
 
 const Section = ({ title, handleAddClick, children }) => (
   <div className="Patient-Dashboard-firstBox">
@@ -76,6 +78,11 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
         return <Problems patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId} />;
         case 'Vitals':
           return <AddVitalsForm patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId}  />
+          case 'dischargeSummary':
+            return <PatientDischargeForm patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId}  />
+            case 'Allergies':
+            return <Allergy patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId}  />
+
       default:
         return renderDashboard();
     }
@@ -182,6 +189,14 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
           <div className="Patient-Dashboard-boxOne">
             <div className="Patient-Dashboard-textAndLogo">
               <span className="Patient-Dashboard-textOne">Scanned images</span>
+            </div>
+          </div>
+          <div className="Patient-Dashboard-boxOne">
+            <div className="Patient-Dashboard-textAndLogo">
+              <span className="Patient-Dashboard-textOne"  onClick={() => {
+                  setActiveSection("dischargeSummary");
+                  setPrevAction(...activeSection);
+                }}>Discharge Summary</span>
             </div>
           </div>
         </div>
@@ -304,12 +319,8 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
             </div>
           </div>
           <Section
-            title="🗣 Chief Complaints"
-            handleAddClick={() => console.log("New Complaint Clicked")}
-          />
-          <Section
             title="🚫 Allergies"
-            handleAddClick={() => console.log("Add Allergies Clicked")}
+            handleAddClick={() => setActiveSection("Allergies")}
           />
         </div>
       </aside>
@@ -325,7 +336,9 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
       <nav className="Patient-Dashboard-navbar">
         <div className="Patient-Dashboard-navText">
           <div className="Patient-Dashboard-navLogoOne"></div>
-          <span onClick={() => setIsPatientOPEN(false)}> 🏠 Home</span>
+          <span onClick={() => {
+            setIsPatientOPEN(false)
+          }}> 🏠 Home</span>
         </div>
         <button className="Patient-Dashboard-btnAddBack" onClick={() => setActiveSection(prevAction)}>Back</button>
       </nav>

@@ -1,12 +1,15 @@
 /* Mohini_SupplierWisePurchaseReport_14/sep/2024 */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './SupplierWisePurchaseReport.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const SupplierWisePurchaseReport = () => {
   const [fromDate, setFromDate] = useState('23-08-2024');
   const [toDate, setToDate] = useState('23-08-2024');
   const [supplier, setSupplier] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
+
 
   return (
     <div className="supplier-wise-purchase-report">
@@ -56,23 +59,42 @@ const SupplierWisePurchaseReport = () => {
         <button className="supplier-wise-purchase-print-btn">Print</button>
       </div>
       <div className='supplier-wise-purchase-com'>
-      <table className="supplier-wise-purchase-report-table">
-        <thead>
-          <tr>
-            <th>SN</th>
-            <th>GoodReceiptDate</th>
-            <th>SupplierName</th>
-            <th>Bill No</th>
-            <th>Item Name</th>
-            <th>Generic Name</th>
-            <th>BatchNo</th>
-            <th>Quantity</th>
-            <th>Purchase Rate</th>
-            <th>Sub Total </th>
-            <th>VAT Amount </th>
-            <th>Total Amount</th>
-          </tr>
-        </thead>
+      <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "SN",
+                 "GoodReceiptDate",
+                 "SupplierName",
+                 "Bill No",
+                 "Item Name",
+                 "Generic Name",
+                 "BatchNo",
+                 "Quantity",
+                 "Purchase Rate",
+                 "Sub Total",
+                 "VAT Amount",
+                 "Total Amount"         
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           <tr>
             <td colSpan="12" className="supplier-wise-purchase-no-rows">No Rows To Show</td>

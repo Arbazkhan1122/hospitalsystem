@@ -128,10 +128,11 @@
 }
 
 .Patient-Dashboard-outOutDiv {
-
   border: 1px solid black;
   background-color: var(--upperBar-bg-color);
   border: none;
+  position: sticky;
+  top: 5px;
 }
 
 .Patient-Dashboard-logoOne {
@@ -342,7 +343,6 @@ img {
   padding: 10px;
   background-color: #eee6e6;
   align-items: center;
-
 }
 
 
@@ -392,10 +392,11 @@ img {
 .patient-table {
   border-collapse: collapse;
   width: 100%;
-  margin: 20px 0;
-  
 }
-
+.Patient-Dashboard-patient-table
+{
+  margin: 0;
+}
 .Patient-Dashboard-td {
   border: none;
   padding: 8px;

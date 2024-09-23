@@ -1,11 +1,14 @@
   /* Mohini_NarcoticsStockReport_WholePage_14/sep/2024 */
-  import React, { useState } from 'react';
-import './NarcoticsStockReport.css';
+  import React, { useState, useEffect, useRef } from 'react';
+  import './NarcoticsStockReport.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const NarcoticsStockReport = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showZeroQuantity, setShowZeroQuantity] = useState(false);
   const [filterStore, setFilterStore] = useState('All');
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const stockData = [
     { genericName: 'Diazepam Tablets', medicineName: 'Diazepam Tablets', batch: 'bat158', expiryDate: '2025-09-05', stockQty: 10000, salePrice: 1.32, totalSalesValue: 13200, dispensary: 'Main Dispensary' },
@@ -56,20 +59,39 @@ const NarcoticsStockReport = () => {
         <button className="narcotics-stock-report-export-btn">⬇ Export</button>
         <button className="narcotics-stock-report-print-btn">Print</button>
       </div>
-   <div className='narcotics-stock-report-narcotics-stock-ta'>
-      <table className="narcotics-stock-report-stock-table">
-        <thead>
-          <tr>
-            <th>Generic Name</th>
-            <th>Medicine Name</th>
-            <th>Batch ...</th>
-            <th>Expiry Date</th>
-            <th>Stock Qty</th>
-            <th>SalePri...</th>
-            <th>TotalSalesValue</th>
-            <th>Dispensar...</th>
-          </tr>
-        </thead>
+   <div className='table-container'>
+   <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Generic Name",
+  "Medicine Name",
+  "Batch ...",
+  "Expiry Date",
+  "Stock Qty",
+  "SalePri...",
+  "TotalSalesValue",
+  "Dispensar..."
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {stockData.map((item, index) => (
             <tr key={index} className={index % 2 === 0 ? 'even' : 'odd'}>

@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
-import './SocialHistory.css';
+import React, { useRef, useState } from "react";
+import "./SocialHistory.css";
+import { startResizing } from "../TableHeadingResizing/resizableColumns";
 
 const SocialHistory = () => {
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [socialHistories, setSocialHistories] = useState([]);
   const [newSocialHistory, setNewSocialHistory] = useState({
-    smokingHistory: '',
-    alcoholHistory: '',
-    drugHistory: '',
-    occupation: '',
-    familySupport: '',
-    hobby: ''
+    smokingHistory: "",
+    alcoholHistory: "",
+    drugHistory: "",
+    occupation: "",
+    familySupport: "",
+    hobby: "",
   });
 
   const handleOpenModal = () => {
@@ -20,12 +23,12 @@ const SocialHistory = () => {
   const handleCloseModal = () => {
     setIsAddModalOpen(false);
     setNewSocialHistory({
-      smokingHistory: '',
-      alcoholHistory: '',
-      drugHistory: '',
-      occupation: '',
-      familySupport: '',
-      hobby: ''
+      smokingHistory: "",
+      alcoholHistory: "",
+      drugHistory: "",
+      occupation: "",
+      familySupport: "",
+      hobby: "",
     });
   };
 
@@ -35,30 +38,55 @@ const SocialHistory = () => {
   };
 
   const handleInputChange = (e) => {
-    setNewSocialHistory({ ...newSocialHistory, [e.target.name]: e.target.value });
+    setNewSocialHistory({
+      ...newSocialHistory,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
     <div className="social-history-container">
       <div className="social-history-main">
-        <div className='socialhist'>
+        <div className="socialhist">
           <section className="social-history-section">
-          <div className='social-history-subdiv'>
-            <label>Social History Problem List</label>
-            <button className="social-history-add-button" onClick={handleOpenModal}>
-              ➕ Add
-            </button>
+            <div className="social-history-subdiv">
+              <label>Social History Problem List</label>
+              <button
+                className="social-history-add-button"
+                onClick={handleOpenModal}
+              >
+                ➕ Add
+              </button>
             </div>
-            <table className="social-history-table">
+            <table className="patientList-table" ref={tableRef}>
               <thead>
                 <tr>
-                  <th>Smoking History</th>
-                  <th>Alcohol History</th>
-                  <th>Drug History</th>
-                  <th>Occupation</th>
-                  <th>Family Support</th>
-                  <th>Hobby</th>
-                  <th>Edit</th>
+                  {[
+                    "Smoking History",
+                    "Alcohol History",
+                    "Drug History",
+                    "Occupation",
+                    "Family Support",
+                    "Hobby",
+                    "Edit",
+                  ].map((header, index) => (
+                    <th
+                      key={index}
+                      style={{ width: columnWidths[index] }}
+                      className="resizable-th"
+                    >
+                      <div className="header-content">
+                        <span>{header}</span>
+                        <div
+                          className="resizer"
+                          onMouseDown={startResizing(
+                            tableRef,
+                            setColumnWidths
+                          )(index)}
+                        ></div>
+                      </div>
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
@@ -84,7 +112,10 @@ const SocialHistory = () => {
             <div className="social-history-modal-overlay">
               <div className="social-history-modal-content">
                 <h6>Add Social History</h6>
-                <button className="social-history-close-button" onClick={handleCloseModal}>
+                <button
+                  className="social-history-close-button"
+                  onClick={handleCloseModal}
+                >
                   ❌
                 </button>
                 <div className="social-history-form-group">
@@ -141,7 +172,10 @@ const SocialHistory = () => {
                     onChange={handleInputChange}
                   />
                 </div>
-                <button className="social-history-add-button" onClick={handleAddSocialHistory}>
+                <button
+                  className="social-history-add-button"
+                  onClick={handleAddSocialHistory}
+                >
                   Add Social History
                 </button>
               </div>

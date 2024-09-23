@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './ClinicalVitals.css';
 import AllergyList from '../DashBoards/ClinicalAllergy';
-import ClinicalInputOutput from '../DashBoards/ClinicalInput';
 import ClinicalMedication from '../DashBoards/ClinicalMedication';
 import ClinicalBloodSugarMonitoring from '../DashBoards/ClinicalBloodSugarMonitoring';
 import AddVitalsForm from '../DashBoards/AddVitals'; // Import the AddVitalsForm component
@@ -18,9 +17,6 @@ const VitalsPage = ({patientId,newPatientVisitId}) => {
     }
     if (activeTab === 'allergy') {
       return <AllergyList />;
-    }
-    if (activeTab === 'inputoutput') {
-      return <ClinicalInputOutput />;
     }
     if (activeTab === 'medication') {
       return <ClinicalMedication />;
@@ -58,31 +54,28 @@ const VitalsPage = ({patientId,newPatientVisitId}) => {
 
   return (
     <div className="vitals-page">
-      <nav className="tab-navigation">
-        <button className={`tab ${activeTab === 'vitals' ? 'active' : ''}`} onClick={() => setActiveTab('vitals')}>
+      <nav className="vitals-page-tab-navigation">
+        <button className={`vitals-page-tab ${activeTab === 'vitals' ? 'active' : ''}`} onClick={() => setActiveTab('vitals')}>
           Vitals
         </button>
-        <button className={`tab ${activeTab === 'allergy' ? 'active' : ''}`} onClick={() => setActiveTab('allergy')}>
+        <button className={`vitals-page-tab ${activeTab === 'allergy' ? 'active' : ''}`} onClick={() => setActiveTab('allergy')}>
           Allergy
         </button>
-        <button className={`tab ${activeTab === 'inputoutput' ? 'active' : ''}`} onClick={() => setActiveTab('inputoutput')}>
-          Input/Output
-        </button>
-        <button className={`tab ${activeTab === 'medication' ? 'active' : ''}`} onClick={() => setActiveTab('medication')}>
+        <button className={`vitals-page-tab ${activeTab === 'medication' ? 'active' : ''}`} onClick={() => setActiveTab('medication')}>
           Medication
         </button>
-        <button className={`tab ${activeTab === 'bloodsugar' ? 'active' : ''}`} onClick={() => setActiveTab('bloodsugar')}>
+        <button className={`vitals-page-tab ${activeTab === 'bloodsugar' ? 'active' : ''}`} onClick={() => setActiveTab('bloodsugar')}>
           Blood Sugar Monitoring
         </button>
       </nav>
 
-      <div className="content-area">
+      <div className="vitals-page-content-area">
         {renderContent()}
       </div>
 
-      {showAddVitalsForm && (
-        <button className="close-btn" onClick={() => setShowAddVitalsForm(false)}>×</button>
-      )}
+      {/* {showAddVitalsForm && (
+        <button className="vitals-page-close-btn" onClick={() => setShowAddVitalsForm(false)}>×</button>
+      )} */}
     </div>
   );
 };

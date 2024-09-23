@@ -1,3 +1,4 @@
+ /* Ajhar Tamboli incentiveTranRefralSummaryReport.jsx 18-09-2024 */
 
 import React, { useState } from "react";
 import "../IncentiveReport/incentiveTranRefralSummaryReport.css"
@@ -16,6 +17,8 @@ const IncentiveTranRefralSummaryReport = () => {
           <input type="date" />
           <button className="incentiveTranRefralSummaryReport-icon-button incentiveTranRefralSummaryReport-star">★</button>
           <button className="incentiveTranRefralSummaryReport-icon-button incentiveTranRefralSummaryReport-dash">-</button>
+          <button className="incentiveTranRefralSummaryReport-ok-button">OK</button>
+
         </div>
       <div className="incentiveTranRefralSummaryReport-Select-Doctor">
         <label htmlFor="">Select Doctor:</label>

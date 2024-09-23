@@ -1,14 +1,14 @@
    .finalReports-work-list {
-    background-color: #CAF2FF;
+    background-color: var(--background-color);
     padding: 10px;
-    height: 500px;
-    font-family: Arial, sans-serif;
+    height: 80vh;
+    /* font-family: Arial, sans-serif; */
     
    }
    .finalReports-work-list h4 {
      margin-top: 8px;
-     color: #414040;
-     font-size: 14px;
+     /* color: #414040; */
+     font-size: var(--heading-font);
    }
  .finalReports-header {
    display: flex;
@@ -17,19 +17,57 @@
    align-items: center;
  }
  .finalReports-ReportingDate{
-  font-size: 12px;
-  color: black;
+  font-size: var(--font-size);
+  /* color: black; */
  }
  
- .finalReports-date-range{
-   display: flex;
-   align-items: center;
-   gap: 10px;
-   padding: 5px;
-   background-color: #EBF7FF;
-font-weight: bold;
-margin-right: 290px;
- }
+ .finalReports-controls {
+  display: flex;
+}
+.finalReports-date-range {
+  display: flex;
+  align-items: center;
+  /* width: 95%; */
+  gap: 10px;
+  background-color: #f0f0f0;
+  padding: 3px;
+}
+.finalReports-date-range label{
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  font-size: var(--font-size);
+}
+
+.finalReports-date-range input[type="date"] {
+  padding: 3px;
+  margin-left: 10px;
+}
+.finalReports-star-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color:var(--button-color) ;
+  cursor: pointer;
+}
+.finalReports-ok-button {
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.finalReports-ok-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
  
  .finalReports-category-select {
    display: flex;
@@ -37,42 +75,46 @@ margin-right: 290px;
    gap: 10px;
  }
  .finalReports-category-select label{
-font-size: 12px;
+font-size: var(--font-size);
 font-weight: bold;
-color: #333232;
+/* color: #333232; */
  }
  
  .finalReports-load-button {
-   background-color: #26C281;
-   color: white;
-   border: none;
-   height: 25px;
-   padding: 0 10px 0 10px;
-   border-radius: 5px;
-   cursor: pointer;
-   font-size: 12px;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
  }
  .finalReports-load-button:hover{
-   background-color: #2D68EA;
- 
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color); 
  }
+
  .finalReports-search-bar{
-   margin-left: -15px;
- }
- .finalReports-search-bar input {
-   width: 200px;
-   padding: 10px;
-   /* margin-bottom: 20px; */
-   border-radius: 5px;
-   height: 10px;
- }
- .finalReports-search-bar i{
+  margin-left: -20px;
   position: relative;
-  color:gray;
-  top: 3px;
- left: 205px;
- }
- 
+  /* margin-bottom: 10px; */
+  /* padding-left: -10px; */
+  /* opacity: 0; */
+  /* animation: slideIn 1s forwards 0.8s; */
+}
+.finalReports-search-bar i{
+  position: absolute;
+  top: 7px;
+  left: 190px;
+  /* display: flex;
+  justify-content: ; */
+  color: gray;
+}
  .finalReports-work-table {
    width: 100%;
    border-collapse: collapse;
@@ -82,22 +124,22 @@ color: #333232;
  
  .finalReports-work-table th, .finalReports-work-table td {
    border: 1px solid #ddd;
-   padding: 8px;
-   text-align: left;
+   padding: 3px;
+   text-align: center;
  }
  
  .finalReports-work-table th {
    background-color: #F3F3F3;
-   color: #4b4949;
-   font-size: 12px;
+   /* color: #4b4949; */
+   font-size: var(--heading-font);
  }
  
 
 
 .finalReports-worklist a{
- color: #026688;
- font-size: 12px;
- font-weight: bold;
+ /* color: #026688; */
+ font-size: var(--font-size);
+ /* font-weight: bold; */
 }
 .finalReports-searchbar-N-showing{
  display: flex;
@@ -114,20 +156,29 @@ color: #333232;
  /* display: flex;
  align-items: center; */
  /* padding-top: 10px; */
- color: #008CBA;
- font-size: 12px;
- font-weight: bold;
+ /* color: #008CBA; */
+ font-size: var(--font-size);
+ margin-right: 10px;
+ /* font-weight: bold; */
 }
 .finalReports-print-button {
- background-color: #659BE0;
- color: white;
- border: none;
- border-radius: 5px;
- padding: 7px 15px;
- cursor: pointer;
- margin-left: 10px;
- font-size: 12px;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
 }
+.finalReports-print-button:hover{
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color); 
+ }
 
 .finalReports-pagination {
  display: flex;
@@ -148,8 +199,8 @@ color: #333232;
 
 .finalReports-pagination span {
  margin: 0 10px;
- color: gray;
- font-size: 12px;
+ /* color: gray; */
+ font-size: var(--font-size);
 }
 
 .finalReports-popup-overlay {

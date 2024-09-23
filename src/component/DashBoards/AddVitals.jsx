@@ -160,7 +160,10 @@ const Vitals = ({patientId,newPatientVisitId}) => {
         
         {showForm && (
            <div className="vitals-form">
+            <div className='vitals-form-header'>
            <h3>Add New Vitals</h3>
+           <button className='vitals-form-header-close' onClick={()=>setShowForm(!showForm)}>X</button>
+           </div>
          <form>
       <div className="vitals-form-form-row">
         <label>Added On:</label>

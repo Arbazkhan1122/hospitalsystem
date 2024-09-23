@@ -1,12 +1,12 @@
   .vendors-lab-container {
-    background-color: #CAF2FF;
+    background-color: var(--background-color);
     padding: 10px;
     border-radius: 5px;
     font-family: Arial, Helvetica, sans-serif;
     /* width: 100%; */
     /* max-width: 1200px; */
     margin: 0 auto;
-    height: 450px;
+    height: 75vh;
   }
   .vendors-lab-firstRow{
     display: flex;
@@ -14,17 +14,26 @@
   }
   
   .vendors-lab-add-button {
-    background-color: #5867DD;
-    color: white;
-    border: none;
-    padding: 7px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 15px;
-    font-size: 12px;
-  }
+    background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-top: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  /* margin: 1px; */
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+
+.vendors-lab-add-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
   .vendors-lab-search-bar{
-    margin-left: -15px;
+    margin-left: -35px;
     /* margin: 0; */
   }  
     .vendors-lab-search-bar input {
@@ -55,7 +64,7 @@
   }
   
   .vendors-lab-search-N-result{
-    margin-top: 10px;
+    margin: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -69,9 +78,9 @@
     /* display: flex;
     align-items: center; */
     /* padding-top: 10px; */
-    color: #008CBA;
-    font-size: 12px;
-    font-weight: bold;
+    /* color: #008CBA; */
+    font-size: var(--font-size);
+    /* font-weight: bold; */
     margin-right: 10px;
   }
   
@@ -79,45 +88,65 @@
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    font-size: 12px;
     background-color: white;
   }
   
   .vendors-lab-container th, .vendors-lab-container td {
-    padding: 5px;
-    text-align: left;
+    padding: 3px;
+    text-align: center;
+    font-size: var(--font-size);
     border: 1px solid #ddd;
-    color: rgb(78, 78, 78);
+    /* color: rgb(78, 78, 78); */
   }
   
   .vendors-lab-container th {
     background-color: #f2f2f2;
+    font-size: var(--heading-font);
   }
   
   .vendors-lab-edit-button, .vendors-lab-deactivate-button {
-    background-color: #0F63AF;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    font-size: 12px;
-    padding: 3px 8px;
-    border-radius: 10px;
-    cursor: pointer;
+    /* border: none; */
     margin-right: 5px;
-  }
-  
-  .vendors-lab-results-info {
-    margin-top: 10px;
-    margin-bottom: 15px;
-  }
-  
-  .vendors-lab-print-button {
-    background-color: #659BE0;
-    color: white;
-    border: none;
-    padding: 7px 15px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: var(--font-size);
+    /* margin: 1px; */
+    transition: background-color 0.3s ease;
+    padding: 1px 5px;
+  }
+  
+  .vendors-lab-edit-button:hover, .vendors-lab-deactivate-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
+  
+  /* .vendors-lab-results-info {
+    margin-top: 10px;
+    margin-bottom: 15px;
+  } */
+  
+  .vendors-lab-print-button {
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
+    color: white;
+    /* border: none; */
+    /* margin-top: 10px; */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    /* margin: 1px; */
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  
+  .vendors-lab-print-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   /* Modal styles */
   .vendors-lab-modal {

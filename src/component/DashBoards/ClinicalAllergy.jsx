@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './ClinicalAllergy.css'; // Separate CSS file
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
-const Allergy = () => {
+const Allergy = ({patientId,newPatientVisitId}) => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [showForm, setShowForm] = useState(false);
 
   const handleAddNew = () => {
@@ -21,16 +24,35 @@ const Allergy = () => {
           + Add New
         </button>
         </div>
-        <table>
+        <table className="patientList-table" ref={tableRef}>
           <thead>
             <tr>
-              <th>Recorded On</th>
-              <th>Allergen</th>
-              <th>Severity</th>
-              <th>Reaction</th>
-              <th>Verified</th>
-              <th>Comments</th>
-              <th>Edit</th>
+              {[
+                  "Recorded On",
+                  "Allergen",
+                  "Severity",
+                  "Reaction",
+                  "Verified",
+                  "Comments",
+                  "Edit"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>

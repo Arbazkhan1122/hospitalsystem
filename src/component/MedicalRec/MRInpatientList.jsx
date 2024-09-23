@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import axios from 'axios';
 import '../MedicalRec/MRInpatientList.css';
 import { useNavigate } from 'react-router-dom';
-import Modal from 'react-modal'
+
+import Modal from 'react-modal';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
+
 
 function RecordMedical() {
   const [isMenuVisible, setisMenuVisible] = useState(false);
@@ -18,6 +21,8 @@ function RecordMedical() {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   const navigate = useNavigate();
   const [filterOption, setFilterOption] = useState('All');
@@ -110,7 +115,7 @@ function RecordMedical() {
   return (
     <div className='outer-medical-record'>
       <div className="MRInPatient-tableContainer">
-        <h3>Filter by Discharged Date:</h3>
+        <h5>Filter by Discharged Date:</h5>
         <div className="MROInPatient-date-filter">
           <label>
             From:
@@ -130,7 +135,7 @@ function RecordMedical() {
               <li>Last 3 Months</li>
             </ul>
           )}
-          <button onClick={handleFilterData} style={{ backgroundColor: '#32c5d2' }}>Load Patients</button>
+          <button onClick={handleFilterData} >Load Patients</button>
           {/* <div className='MRIN-diagnosis-filter'>
             <label>
               <input
@@ -170,25 +175,44 @@ function RecordMedical() {
                 <span className="MRIn-Patient-results">{`Showing ${filteredPatients.length} results`}</span>
               </div>
             </div>
-
-            <table className="MRIn-patientsTable">
-              <thead>
-                <tr>
-                  <th>SN</th>
-                  <th>Adm.Date</th>
-                  <th>Dis. Date</th>
-                  <th>Patient No.</th>
-                  <th>InPatient No.</th>
-                  <th>Patient Name</th>
-                  <th>Age/Gender</th>
-                  <th>Ward</th>
-                  <th>Department</th>
-                  <th>ICD Code</th>
-                  <th>Doctor</th>
-                  <th>MR</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
+            <div className='table-container'>
+            <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Serial No",
+                "Adm. Date",
+                "Dis. Date",
+                "Patient No.",
+                "InPatient No.",
+                "Patient Name",
+                "Age/Gender",
+                "Ward",
+                "Department",
+                "ICD Code",
+                "Doctor",
+                "MR",
+                "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
               <tbody>
                 {filteredPatients.map((patient, index) => (
                   <tr key={index} className="MROut-tableRow">
@@ -211,7 +235,7 @@ function RecordMedical() {
                 ))}
               </tbody>
             </table>
-
+          </div>
             <div className="MROut-pagination">
               <button 
                 className="MROut-pagination-btn" 

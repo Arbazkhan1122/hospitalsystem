@@ -1,7 +1,7 @@
-/* Header styling */
+/* neha-mktreffaral-transaction-19/09/24 */
 .mkrt_ref-header {
     background-color: white; /* White background for the navbar */
-    padding: 0px 10px; /* Padding around the navbar */
+    padding: 0px 5px; /* Padding around the navbar */
     border-bottom: 2px solid #f0f0f0; /* Subtle border at the bottom */
    
   }
@@ -9,10 +9,8 @@
 
   .mkrt_ref-header-nav {
     display: flex;
-    justify-content: space-around; 
+    /* justify-content: space-around;  */
     list-style-type: none; 
-    margin: 0;
-    padding: 0;
   }
   
 
@@ -23,6 +21,8 @@
     font-size: 16px; /* Consistent font size */
     border-radius: 4px; /* Slightly rounded corners */
     transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+    background-color: var(--button-color);
+    margin-left: 20px;
     
   }
   
@@ -37,7 +37,7 @@
   .mkrt_ref-main-content {
     padding: 5px; /* Padding around the content */
     background-color: #f4f4f4; /* Light background color */
-    min-height: 100vh; /* Ensure full-height content area */
+    min-height: 100vh; 
   }
   
  

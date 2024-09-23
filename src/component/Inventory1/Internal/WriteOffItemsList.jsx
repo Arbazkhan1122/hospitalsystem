@@ -51,7 +51,7 @@ const WriteOffItemsList = () => {
   return (
     <div className='writeOffList-inventory-content'>
       <div className="writeOffList-inventory-results">
-      <div>
+      <div className='writeOffList-inventory-results-search-container'>
         <input 
           type="text" 
           placeholder="Search" 

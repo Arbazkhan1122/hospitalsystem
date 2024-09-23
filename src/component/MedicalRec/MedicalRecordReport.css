@@ -20,7 +20,7 @@
   }
   
   .report-card:hover {
-    background-color: #2d68ea;
+    background-color:  var(--button-color);
     cursor: pointer;
   }
   
@@ -32,7 +32,7 @@
   
   .content h3 {
     margin: 0;
-    font-size: 18px;
+    font-size: var(--heading-font);
     color: #333;
   }
   

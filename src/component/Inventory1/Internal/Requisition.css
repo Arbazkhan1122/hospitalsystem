@@ -10,7 +10,17 @@
   .requisition-inventory-content::-webkit-scrollbar {
     display: none;
   }
+  .requisition-inventory-search-bar-container
+  {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
   
+  .requisition-inventory-direct-dispatch-filters
+  {
+    display: flex;
+  }
 .requisition-inventory-direct-dispatch{
   background-color: var(--button-color);
   color: white;

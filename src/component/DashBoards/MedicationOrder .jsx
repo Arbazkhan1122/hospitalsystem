@@ -1,10 +1,13 @@
 // SwapnilRokade_MedicationOrder_Adding_New_MedicationOrder_13/09
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 import "./MedicationOrder.css";
 import { API_BASE_URL } from "../api/api";
+import { startResizing } from "../TableHeadingResizing/resizableColumns";
 
 const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiveSection }) => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   console.log(patientId +""+ newPatientVisitId);
   
   const [medicationList, setMedicationList] = useState(
@@ -54,19 +57,38 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
   return (
     <div className="MedicationOrder-form">
       <h3>Medication Order</h3>
-      <table className="MedicationOrder-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Generic</th>
-            <th>Brand Name</th>
-            <th>Dose</th>
-            <th>Route</th>
-            <th>Frequency</th>
-            <th>Duration (days)</th>
-            <th>Remarks</th>
-          </tr>
-        </thead>
+      <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "",
+                 "Generic",
+                 "Brand Name",
+                 "Dose",
+                 "Route",
+                 "Frequency",
+                 "Duration (days)",
+                 "Remarks"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {medicationList.map((medication, index) => (
             <tr key={index}>
