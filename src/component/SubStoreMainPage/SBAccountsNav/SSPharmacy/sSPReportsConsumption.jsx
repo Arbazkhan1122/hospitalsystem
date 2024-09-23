@@ -1,3 +1,4 @@
+/* Ajhar Tamboli sSPReportsConsumption.css 19-09-24 */
 
 
 import React, { useState, useRef } from 'react';
@@ -62,18 +63,20 @@ function SSPReportsConsumption() {
           </div>
         </header>
         <div className="sSPReportsConsumption-controls">
-          <div className="sSPReportsConsumption-date-range">
-            <label>
-              From:
-              <input type="date" defaultValue="2024-08-09" />
-            </label>
-            <label>
-              To:
-              <input type="date" defaultValue="2024-08-16" />
-            </label>
-            {/* <button className="sSPReportsConsumption-star-button">☆</button> */}
-            {/* <button className="sSPReportsConsumption-ok-button">OK</button> */}
-          </div>
+        <div className="sSPReportsConsumption-date-range">
+      <label>
+        From:
+        <input type="date" defaultValue="2024-08-09" />
+      </label>
+      <label>
+        To:
+        <input type="date" defaultValue="2024-08-16" />
+      </label>
+      <button className="sSPReportsConsumption-star-button">☆</button>
+    <button className="sSPReportsConsumption-more-btn">-</button>
+      <button className="sSPReportsConsumption-ok-button">OK</button>
+    </div>
+   
           <div className="sSPReportsConsumption-filter">
             {/* <label>SubCategory</label>
             <select>
@@ -96,7 +99,7 @@ function SSPReportsConsumption() {
             <button className='sSPReportsConsumption-print-btn' onClick={handleExportToExcel}>
               <i className="fa-regular fa-file-excel"></i> Export
             </button>
-            <button className='sSPReportsConsumption-print-btn' onClick={handlePrint}>Print</button>
+            <button className='sSPReportsConsumption-print-btn' onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
           </div>
         </div>
         <div style={{ display: 'none' }}>
@@ -145,14 +148,14 @@ function SSPReportsConsumption() {
               </tr>
             </tbody>
           </table>
-          <div className="sSPReportsConsumption-pagination">
+          {/* <div className="sSPReportsConsumption-pagination">
             <span>0 to 0 of 0</span>
             <button>First</button>
             <button>Previous</button>
             <span>Page 0 of 0</span>
             <button>Next</button>
             <button>Last</button>
-          </div>
+          </div> */}
         </div>
       </>
     </div>
