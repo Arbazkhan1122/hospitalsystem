@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './CoreCfgParameter.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const CoreCfgParameter = () => {
+    const [columnWidths,setColumnWidths] = useState({});
+    const tableRef=useRef(null);
     const data = [
         { parameter: 'Common', parameterName: 'DefaultCountry', parameterValue: '{"CountryName":"Kenya","CountryId":1}', valueDataType: 'JSON', description: 'Default country id for Manaka...', parameterSource: 'custom', action: 'Edit' },
         { parameter: 'Common', parameterName: 'CustomerHeader', parameterValue: '{"hospitalName":"Demo Hospital","hospitalId":123,"address":"123 Demo St..."}', valueDataType: 'JSON', description: 'Customer header information for...', parameterSource: 'custom', action: 'Edit' },
@@ -32,18 +34,37 @@ const CoreCfgParameter = () => {
                 <input type="text" placeholder="Search" />
             </div>
            <div className='core-cfg-para'>
-           <table className="manage-tax-core-cfg-parameters-table">
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Parameter Name</th>
-                        <th>Parameter Value</th>
-                        <th>ValueDataType</th>
-                        <th>Description</th>
-                        <th>Parameter Source</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
+           <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Parameter",
+                "Parameter Name",
+                "Parameter Value",
+                "ValueDataType",
+                "Description",
+                "Parameter Source",
+                "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                 <tbody>
                     {data.map((row, index) => (
                         <tr key={index}>
@@ -60,7 +81,7 @@ const CoreCfgParameter = () => {
                     ))}
                 </tbody>
             </table>
-            <div className="manage-tax-pagination">
+            {/* <div className="manage-tax-pagination">
                 <span>Showing 1 to 20 of 386 results</span>
                 <div className="manage-tax-pagination-buttons">
                     <button>First</button>
@@ -69,7 +90,7 @@ const CoreCfgParameter = () => {
                     <button>Next</button>
                     <button>Last</button>
                 </div>
-            </div>
+            </div> */}
            </div>
         </div>
     );

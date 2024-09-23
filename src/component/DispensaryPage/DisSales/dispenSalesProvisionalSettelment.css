@@ -60,19 +60,7 @@
   margin-right: 10px;
 }
 
-.dispenSalesProvisionalSettelment-print-btn {
-  padding: 6px 12px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
 
-.dispenSalesProvisionalSettelment-print-btn:hover {
-  background-color: #0056b3;
-}
 
 .dispenSalesProvisionalSettelment-pagination button {
   padding: 5px 10px;
@@ -163,7 +151,7 @@ color: green;
   
   .dispenSalesProvisionalSettelment-search-bar {
     display: flex;
-    margin-left: -45px;
+    margin-left: -25px;
   }
   
   .dispenSalesProvisionalSettelment-search-bar input {
@@ -193,16 +181,23 @@ color: green;
     font-size: var(--font-size);
 }
 .dispenSalesProvisionalSettelment-print-btn{
-      margin-left: 10px;
-      /* gap: 10px; */
-    background-color: var(--button-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: var(--font-size);
-
-  }
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.dispenSalesProvisionalSettelment-print-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
   
   .dispenSalesProvisionalSettelment-table-N-paginat table {
     width: 100%;

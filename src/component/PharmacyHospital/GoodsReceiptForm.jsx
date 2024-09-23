@@ -16,14 +16,14 @@ const GoodsReceiptForm = () => {
   const [suppliers, setSuppliers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://192.168.1.39:1415/api/good-receipts/good-receipts')
+    axios.get('http://localhost:1415/api/good-receipts/good-receipts')
       .then(response => {
         setGoodsReceipt(response.data);
         setItems(response.data.items || []);
       })
       .catch(error => console.error('Error fetching data:', error));
 
-    axios.get('http://192.168.1.39:1415/api/suppliers')
+    axios.get('http://localhost:1415/api/suppliers')
       .then(response => {
         setSuppliers(response.data);
       })
@@ -53,7 +53,7 @@ const GoodsReceiptForm = () => {
 
   const handleAddItem = (item) => {
   console.log('Adding item:', item); // Debugging line
-  axios.post('http://192.168.1.39:8888/api/add-items', item)
+  axios.post('http://localhost:1415/api/add-items', item)
     .then(response => {
       console.log('Item added:', response.data);
       setItems(prevItems => [...prevItems, response.data]);
@@ -63,7 +63,7 @@ const GoodsReceiptForm = () => {
 };
 
   const handleUpdateItem = (itemId, updatedItem) => {
-    axios.put(`http://192.168.1.39:8888/api/add-items/${itemId}`, updatedItem)
+    axios.put(`http://localhost:1415/api/add-items/${itemId}`, updatedItem)
       .then(response => {
         setItems(prevItems => prevItems.map(item => 
           item.id === itemId ? response.data : item
@@ -73,7 +73,7 @@ const GoodsReceiptForm = () => {
   };
 
   const handleDeleteItem = (itemId) => {
-    axios.delete(`http://192.168.1.39:8888/api/add-items/${itemId}`)
+    axios.delete(`http://localhost:1415/api/add-items/${itemId}`)
       .then(() => {
         setItems(prevItems => prevItems.filter(item => item.id !== itemId));
         setItemCount(prevCount => prevCount - 1);
@@ -103,7 +103,7 @@ const GoodsReceiptForm = () => {
       totalAmount: event.target.totalAmount.value,
       items: items
     };
-    axios.post('http://192.168.1.39:1415/api/good-receipts', formData)
+    axios.post('http://localhost:1415/api/good-receipts', formData)
       .then(response => {
         console.log('Good receipt added:', response.data);
       })

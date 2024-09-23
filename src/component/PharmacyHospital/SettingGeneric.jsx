@@ -4,8 +4,8 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css'; 
 
-const genericApiUrl = 'http://192.168.1.39:1415/api/generic-names';
-const categoryApiUrl = 'http://192.168.1.39:1415/api/categories';
+const genericApiUrl = 'http://localhost:1415/api/generic-names';
+const categoryApiUrl = 'http://localhost:1415/api/categories';
 
 const SettingGeneric = () => {
   const [suppliers, setSuppliers] = useState([]);

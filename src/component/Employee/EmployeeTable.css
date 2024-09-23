@@ -111,22 +111,23 @@
   background-color: white;
   color: #3598dc;
   padding: 0;
-  width: 100%;
+  width: 90%;
   font-size: 16px;
   position: static;
-  overflow-x: auto; /* Enable horizontal scrolling */
-  white-space: nowrap; /* Prevent items from wrapping to a new line */
+  /* overflow-x: scroll;  */
+  white-space: nowrap; 
 }
 
-.employee-header::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in WebKit-based browsers */
+.employee-header-form::-webkit-scrollbar {
+  display: none;
+    scrollbar-width: 5px;    
+
 }
 
-/* For non-WebKit browsers (optional, if you want to hide scrollbar in other browsers as well) */
-.employee-header {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;     /* Firefox */
-}
+/* .employee-header {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;    
+} */
 
 
 .employee-header-form {
@@ -134,15 +135,15 @@
   display: flex;
   padding: 0;
   margin: 0;
-  overflow-x: auto;
+  overflow-x: scroll;
 }
 
 .employee-header-form li {
   
   padding: 10px 15px;
   cursor: pointer;
-  white-space: nowrap;
-  font-size: 16px;
+  /* white-space: nowrap; */
+  /* font-size: 16px; */
   background-color: var( --button-color);
   text-decoration: none;
   color: white;
@@ -162,16 +163,23 @@
   color: white; /* Text color when active */
 }
 
-.employee-sub-nav,.department-sub-nav  {
+.employee-sub-nav,.department-sub-nav{
   background-color: var(--background-color);
   padding: 0;
 }
 
-.employee-sub-nav ul,.department-sub-nav ul {
+.employee-sub-nav ul,.department-sub-nav ul,.SettingLinks{
   list-style-type: none;
   display: flex;
   padding: 0;
   margin: 0;
+}
+.SettingLinks{
+  text-decoration: none;
+  color: white;
+}
+.SettingLinks:hover{
+  color:var(--button-color);
 }
 
 .employee-sub-nav li,.department-sub-nav li {
@@ -185,7 +193,7 @@
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .employee-header-form {
     flex-direction: column;
   }
@@ -209,7 +217,7 @@
   }
 
  
-}
+} */
 
 
 /*  */
@@ -519,5 +527,5 @@
 }
 
 .more-dropdown li a:hover {
-  background-color: #f1f1f1;
+  background-color:#f1f1f1;
 }

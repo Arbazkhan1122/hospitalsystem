@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
-// import './DepositeSettings.css';
 
 const DepositeSettings = () => {
-  const [showEditModal, setShowEditModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [columnWidths,setColumnWidths] = useState({});
-  const tableRef=useRef(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   // Sample data
   const data = [
@@ -17,18 +17,24 @@ const DepositeSettings = () => {
 
   const handleEditClick = (item) => {
     setSelectedItem(item);
-    setShowEditModal(true);
+    setIsEditing(true);
+    setShowModal(true);
+  };
+
+  const handleAddClick = () => {
+    setSelectedItem({ bedFeature: '', scheme: '', depositHead: '', minimumDeposit: '', isOnlyMinimum: false, isActive: false });
+    setIsEditing(false);
+    setShowModal(true);
   };
 
   const handleCloseModal = () => {
-    setShowEditModal(false);
+    setShowModal(false);
     setSelectedItem(null);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission logic here
-    console.log('Updated:', selectedItem);
+    console.log(isEditing ? 'Updated:' : 'Added:', selectedItem);
     handleCloseModal();
   };
 
@@ -36,43 +42,25 @@ const DepositeSettings = () => {
     <div className="manage-add-ward-page">
       <div className="manage-add-ward-table-container">
         <div className="manage-add-ward-manage-section">
-          <Button className="manage-add-ward-btn">+ Add Minimum Deposit Setting</Button>
+          <Button className="manage-add-ward-btn" onClick={handleAddClick}>+ Add Minimum Deposit Setting</Button>
         </div>
         <input type="text" placeholder="Search" className="manage-add-ward-search-input" />
         <div className="manage-add-ward-results-info">Showing {data.length} / {data.length} results</div>
 
         <div className='table-container'>
-        <table  ref={tableRef}>
-          <thead>
-            <tr>
-              {[
-                 "Bed Features",
-                 "Schemes",
-                 "Deposit Head",
-                 "Minimum Deposit",
-                 "Is Only Minimum",
-                 "Is Active",
-                 "Action"
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
-                    ></div>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
+          <table ref={tableRef}>
+            <thead>
+              <tr>
+                {["Bed Features", "Schemes", "Deposit Head", "Minimum Deposit", "Is Only Minimum", "Is Active", "Action"].map((header, index) => (
+                  <th key={index} style={{ width: columnWidths[index] }} className="resizable-th">
+                    <div className="header-content">
+                      <span>{header}</span>
+                      <div className="resizer" onMouseDown={startResizing(tableRef, setColumnWidths)(index)}></div>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
             <tbody>
               {data.map((item, index) => (
                 <tr key={index}>
@@ -90,29 +78,19 @@ const DepositeSettings = () => {
               ))}
             </tbody>
           </table>
-
-          {/* <div className="manage-add-ward-pagination">
-            <Button className="manage-add-ward-pagination-btn">First</Button>
-            <Button className="manage-add-ward-pagination-btn">Previous</Button>
-            <span>Page 1 of 3</span>
-            <Button className="manage-add-ward-pagination-btn">Next</Button>
-            <Button className="manage-add-ward-pagination-btn">Last</Button>
-          </div> */}
         </div>
       </div>
 
-      <Modal show={showEditModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">
+      <Modal show={showModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">
         <div className="manage-modal-dialog">
           <div className="manage-modal-modal-header">
-            <div className="manage-modal-modal-title">Update Minimum Deposit Setting</div>
+            <div className="manage-modal-modal-title">{isEditing ? 'Update Minimum Deposit Setting' : 'Add Minimum Deposit Setting'}</div>
             <Button onClick={handleCloseModal} className="manage-modal-employee-role-btn">X</Button>
           </div>
           <div className="manage-modal-modal-body">
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="bedFeature">
-                <Form.Label className="manage-modal-form-label">
-                  Bed Features <span className="manage-modal-text-danger">*</span>:
-                </Form.Label>
+                <Form.Label className="manage-modal-form-label">Bed Features <span className="manage-modal-text-danger">*</span>:</Form.Label>
                 <Form.Control
                   type="text"
                   value={selectedItem?.bedFeature || ''}
@@ -144,7 +122,7 @@ const DepositeSettings = () => {
                   className="manage-modal-form-control"
                 />
               </Form.Group>
-              
+
               <Form.Group controlId="minimumDeposit">
                 <Form.Label className="manage-modal-form-label">Minimum Deposit Amount:</Form.Label>
                 <Form.Control
@@ -176,7 +154,7 @@ const DepositeSettings = () => {
                 />
               </Form.Group>
 
-              <Button type="submit" className="manage-modal-employee-btn">Update</Button>
+              <Button type="submit" className="manage-modal-employee-btn">{isEditing ? 'Update' : 'Add'}</Button>
             </Form>
           </div>
         </div>

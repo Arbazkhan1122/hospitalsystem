@@ -75,7 +75,7 @@ function DispenSalesProvisionalSettelment() {
            Showing 2 / 2 results
            <button className='dispenSalesProvisionalSettelment-print-btn'
            onClick={handlePrint}
-           >Print</button>
+           ><i class="fa-solid fa-print"></i> Print</button>
          </div>
        </div>
        <div style={{ display: 'none' }}>

@@ -39,11 +39,11 @@ function MainContent() {
         const fetchData = async () => {
             try {
                 if (activeTab === 'Discharged Patients') {
-                    const response = await axios.get('http://192.168.1.39:1415/api/admissions/discharged-summary/Discharged');
+                    const response = await axios.get('http://localhost:1415/api/admissions/discharged-summary/Discharged');
                     setDischargeData(response.data);
                     console.log(response.data+'discharged');
                 } else if (activeTab === 'Admitted Patients') {
-                    const response = await axios.get('http://192.168.1.39:1415/api/admissions/discharged-summary/Admitted');
+                    const response = await axios.get('http://localhost:1415/api/admissions/discharged-summary/Admitted');
                     setAdmittedData(response.data);
                     console.log(response.data+'admitted');
                 }

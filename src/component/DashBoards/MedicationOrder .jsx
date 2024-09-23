@@ -13,6 +13,8 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId }) => {
       frequency: 0,
       lastTaken: "",
       comments: "",
+      status:"pending",
+      currentDate:new Date.now()
     }))
   );
 
@@ -35,7 +37,7 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId }) => {
 
       try {
         const response = await axios.post(
-          "http://192.168.1.39:1415/api/medications/save-medication-details",
+          "http://localhost:1415/api/medications/save-medication-details",
           formData
         );
         console.log(`Success for medication ${i + 1}:`, response.data);

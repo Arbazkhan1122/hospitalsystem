@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './SettingSupplier.css';
 
-const API_URL = 'http://192.168.1.39:1415/api/racks';
+const API_URL = 'http://localhost:1415/api/racks';
 
 const SettingRack = () => {
   const [suppliers, setSuppliers] = useState([]);

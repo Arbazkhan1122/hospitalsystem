@@ -1,11 +1,12 @@
 /* CoreCfgParametersTable.css */
 .manage-tax-core-cfg-parameters-container {
     width: 100%;
-    background-color: #e3f2fd; /* Match the background color */
+    height: 90vh;
+    background-color: var(--background-color); /* Match the background color */
     padding: 15px; /* Adjust padding to match */
     border-radius: 5px; /* Add border-radius for consistency */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box-shadow for a subtle effect */
     box-sizing: border-box;
+    overflow-y: scroll;
 }
 
 .manage-tax-search-bar {
@@ -13,8 +14,8 @@
 }
 
 .manage-tax-search-bar input {
-    width: 180px; /* Adjusted width */
-    padding: 6px; /* Reduced padding */
+    padding: 5px; /* Reduced padding */
+    font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -49,17 +50,20 @@
 }
 
 .manage-tax-edit-button {
-    background-color: #0F63AF; /* Match button color */
+    background-color: var(--button-color); /* Match button color */
     color: white;
     border: none;
-    padding: 4px 8px; /* Adjusted padding */
-    border-radius: 3px;
-    cursor: pointer;
+    padding: 5px 5px; /* Adjusted padding */
+    border-radius: 5px;
+    cursor: pointer;   
+     border-bottom: 1px solid var(--button-color);
     font-size: 14px; /* Adjusted font size */
 }
 
 .manage-tax-edit-button:hover {
-    background-color: #0d5ca6; /* Darker shade on hover */
+    background-color: white; /* Darker shade on hover */
+    color: var(--button-color);
+    border-bottom: 1px solid var(--button-color);
 }
 
 .manage-tax-pagination {

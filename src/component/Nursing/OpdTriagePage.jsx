@@ -67,7 +67,7 @@ function OPDTriagePage({ onClose, data }) {
   const handleVitalsSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://192.168.1.34:1415/api/vitals", newVitals);
+      await axios.post("http://localhost:1415/api/vitals", newVitals);
       fetchData(); // Refresh data after saving
     } catch (error) {
       console.error('Error saving vitals:', error);
@@ -76,7 +76,7 @@ function OPDTriagePage({ onClose, data }) {
 
   const handleAllergySave = async () => {
     try {
-      const response = await axios.post("http://localhost:8989/api/patients/add", {
+      const response = await axios.post("http://localhost:1415/api/patients/add", {
         allergen: allergy.allergen,
         severity: allergy.severity,
         reaction: allergy.reaction,
@@ -96,7 +96,7 @@ function OPDTriagePage({ onClose, data }) {
 
   const handleChiefComplaintSave = async () => {
     try {
-      const response = await axios.post("http://localhost:8989/api/patients/add", {
+      const response = await axios.post("http://localhost:1415/api/patients/add", {
         description: chiefComplaint.description,
         comments: chiefComplaint.comments,
       });

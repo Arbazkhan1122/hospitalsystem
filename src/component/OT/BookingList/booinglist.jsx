@@ -25,7 +25,7 @@ function BookingList() {
     // Fetch existing bookings when the component mounts
     const fetchPatientList = async () => {
       try {
-        const response = await axios.get('http://localhost:8888/api/operation-bookings/fetch-all');
+        const response = await axios.get('http://localhost:1415/api/operation-bookings/fetch-all');
         setOtPatientList(response.data); // Store data from the API in state
       } catch (error) {
         console.error('Error fetching data:', error);

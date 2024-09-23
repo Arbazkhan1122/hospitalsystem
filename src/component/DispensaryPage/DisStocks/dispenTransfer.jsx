@@ -230,6 +230,9 @@
 
 // export default DispenTransfer;
 
+ /* Ajhar Tamboli dispenTransfer.jsx 19-09-24 */
+
+
 import React, { useState, useEffect } from 'react';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
@@ -335,7 +338,7 @@ const DispenTransfer = () => {
                         <div className="dispenStockTransfer-results-info">
                             <span>Showing {filteredTransfers.length} / {transfers.length} results</span>
                             <button className="dispenStockTransfer-print-button" onClick={handlePrint}>
-                                Print
+                            <i class="fa-solid fa-print"></i> Print
                             </button>
                         </div>
                     </div>
@@ -382,14 +385,14 @@ const DispenTransfer = () => {
                             </tbody>
                         </table>
 
-                        <div className="dispenStockTransfer-pagination">
+                        {/* <div className="dispenStockTransfer-pagination">
                             <span>{filteredTransfers.length} to {transfers.length} of {transfers.length}</span>
                             <button>First</button>
                             <button>Previous</button>
                             <span>Page 0 of 0</span>
                             <button>Next</button>
                             <button>Last</button>
-                        </div>
+                        </div> */}
                     </div>
                 </>
             )}

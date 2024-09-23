@@ -31,7 +31,7 @@ const PurchaseOrderForm = () => {
   const [suppliers, setSuppliers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://192.168.1.39:8888/api/suppliers')
+    axios.get('http://localhost:1415/api/suppliers')
       .then(response => {
         setSuppliers(response.data);
       })
@@ -107,7 +107,7 @@ const PurchaseOrderForm = () => {
       }))
     };
 
-    axios.post('http://192.168.1.39:8888/api/order-purchase-orders', data)
+    axios.post('http://localhost:1415/api/order-purchase-orders', data)
       .then(response => {
         alert('Purchase order saved successfully!');
       })

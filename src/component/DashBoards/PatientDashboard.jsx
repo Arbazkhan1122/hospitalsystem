@@ -32,7 +32,7 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
     // Fetch medications data from the API
     const fetchMedications = async () => {
       try {
-        const response = await fetch('http://192.168.1.39:1415/api/medications');
+        const response = await fetch('http://localhost:1415/api/medications');
         const data = await response.json();
         console.log(data);
         

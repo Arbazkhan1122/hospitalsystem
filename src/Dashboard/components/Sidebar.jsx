@@ -45,6 +45,8 @@ const Sidebar = ({
   onVerification,
   onSubstoreClick,
   onMedicalRecord,
+  onProcurement,
+  onBilling
 }) => {
   const [openMenus, setOpenMenus] = useState({});
   const [activeLink, setActiveLink] = useState(null);
@@ -198,6 +200,15 @@ const Sidebar = ({
     handleLinkClick("medicalrecord");
     onMedicalRecord();
   };
+  const handleProcurement=()=>{
+    handleLinkClick("procurement");
+    onProcurement();
+  }
+
+  const handleBilling=()=>{
+    handleLinkClick("billing");
+    onBilling();
+  }
 
   return (
     <div className={`custom-sidebar ${isOpen ? "" : "custom-sidebar-closed"}`}>
@@ -212,7 +223,7 @@ const Sidebar = ({
               src={hospitallogo}
               alt="Hospital Logo"
             />
-            <span>Hospital</span>
+            <span>HIMS</span>
           </span>
         ) : (
           <img
@@ -406,6 +417,77 @@ const Sidebar = ({
           )}
         </li>
 
+
+
+
+
+
+
+
+
+
+
+        <li className={`custom-nav-item ${
+            activeLink === "billing-submenu1" ||
+            activeLink === "billing-submenu2" 
+       
+              ? "custom-nav-item-active"
+              : ""
+          }`}
+        >
+          <div
+            className="custom-nav-link-content"
+            onClick={handleBilling}
+          >
+            <span>
+              <FaClinicMedical />
+            </span>
+            {isOpen && (
+              <span className="custom-nav-link-text">Billing</span>
+            )}
+            <span className="custom-dropdown-icon">
+              {openMenus.billing ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.billing && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("billing", "submenu1")}
+                className={
+                  activeLink === "billing-submenu1"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/ipbilling">Ip Billing</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("billing", "submenu2")}
+                className={
+                  activeLink === "billing-submenu2"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/Search_Patient">Op Billing</Link>
+              </li>
+             
+            </ul>
+          )}
+        </li>
+
+
+
+
+
+
+
+
+
+
+
+
+
         <li
           className={`custom-nav-item ${
             activeLink === "pharmacy-submenu1" ||
@@ -502,6 +584,101 @@ const Sidebar = ({
                 }
               >
                 <Link to="/SubstoreDispatchCom">Substore Request/Dispatch</Link>
+              </li>
+            </ul>
+          )}
+        </li>
+
+
+
+
+         <li
+          className={`custom-nav-item ${
+            activeLink === "procurement-submenu1" ||
+            activeLink === "procurement-submenu2" ||
+            activeLink === "procurement-submenu3" ||
+            activeLink === "procurement-submenu4" ||
+            activeLink === "procurement-submenu5" ||
+            activeLink === "procurement-submenu6"
+              ? "custom-nav-item-active"
+              : ""
+          }`}
+        >
+          <div
+            className="custom-nav-link-content"
+            onClick={handleProcurement}
+          >
+            <span>
+              <FaClinicMedical />
+            </span>
+            {isOpen && (
+              <span className="custom-nav-link-text">Procurement</span>
+            )}
+            <span className="custom-dropdown-icon">
+              {openMenus.procurement ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.procurement && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("procurement", "submenu1")}
+                className={
+                  activeLink === "procurement-submenu1"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/Procurement">Purchase Request</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("procurement", "submenu2")}
+                className={
+                  activeLink === "procurement-submenu2"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/MRInpatientList">Purchase Order</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("procurement", "submenu3")}
+                className={
+                  activeLink === "procurement-submenu3"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/BirthList">Goods Arrival Notification</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("procurement", "submenu4")}
+                className={
+                  activeLink === "procurement-submenu4"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/DeathList">Quotation</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("procurement", "submenu5")}
+                className={
+                  activeLink === "procurement-submenu5"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/MedicalRecordReport">Settings</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("procurement", "submenu6")}
+                className={
+                  activeLink === "procurement-submenu6"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/EmergencyPatientList">Reports</Link>
               </li>
             </ul>
           )}

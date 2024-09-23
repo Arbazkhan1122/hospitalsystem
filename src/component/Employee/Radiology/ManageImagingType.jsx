@@ -3,33 +3,44 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import './ManageImagingType.css';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
-// import './AddEmployeeRole.css';
-
 const ManageImagingType = () => {
-  const [showEditModal, setShowEditModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [selectedImagingType, setSelectedImagingType] = useState(null);
   const [role, setRole] = useState('');
   const [description, setDescription] = useState('');
   const [isActive, setIsActive] = useState(false);
-  const [columnWidths,setColumnWidths] = useState({});
-  const tableRef=useRef(null);
+  const [isEditMode, setIsEditMode] = useState(false); // To track whether the form is in Add or Edit mode
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   const handleEditClick = (type) => {
     setSelectedImagingType(type);
     setRole(type.name);
     setIsActive(type.isActive === 'true');
-    setShowEditModal(true);
+    setIsEditMode(true); // Set to edit mode
+    setShowModal(true);
+  };
+
+  const handleAddClick = () => {
+    setSelectedImagingType(null);
+    setRole('');
+    setIsActive(false);
+    setIsEditMode(false); // Set to add mode
+    setShowModal(true);
   };
 
   const handleCloseModal = () => {
-    setShowEditModal(false);
+    setShowModal(false);
     setSelectedImagingType(null);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Update logic goes here
-    console.log('Updated:', { role, description, isActive });
+    if (isEditMode) {
+      console.log('Updated:', { role, description, isActive });
+    } else {
+      console.log('Added:', { role, description, isActive });
+    }
     handleCloseModal();
   };
 
@@ -48,16 +59,16 @@ const ManageImagingType = () => {
   return (
     <div className="manage-imaging-type-container">
       <div>
-        <button className="manage-imaging-type-btn">+Add Imaging Type</button>
+        <button className="manage-imaging-type-btn" onClick={handleAddClick}>
+          + Add Imaging Type
+        </button>
       </div>
       <input type="text" className="manage-imaging-type-search-bar" placeholder="Search" />
       <div className='table-container'>
-      <table  ref={tableRef}>
+        <table ref={tableRef}>
           <thead>
             <tr>
-              {[
-                "Type Name", "IsActive", "Action"
-              ].map((header, index) => (
+              {["Type Name", "IsActive", "Action"].map((header, index) => (
                 <th
                   key={index}
                   style={{ width: columnWidths[index] }}
@@ -67,10 +78,7 @@ const ManageImagingType = () => {
                     <span>{header}</span>
                     <div
                       className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
+                      onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
                     ></div>
                   </div>
                 </th>
@@ -83,7 +91,7 @@ const ManageImagingType = () => {
                 <td>{type.name}</td>
                 <td>{type.isActive}</td>
                 <td>
-                  <button 
+                  <button
                     className="manage-imaging-type-edit-button"
                     onClick={() => handleEditClick(type)}
                   >
@@ -94,22 +102,14 @@ const ManageImagingType = () => {
             ))}
           </tbody>
         </table>
-        {/* <div className="manage-imaging-type-pagination">
-          <span>1 to 9 of 9</span>
-          <div className="manage-imaging-type-pagination-buttons">
-            <button>First</button>
-            <button>Previous</button>
-            <span>Page 1 of 1</span>
-            <button>Next</button>
-            <button>Last</button>
-          </div>
-        </div> */}
       </div>
 
-      <Modal show={showEditModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">
+      <Modal show={showModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">
         <div className="manage-modal-dialog">
           <div className="manage-modal-modal-header">
-            <div className="manage-modal-modal-title">Update Imaging Type</div>
+            <div className="manage-modal-modal-title">
+              {isEditMode ? 'Update Imaging Type' : 'Add Imaging Type'}
+            </div>
             <Button onClick={handleCloseModal} className="manage-modal-employee-role-btn">X</Button>
           </div>
           <div className="manage-modal-modal-body">
@@ -122,21 +122,12 @@ const ManageImagingType = () => {
                   type="text"
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  placeholder="Role"
+                  placeholder="Imaging Type"
                   required
                   className="manage-modal-form-control"
                 />
               </Form.Group>
-              {/* <Form.Group controlId="description">
-                <Form.Label className="emp-form-labels">Description :</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Description"
-                  className="emp-form-control"
-                />
-              </Form.Group> */}
+
               <Form.Group controlId="isActive" className='manage-modal-form-group'>
                 <Form.Label className="manage-modal-form-label">Is Active :</Form.Label>
                 <Form.Check
@@ -146,8 +137,9 @@ const ManageImagingType = () => {
                   className="manage-modal-form-check-input"
                 />
               </Form.Group>
+
               <Button type="submit" className="manage-modal-employee-btn">
-                Update
+                {isEditMode ? 'Update' : 'Add'}
               </Button>
             </Form>
           </div>
@@ -156,4 +148,5 @@ const ManageImagingType = () => {
     </div>
   );
 };
+
 export default ManageImagingType;

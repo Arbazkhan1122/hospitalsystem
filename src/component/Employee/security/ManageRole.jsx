@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
-import './ManageUsers.css'; 
+import './ManageUsers.css';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
-const usersData = [
+const rolesData = [
   {
     roleName: "Accounting",
     rolePriority: null,
@@ -81,16 +81,18 @@ const usersData = [
     department: "Maternity",
     email: "emilyj@example.com"
   },
+
 ];
 
 const ManageRole = () => {
-  const [showEditModal, setShowEditModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [selectedRole, setSelectedRole] = useState(null);
+  const [actionType, setActionType] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  const [columnWidths,setColumnWidths] = useState({});
-  const tableRef=useRef(null);
-  
-  const filteredRoles = usersData.filter(role =>
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
+
+  const filteredRoles = rolesData.filter(role =>
     role.roleName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     role.employeeName.toLowerCase().includes(searchTerm.toLowerCase()) ||
     role.userName.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -98,27 +100,34 @@ const ManageRole = () => {
     role.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleShowEditModal = (role) => {
+  const handleShowModal = (role, action) => {
     setSelectedRole(role);
-    setShowEditModal(true);
+    setActionType(action);
+    setShowModal(true);
   };
 
   const handleCloseModal = () => {
-    setShowEditModal(false);
+    setShowModal(false);
     setSelectedRole(null);
+    setActionType('');
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission logic here
-    console.log('Updated Role:', selectedRole);
+    console.log(`${actionType} Role:`, selectedRole);
     handleCloseModal();
   };
 
   return (
     <div className="manage-users-container">
       <div className="manage-users-header">
-        <button className="manage-users-add-user-button">+ Add Role</button>
+        <button
+          className="manage-users-add-user-button"
+          onClick={() => handleShowModal(null, 'Add Role')}
+        >
+          + Add Role
+        </button>
       </div>
       <input
         type="text"
@@ -128,34 +137,17 @@ const ManageRole = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <div className="manage-user-span">
-        <span>Showing {filteredRoles.length} / {usersData.length} results</span>
+        <span>Showing {filteredRoles.length} / {rolesData.length} results</span>
       </div>
       <div className="table-container">
-      <table  ref={tableRef}>
+        <table ref={tableRef}>
           <thead>
             <tr>
-              {[
-                  "Role Name",
-                  "Employee Name",
-                  "User Name",
-                  "Department Name",
-                  "Email",
-                  "Action"
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
+              {["Role Name", "Employee Name", "User Name", "Department Name", "Email", "Action"].map((header, index) => (
+                <th key={index} style={{ width: columnWidths[index] }} className="resizable-th">
                   <div className="header-content">
                     <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
-                    ></div>
+                    <div className="resizer" onMouseDown={startResizing(tableRef, setColumnWidths)(index)}></div>
                   </div>
                 </th>
               ))}
@@ -170,24 +162,72 @@ const ManageRole = () => {
                 <td>{role.department}</td>
                 <td>{role.email}</td>
                 <td className="manage-users-action-buttons">
-                  <button className="manage-users-action-button" onClick={() => handleShowEditModal(role)}>Edit</button>
+                  <button className="manage-users-action-button" onClick={() => handleShowModal(role, 'Edit Role')}>Edit</button>
                   <button className="manage-users-action-button">Manage Permission</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {/* <div className="manage-users-pagination">
-          <div className="manage-users-pagination-controls">
-            <button>First</button>
-            <button>Previous</button>
-            <button>1</button>
-            <button>Next</button>
-            <button>Last</button>
-          </div>
-        </div> */}
       </div>
-      
+
+      <Modal show={showModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">
+  <div className="manage-modal-dialog">
+    <div className="manage-modal-modal-header">
+      <div className="manage-modal-modal-title">{actionType} Role</div>
+      <Button onClick={handleCloseModal} className="manage-modal-employee-role-btn">X</Button>
+    </div>
+    <div className="manage-modal-modal-body">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group controlId="roleName">
+          <Form.Label className="manage-modal-form-label">Role Name*</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Role Name"
+            required
+            className="manage-modal-form-control"
+            value={selectedRole?.roleName || ''}
+            onChange={(e) => setSelectedRole({ ...selectedRole, roleName: e.target.value })}
+          />
+        </Form.Group>
+        <Form.Group controlId="roleDescription">
+          <Form.Label className="manage-modal-form-label">Role Description</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Role Description"
+            className="manage-modal-form-control"
+            value={selectedRole?.roleDescription || ''}
+            onChange={(e) => setSelectedRole({ ...selectedRole, roleDescription: e.target.value })}
+          />
+        </Form.Group>
+        <Form.Group controlId="applicationName">
+          <Form.Label className="manage-modal-form-label">Select Application*</Form.Label>
+          <Form.Control as="select" required className="manage-modal-form-control">
+            <option value="">Select an application</option>
+            <option value="Accounting">Accounting</option>
+            <option value="Doctors">Doctors</option>
+            {/* Add more applications as needed */}
+          </Form.Control>
+        </Form.Group>
+        <Form.Group controlId="initialPage">
+          <Form.Label className="manage-modal-form-label">Select Initial Page</Form.Label>
+          <Form.Control type="text" placeholder="Initial Page" className="manage-modal-form-control" />
+        </Form.Group>
+        <Form.Group controlId="rolePriority">
+          <Form.Label className="manage-modal-form-label">Role Priority</Form.Label>
+          <Form.Control type="number" placeholder="Role Priority" className="manage-modal-form-control" />
+        </Form.Group>
+        <Form.Group controlId="isActive">
+          <Form.Check type="checkbox" label="Is Active" defaultChecked={selectedRole?.isActive} />
+        </Form.Group>
+        <Button type="submit" className="manage-modal-employee-btn">
+          {actionType === 'Add Role' ? 'Save' : 'Update'}
+        </Button>
+      </Form>
+    </div>
+  </div>
+</Modal>
+
     </div>
   );
 };
