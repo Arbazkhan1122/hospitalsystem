@@ -1,3 +1,4 @@
+/* Ajhar Tamboli sSPReportsTransfer.jsx 19-09-24 */
 
 
 import React, { useState, useRef } from 'react';
@@ -62,18 +63,20 @@ function SSPReportsTransfer() {
           </div>
         </header>
         <div className="sSPReportsTransfer-controls">
-          <div className="sSPReportsTransfer-date-range">
-            <label>
-              From:
-              <input type="date" defaultValue="2024-08-09" />
-            </label>
-            <label>
-              To:
-              <input type="date" defaultValue="2024-08-16" />
-            </label>
-            {/* <button className="sSPReportsTransfer-star-button">☆</button> */}
-            {/* <button className="sSPReportsTransfer-ok-button">OK</button> */}
-          </div>
+        <div className="sSPReportsTransfer-date-range">
+      <label>
+        From:
+        <input type="date" defaultValue="2024-08-09" />
+      </label>
+      <label>
+        To:
+        <input type="date" defaultValue="2024-08-16" />
+      </label>
+      <button className="sSPReportsTransfer-star-button">☆</button>
+    <button className="sSPReportsTransfer-more-btn">-</button>
+      <button className="sSPReportsTransfer-ok-button">OK</button>
+    </div>
+
           <div className="sSPReportsTransfer-filter">
             {/* <label>SubCategory</label>
             <select>
@@ -96,7 +99,7 @@ function SSPReportsTransfer() {
             <button className='sSPReportsTransfer-print-btn' onClick={handleExportToExcel}>
               <i className="fa-regular fa-file-excel"></i> Export
             </button>
-            <button className='sSPReportsTransfer-print-btn' onClick={handlePrint}>Print</button>
+            <button className='sSPReportsTransfer-print-btn' onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
           </div>
         </div>
         <div style={{ display: 'none' }}>
@@ -149,14 +152,14 @@ function SSPReportsTransfer() {
               </tr>
             </tbody>
           </table>
-          <div className="sSPReportsTransfer-pagination">
+          {/* <div className="sSPReportsTransfer-pagination">
             <span>0 to 0 of 0</span>
             <button>First</button>
             <button>Previous</button>
             <span>Page 0 of 0</span>
             <button>Next</button>
             <button>Last</button>
-          </div>
+          </div> */}
         </div>
       </>
     </div>

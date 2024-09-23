@@ -1,3 +1,6 @@
+/* Ajhar Tamboli sSPReportsReqDis.jsx 19-09-24 */
+
+
 import React, { useState, useRef, useEffect } from 'react';
 import * as XLSX from 'xlsx'; // Import the xlsx library
 import "../SSPharmacy/sSPReportsReqDis.css";
@@ -85,18 +88,20 @@ function SSPReportsReqDis() {
         </div>
       </header>
       <div className="sSPReportsReqDis-controls">
-        <div className="sSPReportsReqDis-date-range">
-          <label>
-            From:
-            <input type="date" defaultValue="2024-08-09" />
-          </label>
-          <label>
-            To:
-            <input type="date" defaultValue="2024-08-16" />
-          </label>
-          <button className="sSPReportsReqDis-star-button">☆</button>
-          <button className="sSPReportsReqDis-ok-button">OK</button>
-        </div>
+      <div className="sSPReportsReqDis-date-range">
+      <label>
+        From:
+        <input type="date" defaultValue="2024-08-09" />
+      </label>
+      <label>
+        To:
+        <input type="date" defaultValue="2024-08-16" />
+      </label>
+      <button className="sSPReportsReqDis-star-button">☆</button>
+    <button className="sSPReportsReqDis-more-btn">-</button>
+      <button className="sSPReportsReqDis-ok-button">OK</button>
+    </div>
+
         <div className="sSPReportsReqDis-filter">
           <button className='sSPReportsReqDis-print-btn' onClick={() => { /* Handle report generation */ }}>
             Show Report
@@ -113,7 +118,7 @@ function SSPReportsReqDis() {
           <button className='sSPReportsReqDis-print-btn' onClick={handleExportToExcel}>
             <i className="fa-regular fa-file-excel"></i> Export
           </button>
-          <button className='sSPReportsReqDis-print-btn' onClick={handlePrint}>Print</button>
+          <button className='sSPReportsReqDis-print-btn' onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
         </div>
       </div>
       <div style={{ display: 'none' }}>
@@ -195,14 +200,14 @@ function SSPReportsReqDis() {
             ))}
           </tbody>
         </table>
-        <div className="sSPReportsReqDis-pagination">
+        {/* <div className="sSPReportsReqDis-pagination">
           <span>0 to {stockData.length} of {stockData.length}</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 1 of 1</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
