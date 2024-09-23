@@ -1,5 +1,3 @@
-// src/DepartmentTable.jsx
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
@@ -7,7 +5,7 @@ import { startResizing } from '../TableHeadingResizing/resizableColumns';
 import './ManageSubstore.css';
 
 const ManageSubstore = () => {
-  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [selectedSubstore, setSelectedSubstore] = useState(null);
   const [columnWidths,setColumnWidths] = useState({});
   const tableRef=useRef(null);
@@ -23,39 +21,45 @@ const ManageSubstore = () => {
     { name: 'SubStore1', code: '', parentSubStore: '', email: '', phone: '', address: 'ward', label: '', verification: 0, isActive: true },
     { name: 'SubStore3', code: '', parentSubStore: '', email: '', phone: '', address: '', label: '', verification: 0, isActive: true },
   ];
-  const handleEditClick = (substore) => {
-    setSelectedSubstore(substore);
-    setShowUpdateModal(true);
+
+  const handleAddClick = () => {
+    setSelectedSubstore(null); // Reset the selected substore for "Add" mode
+    setShowModal(true);
   };
 
-  const handleCloseUpdateModal = () => {
-    setShowUpdateModal(false);
+  const handleEditClick = (substore) => {
+    setSelectedSubstore(substore); // Set the selected substore for "Edit" mode
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
     setSelectedSubstore(null);
   };
 
   return (
     <div className="manage-substore-page">
-    <div className="manage-substore-table-container">
-      <div className="manage-substore-manage-section">
-        <h1 className="manage-add-substore-btn">+ Add Substore</h1>
-        <div className="manage-substore-results-info">Showing 10 / 10 results</div>
-      </div>
-      <input type="text" placeholder="Search" className="manage-substore-search-input" />
+      <div className="manage-substore-table-container">
+        <div className="manage-substore-manage-section">
+          <h1 className="manage-add-substore-btn" onClick={handleAddClick}>+ Add Substore</h1>
+          <div className="manage-substore-results-info">Showing 10 / 10 results</div>
+        </div>
+        <input type="text" placeholder="Search" className="manage-substore-search-input" />
 
-      <table  ref={tableRef}>
+        <table ref={tableRef}>
           <thead>
             <tr>
               {[
-               "Name",
-               "Code",
-               "Parent Substore",
-               "Email",
-               "Phone",
-               "Address",
-               "Label",
-               "Verification",
-               "Is Active",
-               "Action"
+                "Name",
+                "Code",
+                "Parent Substore",
+                "Email",
+                "Phone",
+                "Address",
+                "Label",
+                "Verification",
+                "Is Active",
+                "Action"
               ].map((header, index) => (
                 <th
                   key={index}
@@ -76,104 +80,92 @@ const ManageSubstore = () => {
               ))}
             </tr>
           </thead>
-        <tbody>
-          {data.map((item, index) => (
-            <tr key={index}>
-              <td>{item.name}</td>
-              <td>{item.code}</td>
-              <td>{item.parentSubStore}</td>
-              <td>{item.email}</td>
-              <td>{item.phone}</td>
-              <td>{item.address}</td>
-              <td>{item.label}</td>
-              <td>{item.verification}</td>
-              <td>{item.isActive.toString()}</td>
-              <td>
-                <Button className="manage-store-edit-btn" onClick={() => handleEditClick(item)}>
-                  Edit
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <div className="manage-store-pagination">
-        <Button className="manage-store-pagination-btn">First</Button>
-        <Button className="manage-store-pagination-btn">Previous</Button>
-        <span>Page 1 of 4</span>
-        <Button className="manage-store-pagination-btn">Next</Button>
-        <Button className="manage-store-pagination-btn">Last</Button>
+          <tbody>
+            {data.map((item, index) => (
+              <tr key={index}>
+                <td>{item.name}</td>
+                <td>{item.code}</td>
+                <td>{item.parentSubStore}</td>
+                <td>{item.email}</td>
+                <td>{item.phone}</td>
+                <td>{item.address}</td>
+                <td>{item.label}</td>
+                <td>{item.verification}</td>
+                <td>{item.isActive.toString()}</td>
+                <td>
+                  <Button className="manage-store-edit-btn" onClick={() => handleEditClick(item)}>
+                    Edit
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+
+      {showModal && (
+        <div className="used-substore-manage">
+          <Modal show={showModal} onHide={handleCloseModal} size="lg" centered>
+            <Modal.Body>
+              <UpdateSubStore substore={selectedSubstore} onClose={handleCloseModal} />
+            </Modal.Body>
+          </Modal>
+        </div>
+      )}
     </div>
-
-    {showUpdateModal && (
-  <div className="used-substore-manage">
-    <Modal show={showUpdateModal} onHide={handleCloseUpdateModal} size="lg" centered>
-      {/* <Modal.Header closeButton> */}
-        {/* <Modal.Title>Update SubStore</Modal.Title> */}
-      {/* </Modal.Header> */}
-      <Modal.Body>
-        <UpdateSubStore substore={selectedSubstore} onClose={handleCloseUpdateModal} />
-      </Modal.Body>
-    </Modal>
-  </div>
-)}
-
-  </div>
-);
+  );
 };
 
 const UpdateSubStore = ({ substore, onClose }) => {
-const handleSubmit = (e) => {
-  e.preventDefault();
-  // Handle form submission logic here
-  onClose();
-};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    onClose();
+  };
 
-return (
-  <div className="update-substore-modal-container">
-    <div className="update-substore-modal-header">
-      <h2>Update SubStore</h2>
-      <button className="update-substore-close-btn" onClick={onClose}>&times;</button>
+  return (
+    <div className="update-substore-modal-container">
+      <div className="update-substore-modal-header">
+        <h2>{substore ? "Update SubStore" : "Add SubStore"}</h2>
+        <button className="update-substore-close-btn" onClick={onClose}>&times;</button>
+      </div>
+      <form className="update-substore-form-container" onSubmit={handleSubmit}>
+        <div className="update-substore-form-group">
+          <label>SubStore Name<span className="update-substore-required">*</span>:</label>
+          <input type="text" defaultValue={substore ? substore.name : ''} className="update-substore-input-field" />
+        </div>
+        <div className="update-substore-form-group">
+          <label>Code :</label>
+          <input type="text" value={substore ? substore.code : ''} readOnly={!!substore} className="update-substore-input-field" />
+        </div>
+        <div className="update-substore-form-group">
+          <label>Email :</label>
+          <input type="email" defaultValue={substore ? substore.email : ''} className="update-substore-input-field" />
+        </div>
+        <div className="update-substore-form-group">
+          <label>Contact No :</label>
+          <input type="text" defaultValue={substore ? substore.phone : ''} className="update-substore-input-field" />
+        </div>
+        <div className="update-substore-form-group">
+          <label>Location :</label>
+          <input type="text" defaultValue={substore ? substore.address : ''} className="update-substore-input-field" />
+        </div>
+        <div className="update-substore-form-group">
+          <label>SubStore Description :</label>
+          <textarea defaultValue={substore ? substore.description : ''} className="update-substore-textarea-field"></textarea>
+        </div>
+        <div className="update-substore-form-group">
+          <label>Label :</label>
+          <input type="text" defaultValue={substore ? substore.label : ''} className="update-substore-input-field" />
+        </div>
+        <div className="update-substore-form-group">
+          <label>Max Verification Level :</label>
+          <input type="number" defaultValue={substore ? substore.verification : 0} className="update-substore-input-field" />
+        </div>
+        <button type="submit" className="update-substore-update-btn">{substore ? "Update" : "Add"}</button>
+      </form>
     </div>
-    <form className="update-substore-form-container" onSubmit={handleSubmit}>
-      <div className="update-substore-form-group">
-        <label>SubStore Name<span className="update-substore-required">*</span>:</label>
-        <input type="text" defaultValue={substore.name} className="update-substore-input-field" />
-      </div>
-      <div className="update-substore-form-group">
-        <label>Code :</label>
-        <input type="text" value={substore.code} readOnly className="update-substore-input-field" />
-      </div>
-      <div className="update-substore-form-group">
-        <label>Email :</label>
-        <input type="email" defaultValue={substore.email} className="update-substore-input-field" />
-      </div>
-      <div className="update-substore-form-group">
-        <label>Contact No :</label>
-        <input type="text" defaultValue={substore.phone} className="update-substore-input-field" />
-      </div>
-      <div className="update-substore-form-group">
-        <label>Location :</label>
-        <input type="text" defaultValue={substore.address} className="update-substore-input-field" />
-      </div>
-      <div className="update-substore-form-group">
-        <label>SubStore Description :</label>
-        <textarea defaultValue={substore.description} className="update-substore-textarea-field"></textarea>
-      </div>
-      <div className="update-substore-form-group">
-        <label>Label :</label>
-        <input type="text" defaultValue={substore.label} className="update-substore-input-field" />
-      </div>
-      <div className="update-substore-form-group">
-        <label>Max Verification Level :</label>
-        <input type="number" defaultValue={substore.verification} className="update-substore-input-field" />
-      </div>
-      <button type="submit" className="update-substore-update-btn">Update</button>
-    </form>
-  </div>
-);
+  );
 };
 
 export default ManageSubstore;

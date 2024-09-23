@@ -37,7 +37,7 @@ const PurchaseOrder = () => {
     return (
         <div className="purchase-order-container">
             <div className="purchase-order-header">
-               6
+            
                 <div className="purchase-order-status-filters">
                     <label><input type="checkbox" defaultChecked /> Pending</label>
                     <label><input type="checkbox" /> Completed</label>

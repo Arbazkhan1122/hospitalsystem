@@ -4,8 +4,9 @@ import './ManageAutoAddBillingItems.css';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const ManageAutoAddBillingItems = () => {
-  const [columnWidths,setColumnWidths] = useState({});
-  const tableRef=useRef(null);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
+
   // Sample data
   const data = [
     {
@@ -47,23 +48,46 @@ const ManageAutoAddBillingItems = () => {
   };
 
   // Modal state and handlers
-  const [showEditModal, setShowEditModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
+  // Handle Add button click
+  const handleAddClick = () => {
+    setSelectedItem({
+      bedFeature: '',
+      scheme: '',
+      serviceItem: '',
+      minChargeAmount: '',
+      usePercentageOfBedCharge: false,
+      percentageOfBedCharge: '',
+      isRepeatable: false,
+      isActive: true
+    });
+    setIsEditing(false);
+    setShowModal(true);
+  };
+
+  // Handle Edit button click
   const handleEditClick = (item) => {
     setSelectedItem(item);
-    setShowEditModal(true);
+    setIsEditing(true);
+    setShowModal(true);
   };
 
   const handleCloseModal = () => {
-    setShowEditModal(false);
+    setShowModal(false);
     setSelectedItem(null);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Update logic goes here
-    console.log('Updated:', selectedItem);
+    // Add or update logic goes here
+    if (isEditing) {
+      console.log('Updated:', selectedItem);
+    } else {
+      console.log('Added:', selectedItem);
+    }
     handleCloseModal();
   };
 
@@ -71,45 +95,52 @@ const ManageAutoAddBillingItems = () => {
     <div className="manage-auto-billing-page">
       <div className="manage-auto-billing-table-container">
         <div className="manage-auto-billing-manage-section">
-          <button className="manage-auto-billing-btn">+ Add Auto Billing Items</button>
+          <button
+            className="manage-auto-billing-btn"
+            onClick={handleAddClick}
+          >
+            + Add Auto Billing Items
+          </button>
         </div>
         <input type="text" placeholder="Search" className="manage-auto-billing-search-input" />
-        <div className="manage-auto-billing-results-info">Showing {currentItems.length} / {data.length} results</div>
+        <div className="manage-auto-billing-results-info">
+          Showing {currentItems.length} / {data.length} results
+        </div>
 
-        <div className='table-container'>
-        <table  ref={tableRef}>
-          <thead>
-            <tr>
-              {[
-               "Bed Feature",
-  "Scheme",
-  "Service Item",
-  "Minimum Charge Amount",
-  "Use Percentage Of Bed Charge?",
-  "Percentage Of Bed Charge",
-  "Is Repeatable?",
-  "Is Active",
-  "Action"
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
-                    ></div>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
+        <div className="table-container">
+          <table ref={tableRef}>
+            <thead>
+              <tr>
+                {[
+                  "Bed Feature",
+                  "Scheme",
+                  "Service Item",
+                  "Minimum Charge Amount",
+                  "Use Percentage Of Bed Charge?",
+                  "Percentage Of Bed Charge",
+                  "Is Repeatable?",
+                  "Is Active",
+                  "Action"
+                ].map((header, index) => (
+                  <th
+                    key={index}
+                    style={{ width: columnWidths[index] }}
+                    className="resizable-th"
+                  >
+                    <div className="header-content">
+                      <span>{header}</span>
+                      <div
+                        className="resizer"
+                        onMouseDown={startResizing(
+                          tableRef,
+                          setColumnWidths
+                        )(index)}
+                      ></div>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
             <tbody>
               {currentItems.map((item, index) => (
                 <tr key={index}>
@@ -122,32 +153,33 @@ const ManageAutoAddBillingItems = () => {
                   <td>{item.isRepeatable ? 'true' : 'false'}</td>
                   <td>{item.isActive ? 'true' : 'false'}</td>
                   <td>
-                    <button className="manage-auto-billing-edit-btn" onClick={() => handleEditClick(item)}>Edit</button>
-                    <button className="manage-auto-billing-deactivate-btn">Deactivate</button>
+                    <button
+                      className="manage-auto-billing-edit-btn"
+                      onClick={() => handleEditClick(item)}
+                    >
+                      Edit
+                    </button>
+                    <button className="manage-auto-billing-deactivate-btn">
+                      Deactivate
+                    </button>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-
-          {/* <div className="manage-auto-billing-pagination">
-            <button onClick={goToFirstPage} className="manage-auto-billing-pagination-btn">First</button>
-            <button onClick={goToPreviousPage} className="manage-auto-billing-pagination-btn">Previous</button>
-            <span>Page {currentPage} of {totalPages}</span>
-            <button onClick={goToNextPage} className="manage-auto-billing-pagination-btn">Next</button>
-            <button onClick={goToLastPage} className="manage-auto-billing-pagination-btn">Last</button>
-          </div> */}
         </div>
       </div>
 
       <Modal
-        show={showEditModal}
+        show={showModal}
         onHide={handleCloseModal}
         dialogClassName="manage-add-employee-role"
       >
         <div className="manage-modal-dialog">
           <div className="manage-modal-modal-header">
-            <div className="manage-modal-modal-title">Update Auto Billing Item</div>
+            <div className="manage-modal-modal-title">
+              {isEditing ? 'Update Auto Billing Item' : 'Add Auto Billing Item'}
+            </div>
             <Button onClick={handleCloseModal} className="manage-modal-employee-role-btn">X</Button>
           </div>
           <div className="manage-modal-modal-body">
@@ -240,7 +272,15 @@ const ManageAutoAddBillingItems = () => {
                 />
               </Form.Group>
 
-              <Button type="submit" className="manage-modal-employee-btn">Update</Button>
+              <div className="manage-modal-button-group">
+                <Button
+                  className="manage-modal-submit-btn"
+                  type="submit"
+                >
+                  {isEditing ? 'Update' : 'Submit'}
+                </Button>
+                <Button className="manage-modal-cancel-btn" onClick={handleCloseModal}>Cancel</Button>
+              </div>
             </Form>
           </div>
         </div>

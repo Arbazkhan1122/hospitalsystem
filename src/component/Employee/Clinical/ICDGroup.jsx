@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './MaanageReaction.css'; // Ensure this is the correct filename
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const usersData = [
     {
@@ -145,6 +146,8 @@ const usersData = [
   ]
 
 const ICDGroup = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
     return (
        
         
@@ -153,19 +156,38 @@ const ICDGroup = () => {
                 <div className="manage-reaction-span">
                     <span>Showing 525/525 results</span>
                 </div>
-                <div className="manage-reaction-tab">
-                    <table className="manage-reaction-users-table">
-                        <thead>
-                            <tr>
-                                <th>Reporting Group SN</th>
-                                <th>Reporting Group Name</th>
-                                <th>Disease Group SN</th>
-                                <th>Disease Group ICD10 Code</th>
-                                <th>Disease Group Name</th>
-                                <th>ICOIO Code</th> {/* Placeholder for additional data */}
-                                <th>ICDIO Name</th> {/* Placeholder for additional data */}
-                            </tr>
-                        </thead>
+                <div className="table-container">
+                <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+'Reporting Group SN', 
+  'Reporting Group Name', 
+  'Disease Group SN', 
+  'Disease Group ICD10 Code', 
+  'Disease Group Name', 
+  'ICOIO Code', 
+  'ICDIO Name'    
+               ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                         <tbody>
                             {usersData.map((user, index) => (
                                 <tr key={index}>
@@ -183,7 +205,7 @@ const ICDGroup = () => {
                             ))}
                         </tbody>
                     </table>
-                    <div className="manage-reaction-pagination">
+                    {/* <div className="manage-reaction-pagination">
                         <div className="manage-reaction-pagination-controls">
                             <button>First</button>
                             <button>Previous</button>
@@ -191,7 +213,7 @@ const ICDGroup = () => {
                             <button>Next</button>
                             <button>Last</button>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );

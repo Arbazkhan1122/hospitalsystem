@@ -1,3 +1,4 @@
+/* Ajhar Tamboli sSPReportsBreakage.jsx 19-09-24 */
 
 
 import React, { useState, useRef } from 'react';
@@ -62,18 +63,20 @@ function SSPReportsBreakage() {
           </div>
         </header>
         <div className="sSPReportsBreakage-controls">
-          <div className="sSPReportsBreakage-date-range">
-            <label>
-              From:
-              <input type="date" defaultValue="2024-08-09" />
-            </label>
-            <label>
-              To:
-              <input type="date" defaultValue="2024-08-16" />
-            </label>
-            {/* <button className="sSPReportsBreakage-star-button">☆</button> */}
-            {/* <button className="sSPReportsBreakage-ok-button">OK</button> */}
-          </div>
+        <div className="sSPReportsBreakage-date-range">
+      <label>
+        From:
+        <input type="date" defaultValue="2024-08-09" />
+      </label>
+      <label>
+        To:
+        <input type="date" defaultValue="2024-08-16" />
+      </label>
+      <button className="sSPReportsBreakage-star-button">☆</button>
+    <button className="sSPReportsBreakage-more-btn">-</button>
+      <button className="sSPReportsBreakage-ok-button">OK</button>
+    </div>
+
           <div className="sSPReportsBreakage-filter">
             {/* <label>SubCategory</label>
             <select>
@@ -96,7 +99,7 @@ function SSPReportsBreakage() {
             <button className='sSPReportsBreakage-print-btn' onClick={handleExportToExcel}>
               <i className="fa-regular fa-file-excel"></i> Export
             </button>
-            <button className='sSPReportsBreakage-print-btn' onClick={handlePrint}>Print</button>
+            <button className='sSPReportsBreakage-print-btn' onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
           </div>
         </div>
         <div style={{ display: 'none' }}>
@@ -149,14 +152,14 @@ function SSPReportsBreakage() {
               </tr>
             </tbody>
           </table>
-          <div className="sSPReportsBreakage-pagination">
+          {/* <div className="sSPReportsBreakage-pagination">
             <span>0 to 0 of 0</span>
             <button>First</button>
             <button>Previous</button>
             <span>Page 0 of 0</span>
             <button>Next</button>
             <button>Last</button>
-          </div>
+          </div> */}
         </div>
       </>
     </div>
