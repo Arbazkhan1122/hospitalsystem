@@ -152,6 +152,8 @@
 
 // export default DrNarcoticsDailySales;
 
+ /* Ajhar Tamboli drNarcoticsDailySales.jsx 19-09-24 */
+
 import React, { useEffect, useState } from 'react';
 import "../DisReport/drNarcoticsDailySales.css";
 

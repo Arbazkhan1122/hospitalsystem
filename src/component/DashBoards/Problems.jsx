@@ -6,24 +6,24 @@ import SocialHistory from '../DashBoards/SocialHistory'; // Placeholder componen
 import ReferralSource from '../DashBoards/ReferralSource'; // Placeholder components
 import './problem.css' 
 
-function Problems() {
+function Problems({patientId,newPatientVisitId}) {
   const [activeComponent, setActiveComponent] = useState('ActiveProblems'); // State to manage active section
 
   // Function to render content based on the activeComponent state
   const renderContent = () => {
     switch (activeComponent) {
       case 'ActiveProblems':
-        return <ActiveProblems />;
+        return <ActiveProblems patientId={patientId}  newPatientVisitId={newPatientVisitId} />;
       case 'FamilyHistory':
-        return <FamilyHistory />;
+        return <FamilyHistory patientId={patientId}  newPatientVisitId={newPatientVisitId} />;
       case 'SurgicalHistory':
-        return <SurgicalHistory />;
+        return <SurgicalHistory patientId={patientId}  newPatientVisitId={newPatientVisitId} />;
       case 'SocialHistory':
-        return <SocialHistory />;
+        return <SocialHistory patientId={patientId}  newPatientVisitId={newPatientVisitId} />;
       case 'ReferralSource':
-        return <ReferralSource />;
+        return <ReferralSource patientId={patientId}  newPatientVisitId={newPatientVisitId} />;
       default:
-        return <ActiveProblems />; // Default to ActiveProblems
+        return <ActiveProblems patientId={patientId}  newPatientVisitId={newPatientVisitId}  />; 
     }
   };
 

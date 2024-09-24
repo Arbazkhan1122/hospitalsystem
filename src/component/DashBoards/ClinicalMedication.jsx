@@ -1,18 +1,54 @@
 import React, { useRef, useState } from "react";
 import "./ClinicalMedication.css"; // Separate CSS file for uniqueness
 import { startResizing } from "../TableHeadingResizing/resizableColumns";
+import axios from "axios";
+import { API_BASE_URL } from "../api/api";
 
-const ClinicalMedication = () => {
+const ClinicalMedication = ({patientId,newPatientVisitId}) => {
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
   const [showForm, setShowForm] = useState(false);
+  const [medicationList, setMedicationList] = useState([
+    {
+      type: "Generic Type", 
+      medicationName: "Medication Example",
+      dose: "",
+      route: "mouth",
+      frequency: 0,
+      lastTaken: "",
+      comments: "",
+      status: "pending",
+      medicationDate: new Date().toLocaleDateString(),
+    },
+  ]);
 
-  const handleAddClick = () => {
-    setShowForm(true);
+  const handleAddClick = () => setShowForm(true);
+  const handleCloseForm = () => setShowForm(false);
+
+  // Handle input change for the form fields
+  const handleInputChange = (e, field) => {
+    const { name, value } = e.target;
+    setMedicationList((prevList) => {
+      const updatedList = [...prevList];
+      updatedList[0][field] = value; // Update first medication for simplicity
+      return updatedList;
+    });
   };
 
-  const handleCloseForm = () => {
-    setShowForm(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(medicationList);
+
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}/medications/save-medication-details`,
+        medicationList
+      );
+      console.log("Medication added successfully:", response.data);
+      setShowForm(false);
+    } catch (error) {
+      console.error("Error submitting medication:", error);
+    }
   };
 
   return (
@@ -59,7 +95,23 @@ const ClinicalMedication = () => {
               ))}
             </tr>
           </thead>
-          <tbody>{/* Medication data rows will go here */}</tbody>
+          <tbody>
+            {medicationList.map((medication, index) => (
+              <tr key={index}>
+                <td>{medication.medicationName}</td>
+                <td>{medication.type}</td>
+                <td>{medication.dose}</td>
+                <td>{medication.route}</td>
+                <td>{medication.lastTaken}</td>
+                <td>{medication.frequency}</td>
+                <td>{medication.comments}</td>
+                <td>
+                  {/* Implement Edit functionality here */}
+                  <button>Edit</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
 
@@ -75,25 +127,41 @@ const ClinicalMedication = () => {
                 ✖
               </button>
             </div>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="clinical-medication-form-row">
                 <label>Type*:</label>
                 <div className="clinical-medication-form-row-subdiv">
-                  <input type="checkbox" /> Current
-                  <input type="checkbox" /> Home
+                  <input type="checkbox" name="type" /> Current
+                  <input type="checkbox" name="type" /> Home
                 </div>
               </div>
               <div className="clinical-medication-form-row">
                 <label>Name*:</label>
-                <input type="text" placeholder="Medication Name" required />
+                <input
+                  type="text"
+                  placeholder="Medication Name"
+                  name="medicationName"
+                  required
+                  onChange={(e) => handleInputChange(e, "medicationName")}
+                />
               </div>
               <div className="clinical-medication-form-row">
                 <label>Dose*:</label>
-                <input type="text" placeholder="Dose" required />
+                <input
+                  type="text"
+                  placeholder="Dose"
+                  name="dose"
+                  required
+                  onChange={(e) => handleInputChange(e, "dose")}
+                />
               </div>
               <div className="clinical-medication-form-row">
                 <label>Route*:</label>
-                <select required>
+                <select
+                  required
+                  name="route"
+                  onChange={(e) => handleInputChange(e, "route")}
+                >
                   <option value="">Select Route</option>
                   <option value="oral">Oral</option>
                   <option value="iv">IV</option>
@@ -101,17 +169,35 @@ const ClinicalMedication = () => {
               </div>
               <div className="clinical-medication-form-row">
                 <label>Frequency*:</label>
-                <input type="text" placeholder="Frequency" required />
+                <input
+                  type="text"
+                  placeholder="Frequency"
+                  name="frequency"
+                  required
+                  onChange={(e) => handleInputChange(e, "frequency")}
+                />
               </div>
               <div className="clinical-medication-form-row">
                 <label>Last Taken*:</label>
-                <input type="date" required />
+                <input
+                  type="date"
+                  name="lastTaken"
+                  required
+                  onChange={(e) => handleInputChange(e, "lastTaken")}
+                />
               </div>
               <div className="clinical-medication-form-row">
                 <label>Comments:</label>
-                <textarea placeholder="Comments"></textarea>
+                <textarea
+                  placeholder="Comments"
+                  name="comments"
+                  onChange={(e) => handleInputChange(e, "comments")}
+                ></textarea>
               </div>
-              <button type="submit" className="clinical-medication-add-button">
+              <button
+                type="submit"
+                className="clinical-medication-add-button"
+              >
                 Add
               </button>
             </form>

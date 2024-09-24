@@ -1,3 +1,4 @@
+ /* Ajhar Tamboli dispenSalesProvisionalSettelment.jsx 19-09-24 */
 
 import React, { useState, useRef } from 'react';
 // import "../DisStocks/dispenSalesProvisionalBill.css"
@@ -9,6 +10,20 @@ function DispenSalesProvisionalSettelment() {
   const [showAddReport, setShowAddReport] = useState(false);
   const [showScanDone, setShowScanDone] = useState(false);
   const [showCreateRequisition, setShowCreateRequisition] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // State for loading indicator
+
+
+  // useEffect(() => {
+  //   axios.get('http://localhost:1415/api/provisional-bills/fetch-all-provisional-bills')
+  //     .then(response => {
+  //       setBills(response.data);
+  //       setIsLoading(false);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching provisional bills:', error);
+  //       setIsLoading(false);
+  //     });
+  // }, [])
 
   const printRef = useRef();
 

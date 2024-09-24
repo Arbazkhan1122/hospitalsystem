@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './ManageImagingType.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+
 // import './AddEmployeeRole.css';
 
 const ManageImagingType = () => {
@@ -9,6 +11,8 @@ const ManageImagingType = () => {
   const [role, setRole] = useState('');
   const [description, setDescription] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const handleEditClick = (type) => {
     setSelectedImagingType(type);
@@ -47,13 +51,30 @@ const ManageImagingType = () => {
         <button className="manage-imaging-type-btn">+Add Imaging Type</button>
       </div>
       <input type="text" className="manage-imaging-type-search-bar" placeholder="Search" />
-      <div className='manage-type'>
-        <table className="manage-imaging-type-table">
+      <div className='table-container'>
+      <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Type Name</th>
-              <th>IsActive</th>
-              <th>Action</th>
+              {[
+                "Type Name", "IsActive", "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -73,7 +94,7 @@ const ManageImagingType = () => {
             ))}
           </tbody>
         </table>
-        <div className="manage-imaging-type-pagination">
+        {/* <div className="manage-imaging-type-pagination">
           <span>1 to 9 of 9</span>
           <div className="manage-imaging-type-pagination-buttons">
             <button>First</button>
@@ -82,7 +103,7 @@ const ManageImagingType = () => {
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       <Modal show={showEditModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">

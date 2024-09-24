@@ -3,41 +3,41 @@ import './EncounterHistoryViewSummary.css';
 
 const VisitSummary = ({ onClose }) => {
   return (
-    <div className="visit-summary">
+    <div className="EncounterHistoryViewSummary-visit-summary">
       <header>
-        <div className="title">
+        <div className="EncounterHistoryViewSummary-title">
           <span role="img" aria-label="menu">☰</span>
           <h1>Visit Summary</h1>
         </div>
-        <div className="actions">
-          <button className="action-button">Actions</button>
-          <button className="close-button" onClick={onClose}>X</button> {/* Close button */}
+        <div className="EncounterHistoryViewSummary-actions">
+          <button className="EncounterHistoryViewSummary-action-button">Actions</button>
+          <button className="EncounterHistoryViewSummary-close-button" onClick={onClose}>X</button> {/* Close button */}
         </div>
       </header>
 
       <nav>
-        <button className="active">
-          <span className="icon-wrapper" role="img" aria-label="document">📄</span>
+        <button className="EncounterHistoryViewSummary-active">
+          <span className="EncounterHistoryViewSummary-icon-wrapper" role="img" aria-label="document">📄</span>
           ACTIVE PROBLEMS
         </button>
         <button>
-          <span className="icon-wrapper" role="img" aria-label="stethoscope">🩺</span>
+          <span className="EncounterHistoryViewSummary-icon-wrapper" role="img" aria-label="stethoscope">🩺</span>
           LAST VITALS
         </button>
         <button>
-          <span className="icon-wrapper" role="img" aria-label="image">🖼️</span>
+          <span className="EncounterHistoryViewSummary-icon-wrapper" role="img" aria-label="image">🖼️</span>
           IMAGING
         </button>
         <button>
-          <span className="icon-wrapper" role="img" aria-label="heart">❤️</span>
+          <span className="EncounterHistoryViewSummary-icon-wrapper" role="img" aria-label="heart">❤️</span>
           ALLERGIES
         </button>
         <button>
-          <span className="icon-wrapper" role="img" aria-label="pill">💊</span>
+          <span className="EncounterHistoryViewSummary-icon-wrapper" role="img" aria-label="pill">💊</span>
           MEDICATIONS
         </button>
         <button>
-          <span className="icon-wrapper" role="img" aria-label="flask">⚗️</span>
+          <span className="EncounterHistoryViewSummary-icon-wrapper" role="img" aria-label="flask">⚗️</span>
           LABS
         </button>
       </nav>

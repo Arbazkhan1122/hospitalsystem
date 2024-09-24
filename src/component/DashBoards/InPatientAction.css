@@ -10,8 +10,6 @@
 .Patient-Dashboard-main-section {
   display: flex;
   justify-content: space-between;
-  height: 75vh;
-  overflow-y: scroll;
   border: 1px solid #ddd;
   border: none;
 }
@@ -37,15 +35,11 @@
 }
 
 .Patient-Dashboard-betweenSection {
-
-  border: 1px solid black;
   width: 100%;
   margin-top: 5px;
-  /* background-color: #c5d2ee; */
-  border: none;
-
-
-
+  height: 75vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .Patient-Dashboard-navLogoOne {
@@ -190,7 +184,9 @@
 
 .Patient-Dashboard-right-aside {
   width: 55%;
-  height: auto;
+  height: 75vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
 
 }
 
@@ -298,8 +294,10 @@ img {
 }
 
 .Patient-Dashboard-detailsBox {
+  height: 45%;
+  overflow-y: scroll;
+  scrollbar-width: none;
   padding: 10px 0px;
-
 }
 
 .Patient-Dashboard-boxOne {
@@ -351,7 +349,7 @@ img {
   width: 250px;
   display: flex;
   border: 1px solid black;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   border: none;
 
@@ -413,9 +411,7 @@ img {
 }
 
 .Patient-Dashboard-navComplaints {
-
   border: 1px solid black;
-
   width: 100%;
   border: none;
 
@@ -426,7 +422,6 @@ img {
   display: flex;
   border: 1px solid black;
   border: none;
-  /* width: 100%; */
   justify-content: space-between;
   align-items: center;
   padding: 10px;

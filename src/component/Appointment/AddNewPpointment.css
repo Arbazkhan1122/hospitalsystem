@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    background-color: #e3f2fd;
+    background-color:#e3fffe;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
@@ -49,16 +49,18 @@
   }
   
   .addnewaptmtpatient-btn {
-    background-color: #007bff;
-    color: #ffffff;
+    background-color: var(--button-color);
+    color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
   }
+
   
   .addnewaptmtpatient-btn:hover {
-    opacity: 0.9;
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   

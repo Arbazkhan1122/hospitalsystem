@@ -8,12 +8,12 @@ const SocialHistory = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [socialHistories, setSocialHistories] = useState([]);
   const [newSocialHistory, setNewSocialHistory] = useState({
-    smokingHistory: "",
-    alcoholHistory: "",
-    drugHistory: "",
-    occupation: "",
-    familySupport: "",
-    hobby: "",
+    smokingHistory: '',
+    alcoholHistory: '',
+    drugHistory: '',
+    occupation: '',
+    familySupport: '',
+    hobby: ''
   });
 
   const handleOpenModal = () => {
@@ -32,16 +32,41 @@ const SocialHistory = () => {
     });
   };
 
-  const handleAddSocialHistory = () => {
-    setSocialHistories([...socialHistories, newSocialHistory]);
-    handleCloseModal();
+  const handleAddSocialHistory = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/social-histories/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newSocialHistory),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert('Social History added successfully!');
+        // Reset the form and close the modal
+        setNewSocialHistory({
+          smokingHistory: '',
+          alcoholHistory: '',
+          drugHistory: '',
+          occupation: '',
+          familySupport: '',
+          hobby: ''
+        });
+        handleCloseModal();
+      } else {
+        alert('Failed to add Social History');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error submitting form');
+    }
   };
 
   const handleInputChange = (e) => {
-    setNewSocialHistory({
-      ...newSocialHistory,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+    setNewSocialHistory({ ...newSocialHistory, [name]: value });
   };
 
   return (
@@ -110,76 +135,72 @@ const SocialHistory = () => {
           {/* Modal for Adding Social History */}
           {isAddModalOpen && (
             <div className="social-history-modal-overlay">
-              <div className="social-history-modal-content">
-                <h6>Add Social History</h6>
-                <button
-                  className="social-history-close-button"
-                  onClick={handleCloseModal}
-                >
-                  ❌
-                </button>
-                <div className="social-history-form-group">
-                  <label>Smoking History:</label>
-                  <input
-                    type="text"
-                    name="smokingHistory"
-                    value={newSocialHistory.smokingHistory}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="social-history-form-group">
-                  <label>Alcohol History:</label>
-                  <input
-                    type="text"
-                    name="alcoholHistory"
-                    value={newSocialHistory.alcoholHistory}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="social-history-form-group">
-                  <label>Drug History:</label>
-                  <input
-                    type="text"
-                    name="drugHistory"
-                    value={newSocialHistory.drugHistory}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="social-history-form-group">
-                  <label>Occupation:</label>
-                  <input
-                    type="text"
-                    name="occupation"
-                    value={newSocialHistory.occupation}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="social-history-form-group">
-                  <label>Family Support:</label>
-                  <input
-                    type="text"
-                    name="familySupport"
-                    value={newSocialHistory.familySupport}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <div className="social-history-form-group">
-                  <label>Hobby:</label>
-                  <input
-                    type="text"
-                    name="hobby"
-                    value={newSocialHistory.hobby}
-                    onChange={handleInputChange}
-                  />
-                </div>
-                <button
-                  className="social-history-add-button"
-                  onClick={handleAddSocialHistory}
-                >
-                  Add Social History
-                </button>
+            <div className="social-history-modal-content">
+              <h6>Add Social History</h6>
+              <button className="social-history-close-button" onClick={handleCloseModal}>
+                ❌
+              </button>
+      
+              <div className="social-history-form-group">
+                <label>Smoking History:</label>
+                <input
+                  type="text"
+                  name="smokingHistory"
+                  value={newSocialHistory.smokingHistory}
+                  onChange={handleInputChange}
+                />
               </div>
+              <div className="social-history-form-group">
+                <label>Alcohol History:</label>
+                <input
+                  type="text"
+                  name="alcoholHistory"
+                  value={newSocialHistory.alcoholHistory}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="social-history-form-group">
+                <label>Drug History:</label>
+                <input
+                  type="text"
+                  name="drugHistory"
+                  value={newSocialHistory.drugHistory}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="social-history-form-group">
+                <label>Occupation:</label>
+                <input
+                  type="text"
+                  name="occupation"
+                  value={newSocialHistory.occupation}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="social-history-form-group">
+                <label>Family Support:</label>
+                <input
+                  type="text"
+                  name="familySupport"
+                  value={newSocialHistory.familySupport}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="social-history-form-group">
+                <label>Hobby:</label>
+                <input
+                  type="text"
+                  name="hobby"
+                  value={newSocialHistory.hobby}
+                  onChange={handleInputChange}
+                />
+              </div>
+      
+              <button className="social-history-add-button" onClick={handleAddSocialHistory}>
+                Add Social History
+              </button>
             </div>
+          </div>
           )}
         </div>
       </div>

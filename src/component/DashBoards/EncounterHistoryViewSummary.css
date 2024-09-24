@@ -1,11 +1,11 @@
-/* .visit-visit-summary {
+.EncounterHistoryViewSummary-visit-visit-summary {
   font-family: Arial, sans-serif;
   max-width: 800px;
   margin: 0 auto;
   background-color: #f0f2f5;
 }
 
-.visit-header {
+.EncounterHistoryViewSummary-visit-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,23 +13,23 @@
   background-color: white;
 }
 
-.visit-title {
+.EncounterHistoryViewSummary-visit-title {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.visit-title h1 {
+.EncounterHistoryViewSummary-visit-title h1 {
   font-size: 1.2rem;
   margin: 0;
 }
 
-.visit-actions {
+.EncounterHistoryViewSummary-visit-actions {
   display: flex;
   gap: 10px;
 }
 
-.visit-action-button {
+.EncounterHistoryViewSummary-visit-action-button {
   background-color: #6c5ce7;
   color: white;
   border: none;
@@ -38,7 +38,7 @@
   cursor: pointer;
 }
 
-.visit-close-button {
+.EncounterHistoryViewSummary-visit-close-button {
   background-color: #e74c3c;
   color: white;
   border: none;
@@ -47,14 +47,14 @@
   cursor: pointer;
 }
 
-.visit-nav {
+.EncounterHistoryViewSummary-visit-nav {
   display: flex;
   background-color: #6c5ce7;
   padding: 10px;
   overflow-x: auto;
 }
 
-.visit-nav button {
+.EncounterHistoryViewSummary-visit-nav button {
   background: none;
   border: none;
   color: white;
@@ -66,11 +66,11 @@
   gap: 5px;
 }
 
-.visit-nav button.visit-active {
+.EncounterHistoryViewSummary-visit-nav button.EncounterHistoryViewSummary-visit-active {
   background-color: #5541d7;
 }
 
-.visit-icon-wrapper {
+.EncounterHistoryViewSummary-visit-icon-wrapper {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -78,19 +78,19 @@
   height: 24px;
 }
 
-.visit-table {
+.EncounterHistoryViewSummary-visit-table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
 }
 
-.visit-table th, .visit-table td {
+.EncounterHistoryViewSummary-visit-table th, .EncounterHistoryViewSummary-visit-table td {
   text-align: left;
   padding: 12px;
   border-bottom: 1px solid #ddd;
 }
 
-.visit-table th {
+.EncounterHistoryViewSummary-visit-table th {
   background-color: #f1f2f6;
   font-weight: bold;
-} */
+}

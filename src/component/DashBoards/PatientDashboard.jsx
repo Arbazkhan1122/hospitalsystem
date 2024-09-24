@@ -10,6 +10,7 @@ import { API_BASE_URL } from '../api/api';
 import AddVitalsForm from './AddVitals';
 import PatientDischargeForm from './DischargeSummary';
 import Allergy from './ClinicalAllergy';
+import CinicalDocument from './ClinicalDocuments';
 
 const Section = ({ title, handleAddClick, children }) => (
   <div className="Patient-Dashboard-firstBox">
@@ -82,6 +83,8 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
             return <PatientDischargeForm patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId}  />
             case 'Allergies':
             return <Allergy patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId}  />
+            case 'Clinical-Document':
+              return <CinicalDocument patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId}  />
 
       default:
         return renderDashboard();
@@ -120,18 +123,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
         <div className="Patient-Dashboard-detailsBox">
           <div className="Patient-Dashboard-boxOne">
             <div className="Patient-Dashboard-textAndLogo">
-              <span className="Patient-Dashboard-textOne">OPD Summary</span>
-            </div>
-          </div>
-
-          <div className="Patient-Dashboard-boxOne">
-            <div className="Patient-Dashboard-textAndLogo">
-              <span className="Patient-Dashboard-textOne">Patient Overview</span>
-            </div>
-          </div>
-
-          <div className="Patient-Dashboard-boxOne">
-            <div className="Patient-Dashboard-textAndLogo">
               <span
                 className="Patient-Dashboard-textOne"
                 onClick={() => {
@@ -144,11 +135,11 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
             </div>
           </div>
 
-          <div className="Patient-Dashboard-boxOne">
+          {/* <div className="Patient-Dashboard-boxOne">
             <div className="Patient-Dashboard-textAndLogo">
               <span className="Patient-Dashboard-textOne">Current Medications</span>
             </div>
-          </div>
+          </div> */}
 
           <div className="Patient-Dashboard-boxOne">
             <div className="Patient-Dashboard-textAndLogo">
@@ -164,7 +155,10 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
 
           <div className="Patient-Dashboard-boxOne">
             <div className="Patient-Dashboard-textAndLogo">
-              <span className="Patient-Dashboard-textOne">Clinical Documents</span>
+              <span className="Patient-Dashboard-textOne"  onClick={() => {
+                  setActiveSection("Clinical-Document");
+                  setPrevAction(...activeSection);
+                }}>Clinical Documents</span>
             </div>
           </div>
 
@@ -270,10 +264,10 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
             <div className="Patient-Dashboard-navTextandBtn">
               <div className="Patient-Dashboard-navVitals">
                 <span className="Patient-Dashboard-spanText">Last Vitals</span>
-                <div className="Patient-Dashboard-twoBtns">
-                  <button className="Patient-Dashboard-oneBtnNormal">Show Graph</button>
+                {/* <div className="Patient-Dashboard-twoBtns"> */}
+                  {/* <button className="Patient-Dashboard-oneBtnNormal">Show Graph</button> */}
                   <button className="Patient-Dashboard-secBtnBlue" onClick={()=> setActiveSection('Vitals')}>Add Vitals</button>
-                </div>
+                {/* </div> */}
               </div>
               <div className="Patient-Dashboard-tableRecord">
                 <table className='Patient-Dashboard-patient-table'>

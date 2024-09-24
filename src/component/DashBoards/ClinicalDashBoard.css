@@ -1,94 +1,59 @@
-/* .medication-list {
+.ClinicalDashBoard-medication-list {
     font-family: Arial, sans-serif;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f0f8ff;
+    
   }
   
-  header {
+  .ClinicalDashBoard-header {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
   }
   
-  h1 {
+  .ClinicalDashBoard-h1{
     margin-right: 20px;
   }
   
-  .add-btn, .close-btn {
-    padding: 5px 15px;
+  .ClinicalDashBoard-add-btn, .ClinicalDashBoard-close-btn {
+    padding: 5px ;
     margin-right: 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
   }
   
-  .add-btn {
-    background-color: #7952b3;
+  .ClinicalDashBoard-add-btn {
+    background-color: var(--button-color);
     color: white;
   }
   
-  .close-btn {
+  .ClinicalDashBoard-close-btn {
     background-color: #ff69b4;
     color: white;
     font-size: 20px;
     line-height: 1;
   }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
-  .edit-btn {
-    background-color: #4CAF50;
+
+  .ClinicalDashBoard-edit-btn {
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 5px;
     cursor: pointer;
   }
-  
-  .add-medication-form {
+
+  .ClinicalDashBoard-add-medication-form {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
   }
   
-  .radio-group {
+  .ClinicalDashBoard-radio-group {
     margin-bottom: 15px;
   }
   
-  .form-group {
+  .ClinicalDashBoard-form-group {
     margin-bottom: 15px;
   }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"],
-  input[type="date"],
-  select,
-  textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  textarea {
-    height:100px;
-} */

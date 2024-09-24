@@ -215,15 +215,15 @@
   }
   
 
-  .modal-dialog {
+  /* .modal-dialog {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 90vh; /* Ensure it takes full screen height */
-  }
+    min-height: 90vh;
+  } */
   
-  .modal-content {
+  /* .modal-content {
     width: 100%;
-    max-width: 800px; /* Control the modal's max width */
-  }
+    max-width: 800px; 
+  } */
   

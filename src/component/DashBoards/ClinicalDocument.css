@@ -1,7 +1,5 @@
 .cliDoc-container {
     display: flex;
-    background-color: gray;
-    padding: 10px;
   }
   
   .cliDoc-field {

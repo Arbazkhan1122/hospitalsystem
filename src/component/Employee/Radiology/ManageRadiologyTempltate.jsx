@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './ManageImagingType.css';
 import UpdateTemplate from './UpdateTemplate';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const ManageRadiologyTemplate = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const templateData = [
     { moduleName: 'Radiology', templateCode: 'CT-SCAN', templateName: 'CT-SCAN' },
@@ -27,14 +30,30 @@ const ManageRadiologyTemplate = () => {
       </div>
       <input type="text" className="manage-imaging-type-search-bar" placeholder="Search" />
 
-      <div className='manage-type'>
-        <table className="manage-imaging-type-table">
+      <div className='table-container'>
+      <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Module Name</th>
-              <th>Template Code</th>
-              <th>Template Name</th>
-              <th>Action</th>
+              {[
+               "Module Name", "Template Code", "Template Name", "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -51,7 +70,7 @@ const ManageRadiologyTemplate = () => {
           </tbody>
         </table>
 
-        <div className="manage-imaging-type-pagination">
+        {/* <div className="manage-imaging-type-pagination">
           <span>1 to 4 of 4</span>
           <div className="manage-imaging-type-pagination-buttons">
             <button>First</button>
@@ -60,7 +79,7 @@ const ManageRadiologyTemplate = () => {
             <button>Next</button>
             <button>Last</button>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {isModalOpen && (

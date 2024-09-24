@@ -33,7 +33,7 @@
   cursor: pointer;
 } */
 
-.appointment-booking-list-nav-link {
+.appointment-booking-list-navigation-link {
   background-color: var(--button-color);
   color: white;
   border: none;
@@ -44,7 +44,12 @@
   margin-left: 10px;
 }
 
-.appointment-booking-list-nav-link:hover {
+.appointment-booking-list-navigation-link:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+.appointment-booking-list-navigation-link.active {
   border: 1px solid var( --button-hover-border-color);
   color: var(--button-hover-text-color);
   background-color: var(--button-hover-background-color);
@@ -144,14 +149,14 @@
 .appointment-table-pagination-info {
   margin: 0 10px;
 }
-.appointment-booking-list-nav-link {
+/* .appointment-booking-list-nav-link {
   background-color: var(--button-color);
     color: white;
     border: none;
     padding: 5px 5px;
     border-radius: 5px;
     cursor: pointer;
-}
+} */
 
 .appointments__container {
   background-color: #d7f2f7;

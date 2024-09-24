@@ -198,7 +198,7 @@ function BirthList() {
                 </tbody>
               </table>
 
-              <div className="Birth-pagination">
+              {/* <div className="Birth-pagination">
               <button 
                 className="Birth-pagination-btn" 
                 onClick={() => handlePageChange(1)}
@@ -230,7 +230,7 @@ function BirthList() {
               >
                 Last
               </button>
-            </div>
+            </div> */}
                     </>
 
 
@@ -244,11 +244,10 @@ function BirthList() {
           <div>
       {addBirthDetails && isModalOpen &&(
         
-        <div className="FinalDiagnosis-container birthlist">
-          
-            <div className="modal-overlay">
-              <div className="modal-content">
-                <div className="modal-header">
+        <div className="AddBirthDetails-container birthlist">
+        <div className="AddBirthDetails-modal-overlay">
+          <div className="AddBirthDetails-modal-content">
+            <div className="AddBirthDetails-modal-header">
                   <button className="close-button" onClick={closeModal}>
                     &times;
                   </button>
@@ -351,13 +350,13 @@ function BirthList() {
                       </select>
                     </div>
                     <div className="form-group">
-                      <button type="submit" className='submit-button'>Add Certificate</button>
+                      <button type="submit" className='submit-button-popup'>Add Certificate</button>
                     </div>
                   </form>
                 </div>
                 <div className="footer-buttons">
-                  <button className="submit-button">Submit</button>
-                  <button className="cancel-button" onClick={closeModal}>Cancel</button>
+                  <button className="submit-button-popup">Submit</button>
+                  <button className="cancel-button-popup" onClick={closeModal}>Cancel</button>
                 </div>
               </div>
             </div>

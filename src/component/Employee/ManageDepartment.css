@@ -2,7 +2,7 @@
 .manage-department-page {
   background-color: var(--background-color);
   height: 90vh;
-  width: 90%;
+  /* width: 90%; */
   /* overflow-y: scroll; */
   overflow-x: auto; /* Handle horizontal overflow if needed */
 }

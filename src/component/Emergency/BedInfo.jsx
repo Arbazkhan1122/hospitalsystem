@@ -1,5 +1,9 @@
+ /* Dhanashree_WardOccupancy_19/09 */
+
 import React from 'react';
 import './BedInfo.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import  { useState, useEffect, useRef } from 'react';
 
 const WardOccupancy = () => {
   const wardData = [
@@ -10,6 +14,9 @@ const WardOccupancy = () => {
     { name: 'MATERNITY WARD', occupied: 3, vacant: 5, total: 8 },
     { name: 'Private Ward', occupied: 1, vacant: 4, total: 5 },
   ];
+
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const totals = wardData.reduce(
     (acc, ward) => ({
@@ -22,15 +29,34 @@ const WardOccupancy = () => {
 
   return (
     <div className="ward-occupancy">
-      <table className="occupancy-table">
-        <thead>
-          <tr>
-            <th>Ward Name</th>
-            <th>Occupied</th>
-            <th>Vacant</th>
-            <th>Total</th>
-          </tr>
-        </thead>
+     <table  ref={tableRef}>
+          <thead>
+            <tr>
+              { [
+  "Ward Name",
+  "Occupied",
+  "Vacant",
+  "Total"
+].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+  </thead>
         <tbody>
           {wardData.map((ward, index) => (
             <tr key={index} className={index % 2 === 0 ? 'even' : 'odd'}>
@@ -53,3 +79,4 @@ const WardOccupancy = () => {
 };
 
 export default WardOccupancy;
+ /* Dhanashree_WardOccupancy_19/09 */

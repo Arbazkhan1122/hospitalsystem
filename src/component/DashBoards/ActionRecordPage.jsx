@@ -2,18 +2,21 @@ import React, { useState, useEffect } from 'react';
 import './patientDashboard_Action_Order.css';   // Import the MedicationOrder component
 import MedicationOrder from './MedicationOrder ';
 import { API_BASE_URL } from '../api/api';
+import LabOrder from './LabOrder';
+import RadioOrder from './RadioOrder';
 
 const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
   const [selectedOrderType, setSelectedOrderType] = useState('');
   const [orderData, setOrderData] = useState([]);
   const [selectedOrders, setSelectedOrders] = useState([]);
   const [selectedOrderId, setSelectedOrderId] = useState('');
-  const [showMedicationOrder, setShowMedicationOrder] = useState(false); // Toggle to show MedicationOrder page
+  const [showMedicationOrder, setShowMedicationOrder] = useState(false); 
+  const [labOrder,showLabOrder] = useState(false);
 
   // API endpoints
   const apiEndpoints = {
     lab: `${API_BASE_URL}`,
-    imaging: 'https://api.example.com/imagingOrders',
+    imaging: `${API_BASE_URL}/add-items`,
     medication: `${API_BASE_URL}/add-items`,
     others: 'https://api.example.com/otherOrders',
   };
@@ -70,6 +73,7 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
   };
 
   const handleProceed = () => {
+    showLabOrder(true);
     if (selectedOrders.length > 0) {
       setShowMedicationOrder(true); // Show the MedicationOrder component when "Proceed" is clicked
     } else {
@@ -80,6 +84,12 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
   if (showMedicationOrder) {
     return <MedicationOrder selectedOrders={selectedOrders} setActiveSection={setActiveSection} patientId={patientId} newPatientVisitId={newPatientVisitId}/>;  // Pass selected orders to MedicationOrder
   }
+  // if (showLabOrder) {
+  //   return <LabOrder selectedOrders={selectedOrders} setActiveSection={setActiveSection} patientId={patientId} newPatientVisitId={newPatientVisitId}/>;  // Pass selected orders to MedicationOrder
+  // }
+  // if (showLabOrder) {
+  //   return <RadioOrder selectedOrders={selectedOrders} setActiveSection={setActiveSection} patientId={patientId} newPatientVisitId={newPatientVisitId}/>;  // Pass selected orders to MedicationOrder
+  // }
 
   return (
     <div className="action_record_container">
@@ -119,14 +129,8 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
               </thead>
               <tbody>
                 <tr>
-                  <td>Medication</td>
-                  <td>OSMOLAX 0 times a day Start Date - 04.09.2024</td>
-                  <td>active</td>
                 </tr>
                 <tr>
-                  <td>MRI</td>
-                  <td>Brain 03.09.2024 13:20</td>
-                  <td>active</td>
                 </tr>
               </tbody>
             </table>

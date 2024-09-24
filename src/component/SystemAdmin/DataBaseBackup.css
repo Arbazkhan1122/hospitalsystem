@@ -1,7 +1,8 @@
+/* Dhanashree_DatabaseBackup_19/09 */
+
 .database-backup-container {
-  background-color: #e6f2ff;
+  background-color: var(--background-color);
   padding: 20px;
-  font-family: Arial, sans-serif;
 }
 
 .info-section {
@@ -15,7 +16,7 @@
 .info-section h2 {
   margin-top: 0;
   color: #333;
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 10px;
 }
 
@@ -32,7 +33,7 @@
 .backup-button {
   margin-left: 20px;
   padding: 10px 20px;
-  background-color: #2196F3;
+  background-color: var(--button-color);
   color: white;
   border: none;
   cursor: pointer;
@@ -41,7 +42,7 @@
 
 .export-button {
   padding: 10px 20px;
-  background-color: #2196F3;
+  background-color: var(--button-color);
   color: white;
   border: none;
   cursor: pointer;
@@ -78,7 +79,7 @@
 
 .details-header {
   margin-top: 30px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
 }
 
@@ -96,7 +97,7 @@
 
 .search-bar .search-button {
   padding: 10px;
-  background-color: #2196F3;
+  background-color: var(--button-color);
   color: white;
   border: none;
   cursor: pointer;
@@ -147,7 +148,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #4CAF50;
+  background-color: var(--button-bg-color);
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -159,3 +160,25 @@
 .success-icon {
   margin-right: 10px;
 }
+
+
+.DatabaseBackup-print-btn {
+  background-color: var(--button-color);
+  color: white; /* You can change the text color as needed */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+.DatabaseBackupexport-btn {
+  background-color: var(--button-color); /* Using the same CSS variable */
+  color: white; /* Adjust text color if needed */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Dhanashree_DatabaseBackup_19/09 */

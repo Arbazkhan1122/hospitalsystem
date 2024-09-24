@@ -220,7 +220,7 @@ function SSPStock() {
     <div className="sSPStock-stock-container">
     <SSPharmacyNInven/>
     <nav className='sSPStock-stock-nav'>
-      <ul>
+      <ul className='sSPStock-stock-nav-ul'>
         <li className={activeTab === 'Stock' ? 'active' : ''} onClick={() => setActiveTab('Stock')}>Stock</li>
         <li className={activeTab === 'Requisition' ? 'active' : ''} onClick={() => setActiveTab('Requisition')}>Requisition</li>
         <li className={activeTab === 'Consumption' ? 'active' : ''} onClick={() => setActiveTab('Consumption')}>Consumption</li>

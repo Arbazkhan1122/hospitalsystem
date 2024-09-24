@@ -8,6 +8,12 @@ const SurgicalHistory = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [surgicalHistories, setSurgicalHistories] = useState([]);
   const [newSurgicalHistory, setNewSurgicalHistory] = useState({});
+  const [formData, setFormData] = useState({
+    surgeryType: '',
+    searchProblem: '',
+    surgeryDate: '',
+    note: ''
+  });
 
   const handleOpenModal = () => {
     setIsAddModalOpen(true);
@@ -17,15 +23,41 @@ const SurgicalHistory = () => {
     setIsAddModalOpen(false);
     setNewSurgicalHistory({});
   };
-
-  const handleAddSurgicalHistory = () => {
-    setSurgicalHistories([...surgicalHistories, newSurgicalHistory]);
-    handleCloseModal();
-  };
-
   const handleInputChange = (e) => {
-    setNewSurgicalHistory({ ...newSurgicalHistory, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
+
+  const handleAddSurgicalHistory = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/api/surgical-histories/Add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert('Surgical History added successfully!');
+        // Reset form and close modal
+        setFormData({
+          surgeryType: '',
+          searchProblem: '',
+          surgeryDate: '',
+          note: ''
+        });
+        handleCloseModal();
+      } else {
+        alert('Failed to add Surgical History');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error submitting form');
+    }
+  };
+
 
   return (
     <div className="surgical-history-container">
@@ -87,37 +119,54 @@ const SurgicalHistory = () => {
 
         {/* Modal for Adding Surgical History */}
         {isAddModalOpen && (
-          <div className="surgical-history-modal-overlay">
-            <div className="surgical-history-modal-content">
-              <h6>Add Surgical History</h6>
-              <button className="surgical-history-close-button" onClick={handleCloseModal}>
-                ❌
-              </button>
-              <div className="surgical-history-form-group">
-                <label>Surgery Type*:</label>
-                <input type="text" name="surgeryType" placeholder="Surgery Type" onChange={handleInputChange} />
-              </div>
-              <div className="surgical-history-form-group">
-                <label>ICD-11 Description*:</label>
-                <input type="text" name="description" placeholder="ICD-11 Description" onChange={handleInputChange} />
-              </div>
-              <div className="surgical-history-form-group">
-                <label>ICD-11 Code*:</label>
-                <input type="text" name="icd11" placeholder="ICD-11 Code" onChange={handleInputChange} />
-              </div>
-              <div className="surgical-history-form-group">
-                <label>Surgery Date*:</label>
-                <input type="date" name="surgeryDate" onChange={handleInputChange} />
-              </div>
-              <div className="surgical-history-form-group">
-                <label>Note:</label>
-                <textarea name="note" onChange={handleInputChange}></textarea>
-              </div>
-              <button className="surgical-history-add-button" onClick={handleAddSurgicalHistory}>
-                Add Surgical History
-              </button>
-            </div>
+        <div className="surgical-history-modal-overlay">
+        <div className="surgical-history-modal-content">
+          <h6>Add Surgical History</h6>
+          <button className="surgical-history-close-button" onClick={handleCloseModal}>
+            ❌
+          </button>
+          <div className="surgical-history-form-group">
+            <label>Surgery Type*:</label>
+            <input
+              type="text"
+              name="surgeryType"
+              placeholder="Surgery Type"
+              value={formData.surgeryType}
+              onChange={handleInputChange}
+            />
           </div>
+          <div className="surgical-history-form-group">
+            <label>ICD-11 Description*:</label>
+            <input
+              type="text"
+              name="searchProblem"
+              placeholder="ICD-11 Description"
+              value={formData.searchProblem}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="surgical-history-form-group">
+            <label>Surgery Date*:</label>
+            <input
+              type="date"
+              name="surgeryDate"
+              value={formData.surgeryDate}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="surgical-history-form-group">
+            <label>Note:</label>
+            <textarea
+              name="note"
+              value={formData.note}
+              onChange={handleInputChange}
+            ></textarea>
+          </div>
+          <button className="surgical-history-add-button" onClick={handleAddSurgicalHistory}>
+            Add Surgical History
+          </button>
+        </div>
+      </div>
         )}
         </div>
       </div>

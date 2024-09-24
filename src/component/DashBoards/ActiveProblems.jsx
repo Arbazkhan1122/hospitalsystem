@@ -3,7 +3,7 @@ import './Activeproblems.css'; // Import the CSS file for styling
 import { Label } from 'recharts';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
-const ActiveProblems = () => {
+const ActiveProblems = ({patientId,newPatientVisitId}) => {
   const [columnWidths,setColumnWidths] = useState({});
   const tableRef = useRef(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); 
@@ -11,6 +11,14 @@ const ActiveProblems = () => {
   const [newProblem, setNewProblem] = useState({}); 
   const [newPastProblem, setNewPastProblem] = useState({}); 
   const [isAddPastModalOpen, setIsAddPastModalOpen] = useState(false);
+  const [activeProblem, setActiveProblem] = useState({
+    searchProblem: '',
+    icdCode: '',
+    isPrincipalProblem: false,
+    currentStatus: '',
+    onsetDate: '',
+    note: ''
+  });
 
  
   const handleOpenModal = () => {
@@ -35,16 +43,46 @@ const ActiveProblems = () => {
     setNewPastProblem({}); // Clear form data
   };
   
-  const handleAddProblem = () => {
-    setActiveProblems([...activeProblems, newProblem]); 
-    handleCloseModal(); 
-  };
-
- 
   const handleInputChange = (e) => {
-    setNewProblem({ ...newProblem, [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+    setActiveProblem({
+      ...activeProblem,
+      [name]: type === 'checkbox' ? checked : value,
+    });
   };
 
+  const handleAddProblem = async () => {
+    console.log(activeProblem);
+    try {
+      const response = await fetch('http://localhost:8080/api/active-problems/add', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(activeProblem),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert('Active Problem added successfully!');
+        // Reset the form after submission
+        setActiveProblem({
+          searchProblem: '',
+          icdCode: '',
+          isPrincipalProblem: false,
+          currentStatus: '',
+          onsetDate: '',
+          note: ''
+        });
+        handleCloseModal();
+      } else {
+        alert('Failed to add Active Problem');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error submitting form');
+    }
+  };
   const handleAddPastProblem = () => {
     // Add new past problem to your list (if you have a list for past problems)
     handleClosePastModal(); // Close the modal
@@ -172,28 +210,71 @@ const ActiveProblems = () => {
        {/* Modal for Adding Active Problem */}
        {isAddModalOpen && (
         <div className="activeproblems-modal-overlay">
-          <div className="activeproblems-modal-content">
-            <h4 className='activeproblems-sectionh5 '>Add Active Problem</h4>
-            <button className="activeproblems-close-button" onClick={handleCloseModal}>❌</button>
-            <div className="activeproblems-form-group">
-              <label>Search Problem:</label>
-              <input type="text" name="description" onChange={handleInputChange} />
-            </div>
-            <div className="activeproblems-form-group">
-              <label>Current Status:</label>
-              <input type="text" name="status" onChange={handleInputChange} />
-            </div>
-            <div className="activeproblems-form-group">
-              <label>OnSet Date:</label>
-              <input type="date" name="date" onChange={handleInputChange} />
-            </div>
-            <div className="activeproblems-form-group">
-              <label>Note:</label>
-              <textarea name="notes" onChange={handleInputChange}></textarea>
-            </div>
-            <button className="activeproblems-add-problem-button" onClick={handleAddProblem}>Add Problem</button>
+        <div className="activeproblems-modal-content">
+          <h4 className="activeproblems-sectionh5">Add Active Problem</h4>
+          <button className="activeproblems-close-button" onClick={handleCloseModal}>
+            ❌
+          </button>
+  
+          <div className="activeproblems-form-group">
+            <label>Search Problem:</label>
+            <input
+              type="text"
+              name="searchProblem"
+              value={activeProblem.searchProblem}
+              onChange={handleInputChange}
+            />
           </div>
+          <div className="activeproblems-form-group">
+            <label>ICD-11 Code:</label>
+            <input
+              type="text"
+              name="icdCode"
+              value={activeProblem.icdCode}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="activeproblems-form-group">
+            <label>Principal Problem:</label>
+            <input
+              type="checkbox"
+              name="isPrincipalProblem"
+              checked={activeProblem.isPrincipalProblem}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="activeproblems-form-group">
+            <label>Current Status:</label>
+            <input
+              type="text"
+              name="currentStatus"
+              value={activeProblem.currentStatus}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="activeproblems-form-group">
+            <label>Onset Date:</label>
+            <input
+              type="date"
+              name="onsetDate"
+              value={activeProblem.onsetDate}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="activeproblems-form-group">
+            <label>Note:</label>
+            <textarea
+              name="note"
+              value={activeProblem.note}
+              onChange={handleInputChange}
+            ></textarea>
+          </div>
+  
+          <button className="activeproblems-add-problem-button" onClick={handleAddProblem}>
+            Add Problem
+          </button>
         </div>
+      </div>
       )}
 
 {isAddPastModalOpen && (

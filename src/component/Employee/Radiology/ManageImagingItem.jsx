@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './ManageImagingType.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const ManageImagingItem = () => {
   const [showEditModal, setShowEditModal] = useState(false);
@@ -9,6 +10,8 @@ const ManageImagingItem = () => {
   const [description, setDescription] = useState('');
   const [isActive, setIsActive] = useState(false);
   const [isValidForReporting, setIsValidForReporting] = useState(false);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
 
   const imagingTypes = [
@@ -50,17 +53,31 @@ const ManageImagingItem = () => {
     <input type="text" className="manage-imaging-type-search-bar" placeholder="Search" />
 
     <div className="manage-type">
-      <table className="manage-imaging-type-table">
-        <thead>
-          <tr>
-            <th>Type</th>
-            <th>Item Name</th>
-            <th>Procedure Code</th>
-            <th>Price</th>
-            <th>Is Active</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+    <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Type", "Item Name", "Procedure Code", "Price", "Is Active", "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {imagingTypes.map((item, index) => (
             <tr key={index}>
@@ -82,7 +99,7 @@ const ManageImagingItem = () => {
         </tbody>
       </table>
 
-      <div className="manage-imaging-type-pagination">
+      {/* <div className="manage-imaging-type-pagination">
         <span>1 to 9 of 9</span>
         <div className="manage-imaging-type-pagination-buttons">
           <button>First</button>
@@ -91,7 +108,7 @@ const ManageImagingItem = () => {
           <button>Next</button>
           <button>Last</button>
         </div>
-      </div>
+      </div> */}
     </div>
 
     <Modal

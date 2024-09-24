@@ -313,72 +313,104 @@ function RecordMedical() {
           )
         }
       </div>
-
-      {
-      isModalOpen && outpatients &&
-      <Modal show={isModalOpen} onHide={closeModal} size="lg">
-      <Modal.Header closeButton>
-        <Modal.Title>Add Final Diagnosis</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-
-       
-        <div>
       
+      {
+  isModalOpen && outpatients && (
+    <div className="MROUT-container birthlist">
+    <div className="MROUT-modal-overlay">
+      <div className="MROUT-modal-content">
+        <div className="MROUT-modal-header">
+            <button className="close-button" onClick={closeModal}>
+              &times;
+            </button>
+          </div>
+          <h3>Add Final Diagnosis</h3>
 
-          
-          <h5><i className="bi bi-person-circle"></i> {addFinalDiagnosisdata.patientName} </h5>
-          <Row className="mb-3">
-            <Col md={6}><strong>Outpatient No:</strong> {addFinalDiagnosisdata.id}</Col>
-            <Col md={6}><strong>Age:</strong> {addFinalDiagnosisdata.age}</Col>
-            <Col md={6}><strong>Visit Date:</strong> {addFinalDiagnosisdata.visitDate}12/02/2023</Col>
-            <Col md={6}><strong>Contact No:</strong> {addFinalDiagnosisdata.contactNo}8765439082</Col>
-            <Col md={6}><strong>Doctor Name:</strong> {addFinalDiagnosisdata.doctorName}</Col>
-            <Col md={6}><strong>Address:</strong> {addFinalDiagnosisdata.address}Ratnagiri</Col>
-            <Col md={6}><strong>Department:</strong> {addFinalDiagnosisdata.department}</Col>
-          </Row>
-          <Form>
-            <Form.Group as={Row} controlId="formDiseaseCategory">
-              <Form.Label column sm={4}>Select Disease Category</Form.Label>
-              <Col sm={8}>
-                <Form.Control as="select" value={diseaseCategory} onChange={e => setDiseaseCategory(e.target.value)}>
+          <div className="form-container">
+            <form onSubmit={handleSubmit}>
+              <h5>
+                <i className="bi bi-person-circle"></i> {addFinalDiagnosisdata.patientName}
+              </h5>
+              <div className="form-group">
+                <strong>Outpatient No:</strong> {addFinalDiagnosisdata.id}
+              </div>
+              <div className="form-group">
+                <strong>Age:</strong> {addFinalDiagnosisdata.age}
+              </div>
+              <div className="form-group">
+                <strong>Visit Date:</strong> {addFinalDiagnosisdata.visitDate}
+              </div>
+              <div className="form-group">
+                <strong>Contact No:</strong> {addFinalDiagnosisdata.contactNo}
+              </div>
+              <div className="form-group">
+                <strong>Doctor Name:</strong> {addFinalDiagnosisdata.doctorName}
+              </div>
+              <div className="form-group">
+                <strong>Address:</strong> {addFinalDiagnosisdata.address}
+              </div>
+              <div className="form-group">
+                <strong>Department:</strong> {addFinalDiagnosisdata.department}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="diseaseCategory">Select Disease Category</label>
+                <select
+                  id="diseaseCategory"
+                  name="diseaseCategory"
+                  value={diseaseCategory}
+                  onChange={e => setDiseaseCategory(e.target.value)}
+                  required
+                >
                   <option value="All">All</option>
-                  <option>Communicable,Vector Borne</option>
+                  <option>Communicable, Vector Borne</option>
                   <option>Cardiovascular & Respiratory Related Problems</option>
                   <option>Certain Infectious or parasitic diseases</option>
-                  <option >Ear,Nose and Throat Infection</option>
-                </Form.Control>
-              </Col>
-            </Form.Group>
+                  <option>Ear, Nose and Throat Infection</option>
+                </select>
+              </div>
 
-            <Form.Group as={Row} controlId="formDiagnosis" className="mt-3">
-              <Form.Label column sm={4}>Select Diagnosis</Form.Label>
-              <Col sm={8}>
-                <Form.Control type="text" placeholder="ICD-11" value={diagnosis} onChange={e => setDiagnosis(e.target.value)} />
-              </Col>
-            </Form.Group>
+              <div className="form-group">
+                <label htmlFor="diagnosis">Select Diagnosis</label>
+                <input
+                  type="text"
+                  id="diagnosis"
+                  name="diagnosis"
+                  placeholder="ICD-11"
+                  value={diagnosis}
+                  onChange={e => setDiagnosis(e.target.value)}
+                  required
+                />
+              </div>
 
-            <Form.Group controlId="formReferredOutpatient" className="mt-3">
-              <Form.Check
-                type="checkbox"
-                label="Referred Outpatient?"
-                checked={referredOutpatient}
-                onChange={e => setReferredOutpatient(e.target.checked)}
-              />
-            </Form.Group>
-          </Form>
+              <div className="form-group">
+                <label>
+                  <input
+                    type="checkbox"
+                    name="referredOutpatient"
+                    checked={referredOutpatient}
+                    onChange={e => setReferredOutpatient(e.target.checked)}
+                  />
+                  Referred Outpatient?
+                </label>
+              </div>
+
+              <div className="footer-buttons">
+                <button type="submit" className="submit-button">
+                  Submit
+                </button>
+                <button type="button" className="cancel-button" onClick={closeModal}>
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={closeModal}>
-          Cancel
-        </Button>
-        <Button variant="primary" onClick={handleSubmit}>
-          Submit
-        </Button>
-      </Modal.Footer>
-    </Modal>
-    }
+      </div>
+    </div>
+  )
+}
+
     </div>
    
 
