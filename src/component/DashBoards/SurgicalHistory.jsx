@@ -1,8 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './SurgicalHistory.css';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../api/api';
+import axios from 'axios';
 
-const SurgicalHistory = () => {
+const SurgicalHistory = ({patientId,newPatientVisitId}) => {
   const [columnWidths,setColumnWidths] = useState({});
   const tableRef = useRef(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -28,20 +30,40 @@ const SurgicalHistory = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  useEffect(() => {
+    // Fetch vitals from API
+    axios
+      .get(
+        `${API_BASE_URL}/surgical-histories/by-newVisitPatientId/${newPatientVisitId}`
+      )
+      .then((response) => {
+        if (response.data.length > 0) {
+          setSurgicalHistories(response.data);
+          // console.log(response.data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching vitals:", error);
+      });
+  }, []);
+
   const handleAddSurgicalHistory = async () => {
+    const Surgical =
+        patientId > 0
+          ? { ...formData, patientDTO: { patientId } }
+          : { ...formData, newPatientVisitDTO: { newPatientVisitId } };
+    console.log(Surgical);
     try {
-      const response = await fetch('http://localhost:8080/api/surgical-histories/Add', {
+      const response = await fetch(`${API_BASE_URL}/surgical-histories/save-surgical-history`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(Surgical),
       });
 
       if (response.ok) {
-        const data = await response.json();
         alert('Surgical History added successfully!');
-        // Reset form and close modal
         setFormData({
           surgeryType: '',
           searchProblem: '',
@@ -75,8 +97,7 @@ const SurgicalHistory = () => {
             <tr>
               {[
                   "Surgery Type",
-                  "ICD-11 Description",
-                  "ICD-11 Code",
+                  "searchProblem",
                   "Surgery Date",
                   "Note",
                   "Edit"
@@ -104,8 +125,7 @@ const SurgicalHistory = () => {
               {surgicalHistories.map((history, index) => (
                 <tr key={index}>
                   <td className="surgical-history-table-data">{history.surgeryType}</td>
-                  <td>{history.description}</td>
-                  <td>{history.icd11}</td>
+                  <td>{history.searchProblem}</td>
                   <td>{history.surgeryDate}</td>
                   <td>{history.note}</td>
                   <td>

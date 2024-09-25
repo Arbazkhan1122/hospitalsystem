@@ -1,3 +1,6 @@
+ /* Ajhar Tamboli relEditDoctors.jsx 19-09-24 */
+
+
 import React, { useState, useEffect, useRef } from "react";
 import "../EditDoctors/relEditDoctors.css";
 import TransactionDetails from "./rdlEditDrEditBtn";
@@ -15,7 +18,7 @@ function RDLEditDoctors() {
 
   // Function to fetch data from API
   useEffect(() => {
-    fetch("http://localhost:8888/api/patient-imaging-requisitions/all")
+    fetch("http://localhost:1415/api/patient-imaging-requisitions/all")
       .then((response) => response.json())
       .then((data) => {
         setImagingData(data);
@@ -84,18 +87,20 @@ function RDLEditDoctors() {
         </div>
       </header>
       <div className="relEditDoctors-controls">
-        <div className="relEditDoctors-date-range">
-          <label>
-            From:
-            <input type="date" defaultValue="2024-08-09" />
-          </label>
-          <label>
-            To:
-            <input type="date" defaultValue="2024-08-16" />
-          </label>
-          <button className="relEditDoctors-star-button">☆</button>
-          <button className="relEditDoctors-ok-button">OK</button>
-        </div>
+      <div className="relEditDoctors-date-range">
+      <label>
+        From:
+        <input type="date" defaultValue="2024-08-09" />
+      </label>
+      <label>
+        To:
+        <input type="date" defaultValue="2024-08-16" />
+      </label>
+      <button className="relEditDoctors-star-button">☆</button>
+    <button className="relEditDoctors-more-btn">-</button>
+      <button className="relEditDoctors-ok-button">OK</button>
+    </div>
+
       </div>
       <div className="relEditDoctors-search-N-results">
         <div className="relEditDoctors-search-bar">
@@ -131,7 +136,7 @@ function RDLEditDoctors() {
             className="relEditDoctors-ex-pri-buttons"
             onClick={printTable}
           >
-            Print
+            <i class="fa-solid fa-print"></i> Print
           </button>
         </div>
       </div>

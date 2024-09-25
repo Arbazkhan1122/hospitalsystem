@@ -1,12 +1,13 @@
 /* General Styles */
 
-/* Ajhar tamboli sSPRequisition.css 19-09-24 */
+/* Ajhar Tamboli sSPRequisition.css 19-09-24 */
 
 .sSPRequisition-container {
   /* width: 98%; */
   /* border-radius: 5px; */
   margin: 0 auto;
-  background-color: white;
+  background-color:var(--background-color);
+  height: 75vh;
   padding: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
@@ -37,12 +38,12 @@
 }
 .sSPRequisition-search-bar {
   display: flex;
-  margin-left: -30px;
+  margin-left: -15px;
 }
 
 .sSPRequisition-search-bar input {
   flex-grow: 1;
-  padding: 5px;
+  padding: 3px;
   width: 200px;
 
 }
@@ -50,7 +51,7 @@
   position: relative;
   color:gray;
   top: 7px;
-left: 205px;
+left: 190px;
 }
 .sSPRequisition-results-info {
   text-align: right;

@@ -25,7 +25,7 @@ const [columnWidths, setColumnWidths] = useState({});
 const tableRef = useRef(null);
   // Fetch patient data from API
   useEffect(() => {
-    fetch('http://192.168.1.39:1415/api/new-patient-visits')
+    fetch('http://localhost:1415/api/new-patient-visits')
       .then(response => response.json())
       .then(data => {
         setPatients(data);

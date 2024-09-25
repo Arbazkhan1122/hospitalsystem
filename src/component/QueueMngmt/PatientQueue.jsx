@@ -14,7 +14,9 @@ const PatientQueue = () => {
   const [selectedStatus, setSelectedStatus] = useState('all');
 
   useEffect(() => {
+
     fetch(`${API_BASE_URL}/queues/employee/role`)
+
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -35,7 +37,9 @@ console.log(selectedDoctor);
       const selectedDoctorId = selectedDoctor; // Now this is the employeeId
 
       if (selectedDoctorId) {
+
         fetch(`${API_BASE_URL}/queues/employee/${selectedDoctorId}`)
+
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
@@ -63,6 +67,7 @@ console.log(selectedDoctor);
 
     // Make a PUT request to update the status
     axios.put(`${API_BASE_URL}/queues/update/${patientData.patientQueueId}`, updatedData)
+
       .then((response) => {
         console.log('Data updated successfully', response.data);
         // Update the local state to reflect the changes

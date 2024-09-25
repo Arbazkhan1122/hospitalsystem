@@ -10,7 +10,7 @@ function RDLAddScanDoneDetails({ onClose, onUpdateStatus }) {
 
   useEffect(() => {
     // Fetch film types from the API
-    fetch("http://localhost:8888/api/film-types")
+    fetch("http://localhost:1415/api/film-types")
       .then((response) => response.json())
       .then((data) => setFilmTypes(data))
       .catch((error) => {

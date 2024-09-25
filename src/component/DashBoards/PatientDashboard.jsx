@@ -1,6 +1,6 @@
 // SwapnilRokade_PatientDashboard_Adding_New_patientDashboard_13/09
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './InPatientAction.css';
 import VitalsPage from './ClinicalVitals'; 
 import ActionRecordPage from './ActionRecordPage';
@@ -11,6 +11,8 @@ import AddVitalsForm from './AddVitals';
 import PatientDischargeForm from './DischargeSummary';
 import Allergy from './ClinicalAllergy';
 import CinicalDocument from './ClinicalDocuments';
+import axios from 'axios';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const Section = ({ title, handleAddClick, children }) => (
   <div className="Patient-Dashboard-firstBox">
@@ -27,11 +29,14 @@ const Section = ({ title, handleAddClick, children }) => (
 const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
   console.log(patient.newPatientVisitId);
   
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [activeSection, setActiveSection] = useState('dashboard'); 
   const [prevAction, setPrevAction] = useState('dashboard');
-
+  const [latestVitals, setLatestVitals] = useState(null);
   const [medications, setMedications] = useState([]);
   const [filteredMedications, setFilteredMedications] = useState([]);
+  const [allergies,setAllergies]=useState(null);
 
   useEffect(() => {
     // Fetch medications data from the API
@@ -50,7 +55,38 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
     fetchMedications();
   }, [activeSection]);
 
- console.log(medications);
+  useEffect(() => {
+    // Fetch vitals from API
+    axios
+      .get(`${API_BASE_URL}/vitals/get-by-opd-patient-id/${patient.newPatientVisitId}`)
+      .then((response) => {
+        if (response.data.length > 0) {
+          setLatestVitals(response.data[response.data.length-1]); 
+          console.log(response.data[response.data.length-1]);
+          
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching vitals:", error);
+      });
+  }, [setIsPatientOPEN,isPatientOPEN]);
+
+  useEffect(() => {
+    // Fetch vitals from API
+    axios
+      .get(
+        `${API_BASE_URL}/allergies/by-newVisitPatientId/${patient.newPatientVisitId}`
+      )
+      .then((response) => {
+        if (response.data.length > 0) {
+          setAllergies(response.data);
+          // console.log(response.data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching vitals:", error);
+      });
+  }, []);
  
 
  useEffect(() => {
@@ -253,8 +289,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
               <p>No medications found for this patient or visit.</p>
             )}</>}
             />
-           
-          
         </div>
       </main>
 
@@ -273,40 +307,47 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
                 <table className='Patient-Dashboard-patient-table'>
                   <tr>
                     <td className='Patient-Dashboard-td'>Recoreded On</td>
-                    <td className='Patient-Dashboard-td'>2024-06-18 03:22 PM</td>
+                    <td className='Patient-Dashboard-td'>{new Date(latestVitals?.addedOn).toLocaleString()}</td>
                   </tr>
                   <tr>
                     <td className='Patient-Dashboard-td'>Height</td>
-                    <td className='Patient-Dashboard-td'>200 cm</td>
+                    <td className='Patient-Dashboard-td'> {latestVitals?.height} cm</td>
                   </tr>
                   <tr>
                     <td className='Patient-Dashboard-td'>Weight</td>
-                    <td className='Patient-Dashboard-td'>40kg</td>
+                    <td className='Patient-Dashboard-td'>{latestVitals?.weight}kg</td>
                   </tr>
                   <tr>
                     <td className='Patient-Dashboard-td'>BMI</td>
-                    <td className='Patient-Dashboard-td'>10</td>
+                    <td className='Patient-Dashboard-td'>{latestVitals?.bmi}</td>
                   </tr>
                   <tr>
                     <td className='Patient-Dashboard-td'>Temprature</td>
+                    <td className='Patient-Dashboard-td'>{latestVitals?.temperature} °C</td>
                   </tr>
                   <tr>
                     <td className='Patient-Dashboard-td'>Pulse</td>
+                    <td className='Patient-Dashboard-td'>{latestVitals?.pulse} bpm</td>
                   </tr>
                   <tr>
                     <td className='Patient-Dashboard-td'>Blood Pressure</td>
+                    <td className='Patient-Dashboard-td'> {latestVitals?.bpSystolic}/{latestVitals?.bpDiastolic} mmHg</td>
                   </tr>
                   <tr>
                     <td className='Patient-Dashboard-td'>Respiratory Rate</td>
+                    <td className='Patient-Dashboard-td'>{latestVitals?.respiratoryRate} breaths/min</td>
                   </tr>
                   <tr>
                     <td className='Patient-Dashboard-td'>SpO2</td>
+                    <td className='Patient-Dashboard-td'> {latestVitals?.spO2} %</td>
                   </tr>
                   <tr>
                     <td className='Patient-Dashboard-td'>O2 Deliver Method</td>
+                    <td className='Patient-Dashboard-td'> {latestVitals?.o2DeliveryPlan}</td>
                   </tr>
                   <tr>
-                    <td className='Patient-Dashboard-td'>Body Pain Data</td>
+                    <td className='Patient-Dashboard-td'>Pain Scale</td>
+                    <td className='Patient-Dashboard-td'>{latestVitals?.painScale}</td>
                   </tr>
                 </table>
               </div>
@@ -315,6 +356,54 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
           <Section
             title="🚫 Allergies"
             handleAddClick={() => setActiveSection("Allergies")}
+            children={<>
+          
+          <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Recorded On",
+                "Allergen",
+                "Severity",
+                "Reaction"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {allergies && allergies.length > 0 ? (
+              allergies.map((allergy) => (
+                <tr key={allergy.allergiesId}>
+                  <td>{allergy.recordedDate}</td>
+                  <td>{allergy.typeOfAllergy}</td>
+                  <td>{allergy.severity}</td>
+                  <td>{allergy.reaction}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="7">No allergies found</td>
+              </tr>
+            )}
+          </tbody>
+          </table>
+          </>}
           />
         </div>
       </aside>

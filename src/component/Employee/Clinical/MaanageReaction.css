@@ -1,9 +1,9 @@
 .manage-reaction-container {
-    background-color: #d4f1f9;
+    background-color: var(--background-color);
     padding: 20px;
+    height: 90vh;
     border-radius: 5px;
     font-family: Arial, sans-serif;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .manage-reaction-header {
@@ -13,26 +13,31 @@
 }
 
 .manage-reaction-add-button {
-    background-color: #5b73e8;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-weight: bold;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
+}
+.manage-reaction-add-button:hover{
+    color: var(--button-color);
+    background-color: white;
+    border-bottom:  1px solid var(--button-color);
 }
 
 .manage-reaction-search-input {
-    padding: 6px;
+    padding: 5px;
+    font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 180px;
+    /* width: 180px; */
 }
 
 .manage-reaction-span {
     text-align: right;
-    color: #0F63AF;
-    font-size: 16px;
+    color: black;
+    font-size: 14px;
     margin-top: 10px;
 }
 
@@ -71,14 +76,23 @@
 }
 
 .manage-reaction-action-button {
-    background-color: #5b73e8;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 4px 8px;
-    border-radius: 3px;
+    padding: 5px 5px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--button-color);
+
 }
+.manage-reaction-action-button:hover{
+    color: var(--button-color);
+    background-color: white;
+    border-bottom: 1px solid var(--button-color);
+
+}
+
 
 .manage-reaction-pagination {
     margin-top: 15px;

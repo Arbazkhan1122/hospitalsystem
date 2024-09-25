@@ -22,7 +22,7 @@ function Ot_personnelType() {
   // Function to fetch personnel types
   const fetchPersonnelTypes = async () => {
     try {
-      const response = await fetch('http://localhost:8888/api/personnel-types/all');
+      const response = await fetch('http://localhost:1415/api/personnel-types/all');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

@@ -38,7 +38,7 @@ function VaccinationsReports() {
       .join("&");
 
     // Fetch the patient data from the API with filters applied
-    fetch(`http://localhost:8888/api/vaccinations/allVaccine?${queryParams}`)
+    fetch(`http://localhost:1415/api/vaccinations/allVaccine?${queryParams}`)
       .then((response) => response.json())
       .then((patientsData) => {
         // Process the fetched patient data

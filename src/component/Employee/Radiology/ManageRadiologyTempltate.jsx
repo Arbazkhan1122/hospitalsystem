@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import './ManageImagingType.css';
 import UpdateTemplate from './UpdateTemplate';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const ManageRadiologyTemplate = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [columnWidths,setColumnWidths] = useState({});
-  const tableRef=useRef(null);
+  const [editData, setEditData] = useState(null); // To manage edit state
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   const templateData = [
     { moduleName: 'Radiology', templateCode: 'CT-SCAN', templateName: 'CT-SCAN' },
@@ -15,28 +16,33 @@ const ManageRadiologyTemplate = () => {
     { moduleName: 'Radiology', templateCode: 'USG Chest', templateName: 'USG Chest' },
   ];
 
-  const handleEditClick = () => {
+  const handleEditClick = (data) => {
+    setEditData(data); // Set the template data to be edited
+    setIsModalOpen(true);
+  };
+
+  const handleAddClick = () => {
+    setEditData(null); // Clear data for adding a new template
     setIsModalOpen(true);
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    setEditData(null); // Clear data when modal is closed
   };
 
   return (
     <div className="manage-imaging-type-container">
       <div>
-        <button className="manage-imaging-type-btn">+Add Template</button>
+        <button className="manage-imaging-type-btn" onClick={handleAddClick}>+Add Template</button>
       </div>
       <input type="text" className="manage-imaging-type-search-bar" placeholder="Search" />
 
       <div className='table-container'>
-      <table  ref={tableRef}>
+        <table ref={tableRef}>
           <thead>
             <tr>
-              {[
-               "Module Name", "Template Code", "Template Name", "Action"
-              ].map((header, index) => (
+              {["Module Name", "Template Code", "Template Name", "Action"].map((header, index) => (
                 <th
                   key={index}
                   style={{ width: columnWidths[index] }}
@@ -46,10 +52,7 @@ const ManageRadiologyTemplate = () => {
                     <span>{header}</span>
                     <div
                       className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
+                      onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
                     ></div>
                   </div>
                 </th>
@@ -63,28 +66,17 @@ const ManageRadiologyTemplate = () => {
                 <td>{item.templateCode}</td>
                 <td>{item.templateName}</td>
                 <td>
-                  <button className="manage-imaging-type-edit-button" onClick={handleEditClick}>Edit</button>
+                  <button className="manage-imaging-type-edit-button" onClick={() => handleEditClick(item)}>Edit</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-
-        {/* <div className="manage-imaging-type-pagination">
-          <span>1 to 4 of 4</span>
-          <div className="manage-imaging-type-pagination-buttons">
-            <button>First</button>
-            <button>Previous</button>
-            <span>Page 1 of 1</span>
-            <button>Next</button>
-            <button>Last</button>
-          </div>
-        </div> */}
       </div>
 
       {isModalOpen && (
         <div className="update-template-modal-overlay">
-          <UpdateTemplate onClose={handleCloseModal} />
+          <UpdateTemplate onClose={handleCloseModal} templateData={editData} />
         </div>
       )}
     </div>

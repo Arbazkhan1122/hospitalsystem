@@ -1,8 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./SocialHistory.css";
 import { startResizing } from "../TableHeadingResizing/resizableColumns";
+import { API_BASE_URL } from "../api/api";
+import axios from "axios";
 
-const SocialHistory = () => {
+const SocialHistory = ({patientId,newPatientVisitId}) => {
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -32,18 +34,40 @@ const SocialHistory = () => {
     });
   };
 
+  useEffect(() => {
+    // Fetch vitals from API
+    axios
+      .get(
+        `${API_BASE_URL}/social-histories/by-newVisitPatientId/${newPatientVisitId}`
+      )
+      .then((response) => {
+        if (response.data.length > 0) {
+          setSocialHistories(response.data);
+          console.log(response.data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching vitals:", error);
+      });
+  }, []);
+
   const handleAddSocialHistory = async () => {
+    const formData =
+        patientId > 0
+          ? { ...newSocialHistory, patientDTO: { patientId } }
+          : { ...newSocialHistory, newPatientVisitDTO: { newPatientVisitId } };
+    console.log(formData);
+    
     try {
-      const response = await fetch('http://localhost:8080/api/social-histories/add', {
+      const response = await fetch(`${API_BASE_URL}/social-histories/save-social-history`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newSocialHistory),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        const data = await response.json();
         alert('Social History added successfully!');
         // Reset the form and close the modal
         setNewSocialHistory({

@@ -1,3 +1,6 @@
+ /* Ajhar Tamboli RadiologyReportPopup.css 19-09-24 */
+
+
 /* Akash Pawar Radiology 14/24 */
 .RadiologyReportPopup {
     font-family: Arial, sans-serif;
@@ -30,7 +33,7 @@
   }
   .RadiologyReportPopup h2 {
     margin-top: 0;
-    color: black;
+    /* color: black; */
     font-size: var(--heading-font);
   }
   
@@ -76,7 +79,7 @@
   .RadiologyReportPopup-patient-info-group span {
     flex: 1;
     margin-right: 10px;
-    font-size: 14px;
+    font-size: var(--font-size);
   }
   
   .RadiologyReportPopup-patient-info-group span:last-child {
@@ -162,7 +165,7 @@
     .RadiologyReportPopup-patient-info-group span {
       display: block; /* Stack spans vertically */
       margin-bottom: 5px; /* Add margin between spans */
-      font-size: 12px; /* Adjust font size for print */
+      font-size: var(--font-size); /* Adjust font size for print */
     }
   
     .RadiologyReportPopup-report-body {

@@ -12,11 +12,12 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
   const [selectedOrderId, setSelectedOrderId] = useState('');
   const [showMedicationOrder, setShowMedicationOrder] = useState(false); 
   const [labOrder,showLabOrder] = useState(false);
+  const [imagingOrder,setImagingOrder] = useState(false);
 
   // API endpoints
   const apiEndpoints = {
     lab: `${API_BASE_URL}`,
-    imaging: `${API_BASE_URL}/add-items`,
+    imaging: `${API_BASE_URL}/radiology-settings/imaging-items`,
     medication: `${API_BASE_URL}/add-items`,
     others: 'https://api.example.com/otherOrders',
   };
@@ -54,11 +55,11 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
   };
 
   const handleOrderSelect = (e) => {
-    const orderId = e.target.value;
+    const orderId = e.target.value;    
     setSelectedOrderId(orderId);
 
     if (orderId) {
-      const selectedOrder = orderData.find(order => order.id == orderId);
+      const selectedOrder = orderData.find(order => order.id || order.imagingItemId == orderId);
 
       if (selectedOrder) {
         setSelectedOrders(prevOrders => [...prevOrders, selectedOrder]);
@@ -75,7 +76,26 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
   const handleProceed = () => {
     showLabOrder(true);
     if (selectedOrders.length > 0) {
-      setShowMedicationOrder(true); // Show the MedicationOrder component when "Proceed" is clicked
+      console.log(selectedOrderType);
+      
+      if(selectedOrderType === "medication")
+        {
+        setShowMedicationOrder(true);
+        setImagingOrder(false);
+        showLabOrder(false);
+        }
+     if(selectedOrderType === "imaging")
+      {
+        setImagingOrder(true);
+        setShowMedicationOrder(false);
+        showLabOrder(false);
+      }
+      if(selectedOrderType === "lab")
+      {
+        showLabOrder(true);
+        setShowMedicationOrder(false);
+        setImagingOrder(false);
+      }
     } else {
       alert('Please select an order to proceed.');
     }
@@ -84,12 +104,12 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
   if (showMedicationOrder) {
     return <MedicationOrder selectedOrders={selectedOrders} setActiveSection={setActiveSection} patientId={patientId} newPatientVisitId={newPatientVisitId}/>;  // Pass selected orders to MedicationOrder
   }
-  // if (showLabOrder) {
-  //   return <LabOrder selectedOrders={selectedOrders} setActiveSection={setActiveSection} patientId={patientId} newPatientVisitId={newPatientVisitId}/>;  // Pass selected orders to MedicationOrder
-  // }
-  // if (showLabOrder) {
-  //   return <RadioOrder selectedOrders={selectedOrders} setActiveSection={setActiveSection} patientId={patientId} newPatientVisitId={newPatientVisitId}/>;  // Pass selected orders to MedicationOrder
-  // }
+  if (labOrder) {
+    return <LabOrder selectedOrders={selectedOrders} setActiveSection={setActiveSection} patientId={patientId} newPatientVisitId={newPatientVisitId}/>;  // Pass selected orders to MedicationOrder
+  }
+  if (imagingOrder) {
+    return <RadioOrder selectedOrders={selectedOrders} setActiveSection={setActiveSection} patientId={patientId} newPatientVisitId={newPatientVisitId}/>;  // Pass selected orders to MedicationOrder
+  }
 
   return (
     <div className="action_record_container">
@@ -109,7 +129,7 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
                 {selectedOrders.length === 0 && <p>No orders selected.</p>}
                 {selectedOrders.map((order, index) => (
                   <li key={index} className="selected_order_item">
-                    <span>{order.itemName}</span> {/* Display selected order name */}
+                    <span className='selected_order_item-span'>{order.itemName || order.imagingItemName}</span> {/* Display selected order name */}
                   </li>
                 ))}
               </ul>
@@ -169,8 +189,8 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
                 >
                   <option value="">Select an order item</option>
                   {orderData.map((order) => (
-                    <option key={order.id} value={order.id}>
-                      {order.itemName}
+                    <option key={order.id || order.imagingItemId} value={order.id || order.imagingItemId }>
+                      {order.itemName || order.imagingItemName}/{order.imagingType.imagingTypeName}
                     </option>
                   ))}
                 </select>

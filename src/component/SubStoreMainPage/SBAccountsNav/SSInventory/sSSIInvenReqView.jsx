@@ -2,9 +2,9 @@ import React from 'react';
 // import './RequisitionDetailsPrint.css';
 import "../SSInventory/sSSIInvenReqView.css"
 
-const SSSIInvenReqView = () => {
+const SSSIInvenReqView = ({onClose}) => {
   return (
-    <div className="requisition-details-container">
+    <div className="subStore-requisition-details-container">
       {/* <div className="header">
         <div className="logo-title">
           <div className="logo">+</div>
@@ -21,8 +21,8 @@ const SSSIInvenReqView = () => {
         </div> 
       </div>*/}
 
-      <div className="requisition-table">
-        <div className="table-header">REQUISITION DETAILS PRINT</div>
+      <div className="subStore-requisition-table">
+        <div className="subStore-table-header"><h1>REQUISITION DETAILS PRINT</h1> <span className='closeButton' onClick={()=>onClose(false)}>X</span></div>
         <table>
           <thead>
             <tr>
@@ -53,29 +53,29 @@ const SSSIInvenReqView = () => {
         </table>
       </div>
 
-      <div className="requisition-info">
-        <div className="requested-by">
+      <div className="subStore-requisition-info">
+        <div className="subStore-requested-by">
           <strong>Requested By:</strong>
           <div>Mr. admin admin</div>
           <div>Aug 27, 2024, 7:22:15 PM</div>
         </div>
-        <div className="verified-by">
+        <div className="subStore-verified-by">
           <strong>Verified By:</strong>
           <div>1 Mr. admin admin (Aug 27, 2024, 7:23:00 PM)</div>
         </div>
       </div>
 
-      <div className="status-steps">
-        <div className="step completed">Requested</div>
-        <div className="step active">Verified(1)</div>
-        <div className="step">Dispatched</div>
-        <div className="step">Received</div>
+      <div className="subStore-status-steps">
+        <div className="subStore-step subStore-completed">Requested</div>
+        <div className="subStore-step subStore-active">Verified(1)</div>
+        <div className="subStore-step">Dispatched</div>
+        <div className="subStore-step">Received</div>
       </div>
 
-      <div className="buttons">
-        <button className="edit-button">Edit</button>
-        <button className="withdraw-button">Withdraw Request</button>
-        <button className="print-button">Print</button>
+      <div className="subStore-buttons">
+        <button className="subStore-edit-button">Edit</button>
+        <button className="subStore-withdraw-button">Withdraw Request</button>
+        <button className="subStore-print-button">Print</button>
       </div>
     </div>
   );

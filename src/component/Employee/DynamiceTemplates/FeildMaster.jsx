@@ -1,7 +1,8 @@
 // src/ManageUsers.jsx
 
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import './Templates.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const templatesData = [
     {
@@ -127,6 +128,8 @@ const templatesData = [
   ]
 
 const FeildMaster = () => {
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
     return (
         <div className="template-users-container">
           <div className="template-users-header">
@@ -134,20 +137,40 @@ const FeildMaster = () => {
             {/* <button className="template-users-add-user-button">+ Add Template</button> */}
           </div>
           <input type="text" placeholder="Search" className="manage-users-search-input" />
+          <div className='field-master-select'>
+  <label htmlFor="selectTemplateType" className="feild-master-select-label">Select Template Type</label>
+  <select id="selectTemplateType" required className="feild-masterselect-dropdown">
+    <option value="">Select a template type</option>
+    <option value="Type1">Template Type 1</option>
+    <option value="Type2">Template Type 2</option>
+    <option value="Type3">Template Type 3</option>
+    {/* Add more options as needed */}
+  </select>
+</div>
+
+
           <div className='template-user-span'>
             <span>Showing {templatesData.length} / {templatesData.length} results</span>
           </div>
           <div className='template-user-tab'>
-            <table className="template-users-users-table">
-              <thead>
-                <tr>
-                  <th>Template Type Name</th>
-                  <th>Field Name</th>
-                  <th>Description</th>
-                  <th>Is Active</th>
-                  {/* <th>Action</th> Remove if no action buttons needed */}
-                </tr>
-              </thead>
+          <table ref={tableRef}>
+          <thead>
+            <tr>
+              {[   "Template Type Name",
+  "Field Name",
+  "Description",
+  "Is Active"
+    ]
+  .map((header, index) => (
+                <th key={index} style={{ width: columnWidths[index] }} className="resizable-th">
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div className="resizer" onMouseDown={startResizing(tableRef, setColumnWidths)(index)}></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
               <tbody>
                 {templatesData.map((template, index) => (
                   <tr key={index}>
@@ -163,14 +186,14 @@ const FeildMaster = () => {
                 ))}
               </tbody>
             </table>
-            <div className="template-users-pagination">
+            {/* <div className="template-users-pagination">
               <div className="template-users-pagination-controls">
                 <button>First</button>
                 <button>Previous</button>
                 <button>Next</button>
                 <button>Last</button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       );

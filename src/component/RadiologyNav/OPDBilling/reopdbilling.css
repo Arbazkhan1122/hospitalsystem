@@ -12,7 +12,7 @@
   
   .rd-billing-title {
     font-size: 24px;
-    color: #333;
+    /* color: #333; */
   }
   
   .rd-billing-controls {
@@ -64,6 +64,7 @@
     background-color:var(--button-color);
     padding: 5px;
     font-size: 14px;
+    border:1px solid var(--button-hover-border-color) ;
   }
 
   .rd-btn.print-btn:hover{
@@ -212,15 +213,4 @@
   }
   
 
-  .modal-dialog {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 90vh; /* Ensure it takes full screen height */
-  }
-  
-  .modal-content {
-    width: 100%;
-    max-width: 800px; /* Control the modal's max width */
-  }
-  
+ 

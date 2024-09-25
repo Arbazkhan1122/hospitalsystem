@@ -12,7 +12,7 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
   
   const [medicationList, setMedicationList] = useState(
     selectedOrders.map(order => ({
-      type: order?.genericNameDTO?.genericName || "", // Pre-fill generic name from selected order
+      type: order?.genericNameDTO?.genericName || "", 
       medicationName: order?.itemName || "",
       dose: "",
       route: "mouth",

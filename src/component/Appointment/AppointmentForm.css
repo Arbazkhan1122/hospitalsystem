@@ -6,12 +6,16 @@
   margin: 0 auto;
 }
 
-.Appointment-form-group {
+.form-group {
   margin-bottom: 15px;
 }
 
+label {
+  display: block;
+  margin-bottom: 5px;
+}
 
-/* input[type="text"],
+input[type="text"],
 input[type="number"],
 input[type="tel"],
 input[type="date"],
@@ -21,14 +25,14 @@ select {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-} */
+}
 
-.Appointment-radio-group {
+.radio-group {
   display: flex;
   gap: 10px;
 }
 
-.Appointment-submit-button {
+.submit-button {
   background-color: #7c4dff;
   color: white;
   padding: 10px 20px;

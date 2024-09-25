@@ -1,14 +1,16 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './familyhistory.css'; 
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../api/api';
+import axios from 'axios';
 
-const FamilyHistory = () => {
+const FamilyHistory = ({patientId,newPatientVisitId}) => {
   const [columnWidths,setColumnWidths] = useState({});
   const tableRef = useRef(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); 
   const [familyHistories, setFamilyHistories] = useState([]); 
   const [newFamilyHistory, setNewFamilyHistory] = useState({}); 
-  const [formData, setFormData] = useState({
+  const [familyhistory, setFamilyhistory] = useState({
     searchProblem: '',
     relationship: '',
     note: ''
@@ -16,12 +18,35 @@ const FamilyHistory = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFamilyhistory({ ...familyhistory, [name]: value });
   };
 
+  useEffect(() => {
+    // Fetch vitals from API
+    axios
+      .get(
+        `${API_BASE_URL}/family-histories/by-newVisitPatientId/${newPatientVisitId}`
+      )
+      .then((response) => {
+        if (response.data.length > 0) {
+          setFamilyHistories(response.data);
+          // console.log(response.data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching vitals:", error);
+      });
+  }, []);
+
   const handleAddFamilyHistory = async () => {
+    const formData =
+        patientId > 0
+          ? { ...familyhistory, patientDTO: { patientId } }
+          : { ...familyhistory, newPatientVisitDTO: { newPatientVisitId } };
+    console.log(formData);
+    
     try {
-      const response = await fetch('http://localhost:8080/api/family-histories/add', {
+      const response = await fetch(`${API_BASE_URL}/family-histories/save-family-history`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +58,7 @@ const FamilyHistory = () => {
         const data = await response.json();
         alert('Family History added successfully!');
         // Reset the form if needed
-        setFormData({
+        setFamilyhistory({
           searchProblem: '',
           relationship: '',
           note: ''
@@ -73,8 +98,7 @@ const FamilyHistory = () => {
           <thead>
             <tr>
               {[
-                 "ICD-11 Description",
-  "ICD-11 Code",
+                "search problem",
   "Relationship",
   "Note",
   "Edit"
@@ -101,8 +125,7 @@ const FamilyHistory = () => {
             <tbody>
               {familyHistories.map((history, index) => (
                 <tr key={index}>
-                  <td className="family-history-table-data">{history.description}</td>
-                  <td>{history.icd11}</td>
+                  <td className="family-history-table-data">{history.searchProblem}</td>
                   <td className="family-history-table-data">{history.relationship}</td>
                   <td className="family-history-table-data">{history.note}</td>
                   <td className="family-history-table-data">
@@ -129,7 +152,7 @@ const FamilyHistory = () => {
                  type="text"
                  name="searchProblem"
                  placeholder="ICD-11"
-                 value={formData.searchProblem}
+                 value={familyhistory.searchProblem}
                  onChange={handleInputChange}
                />
              </div>
@@ -139,7 +162,7 @@ const FamilyHistory = () => {
                  className="family-history-form-group-input"
                  type="text"
                  name="relationship"
-                 value={formData.relationship}
+                 value={familyhistory.relationship}
                  onChange={handleInputChange}
                />
              </div>
@@ -148,7 +171,7 @@ const FamilyHistory = () => {
                <textarea
                  className="family-history-form-group-input"
                  name="note"
-                 value={formData.note}
+                 value={familyhistory.note}
                  onChange={handleInputChange}
                ></textarea>
              </div>

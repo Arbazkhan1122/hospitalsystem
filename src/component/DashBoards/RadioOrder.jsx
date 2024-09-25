@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
 
-const RadioOrder = () => {
+const RadioOrder = ({selectedOrders,setActiveSection,patientId,newPatientVisitId}) => {
+  console.log(selectedOrders);
+  console.log(setActiveSection);
+  console.log(patientId);
+  console.log(newPatientVisitId);
+  
+  
+  
+  
     const [labTestName, setLabTestName] = useState('');
     const [urgency, setUrgency] = useState('Normal');
     const [note, setNote] = useState('');
@@ -11,6 +19,7 @@ const RadioOrder = () => {
     };
   
     const handleCancel = () => {
+      setActiveSection(true)
       // Handle cancel logic here
       console.log('Cancelled');
       setLabTestName('');
@@ -23,7 +32,7 @@ const RadioOrder = () => {
       <table className="RadioOrder-table">
         <thead>
           <tr>
-            <th>Lab Test Name</th>
+            <th>Imaging Name</th>
             <th>Urgency</th>
             <th>Note</th>
           </tr>
@@ -35,7 +44,6 @@ const RadioOrder = () => {
                 type="text"
                 value={labTestName}
                 onChange={(e) => setLabTestName(e.target.value)}
-                placeholder="CREATININE"
                 className="RadioOrder-input"
               />
             </td>

@@ -12,7 +12,7 @@ const SettingDispensary = () => {
 
   // Fetch suppliers from API when the component mounts
   useEffect(() => {
-    fetch('http://192.168.1.39:1415/api/dispensaries')
+    fetch('http://localhost:1415/api/dispensaries')
       .then(response => response.json())
       .then(data => setSuppliers(data))
       .catch(error => console.error('Error fetching dispensaries:', error));
@@ -64,7 +64,7 @@ const SettingDispensary = () => {
 
     if (isEditMode) {
       // Update existing user via API
-      fetch(`http://192.168.1.39:1415/api/dispensaries/${selectedUser.id}`, {
+      fetch(`http://localhost:1415/api/dispensaries/${selectedUser.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -79,7 +79,7 @@ const SettingDispensary = () => {
       .catch(error => console.error('Error updating dispensary:', error));
     } else {
       // Add new user via API
-      fetch('http://192.168.1.39:1415/api/dispensaries', {
+      fetch('http://localhost:1415/api/dispensaries', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

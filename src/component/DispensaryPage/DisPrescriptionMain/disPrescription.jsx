@@ -251,7 +251,7 @@ const DisPrescription = () => {
               <th className="disPrescription-action-column">Actions</th>
             </tr>
           </thead>
-          <tbody className="disPrescription-requisition-tableBody">
+          {/* <tbody className="disPrescription-requisition-tableBody">
             {filteredPrescriptions.map((prescription, index) => (
               <tr key={index}>
                 <td>{prescription.code}</td>
@@ -268,7 +268,7 @@ const DisPrescription = () => {
                 </td>
               </tr>
             ))}
-          </tbody>
+          </tbody> */}
         </table>
 
         {/* <div className="disPrescription-pagination">

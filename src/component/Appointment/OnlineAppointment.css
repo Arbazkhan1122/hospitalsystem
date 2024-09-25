@@ -1,52 +1,54 @@
-.Online-appointment-list {
+/* AppointmentList.css */
+.appointment-list {
   background-color: #e6f3ff;
   padding: 20px;
   font-family: Arial, sans-serif;
 }
 
-.Online-tab-header {
+.tab-header {
   display: flex;
 }
 
-.Online-tab {
+.tab {
   padding: 10px 20px;
   cursor: pointer;
 }
 
-.Online-tab.active {
+.tab.active {
   border-bottom: 2px solid #007bff;
   font-weight: bold;
 }
 
-.Online-tab-content {
+.tab-content {
   padding: 20px 0;
 }
 
-.Online-filters {
+.filters {
   background-color: #fff;
   padding: 15px;
   border-radius: 5px;
   margin-bottom: 20px;
 }
 
-.Online-date-range, .Online-filter-row {
+.date-range, .filter-row {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.Online-filter-item {
+.filter-item {
   display: flex;
   align-items: center;
   margin-right: 20px;
 }
 
-/* input[type="date"], input[type="text"], select {
+input[type="date"], input[type="text"], select {
   padding: 5px;
   margin: 0 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
-} */
+}
+
 
 .Online-star-btn, .Online-minus-btn {
   background-color: var(--button-color);
@@ -79,21 +81,22 @@
   background-color: var(--button-hover-background-color);
 }
 
-.Online-search-bar {
+.search-bar {
   display: flex;
   margin-bottom: 20px;
 }
 
-.Online-search-bar input {
+.search-bar input {
   flex-grow: 1;
   padding: 5px;
 }
 
-.Online-search-btn {
+.search-btn {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   padding: 5px 10px;
 }
+
 
 .Online-results-actions {
 float: right;
@@ -101,6 +104,7 @@ float: right;
   margin-bottom: 10px;
  
 }
+
 
 .Online-export-btn, .Online-print-btn {
   background-color: var(--button-color);
@@ -116,6 +120,7 @@ float: right;
   color: var(--button-hover-text-color);
   background-color: var(--button-hover-background-color);
 
+
 }
 .Online-appointments-table {
   width: 100%;
@@ -123,30 +128,30 @@ float: right;
   background-color: #fff;
 }
 
-.Online-appointments-table th, .Online-appointments-table td {
+.appointments-table th, .appointments-table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
 }
 
-.Online-appointments-table th {
+.appointments-table th {
   background-color: #f2f2f2;
 }
 
-.Online-loading {
+.loading {
   text-align: center;
   padding: 20px;
   background-color: #fff3cd;
 }
 
-.Online-pagination {
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
 }
 
-.Online-page-btn {
+.page-btn {
   background-color: #007bff;
   color: white;
   border: none;

@@ -1,3 +1,6 @@
+ /* Ajhar Tamboli rdlListReports.jsx 19-09-24 */
+
+
 import React, { useState, useEffect, useRef } from "react";
 import "../ListReports/rdlListReports.css";
 import * as XLSX from "xlsx"; // Import xlsx library
@@ -15,7 +18,7 @@ function RDLListReports() {
 
   // Fetch radiology report data and patient data from the APIs
   useEffect(() => {
-    fetch("http://localhost:8888/api/patient-imaging-requisitions/all")
+    fetch("http://localhost:1415/api/patient-imaging-requisitions/all")
       .then((response) => response.json())
       .then((data) => {
         setReportsData(data);
@@ -125,18 +128,20 @@ function RDLListReports() {
         </div>
       </header>
       <div className="rDLListReport-controls">
-        <div className="rDLListReport-date-range">
-          <label>
-            From:
-            <input type="date" defaultValue="2024-08-09" />
-          </label>
-          <label>
-            To:
-            <input type="date" defaultValue="2024-08-16" />
-          </label>
-          <button className="rDLListReport-star-button">☆</button>
-          <button className="rDLListReport-ok-button">OK</button>
-        </div>
+      <div className="rDLListReport-date-range">
+      <label>
+        From:
+        <input type="date" defaultValue="2024-08-09" />
+      </label>
+      <label>
+        To:
+        <input type="date" defaultValue="2024-08-16" />
+      </label>
+      <button className="rDLListReport-star-button">☆</button>
+    <button className="rDLListReport-more-btn">-</button>
+      <button className="rDLListReport-ok-button">OK</button>
+    </div>
+
       </div>
       <div className="rDLListReport-search-N-results">
         <div className="rDLListReport-search-bar">
@@ -152,7 +157,7 @@ function RDLListReports() {
             <i className="fa-regular fa-file-excel"></i> Export
           </button>
           <button className="rDLListReport-ex-pri-buttons" onClick={printTable}>
-            Print
+          <i class="fa-solid fa-print"></i> Print
           </button>
         </div>
       </div>

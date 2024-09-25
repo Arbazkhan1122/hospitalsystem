@@ -7,7 +7,7 @@ const Header = () => {
     <div className="hrmsDashSidebarHeader">
       <div>{/* Add content if needed */}</div>
       <div className="hrmsDashHeaderRight">
-        <div className="hrmsDashHeaderRight">
+        {/* <div className="hrmsDashHeaderRight">
           <button className="hrmsDashNotificationButton">
             <GoBell size={28} />
             <span className="hrmsDashNotificationBadge">9</span>
@@ -17,7 +17,7 @@ const Header = () => {
             src="https://randomuser.me/api/portraits/women/50.jpg"
             alt="Profile"
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

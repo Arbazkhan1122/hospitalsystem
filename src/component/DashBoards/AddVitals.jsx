@@ -27,15 +27,11 @@ const Vitals = ({patientId,newPatientVisitId}) => {
   useEffect(() => {
     // Fetch vitals from API
     axios
-      .get(`${API_BASE_URL}/vitals/getAll`)
+      .get(`${API_BASE_URL}/vitals/get-by-opd-patient-id/${newPatientVisitId}`)
       .then((response) => {
-        // Assuming the response data contains an array of vitals
-        const sortedVitals = response.data.sort(
-          (a, b) => new Date(b.addedOn) - new Date(a.addedOn)
-        );
-        setVitalsData(sortedVitals);
-        if (sortedVitals.length > 0) {
-          setLatestVitals(sortedVitals[0]); // Get the latest vital entry
+        if (response.data.lgth > 0) {
+          setLatestVitals(response.data[response.data.length-1]); 
+          console.log(response.data[response.data.length-1]);
         }
       })
       .catch((error) => {
@@ -121,6 +117,11 @@ const Vitals = ({patientId,newPatientVisitId}) => {
     }
   };
 
+  const handleEdit=(selectedVital)=>{
+    
+
+  }
+
   return (
     <div className="vitals-container">
       <div className="vitals-list">
@@ -133,7 +134,7 @@ const Vitals = ({patientId,newPatientVisitId}) => {
         {latestVitals ? (
         <ul>
           <li><strong>Recorded On:</strong> {new Date(latestVitals.addedOn).toLocaleString()}</li>
-          <li><strong>Taken On:</strong> {new Date(latestVitals.takenOn).toLocaleString()}</li>
+          <li><strong>Taken On:</strong> {new Date(latestVitals.addedOn).toLocaleString()}</li>
           <li><strong>Height:</strong> {latestVitals.height} cm</li>
           <li><strong>Weight:</strong> {latestVitals.weight} kg</li>
           <li><strong>BMI:</strong> {latestVitals.bmi}</li>
@@ -141,8 +142,8 @@ const Vitals = ({patientId,newPatientVisitId}) => {
           <li><strong>Pulse:</strong> {latestVitals.pulse} bpm</li>
           <li><strong>Blood Pressure:</strong> {latestVitals.bpSystolic}/{latestVitals.bpDiastolic} mmHg</li>
           <li><strong>Respiratory Rate:</strong> {latestVitals.respiratoryRate} breaths/min</li>
-          <li><strong>SpO₂:</strong> {latestVitals.spo2} %</li>
-          <li><strong>O₂ Delivery Method:</strong> {latestVitals.oxygenDeliveryMethod}</li>
+          <li><strong>SpO₂:</strong> {latestVitals.spO2} %</li>
+          <li><strong>O₂ Delivery Method:</strong> {latestVitals.o2DeliveryPlan}</li>
           <li><strong>Pain Scale (/10):</strong> {latestVitals.painScale}</li>
         </ul>
       ) : (
@@ -151,8 +152,8 @@ const Vitals = ({patientId,newPatientVisitId}) => {
         </ul>
       )}
         <div className="vital-action-buttons">
-          <button className="vital-edit-button">Edit</button>
-          <button className="vital-print-button">Print</button>
+          {/* <button className="vital-edit-button" onClick={handleEdit(latestVitals)} >Edit</button> */}
+          {/* <button className="vital-print-button">Print</button> */}
         </div>
       </div>
       

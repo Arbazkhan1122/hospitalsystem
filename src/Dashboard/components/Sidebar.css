@@ -1,5 +1,5 @@
 .custom-sidebar {
-  width: 13rem;
+   width: 186px;
   background-color: var(--upperBar-bg-color);
   padding-top: 1rem;
   padding-left: 0.5rem;
@@ -62,7 +62,7 @@ display: none;
 }
 
 .custom-sidebar-closed {
-  width: 4rem;
+  width: 3rem;
 }
 
 .custom-nav-link-content {

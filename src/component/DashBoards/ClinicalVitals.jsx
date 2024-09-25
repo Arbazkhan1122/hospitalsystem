@@ -4,6 +4,7 @@ import AllergyList from '../DashBoards/ClinicalAllergy';
 import ClinicalMedication from '../DashBoards/ClinicalMedication';
 import ClinicalBloodSugarMonitoring from '../DashBoards/ClinicalBloodSugarMonitoring';
 import AddVitalsForm from '../DashBoards/AddVitals'; // Import the AddVitalsForm component
+import Allergy from '../DashBoards/ClinicalAllergy';
 
 const VitalsPage = ({patientId,newPatientVisitId}) => {
   console.log(patientId +" "+newPatientVisitId +"------------------");
@@ -13,16 +14,16 @@ const VitalsPage = ({patientId,newPatientVisitId}) => {
 
   const renderContent = () => {
     if (showAddVitalsForm) {
-      return <AddVitalsForm />;
+      return <AddVitalsForm patientId={patientId} newPatientVisitId={newPatientVisitId} />;
     }
     if (activeTab === 'allergy') {
-      return <AllergyList />;
+      return <Allergy patientId={patientId} newPatientVisitId={newPatientVisitId}  />;
     }
     if (activeTab === 'medication') {
-      return <ClinicalMedication />;
+      return <ClinicalMedication patientId={patientId} newPatientVisitId={newPatientVisitId}  />;
     }
     if (activeTab === 'bloodsugar') {
-      return <ClinicalBloodSugarMonitoring />;
+      return <ClinicalBloodSugarMonitoring patientId={patientId} newPatientVisitId={newPatientVisitId}  />;
     }
     return (
       <>

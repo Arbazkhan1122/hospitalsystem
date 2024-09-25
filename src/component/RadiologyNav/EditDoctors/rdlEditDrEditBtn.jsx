@@ -1,3 +1,6 @@
+ /* Ajhar Tamboli rdlEditDrEditBtn.jsx 19-09-24 */
+
+
 import React, { useState } from "react";
 import "../EditDoctors/rdlEditDrEditBtn.css";
 
@@ -9,7 +12,7 @@ function TransactionDetails({ onClose, selectedRequest }) {
     const imagingId = selectedRequest.imagingId;
 
     fetch(
-      `http://localhost:8888/api/patient-imaging-requisitions/update-prescriber?prescriberId=${prescriberId}&imagingId=${imagingId}`,
+      `http://localhost:1415/api/patient-imaging-requisitions/update-prescriber?prescriberId=${prescriberId}&imagingId=${imagingId}`,
       {
         method: "POST",
       }

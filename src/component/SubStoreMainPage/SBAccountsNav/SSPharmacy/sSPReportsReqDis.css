@@ -1,12 +1,13 @@
+/* Ajhar Tamboli sSPReportsReqDis.css 19-09-24 */
+
+
 .sSPReportsReqDis-active-imaging-request {
   font-family: Arial, sans-serif;
+  height: 75vh;
+  background-color: var(--background-color);
   /* max-width: 1200px; */
   /* margin: 0 auto; */
   /* padding: 10px; */
-  /* background-color: red; */
-  /* background-color: red; */
-  height: 490px;
-  background-color: #CAF2FF;
 }
 
 .sSPReportsReqDis-header {
@@ -28,14 +29,16 @@
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 .sSPReportsReqDis-status-filters{
   display: flex;
   align-items: center;
 }
 .sSPReportsReqDis-status-filters h4{
-  color: #474747;
+  /* color: #474747; */
+  font-size: var(--heading-font);
+  margin: 5px;
 }
 .sSPReportsReqDis-filter {
   display: flex;
@@ -46,15 +49,15 @@
 
 .sSPReportsReqDis-filter label {
   margin-right: 10px;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: var(--font-size);
+  /* font-weight: bold; */
   margin-left: 20px;
 }
 
 .sSPReportsReqDis-filter select {
   padding: 5px;
   /* color: red; */
-  font-size: 12px;
+  font-size: var(--font-size);
   margin-left: 20px;
 }
 
@@ -65,8 +68,8 @@
   width: 100px;
 }
 .sSPReportsReqDis-checkBox label {
-font-size: 14px;
-font-weight: bold;
+font-size: var(--font-size);
+/* font-weight: bold; */
 color: green;
 }
 
@@ -77,49 +80,64 @@ color: green;
   justify-content: space-between;
 
 }
-
 .sSPReportsReqDis-date-range {
   display: flex;
   align-items: center;
-  width: 40%;
+  /* width: 95%; */
   gap: 10px;
   background-color: #f0f0f0;
-  margin-bottom: 10px;
+  padding: 1px 10px;
 }
 .sSPReportsReqDis-date-range label{
+  display: flex;
+  align-items: center;
   margin-left: 20px;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: var(--font-size);
 }
 
 .sSPReportsReqDis-date-range input[type="date"] {
-  padding: 5px;
+  padding: 3px;
+  margin-left: 10px;
 }
-
 .sSPReportsReqDis-star-button {
   background: none;
   border: none;
-  font-size: 1.2em;
-  color: #0011ff;
+  font-size: 24px;
+  color:var(--button-color) ;
   cursor: pointer;
 }
-
 .sSPReportsReqDis-ok-button {
-  background-color: #4CAF50;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
+  /* border: none; */
+  /* margin-right: 10px; */
   border-radius: 5px;
-  padding: 5px 15px;
   cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
 }
-
+.sSPReportsReqDis-ok-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+ .sSPReportsReqDis-more-btn {
+  background-color: #B9B9CA;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: white;
+}
 .sSPReportsReqDis-search-bar {
   display: flex;
 }
 
 .sSPReportsReqDis-search-bar input {
   flex-grow: 1;
-  padding: 5px;
+  padding: 3px;
   width: 200px;
 
 }
@@ -127,7 +145,7 @@ color: green;
   position: relative;
   color:gray;
   top: 7px;
-left: 205px;
+left: 190px;
 }
 
 /* .search-bar button {
@@ -139,20 +157,27 @@ left: 205px;
 
 .sSPReportsReqDis-results-info {
   text-align: right;
-  color: #0011ff;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: var(--font-size);
+  /* color: #0011ff; */
+  /* font-weight: bold; */
 }
 .sSPReportsReqDis-print-btn{
-    margin-left: 10px;
-    /* gap: 10px; */
-  background-color: #659BE0 ;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
+  /* border: none; */
+  /* margin-right: 10px; */
   border-radius: 5px;
-  padding: 5px 10px;
-  font-size: 12px;
-
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin-left: 5px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.sSPReportsReqDis-print-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .sSPReportsReqDis-table-N-paginat table {
@@ -161,16 +186,19 @@ left: 205px;
   background-color: white;
 }
 
-.sSPReportsReqDis-table-N-paginat th, td {
+.sSPReportsReqDis-table-N-paginat th {
   border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-  font-size: 12px;
-  color: rgb(70, 69, 69);
+  padding: 3px;
+  text-align: center;
+  font-size: var(--heading-font);
+  /* color: rgb(70, 69, 69); */
 }
 .sSPReportsReqDis-table-N-paginat td {
-  font-size: 12px;
-  color: #818181;
+  font-size: var(--font-size);
+  border: 1px solid #ddd;
+  padding: 3px;
+  text-align: center;
+  /* color: #818181; */
 }
 
 .sSPReportsReqDis-table-N-paginat th {
@@ -233,7 +261,7 @@ left: 205px;
 .sSPReportsReqDis-pagination span {
   margin: 0 10px;
   color: gray;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 .sSPReportsReqDis-table-N-paginat{
   background-color: white ;
@@ -282,7 +310,7 @@ cursor: pointer;
   border-radius: 12px;
   margin-left: 10px;
   padding: 5px 10px;
-  font-size: 11px;
+  font-size: var(--font-size);
 
 }
 .sSPReportsReqDis-view-btn button:hover{

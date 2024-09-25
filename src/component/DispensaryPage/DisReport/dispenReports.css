@@ -1,5 +1,6 @@
-/* src/components/ReportList.css */
-.dis-report-list {
+ /* Ajhar Tamboli dispenReports.jsx 19-09-24 */
+
+ .dis-report-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
