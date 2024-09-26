@@ -96,7 +96,7 @@
 
 
   .fixedAssetMovement-search-container{
-    background-color: white;
+    background-color: #f2f2f2;
     padding: 8px;
     margin-top: 10px;
 }
@@ -111,17 +111,18 @@
     font-size: 14px;
     justify-content: space-between;
     margin-bottom: 10px;
+    align-items: center;
   }
 
-  .fixedAssetMovement-print-btn{
+  .fixedAssetMovement-print-btn,.fixedAssestMovement-action-btn{
     background-color: var(--button-color);
     color: white;
     margin-left: 10px;
-    padding: 6px 15px;
+    padding: 5px 10px;
     border: none;
     border-radius: 5px;
   }
-  .fixedAssetMovement-print-btn:hover{
+  .fixedAssetMovement-print-btn:hover,.fixedAssestMovement-action-btn:hover{
     background-color: var(--button-hover-background-color);
   color: var(--button-hover-text-color);
    border: 1px solid var(--button-hover-border-color);
@@ -130,24 +131,6 @@
     color: var(--font-color);
   }
    */
-  .fixedAssetMovement-pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 10px;
-  }
-  
-  .fixedAssetMovement-paginationButton {
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .fixedAssetMovement-paginationInfo {
-    align-self: center;
-  }
   .fixedAssetMovement-cancelButton{
     background-color: red;
     color: white;

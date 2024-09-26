@@ -201,9 +201,9 @@ const Sidebar = ({
 
   return (
     <div className={`custom-sidebar ${isOpen ? "" : "custom-sidebar-closed"}`}>
-      <button className="custom-toggle-button" onClick={toggleSidebar}>
+      {/* <button className="custom-toggle-button" onClick={toggleSidebar}>
         {isOpen ? <LuChevronLeft size={20} /> : <LuChevronRight size={20} />}
-      </button>
+      </button> */}
       <div className="custom-logo-container">
         {isOpen ? (
           <span>

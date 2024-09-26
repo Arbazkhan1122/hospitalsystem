@@ -286,7 +286,7 @@ const Layout = () => {
           isOpen ? "hrmsLayoutMainContentOpen" : "hrmsLayoutMainContentClosed"
         }`}
       >
-        <Header />
+        <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         <main className="hrmsLayoutMainPadding">
           {showAppointment && <AppointmentRouting />}
           {showSetting && <AppRoutes />}

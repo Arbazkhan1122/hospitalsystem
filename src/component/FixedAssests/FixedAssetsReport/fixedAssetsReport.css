@@ -24,8 +24,11 @@
     background-color:var(--button-bg-color);
     color: white;
   }
-  .fixed-assets-btn:hover> .fixed-assets-icon{
-    background-color: white;
+  .fixed-assets-btn:hover .fixed-assets-icon{
+    background-color: var(--button-hover-background-color);
+  } 
+  .fixed-assets-btn:hover .fixed-assets-icon i{
+    color: var(--button-hover-text-color);
   } 
   .fixed-assets-icon{
     height: 50px;

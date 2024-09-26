@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./COAList.css";
 import CreateCoaPopup from "./NewCoaPopup";
 import UpdateCoaPopup from "./UpdateCoaPopup";
+import { startResizing } from "../../../../TableHeadingResizing/ResizableColumns";
 
 const dummyData = [
   {
@@ -87,31 +88,6 @@ function COAList() {
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
 
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
-
   return (
     <div className="coa">
       <div className="coa-create">
@@ -131,11 +107,17 @@ function COAList() {
           <button className="coa-print-btn">Print</button>
         </div>
       </div>
-      <table className="coa-table" ref={tableRef}>
-        <thead>
-          <tr>
-            {["COA Name", "COA Code", "Description", "Is Active", "Action"].map(
-              (header, index) => (
+      <div className="table-container">
+        <table className="coa-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "COA Name",
+                "COA Code",
+                "Description",
+                "Is Active",
+                "Action",
+              ].map((header, index) => (
                 <th
                   key={index}
                   style={{ width: columnWidths[index] }}
@@ -145,34 +127,37 @@ function COAList() {
                     <span>{header}</span>
                     <div
                       className="resizer"
-                      onMouseDown={startResizing(index)}
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
                     ></div>
                   </div>
                 </th>
-              )
-            )}
-          </tr>
-        </thead>
-        <tbody>
-          {dummyData?.map((item, index) => (
-            <tr key={index}>
-              <td>{item.coaName}</td>
-              <td>{item.coaCode}</td>
-              <td>{item.description}</td>
-              <td>{item.isActive}</td>
-              <td>
-                <button
-                  onClick={() => handleUpdateCoa(item)}
-                  className="coa-table-btn"
-                  type="button"
-                >
-                  {item.action}
-                </button>
-              </td>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {dummyData?.map((item, index) => (
+              <tr key={index}>
+                <td>{item.coaName}</td>
+                <td>{item.coaCode}</td>
+                <td>{item.description}</td>
+                <td>{item.isActive}</td>
+                <td>
+                  <button
+                    onClick={() => handleUpdateCoa(item)}
+                    className="coa-table-btn"
+                    type="button"
+                  >
+                    {item.action}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       {showCreateCoaPopup && <CreateCoaPopup onClose={handleClosePopup} />}
       {showUpdateLedgerPopup && (
         <UpdateCoaPopup

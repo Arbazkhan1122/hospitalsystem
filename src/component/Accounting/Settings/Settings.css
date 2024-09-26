@@ -1,5 +1,5 @@
 .setting-main {
-    padding: 10px 20px;
+    padding: 10px;
   }
   
   .setting-sub-nav {
@@ -11,7 +11,7 @@
   .setting-sub-nav ul {
     display: flex;
     color: black;
-    font-size: 14px;
+    font-size: var(--font-size);
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -20,7 +20,7 @@
   .setting-sub-nav ul li {
     position: relative;
     color: black;
-    padding: 10px 20px;
+    padding: 0px 20px;
     cursor: pointer;
   }
   
@@ -37,7 +37,7 @@
     position: absolute;
     bottom: 0;
     height: 4px;
-    background-color: #2D68EA;
+    background-color: var(--button-bg-color);
     transition: left 0.3s ease, width 0.3s ease;
   }
   .setting-sub-nav ul li::after {
@@ -45,7 +45,7 @@
     position: absolute;
     left: 0;
     height: 4px;
-    background-color: #2D68EA;
+    background-color: var(--button-bg-color);
     transform: scaleX(1); /* Expands the underline width */
     transition: transform 0.3s ease-in-out;
   }
@@ -57,17 +57,11 @@
     left: 0; /* Start from the left */
     height: 4px; /* Thickness of the underline */
     width: 0; /* Initially, the underline is collapsed */
-    background-color: #2D68EA; /* Color of the underline */
+    background-color: var(--button-bg-color); /* Color of the underline */
     transition: width 0.3s ease-in-out; /* Smooth transition for width */
   }
-  
-  .setting-sub-nav ul li:hover::after {
-    width: 100%; /* Expand the underline to full width on hover */
-  }
-
   .dropdown {
     position: relative;
-
   }
   
   .dropdown-menu {

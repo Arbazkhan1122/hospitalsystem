@@ -155,78 +155,71 @@ const AssetsMaintainence = () => {
             <button className="assetsMaintainance-print-btn">Print</button>
           </div>
         </div>
-        <table className="assetsMaintainance-table" ref={tableRef}>
-          <thead>
-            <tr>
-              {[
-                "Bar Code",
-                "Asset Code",
-                "Item Name",
-                "Total life In Year",
-                "Year Of Use",
-                "Remaining Life",
-                "Manufacture Date",
-                "Warranty",
-                "Remaining Days For Service",
-                "Action",
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
-                    ></div>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {filteredData.length > 0 ? (
-              filteredData.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.barCode}</td>
-                  <td>{item.assetCode}</td>
-                  <td>{item.itemName}</td>
-                  <td>{item.totalLife}</td>
-                  <td>{item.yearOfUse}</td>
-                  <td>{item.remainingLife}</td>
-                  <td>{item.manufactureDate}</td>
-                  <td>{item.warranty}</td>
-                  <td>{item.remainingServiceDays}</td>
-                  <td>
-                    <button className="assetsMaintainance-action-btn">
-                      Edit
-                    </button>
+        <div className="table-container">
+          <table ref={tableRef}>
+            <thead>
+              <tr>
+                {[
+                  "Bar Code",
+                  "Asset Code",
+                  "Item Name",
+                  "Total life In Year",
+                  "Year Of Use",
+                  "Remaining Life",
+                  "Manufacture Date",
+                  "Warranty",
+                  "Remaining Days For Service",
+                  "Action",
+                ].map((header, index) => (
+                  <th
+                    key={index}
+                    style={{ width: columnWidths[index] }}
+                    className="resizable-th"
+                  >
+                    <div className="header-content">
+                      <span>{header}</span>
+                      <div
+                        className="resizer"
+                        onMouseDown={startResizing(
+                          tableRef,
+                          setColumnWidths
+                        )(index)}
+                      ></div>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {filteredData.length > 0 ? (
+                filteredData.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.barCode}</td>
+                    <td>{item.assetCode}</td>
+                    <td>{item.itemName}</td>
+                    <td>{item.totalLife}</td>
+                    <td>{item.yearOfUse}</td>
+                    <td>{item.remainingLife}</td>
+                    <td>{item.manufactureDate}</td>
+                    <td>{item.warranty}</td>
+                    <td>{item.remainingServiceDays}</td>
+                    <td>
+                      <button className="assetsMaintainance-editButton">
+                        Edit
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td className="no-show-assetsMaintainance" colSpan={10}>
+                    No Row To Show
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td className="no-show-assetsMaintainance" colSpan={10}>
-                  No Row To Show
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-        {/* <div className="assetsMaintainance-pagination">
-          <button className="assetsMaintainance-paginationButton">First</button>
-          <button className="assetsMaintainance-paginationButton">
-            Previous
-          </button>
-          <span className="assetsMaintainance-paginationInfo">Page 1 of 1</span>
-          <button className="assetsMaintainance-paginationButton">Next</button>
-          <button className="assetsMaintainance-paginationButton">Last</button>
-        </div> */}
+              )}
+            </tbody>
+          </table>
+        </div>
       </section>
     </div>
   );

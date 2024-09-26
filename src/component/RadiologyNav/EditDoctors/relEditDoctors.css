@@ -79,6 +79,7 @@ font-weight: bold;
     align-items: center;
     justify-content: center;
     padding: 5px;
+    margin-bottom: 10px;
   }
   
   .relEditDoctors-search-bar input {
@@ -118,8 +119,11 @@ font-weight: bold;
     /* padding: 6px; */
     padding: 5px;
     cursor: pointer;
-
-
+  }
+  .relEditDoctors-ex-pri-buttons:hover,.relEditDoctors-action-button-add-report:hover{
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+    border: 1px solid var(--button-hover-border-color);
   }
 
 

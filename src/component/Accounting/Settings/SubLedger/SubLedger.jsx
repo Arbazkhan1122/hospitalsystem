@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./SubLedger.css";
 import CreateSubLedgerPopup from "./NewSubLedgerPopup";
 import UpdateSubLedgerPopup from "./UpdateSubLedgerPopup";
+import { startResizing } from "../../../../TableHeadingResizing/ResizableColumns";
 
 const subledgerData = [
   {
@@ -69,31 +70,6 @@ function SubLedger() {
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
 
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
-
   return (
     <div className="sub-ledger">
       <div className="sub-ledger-create">
@@ -113,63 +89,63 @@ function SubLedger() {
           <button className="sub-ledger-print-btn">Print</button>
         </div>
       </div>
-      <table className="sub-ledger-table" ref={tableRef}>
-        <thead>
-          <tr>
-            {[
-              "Ledger Name",
-              "SubLedger Name",
-              "SubLedger Code",
-              "Opening Balance",
-              "Description",
-              "Action",
-            ].map((header, index) => (
-              <th
-                key={index}
-                style={{ width: columnWidths[index] }}
-                className="resizable-th"
-              >
-                <div className="header-content">
-                  <span>{header}</span>
-                  <div
-                    className="resizer"
-                    onMouseDown={startResizing(index)}
-                  ></div>
-                </div>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {subledgerData?.map((item, index) => (
-            <tr key={index}>
-              <td>{item.ledgerName}</td>
-              <td>{item.subLedgerName}</td>
-              <td>{item.subLedgerCode}</td>
-              <td>{item.openingBalance}</td>
-              <td>{item.description}</td>
-              <td>
-                <button className="sub-ledger-table-btn" type="button">
-                  Deactivate
-                </button>
-                <button
-                  onClick={() => handleUpdateLedger(item)}
-                  className="sub-ledger-table-btn"
-                  type="button"
+      <div className="table-container">
+        <table className="sub-ledger-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Ledger Name",
+                "SubLedger Name",
+                "SubLedger Code",
+                "Opening Balance",
+                "Description",
+                "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
                 >
-                  Edit
-                </button>
-              </td>
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {subledgerData?.map((item, index) => (
+              <tr key={index}>
+                <td>{item.ledgerName}</td>
+                <td>{item.subLedgerName}</td>
+                <td>{item.subLedgerCode}</td>
+                <td>{item.openingBalance}</td>
+                <td>{item.description}</td>
+                <td>
+                  <button className="sub-ledger-table-btn" type="button">
+                    Deactivate
+                  </button>
+                  <button
+                    onClick={() => handleUpdateLedger(item)}
+                    className="sub-ledger-table-btn"
+                    type="button"
+                  >
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-          {/* <tr>
-            <td className="no-show-coa" colSpan="15">
-              No Rows To Show
-            </td>
-          </tr> */}
-        </tbody>
-      </table>
       {showCreateSubLedgerPopup && (
         <CreateSubLedgerPopup onClose={handleClosePopup} />
       )}

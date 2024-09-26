@@ -44,7 +44,7 @@
     position: absolute;
     bottom: 0;
     height: 4px;
-    background-color: #2d68ea;
+    background-color: var(--button-bg-color);
     transition: left 0.3s ease, width 0.3s ease;
   }
   
@@ -56,7 +56,7 @@
     left: 0;
     height: 4px;
     width: 0;
-    background-color: #2d68ea;
+    background-color: var(--button-bg-color);
     transition: width 0.3s ease-in-out;
   }
   

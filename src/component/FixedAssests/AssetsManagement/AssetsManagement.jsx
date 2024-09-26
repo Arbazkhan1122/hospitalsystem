@@ -128,76 +128,69 @@ const CostCenterItemList = () => {
             <button className="assetsManagement-print-btn">Print</button>
           </div>
         </div>
-        <table className="assetsManagement-table" ref={tableRef}>
-          <thead>
-            <tr>
-              {[
-                "Bar Code",
-                "Item Name",
-                "Vendor Name",
-                "Specification",
-                "Model No",
-                "Asset Location",
-                "Sub Store",
-                "Asset Holder",
-                "Action",
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
-                    ></div>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {filteredData.length > 0 ? (
-              filteredData.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.barCode}</td>
-                  <td>{item.itemName}</td>
-                  <td>{item.vendorName}</td>
-                  <td>{item.specification}</td>
-                  <td>{item.modelNo}</td>
-                  <td>{item.assetLocation}</td>
-                  <td>{item.subStore}</td>
-                  <td>{item.assetHolder}</td>
-                  <td>
-                    <button className="assetsManagement-action-btn">
-                      Action
-                    </button>
+        <div className="table-container">
+          <table className="assetsManagement-table" ref={tableRef}>
+            <thead>
+              <tr>
+                {[
+                  "Bar Code",
+                  "Item Name",
+                  "Vendor Name",
+                  "Specification",
+                  "Model No",
+                  "Asset Location",
+                  "Sub Store",
+                  "Asset Holder",
+                  "Action",
+                ].map((header, index) => (
+                  <th
+                    key={index}
+                    style={{ width: columnWidths[index] }}
+                    className="resizable-th"
+                  >
+                    <div className="header-content">
+                      <span>{header}</span>
+                      <div
+                        className="resizer"
+                        onMouseDown={startResizing(
+                          tableRef,
+                          setColumnWidths
+                        )(index)}
+                      ></div>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {filteredData.length > 0 ? (
+                filteredData.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.barCode}</td>
+                    <td>{item.itemName}</td>
+                    <td>{item.vendorName}</td>
+                    <td>{item.specification}</td>
+                    <td>{item.modelNo}</td>
+                    <td>{item.assetLocation}</td>
+                    <td>{item.subStore}</td>
+                    <td>{item.assetHolder}</td>
+                    <td>
+                      <button className="assetsManagement-action-btn">
+                        Action
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td className="no-show-assetsManagement" colSpan={9}>
+                    No Row To Show
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td className="no-show-assetsManagement" colSpan={9}>
-                  No Row To Show
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-        {/* <div className="assetsManagement-pagination">
-          <button className="assetsManagement-paginationButton">First</button>
-          <button className="assetsManagement-paginationButton">
-            Previous
-          </button>
-          <span className="assetsManagement-paginationInfo">Page 1 of 1</span>
-          <button className="assetsManagement-paginationButton">Next</button>
-          <button className="assetsManagement-paginationButton">Last</button>
-        </div> */}
+              )}
+            </tbody>
+          </table>
+        </div>
       </section>
     </div>
   );

@@ -23,8 +23,7 @@ function PendingItemList() {
     },
     {
       requestDate: "2024-08-11",
-      itemName:
-        "MRI Machine Maintenance fgsahdashdfgvsahbhjsdbfasgdgdgfyfhasbjbdhfajgtyeghdhbshcvahsdgfvygdhsbghsdvgdasfgfhdsghcvasdghvasghdvghc",
+      itemName: "MRI Machine",
       code: "MRI456",
       tagNumber: "TAG002",
       requestFrom: "Radiology",

@@ -1,8 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./clinicalAssesment.css";
+import ClinicalBookAdmission from "./ClinicalBookAdmission";
 
 function ClinicalAssessment() {
+  const [patients, setPatients] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredPatients, setFilteredPatients] = useState([]);
+  const [selectedPatient, setSelectedPatient] = useState(null);
+  // const [isClinicalBooking, setIsClinicalBooking] = useState(false);
   const [activeTab, setActiveTab] = useState("Lab");
+
+  useEffect(() => {
+    // Fetch all patients on component mount
+    fetch("http://localhost:8888/api/patients/getAllPatients")
+      .then((response) => response.json())
+      .then((data) => setPatients(data))
+      .catch((error) => console.error("Error fetching patients:", error));
+  }, []);
+
+  useEffect(() => {
+    setFilteredPatients(
+      patients.filter((patient) => {
+        const nameMatch = patient.firstName
+          ?.toLowerCase()
+          .includes(searchTerm.toLowerCase());
+        const idMatch = patient.patientId?.toString().includes(searchTerm);
+        return nameMatch || idMatch;
+      })
+    );
+  }, [searchTerm, patients]);
+
+  const handleSelectPatient = (patient) => {
+    setSelectedPatient(patient);
+    setSearchTerm(""); // Clear search input after selecting a patient
+  };
+
+  const handleSearchInputChange = (event) => {
+    setSearchTerm(event.target.value);
+    console.log(event.target.value);
+  };
+
+  // const handleBookAdmission = () => {
+  //   setIsClinicalBooking(true);
+  // };
+
+  const handleClose = () => {
+    setIsClinicalBooking(false);
+  };
 
   return (
     <div className="ClinicalAssessment">
@@ -13,22 +57,50 @@ function ClinicalAssessment() {
             className="ClinicalAssessment-searchInput"
             type="text"
             placeholder="Search By Hospital No/Patient Name"
+            value={searchTerm}
+            onChange={handleSearchInputChange}
           />
         </label>
+        {searchTerm && filteredPatients.length > 0 && (
+          <div className="ClinicalAssessment-patientList">
+            {filteredPatients.map((patient) => (
+              <div
+                key={patient.patientId}
+                className={`ClinicalAssessment-patientItem ${
+                  selectedPatient?.patientId === patient.patientId
+                    ? "selected"
+                    : ""
+                }`}
+                onClick={() => handleSelectPatient(patient)}
+              >
+                {patient?.firstName} (ID: {patient.patientId})
+              </div>
+            ))}
+          </div>
+        )}
         <div className="ClinicalAssessment-patientDetails">
-          <p>Patient Name:</p>
-          <p>Age/Sex:</p>
-          <p>Address:</p>
-          <p>Hospital No:</p>
-          <p>Contact No:</p>
+          <p>
+            Patient Name: {selectedPatient?.firstName || ""}{" "}
+            {selectedPatient?.middleName || ""}{" "}
+            {selectedPatient?.lastName || ""}
+          </p>
+          <p>
+            Age/Sex: {selectedPatient?.age || ""} /
+            {selectedPatient?.gender || ""}
+          </p>
+          <p>
+            Address: {selectedPatient?.addresses?.street1 || ""},
+            {selectedPatient?.addresses?.street2 || ""} ,
+            {selectedPatient?.addresses?.city || ""},
+            {selectedPatient?.addresses?.zipCode || ""} ,
+            {selectedPatient?.addresses?.county || ""}
+          </p>
+          <p>Hospital No: {selectedPatient?.hospitalNo || ""}</p>
+          <p>Contact No: {selectedPatient?.phoneNumber || ""}</p>
         </div>
       </div>
 
       <div className="ClinicalAssessment-mainsection">
-        <div className="ClinicalAssessment-displayName">
-          <textarea rows={10} placeholder="Display Name" />
-        </div>
-
         <div className="ClinicalAssesment-tablesection">
           <div className="ClinicalAssessment-investigation">
             <h2>Investigation</h2>
@@ -92,15 +164,21 @@ function ClinicalAssessment() {
           </div>
 
           <div className="ClinicalAssessment-actions">
-            <button className="ClinicalAssessment-button ClinicalAssessment-bookAdmission">
+            <button
+              disabled={!selectedPatient}
+              className="ClinicalAssessment-button ClinicalAssessment-bookAdmission"
+            >
               Book Admission
-            </button>
-            <button className="ClinicalAssessment-button ClinicalAssessment-saveData">
-              Save Data
             </button>
           </div>
         </div>
       </div>
+      {/* {isClinicalBooking && (
+        <ClinicalBookAdmission
+          selectedPatient={selectedPatient}
+          onclose={handleClose}
+        />
+      )} */}
     </div>
   );
 }
