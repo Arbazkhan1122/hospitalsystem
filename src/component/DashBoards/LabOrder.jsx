@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './LabOrder.css';
 
-const LabOrder = () => {
+const LabOrder = ({selectedOrders,setActiveSection,patientId,newPatientVisitId}) => {
   const [labTestName, setLabTestName] = useState('');
   const [urgency, setUrgency] = useState('Normal');
   const [note, setNote] = useState('');

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Calendar } from "lucide-react";
 import "../SSInventory/sSSIInvenReqCreateReq.css";
 import { useParams } from "react-router-dom";
+import { API_BASE_URL } from "../../../api/api";
 
 const SSSIInvenReqCreateReq = ({ onClose }) => {
   const { store } = useParams();
@@ -62,7 +63,7 @@ const SSSIInvenReqCreateReq = ({ onClose }) => {
     try {
       console.log(requisitionData);
       const response = await fetch(
-        "http://localhost:8080/api/inventory-requisitions/add",
+        `${API_BASE_URL}/inventory-requisitions/add`,
         {
           method: "POST",
           headers: {

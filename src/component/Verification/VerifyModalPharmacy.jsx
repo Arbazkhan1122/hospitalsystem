@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './VerifyModal.css';
 import { API_BASE_URL } from '../api/api';
 
-function VerifyModal({ isOpen, onClose, requisitionDetails }) {
-  console.log(requisitionDetails);
-  
+function VerifyModalPharmacy({ isOpen, onClose, requisitionDetails }) {
+    console.log(requisitionDetails);
+    
   const [verifyRemark, setVerifyRemark] = useState('');
   
   if (!isOpen) return null;
@@ -21,7 +21,7 @@ function VerifyModal({ isOpen, onClose, requisitionDetails }) {
     console.log(updateData);
     
     try {
-      const response = await fetch(`${API_BASE_URL}/inventory-requisitions/update/${requisitionDetails.inventoryRequisitionId}`, {
+      const response = await fetch(`${API_BASE_URL}/pharmacyRequisitions/update/${requisitionDetails. pharmacyRequisitionId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -51,9 +51,9 @@ function VerifyModal({ isOpen, onClose, requisitionDetails }) {
         </div>
         <div className="verifyModalContent">
           <div className="verifyRequisitionDetails">
-            <p><strong>Requisition No:</strong> {requisitionDetails.inventoryRequisitionId}</p>
+            <p><strong>Requisition No:</strong> {requisitionDetails.pharmacyRequisitionId}</p>
             <p><strong>Store Name:</strong> {requisitionDetails.storeName}</p>
-            <p><strong>Requisition Date:</strong> {requisitionDetails.requisitionDate}</p>
+            <p><strong>Requisition Date:</strong> {requisitionDetails.requestedDate}</p>
           </div>
           <table className="verifyDataTable">
             <thead>
@@ -93,4 +93,4 @@ function VerifyModal({ isOpen, onClose, requisitionDetails }) {
   );
 }
 
-export default VerifyModal;
+export default VerifyModalPharmacy;

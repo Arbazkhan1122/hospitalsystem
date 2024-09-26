@@ -27,7 +27,7 @@ const Section = ({ title, handleAddClick, children }) => (
 );
 
 const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
-  console.log(patient.newPatientVisitId);
+  console.log(patient);
   
   const [columnWidths,setColumnWidths] = useState({});
   const tableRef = useRef(null);
@@ -110,7 +110,7 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
       case 'clinical':
         return <VitalsPage patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId} />;
       case 'actionRecord':
-        return <ActionRecordPage patientId={patient.patientId} setActiveSection={setActiveSection} newPatientVisitId={patient.newPatientVisitId} />;
+        return <ActionRecordPage patientId={patient.patientId} setActiveSection={setActiveSection} newPatientVisitId={patient.newPatientVisitId} employeeId={patient.employeeDTO.employeeId} />;
       case 'problems':
         return <Problems patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId} />;
         case 'Vitals':

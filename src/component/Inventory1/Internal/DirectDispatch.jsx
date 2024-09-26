@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "./DirectDispatch.css";
 import { API_BASE_URL } from '../../api/api';
 
-const DirectDispatch = () => {
+const DirectDispatch = ({ setShowDirect }) => {
   const [storeName, setStoreName] = useState('');
   const [dispatchDate, setDispatchDate] = useState('2024-08-21');
-  const [items, setItems] = useState([
-    {
+  const [items, setItems] = useState([{
       itemCategory: 'Consumables',
       itemName: '',
       code: '',
@@ -14,9 +13,24 @@ const DirectDispatch = () => {
       availableQty: '',
       dispatchedQty: '',
       remark: ''
-    }
-  ]);
+  }]);
   const [remarks, setRemarks] = useState('');
+  const [allItems, setAllItems] = useState([]);
+
+  useEffect(() => {
+    // Fetch items when the component mounts
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/items/all`);
+        const data = await response.json();
+        setAllItems(data); // Assuming data is an array of items
+      } catch (error) {
+        console.error('Error fetching items:', error);
+      }
+    };
+
+    fetchItems();
+  }, []);
 
   const handleChange = (index, event) => {
     const { name, value } = event.target;
@@ -25,19 +39,33 @@ const DirectDispatch = () => {
     setItems(newItems);
   };
 
+  const handleItemSelect = async (index, itemName) => {
+    const selectedItem = allItems.find(item => item.itemName === itemName); // Adjust according to your item structure
+    console.log(selectedItem);
+    
+    if (selectedItem) {
+      const newItems = [...items];
+      newItems[index] = {
+        ...newItems[index],
+        itemName: selectedItem.itemName,
+        code: selectedItem.itemCode,
+        unit: selectedItem.unitOfMeasurement,
+        availableQty: selectedItem.minStockQuantity,
+      };
+      setItems(newItems);
+    }
+  };
+
   const handleAddItem = () => {
-    setItems([
-      ...items,
-      {
-        itemCategory: 'Consumables',
-        itemName: '',
-        code: '',
-        unit: '',
-        availableQty: '',
-        dispatchedQty: '',
-        remark: ''
-      }
-    ]);
+    setItems([...items, {
+      itemCategory: 'Consumables',
+      itemName: '',
+      code: '',
+      unit: '',
+      availableQty: '',
+      dispatchedQty: '',
+      remark: ''
+    }]);
   };
 
   const handleRemoveItem = (index) => {
@@ -66,6 +94,7 @@ const DirectDispatch = () => {
 
       if (response.ok) {
         console.log('Dispatch saved successfully');
+        setShowDirect(false);
         // Handle success (e.g., show a success message, clear the form, etc.)
       } else {
         console.error('Error saving dispatch');
@@ -78,20 +107,17 @@ const DirectDispatch = () => {
   };
 
   const handleDiscard = () => {
-    // Reset all fields
     setStoreName('');
     setDispatchDate('2024-08-21');
-    setItems([
-      {
-        itemCategory: 'Consumables',
-        itemName: '',
-        code: '',
-        unit: '',
-        availableQty: '',
-        dispatchedQty: '',
-        remark: ''
-      }
-    ]);
+    setItems([{
+      itemCategory: 'Consumables',
+      itemName: '',
+      code: '',
+      unit: '',
+      availableQty: '',
+      dispatchedQty: '',
+      remark: ''
+    }]);
     setRemarks('');
   };
 
@@ -131,15 +157,15 @@ const DirectDispatch = () => {
         <table className="direct-dispatch-dispatch-table">
           <thead>
             <tr>
-              <th></th> {/* Button to add a new item row */}
-              <th>ItemCategory</th>
-              <th>ItemName</th>
+              <th></th>
+              <th>Item Category</th>
+              <th>Item Name</th>
               <th>Code</th>
               <th>Unit</th>
               <th>Available Qty</th>
               <th>Dispatched Qty</th>
               <th>Remark</th>
-              <th></th> {/* Button to remove an item row */}
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -159,13 +185,18 @@ const DirectDispatch = () => {
                   </select>
                 </td>
                 <td>
-                  <input 
-                    type="text" 
+                  <select 
                     name="itemName" 
-                    placeholder="Item Name" 
                     value={item.itemName} 
-                    onChange={(e) => handleChange(index, e)}
-                  />
+                    onChange={(e) => {
+                      handleItemSelect(index, e.target.value);
+                    }}
+                  >
+                    <option value="" disabled>Select Item</option>
+                    {allItems.map((allItem, idx) => (
+                      <option key={idx} value={allItem.itemName}>{allItem.itemName}</option>
+                    ))}
+                  </select>
                 </td>
                 <td>
                   <input 
@@ -173,6 +204,7 @@ const DirectDispatch = () => {
                     name="code" 
                     value={item.code} 
                     onChange={(e) => handleChange(index, e)}
+                    readOnly // Optional: Make it read-only if auto-filled
                   />
                 </td>
                 <td>
@@ -181,6 +213,7 @@ const DirectDispatch = () => {
                     name="unit" 
                     value={item.unit} 
                     onChange={(e) => handleChange(index, e)}
+                    readOnly // Optional: Make it read-only if auto-filled
                   />
                 </td>
                 <td>
@@ -189,6 +222,7 @@ const DirectDispatch = () => {
                     name="availableQty" 
                     value={item.availableQty} 
                     onChange={(e) => handleChange(index, e)} 
+                    readOnly // Optional: Make it read-only if auto-filled
                   />
                 </td>
                 <td>

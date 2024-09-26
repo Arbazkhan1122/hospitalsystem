@@ -7,9 +7,8 @@ import axios from "axios";
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 import { API_BASE_URL } from "../../api/api";
 
-
 const Requisition = () => {
-  const [columnWidths,setColumnWidths] = useState({});
+  const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
   const [dateFrom, setDateFrom] = useState("2024-08-07");
   const [dateTo, setDateTo] = useState("2024-08-07");
@@ -26,9 +25,7 @@ const Requisition = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${API_BASE_URL}/dispatch/getAllDispatches`
-        );
+        const response = await axios.get(`${API_BASE_URL}/dispatch/getAllDispatches`);
         setData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -74,27 +71,26 @@ const Requisition = () => {
         <>
           {!showDispatchTable ? (
             <>
-              
               <div className="requisition-inventory-status-filter">
-              <button
-                className="requisition-inventory-direct-dispatch"
-                onClick={() => setShowDirect(true)}
-              >
-                Direct Dispatch ➚
-              </button>
-              <div className="requisition-inventory-direct-dispatch-filters">
-                <span>List by Requisition Status:</span>
-                {["Pending", "Complete", "Cancelled", "All"].map((s) => (
-                  <label key={s}>
-                    <input
-                      type="radio"
-                      name="status"
-                      checked={status === s}
-                      onChange={() => setStatus(s)}
-                    />{" "}
-                    {s}
-                  </label>
-                ))}
+                <button
+                  className="requisition-inventory-direct-dispatch"
+                  onClick={() => setShowDirect(true)}
+                >
+                  Direct Dispatch ➚
+                </button>
+                <div className="requisition-inventory-direct-dispatch-filters">
+                  <span>List by Requisition Status:</span>
+                  {["Pending", "Complete", "Cancelled", "All"].map((s) => (
+                    <label key={s}>
+                      <input
+                        type="radio"
+                        name="status"
+                        checked={status === s}
+                        onChange={() => setStatus(s)}
+                      />{" "}
+                      {s}
+                    </label>
+                  ))}
                 </div>
               </div>
               <div className="requisition-inventory-date-range">
@@ -119,55 +115,56 @@ const Requisition = () => {
                 <button className="requisition-inventory-ok">✓ OK</button>
               </div>
               <div className="requisition-inventory-search-bar-container">
-              <div className="requisition-inventory-search-bar">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-                <button className="requisition-inventory-search-bar-button" onClick={handleSearch}>🔍</button>
-              </div>
-              <div className="requisition-inventory-results">
-                <span className="requisition-inventory-results-span">Showing {data.length} results</span>
-                <button className="requisition-inventory-results-print" onClick={handlePrint}>Print</button>
-              </div>
+                <div className="requisition-inventory-search-bar">
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+                  <button className="requisition-inventory-search-bar-button" onClick={handleSearch}>🔍</button>
+                </div>
+                <div className="requisition-inventory-results">
+                  <span className="requisition-inventory-results-span">Showing {data.length} results</span>
+                  <button className="requisition-inventory-results-print" onClick={handlePrint}>Print</button>
+                </div>
               </div>
               <div className="requisition-ta">
-              <table className="patientList-table" ref={tableRef}>
-          <thead>
-            <tr>
-              {[
-                "Req.No",
-  "StoreName",
-  "Req.Date",
-  "Requested By",
-  "Received By",
-  "Status",
-  "Verification Status",
-  "Actions"
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
-                    ></div>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
+                <table className="patientList-table" ref={tableRef}>
+                  <thead>
+                    <tr>
+                      {[
+                        "Req.No",
+                        "StoreName",
+                        "Req.Date",
+                        "Requested By",
+                        "Received By",
+                        "Status",
+                        "Verification Status",
+                        "Actions"
+                      ].map((header, index) => (
+                        <th
+                          key={index}
+                          style={{ width: columnWidths[index] }}
+                          className="resizable-th"
+                        >
+                          <div className="header-content">
+                            <span>{header}</span>
+                            <div
+                              className="resizer"
+                              onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+                            ></div>
+                          </div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
                   <tbody>
-                    {data.length > 0 ? (
+                    {loading ? (
+                      <tr>
+                        <td colSpan="8">Loading...</td>
+                      </tr>
+                    ) : data.length > 0 ? (
                       data.map((item, index) => (
                         <tr key={index}>
                           <td>{item.id}</td>
@@ -200,16 +197,6 @@ const Requisition = () => {
                     )}
                   </tbody>
                 </table>
-                {/* <div className="requisition-inventory-requisition-pagination">
-                  <div className="requisition-inventory-requisition-pagination-div">
-                    <span>0 to 0 of 0</span>
-                    <button>First</button>
-                    <button>Previous</button>
-                    <span>Page 0 of 0</span>
-                    <button>Next</button>
-                    <button>Last</button>
-                  </div>
-                </div> */}
               </div>
             </>
           ) : (
@@ -222,7 +209,7 @@ const Requisition = () => {
           )}
         </>
       ) : (
-        <DirectDispatch />
+        <DirectDispatch setShowDirect={setShowDirect} />
       )}
 
       {showRequisitionDetail && selectedRequisition && (

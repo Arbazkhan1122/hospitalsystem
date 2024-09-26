@@ -4,8 +4,9 @@ import MedicationOrder from './MedicationOrder ';
 import { API_BASE_URL } from '../api/api';
 import LabOrder from './LabOrder';
 import RadioOrder from './RadioOrder';
+import axios from 'axios';
 
-const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
+const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection,employeeId}) => {
   const [selectedOrderType, setSelectedOrderType] = useState('');
   const [orderData, setOrderData] = useState([]);
   const [selectedOrders, setSelectedOrders] = useState([]);
@@ -14,7 +15,6 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
   const [labOrder,showLabOrder] = useState(false);
   const [imagingOrder,setImagingOrder] = useState(false);
 
-  // API endpoints
   const apiEndpoints = {
     lab: `${API_BASE_URL}`,
     imaging: `${API_BASE_URL}/radiology-settings/imaging-items`,
@@ -60,6 +60,8 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
 
     if (orderId) {
       const selectedOrder = orderData.find(order => order.id || order.imagingItemId == orderId);
+      console.log(selectedOrder);
+      
 
       if (selectedOrder) {
         setSelectedOrders(prevOrders => [...prevOrders, selectedOrder]);
@@ -75,9 +77,7 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
 
   const handleProceed = () => {
     showLabOrder(true);
-    if (selectedOrders.length > 0) {
-      console.log(selectedOrderType);
-      
+    if (selectedOrders.length > 0) {      
       if(selectedOrderType === "medication")
         {
         setShowMedicationOrder(true);
@@ -108,7 +108,7 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection}) => {
     return <LabOrder selectedOrders={selectedOrders} setActiveSection={setActiveSection} patientId={patientId} newPatientVisitId={newPatientVisitId}/>;  // Pass selected orders to MedicationOrder
   }
   if (imagingOrder) {
-    return <RadioOrder selectedOrders={selectedOrders} setActiveSection={setActiveSection} patientId={patientId} newPatientVisitId={newPatientVisitId}/>;  // Pass selected orders to MedicationOrder
+    return <RadioOrder selectedOrders={selectedOrders} setActiveSection={setActiveSection} patientId={patientId} newPatientVisitId={newPatientVisitId} employeeId={employeeId}/>;  // Pass selected orders to MedicationOrder
   }
 
   return (

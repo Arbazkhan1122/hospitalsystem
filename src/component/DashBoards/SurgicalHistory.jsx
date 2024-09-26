@@ -8,8 +8,10 @@ const SurgicalHistory = ({patientId,newPatientVisitId}) => {
   const [columnWidths,setColumnWidths] = useState({});
   const tableRef = useRef(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isUpdateModalOpen,setIsUpdateModalOpen] = useState(false);
   const [surgicalHistories, setSurgicalHistories] = useState([]);
   const [newSurgicalHistory, setNewSurgicalHistory] = useState({});
+  const [updateSurgicalHistory,setUpdateSurgicalHistory]=useState({});
   const [formData, setFormData] = useState({
     surgeryType: '',
     searchProblem: '',
@@ -23,15 +25,26 @@ const SurgicalHistory = ({patientId,newPatientVisitId}) => {
 
   const handleCloseModal = () => {
     setIsAddModalOpen(false);
-    setNewSurgicalHistory({});
+    
   };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+
+  useEffect (()=>{
+    setUpdateSurgicalHistory({
+      surgeryType: newSurgicalHistory.surgeryType || '',
+      searchProblem:newSurgicalHistory.searchProblem || '',
+      surgeryDate:newSurgicalHistory.surgeryDate || '',
+      note:newSurgicalHistory.note || ''
+    })
+
+  },[newSurgicalHistory])
+
   useEffect(() => {
-    // Fetch vitals from API
+
     axios
       .get(
         `${API_BASE_URL}/surgical-histories/by-newVisitPatientId/${newPatientVisitId}`
@@ -78,6 +91,46 @@ const SurgicalHistory = ({patientId,newPatientVisitId}) => {
       console.error('Error:', error);
       alert('Error submitting form');
     }
+  };
+
+
+  const handleUpdateSurgicalHistory = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/surgical-histories/save-surgical-history`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updateSurgicalHistory),
+      });
+
+      if (response.ok) {
+        alert('Surgical History added successfully!');
+        setFormData({
+          surgeryType: '',
+          searchProblem: '',
+          surgeryDate: '',
+          note: ''
+        });
+        handleCloseModal();
+      } else {
+        alert('Failed to add Surgical History');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error submitting form');
+    }
+  };
+
+  const handleUpdate = (item)=>{
+    setNewSurgicalHistory(item);
+    setIsUpdateModalOpen(true);
+    setIsAddModalOpen(false);
+  }
+
+  const handleUpdateInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdateSurgicalHistory({ ...updateSurgicalHistory, [name]: value });
   };
 
 
@@ -129,7 +182,7 @@ const SurgicalHistory = ({patientId,newPatientVisitId}) => {
                   <td>{history.surgeryDate}</td>
                   <td>{history.note}</td>
                   <td>
-                    <button>Edit</button>
+                    <button onClick={()=>handleUpdate(history)}>Edit</button>
                   </td>
                 </tr>
               ))}
@@ -184,6 +237,57 @@ const SurgicalHistory = ({patientId,newPatientVisitId}) => {
           </div>
           <button className="surgical-history-add-button" onClick={handleAddSurgicalHistory}>
             Add Surgical History
+          </button>
+        </div>
+      </div>
+        )}
+
+{isUpdateModalOpen && (
+        <div className="surgical-history-modal-overlay">
+        <div className="surgical-history-modal-content">
+          <h6>Update Surgical History</h6>
+          <button className="surgical-history-close-button" onClick={handleCloseModal}>
+            ❌
+          </button>
+          <div className="surgical-history-form-group">
+            <label>Surgery Type*:</label>
+            <input
+              type="text"
+              name="surgeryType"
+              placeholder="Surgery Type"
+              value={updateSurgicalHistory.surgeryType}
+              onChange={handleUpdateInputChange}
+            />
+          </div>
+          <div className="surgical-history-form-group">
+            <label>ICD-11 Description*:</label>
+            <input
+              type="text"
+              name="searchProblem"
+              placeholder="ICD-11 Description"
+              value={updateSurgicalHistory.searchProblem}
+              onChange={handleUpdateInputChange}
+            />
+          </div>
+          <div className="surgical-history-form-group">
+            <label>Surgery Date*:</label>
+            <input
+              type="date"
+              name="surgeryDate"
+              value={updateSurgicalHistory.surgeryDate}
+              onChange={handleUpdateInputChange}
+            />
+          </div>
+          <div className="surgical-history-form-group">
+            <label>Note:</label>
+            <textarea
+              name="note"
+              value={updateSurgicalHistory.note}
+              onChange={handleUpdateInputChange}
+            ></textarea>
+          </div>
+          <button className="surgical-history-add-button" onClick={handleUpdateSurgicalHistory}>
+            Update Surgical History
           </button>
         </div>
       </div>

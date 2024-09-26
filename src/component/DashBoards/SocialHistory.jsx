@@ -8,7 +8,10 @@ const SocialHistory = ({patientId,newPatientVisitId}) => {
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [socialHistories, setSocialHistories] = useState([]);
+  const [socialHistory,setSocialHistory] = useState({});
+  const [updateSocialHistory,setUpdateSocialHistory]=useState({});
   const [newSocialHistory, setNewSocialHistory] = useState({
     smokingHistory: '',
     alcoholHistory: '',
@@ -24,16 +27,19 @@ const SocialHistory = ({patientId,newPatientVisitId}) => {
 
   const handleCloseModal = () => {
     setIsAddModalOpen(false);
-    setNewSocialHistory({
-      smokingHistory: "",
-      alcoholHistory: "",
-      drugHistory: "",
-      occupation: "",
-      familySupport: "",
-      hobby: "",
-    });
   };
 
+
+  useEffect(() => {
+    setUpdateSocialHistory({
+      smokingHistory: socialHistory.smokingHistory || "",
+      alcoholHistory: socialHistory.alcoholHistory || "",
+      drugHistory: socialHistory.drugHistory || "",
+      occupation: socialHistory.occupation || "",
+      familySupport: socialHistory.familySupport || "",
+      hobby: socialHistory.hobby || "",
+    });
+  }, [socialHistory]);
   useEffect(() => {
     // Fetch vitals from API
     axios
@@ -88,9 +94,54 @@ const SocialHistory = ({patientId,newPatientVisitId}) => {
     }
   };
 
+  const handleUpdate =(item)=>{
+    setSocialHistory(item);
+    setIsUpdateModalOpen(true);
+    setIsAddModalOpen(false);
+  }
+
+
+
+  const handleUpdateSocialHistory = async () => {
+    console.log(updateSocialHistory);
+    
+    try {
+      const response = await fetch(`${API_BASE_URL}/social-histories/update/${socialHistory.socialHistoryId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updateSocialHistory),
+      });
+
+      if (response.ok) {
+        alert('Social History added successfully!');
+        setNewSocialHistory({
+          smokingHistory: '',
+          alcoholHistory: '',
+          drugHistory: '',
+          occupation: '',
+          familySupport: '',
+          hobby: ''
+        });
+        handleCloseModal();
+      } else {
+        alert('Failed to add Social History');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error submitting form');
+    }
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewSocialHistory({ ...newSocialHistory, [name]: value });
+  };
+
+  const handleUpdateInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdateSocialHistory({ ...updateSocialHistory, [name]: value });
   };
 
   return (
@@ -148,7 +199,7 @@ const SocialHistory = ({patientId,newPatientVisitId}) => {
                     <td>{history.familySupport}</td>
                     <td>{history.hobby}</td>
                     <td>
-                      <button>Edit</button>
+                      <button onClick={()=>handleUpdate(history)}>Edit</button>
                     </td>
                   </tr>
                 ))}
@@ -222,6 +273,76 @@ const SocialHistory = ({patientId,newPatientVisitId}) => {
       
               <button className="social-history-add-button" onClick={handleAddSocialHistory}>
                 Add Social History
+              </button>
+            </div>
+          </div>
+          )}
+
+{isUpdateModalOpen && (
+            <div className="social-history-modal-overlay">
+            <div className="social-history-modal-content">
+              <h6>Update Social History</h6>
+              <button className="social-history-close-button" onClick={handleCloseModal}>
+                ❌
+              </button>
+      
+              <div className="social-history-form-group">
+                <label>Smoking History:</label>
+                <input
+                  type="text"
+                  name="smokingHistory"
+                  value={updateSocialHistory.smokingHistory}
+                  onChange={handleUpdateInputChange}
+                />
+              </div>
+              <div className="social-history-form-group">
+                <label>Alcohol History:</label>
+                <input
+                  type="text"
+                  name="alcoholHistory"
+                  value={updateSocialHistory.alcoholHistory}
+                  onChange={handleUpdateInputChange}
+                />
+              </div>
+              <div className="social-history-form-group">
+                <label>Drug History:</label>
+                <input
+                  type="text"
+                  name="drugHistory"
+                  value={updateSocialHistory.drugHistory}
+                  onChange={handleUpdateInputChange}
+                />
+              </div>
+              <div className="social-history-form-group">
+                <label>Occupation:</label>
+                <input
+                  type="text"
+                  name="occupation"
+                  value={updateSocialHistory.occupation}
+                  onChange={handleUpdateInputChange}
+                />
+              </div>
+              <div className="social-history-form-group">
+                <label>Family Support:</label>
+                <input
+                  type="text"
+                  name="familySupport"
+                  value={updateSocialHistory.familySupport}
+                  onChange={handleUpdateInputChange}
+                />
+              </div>
+              <div className="social-history-form-group">
+                <label>Hobby:</label>
+                <input
+                  type="text"
+                  name="hobby"
+                  value={updateSocialHistory.hobby}
+                  onChange={handleUpdateInputChange}
+                />
+              </div>
+      
+              <button className="social-history-add-button" onClick={handleUpdateSocialHistory}>
+                Update Social History
               </button>
             </div>
           </div>

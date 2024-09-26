@@ -65,4 +65,62 @@
   .hist-problem-list-table th:last-child {
     border-top-right-radius: 5px;
   }
+
+  .hist-modal-overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hist-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    position: relative;
+  }
+  
+  .hist-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: var(--heading-font);
+    cursor: pointer;
+  }
+  
+  .hist-form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .hist-form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    display: block;
+    width: 50%;
+  }
+  
+  .hist-form-group input,
+  .hist-form-group textarea {
+    padding: 5px;
+    margin-top: 4px;
+    width: 50%;
+  }
+  
+  .hist-add-button {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
   

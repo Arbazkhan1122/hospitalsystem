@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import VerifyModal from "./VerifyModal";
 import styles from "./RequisitionPage.module.css";
+import VerifyModalPharmacy from "./VerifyModalPharmacy";
 import { API_BASE_URL } from "../api/api";
 
-function RequisitionPage() {
+function RequisitionPagePharmacy() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [requisitions, setRequisitions] = useState([]);
   const [selectedRequisition, setSelectedRequisition] = useState(null); 
   const [filterStatus, setFilterStatus] = useState("pending");
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/inventory-requisitions/getAll`)
+    fetch(`${API_BASE_URL}/pharmacyRequisitions/getAll`)
       .then((response) => response.json())
       .then((data) => setRequisitions(data))
       .catch((error) => console.error("Error fetching data:", error));
@@ -115,10 +116,10 @@ function RequisitionPage() {
           </thead>
           <tbody>
             {filteredRequisitions.map((requisition) => (
-              <tr key={requisition.inventoryRequisitionId}>
-                <td>{requisition.inventoryRequisitionId}</td>
+              <tr key={requisition.pharmacyRequisitionId}>
+                <td>{requisition.pharmacyRequisitionId}</td>
                 <td>{requisition.storeName}</td>
-                <td>{requisition.requisitionDate}</td>
+                <td>{requisition.requestedDate}</td>
                 <td>{requisition.status}</td>
                 <td>
                   {requisition.status === "Pending"
@@ -136,9 +137,8 @@ function RequisitionPage() {
         </table>
       </div>
 
-   
       {isModalOpen && (
-        <VerifyModal
+        <VerifyModalPharmacy
           isOpen={isModalOpen}
           onClose={closeModal}
           requisitionDetails={selectedRequisition} 
@@ -148,4 +148,4 @@ function RequisitionPage() {
   );
 }
 
-export default RequisitionPage;
+export default RequisitionPagePharmacy;

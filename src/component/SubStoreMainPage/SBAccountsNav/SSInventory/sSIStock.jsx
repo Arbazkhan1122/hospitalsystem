@@ -11,6 +11,7 @@ import SSIPatientConsumption from './sSIPatientConsumption';
 import SSIReturn from './sSIReturn';
 import SSPharmacyNInven from '../SSPharmacy/sSPharmacyNInven';
 import { useParams } from 'react-router-dom';
+import { API_BASE_URL } from '../../../api/api';
 
 function SSIStock() {
   const { store } = useParams();
@@ -48,7 +49,7 @@ function SSIStock() {
 
   useEffect(() => {
     // Fetch data from API
-    fetch('http://localhost:8080/api/inventory-requisitions/getAll')
+    fetch(`${API_BASE_URL}/inventory-requisitions/getAll`)
       .then(response => response.json())
       .then(data => {
         const filteredData = data.filter(item => item.storeName === store);

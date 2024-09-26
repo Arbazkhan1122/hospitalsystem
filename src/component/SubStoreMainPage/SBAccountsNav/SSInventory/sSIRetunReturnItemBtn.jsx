@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import '../SSInventory/sSIRetunReturnItemBtn.css';
 import { useParams } from 'react-router-dom';
+import { API_BASE_URL } from '../../../api/api';
 
 const SSIRetunReturnItemBtn = ({ onBack }) => {
   const { store } = useParams();
@@ -30,7 +31,7 @@ const SSIRetunReturnItemBtn = ({ onBack }) => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/inventory-requisitions/getAll');
+        const response = await fetch(`${API_BASE_URL}/inventory-requisitions/getAll`);
         if (!response.ok) {
           throw new Error('Failed to fetch items.');
         }

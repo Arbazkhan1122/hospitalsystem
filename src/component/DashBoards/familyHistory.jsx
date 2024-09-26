@@ -6,8 +6,9 @@ import axios from 'axios';
 
 const FamilyHistory = ({patientId,newPatientVisitId}) => {
   const [columnWidths,setColumnWidths] = useState({});
-  const tableRef = useRef(null);
+  const tableRef = useRef(null)
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); 
+  const [isUpdateModalOpen,setIsUpdateModalOpen]=useState(false);
   const [familyHistories, setFamilyHistories] = useState([]); 
   const [newFamilyHistory, setNewFamilyHistory] = useState({}); 
   const [familyhistory, setFamilyhistory] = useState({
@@ -16,9 +17,31 @@ const FamilyHistory = ({patientId,newPatientVisitId}) => {
     note: ''
   });
 
+  console.log(newFamilyHistory);
+  
+
+  const [updatefamilyhistory, setUpdateFamilyhistory] = useState({});
+
+
+  useEffect(() => {
+    // Sync the update form values with the selected family history
+    if (newFamilyHistory) {
+      setUpdateFamilyhistory({
+        searchProblem: newFamilyHistory.searchProblem || '',
+        relationship: newFamilyHistory.relationship || '',
+        note: newFamilyHistory.note || ''
+      });
+    }
+  }, [newFamilyHistory]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFamilyhistory({ ...familyhistory, [name]: value });
+  };
+
+  const handleUpdateInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdateFamilyhistory({ ...updatefamilyhistory, [name]: value });
   };
 
   useEffect(() => {
@@ -36,7 +59,7 @@ const FamilyHistory = ({patientId,newPatientVisitId}) => {
       .catch((error) => {
         console.error("Error fetching vitals:", error);
       });
-  }, []);
+  }, [newPatientVisitId]);
 
   const handleAddFamilyHistory = async () => {
     const formData =
@@ -55,9 +78,36 @@ const FamilyHistory = ({patientId,newPatientVisitId}) => {
       });
 
       if (response.ok) {
-        const data = await response.json();
         alert('Family History added successfully!');
-        // Reset the form if needed
+        setFamilyhistory({
+          searchProblem: '',
+          relationship: '',
+          note: ''
+        });
+        handleCloseModal();
+      } else {
+        alert('Failed to add Family History');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error submitting form');
+    }
+  };
+
+
+  const handleUpdateFamilyHistory = async () => {  
+    console.log(updatefamilyhistory);
+    try {
+      const response = await fetch(`${API_BASE_URL}/family-histories/update/${newFamilyHistory.familyHistoryId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatefamilyhistory),
+      });
+
+      if (response.ok) {
+        alert('Family History added successfully!');
         setFamilyhistory({
           searchProblem: '',
           relationship: '',
@@ -77,9 +127,17 @@ const FamilyHistory = ({patientId,newPatientVisitId}) => {
     setIsAddModalOpen(true);
   };
 
+  const handleUpdate = (item)=>{
+    console.log(item);
+    
+    setNewFamilyHistory(item);
+    setIsUpdateModalOpen(true);
+    setIsAddModalOpen(false);
+  }
+
   const handleCloseModal = () => {
     setIsAddModalOpen(false);
-    setNewFamilyHistory({}); 
+    setIsUpdateModalOpen(false);
   };
 
   return (
@@ -123,13 +181,13 @@ const FamilyHistory = ({patientId,newPatientVisitId}) => {
             </tr>
           </thead>
             <tbody>
-              {familyHistories.map((history, index) => (
+              {familyHistories?.map((history, index) => (
                 <tr key={index}>
                   <td className="family-history-table-data">{history.searchProblem}</td>
                   <td className="family-history-table-data">{history.relationship}</td>
                   <td className="family-history-table-data">{history.note}</td>
                   <td className="family-history-table-data">
-                    <button>Edit</button>
+                    <button onClick={()=>handleUpdate(history)}>Edit</button>
                   </td>
                 </tr>
               ))}
@@ -177,6 +235,50 @@ const FamilyHistory = ({patientId,newPatientVisitId}) => {
              </div>
              <button className="family-history-add-button" onClick={handleAddFamilyHistory}>
                Add Family History
+             </button>
+           </div>
+         </div>
+        )}
+
+{isUpdateModalOpen && (
+           <div className="family-history-modal-overlay">
+           <div className="family-history-modal-content">
+             <h6>Update Family History</h6>
+             <button className="family-history-close-button" onClick={handleCloseModal}>
+               ❌
+             </button>
+             <div className="family-history-form-group">
+               <label>Search Problem*:</label>
+               <input
+                 className="family-history-form-group-input"
+                 type="text"
+                 name="searchProblem"
+                 placeholder="ICD-11"
+                 value={updatefamilyhistory.searchProblem}
+                 onChange={handleUpdateInputChange}
+               />
+             </div>
+             <div className="family-history-form-group">
+               <label>Relationship*:</label>
+               <input
+                 className="family-history-form-group-input"
+                 type="text"
+                 name="relationship"
+                 value={updatefamilyhistory.relationship}
+                 onChange={handleUpdateInputChange}
+               />
+             </div>
+             <div className="family-history-form-group">
+               <label>Note:</label>
+               <textarea
+                 className="family-history-form-group-input"
+                 name="note"
+                 value={updatefamilyhistory.note}
+                 onChange={handleUpdateInputChange}
+               ></textarea>
+             </div>
+             <button className="family-history-add-button" onClick={handleUpdateFamilyHistory}>
+               Update Family History
              </button>
            </div>
          </div>

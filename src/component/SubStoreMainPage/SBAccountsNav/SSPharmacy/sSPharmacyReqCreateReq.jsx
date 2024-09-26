@@ -3,9 +3,12 @@
 import React, { useState } from 'react';
 import { Calendar } from 'lucide-react';
 import "../SSPharmacy/sSPharmacyReqCreateReq.css";
+import { API_BASE_URL } from '../../../api/api';
+import { useParams } from 'react-router-dom';
 
 const SSPharmacyReqCreateReq = ({ onClose }) => {
   // General Form States
+  const { store } = useParams();
   const [requisitionDate, setRequisitionDate] = useState('2024-08-29');
   const [issueNo, setIssueNo] = useState('');
   const [remarks, setRemarks] = useState('');
@@ -17,7 +20,7 @@ const SSPharmacyReqCreateReq = ({ onClose }) => {
     itemName: '',
     unit: '',
     availableQtyInStore: '',
-    requestingQuantity: '',
+    requiredQuantity: '',
     remark: '',
     genericName: '',
     batchNo: '',
@@ -36,27 +39,21 @@ const SSPharmacyReqCreateReq = ({ onClose }) => {
     }
 
     // Validate the single item
-    if (!item.itemName || !item.unit || !item.requestingQuantity) {
-      alert('Please fill all required fields for the item.');
-      return;
-    }
+    // if (!item.itemName || !item.unit || !item.requestingQuantity) {
+    //   alert('Please fill all required fields for the item.');
+    //   return;
+    // }
 
     // Prepare data for API
     const requisitionData = {
-      issueNo,
-      requisitionDate,
-      remarks,
-      needVerification: needVerification ? 'Yes' : 'No',
-      checkedBy,
-      id: 1, // Assuming you're generating or managing IDs elsewhere
       itemName: item.itemName,
       unit: item.unit,
       availableQtyInStore: Number(item.availableQtyInStore),
-      requestingQuantity: Number(item.requestingQuantity),
+      requiredQuantity: Number(item.requiredQuantity),
       requestedBy: 'Dr. Smith', // This can be dynamic based on your application
       remark: item.remark,
       requestedDate: requisitionDate,
-      storeName: 'Accounts', // This can be dynamic or selected from a dropdown
+      storeName: store, 
       genericName: item.genericName,
       batchNo: item.batchNo,
       expiryDate: item.expiryDate,
@@ -71,7 +68,7 @@ const SSPharmacyReqCreateReq = ({ onClose }) => {
     try {
       console.log(requisitionData);
 
-      const response = await fetch('http://localhost:8080/api/pharmacyRequisitions/create', {
+      const response = await fetch(`${API_BASE_URL}/pharmacyRequisitions/create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -178,8 +175,8 @@ const SSPharmacyReqCreateReq = ({ onClose }) => {
               <td>
                 <input
                   type="number"
-                  value={item.requestingQuantity}
-                  onChange={(e) => handleItemChange('requestingQuantity', e.target.value)}
+                  value={item.requiredQuantity}
+                  onChange={(e) => handleItemChange('requiredQuantity', e.target.value)}
                   min="1"
                   required
                 />
@@ -225,7 +222,6 @@ const SSPharmacyReqCreateReq = ({ onClose }) => {
           </tbody>
         </table>
 
-        {/* Verification Section */}
         <div className="sSPharmacyReqCreateReq-nedd-N-textarea">
         <div className="sSPharmacyReqCreateReq-nedd-N-btn">
         <div className="sSPharmacyReqCreateReq-form-group sSPharmacyReqCreateReq-checkbox-group">

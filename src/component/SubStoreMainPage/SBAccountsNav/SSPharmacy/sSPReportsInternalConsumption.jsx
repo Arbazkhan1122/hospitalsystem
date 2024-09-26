@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import * as XLSX from 'xlsx'; // Import the xlsx library
 import "../SSPharmacy/sSPReportsInternalConsumption.css";
 import { useReactToPrint } from 'react-to-print';
+import { API_BASE_URL } from '../../../api/api';
 
 function SSPReportsInternalConsumption() {
   const printRef = useRef();
@@ -21,7 +22,7 @@ function SSPReportsInternalConsumption() {
   const fetchInternalConsumptionData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8080/api/internal-consumption/getAll');
+      const response = await fetch(`${API_BASE_URL}/internal-consumption/getAll`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

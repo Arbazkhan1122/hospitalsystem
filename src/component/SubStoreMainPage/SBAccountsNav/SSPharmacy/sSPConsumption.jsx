@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import "../SSPharmacy/sSPConsumption.css";
 import { useParams } from 'react-router-dom';
 import SSPConsumInternalConsum from './sSPConsumInternalConsum';
+import { API_BASE_URL } from '../../../api/api';
 
 function SSPConsumption() {
   const { store } = useParams();
@@ -16,7 +17,7 @@ function SSPConsumption() {
   };
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/internal-consumption/getAll')
+    fetch(`${API_BASE_URL}/internal-consumption/getAll`)
       .then(response => response.json())
       .then(data => {
         const filteredData = data.filter(item => item.storeName === store);

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import "../SSPharmacy/sSPRequisition.css";
 import { useParams } from 'react-router-dom';
 import SSPharmacyReqCreateReq from './sSPharmacyReqCreateReq';
+import { API_BASE_URL } from '../../../api/api';
 
 function SSPRequisition() {
   const { store } = useParams();
@@ -24,7 +25,7 @@ function SSPRequisition() {
   useEffect(() => {
     const fetchRequisitions = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/pharmacyRequisitions/getAll');
+        const response = await fetch(`${API_BASE_URL}/pharmacyRequisitions/getAll`);
         if (!response.ok) {
           throw new Error('Failed to fetch requisitions');
         }
