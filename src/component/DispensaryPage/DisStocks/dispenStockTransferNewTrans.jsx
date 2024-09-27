@@ -92,6 +92,10 @@
 // };
 
 // export default DispenStockTransferNewTrans;
+
+ /* Ajhar Tamboli dispenStockTransferNewTrans.jsx 19-09-24 */
+
+
 import React from 'react';
 import "../DisStocks/dispenStockTransferNewTrans.css";
 

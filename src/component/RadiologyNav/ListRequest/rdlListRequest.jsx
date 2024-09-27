@@ -1,3 +1,6 @@
+ /* Ajhar Tamboli rdlListRequest.jsx 19-09-24 */
+
+
 import React, { useState, useEffect, useRef } from "react";
 import "../ListRequest/rdlListRequest.css";
 import AddReportForm from "./rdlAddReport";
@@ -120,18 +123,20 @@ function RDLListRequest() {
         </div>
       </header>
       <div className="rDLListRequest-controls">
-        <div className="rDLListRequest-date-range">
-          <label>
-            From:
-            <input type="date" defaultValue="2024-08-09" />
-          </label>
-          <label>
-            To:
-            <input type="date" defaultValue="2024-08-16" />
-          </label>
-          <button className="rDLListRequest-star-button">☆</button>
-          <button className="rDLListRequest-ok-button">OK</button>
-        </div>
+      <div className="rDLListRequest-date-range">
+      <label>
+        From:
+        <input type="date" defaultValue="2024-08-09" />
+      </label>
+      <label>
+        To:
+        <input type="date" defaultValue="2024-08-16" />
+      </label>
+      <button className="rDLListRequest-star-button">☆</button>
+    <button className="rDLListRequest-more-btn">-</button>
+      <button className="rDLListRequest-ok-button">OK</button>
+    </div>
+
       </div>
       <div className="rDLListRequest-search-N-results">
         <div className="rDLListRequest-search-bar">

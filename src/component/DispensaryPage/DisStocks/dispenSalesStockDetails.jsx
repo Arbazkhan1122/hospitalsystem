@@ -347,6 +347,7 @@
 // export default SalesStockDetails;
 
 
+ /* Ajhar Tamboli dispenSalesStockDetails.jsx 19-09-24 */
 
 
 import React, { useState, useEffect } from "react";
@@ -477,7 +478,7 @@ const SalesStockDetails = () => {
                                 <i className="fa-solid fa-file-excel"></i> Export
                             </button>
                             <button className="dispenSalesStockDetails-print-button" onClick={handlePrint}>
-                                Print
+                            <i class="fa-solid fa-print"></i> Print
                             </button>
                         </div>
                     </div>
@@ -515,16 +516,16 @@ const SalesStockDetails = () => {
                         </tbody>
                     </table>
                     
-                    <div className="dSSDetails-pagination-bar">
+                    {/* <div className="dSSDetails-pagination-bar">
                         <span>1 to 20 of {salesData.length}</span>
                         <button>First</button>
                         <button>Previous</button>
                         <span>Page 1 of {(salesData.length / 20).toFixed(0)}</span>
                         <button>Next</button>
                         <button>Last</button>
-                    </div>
+                    </div> */}
                     
-                    <div className="dSSDetails-summary">
+                    <div className="sales-stock-details-summary">
                         <h4>Summary</h4>
                         <strong>Total Stock Value: </strong>{salesData.reduce((acc, item) => acc + (item.availableQty * item.salePrice), 0).toFixed(2)}
                     </div>
