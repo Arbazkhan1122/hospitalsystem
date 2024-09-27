@@ -1,19 +1,17 @@
-/* body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #e6f3ff;
-  } */
+/* Ajhar tamboli sSPStoreTransfer.css 19-09-24 */
+
   
   .ssp-Transfer-store-container {
-    max-width: 1000px;
+    /* max-width: 1000px; */
     margin: 0 auto;
-    padding: 20px;
+    background-color: var(--background-color);
+    /* padding: 20px; */
   }
   
   .ssp-Transfer-store-transfer-form {
-    background-color: #fff;
-    padding: 20px;
+    background-color: var(--background-color);
+    /* background-color: #fff; */
+    padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
@@ -29,13 +27,15 @@
     margin-bottom: 20px;
   }
   
-  .ssp-Transfer-store th, td {
+  .ssp-Transfer-store th, .ssp-Transfer-store td {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+    padding: 3px;
+    text-align: center;
+    font-size: var(--font-size);
   }
   
   .ssp-Transfer-store th {
+    font-size: var(--heading-font);
     background-color: #f2f2f2;
   }
   
@@ -47,12 +47,24 @@
   }
   
   .ssp-Transfer-store-btn-transfer {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+    
     display: block;
     margin: 0 auto;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
+    color: white;
+    /* border: none; */
+    /* margin-left: 10px; */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    /* margin: 1px; */
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
   }
+  .ssp-Transfer-store-btn-transfer:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
+  

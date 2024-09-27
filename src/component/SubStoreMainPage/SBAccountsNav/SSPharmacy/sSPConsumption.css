@@ -1,65 +1,84 @@
-/* body {
-  margin: 0;
-  padding: 20px;
-  background-color: #e6f3ff;
-  } */
+/* Ajhar tamboli sSPConsumption.css 19-09-24 */
+
   
   .sSPConsumption-container {
     font-family: Arial, sans-serif;
     /* max-width: 1000px; */
     /* margin: 0 auto; */
-    background-color: #D5FDD5;
-    padding: 20px;
-    border-radius: 5px;
+    background-color: var(--background-color);
+    padding: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
   }
   
   .sSPConsumption-create-requisition {
-    background-color: #79C879;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    padding: 10px 20px;
+    /* border: none; */
+    margin-bottom: 10px;
     border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 20px;
+    font-size: var(--font-size);
+    /* margin: 1px; */
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .sSPConsumption-create-requisition:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
-  .sSPConsumption-search-bar {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  
-  .sSPConsumption-search-bar input {
-    flex-grow: 1;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-right: none;
-    border-radius: 5px 0 0 5px;
-  }
-  
-  .sSPConsumption-search-bar button {
-    padding: 5px 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-  }
-  
-  .sSPConsumption-results-header {
+  .sSPConsumption-search-N-results{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
   }
+  .sSPConsumption-search-bar {
+    display: flex;
+    margin-left: -15px;
+  }
   
-  .sSPConsumption-btn-print {
-    background-color: #7f56d9;
+  .sSPConsumption-search-bar input {
+    flex-grow: 1;
+    padding: 3px;
+    width: 200px;
+  
+  }
+  .sSPConsumption-search-bar i{
+    position: relative;
+    color:gray;
+    top: 7px;
+  left: 190px;
+  }
+  .sSPConsumption-results-info {
+    text-align: right;
+    font-size: var(--font-size);
+    margin-left: 10px;
+    /* color: #0011ff; */
+    /* font-weight: bold; */
+  }
+  .sSPConsumption-print-btn{
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    padding: 5px 10px;
+    /* border: none; */
+    /* margin-left: 10px; */
     border-radius: 5px;
     cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
   }
+  .sSPConsumption-print-btn:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
+  
+ 
   
   .sSPConsumption-container table {
     width: 100%;
@@ -69,12 +88,14 @@
   
   .sSPConsumption-container th, .sSPConsumption-container td {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+    padding: 3px;
+    text-align: center;
+    font-size: var(--font-size);
   }
   
   .sSPConsumption-container th {
     background-color: #f2f2f2;
+    font-size: var(--heading-font);
   }
   
   .sSPConsumption-btn-view, .btn-receive {
@@ -129,10 +150,10 @@
 
 /* Popup Content */
 .sSPConsumption-popup-content {
+  margin-top: 20px;
   background-color: white;
   /* padding: 10px; */
-  border-radius: 5px;
-  width: 80%;
+  width: 90%;
   /* max-width: 600px; */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   position: relative;
@@ -146,7 +167,7 @@
   background-color: red;
   color: white;
   border: none;
-  padding: 5px;
+  padding: 5px 10px;
   cursor: pointer;
   border-radius: 50%;
 }

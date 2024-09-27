@@ -13,7 +13,7 @@ const SettingCategory = () => {
 
   useEffect(() => {
     // Fetch initial data
-    axios.get('http://192.168.1.39:1415/api/categories')
+    axios.get('http://localhost:1415/api/categories')
       .then(response => {
         setSuppliers(response.data);
       })
@@ -45,8 +45,8 @@ const SettingCategory = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const apiUrl = isEditMode
-      ? `http://192.168.1.37:1415/api/categories/${selectedUser.id}` // Assuming `id` is part of the user object for updates
-      : 'http://192.168.1.37:1415/api/categories';
+      ? `http://localhost:1415/api/categories/${selectedUser.id}` // Assuming `id` is part of the user object for updates
+      : 'http://localhost:1415/api/categories';
     const method = isEditMode ? 'put' : 'post';
 
     axios({

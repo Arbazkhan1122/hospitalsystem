@@ -1,3 +1,5 @@
+/* Ajhar Tamboli rdlListReports.jsx 19-09-24 */
+
 import React, { useState, useEffect, useRef } from "react";
 import "../ListReports/rdlListReports.css";
 import * as XLSX from "xlsx"; // Import xlsx library
@@ -15,10 +17,12 @@ function RDLListReports() {
 
   // Fetch radiology report data and patient data from the APIs
   useEffect(() => {
-    fetch("http://localhost:8888/api/patient-imaging-requisitions/all")
+    fetch("http://localhost:1415/api/imaging-requisitions/by-status-completed")
       .then((response) => response.json())
       .then((data) => {
         setReportsData(data);
+        console.log(data);
+
         setFilteredReportsData(data); // Initialize filtered data
       })
       .catch((error) => console.error("Error fetching reports data:", error));
@@ -72,6 +76,9 @@ function RDLListReports() {
         report.imagingDate,
         report.patientId,
         report.patientDTO?.firstName + " " + report.patientDTO?.lastName ||
+          report.newPatientVisitDTO?.firstName +
+            " " +
+            report.newPatientVisitDTO?.lastName ||
           "N/A",
         `${report.patientDTO?.age || "N/A"}Y / ${
           report.patientDTO?.gender || "N/A"
@@ -135,6 +142,7 @@ function RDLListReports() {
             <input type="date" defaultValue="2024-08-16" />
           </label>
           <button className="rDLListReport-star-button">☆</button>
+          <button className="rDLListReport-more-btn">-</button>
           <button className="rDLListReport-ok-button">OK</button>
         </div>
       </div>
@@ -152,7 +160,7 @@ function RDLListReports() {
             <i className="fa-regular fa-file-excel"></i> Export
           </button>
           <button className="rDLListReport-ex-pri-buttons" onClick={printTable}>
-            Print
+            <i class="fa-solid fa-print"></i> Print
           </button>
         </div>
       </div>
@@ -194,16 +202,21 @@ function RDLListReports() {
             {filteredReportsData.map((report, index) => (
               <tr key={report.imagingId}>
                 <td>{index + 1}</td>
-                <td>{new Date(report.imagingDate).toDateString()}</td>
+                <td>{report.imagingDate}</td>
                 <td>
-                  {report?.patientDTO?.firstName +
-                    " " +
-                    report?.patientDTO?.lastName || "N/A"}
+                  {report.patientDTO?.firstName ||
+                    report.newPatientVisitDTO?.firstName}{" "}
+                  {report.patientDTO?.lastName ||
+                    report.newPatientVisitDTO?.lastName}
                 </td>
-                <td>{`${report.patientDTO?.age} Y / ${
-                  report.patientDTO?.gender || ""
-                }`}</td>
-                <td>{report.patientDTO?.phoneNumber || "N/A"}</td>
+                <td>
+                  {report.patientDTO?.age || report.newPatientVisitDTO?.age} Y
+                </td>
+                <td>
+                  {report.patientDTO?.phoneNumber ||
+                    report.newPatientVisitDTO?.phoneNumber ||
+                    "N/A"}
+                </td>
                 <td>{report.prescriberDTO?.employeeName || "Self"}</td>
                 <td>{report.imagingTypeDTO?.imagingTypeName}</td>
                 <td>{report.imagingItemDTO?.imagingItemName}</td>

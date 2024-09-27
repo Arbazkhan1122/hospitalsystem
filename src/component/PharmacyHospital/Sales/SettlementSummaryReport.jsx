@@ -1,8 +1,10 @@
 /* Mohini_SettlementSummaryReport_WholePage_14/sep/2024 */
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './InvoiceBilling.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const SettlementSummaryReport = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   return (
     <div className="invoice-billing-report-container">
       <h1 className="invoice-billing-report-title">⚛ Settlement Summary Report</h1>
@@ -48,24 +50,44 @@ const SettlementSummaryReport = () => {
           <button className="invoice-billing-print-button">Print</button>
         </div>
       </div>
-      <div className='sales-invoice-billing-tab'> <div className='invoice-billing-table-container'>
-  <table className="invoice-billing-sales-table">
-    <thead>
-      <tr>
-      <th>Hospital</th>
-            <th>Patient Name</th>
-            <th>Age/Sex</th>
-            <th>Contact</th>
-            <th>Receivable Amount</th>
-            <th>Cash Discount</th>
-            <th>Discount Return </th>
-            <th>Settlement Data</th>
-            <th>Action</th>
-      </tr>
-    </thead>
+      {/* <div className='sales-invoice-billing-tab'>  */}
+        <div className='table-container'>
+      <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Hospital",
+                 "Patient Name",
+                 "Age/Sex",
+                 "Contact",
+                 "Receivable Amount",
+                 "Cash Discount",
+                 "Discount Return",
+                 "Settlement Data",
+                 "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
     <tbody>
       <tr>
-        <td colSpan="24" className="invoice-billing-no-rows">No Rows To Show</td>
+        <td colSpan="9" className="invoice-billing-no-rows">No Rows To Show</td>
       </tr>
     </tbody>
   </table>
@@ -80,7 +102,7 @@ const SettlementSummaryReport = () => {
           <button className="invoice-billing-pagination-button">Last</button>
         </div> */}
       </div>
-      </div>
+      {/* </div> */}
 
     </div>
   );

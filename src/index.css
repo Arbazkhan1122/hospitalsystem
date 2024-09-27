@@ -8,25 +8,24 @@
   --font-size: 14px;
   --button-hover-border-color:#00c9c0;
   --button-hover-text-color:#00c9c0;
-  --button-hover-background-color:white ;
-  --input-box-padding:5px;
+  --button-hover-background-color:white;
+  --input-box-padding: 5px;
 }
 
 /* Akash Pawar Table related All Css 14/24 */
 
 .table-container {
-  max-width: 100%; /* Ensure container does not exceed viewport width */
   max-height: 60vh;
   overflow-x: auto; /* Allow horizontal scrolling */
   overflow-y: auto; /* Allow vertical scrolling */
 }
 
 table {
-  width: 100%;
   background-color: #f2f2f2;
   border-collapse: collapse;
-  table-layout: fixed;
-  overflow: auto; 
+  table-layout: fixed; 
+  width: 100%;
+  text-overflow: ellipsis;
 }
 thead{
   background-color: #f2f2f2;
@@ -42,13 +41,13 @@ table td {
   padding: 8px;
   text-align: left;
   font-size: var(--font-size);
-
   text-overflow: ellipsis;
   white-space: nowrap; /* Ensure ellipsis for overflowing text */
 }
 
 table td {
-  overflow: hidden;
+  /* overflow: hidden; */
+  text-overflow: ellipsis;
   position: relative; /* Required for tooltip positioning */
 }
 
@@ -82,40 +81,4 @@ table th .header-content {
 table th .resizer:hover {
   background-color: #aaa;
 }
-
-/* Tooltip Styling */
-.table-tooltiptext {
-  visibility: hidden;
-  background-color: var(--button-color);
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 10px;
-  position: absolute;
-  z-index: 10000;
-  white-space: normal;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  transition: visibility 0.2s, opacity 0.2s;
-  opacity: 0;
-}
-
-.table-tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent transparent var(--button-color) transparent;
-}
-
-td:hover .table-tooltiptext {
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(-50%) translateY(10px);
-}
-
 /* Akash Pawar Table related All Css 14/24 */

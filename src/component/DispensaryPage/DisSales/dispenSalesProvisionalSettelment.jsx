@@ -1,3 +1,4 @@
+ /* Ajhar Tamboli dispenSalesProvisionalSettelment.jsx 19-09-24 */
 
 import React, { useState, useRef } from 'react';
 // import "../DisStocks/dispenSalesProvisionalBill.css"
@@ -9,6 +10,20 @@ function DispenSalesProvisionalSettelment() {
   const [showAddReport, setShowAddReport] = useState(false);
   const [showScanDone, setShowScanDone] = useState(false);
   const [showCreateRequisition, setShowCreateRequisition] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // State for loading indicator
+
+
+  // useEffect(() => {
+  //   axios.get('http://localhost:1415/api/provisional-bills/fetch-all-provisional-bills')
+  //     .then(response => {
+  //       setBills(response.data);
+  //       setIsLoading(false);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching provisional bills:', error);
+  //       setIsLoading(false);
+  //     });
+  // }, [])
 
   const printRef = useRef();
 
@@ -38,21 +53,7 @@ function DispenSalesProvisionalSettelment() {
         <>
       {/* Rest of your code */}
       <header className='dispenSalesProvisionalSettelment-header'>
-         {/* <h4>* ACTIVE IMAGING R EQUEST</h4> */}
-         {/* <div className="dispenSalesProvisionalSettelment-checkBox">
-           <label>
-            <input type="checkbox" />
-             All
-           </label>
-           
-            <input type="checkbox" />
-            <label >Completed</label>
-            <input type="checkbox" />
-            <label >Pending</label>
-           
-
-             
-         </div> */}
+       
        </header>
        <div className="dispenSalesProvisionalSettelment-controls">
 
@@ -63,19 +64,7 @@ function DispenSalesProvisionalSettelment() {
             </select>
           </label>
         </div>
-         {/* <div className="dispenSalesProvisionalSettelment-date-range">
-           <label>
-             From:
-             <input type="date" defaultValue="2024-08-09" />
-           </label>
-           <label>
-             To:
-             <input type="date" defaultValue="2024-08-16" />
-           </label>
-           <button className="dispenSalesProvisionalSettelment-star-button">☆</button>
-           <button className="dispenSalesProvisionalSettelment-ok-button">OK</button>
-         </div> */}
-         {/* <button className='dispenSalesProvisionalSettelment-CreateRequisition'>Load Data</button> */}
+        
        </div>
        <div className="dispenSalesProvisionalSettelment-search-N-results">
          <div className="dispenSalesProvisionalSettelment-search-bar">
@@ -86,7 +75,7 @@ function DispenSalesProvisionalSettelment() {
            Showing 2 / 2 results
            <button className='dispenSalesProvisionalSettelment-print-btn'
            onClick={handlePrint}
-           >Print</button>
+           ><i class="fa-solid fa-print"></i> Print</button>
          </div>
        </div>
        <div style={{ display: 'none' }}>

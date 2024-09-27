@@ -24,7 +24,7 @@
   
   .lg-popup-content h2 {
     color: black;
-    font-size: 16px;
+    font-size: var(--heading-font);
     margin-bottom: 20px;
   }
   
@@ -105,7 +105,7 @@
   }
   
   .lg-save-btn {
-    background-color: #4a4af4;
+    background-color: var(--button-color);
     color: white;
     padding: 10px 20px;
     border: none;

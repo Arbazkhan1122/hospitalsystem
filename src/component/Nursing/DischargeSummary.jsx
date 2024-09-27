@@ -1,9 +1,10 @@
  /* prachi parab user interface changed  14/9 */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import '../Nursing/InPatientMainContent.css';
 import { useNavigate } from 'react-router-dom';
 import DischargeFromNurse from './DistchargeFromNurse';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 import axios from 'axios';
 
 function MainContent() {
@@ -12,6 +13,8 @@ function MainContent() {
     const [dischargeData, setDischargeData] = useState([]);
     const [admittedData, setAdmittedData] = useState([]);
     const [selectedPatientId, setSelectedPatientId] = useState(null); 
+    const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
     const navigate = useNavigate();
 
@@ -36,11 +39,11 @@ function MainContent() {
         const fetchData = async () => {
             try {
                 if (activeTab === 'Discharged Patients') {
-                    const response = await axios.get('http://192.168.1.39:1415/api/admissions/discharged-summary/Discharged');
+                    const response = await axios.get('http://localhost:1415/api/admissions/discharged-summary/Discharged');
                     setDischargeData(response.data);
                     console.log(response.data+'discharged');
                 } else if (activeTab === 'Admitted Patients') {
-                    const response = await axios.get('http://192.168.1.39:1415/api/admissions/discharged-summary/Admitted');
+                    const response = await axios.get('http://localhost:1415/api/admissions/discharged-summary/Admitted');
                     setAdmittedData(response.data);
                     console.log(response.data+'admitted');
                 }
@@ -93,19 +96,38 @@ function MainContent() {
                         </div>
                     </div>
 
-                    <table className="MyPatientsTable-patientsTable">
-                        <thead>
-                            <tr>
-                                <th>Admitted On</th>
-                                <th>Discharged On</th>
-                                <th>IP Number</th>
-                                <th>Name</th>
-                                <th>Phone Number</th>
-                                <th>Age/Sex</th>
-                                <th>Bill Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
+                    <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Admitted On",
+                "Discharged On",
+                "IP Number",
+                "Name",
+                "Phone Number",
+                "Age/Sex",
+                "Bill Status",
+                "Actions"
+                ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                         <tbody>
                             {dischargeData.length > 0 ? (
                                 dischargeData.map((discharge) => (
@@ -145,20 +167,40 @@ function MainContent() {
                         </div>
                     </div>
 
-                    <table className="MyPatientsTable-patientsTable">
-                        <thead>
-                            <tr>
-                                <th>Admitted Date</th>
-                                <th>IP Number</th>
-                                <th>Name</th>
-                                <th>Phone Number</th>
-                                <th>Age/Sex</th>
-                                <th>Admitting Doctor</th>
-                                <th>Bed Feature</th>
-                                <th>Bed Code</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
+                    <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+              "Admitted Date",
+            "IP Number",
+            "Name",
+            "Phone Number",
+            "Age/Sex",
+            "Admitting Doctor",
+            "Bed Feature",
+            "Bed Code",
+            "Action"
+
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                         <tbody>
                             {admittedData.length > 0 ? (
                                 admittedData.map((admitted) => (

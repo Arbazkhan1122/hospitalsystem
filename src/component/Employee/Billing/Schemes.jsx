@@ -1,7 +1,8 @@
 // src/ServiceDepartments.jsx
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './MapSchemeAndPrice.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const usersData = [
     {
@@ -105,26 +106,47 @@ const usersData = [
 ];
 
 const Schemes = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
     return (
         <div className="map-scheme-reaction-container">
           <div className="map-scheme-reaction-header">
-            <button className="map-scheme-reaction-add-button">+ New Create Organization</button>
+            <button className="map-scheme-reaction-add-button">+ New Schemes</button>
           </div>
           <input type="text" placeholder="Search" className="map-scheme-reaction-search-input" />
           <div className="map-scheme-reaction-span">
             <span>Showing {usersData.length}/{usersData.length} results</span>
           </div>
-          <div className="map-scheme-reaction-tab">
-            <table className="map-scheme-reaction-users-table">
-              <thead>
-                <tr>
-                  <th>Code</th>
-                  <th>Scheme Name</th>
-                  <th>Community</th>
-                  <th>Is Active</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
+          <div className="table-container">
+          <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Code",
+                "Scheme Name",
+                "Community",
+                "Is Active",
+                "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
               <tbody>
                 {usersData.map((user, index) => (
                   <tr key={index}>
@@ -142,14 +164,14 @@ const Schemes = () => {
                 ))}
               </tbody>
             </table>
-            <div className="map-scheme-reaction-pagination">
+            {/* <div className="map-scheme-reaction-pagination">
               <div className="map-scheme-reaction-pagination-controls">
                 <button>First</button>
                 <button>Previous</button>
                 <button>Next</button>
                 <button>Last</button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       );

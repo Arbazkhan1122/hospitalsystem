@@ -1,60 +1,57 @@
-.book-appointment-book-appointment {
+.book-appointment {
   background-color: #e6f3ff;
   padding: 20px;
   font-family: Arial, sans-serif;
 }
 
+
 .book-appointment-new-patient-btn {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  cursor: pointer;
+  background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+.book-appointment-new-patient-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+
 }
 
-.book-appointment-search-bar {
+.search-bar {
   display: flex;
   margin-bottom: 20px;
 }
 
-.book-appointment-search-bar input {
+.search-bar input {
   flex-grow: 1;
   padding: 10px;
   font-size: 16px;
 }
 
-.book-appointment-search-btn {
+.search-btn {
   background-color: white;
   border: 1px solid #ccc;
   padding: 10px;
   cursor: pointer;
 }
 
-.book-appointment-results-info {
+.results-info {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.book-appointment-print-btn {
+.print-btn {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   padding: 5px 10px;
   cursor: pointer;
 }
 
-.book-appointment{
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  font-size: 14px;
-}
-
-.book-appointment th, .book-appointment td {
-  text-align: center;
-  border: 1px solid #ccc;
-}
 /* table {
   width: 100%;
   border-collapse: collapse;
@@ -71,7 +68,7 @@ th {
   background-color: #f2f2f2;
 } */
 
-.book-appointment-create-appointment-btn {
+.create-appointment-btn {
   background-color: #008CBA;
   color: white;
   border: none;
@@ -79,14 +76,14 @@ th {
   cursor: pointer;
 }
 
-.book-appointment-pagination {
+.pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
 }
 
-.book-appointment-pagination button {
+.pagination button {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   padding: 5px 5px;
@@ -94,6 +91,6 @@ th {
   cursor: pointer;
 }
 
-.book-appointment-pagination span {
+.pagination span {
   margin: 0 10px;
 }

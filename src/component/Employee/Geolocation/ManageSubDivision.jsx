@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './ManageMunicipality.css'; 
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+
+
 const usserData = [
   {
     "Sub Division Name": "Athi River sub county",
@@ -108,6 +111,8 @@ const usserData = [
 const ManageSubDivision = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const handleCloseModal = () => setShowEditModal(false);
 
@@ -131,13 +136,30 @@ const ManageSubDivision = () => {
       <div className="manage-municipality-span">
         <span>Showing {usserData.length} / {usserData.length} results</span>
       </div>
-      <div className="manage-municipality-tab">
-        <table className="manage-municipality-users-table">
+      <div className="table-container">
+      <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Sub Division Name</th>
-              <th>Is Active</th>
-              <th>Action</th>
+              {[
+'Sub Division Name', 'Is Active', 'Action'            
+               ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>

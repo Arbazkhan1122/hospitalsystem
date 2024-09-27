@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './AdditionalServicesItems.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const BillingPackages = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
+  
   return (
     <div className="additional-service-container">
       <div className="additional-service-header">
@@ -11,18 +14,37 @@ const BillingPackages = () => {
         <input type="text" placeholder="Search..." />
         {/* <button className='additional-ser'>🔍</button> */}
       </div>
-      <div className='additional-service-ta'>
-        <table className='additional-service-table'>
+      <div className='table-container'>
+      <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Package Name</th>
-              <th>Package Code</th>
-              <th>Description</th>
-              <th>PriceCategory</th>
-              <th>Total Price</th>
-              <th>Discount Percent</th>
-              <th>Active Status</th>
-              <th>Action</th>
+              {[
+                  "Package Name",
+  "Package Code",
+  "Description",
+  "Price Category",
+  "Total Price",
+  "Discount Percent",
+  "Active Status",
+  "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -31,7 +53,7 @@ const BillingPackages = () => {
             </tr>
           </tbody>
         </table>
-        <div className="additional-service-pagination">
+        {/* <div className="additional-service-pagination">
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
@@ -40,7 +62,7 @@ const BillingPackages = () => {
         </div>
         <div className="additional-service-results-info">
           0 to 0 of 0
-        </div>
+        </div> */}
       </div>
     </div>
   );

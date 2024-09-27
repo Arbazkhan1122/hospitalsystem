@@ -1,7 +1,8 @@
 // neha-OT-manage-checklist-14-9-24
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import './manage_checklist.css';
+import { startResizing } from '../../../../../TableHeadingResizing/ResizableColumns';
 
 function ManageOtChecklist() {
   const [checklists, setChecklists] = useState([]);
@@ -18,6 +19,8 @@ function ManageOtChecklist() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [message, setMessage] = useState(null);
+  const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
 
   // Fetch data from API
   useEffect(() => {
@@ -27,7 +30,7 @@ function ManageOtChecklist() {
   const fetchChecklists = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8888/api/otchecklists');
+      const response = await fetch('http://localhost:1415/api/otchecklists');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -239,19 +242,36 @@ function ManageOtChecklist() {
       </div>
 
       
-        <table className="manage_ot_checklist_table">
+       <div className='table-container'>
+       <table className="manage_ot_checklist_table" ref={tableRef}> 
           <thead>
             <tr>
-              <th className='manage_ot_checklist_tablehead'>Checklist Name</th>
-              <th className='manage_ot_checklist_tablehead'>Display Name</th>
-              <th className='manage_ot_checklist_tablehead'>Input Type</th>
-              <th className='manage_ot_checklist_tablehead'>Display Sequence</th>
-              <th className='manage_ot_checklist_tablehead'>Is Active</th>
-              <th className='manage_ot_checklist_tablehead'>Is Mandatory</th>
-              <th className='manage_ot_checklist_tablehead'>Action</th>
-            </tr>
-          </thead>
-          <tbody>
+            {[
+  "Checklist Name",
+  "Display Name",
+  "Input Type",
+  "Display Sequence",
+  "Is Active",
+  "Is Mandatory",
+  "Action"
+].map((header, index) => (
+  <th
+    key={index}
+    style={{ width: columnWidths[index] }}
+    className="rd-resizable-th"
+  >
+    <div className="header-content">
+      <span>{header}</span>
+      <div
+        className="resizer"
+        onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+      ></div>
+    </div>
+  </th>
+))}
+</tr>
+</thead>
+<tbody>
             {filteredChecklists.map((checklist, index) => (
               <tr key={index}>
                 <td className='manage_ot_checklist_tabledata'>{checklist.checklistName || 'N/A'}</td>
@@ -267,6 +287,7 @@ function ManageOtChecklist() {
             ))}
           </tbody>
         </table>
+       </div>
     
 
       {message && <p className="success-message">{message}</p>}

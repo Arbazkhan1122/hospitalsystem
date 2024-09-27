@@ -1,14 +1,14 @@
 .registerNewSSUPatient-patient-registration {
   font-family: Arial, sans-serif;
   margin: 0 auto;
-  color: #444343;
+  /* color: #444343; */
 }
 
 .registerNewSSUPatient-patient-registration h2 {
     /* background-color: #003366; */
-    color: #383737;
-    font-size: 16px;
-    font-weight: bold;
+    /* color: #383737; */
+    font-size: var(--heading-font);
+    /* font-weight: bold; */
     padding: 10px;
     margin: -20px -20px 20px -20px;
   }
@@ -24,6 +24,7 @@
   .registerNewSSUPatient-section h3 {
     margin-top: 0;
     padding-bottom: 5px;
+    font-size: var(--heading-font);
     /* border-bottom: 1px solid #ccc; */
   }
   
@@ -31,7 +32,7 @@
     display: flex;
     justify-content: space-between;
     /* margin-bottom: 10px; */
-    font-size: 14px;
+    font-size: var(--font-size);
   }
   
   .registerNewSSUPatient-form-row label {
@@ -56,7 +57,7 @@
   
   .registerNewSSUPatient-mandatory-note {
     color: red;
-    font-size: 0.9em;
+    font-size: var(--font-size);
   }
   
   .registerNewSSUPatient-form-actions {
@@ -65,18 +66,28 @@
   
   .registerNewSSUPatient-register-btn,
   .registerNewSSUPatient-close-btn  {
-    padding: 10px 20px;
     margin-left: 10px;
-    border: none;
-    border-radius: 5px;
     color: white;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
     cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
   }
   
   .registerNewSSUPatient-register-btn {
-    background-color: #5867DD;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
   }
-  
+  .registerNewSSUPatient-register-btn:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
   .registerNewSSUPatient-close-btn {
+    border: 1px solid #E31D2D;
     background-color: #E31D2D;
   }

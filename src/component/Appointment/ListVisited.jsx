@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Table, Button, FormControl, InputGroup } from 'react-bootstrap';
 import './ListVisited.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const ListVisited = () => {
   const [appointments, setAppointments] = useState([]);
   const [search, setSearch] = useState('');
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   useEffect(() => {
     // Fetch data from the API when the component mounts
     const fetchAppointments = async () => {
       try {
-        const response = await axios.get('http://localhost:1415/api/new-patient-visits');
+        const response = await axios.get('http://192.168.42.16:1415/api/new-patient-visits');
         setAppointments(response.data); // Assume the data is in response.data
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -27,18 +30,21 @@ const ListVisited = () => {
   };
 
   return (
-    <div className="appointment-visited-list">
-      <div className='appointment-visited-d-flex' style={{alignItems:"center", justifyContent:"space-between"}}>
+    <div className="appointment-list">
+      <div className='d-flex' style={{alignItems:"center", justifyContent:"space-between"}}>
         <div>
-          <h3>Patient Visit List</h3>
+          <h5>Patient Visit List</h5>
           <p>* Followup is valid up to 10 days of last visit with same doctor</p>
           <p>* Refer is valid up to 7 days of last visit</p>
         </div>
-        <div>
-          <Button variant="primary">Reload</Button>
-        </div>
+        
+         
+       
       </div>
-      <div className='appointment-visited-d-flex' style={{alignItems:"center", justifyContent:"space-between"}} >
+
+      
+      <div className='appointment-visited-d-flex'  >
+      
       <div className="appointment-visited-search-bar">
         <input 
           type="text" 
@@ -46,28 +52,49 @@ const ListVisited = () => {
           value={search}
           onChange={handleSearchChange} 
         />
+         <Button className='reload-button'>Reload</Button>
       </div>
         <Button variant="primary">Print</Button>
-      </div>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Patient No</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Age</th>
-            <th>Department</th>
-            <th>Doctor</th>
-            <th>Visit Type</th>
-          
-            <th>Day</th>
-            <th>Scheme</th>
-            <th>Queue</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+       
+      </div><br></br>
+      <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Date",
+                "Time",
+                "Patient No",
+                "Name",
+                "Phone",
+                "Age",
+                "Department",
+                "Doctor",
+                "Visit Type",
+                "Day",
+                "Scheme",
+                "Queue",
+                "Actions"
+
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
   {appointments
     .filter((appointment) => 
@@ -99,7 +126,7 @@ const ListVisited = () => {
     ))}
 </tbody>
 
-      </Table>
+      </table>
     </div>
   );
 };

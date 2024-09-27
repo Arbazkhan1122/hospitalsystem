@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './ClinicalNotes.css';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const ClinicalNotes = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   return (
     <div className="clinical-notes-container">
       <div className="clinical-notes-form-section">
@@ -36,15 +39,34 @@ const ClinicalNotes = () => {
       <span>Showing 1 / 1 results</span>
 
       </div>
-      <div className='clinical-notes-ta'>
-      <div className="clinical-notes-table-section">
-        <table className='clinical-notes-table'>
+      {/* <div className='clinical-notes-ta'> */}
+      <div className="table-container">
+      <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>Display Name</th>
-              <th>Field Name</th>
-              <th>Display Order</th>
-              <th>Action</th>
+              {[
+"Display Name",
+  "Field Name",
+  "Display Order",
+  "Action"  
+               ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -60,16 +82,16 @@ const ClinicalNotes = () => {
         </table>
         <div className="clinical-notes-pagination">
           
-          <div className="clinical-notes-pagination-buttons">
+          {/* <div className="clinical-notes-pagination-buttons">
             <button>First</button>
             <button>Previous</button>
             <span>Page 1 of 1</span>
             <button>Next</button>
             <button>Last</button>
-          </div>
+          </div> */}
         </div>
       </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 };

@@ -2,7 +2,7 @@
   font-family: Arial, sans-serif;
   padding: 10px;
   background-color: white;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   /* width: 80%; */
   margin: auto;
 }
@@ -11,18 +11,20 @@
   display: flex;
   justify-content: left;
   align-items: center;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: var(--heading-font);
+  /* font-weight: bold; */
   margin-bottom: 20px;
   padding-bottom: 5px;
-  color: #504f4f;
+  /* color: #504f4f; */
   border-bottom: 1px solid #a09f9f;
 }
-
+.insentiveSettingsEISEditBtn-header span {
+font-size: var(--heading-font);
+}
 .insentiveSettingsEISEditBtn-doctor-name {
   color: blue;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: var(--heading-font);
+  /* font-weight: bold; */
 margin-left: 20px;
 }
 
@@ -43,9 +45,9 @@ margin-left: 20px;
   padding: 5px;
 }
 .insentiveSettingsEISEditBtn-form label {
-  color: #504f4f;
-  font-weight: bold;
-  font-size: 12px;
+  /* color: #504f4f; */
+  /* font-weight: bold; */
+  font-size: var(--font-size);
   align-items: center;
   padding-bottom: 10px;
   /* text-align: center; */
@@ -53,6 +55,7 @@ margin-left: 20px;
 
 .insentiveSettingsEISEditBtn-form-row {
   display: flex;
+  justify-content: space-between;
   background-color: #DDE3E9;
   padding: 10px 5px;
   margin-top: 10px;
@@ -68,13 +71,22 @@ margin-left: 20px;
 }
 
 .insentiveSettingsEISEditBtn-save-btn {
-  background-color: #26C281;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  padding: 5px 10px;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 3px;
-  font-size: 12px;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.insentiveSettingsEISEditBtn-save-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .insentiveSettingsEISEditBtn-discard-btn {
@@ -84,7 +96,7 @@ margin-left: 20px;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 3px;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
 
 .insentiveSettingsEISEditBtn-incentive-settings {
@@ -92,17 +104,18 @@ margin-left: 20px;
   width: 60%;
 }
 .insentiveSettingsEISEditBtn-incentive-settings h4{
-color: #797777;
-font-weight: 100;
+/* color: #797777; */
+/* font-weight: 100; */
+font-size: var(--heading-font);
 }
 .insentiveSettingsEISEditBtn-search-pagination{
   display: flex;
   justify-content: space-between;
 }
 .insentiveSettingsEISEditBtn-pagination-info span{
-color: #659BE0;
-font-size: 12px;
-font-weight: bold;
+/* color: #659BE0; */
+font-size: var(--font-size);
+/* font-weight: bold; */
 margin-right: 10px;
 }
 
@@ -127,20 +140,21 @@ margin-right: 10px;
 
 .insentiveSettingsEISEditBtn-table th, .insentiveSettingsEISEditBtn-table td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 3px;
   text-align: center;
-  font-size: 12px;
-  color: rgb(73, 73, 73);
+  font-size: var(--font-size);
+  /* color: rgb(73, 73, 73); */
 }
 .insentiveSettingsEISEditBtn-table th{
   background-color: #F3F3F3;
+  font-size: var(--heading-font);
 
 }
 
 .insentiveSettingsEISEditBtn-no-rows {
   text-align: center;
   background-color: #FFE6A0;
-  color: #333;
+  /* color: #333; */
 }
 
 .insentiveSettingsEISEditBtnp-pagination-info {
@@ -150,11 +164,20 @@ margin-right: 10px;
 }
 
 .insentiveSettingsEISEditBtn-print-btn {
-  background-color: #659BE0;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  padding: 5px 10px;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 3px;
-  
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.insentiveSettingsEISEditBtn-print-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }

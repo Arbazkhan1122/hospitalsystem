@@ -44,7 +44,7 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
     const fetchVaccines = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8888/api/vaccinations/get-all-vaccination/doses/${patient?.vaccinationId}`
+          `http://localhost:1415/api/vaccinations/get-all-vaccination/doses/${patient?.vaccinationId}`
         );
         if (response.ok) {
           const data = await response.json();

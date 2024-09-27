@@ -13,13 +13,13 @@ const ReportComponent = () => {
 
   return (
    <div className="report-maternity">
-      <div className="reports-cont">
+      <div className="reports-com">
         <div className="report-card-container"
          onClick={handleMaternityAllowanceClick}>
           <div className="report-icon-container">
           <i class="fa-solid fa-circle-dot"></i>
           </div>
-          <div className="report-details-container">
+          <div className="report-details-cont">
             <h4>Maternity Allowance</h4>
             <p>Report</p>
           </div>

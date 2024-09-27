@@ -1,6 +1,7 @@
   /* Mohini_PharmacyExpiryReport_WholePage_14/sep/2024 */
-  import React, { useState } from 'react';
-import './PharmacyExpiryReport.css';
+  import React, { useState, useEffect, useRef } from 'react';
+  import './PharmacyExpiryReport.css';
+  import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const PharmacyExpiryReport = () => {
   const [fromDate, setFromDate] = useState('24-08-2024');
@@ -11,6 +12,8 @@ const PharmacyExpiryReport = () => {
   const [nearlyExpired, setNearlyExpired] = useState(false);
   const [expired, setExpired] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   return (
     <div className="pharmacy-expiry-report-container">
@@ -72,23 +75,42 @@ const PharmacyExpiryReport = () => {
         <button className="pharmacy-expiry-report-print-btn">Print</button>
       </div>
    <div className='pharmacy-expiry-report-ta'>
-      <table className="pharmacy-expiry-report-expiry-table">
-        <thead>
-          <tr>
-            <th>S.N.</th>
-            <th>Generic Name</th>
-            <th>Item Name</th>
-            <th>Supplier Name</th>
-            <th>BatchNo</th>
-            <th>ExpiryDate</th>
-            <th>S.Price</th>
-            <th>C.Price</th>
-            <th>Quantity</th>
-            <th>Total Cost Value</th>
-            <th>Total Sales Value</th>
-            <th>StoreName</th>
-          </tr>
-        </thead>
+    <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "S.N.",
+  "Generic Name",
+  "Item Name",
+  "Supplier Name",
+  "BatchNo",
+  "ExpiryDate",
+  "S.Price",
+  "C.Price",
+  "Quantity",
+  "Total Cost Value",
+  "Total Sales Value",
+  "StoreName"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           <tr>
             <td colSpan="12" className="pharmacy-expiry-report-no-rows">No Rows To Show</td>

@@ -1,9 +1,10 @@
+ /* Ajhar Tamboli radiologyNav.css 19-09-24 */
 
   /* Akash Pawar Radiology 14/24 */
   .radiologyNav-bar {
       background-color:white;
       padding: 10px;
-      font-family: Arial, sans-serif;
+      /* font-family: Arial, sans-serif; */
 
       /* padding: 10px; */
       /* border: 1px solid #007bff; */
@@ -17,6 +18,7 @@
       display: flex;
       gap: 10px;
       justify-content: left;
+      /* background-color: brown; */
   
     }
     
@@ -26,12 +28,14 @@
     }
     
     .radiologyNav-bar a {
-      color: black;
+      color:white;
       text-decoration: none;
       /* font-weight: bold; */
-      font-size: var(--font-size);
+      font-size: var(--heading-font);
       padding: 5px 5px;
       border-radius: 5px;
+      background-color: var(--button-color);
+      border: 1px solid var(--button-hover-border-color);
   
     }
     

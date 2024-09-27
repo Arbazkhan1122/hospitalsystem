@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import "./MedicarePatientList.css";
 import NewMemberPopup from "./NewMemberPopup";
 import NewDependentPopup from "./NewDependentPopup";
+import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
 function MedicarePatientList() {
   const [showNewMemberPopup, setShowNewMemberPopup] = useState(false);
@@ -23,30 +24,6 @@ function MedicarePatientList() {
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
 
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
   return (
     <div className="mpl">
       <h1>Medicare Patient List</h1>
@@ -88,50 +65,56 @@ function MedicarePatientList() {
           <button className="mpl-print">Print</button>
         </div>
       </div>
-      <table className="mpl-table" ref={tableRef}>
-        <thead>
-          <tr>
-            {[
-              "Category",
-              "Medicare No",
-              "Name",
-              "Age/Sex",
-              "HospitalNo",
-              "Institution",
-              "Is Dependent",
-              "Employee",
-              "Department",
-              "Designation",
-              "Relation",
-              "Ins. No",
-              "Remarks",
-              "IsActive",
-              "Action",
-            ].map((header, index) => (
-              <th
-                key={index}
-                style={{ width: columnWidths[index] }}
-                className="resizable-th"
-              >
-                <div className="header-content">
-                  <span>{header}</span>
-                  <div
-                    className="resizer"
-                    onMouseDown={startResizing(index)}
-                  ></div>
-                </div>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="no-show-mpl" colSpan="15">
-              No Rows To Show
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="table-container">
+        <table ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Category",
+                "Medicare No",
+                "Name",
+                "Age/Sex",
+                "HospitalNo",
+                "Institution",
+                "Is Dependent",
+                "Employee",
+                "Department",
+                "Designation",
+                "Relation",
+                "Ins. No",
+                "Remarks",
+                "IsActive",
+                "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="no-show-mpl" colSpan="15">
+                No Rows To Show
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       {/* <div className="mpl-pagination">
         <button>First</button>
         <button>Previous</button>

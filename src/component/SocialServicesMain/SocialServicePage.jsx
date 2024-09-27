@@ -9,7 +9,7 @@ function SocialServicePage() {
   const [searchQuery, setSearchQuery] = useState(""); // State for search query
 
   useEffect(() => {
-    fetch("http://192.168.1.37:7676/api/patients/show-all-patient-details")
+    fetch("http://localhost:1415/api/patients/show-all-patient-details")
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.log(err));
@@ -55,10 +55,10 @@ function SocialServicePage() {
           >
             + Register New SSU Patient
           </button>
-          {/* <div className="socialService-edit-patient">
+          <div className="socialService-edit-patient">
             <span>Edit Information Of</span>
             <input type="text" placeholder="Existing Patient Name" />
-          </div> */}
+          </div>
         </div>
 
         <div className="socialService-patient-status-main">
@@ -85,7 +85,7 @@ function SocialServicePage() {
               value={searchQuery} // Bind search query state to input value
               onChange={handleSearchChange} // Handle input change
             />
-            <button className="socialService-search-button">🔍</button>
+            <button className="socialService-search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
           </div>
           <div className="socialService-results-info">
             <span>
@@ -95,7 +95,7 @@ function SocialServicePage() {
               className="socialService-print-button"
               onClick={handlePrint}
             >
-              Print
+              <i class="fa-solid fa-print"></i> Print
             </button>
           </div>
         </div>
@@ -135,7 +135,7 @@ function SocialServicePage() {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="5" className="no-data">
+                  <td colSpan="5" className="socialService-no-data">
                     No Rows To Show
                   </td>
                 </tr>

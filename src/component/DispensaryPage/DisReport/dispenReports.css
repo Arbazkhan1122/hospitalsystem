@@ -1,11 +1,12 @@
-/* src/components/ReportList.css */
-.dis-report-list {
+ /* Ajhar Tamboli dispenReports.jsx 19-09-24 */
+
+ .dis-report-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
     width: auto;
-    /* background-color: #e6f7ff; */
+    background-color:var(--background-color);
     font-family: Arial, Helvetica, sans-serif;
    
   }
@@ -17,8 +18,8 @@
     display: flex;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: calc(20.33% - 20px);
-    height: 30px;
+    width: calc(25.33% - 20px);
+    height: 70px;
   }
   
   .dis-report-icon {
@@ -32,13 +33,15 @@
   .dis-report-info h3 {
     /* border: 1px solid red; */
     margin: 0;
-    font-size: 14px;
-    text-decoration: none;
-    
+    font-size: var(--font-size);
   }
-  
+  .dis-report-info a  {
+    color: black;
+    font-size: var(--heading-font);
+    text-decoration: none;
+  }
   .dis-report-info p {
     margin: 5px 0 0;
-    font-size: 14px;
+    font-size: var(--font-size);
     color: #8c8c8c;
   }

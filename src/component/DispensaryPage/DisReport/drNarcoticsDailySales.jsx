@@ -152,6 +152,8 @@
 
 // export default DrNarcoticsDailySales;
 
+ /* Ajhar Tamboli drNarcoticsDailySales.jsx 19-09-24 */
+
 import React, { useEffect, useState } from 'react';
 import "../DisReport/drNarcoticsDailySales.css";
 
@@ -217,8 +219,8 @@ function DrNarcoticsDailySales() {
         </div>
         <div className="drNarcoticsDailySales-results-info">
           <span>Showing {narcoticsSummaries.length} / {narcoticsSummaries.length} results</span>
-          <button className="drNarcoticsDailySales-export-button">Export</button>
-          <button className="drNarcoticsDailySales-print-button">Print</button>
+          <button className="drNarcoticsDailySales-export-button"><i class="fa-regular fa-file-excel"></i> Export</button>
+          <button className="drNarcoticsDailySales-print-button"><i class="fa-solid fa-print"></i> Print</button>
         </div>
       </div>
       <div className='drNarcoticsDailySales-table-N-paginationDiv'>
@@ -270,14 +272,14 @@ function DrNarcoticsDailySales() {
             )}
           </tbody>
         </table>
-        <div className="drNarcoticsDailySales-pagination">
+        {/* <div className="drNarcoticsDailySales-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

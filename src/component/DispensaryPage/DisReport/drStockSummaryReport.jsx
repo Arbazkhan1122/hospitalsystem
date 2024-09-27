@@ -1,3 +1,6 @@
+ /* Ajhar Tamboli drStockSummaryReport.jsx 19-09-24 */
+
+
 import React, { useEffect, useState } from 'react';
 import "../DisReport/drStockSummaryReport.css";
 
@@ -80,8 +83,8 @@ function DrStockSummaryReport() {
         </div>
         <div className="drStockSummaryReport-results-info">
           <span>Showing 0 / 0 results</span>
-          <button className="drStockSummaryReport-export-button">Export</button>
-          <button className="drStockSummaryReport-print-button" >Print</button>
+          <button className="drStockSummaryReport-export-button"><i class="fa-regular fa-file-excel"></i> Export</button>
+          <button className="drStockSummaryReport-print-button" ><i class="fa-solid fa-print"></i> Print</button>
         </div>
       </div>
       <div className='drStockSummaryReport-table-N-paginationDiv'>
@@ -95,6 +98,32 @@ function DrStockSummaryReport() {
             <th>Batch</th>
             <th>Expiry</th>
             <th>CP</th>
+            <th>SP</th>
+            <th>Opening Qty</th>
+            <th>Opening Value</th>
+            <th>Provisional Qty</th>
+            <th>Provisional Value</th>
+            <th>Closing Value</th>
+            <th>Closing Qty</th>
+            <th>Purchase Qty</th>
+            <th>Purchase Value</th>
+            <th>Purchase Return Qty</th>
+            <th>Purchase Return Value</th>
+            <th>Sales Qty</th>
+            <th>Sales Return Qty</th>
+            <th>Sales Return Value</th>
+            <th>Consumption Qty</th>
+            <th>Consumption Value</th>
+            <th>Write-off Qty </th>
+            <th>Write-off Value </th>
+            <th>Stock ManageIn Qty </th>
+            <th>Stock ManageIn Value </th>
+            <th>Stock ManageOut Qty </th>
+            <th>Stock ManageOut Value </th>
+            <th>TransferIn Value </th>
+            <th>TransferIn Qty </th>
+            <th>TransferOut Value </th>
+            <th>TransferOut Qty </th>
            
             
             
@@ -134,14 +163,14 @@ function DrStockSummaryReport() {
           )}
         </tbody>
       </table>
-      <div className="drStockSummaryReport-pagination">
+      {/* <div className="drStockSummaryReport-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
     </div>
 
       <div className="drStockSummaryReport-Summary">

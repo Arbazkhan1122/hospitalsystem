@@ -142,59 +142,71 @@ const SampleCollection = () => {
     return <CollectSample sample={selectedSample} />;
   }
   return (
-    <div className="labContainer">
-      <div className="labHeader">
-        <h1 className="labTitle">List Requisition</h1>
-        <button className="labButton labButtonGreen">Samples Collected List</button>
+    <div className="sampleCollection-Container">
+      <div className="sampleCollection-Header">
+        <h1 className="sampleCollection-Title">List Requisition</h1>
+        <button className="sampleCollection-list-btn">Samples Collected List</button>
       </div>
-      <div className="labDateFilters">
-        <div className="flex items-center gap-2">
-          <label htmlFor="from-date" className="labDateFilterLabel">
-            From:
-          </label>
-          <input type="date" id="from-date" defaultValue="2023-09-06" className="labInput" />
+      
+        <div className="sampleCollection-controls">
+        {/* Your date range and button controls */}
+          <div className="sampleCollection-date-range">
+            <label>
+              From:
+              <input type="date" defaultValue="2024-08-09" />
+            </label>
+            <label>
+              To:
+              <input type="date" defaultValue="2024-08-16" />
+            </label>
+            <button className="sampleCollection-star-button">☆</button>
+            <button className="sampleCollection-ok-button">OK</button>
+          </div>
+      </div>
+
+      <div className="sampleCollection-search-N-print">
+      <div className="sampleCollection-search-bar">
+              <i className="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                placeholder="Search"
+                className="sampleCollection-search-input"
+              />
+            </div>
+            <div className="sampleCollection-results-info">
+          <span>Showing 0 / 0 results</span>
+        <button className="sampleCollection-print-btn"><i className="fa-solid fa-print"></i> Print</button>
         </div>
-        <div className="flex items-center gap-2">
-          <label htmlFor="to-date" className="labDateFilterLabel">
-            To:
-          </label>
-          <input type="date" id="to-date" defaultValue="2024-09-06" className="labInput" />
-        </div>
-        <button className="labButton">OK</button>
       </div>
-      <div className="labSearchPrint">
-        <input type="search" placeholder="Search" className="labSearchInput" />
-        <button className="labButton labButtonPrint">Print</button>
-      </div>
-      <div className="labTableWrapper">
-        <table className="labTable">
+      <div className="sampleCollection-TableWrapper">
+        <table className="sampleCollection-Table">
           <thead>
             <tr>
-              <th className="labTableHeader">Requisition Date</th>
-              <th className="labTableHeader">Hospital Number</th>
-              <th className="labTableHeader">Patient Name</th>
-              <th className="labTableHeader">Age/Sex</th>
-              <th className="labTableHeader">Phone Number</th>
-              <th className="labTableHeader">Requesting Dept.</th>
-              <th className="labTableHeader">Visit Type</th>
-              <th className="labTableHeader">Run Number ...</th>
-              <th className="labTableHeader">Action</th>
+              <th className="sampleCollection-TableHeader">Requisition Date</th>
+              <th className="sampleCollection-TableHeader">Hospital Number</th>
+              <th className="sampleCollection-TableHeader">Patient Name</th>
+              <th className="sampleCollection-TableHeader">Age/Sex</th>
+              <th className="sampleCollection-TableHeader">Phone Number</th>
+              <th className="sampleCollection-TableHeader">Requesting Dept.</th>
+              <th className="sampleCollection-TableHeader">Visit Type</th>
+              <th className="sampleCollection-TableHeader">Run Number Type</th>
+              <th className="sampleCollection-TableHeader">Action</th>
             </tr>
           </thead>
           <tbody>
             {tableData.map((row, index) => (
               <tr key={index}>
-                <td className="labTableCell">{row.date}</td>
-                <td className="labTableCell">{row.number}</td>
-                <td className="labTableCell">{row.name}</td>
-                <td className="labTableCell">{row.ageSex}</td>
-                <td className="labTableCell">{row.phone}</td>
-                <td className="labTableCell">{row.dept}</td>
-                <td className="labTableCell">{row.type}</td>
-                <td className="labTableCell">{row.run}</td>
-                <td className="labTableCell">
+                <td className="sampleCollection-TableCell">{row.date}</td>
+                <td className="sampleCollection-TableCell">{row.number}</td>
+                <td className="sampleCollection-TableCell">{row.name}</td>
+                <td className="sampleCollection-TableCell">{row.ageSex}</td>
+                <td className="sampleCollection-TableCell">{row.phone}</td>
+                <td className="sampleCollection-TableCell">{row.dept}</td>
+                <td className="sampleCollection-TableCell">{row.type}</td>
+                <td className="sampleCollection-TableCell">{row.run}</td>
+                <td className="sampleCollection-TableCell">
                   <button
-                    className="labButton labButtonPrint"
+                    className="sampleCollection-viewDetails"
                     onClick={() => handleCollectSample(row)} // Pass the row's data
                   >
                     View Details
@@ -204,7 +216,7 @@ const SampleCollection = () => {
           </tbody>
         </table>
       </div>
-      <div className="labPagination">
+      {/* <div className="labPagination">
         <span>Showing 12 / 12 results</span>
         <div className="labPaginationControls">
           <button className="labButton labPaginationButton">First</button>
@@ -213,7 +225,7 @@ const SampleCollection = () => {
           <button className="labButton labPaginationButton">Next</button>
           <button className="labButton labPaginationButton">Last</button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

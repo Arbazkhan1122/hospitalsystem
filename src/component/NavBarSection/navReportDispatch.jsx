@@ -9,14 +9,23 @@ function NavReportDispatch() {
       <div className="labReportDispatch-Request">
           Request Date:
            </div>
-        <div className="labReportDispatch-date-range">
-          <label>From:</label>
-          <input type="date" value="2024-08-05" />
-          <label>To:</label>
-          <input type="date" value="2024-08-12" />
-          <button className="labReportDispatch-star-btn">☆</button>
+       
+        <div className="labReportDispatch-controls">
+        {/* Your date range and button controls */}
+          <div className="labReportDispatch-date-range">
+            <label>
+              From:
+              <input type="date" defaultValue="2024-08-09" />
+            </label>
+            <label>
+              To:
+              <input type="date" defaultValue="2024-08-16" />
+            </label>
+            <button className="labReportDispatch-star-button">☆</button>
           <button className="labReportDispatch-more-btn">-</button>
-        </div>
+            <button className="labReportDispatch-ok-button">OK</button>
+          </div>
+      </div>
         <div className="labReportDispatch-category-select">
           <label>Category:</label>
           <select>

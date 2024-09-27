@@ -1,3 +1,5 @@
+/* Dhanashree_DetailsSalesReport_19/09 */
+
 import React, { useRef, forwardRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import './ShowReport.css';
@@ -5,13 +7,13 @@ import './ShowReport.css';
 // Forward ref to allow react-to-print to reference this component
 const DetailsSalesReport = forwardRef((props, ref) => {
   return (
-    <div ref={ref} className="details-sales-report">
-      <div className="report-header">
+    <div ref={ref} className="DetailsSalesReport-details-sales-report">
+      <div className="DetailsSalesReport-report-header">
         <p>Name Of Service Provider: Demo Hospital</p>
         <p>Taxpayers KRA PIN: 3254687452</p>
         <p>Duration of Sales: 2024-08-13 / 2024-08-13</p>
       </div>
-      <table className="sales-table">
+      <table className="DetailsSalesReport-sales-table">
         <thead>
           <tr>
             <th colSpan="5">Invoice</th>
@@ -58,8 +60,8 @@ const DetailsSalesReport = forwardRef((props, ref) => {
             <td>0</td>
             <td>0</td>
           </tr>
-          <tr className="total-row">
-            <td colSpan="5">Total Amount</  td>
+          <tr className="DetailsSalesReport-total-row">
+            <td colSpan="5">Total Amount</td>
             <td>1214</td>
             <td>1214</td>
             <td>0</td>
@@ -75,3 +77,6 @@ const DetailsSalesReport = forwardRef((props, ref) => {
 });
 
 export default DetailsSalesReport;
+
+
+/* Dhanashree_DetailsSalesReport_19/09 */

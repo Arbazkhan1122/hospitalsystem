@@ -81,7 +81,7 @@ const UpdateVaccinationRegister = ({ patient, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { vaccRegdNo, ...updatedData } = formData;
-    fetch(`http://localhost:8888/api/vaccination/${patient?.id}`, {
+    fetch(`http://localhost:1415/api/vaccination/${patient?.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

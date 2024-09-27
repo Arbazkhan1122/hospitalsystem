@@ -1,18 +1,22 @@
 /* Mohini_SupplierLedgerCom_WholePage_14/sep/2024 */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
 import "./PurchaseOrder.css";
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
+
 
 const SupplierLedgerComponent = () => {
     const [suppliers, setSuppliers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
     useEffect(() => {
         // Fetch data from the API
         const fetchSuppliers = async () => {
             try {
-                const response = await axios.get("http://192.168.1.39:1415/api/suppliers");
+                const response = await axios.get("http://localhost:1415/api/suppliers");
                 setSuppliers(response.data);
                 setLoading(false);
             } catch (error) {
@@ -29,7 +33,7 @@ const SupplierLedgerComponent = () => {
         // Refresh suppliers list
         const fetchSuppliers = async () => {
             try {
-                const response = await axios.get("http://192.168.1.39:1415/api/suppliers");
+                const response = await axios.get("http://localhost:1415/api/suppliers");
                 setSuppliers(response.data);
             } catch (error) {
                 setError("Failed to fetch suppliers");
@@ -40,15 +44,14 @@ const SupplierLedgerComponent = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://192.168.1.39:1415/api/suppliers/${id}`);
+            await axios.delete(`http://localhost:1415/api/suppliers/${id}`);
             setSuppliers(suppliers.filter(supplier => supplier.id !== id));
         } catch (error) {
             setError("Failed to delete supplier");
         }
     };
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
+   
 
     return (
         <div className="purchase-order-container">
@@ -73,18 +76,37 @@ const SupplierLedgerComponent = () => {
                 </div>
                 <button className="purchase-order-print-button">Export</button>
             </div>
-            <div className="purchase-order-table-container">
-                <table className="purchase-order-tab">
-                    <thead>
-                        <tr>
-                            <th>Supplier Name</th>
-                            <th>PO Date</th>
-                            <th>Discount Amount</th>
-                            <th>VAT Amount</th>
-                            <th>Total Amount</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+            {/* <div className="purchase-order-table-container"> */}
+            <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Supplier Name",
+    "Sub Total",
+    "Discount Amount",
+    "VAT Amount",
+    "Total Amount",
+    "Action"   
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                     <tbody>
                         {suppliers.length > 0 ? (
                             suppliers.map((supplier) => (
@@ -115,7 +137,7 @@ const SupplierLedgerComponent = () => {
                     <button>Next</button>
                     <button>Last</button>
                 </div> */}
-            </div>
+            {/* </div> */}
         </div>
     );
 };

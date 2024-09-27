@@ -1,7 +1,8 @@
 // neha-OT-OT-Personaltype-14-9-24
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import './ot_personnelType.css';
+import { startResizing } from '../../../../../TableHeadingResizing/ResizableColumns';
 
 function Ot_personnelType() {
   const [personnelTypes, setPersonnelTypes] = useState([]);
@@ -9,6 +10,9 @@ function Ot_personnelType() {
   const [editingPersonnelType, setEditingPersonnelType] = useState(null);
   const [personnelTypeName, setPersonnelTypeName] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
+  
 
   // Fetch personnel types from API
   useEffect(() => {
@@ -18,7 +22,7 @@ function Ot_personnelType() {
   // Function to fetch personnel types
   const fetchPersonnelTypes = async () => {
     try {
-      const response = await fetch('http://localhost:8888/api/personnel-types/all');
+      const response = await fetch('http://localhost:1415/api/personnel-types/all');
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -164,15 +168,31 @@ function Ot_personnelType() {
         </button> */}
       </div>
 
-      <table className="ot_personnelType_table">
+      <table className="ot_personnelType_table" ref={tableRef}>  
         <thead>
           <tr>
-            <th className='ot_personnelType_tablehead'>Personnel Type Name</th>
-            <th className='ot_personnelType_tablehead'>IsActive</th>
-            <th className='ot_personnelType_tablehead'>Actions</th>
+            
+            {[
+            'Personel Type Name',
+            'IsActive',
+            'Action'].map((header, index) => (
+              <th
+                key={index}
+                style={{ width: columnWidths[index] }}
+                className="rd-resizable-th"
+              >
+                <div className="header-content">
+                  <span>{header}</span>
+                  <div
+                    className="resizer"
+                    onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+                  ></div>
+                </div>
+              </th>
+            ))}
           </tr>
         </thead>
-        <tbody>
+          <tbody>
           {filteredPersonnelTypes.map((pt) => (
             <tr key={pt.id}>
               <td className='ot_personnelType_tabledata'>{pt.name}</td>

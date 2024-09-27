@@ -1,14 +1,18 @@
 /* Mohini_GoodReceiptComponent_WholePage_14/sep/2024 */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import { Modal } from 'react-bootstrap'; // Ensure you have react-bootstrap installed
 import axios from 'axios'; // Make sure axios is installed
 import './PurchaseOrder.css'; // Ensure you have this CSS file
 import GoodsReceiptForm from './GoodsReceiptForm';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
+
 
 const GoodReceiptComponent = () => {
   const [showEditModal, setShowEditModal] = useState(false);
   const [goodReceipts, setGoodReceipts] = useState([]); // State to store fetched good receipts
   const [loading, setLoading] = useState(true); // State to manage loading
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
 
   const handleOpenModal = () => setShowEditModal(true);
   const handleCloseModal = () => setShowEditModal(false);
@@ -20,7 +24,7 @@ const GoodReceiptComponent = () => {
 
   const fetchGoodReceipts = async () => {
     try {
-      const response = await axios.get('http://192.168.1.39:8888/api/good-receipts/good-receipts'); // Adjust URL to your backend endpoint
+      const response = await axios.get('http://localhost:1415/api/good-receipts/good-receipts'); // Adjust URL to your backend endpoint
       setGoodReceipts(response.data);
     } catch (error) {
       console.error('Error fetching good receipts:', error);
@@ -93,29 +97,49 @@ const GoodReceiptComponent = () => {
 
       </div>
 
-      <div className="purchase-order-table-container">
-        <table className="purchase-order-tab">
+      {/* <div className="purchase-order-table-container"> */}
+       
+        <table  ref={tableRef}>
           <thead>
             <tr>
-              <th>G.R. No</th>
-              <th>PO Date</th>
-              <th>GR Date</th>
-              <th>Supplier Bill Date</th>
-              <th>Bill No</th>
-              <th>Supplier Name</th>
-              <th>Sub Total</th>
-              <th>Discount Amount</th>
-              <th>VAT Amount</th>
-              <th>Total Amount</th>
-              <th>Remark</th>
-              <th>Aging Days</th>
-              <th>Action</th>
+              {[
+                  "G.R. No",
+                  "PO Date",
+                  "GR Date",
+                  "Supplier Bill Date",
+                  "Bill No",
+                  "Supplier Name",
+                  "Sub Total",
+                  "Discount Amount",
+                  "VAT Amount",
+                  "Total Amount",
+                  "Remark",
+                  "Aging Days",
+                  "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan="12" className="purchase-order-no-rows">
+                <td colSpan="13" className="purchase-order-no-rows">
                   Loading...
                 </td>
               </tr>
@@ -143,7 +167,7 @@ const GoodReceiptComponent = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="14 " className="purchase-order-no-rows">
+                <td colSpan="13 " className="purchase-order-no-rows">
                   No Rows To Show
                 </td>
               </tr>
@@ -158,7 +182,7 @@ const GoodReceiptComponent = () => {
           <button>Next</button>
           <button>Last</button>
         </div> */}
-      </div>
+      {/* </div> */}
 
       <Modal
         show={showEditModal}

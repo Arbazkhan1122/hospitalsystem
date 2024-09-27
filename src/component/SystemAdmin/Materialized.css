@@ -1,42 +1,45 @@
-/* .materialized-sales-view {
-  background-color: #e6f2ff;
+ /* Dhanashree_MaterializedSalesView_19/09 */
+
+.MaterializedSalesView-materialized-sales-view {
+  background-color: var(--background-color);
   padding: 20px;
   font-family: Arial, sans-serif;
+  height: 100vh;
 }
 
-.header {
+.MaterializedSalesView-header {
   color: #333;
   font-size: 18px;
   margin-bottom: 20px;
 }
 
-.date-range {
+.MaterializedSalesView-date-range {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.date-input {
+.MaterializedSalesView-date-input {
   margin-right: 10px;
 }
 
-.date-input label {
+.MaterializedSalesView-date-input label {
   margin-right: 5px;
 }
 
-.date-input input {
+.MaterializedSalesView-date-input input {
   padding: 5px;
 }
 
-.star-button, .minus-button {
+.MaterializedSalesView-star-button, .MaterializedSalesView-minus-button {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   padding: 5px 10px;
   margin-right: 5px;
 }
 
-.show-report-button {
-  background-color: #7986cb;
+.MaterializedSalesView-show-report-button {
+  background-color: var(--button-color);
   color: white;
   border: none;
   padding: 8px 15px;
@@ -44,18 +47,25 @@
   border-radius: 4px;
 }
 
-.search-bar {
+.MaterializedSalesView-show-report-button:hover{
+  background-color: white;
+  color: var(--button-hover-text-color);  
+  
+}
+
+
+.MaterializedSalesView-search-bar {
   display: flex;
   margin-bottom: 10px;
 }
 
-.search-bar input {
+.MaterializedSalesView-search-bar input {
   flex-grow: 1;
   padding: 5px;
   border: 1px solid #ccc;
 }
 
-.search-bar .search-button {
+.MaterializedSalesView-search-bar .MaterializedSalesView-search-button {
   background-color: white;
   border: 1px solid #ccc;
   border-left: none;
@@ -63,14 +73,14 @@
   cursor: pointer;
 }
 
-.results-info {
+.MaterializedSalesView-results-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.results-info button {
+.MaterializedSalesView-results-info button {
   background-color: #90caf9;
   border: none;
   color: white;
@@ -79,46 +89,46 @@
   border-radius: 4px;
 }
 
-
-.sales-table-container {
+/* Make the table responsive */
+.MaterializedSalesView-sales-table-container {
   overflow-x: auto;
 }
 
-.sales-table {
+.MaterializedSalesView-sales-table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  table-layout: fixed; 
+  table-layout: fixed; /* Fixed table layout */
 }
 
-.sales-table th, .sales-table td {
+.MaterializedSalesView-sales-table th, .MaterializedSalesView-sales-table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
   font-size: 14px;
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowed text */
+  text-overflow: ellipsis; /* Add ellipsis for overflowed text */
 }
 
-.sales-table th {
+.MaterializedSalesView-sales-table th {
   background-color: #f8f8f8;
   font-weight: bold;
 }
 
-.sales-table .no-rows {
+.MaterializedSalesView-sales-table .MaterializedSalesView-no-rows {
   background-color: #fff9c4;
   text-align: center;
   padding: 10px;
 }
 
-.pagination {
+.MaterializedSalesView-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.pagination .page-btn {
+.MaterializedSalesView-pagination .MaterializedSalesView-page-btn {
   background-color: #90caf9;
   color: white;
   border: none;
@@ -128,6 +138,25 @@
   border-radius: 4px;
 }
 
-.pagination span {
+.MaterializedSalesView-pagination span {
   margin: 0 10px;
-} */
+}
+
+
+
+.MaterializedSalesView-results-info button {
+  background-color: #00c9c0; /* Change button background color */
+  border: none;
+  color: white; /* Initial text color */
+  padding: 5px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Add hover effect */
+.MaterializedSalesView-results-info button:hover {
+  background-color: white; /* Change background on hover */
+  color: var(--button-hover-text-color); /* Change text color on hover */
+}
+
+ /* Dhanashree_MaterializedSalesView_19/09 */

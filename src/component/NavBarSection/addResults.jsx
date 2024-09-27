@@ -22,12 +22,22 @@ function AddResults() {
   return (
     <div className="addResults-work-list">
       <div className="addResults-header">
-        <div className="addResults-date-range">
-          <label>From:</label>
-          <input type="date" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} />
-          <label>To:</label>
-          <input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} />
-        </div>
+       
+        <div className="addResults-controls">
+        {/* Your date range and button controls */}
+          <div className="addResults-date-range">
+            <label>
+              From:
+              <input type="date" defaultValue="2024-08-09" />
+            </label>
+            <label>
+              To:
+              <input type="date" defaultValue="2024-08-16" />
+            </label>
+            <button className="addResults-star-button">☆</button>
+            <button className="addResults-ok-button">OK</button>
+          </div>
+      </div>
         <div className="addResults-category-select">
           <label>Category:</label>
           <select value={category} onChange={(e) => setCategory(e.target.value)}>
@@ -51,19 +61,23 @@ function AddResults() {
             {/* Add more options here */}
           </select>
         </div>
-        <button className="addResults-load-button">Load <i className="fa-brands fa-instalod"></i></button>
+        <button className="addResults-load-button">Load <i className="fa fa-refresh" /> </button>
         <div className='addResults-worklist'>
           <a href="#" onClick={toggleWorkList}>WorkList</a>
         </div>
       </div>
       <div className="addResults-searchbar-N-showing">
         <div className="addResults-search-bar">
-          <i className="fa-solid fa-magnifying-glass"></i>
-          <input type="text" placeholder="Search..." />
-        </div>
+              <i className="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                placeholder="Search"
+                className="addResults-search-input"
+              />
+            </div>
         <div className="addResults-results-info">
           <span>Showing 0 / 0 results</span>
-          <button className="addResults-print-button">Print</button>
+          <button className="addResults-print-button"><i class="fa-solid fa-print"></i> Print</button>
         </div>
       </div>
       <div className="addResults-work-table">
@@ -110,14 +124,14 @@ function AddResults() {
             </tr>
           </tbody>
         </table>
-        <div className="addResults-pagination">
+        {/* <div className="addResults-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       </div>
       {showWorkList && (
         <div className="addResults-popup-overlay">

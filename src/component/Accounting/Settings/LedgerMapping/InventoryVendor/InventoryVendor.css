@@ -58,19 +58,6 @@
 .status-item .red {
     background-color: #ffcccb;
 }
-
-.ledger-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.ledger-table th,
-.ledger-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
-}
-
 .ledger-name {
     color: green;
     font-weight: bold;

@@ -93,7 +93,7 @@ const LabTestComponent = () => {
         </div>
         <div className="labTestComponents-results-info">
           <span>Showing 0 / 0 results</span>
-          <button className="labTestComponents-print-button">Print</button>
+          <button className="labTestComponents-print-button"><i class="fa-solid fa-print"></i> Print</button>
         </div>
         </div>
       <table >
@@ -132,14 +132,14 @@ const LabTestComponent = () => {
           ))}
         </tbody>
       </table>
-      <div className="labTestComponents-pagination">
+      {/* <div className="labTestComponents-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
           <button>Previous</button>
           <span>Page 0 of 0</span>
           <button>Next</button>
           <button>Last</button>
-        </div>
+        </div> */}
       {/* Modal Popup */}
       {showPopup && (
         <div className="labTestComponents-modal">

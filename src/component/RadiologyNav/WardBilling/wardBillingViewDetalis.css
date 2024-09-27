@@ -1,12 +1,14 @@
 .wardBillingViewDetalis-ward-billing {
-  font-family: Arial, sans-serif;
-  max-width: 1200px;
+  /* font-family: Arial, sans-serif; */
+  /* max-width: 1200px; */
+  background-color: var(--background-color);
+  height: 75vh;
   margin: 0 auto;
   padding: 10px;
 }
 
 .wardBillingViewDetalis-ward-billing h5 {
-  color: #333;
+  /* color: #333; */
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
 }

@@ -2,7 +2,7 @@
   width: 100%;
   height: auto;
   font-family: Arial, sans-serif;
-  background-color: #e6f3ff;
+  background-color: var(--background-color);
   /* padding: 20px; */
   float: left; /* Aligns the main container to the left */
 }
@@ -28,10 +28,13 @@
   flex-wrap: wrap; /* Allow wrapping to the next line if needed */
   gap: 20px; /* Add space between items */
   margin-bottom: 1px; /* Add space below the patient info */
+  font-size: 16px;
 }
 
 .mternity-patient-info span {
   white-space: nowrap; /* Prevent text from wrapping */
+  font-size: 16px;
+
 }
 
 .maternity-title {
@@ -48,6 +51,8 @@
 .maternity-form-label {
   display: block;
   gap: 10px;
+  font-size: 14px;
+  padding: 5px;
   margin-bottom: 5px;
 }
 
@@ -60,8 +65,9 @@
 
 .maternity-form-input,
 .maternity-form-select {
-  width: 20%;
-  padding: 8px;
+  /* width: 20%; */
+  padding: 5px;
+  font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -82,7 +88,6 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: bold;
 }
 
 .maternity-button-proceed {
@@ -142,8 +147,8 @@
   margin-left: 5px;
 }
 .pay-span{
-  font-size: 16px;
-  color: #2d68ea;
+  font-size: 14px;
+  color: black;
 }
 
 .maternity-checkbox {
@@ -151,13 +156,18 @@
 }
 
 .maternity-title {
-  background-color: #e0f7ff;
+  /* background-color: ; */
   padding: 10px;
   font-size: 16px;
   margin-bottom: 20px;
+  width: 100%;
   border-radius: 4px;
+  border-bottom: 1px solid white;
   position: relative; /* Required for positioning the pseudo-element */
   display: inline-block; /* Adjust width to fit content */
+}
+.maternity-titles{
+  font-size: 16px;
 }
 
 .maternity-title::after {
@@ -167,13 +177,13 @@
   left: 0;
   width: 0; /* Start with 0 width */
   height: 4px; /* Thickness of the border */
-  background-color: #2d68ea; /* Color of the animated border */
+  background-color: var(--button-bg-color); /* Color of the animated border */
   transition: width 0.3s ease, background-color 0.3s ease; /* Animation properties */
 }
 
 .maternity-title:hover::after {
-  width: 100%; /* Expand width to full container on hover */
-  background-color: #2d68ea; /* Change color on hover */
+  width: 10%; /* Expand width to full container on hover */
+  background-color: var(--button-bg-color); /* Color of the animated border */
 }
 
 .maternity-title h3 {
@@ -208,7 +218,6 @@
   border: none; /* Remove default border */
   border-radius: 4px; /* Rounded corners */
   cursor: pointer; /* Pointer cursor on hover */
-  font-weight: bold;
 }
 
 .pagination-button:hover {

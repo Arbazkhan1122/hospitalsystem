@@ -1,188 +1,128 @@
-// src/DepartmentTable.jsx
-
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 import './ManageWard.css';
 
 const ManageWard = () => {
-  const [showEditModal, setShowEditModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState(''); // 'add' or 'edit'
   const [selectedWard, setSelectedWard] = useState(null);
   const [wardName, setWardName] = useState('');
   const [wardCode, setWardCode] = useState('');
   const [wardLocation, setWardLocation] = useState('');
   const [subStore, setSubStore] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   const handleEditClick = (ward) => {
+    setModalType('edit');
     setSelectedWard(ward);
     setWardName(ward.name);
     setWardCode(ward.code);
     setWardLocation(ward.address);
     setSubStore(ward.parent);
     setIsActive(ward.isActive);
-    setShowEditModal(true);
+    setShowModal(true);
+  };
+
+  const handleAddClick = () => {
+    setModalType('add');
+    setSelectedWard(null);
+    setWardName('');
+    setWardCode('');
+    setWardLocation('');
+    setSubStore('');
+    setIsActive(false);
+    setShowModal(true);
   };
 
   const handleCloseModal = () => {
-    setShowEditModal(false);
+    setShowModal(false);
     setSelectedWard(null);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Logic for updating ward details goes here
-    console.log('Updated:', { wardName, wardCode, wardLocation, subStore, isActive });
+    const updatedWard = {
+      wardName,
+      wardCode,
+      wardLocation,
+      subStore,
+      isActive,
+    };
+    if (modalType === 'edit') {
+      console.log('Updated Ward:', updatedWard);
+      // Logic for updating the selected ward's details
+    } else if (modalType === 'add') {
+      console.log('Added New Ward:', updatedWard);
+      // Logic for adding a new ward
+    }
     handleCloseModal();
   };
 
-
   const wardsData = [
-    {
-        name: 'Brain Ward',
-        code: 'BW',
-        parent: 'Ward',
-        email: 'brainward@example.com',
-        phone: '123-456-7890',
-        address: '123 Brain St, City, State',
-        label: 'Ward Code',
-        verification: 'Ward Location',
-        isActive: true,
-      },
-      {
-        name: 'Female Ward',
-        code: 'Female Ward',
-        parent: 'Ward',
-        email: 'femaleward@example.com',
-        phone: '987-654-3210',
-        address: '456 Female St, City, State',
-        label: '006',
-        verification: 'MATERNITY',
-        isActive: true,
-      },
-      {
-        name: 'ICU',
-        code: '006',
-        parent: 'Ward',
-        email: 'icu@example.com',
-        phone: '456-123-7890',
-        address: '789 ICU St, City, State',
-        label: 'Male Ward',
-        verification: 'MATERNITY',
-        isActive: true,
-      },
-      {
-        name: 'Male Ward',
-        code: 'Male Ward',
-        parent: 'Ward',
-        email: 'maleward@example.com',
-        phone: '321-654-9870',
-        address: '321 Male St, City, State',
-        label: 'MATERNITY',
-        verification: 'MATERNITY',
-        isActive: true,
-      },
-      {
-        name: 'MATERNITY WARD',
-        code: 'MATERNITY',
-        parent: 'Ward',
-        email: 'maternityward@example.com',
-        phone: '654-321-0987',
-        address: '654 Maternity St, City, State',
-        label: '003',
-        verification: 'MATERNITY',
-        isActive: true,
-      },
-      {
-        name: 'NICU',
-        code: '003',
-        parent: 'Ward',
-        email: 'nicu@example.com',
-        phone: '789-456-1230',
-        address: '789 NICU St, City, State',
-        label: '007',
-        verification: 'MATERNITY',
-        isActive: true,
-      },
-      {
-        name: 'Private Ward',
-        code: '007',
-        parent: 'Ward',
-        email: 'privateward@example.com',
-        phone: '432-123-5678',
-        address: '234 Private St, City, State',
-        label: 'Ward Location',
-        verification: 'MATERNITY',
-        isActive: true,
-      },
-    ];
-  
-  
+    { name: 'Brain Ward', code: 'BW', parent: 'Ward', email: 'brainward@example.com', phone: '123-456-7890', address: '123 Brain St, City, State', label: 'Ward Code', verification: 'Ward Location', isActive: true },
+    { name: 'Female Ward', code: 'Female Ward', parent: 'Ward', email: 'femaleward@example.com', phone: '987-654-3210', address: '456 Female St, City, State', label: '006', verification: 'MATERNITY', isActive: true },
+    { name: 'ICU', code: '006', parent: 'Ward', email: 'icu@example.com', phone: '456-123-7890', address: '789 ICU St, City, State', label: 'Male Ward', verification: 'MATERNITY', isActive: true },
+    { name: 'Male Ward', code: 'Male Ward', parent: 'Ward', email: 'maleward@example.com', phone: '321-654-9870', address: '321 Male St, City, State', label: 'MATERNITY', verification: 'MATERNITY', isActive: true },
+    { name: 'MATERNITY WARD', code: 'MATERNITY', parent: 'Ward', email: 'maternityward@example.com', phone: '654-321-0987', address: '654 Maternity St, City, State', label: '003', verification: 'MATERNITY', isActive: true },
+    { name: 'NICU', code: '003', parent: 'Ward', email: 'nicu@example.com', phone: '789-456-1230', address: '789 NICU St, City, State', label: '007', verification: 'MATERNITY', isActive: true },
+    { name: 'Private Ward', code: '007', parent: 'Ward', email: 'privateward@example.com', phone: '432-123-5678', address: '234 Private St, City, State', label: 'Ward Location', verification: 'MATERNITY', isActive: true },
+  ];
 
   return (
     <div className="manage-add-ward-page">
       <div className="manage-add-ward-table-container">
         <div className="manage-add-ward-manage-section">
-          <Button className="manage-add-ward-btn">+ Add Ward</Button>
+          <Button className="manage-add-ward-btn" onClick={handleAddClick}>+ Add Ward</Button>
         </div>
         <input type="text" placeholder="Search" className="manage-add-ward-search-input" />
         <div className="manage-add-ward-results-info">Showing {wardsData.length} results</div>
 
-        <table className="manage-add-ward-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Code</th>
-              <th>Parent Substore</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Address</th>
-              <th>Label</th>
-              <th>Verification</th>
-              <th>Is Active</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {wardsData.map((ward, index) => (
-              <tr key={index}>
-                <td>{ward.name}</td>
-                <td>{ward.code}</td>
-                <td>{ward.parent}</td>
-                <td>{ward.email}</td>
-                <td>{ward.phone}</td>
-                <td>{ward.address}</td>
-                <td>{ward.label}</td>
-                <td>{ward.verification}</td>
-                <td>{ward.isActive.toString()}</td>
-                <td>
-                  <Button
-                    className="manage-add-ward-edit-btn"
-                    onClick={() => handleEditClick(ward)}
-                  >
-                    Edit
-                  </Button>
-                </td>
+        <div className='table-container'>
+          <table ref={tableRef}>
+            <thead>
+              <tr>
+                {['Name', 'Code', 'Parent Substore', 'Email', 'Phone', 'Address', 'Label', 'Verification', 'Is Active', 'Action'].map((header, index) => (
+                  <th key={index} style={{ width: columnWidths[index] }} className="resizable-th">
+                    <div className="header-content">
+                      <span>{header}</span>
+                      <div className="resizer" onMouseDown={startResizing(tableRef, setColumnWidths)(index)}></div>
+                    </div>
+                  </th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <div className="manage-add-ward-pagination">
-          <Button className="manage-add-ward-pagination-btn">First</Button>
-          <Button className="manage-add-ward-pagination-btn">Previous</Button>
-          <span>Page 1 of 1</span>
-          <Button className="manage-add-ward-pagination-btn">Next</Button>
-          <Button className="manage-add-ward-pagination-btn">Last</Button>
+            </thead>
+            <tbody>
+              {wardsData.map((ward, index) => (
+                <tr key={index}>
+                  <td>{ward.name}</td>
+                  <td>{ward.code}</td>
+                  <td>{ward.parent}</td>
+                  <td>{ward.email}</td>
+                  <td>{ward.phone}</td>
+                  <td>{ward.address}</td>
+                  <td>{ward.label}</td>
+                  <td>{ward.verification}</td>
+                  <td>{ward.isActive.toString()}</td>
+                  <td>
+                    <Button className="manage-add-ward-edit-btn" onClick={() => handleEditClick(ward)}>Edit</Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
 
-      <Modal show={showEditModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">
+      <Modal show={showModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">
         <div className="manage-modal-dialog">
           <div className="manage-modal-modal-header">
-            <div className="manage-modal-modal-title">Update Ward Department</div>
-            <Button onClick={handleCloseModal} className="manage-modal-employee-role-btn">
-              X
-            </Button>
+            <div className="manage-modal-modal-title">
+              {modalType === 'edit' ? 'Update Ward Department' : 'Add New Ward'}
+            </div>
+            <Button onClick={handleCloseModal} className="manage-modal-employee-role-btn">X</Button>
           </div>
           <div className="manage-modal-modal-body">
             <Form onSubmit={handleSubmit}>
@@ -239,13 +179,15 @@ const ManageWard = () => {
                   type="checkbox"
                   checked={isActive}
                   onChange={(e) => setIsActive(e.target.checked)}
-                  className="manage-modal-form-check-input"
+                  className="manage-modal-form-check"
                 />
               </Form.Group>
 
-              <Button type="submit" className="manage-modal-employee-btn">
-                Update
-              </Button>
+              <div className="manage-modal-modal-footer">
+                <Button type="submit" className="manage-modal-employee-role-btn">
+                  {modalType === 'edit' ? 'Update Ward' : 'Add Ward'}
+                </Button>
+              </div>
             </Form>
           </div>
         </div>

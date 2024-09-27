@@ -1,10 +1,11 @@
 // neha-utilities-SchemeRefundList-14-9-24
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import moment from "moment";
 import { Modal, Button } from "react-bootstrap";
 import './list.css';
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
+import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
 const SchemeRefundList = () => {
   const [schemeRefundList, setSchemeRefundList] = useState([]);
@@ -18,13 +19,15 @@ const SchemeRefundList = () => {
   const [refundScheme, setRefundScheme] = useState("");
   const [amount, setAmount] = useState("");
   const [remark, setRemark] = useState("");
+  const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
 
   useEffect(() => {
     // Fetch data from API
     const fetchRefundData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/Search-Patient/fetch-all-search-patient"
+          "http://localhost:1415/api/Search-Patient/fetch-all-search-patient"
         );
         setSchemeRefundList(response.data);
       } catch (error) {
@@ -64,7 +67,7 @@ const SchemeRefundList = () => {
         remark,
       };
 
-      const response = await axios.post("http://localhost:5000/api/Search-Patient/save-search-patient", payload);
+      const response = await axios.post("http://localhost:1415/api/Search-Patient/save-search-patient", payload);
 
       if (response.status === 200) {
         alert("Data saved successfully!");
@@ -84,11 +87,11 @@ const SchemeRefundList = () => {
 
   return (
     <div className="scheme-refund-list">
-      <div className="header">
+      
         <button className="new-entry-btn" onClick={openSchemeReturnEntryModal}>
           <i className="fa fa-plus"></i> New Scheme Refund Entry
         </button>
-      </div>
+     
 
       <div className="date-range-container">
         <label>From: </label>
@@ -104,20 +107,36 @@ const SchemeRefundList = () => {
         <input type="text" placeholder="Search by patient name" className="input-search-bar" />
       </div>
 
-      <table className="scheme-refund-table">
+      <table className="scheme-refund-table" ref={tableRef}>
         <thead>
           <tr>
-            <th>Refund Date</th>
-            <th>Reception No</th>
-            <th>Scheme</th>
-            <th>Patient</th>
-            <th>Refund Amount</th>
-            <th>Inpatient No</th>
-            <th>Remark</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+          {[
+            "Refund Date",
+            "Reception No",
+            "Scheme",
+            "Patient",
+            "Refund Amount",
+            "Inpatient No",
+            "Remark",
+            "Actions"
+].map((header, index) => (
+  <th
+    key={index}
+    style={{ width: columnWidths[index] }}
+    className="rd-resizable-th"
+  >
+    <div className="header-content">
+      <span>{header}</span>
+      <div
+        className="resizer"
+        onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+      ></div>
+    </div>
+  </th>
+))}
+</tr>
+</thead>
+<tbody>
           {schemeRefundList.map((item, index) => (
             <tr key={index}>
               <td>{moment(item.refundDate).format("YYYY-MM-DD")}</td>

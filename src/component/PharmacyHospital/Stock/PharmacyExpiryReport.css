@@ -2,6 +2,7 @@
   .pharmacy-expiry-report-container {
     background-color: var(--background-color);
     padding: 20px;
+    height: 90vh;
     font-family: Arial, sans-serif;
   }
   

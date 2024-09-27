@@ -1,15 +1,37 @@
 import React from "react";
 import './MedicalRecordReport.css';
-
+import { useNavigate } from "react-router-dom";
 
 
 const LabReport=()=>{
+  const navigate=useNavigate();
+  const handleReportClick = (title) => {
+    if (title === "Hospital Service Summary Report") {
+      navigate('/HospitalServiceSummaryReport'); // Navigate to the desired route
+    } 
+    if(title=== "Inpatient Morbidity Report'"){
+      navigate('/InpatientMorbidityReport');
+    }
+    if (title === "Hospital Mortality Report") {
+      navigate('/HospitalMortalityReport'); // Navigate to the desired route
+    } 
+    if (title === "Emergency Patient Morbidity Report") {
+      navigate('/EmergencyPMReport'); // Navigate to the desired route
+    } 
+    if (title === "Outpatient Morbidity Report") {
+      navigate('/OutPatientMorbidityReport'); // Navigate to the desired route
+    } 
+    if (title === "Lab Services Report") {
+      navigate('/LabServiceReport'); // Navigate to the desired route
+    } 
+  };
+
 
     const ReportCard=({icon,title,subtitle})=>{
         return(
-            <div className="report-card">
-                <div className="icon"> {icon}</div>
-                <div className="content">
+            <div className="report-card" onClick={() => handleReportClick(title)}>
+                <div className="icon-css"> {icon}</div>
+                <div className="content-md">
                     <h3>{title}</h3>
                     <p>{subtitle}</p>
                 </div>
@@ -33,7 +55,7 @@ const LabReport=()=>{
 
 
       return(
-        <div className="dashboard">
+        <div className="dashboard-medical-record">
       {reports.length > 0 ? (
         reports.map((report, index) => (
           <ReportCard

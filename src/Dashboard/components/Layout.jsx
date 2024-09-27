@@ -3,20 +3,21 @@ import Sidebar from "./Sidebar";
 import Header from "./Header";
 import Home from "../pages/Home";
 import "./Layout.css";
-import AppointmentBookingList from "../../component/Appointment/AppointmentRouting";
 import AppointmentRouting from "../../component/Appointment/AppointmentRouting";
 import AppRoutes from "../../component/Employee/AppRoutes";
 import Inventory from "../../component/Inventory1/Inventory";
 import Incentive from "../../component/IncentiveMain/incentiveApp";
 import Lab from "../../component/NavBarSection/Lab";
 import Emergency from "../../component/Emergency/Emergency";
-import Utilitiesmain from "../../component/UTILITIES/utilitiesmain";
+import Utilitiesmain from "../../component/UTILITIES/Utilitiesmain";
 import SystemAdmin from "../../component/SystemAdmin/SystemAdmin";
+
 import SocialServicePage from "../../component/SocialServicesMain/SocialServicePage";
 import Disprensary from "../../component/DispensaryPage/disprensaryRoute";
 import DynamicReport from "../../component/DynamicReport/DynamicReport";
 import Report from "../../component/Reports/Layout";
-import ReportMainRouting from "../../component/Reports/ReportMainRouting";
+
+// import ReportMainRouting from "../../component/Reports/ReportMainRouting";
 import NursingMainRouting from "../../component/Nursing/NursingMainRouting";
 import DoctorDashBoard from "../../component/DashBoards/DoctorDashBoard";
 import Otmain from "../../component/OT/otmain";
@@ -42,6 +43,8 @@ import VerificationRouting from "../../component/Verification/VerificationRoutin
 import SubstoreRouting from "../../component/SubStoreMainPage/SubstoreRouting";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRouting";
+import ReportRoute from "../../component/Reports/ReportRoute";
+import Billing from "../../component/Billing/billing";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -77,6 +80,8 @@ const Layout = () => {
   const [showVerification, setShowVerification] = useState(false);
   const [showSubStore, setShowSubStore] = useState(false);
   const [showMedicalRecord, setShowMedicalRecord] = useState(false);
+  const [showProcurement, setShowProcurement] = useState(false);
+  const [showBilling, setShowBilling] = useState(false);
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -111,6 +116,8 @@ const Layout = () => {
     setShowVerification(false);
     setShowSubStore(false);
     setShowMedicalRecord(false);
+    setShowProcurement(false);
+    setShowBilling(false);
   };
 
   const toggelAppointment = () => {
@@ -243,6 +250,14 @@ const Layout = () => {
     resetAllToggles();
     setShowMedicalRecord(!showMedicalRecord);
   };
+  const toggelProcurement = () => {
+    resetAllToggles();
+    setShowProcurement(!showProcurement);
+  };
+  const toggelBilling = () => {
+    resetAllToggles();
+    setShowBilling(!showBilling);
+  };
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -278,6 +293,8 @@ const Layout = () => {
         onVerification={toggelVerification}
         onSubstoreClick={toggelSubstore}
         onMedicalRecord={toggelMedicalRecord}
+        onProcurement={toggelProcurement}
+        onBilling={toggelBilling}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
@@ -299,7 +316,7 @@ const Layout = () => {
           {showSocialService && <SocialServicePage />}
           {showDisprensary && <Disprensary />}
           {showDynamicReport && <DynamicReport />}
-          {showReport && <ReportMainRouting />}
+          {showReport && <ReportRoute />}
           {showNurse && <NursingMainRouting />}
           {showDoctor && <DoctorDashBoard />}
           {showOprationTheater && <Otmain />}
@@ -320,6 +337,7 @@ const Layout = () => {
           {showVerification && <VerificationRouting />}
           {showSubStore && <SubstoreRouting />}
           {showMedicalRecord && <MedicalReportRouting />}
+          {showBilling && <Billing />}
         </main>
       </div>
     </div>

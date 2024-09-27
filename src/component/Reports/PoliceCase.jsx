@@ -1,176 +1,180 @@
+import React, { useState,useRef } from 'react';
+import { Button } from 'react-bootstrap';
+import './UserCollectionReport.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
+const PoliceCase = () => {
+  const [showReport, setShowReport] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [dischargedOnly, setDischargedOnly] = useState(false); // State for the "Discharged Only" checkbox
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
-import React, { useState } from 'react';
-import '../Reports/PoliceCase.css';
-import { useNavigate } from 'react-router-dom';
 
-function MainContent() {
+  const handlePrint = () => {
+    window.print(); // Simple print functionality using the browser's print dialog
+  };
 
-    const [activeTab, setActiveTab] = useState('Inpatient Census Report'); // Default tab
-   
+  // Function to handle export (placeholder function)
+  const handleExport = () => {
+    console.log('Export function not yet implemented');
+    // Implement your export logic here
+  };
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = 1; // Update this according to your data
-  
-    const handlePageChange = (page) => {
-      if (page > 0 && page <= totalPages) {
-        setCurrentPage(page);
-      }
-    };
-    
-    const navigate = useNavigate();
-    const [DoctorReportData,setDoctorReportData]=useState(false);
-    const [PolicecaseData,setPolicecaseData]=useState(false);
-  
- 
-    
-      const [filterOption, setFilterOption] = useState('All');
-      const [fromDate, setFromDate] = useState('');
-      const [toDate, setToDate] = useState('');
-    
-    
-   
-    const handleFilterData = () => {
-        // Implement filter logic here
-        console.log(`Filtering data from ${fromDate} to ${toDate} with option ${filterOption}`);
-      };
+  const handlePopupToggle = () => {
+    setIsPopupOpen(!isPopupOpen);
+  };
 
-      const DoctorShowReport=()=>{
-        setPolicecaseData(!PolicecaseData);
-      }
-     
+  const handleDateRangeSelection = (range) => {
+    console.log('Selected Range:', range);
+    // Implement the logic to filter data based on the selected range
+    setIsPopupOpen(false); // Close the popup after selection
+  };
 
-    return (
-        <>
-        
-       
+  const handleSearch = (query) => {
+    console.log(`Searching for: ${query}`);
+    // Implement your search logic here to filter the reportsData
+  };
 
-        {
-           
+  const reportsData = [
+    {
+      ipNumber: 'H2400009',
+      patientName: 'Stocazzo Coidenti',
+      hospitalNo: '2406003703',
+      admittedOn: '2024-06-10',
+      dischargedOn: 'N/A',
+    },
+  ];
 
-            <div className="Admission-tableContainer">
-             <h3>Police Case Report</h3>
-            <div className="admission-date-filter">
-                <label>
-                  From:
-                  <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
-                </label>
-                <label>
-                  To:
-                  <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} />
-                </label>
-                <button onClick={handleFilterData}>OK</button>
-                <button style={{ marginLeft: '5px' }}>★</button>
-                <button style={{ marginLeft: '5px' }}> - </button>
-                Discharged Only: <input type='checkbox'></input>
-             
-                <button style={{ marginLeft: '15px' }} onClick={DoctorShowReport} >Show Report</button>
+  // Filter data based on dischargedOnly checkbox
+  const filteredData = dischargedOnly
+    ? reportsData.filter(data => data.dischargedOn !== 'N/A')
+    : reportsData;
+
+  const handleShowReport = () => {
+    setShowReport(true);
+  };
+
+  const handleDischargedOnlyChange = (e) => {
+    setDischargedOnly(e.target.checked);
+    console.log('Discharged Only:', e.target.checked);
+    // Implement the logic to filter data based on the discharged only status
+  };
+
+  return (
+    <div className="user-collection-report">
+      <div className="user-collection-report-header">
+        <h3 className="user-collection-report-title">⚛ Police Case Report</h3>
+        <div className="user-collection-report-filters">
+          <div className="user-collection-report-date-filter">
+            <label>From:</label>
+            <input type="date" />
+            <label>To:</label>
+            <input type="date" />
+            <button className="user-collection-report-fav-btn">☆</button>
+            <button className="user-collection-report-fav-btn" onClick={handlePopupToggle}>-</button>
+
+            {isPopupOpen && (
+              <div className="user-collection-popup">
+                <ul className="user-collection-popup-list">
+                  <li onClick={() => handleDateRangeSelection('Today')}>Today</li>
+                  <li onClick={() => handleDateRangeSelection('Last 1 Week')}>Last 1 Week</li>
+                  <li onClick={() => handleDateRangeSelection('Last 1 Month')}>Last 1 Month</li>
+                  <li onClick={() => handleDateRangeSelection('Last 3 Months')}>Last 3 Months</li>
+                </ul>
               </div>
-                
-           
+            )}
           </div>
-
-           
-
-        }
-
-
-
-        {
-          
-          PolicecaseData && (
-
-        <div className="MyPatientsTable-tableContainer">
-                 <div className='Admitted-Patient-Header'>
-                <input type='text' placeholder='Search' className='Admitted-Patient-searchInput'/>
-                <div className="Admitted-Patient-actions">
-                    <span className="Admitted-Patient-results">Showing 0/0 results</span>
-                    <button className="Admitted-Patient-button">Export</button>
-                    <button className="Admitted-Patient-button">Print</button>
-                </div>
-         </div>
-
-        <table className="InpatientCensus-report-table">
-            <thead>
-            <tr>
-            <th>IP Number</th>
-          <th>Patient Name</th>
-          <th>Hospital No.</th>
-          <th>Admitted On</th>
-          <th>Discharged on</th>
-          
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>H2400009</td>
-          <td>Stocazzo Coidenti</td>
-          <td>2406003703</td>
-          <td>2024-06-10</td>
-          <td>    N/A    </td>
-       
-        </tr>
-        <tr>
-          <td>H2400005</td>
-          <td>Sonia Chebii</td>
-          <td>2406003703</td>
-          <td>2024-06-10</td>
-          <td>2023-12-11</td>
-          
-        </tr>
-        <tr>
-        <td>H2400005</td>
-          <td>Sonia Chebii</td>
-          <td>2406003703</td>
-          <td>2024-06-10</td>
-          <td>2023-12-11</td>
-      
-        </tr>
-        <tr>
-        <td>H2400005</td>
-          <td>Sonia Chebii</td>
-          <td>2406003703</td>
-          <td>2024-06-10</td>
-          <td>2023-12-11</td>
-        </tr>
-        <tr>
-        <td>H2400005</td>
-          <td>Sonia Chebii</td>
-          <td>2406003703</td>
-          <td>2024-06-10</td>
-          <td>2023-12-11</td>
-     
-        </tr>
-        <tr>
-        <td>H2400005</td>
-          <td>Sonia Chebii</td>
-          <td>2406003703</td>
-          <td>2024-06-10</td>
-          <td>2023-12-11</td>
-        </tr>
-       
-      </tbody>
-    </table>
-        <div className='print-button-container'>
-        <button className="print-button">
-        <span className="print-icon">🖨</span> Print
-        </button>
-
+          <button className="user-collection-report-show-btn" onClick={handleShowReport}>Show Report</button>
         </div>
-    
-              </div>
-    
-               ) 
+      </div>
+
+      <div className='discharge-display-com'>
+        <div className="user-collection-report-discharged-only">
+          <input
+            type="checkbox"
+            id="dischargedOnly"
+            checked={dischargedOnly}
+            onChange={handleDischargedOnlyChange}
+          />
+          <label htmlFor="dischargedOnly">Discharged Only</label>
+        </div>
+      </div>
+
+      {showReport && (
+        <>
+          <div className="user-collection-report-controls">
+            <input
+              type="text"
+              className="user-collection-report-search"
+              placeholder="Search..."
+              onChange={(e) => handleSearch(e.target.value)}
+            />
+            <div className="user-collection-page-results-info">
+              Showing {filteredData.length}/1 results
+            </div>
+            <button className="user-collection-report-print-btn" onClick={handlePrint}>Print</button>
+          </div>
+          <div className='user-collection-report-tab'>
             
-        }
+<table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "IP Number",
+                "Patient Name",
+                "Hospital No.",
+                "Admitted On",
+                "Discharged on"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+              <tbody>
+                {filteredData.length === 0 ? (
+                  <tr>
+                    <td colSpan="5" className="user-name-no-row">No Rows To Show</td>
+                  </tr>
+                ) : (
+                  filteredData.map((row, index) => (
+                    <tr key={index}>
+                      <td>{row.ipNumber}</td>
+                      <td>{row.patientName}</td>
+                      <td>{row.hospitalNo}</td>
+                      <td>{row.admittedOn}</td>
+                      <td>{row.dischargedOn}</td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+            <div className="user-collection-report-page-no">
+              <Button className="user-collection-report-pagination-btn">First</Button>
+              <Button className="user-collection-report-pagination-btn">Previous</Button>
+              <span>Page 1 of 4</span>
+              <Button className="user-collection-report-pagination-btn">Next</Button>
+              <Button className="user-collection-report-pagination-btn">Last</Button>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
-
-        
-
-
-
-       
-    </>
-    );
-}
-
-export default MainContent;
+export default PoliceCase;

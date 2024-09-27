@@ -10,27 +10,21 @@ function IMUUploadPage() {
   return (
     <div className="imuUpload-page">
       <div className="imuUpload-filters">
-        <div className="imuUpload-date-range">
-          <span>From:</span>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-            selectsStart
-            startDate={startDate}
-            endDate={endDate}
-            dateFormat="MM/dd/yyyy"
-          />
-          <span>To:</span>
-          <DatePicker
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-            selectsEnd
-            startDate={startDate}
-            endDate={endDate}
-            minDate={startDate}
-            dateFormat="MM/dd/yyyy"
-          />
-        </div>
+      <div className="imuUpload-controls">
+        {/* Your date range and button controls */}
+          <div className="imuUpload-date-range">
+            <label>
+              From:
+              <input type="date" defaultValue="2024-08-09" />
+            </label>
+            <label>
+              To:
+              <input type="date" defaultValue="2024-08-16" />
+            </label>
+            <button className="imuUpload-star-button">☆</button>
+            <button className="imuUpload-ok-button">OK</button>
+          </div>
+      </div>
         <div className="imuUpload-buttons">
           <button className="imuUpload-load-data"><i class="fa-brands fa-instalod"></i> Load Data</button>
           <button className="imuUpload-upload-to-imu"><i class="fa-solid fa-upload"></i> Upload To IMU</button>
@@ -38,11 +32,14 @@ function IMUUploadPage() {
       </div>
 
 <div className='imuUpload-search-N-upload'>
-      <div className="imuUpload-search-bar">
-      <i className="fa-solid fa-magnifying-glass"></i>
-        <input type="text" placeholder="Search" />
-        {/* <button>🔍</button> */}
-      </div>
+<div className="imuUpload-search-bar">
+              <i className="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                placeholder="Search"
+                className="imuUpload-search-input"
+              />
+            </div>
 
       <div className="imuUpload-upload-status">
         <label className='imuUpload-checkbx'><input type="radio" name="status" checked /> UploadPending</label>
@@ -71,8 +68,8 @@ function IMUUploadPage() {
       </table>
 
       <div className="imuUpload-pagination">
-        <button>Previous</button>
-        <button>Next</button>
+        <button>« Previous</button>
+        <button>Next »</button>
       </div>
     </div>
   );

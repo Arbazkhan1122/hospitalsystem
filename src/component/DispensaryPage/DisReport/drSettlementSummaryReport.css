@@ -1,20 +1,22 @@
+ /* Ajhar Tamboli drSettlementSummaryReport.css 19-09-24 */
+
+
 .drSettlementSummaryReport-report {
     font-family: Arial, sans-serif;
     /* max-width: 1200px; */
     /* margin: 0 auto; */
     padding: 10px;
     height: 460px;
-    background-color: #CAF2FF;
+    background-color:var(--background-color);
   }
   
  .drSettlementSummaryReport-report h4 {
     margin-top: 0;
-    color: rgb(66, 66, 66);
-    font-weight: 200;
+    font-size: var(--heading-font);
   }
-  .drSettlementSummaryReport-report i {
+  /* .drSettlementSummaryReport-report i {
     color: #0F63AF
-  }
+  } */
   
   .drSettlementSummaryReport-filters {
     display: flex;
@@ -34,20 +36,21 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: var(--font-size);
     background-color: #EBF7FF;
     margin-left: 30px;
     padding: 2px 30px;
   }
-  
+  .drSettlementSummaryReport-date-range input{
+  padding: 1px 10px;
+  margin-left: 10px;
+  }
   .drSettlementSummaryReport-select-filters {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: var(--font-size);
     margin-left: 10px;
     /* border: 1px solid red; */
     /* width: 300px; */
@@ -58,7 +61,9 @@
   .drSettlementSummaryReport-select-filters label{
   margin-right: 30px;
   }
-  .drSettlementSummaryReport-select-filters input[type="date"], input[type="text"], select {
+  .drSettlementSummaryReport-select-filters input[type="date"], 
+  .drSettlementSummaryReport-select-filters input[type="text"], 
+  .drSettlementSummaryReport-select-filters  select {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -68,20 +73,28 @@
   .drSettlementSummaryReport-star-button {
     background: none;
     border: none;
-    font-size: 1.9em;
-    color: #0F63AF;
+    font-size: 24px;
+    color:var(--button-color) ;
     cursor: pointer;
   }
   
   .drSettlementSummaryReport-show-report-button {
-    background-color: #5867DD;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    font-size: 12px;
-    padding: 8px 15px;
-    border-radius: 3px;
+    /* margin-right: 10px; */
+    border-radius: 5px;
     cursor: pointer;
+    font-size: var(--font-size);
     margin-right: 100px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .drSettlementSummaryReport-show-report-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  
   }
   
   .drSettlementSummaryReport-search-N-result{
@@ -103,7 +116,7 @@
     position: relative;
     color:gray;
     top: 3px;
-  left: 205px;
+  left: 190px;
   }
   
   .drSettlementSummaryReport-results-info {
@@ -112,12 +125,8 @@
     /* padding-top: 10px; */
   }
   .drSettlementSummaryReport-results-info span {
-    /* display: flex;
-    align-items: center; */
-    /* padding-top: 10px; */
-    color: #659BE0;
-    font-weight: bold;
-    font-size: 12px;
+   
+    font-size: var(--font-size);
   }
 
   
@@ -138,15 +147,25 @@
   }
   
   .drSettlementSummaryReport-export-button, .drSettlementSummaryReport-print-button {
-    background-color: #659BE0;
-    color: white;
-    border: none;
-    font-size: 12px;
-    border-radius: 5px;
-    padding: 8px 15px;
-    margin-left: 10px;
-    cursor: pointer;
-  }
+      background-color:var( --button-color);
+      border: 1px solid var( --button-hover-border-color);
+      color: white;
+      /* margin-right: 10px; */
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: var(--font-size);
+      margin-left: 10px;
+      transition: background-color 0.3s ease;
+      padding: 5px 5px;
+    }
+    .drSettlementSummaryReport-export-button:hover,
+    .drSettlementSummaryReport-print-button:hover {
+      border: 1px solid var( --button-hover-border-color);
+      color: var(--button-hover-text-color);
+      background-color: var(--button-hover-background-color);
+    
+    
+    }
   
   .drSettlementSummaryReport-report table {
     margin-top: 10px;
@@ -157,9 +176,9 @@
   
   .drSettlementSummaryReport-report th, .drSettlementSummaryReport-report td {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    font-size: 12px;
+    padding: 3px;
+    text-align: center;
+    font-size: var(--font-size);
   }
   
   .drSettlementSummaryReport-report th {
@@ -188,13 +207,13 @@
     cursor: pointer;
     margin: 0 5px;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: var(--font-size);
   }
   
   .drSettlementSummaryReport-pagination span {
     margin: 0 10px;
     color: gray;
-    font-size: 12px;
+    font-size: var(--font-size);
   }
  
   .drSettlementSummaryReport-table-N-paginationDiv{

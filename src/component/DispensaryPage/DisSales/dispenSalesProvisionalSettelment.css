@@ -1,5 +1,4 @@
-
-
+ /* Ajhar Tamboli dispenSalesProvisionalSettelment.css 19-09-24 */
 
 .dispenSalesProvisionalSettelment-active-imaging-request {
     font-family: Arial, sans-serif;
@@ -23,7 +22,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    font-size: 12px;
+    font-size: var(--font-size);
     margin-left: 10px;
     /* border: 1px solid red; */
     /* width: 300px; */
@@ -39,17 +38,17 @@
 .dispenSalesProvisionalSettelment-select-filters select,
 .dispenSalesProvisionalSettelment-search-bar input[type="text"],
 .dispenSalesProvisionalSettelment-date-range input[type="date"] {
-  padding: 8px;
+  padding: 3px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: var(--font-size);
   margin-right: 10px;
   width: auto; /* Adjust width as needed */
 }
 
 .dispenSalesProvisionalSettelment-search-bar input[type="text"] {
   width: 200px; /* Adjust width for the search bar */
-  font-size: 14px;
+  font-size: var(--font-size);
 }
 
 .dispenSalesProvisionalSettelment-select-filters select {
@@ -61,19 +60,7 @@
   margin-right: 10px;
 }
 
-.dispenSalesProvisionalSettelment-print-btn {
-  padding: 6px 12px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
 
-.dispenSalesProvisionalSettelment-print-btn:hover {
-  background-color: #0056b3;
-}
 
 .dispenSalesProvisionalSettelment-pagination button {
   padding: 5px 10px;
@@ -89,7 +76,7 @@
 
 .dispenSalesProvisionalSettelment-pagination span {
   margin: 0 10px;
-  font-size: 14px;
+  font-size: var(--font-size);
 }
 
   .dispenSalesProvisionalSettelment-CreateRequisition{
@@ -100,7 +87,7 @@
       border: none;
       border-radius: 5px;
       padding: 0px 10px;
-      font-size: 12px;
+      font-size: var(--font-size);
       margin-left: 100px;
       height: 28px;
       text-align: center;
@@ -117,7 +104,7 @@
     width: 100px;
   }
   .dispenSalesProvisionalSettelment-checkBox label {
-font-size: 14px;
+font-size: var(--font-size);
 color: green;
 }
   
@@ -138,7 +125,7 @@ color: green;
   }
   .dispenSalesProvisionalSettelment-date-range label{
     margin-left: 20px;
-    font-size: 14px;
+    font-size: var(--font-size);
   }
   
   .dispenSalesProvisionalSettelment-date-range input[type="date"] {
@@ -164,12 +151,14 @@ color: green;
   
   .dispenSalesProvisionalSettelment-search-bar {
     display: flex;
+    margin-left: -25px;
   }
   
   .dispenSalesProvisionalSettelment-search-bar input {
-    flex-grow: 1;
+    /* flex-grow: 1; */
     padding: 5px;
     width: 200px;
+
 
   }
   .dispenSalesProvisionalSettelment-search-bar i{
@@ -189,19 +178,26 @@ color: green;
   .dispenSalesProvisionalSettelment-results-info {
     text-align: right;
     color: black;
-    font-size: 14px;
+    font-size: var(--font-size);
 }
 .dispenSalesProvisionalSettelment-print-btn{
-      margin-left: 10px;
-      /* gap: 10px; */
-    background-color: var(--button-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 12px;
-
-  }
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.dispenSalesProvisionalSettelment-print-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
   
   .dispenSalesProvisionalSettelment-table-N-paginat table {
     width: 100%;
@@ -211,16 +207,16 @@ color: green;
 
 .dispenSalesProvisionalSettelment-table-N-paginat th, td {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    font-size: 12px;
-    color: rgb(70, 69, 69);
+    padding: 3px;
+    text-align: center;
+    font-size: var(--font-size);
+    color: black;
 }
   
   .dispenSalesProvisionalSettelment-table-N-paginat th {
     /* background-color: red; */
     background-color: #F3F3F3;
-    font-size: 16px;
+    font-size: var(--heading-font);
   }
   
   .dispenSalesProvisionalSettelment-table-N-paginat tr:nth-child(even) {
@@ -278,7 +274,7 @@ color: green;
   .dispenSalesProvisionalSettelment-pagination span {
     margin: 0 10px;
     color: gray;
-    font-size: 12px;
+    font-size: var(--heading-font);
   }
   .dispenSalesProvisionalSettelment-table-N-paginat{
     background-color: white ;

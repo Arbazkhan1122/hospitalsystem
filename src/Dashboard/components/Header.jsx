@@ -15,15 +15,17 @@ const Header = ({ isOpen, setIsOpen }) => {
         </button>
       </div>
       <div className="hrmsDashHeaderRight">
-        <button className="hrmsDashNotificationButton">
-          <GoBell size={28} />
-          {/* <span className="hrmsDashNotificationBadge">9</span> */}
-        </button>
-        <img
-          className="hrmsDashProfileImage"
-          src="https://randomuser.me/api/portraits/women/50.jpg"
-          alt="Profile"
-        />
+        {/* <div className="hrmsDashHeaderRight">
+          <button className="hrmsDashNotificationButton">
+            <GoBell size={28} />
+            <span className="hrmsDashNotificationBadge">9</span>
+          </button>
+          <img
+            className="hrmsDashProfileImage"
+            src="https://randomuser.me/api/portraits/women/50.jpg"
+            alt="Profile"
+          />
+        </div> */}
       </div>
     </div>
   );

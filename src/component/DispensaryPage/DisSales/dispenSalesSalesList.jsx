@@ -1,3 +1,4 @@
+ /* Ajhar Tamboli dispenSalesSalesList.jsx 19-09-24 */
 
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -56,7 +57,10 @@ function DispenSalesSalesList() {
           <button className="dispenSalesSalesList-star-button">☆</button>
           <button className="dispenSalesSalesList-ok-button">OK</button>
         </div>
+        <div className='dispenSalesSalesList-CreateRequisition-div'>
         <button className='dispenSalesSalesList-CreateRequisition'>Load Invoices</button>
+
+        </div>
       </div>
       <div className="dispenSalesSalesList-search-N-results">
         <div className="dispenSalesSalesList-search-bar">

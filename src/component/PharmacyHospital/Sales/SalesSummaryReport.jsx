@@ -1,8 +1,10 @@
 /* Mohini_SalesSummaryReport_WholePage_14/sep/2024 */
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './InvoiceBilling.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const SalesStatementReport = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   return (
     <div className="invoice-billing-report-container">
       <h1 className="invoice-billing-report-title">⚛ Sales Summary Report</h1>
@@ -44,39 +46,58 @@ const SalesStatementReport = () => {
           <button className="invoice-billing-print-button">Print</button>
         </div>
       </div>
-      <div className='sales-invoice-billing-tab'>
-        <div className='invoice-billing-table-container'>
-  <table className="invoice-billing-sales-table">
-    <thead>
-      <tr>
-        <th>Store</th>
-        <th>Gross Cash Sale</th>
-        <th>Cash Discount</th>
-        <th>Cash Sales</th>
-        <th>Gross Cash Refund</th>
-        <th>Cash Refund Discount</th>
-        <th>Cash Sales</th>
-        <th>Cash Sales Refund</th>
-        <th>Net Cash Sales</th>
-        <th>Gross Credit Sales</th>
-        <th>Cash Sales</th>
-        <th>Credit Discount</th>
-        <th>Credit Sales</th>
-        <th>Gross Credit Refund</th>
-        <th>Credit Refund Discount</th>
-        <th>Credit Sales Refund</th>
-        <th>Net Credit Sales</th>
-        <th>Collection From Receivable</th>
-        <th>Cash Discount Given</th>
-        <th>Cash Discount Received</th>
-        <th>Cash Sales</th>
-        <th>Deposit Collection</th>
-        <th>Cash In Hand</th>
-      </tr>
-    </thead>
+      {/* <div className='sales-invoice-billing-tab'> */}
+        <div className='table-container'>
+        <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Store",
+  "Gross Cash Sale",
+  "Cash Discount",
+  "Cash Sales",
+  "Gross Cash Refund",
+  "Cash Refund Discount",
+  "Cash Sales",
+  "Cash Sales Refund",
+  "Net Cash Sales",
+  "Gross Credit Sales",
+  "Cash Sales",
+  "Credit Discount",
+  "Credit Sales",
+  "Gross Credit Refund",
+  "Credit Refund Discount",
+  "Credit Sales Refund",
+  "Net Credit Sales",
+  "Collection From Receivable",
+  "Cash Discount Given",
+  "Cash Discount Received",
+  "Cash Sales",
+  "Deposit Collection",
+  "Cash In Hand"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
     <tbody>
       <tr>
-        <td colSpan="24" className="invoice-billing-no-rows">No Rows To Show</td>
+        <td colSpan="23" className="invoice-billing-no-rows">No Rows To Show</td>
       </tr>
     </tbody>
   </table>
@@ -93,7 +114,7 @@ const SalesStatementReport = () => {
           <button className="invoice-billing-pagination-button">Last</button>
         </div> */}
       </div>
-      </div>
+      {/* </div> */}
 
     </div>
   );

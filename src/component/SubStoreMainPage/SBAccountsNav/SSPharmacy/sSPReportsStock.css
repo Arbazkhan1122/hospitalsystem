@@ -1,12 +1,15 @@
+/* Ajhar Tamboli sSPReportsStock.css 19-09-24 */
+
+
 .sSPReportsStock-active-imaging-request {
   font-family: Arial, sans-serif;
+  height: 75vh;
+  background-color: var(--background-color);
   /* max-width: 1200px; */
   /* margin: 0 auto; */
   /* padding: 10px; */
   /* background-color: red; */
   /* background-color: red; */
-  height: 490px;
-  background-color: #CAF2FF;
 }
 
 .sSPReportsStock-header {
@@ -20,23 +23,28 @@
   color: #3f8fdf;
   margin: 0;
 } */
-.sSPReportsStock-CreateRequisition{
+.sSPReportsStock-CreateRequisition {
   margin-left: 10px;
-    /* gap: 10px; */
-  background-color: #0011ff ;
+  /* gap: 10px; */
+  background-color: #0011ff;
   color: white;
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
-  font-size: 12px;
+  font-size: var(--font-size);
 }
-.sSPReportsStock-status-filters{
+
+.sSPReportsStock-status-filters {
   display: flex;
   align-items: center;
 }
-.sSPReportsStock-status-filters h4{
-  color: #474747;
+
+.sSPReportsStock-status-filters h4 {
+  /* color: #474747; */
+  font-size: var(--heading-font);
+  margin: 5px;
 }
+
 .sSPReportsStock-filter {
   display: flex;
   justify-content: space-between;
@@ -47,15 +55,15 @@
 
 .sSPReportsStock-filter label {
   margin-right: 10px;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: var(--font-size);
+  /* font-weight: bold; */
   margin-left: 20px;
 }
 
 .sSPReportsStock-filter select {
   padding: 5px;
   /* color: red; */
-  font-size: 12px;
+  font-size: var(--font-size);
   margin-left: 20px;
 }
 
@@ -65,10 +73,11 @@
   margin-left: 10px;
   width: 100px;
 }
+
 .sSPReportsStock-checkBox label {
-font-size: 14px;
-font-weight: bold;
-color: green;
+  font-size: var(--font-size);
+  /* font-weight: bold; */
+  color: green;
 }
 
 .sSPReportsStock-controls {
@@ -87,32 +96,18 @@ color: green;
   background-color: #f0f0f0;
   margin-bottom: 10px;
 }
-.sSPReportsStock-date-range label{
+
+.sSPReportsStock-date-range label {
   margin-left: 20px;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: var(--font-size);
+  /* font-weight: bold; */
 }
 
 .sSPReportsStock-date-range input[type="date"] {
   padding: 5px;
 }
 
-.sSPReportsStock-star-button {
-  background: none;
-  border: none;
-  font-size: 1.2em;
-  color: #0011ff;
-  cursor: pointer;
-}
 
-.sSPReportsStock-ok-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 15px;
-  cursor: pointer;
-}
 
 .sSPReportsStock-search-bar {
   display: flex;
@@ -120,25 +115,27 @@ color: green;
 
 .sSPReportsStock-search-bar input {
   flex-grow: 1;
-  padding: 5px;
+  padding: 3px;
   width: 200px;
 
 }
-.sSPReportsStock-search-bar i{
+
+.sSPReportsStock-search-bar i {
   position: relative;
-  color:gray;
-  top: 7px;
-left: 205px;
+  color: gray;
+  top: 8px;
+  left: 190px;
 }
 
 /* .sSPReportsStock-filterBySubCategory{
 } */
-.sSPReportsStock-filterBySubCategory label{
+.sSPReportsStock-filterBySubCategory label {
   margin-right: 10px;
-font-size: 14px;
-font-weight: bold;
+  font-size: var(--font-size);
+  /* font-weight: bold; */
 }
-.sSPReportsStock-filterBySubCategory option{
+
+.sSPReportsStock-filterBySubCategory option {
   padding: 10px;
 }
 
@@ -151,20 +148,29 @@ font-weight: bold;
 
 .sSPReportsStock-results-info {
   text-align: right;
-  color: #0011ff;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: var(--font-size);
+  /* color: #0011ff; */
+  /* font-weight: bold; */
 }
-.sSPReportsStock-print-btn{
-    margin-left: 10px;
-    /* gap: 10px; */
-  background-color: #659BE0 ;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  font-size: 12px;
 
+.sSPReportsStock-print-btn {
+  background-color: var(--button-color);
+  border: 1px solid var(--button-hover-border-color);
+  color: white;
+  /* border: none; */
+  margin-left: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  /* margin: 1px; */
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+
+.sSPReportsStock-print-btn:hover {
+  border: 1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .sSPReportsStock-table-N-paginat table {
@@ -173,22 +179,25 @@ font-weight: bold;
   background-color: white;
 }
 
-.sSPReportsStock-table-N-paginat th, td {
+.sSPReportsStock-table-N-paginat th {
   border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-  font-size: 12px;
-  color: rgb(70, 69, 69);
-}
-.sSPReportsStock-table-N-paginat td {
-  font-size: 12px;
-  color: #818181;
+  padding: 3px;
+  text-align: center;
+  background-color: #f2f2f2;
+  font-size: var(--heading-font);
+  /* color: rgb(70, 69, 69); */
 }
 
-.sSPReportsStock-table-N-paginat th {
-  /* background-color: red; */
-  background-color: #f2f2f2;
+.sSPReportsStock-table-N-paginat td {
+  border: 1px solid #ddd;
+  padding: 3px;
+  text-align: center;
+  font-size: var(--font-size);
+  /* font-size: 12px; */
+  /* color: #818181; */
 }
+
+
 
 .sSPReportsStock-table-N-paginat tr:nth-child(even) {
   background-color: #f9f9f9;
@@ -219,12 +228,13 @@ font-weight: bold;
 }
 
 
-.sSPReportsStock-search-N-results{
+.sSPReportsStock-search-N-results {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
+
 .sSPReportsStock-pagination {
   display: flex;
   justify-content: center;
@@ -244,66 +254,70 @@ font-weight: bold;
 
 .sSPReportsStock-pagination span {
   margin: 0 10px;
-  color: gray;
-  font-size: 12px;
+  /* color: gray; */
+  font-size: var(--font-size);
 }
-.sSPReportsStock-table-N-paginat{
-  background-color: white ;
+
+.sSPReportsStock-table-N-paginat {
+  background-color: white;
   padding: 0 10px;
 }
 
 
 .sSPReportsStock-modal-overlay {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.5);
-display: flex;
-justify-content: center;
-align-items: center;
-z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 /* Modal content styling */
 .sSPReportsStock-modal-content {
-background-color: #fff;
-padding: 20px;
-border-radius: 8px;
-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-position: relative;
-max-width: 1300px;
-width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  max-width: 1300px;
+  width: 100%;
 }
 
 /* Close button styling */
 .sSPReportsStock-close-modal {
-position: absolute;
-top: 10px;
-right: 10px;
-background: transparent;
-border: none;
-font-size: 24px;
-cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
 }
-.sSPReportsStock-view-btn button{
+
+.sSPReportsStock-view-btn button {
   background-color: #0F63AF;
   color: white;
   border: none;
   border-radius: 12px;
   margin-left: 10px;
   padding: 5px 10px;
-  font-size: 11px;
+  font-size: var(--font-size);
 
 }
-.sSPReportsStock-view-btn button:hover{
+
+.sSPReportsStock-view-btn button:hover {
   background-color: white;
   color: #0F63AF;
   border: 1px solid #0F63AF;
-  
+
 
 }
+
 /* Popup Overlay */
 .sSPReportsStock-popup-overlay {
   position: fixed;
@@ -338,4 +352,3 @@ cursor: pointer;
   font-size: 18px;
   cursor: pointer;
 }
-

@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+/* // neha-ADT-discharge-19/09/24 */
+import React, { useState, useEffect ,useRef} from 'react';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap';
 import './dischargedpatient.css';
 import { FaSearch } from 'react-icons/fa';
+import { startResizing } from '../../TableHeadingResizing/ResizableColumns';
 
 function DischargedPatient() {
   const [modalShow, setModalShow] = useState(false);
@@ -10,6 +12,8 @@ function DischargedPatient() {
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const tableRef = useRef(null);
+  const [columnWidths, setColumnWidths] = useState(0);
 
   const handleShow = (patient) => {
     setSummaryData(patient);
@@ -21,7 +25,7 @@ function DischargedPatient() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.39:1415/api/admissions/discharged-summary/Discharged');
+        const response = await axios.get('http://localhost:1415/api/admissions/discharged-summary/Discharged');
         console.log('API Response:', response.data); // Debugging API response
         setPatients(response.data);// Assuming the response is an object and needs to be wrapped in an array
         setLoading(false);
@@ -62,35 +66,51 @@ function DischargedPatient() {
       </div>
 
       {/* Table */}
-      <div style={{ backgroundColor: '#ffffff', padding: '20px' }}>
-        <div>
+     
+        <div className='discharge-filter'>
           <input
             type="text"
             placeholder="Search ....."
-            style={{ width: "500px" }}
+            style={{ width: "300px" }}
             className="discharge-search-input"
           />
-          <button className='icon-btn'> <FaSearch style={{ color: 'gray', fontSize: '18px' }} /></button>
+          {/* <button className='icon-btn'> <FaSearch style={{ color: 'gray', fontSize: '18px' }} /></button> */}
+          <button className='discharge-print-button'>Print</button> 
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-          <span>Showing 1 / 1 results</span>
-          <button className='discharge-print-button'>Print</button>
-        </div>
-        <table className='dischargetable'>
+          
+          
+       
+        <table className='dischargetable' ref={tableRef}>
           <thead>
             <tr style={{ backgroundColor: '#f2f2f2' }}>
-              <th className='dischargetablehead'>Admitted On</th>
-              <th className='dischargetablehead'>Discharged On</th>
-              <th className='dischargetablehead'>Hospital No</th>
-              <th className='dischargetablehead'>IP Number</th>
-              <th className='dischargetablehead'>Name</th>
-              <th className='dischargetablehead'>Age/Sex</th>
-              <th className='dischargetablehead'>Phone</th>
-              <th className='dischargetablehead'>BillStatus</th>
-              <th className='dischargetablehead'>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
+            {[
+  'Admitted On',
+  'Discharged On',
+  'Hospital No',
+  'IP Number',
+  'Name',
+  'Age/Sex',
+  'Phone',
+  'Bill Status',
+  'Actions'
+].map((header, index) => (
+  <th
+    key={index}
+    style={{ width: columnWidths[index] }}
+    className="rd-resizable-th"
+  >
+    <div className="rd-header-content">
+      <span>{header}</span>
+      <div
+        className="rd-resizer"
+        onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+      ></div>
+    </div>
+  </th>
+))}
+</tr>
+</thead>
+<tbody>
             {loading ? (
               <tr><td colSpan="9">Loading...</td></tr>
             ) : error ? (
@@ -119,7 +139,7 @@ function DischargedPatient() {
           </tbody>
         </table>
 
-      </div>
+  
 
       {/* Modal */}
       <Modal show={modalShow} onHide={handleClose}>
@@ -193,14 +213,8 @@ function DischargedPatient() {
         </Modal.Footer>
       </Modal>
 
-      {/* Pagination */}
-      <div className="discharge-patient-btn-pagination">
-        <Button className='discharge-patient-btn-pagination-btn'>First</Button>
-        <Button className='discharge-patient-btn-pagination-btn'>Previous</Button>
-        <span className='discharge-patient-btn-pagination-span'>Page 1 of 4</span>
-        <Button className='discharge-patient-btn-pagination-btn'>Next</Button>
-        <Button className='discharge-patient-btn-pagination-btn'>Last</Button>
-      </div>
+   
+      
     </div>
   );
 }

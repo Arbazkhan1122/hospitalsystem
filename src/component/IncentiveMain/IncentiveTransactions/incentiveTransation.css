@@ -1,12 +1,13 @@
+ /* Ajhar Tamboli IncentiveTransaction.css 18-09-2024 */
 
   
   .incentiveTransation-container {
-    background-color: #CAF2FF;
+    background-color: var(--background-color);
     padding: 10px;
     width: 100%;
-    height: 490px;
+    height: 75vh;
     margin: 0;
-    font-family: Arial, sans-serif;
+    /* font-family: Arial, sans-serif; */
   }
   
   .incentiveTransation-tabs {
@@ -14,7 +15,7 @@
     gap: 10px;
     border-bottom: 1px solid #dad7d7;
     margin-bottom: 10px;
-    font-size: 14px;
+    font-size: var(--heading-font);
   }
   
   .incentiveTransation-tab {
@@ -23,9 +24,9 @@
   }
   
   .incentiveTransation-selected {
-    color: black;
-    font-weight: bold;
-    border-bottom: 4px solid #2D68EA;
+    /* color: black; */
+    /* font-weight: bold; */
+    border-bottom: 5px solid var(--button-bg-color);
   }
   
   .incentiveTransation-filters {
@@ -39,8 +40,8 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: var(--font-size);
+    /* font-weight: bold; */
     padding: 5px 30px;
   }
   
@@ -48,22 +49,52 @@
     background-color: #e0e0e0;
     border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-size: var(--font-size);
   }
   .incentiveTransation-star{
-    color: #0000FF;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color:var(--button-color) ;
+    cursor: pointer;
+  }
+  .incentiveTransation-ok-button {
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
+    color: white;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .incentiveTransation-ok-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   
   .incentiveTransation-load-button {
-    background-color: #5867DD;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
+    /* border: none; */
+    margin-left: 30px;
     border-radius: 5px;
-    padding: 7px 15px;
-    margin-left: 20px;
     cursor: pointer;
-    font-size: 14px;
-    margin-left: 100px;
+    font-size: var(--font-size);
+    /* margin: 1px; */
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  
+  .incentiveTransation-load-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   .incentiveTransation-search-N-sms{
     display: flex;
@@ -77,8 +108,8 @@
   }
   
   .incentiveTransation-info-text {
-    color: #505050;
-    font-size: 12px;
+    /* color: #505050; */
+    font-size: var(--font-size);
     margin-left: 30px;
     align-items: center;
 

@@ -1,5 +1,5 @@
 .custom-sidebar {
-  width: 13rem;
+   width: 186px;
   background-color: var(--upperBar-bg-color);
   padding-top: 1rem;
   padding-left: 0.5rem;
@@ -30,7 +30,7 @@ display: none;
 }
 
 .custom-nav-item-active {
-  background-color: var(--button-color);
+  /* background-color: var(--button-color); */
 }
 .custom-logo-container {
   display: flex;
@@ -61,7 +61,7 @@ display: none;
 }
 
 .custom-sidebar-closed {
-  width: 4rem;
+  width: 3rem;
 }
 
 .custom-nav-link-content {

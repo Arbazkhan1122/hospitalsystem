@@ -1,4 +1,4 @@
-.labVenderAddNewLV-container {
+.labLookUpAddNewLUp-container {
   width: 100%;
   /* max-width: 1200px; */
   margin: auto;
@@ -6,11 +6,11 @@
   padding: 14px;
   background-color: white;
   border-radius: 8px;
-  font-family: Arial, sans-serif;
-  color: #525151;
+  /* font-family: Arial, sans-serif; */
+  /* color: #525151; */
 }
 
-.labVenderAddNewLV-header {
+.labLookUpAddNewLUp-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,164 +19,192 @@
   margin-bottom: 16px;
 }
 
-.labVenderAddNewLV-header h3 {
+.labLookUpAddNewLUp-header h3 {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--heading-font);
 }
 
-.labVenderAddNewLV-close-btn {
+.labLookUpAddNewLUp-close-btn {
   background-color: #E31D2D;
   color: white;
   border: none;
   border-radius: 14px;
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 1px 8px;
 }
 
-.labVenderAddNewLV-form .labVenderAddNewLV-labVenderAddNewLV-form-row {
+.labLookUpAddNewLUp-form .labLookUpAddNewLUp-labLookUpAddNewLUp-form-row {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 16px;
 }
-.labVenderAddNewLV-full-width{
+.labLookUpAddNewLUp-full-width{
 border: 1px solid #e7e8e9;
 padding: 10px;
 display: flex;
 justify-content: left;
 gap: 20px;
 }
-.labVenderAddNewLV-full-width:hover{
+.labLookUpAddNewLUp-full-width:hover{
 
 background-color: #F5F7F9;
 }
 
-.labVenderAddNewLV-form-group {
+.labLookUpAddNewLUp-form-group {
   /* flex: 1; */
   display: flex;
   /* text-align: center; */
   /* align-items: left; */
-  font-size: 12px;
+  font-size: var(--font-size);
   margin-left: 10px;
   /* width: 220px; */
   /* border: 1px solid red; */
 }
 
-.labVenderAddNewLV-form-group label {
+.labLookUpAddNewLUp-form-group label {
   display: block;
   margin-bottom: 4px;
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-size: var(--font-size);
   width: 400px;
 }
 
-.labVenderAddNewLV-form-group input,
-.labVenderAddNewLV-form-group select,
-.labVenderAddNewLV-form-group textarea {
+.labLookUpAddNewLUp-form-group input,
+.labLookUpAddNewLUp-form-group select,
+.labLookUpAddNewLUp-form-group textarea {
   width: 60%;
   padding: 8px;
   margin-bottom: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 12px;
-  color: gray;
+  font-size: var(--font-size);
+  /* color: gray; */
 }
 
 
-.labVenderAddNewLV-select-components-section {
+.labLookUpAddNewLUp-select-components-section {
   margin-top: 24px;
   border-top: 1px solid #ddd;
   padding-top: 16px;
 }
 
-.labVenderAddNewLV-select-components-section h4 {
+.labLookUpAddNewLUp-select-components-section h4 {
   margin-bottom: 8px;
 }
 
-.labVenderAddNewLV-select-components-section table {
+.labLookUpAddNewLUp-select-components-section table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 8px;
 }
 
-.labVenderAddNewLV-select-components-section table th,
-.labVenderAddNewLV-select-components-section table td {
+.labLookUpAddNewLUp-select-components-section table th,
+.labLookUpAddNewLUp-select-components-section table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
 }
 
-.labVenderAddNewLV-add-component-btn {
-  background-color: blue;
+.labLookUpAddNewLUp-add-component-btn {
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  border-radius: 4px;
+  /* border: none; */
+  margin-top: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  padding: 4px 8px;
+  font-size: var(--font-size);
+  /* margin: 1px; */
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
 }
 
-.labVenderAddNewLV-create-new-component {
+.labLookUpAddNewLUp-add-component-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+
+.labLookUpAddNewLUp-create-new-component {
   display: block;
   margin-top: 8px;
   color: #0F63AF;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: var(--font-size);
+  /* font-weight: bold; */
   text-decoration: none;
   cursor: pointer;
 }
 
-.labVenderAddNewLV-form-actions {
+.labLookUpAddNewLUp-form-actions {
   display: flex;
   justify-content: flex-end;
-  font-size: 12px;
+  font-size: var(--font-size);
   gap: 8px;
   margin-top: 16px;
   border-top: 1px solid #ddd;
   /* margin-bottom: 10px; */
 }
 
-.labVenderAddNewLV-add-btn {
+.labLookUpAddNewLUp-add-btn {
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
   margin-top: 10px;
-  background-color: #0F63AF;
-  font-size: 12px;
-  color: white;
-  border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  padding: 8px 16px;
+  font-size: var(--font-size);
+  /* margin: 1px; */
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
 }
-.labVenderAddNewLV-plus-btn {
-  /* margin-top: 10px; */
-  background-color: #0F63AF;
-  font-size: 14px;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 1px 10px;
-  height: 30px;
 
+.labLookUpAddNewLUp-add-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
-.labVenderAddNewLV-form-group-1row{
+.labLookUpAddNewLUp-plus-btn {
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-top: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  /* margin: 1px; */
+  transition: background-color 0.3s ease;
+  padding: 5px 8px;
+}
+
+.labLookUpAddNewLUp-plus-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+.labLookUpAddNewLUp-form-group-1row{
   display: flex;
   justify-content: space-between;
   gap:30px;
 
 }
-.labVenderAddNewLV-form-group-sub{
+.labLookUpAddNewLUp-form-group-sub{
   display: flex;
   justify-content: space-between;
   /* width: 600px; */
   /* border: 1px solid red; */
 }
 
-.labVenderAddNewLV-AddNew{
+.labLookUpAddNewLUp-AddNew{
   display: flex;
   justify-content: center;
 }
-.labVenderAddNewLV-AddNew a{
+.labLookUpAddNewLUp-AddNew a{
   
   color: #0F63AF;
-  font-size: 12px;
-  font-weight: bold;
+  font-size: var(--font-size);
+  /* font-weight: bold; */
   text-decoration: none;
 }

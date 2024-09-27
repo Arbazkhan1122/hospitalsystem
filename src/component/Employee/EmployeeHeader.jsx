@@ -9,7 +9,7 @@ const EmployeeHeader = ({ onNavClick }) => {
   const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
 
   const handleNavClick = (navType) => {
-    setActiveNav(activeNav === navType ? null : navType);
+    setActiveNav(navType);  // Set the active navigation item
   };
 
   return (
@@ -17,32 +17,39 @@ const EmployeeHeader = ({ onNavClick }) => {
       <header className="employee-header">
         <nav>
           <ul className="employee-header-form">
-            <li onClick={() => handleNavClick('department')}>Departments</li>
-            <li onClick={() => handleNavClick('radiology')}>Radiology</li> 
-            <li onClick={() => handleNavClick('adt')}>ADT</li>
-            <li onClick={() => handleNavClick('security')}>Security</li>
+            <li onClick={() => handleNavClick('department')}
+             className={activeNav === 'department' ? 'active' : ''}
 
-            <li onClick={() => handleNavClick('billing')}>Billing</li> {/* Updated to handle 'Billing' */}
+              >Departments</li>
+            <li onClick={() => handleNavClick('radiology')}
+              className={activeNav === 'radiology' ? 'active' : ''}
+              >Radiology</li> 
+            <li onClick={() => handleNavClick('adt')}
+             className={activeNav === 'adt' ? 'active' : ''}   >ADT</li>
+            <li onClick={() => handleNavClick('security')}              className={activeNav === 'security' ? 'active' : ''}
+            >Security</li>
 
-            <li onClick={() => handleNavClick('employee')}>Employee</li>
-            <li onClick={() => handleNavClick('geolocation')}>Geolocation</li> {/* Added onClick */}
-            <li onClick={() => handleNavClick('clinical')}>Clinical</li> {/* Added onClick */}
-            <li onClick={() => window.location.href = '/manage-tax'}>Manage Tax</li> {/* Direct navigation */}
-            <li onClick={() => handleNavClick('dynamicTemplates')}>Dynamic Templates</li> {/* Added onClick */}
-            <li onClick={() => window.location.href = '/external-referrals'}>External Referrals</li>
-            <li onClick={() => window.location.href = '/core-cfg-prmeter'}>Core CFG Parameters</li>
-            <li onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}>More...</li>
-{moreDropdownOpen && (
-  <div className="more-dropdown">
-    <ul>
-      <li><Link to="/manage-banks" onClick={() => onNavClick('ManageBanks')}>Banks</Link></li>
-      <li><Link to="/manage-printers" onClick={() => onNavClick('ManagePrinters')}>Printers</Link></li>
-      <li><Link to="/print-export-configuration" onClick={() => onNavClick('PrintExportConfiguration')}>PrintExport Configuration</Link></li>
-      <li><Link to="/payment-mode-settings" onClick={() => onNavClick('PaymentModeSettings')}>Payment Mode Settings</Link></li>
-      <li><Link to="/price-category" onClick={() => onNavClick('PriceCategory')}>PriceCategory</Link></li>
-    </ul>
-  </div>
-)}
+            <li onClick={() => handleNavClick('billing')}              className={activeNav === 'billing' ? 'active' : ''}
+            >Billing</li> {/* Updated to handle 'Billing' */}
+
+            <li onClick={() => handleNavClick('employee')}              className={activeNav === 'employee' ? 'active' : ''}
+            >Employee</li>
+            <li onClick={() => handleNavClick('geolocation')}              className={activeNav === 'geolocation' ? 'active' : ''}
+            >Geolocation</li> {/* Added onClick */}
+            <li onClick={() => handleNavClick('clinical')}              className={activeNav === 'clinical' ? 'active' : ''}
+            >Clinical</li> {/* Added onClick */}
+            <li><Link to= '/manage-tax' className='SettingLinks'>Manage Tax</Link></li> {/* Direct navigation */}
+            <li onClick={() => handleNavClick('dynamicTemplates')}              className={activeNav === 'dynamicTemplates' ? 'active' : ''}
+            >Dynamic Templates</li> {/* Added onClick */}
+            <li><Link to= '/external-referrals' className='SettingLinks'>External Referrals</Link></li>
+            <li><Link to= '/core-cfg-prmeter' className='SettingLinks'>Core CFG Parameters</Link></li>
+            
+      <li><Link to="/manage-banks" className='SettingLinks'>Banks</Link></li>
+      <li><Link to="/manage-printers" className='SettingLinks'>Printers</Link></li>
+      <li><Link to="/print-export-configuration" className='SettingLinks'>PrintExport Configuration</Link></li>
+      <li><Link to="/payment-mode-settings" className='SettingLinks'>Payment Mode Settings</Link></li>
+      <li><Link to="/price-category" className='SettingLinks'>PriceCategory</Link></li>
+
           </ul>
         </nav>
       </header>

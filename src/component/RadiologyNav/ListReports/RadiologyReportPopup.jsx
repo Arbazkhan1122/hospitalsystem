@@ -1,3 +1,5 @@
+/* Ajhar Tamboli RadiologyReportPopup.jsx 19-09-24 */
+
 import React, { useState, useEffect } from "react";
 // import AddReportForm from "./AddReportForm";
 import "./RadiologyReport.css";
@@ -97,13 +99,18 @@ const RadiologyReportPopup = ({ onClose, selectedRequest }) => {
                 <div className="RadiologyReportPopup-patient-info-group">
                   <span>
                     Name:{" "}
-                    {reportData.patientDTO?.firstName +
-                      " " +
-                      reportData.patientDTO?.lastName || "N/A"}
+                    {reportData.patientDTO?.firstName ||
+                      reportData.newPatientVisitDTO?.firstName}{" "}
+                    {reportData.patientDTO?.lastName ||
+                      reportData.newPatientVisitDTO?.lastName}
                   </span>
                   <span>
-                    Age/Sex: {reportData.patientDTO?.age} /{" "}
-                    {reportData.gender || "N/A"}
+                    Age/Sex:{" "}
+                    {reportData.patientDTO?.age ||
+                      reportData.newPatientVisitDTO?.age}{" "}
+                    Y /{" "}
+                    {reportData.patientDTO?.gender ||
+                      reportData.newPatientVisitDTO?.gender}
                   </span>
                   <span>
                     Rep. Date:{" "}
@@ -113,12 +120,11 @@ const RadiologyReportPopup = ({ onClose, selectedRequest }) => {
                 <div className="RadiologyReportPopup-patient-info-group">
                   <span>
                     Address/Contact No:{" "}
-                    {reportData.patientDTO?.addresses?.street1 +
-                      ", " +
-                      reportData.patientDTO?.addresses?.street2 +
-                      " ," +
-                      reportData.patientDTO?.addresses?.city || "N/A"}{" "}
-                    / {reportData.patientDTO?.phoneNumber || "N/A"}
+                    {reportData.patientDTO?.address ||
+                      reportData.newPatientVisitDTO?.address}
+                    /{" "}
+                    {reportData.patientDTO?.phoneNumber ||
+                      reportData.newPatientVisitDTO?.phoneNumber}
                   </span>
                   <span>
                     Prescriber Name:{" "}

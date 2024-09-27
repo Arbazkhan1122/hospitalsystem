@@ -1,3 +1,5 @@
+/* Ajhar Tamboli rdlEditDrEditBtn.jsx 19-09-24 */
+
 import React, { useState } from "react";
 import "../EditDoctors/rdlEditDrEditBtn.css";
 
@@ -9,7 +11,7 @@ function TransactionDetails({ onClose, selectedRequest }) {
     const imagingId = selectedRequest.imagingId;
 
     fetch(
-      `http://localhost:8888/api/patient-imaging-requisitions/update-prescriber?prescriberId=${prescriberId}&imagingId=${imagingId}`,
+      `http://localhost:1415/api/imaging-requisitions/update-prescriber?prescriberId=${prescriberId}&imagingId=${imagingId}`,
       {
         method: "POST",
       }
@@ -54,8 +56,12 @@ function TransactionDetails({ onClose, selectedRequest }) {
               <tr>
                 <td>{selectedRequest.imagingTypeDTO.imagingTypeName}</td>
                 <td>{selectedRequest.imagingItemDTO.imagingItemName}</td>
-                <td>{selectedRequest.performerDTO?.employeeName}</td>
-                <td>{selectedRequest.prescriberDTO?.employeeName}</td>
+                <td>{selectedRequest.performerDTO?.firstName}</td>
+                <td>
+                  {selectedRequest.prescriberDTO?.salutation}
+                  {selectedRequest.prescriberDTO?.firstName}{" "}
+                  {selectedRequest.prescriberDTO?.lastName}
+                </td>
               </tr>
             </tbody>
           </table>

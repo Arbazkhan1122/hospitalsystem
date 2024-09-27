@@ -1,52 +1,61 @@
-.labTestLS-container {
-  background-color: #CAF2FF;
+.reportTemplate-container {
+  background-color:var(--background-color);
   padding: 10px;
   border-radius: 5px;
   font-family: Arial, Helvetica, sans-serif;
   /* width: 100%; */
   /* max-width: 1200px; */
   margin: 0 auto;
-  height: 450px;
+  height: 75vh;
 }
-.labTestLS-firstRow{
+.reportTemplate-firstRow{
   display: flex;
   justify-content: space-between;
 }
 
-.labTestLS-add-button {
-  background-color: #5867DD;
+.reportTemplate-add-button {
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  padding: 7px 15px;
+  /* border: none; */
+  /* margin-right: 10px; */
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 15px;
-  font-size: 12px;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
 }
-.labTestLS-search-bar{
-  margin-left: -15px;
+
+.reportTemplate-add-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+.reportTemplate-search-bar{
+  margin-left: -35px;
   /* margin: 0; */
 }  
-  .labTestLS-search-bar input {
+  .reportTemplate-search-bar input {
     /* margin-top: 10px; */
     /* padding: 5px; */
     width: 200px;
   }
-  .labTestLS-search-bar i{
+  .reportTemplate-search-bar i{
     position: relative;
     color:gray;
     top: 3px;
   left: 205px;
   }
 
-.labTestLS-search-filters {
+.reportTemplate-search-filters {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.labTestLS-search-box {
+.reportTemplate-search-box {
   display: block;
   width: 200px;
   padding: 10px;
@@ -54,73 +63,93 @@
   border-radius: 5px;
 }
 
-.labTestLS-search-N-result{
+.reportTemplate-search-N-result{
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.labTestLS-results-info {
+.reportTemplate-results-info {
   display: flex;
   align-items: center;
   /* padding-top: 10px; */
 }
-.labTestLS-results-info span {
+.reportTemplate-results-info span {
   /* display: flex;
   align-items: center; */
   /* padding-top: 10px; */
-  color: #008CBA;
-  font-size: 12px;
-  font-weight: bold;
+  /* color: #008CBA; */
+  font-size: var(--font-size);
+  /* font-weight: bold; */
   margin-right: 10px;
 }
 
-.labTestLS-container table {
+.reportTemplate-container table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  font-size: 12px;
   background-color: white;
 }
 
-.labTestLS-container th, .labTestLS-container td {
-  padding: 5px;
-  text-align: left;
+.reportTemplate-container th, .reportTemplate-container td {
+  padding: 3px;
+  text-align: center;
   border: 1px solid #ddd;
-  color: rgb(78, 78, 78);
+  /* color: rgb(78, 78, 78); */
+  font-size: var(--font-size);
 }
 
-.labTestLS-container th {
+.reportTemplate-container th {
   background-color: #f2f2f2;
+  font-size: var(--heading-font);
 }
 
-.labTestLS-edit-button, .labTestLS-deactivate-button {
-  background-color: #0F63AF;
+.reportTemplate-edit-button, .reportTemplate-deactivate-button {
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  font-size: 12px;
-  padding: 3px 8px;
-  border-radius: 10px;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
   cursor: pointer;
-  margin-right: 5px;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 1px 5px;
 }
 
-.labTestLS-results-info {
+.reportTemplate-edit-button:hover, .reportTemplate-deactivate-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+
+.reportTemplate-results-info {
   margin-top: 10px;
   margin-bottom: 15px;
 }
 
-.labTestLS-print-button {
-  background-color: #659BE0;
+.reportTemplate-print-button {
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
   color: white;
-  border: none;
-  padding: 7px 15px;
+  /* border: none; */
+  /* margin-right: 10px; */
   border-radius: 5px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: var(--font-size);
+  margin: 1px;
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+
+.reportTemplate-print-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
 /* Modal styles */
-.labTestLS-modal {
+.reportTemplate-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -133,7 +162,7 @@
   z-index: 1000;
 }
 
-.labTestLS-modal-content {
+.reportTemplate-modal-content {
   /* padding: 20px; */
   background-color: #fff;
   border-radius: 8px;
@@ -143,13 +172,13 @@
   position: relative;
   margin-top: 20px;
 }
-.labTestLS-pagination {
+.reportTemplate-pagination {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.labTestLS-pagination button {
+.reportTemplate-pagination button {
   background-color: #008CBA;
   color: white;
   border: none;
@@ -160,7 +189,7 @@
   font-size: 12px;
 }
 
-.labTestLS-pagination span {
+.reportTemplate-pagination span {
   margin: 0 10px;
   color: gray;
   font-size: 12px;

@@ -1,20 +1,24 @@
+ /* Ajhar Tamboli userCollectionReport.css 19-09-24 */
+
+
 .userCollectionReport-report {
     font-family: Arial, sans-serif;
     /* max-width: 1200px; */
     /* margin: 0 auto; */
     padding: 10px;
     height: 460px;
-    background-color: #CAF2FF;
+    background-color:var(--background-color);
   }
   
  .userCollectionReport-report h4 {
     margin-top: 0;
-    color: rgb(66, 66, 66);
-    font-weight: 200;
+    color: black;
+    font-size: var(--heading-font);
+    /* font-weight: 200; */
   }
-  .userCollectionReport-report i {
+  /* .userCollectionReport-report i {
     color: #0F63AF
-  }
+  } */
   
   .userCollectionReport-filters {
     display: flex;
@@ -34,20 +38,27 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 12px;
-    font-weight: bold;
-    background-color: #EBF7FF;
+    font-size: var(--font-size);
+    background-color: #e1f1fc;
     margin-left: 30px;
     padding: 2px 30px;
+    color: black;
   }
-  
+    .userCollectionReport-date-range label{
+    padding: 1px;
+    /* margin-left: 10px; */
+    }
+    .userCollectionReport-date-range input{
+    padding: 1px 10px ;
+    /* padding: 1px 10px !important; */
+    margin-left: 10px;
+    }
   .userCollectionReport-select-filters {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: var(--font-size);
     margin-left: 10px;
     /* border: 1px solid red; */
     /* width: 300px; */
@@ -58,8 +69,11 @@
   .userCollectionReport-select-filters label{
   margin-right: 30px;
   }
-  .userCollectionReport-select-filters input[type="date"], input[type="text"], select {
-    padding: 5px;
+  .userCollectionReport-select-filters input[type="date"], 
+  .userCollectionReport-select-filters input[type="text"], 
+  .userCollectionReport-select-filters select {
+    padding: 1px 10px ;
+    /* padding: 1px 10px !important; */
     border: 1px solid #ccc;
     border-radius: 3px;
     margin-left: 20px;
@@ -68,20 +82,28 @@
   .userCollectionReport-star-button {
     background: none;
     border: none;
-    font-size: 1.9em;
-    color: #0F63AF;
+    font-size: 24px;
+    color:var(--button-color) ;
     cursor: pointer;
   }
   
   .userCollectionReport-show-report-button {
-    background-color: #5867DD;
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    font-size: 12px;
-    padding: 8px 15px;
-    border-radius: 3px;
+    /* margin-right: 10px; */
+    border-radius: 5px;
     cursor: pointer;
+    font-size: var(--font-size);
     margin-right: 100px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .userCollectionReport-show-report-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  
   }
   
   .userCollectionReport-search-N-result{
@@ -93,17 +115,20 @@
 .userCollectionReport-search-bar{
   margin-left: -15px;
 }  
-  .userCollectionReport-search-bar input {
-    /* margin-top: 10px; */
-    /* padding: 5px; */
+.userCollectionReport-search-bar input {
+  /* margin-top: 10px; */
+  /* padding: 5px; */
+  padding: 1px 10px ;
+  /* padding: 1px 10px !important; */
     width: 200px;
-    margin: 0;
+    margin: 1px ;
+    /* margin: 1px !important; */
   }
   .userCollectionReport-search-bar i{
     position: relative;
     color:gray;
     top: 3px;
-  left: 205px;
+  left: 190px;
   }
   
   .userCollectionReport-results-info {
@@ -115,9 +140,9 @@
     /* display: flex;
     align-items: center; */
     /* padding-top: 10px; */
-    color: #659BE0;
-    font-weight: bold;
-    font-size: 12px;
+    /* color: #659BE0; */
+    /* font-weight: bold; */
+    font-size: var(--font-size);
   }
 
   
@@ -138,14 +163,26 @@
   }
   
   .userCollectionReport-export-button, .userCollectionReport-print-button {
-    background-color: #659BE0;
+    /* background-color: #659BE0;
+    cursor: pointer; */
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    font-size: 12px;
+    /* margin-right: 10px; */
     border-radius: 5px;
-    padding: 8px 15px;
-    margin-left: 10px;
     cursor: pointer;
+    font-size: var(--font-size);
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .userCollectionReport-export-button:hover,
+  .userCollectionReport-print-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  
+  
   }
   
   .userCollectionReport-report table {
@@ -157,14 +194,14 @@
   
   .userCollectionReport-report th, .userCollectionReport-report td {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-    font-size: 12px;
+    padding: 3px;
+    text-align: center;
+    font-size: var(--font-size);
   }
   
   .userCollectionReport-report th {
     background-color: #F3F3F3;
-    color: #333333;
+    /* color: #333333; */
   }
   .userCollectionReport-Loading{
     display: flex;
@@ -192,13 +229,13 @@
     cursor: pointer;
     margin: 0 5px;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: var(--font-size);
   }
   
   .userCollectionReport-pagination span {
     margin: 0 10px;
-    color: gray;
-    font-size: 12px;
+    /* color: gray; */
+    font-size: var(--font-size);
   }
  
   .userCollectionReport-table-N-paginationDiv{

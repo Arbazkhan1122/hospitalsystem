@@ -1,10 +1,11 @@
  /* prachi parab user interface changed  14/9 */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import './NursingMainComponent.css';
 import OpdTriagePage from './OpdTriagePage';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const OutPatientComponent = () => {
   const [isTriageModalOpen, setIsTriageModalOpen] = useState(false);
@@ -19,9 +20,12 @@ const OutPatientComponent = () => {
   const [toDate, setToDate] = useState('');
   const [filteredPatients, setFilteredPatients] = useState([]);
   const [modalData, setModalData] = useState({}); 
+  
+const [columnWidths, setColumnWidths] = useState({});
+const tableRef = useRef(null);
   // Fetch patient data from API
   useEffect(() => {
-    fetch('http://192.168.1.39:1415/api/new-patient-visits')
+    fetch('http://localhost:1415/api/new-patient-visits')
       .then(response => response.json())
       .then(data => {
         setPatients(data);
@@ -128,23 +132,40 @@ const OutPatientComponent = () => {
               <button className="nurse-action-button">Exchange Doc/Dept</button>
               <button className="nurse-action-button">Conclude</button> */}
             </div>
-            <table className="patients-table">
-              <thead>
-                <tr>
-                  <th>SN</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                
-                  <th>Patient Name</th>
-                  <th>Age/Sex</th>
-                  <th>Phone</th>
-                  <th>Department</th>
-                  <th>Doctor</th>
-                  {/* <th>Scheme</th> */}
-                  <th>Visit Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
+            <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "SN",
+                "Date",
+                "Time",
+                "Patient Name",
+                "Age/Sex",
+                "Phone",
+                "Department",
+                "Doctor",
+                "Visit Status",
+                "Action"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
               <tbody>
                 {filteredPatients.map((patient, index) => (
                   <tr key={index}>
@@ -232,22 +253,40 @@ const OutPatientComponent = () => {
                   <button className="OutPatient_PastDays-button">Print</button>
                 </div>
               </div>
-              <table className="OutPatient_PastDays-patientsTable">
-                <thead>
-                  <tr>
-                    <th>SN</th>
-                    <th>Date &#x2193;</th>
-                    <th>Time</th>
-                   
-                    <th>Patient Name</th>
-                    <th>Age/Sex</th>
-                    <th>Phone Number</th>
-                    <th>Department</th>
-                    <th>Doctor Name</th>
-                    <th>Appointment Type</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
+              <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "SN",
+              "Date ↓",
+              "Time",
+              "Patient Name",
+              "Age/Sex",
+              "Phone Number",
+              "Department",
+              "Doctor Name",
+              "Appointment Type",
+              "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
                 <tbody>
                 {patients.map((patient, index) => (
                   <tr key={index}>

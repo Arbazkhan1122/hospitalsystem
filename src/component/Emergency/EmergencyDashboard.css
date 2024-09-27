@@ -1,49 +1,53 @@
-/* * {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
+   /* Dhanashree_EmergencyDashboard_19/09 */
 
-.emergency-dashboard {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-}
+  
+  * {
+    margin: 0;
+  }
 
-.card {
-  flex: 1;
-  margin: 0 10px;
-  padding: 20px;
-  border-radius: 10px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+  .emergency-dashboard {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
 
-.blue-card {
-  background: linear-gradient(135deg, #1890ff 0%, #40a9ff 100%);
-}
+  .dashboard-card {
+    flex: 1;
+    margin: 0 10px;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 
-.red-card {
-  background: linear-gradient(135deg, #ff7875 0%, #ff4d4f 100%);
-}
+  .blue-dashboard-card {
+    background: linear-gradient(135deg, var(--button-bg-color) 0%, var(--button-color) 100%);
+  }
 
-.green-card {
-  background: linear-gradient(135deg, #52c41a 0%, #4caf50 100%);
-}
+  .red-dashboard-card {
+    background: linear-gradient(135deg, var(--button-color) 0%, var(--button-color) 100%);
+  }
 
-.dashboard-title {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
+  .green-dashboard-card {
+    background: linear-gradient(135deg, var(--button-color) 0%, var(--button-color) 100%);
+  }
 
-.dashboard-number {
-  font-size: 48px;
-  font-weight: bold;
-  align-self: flex-end;
-}
+  .dashboard-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
 
-.dashboard-subtitle {
-  font-size: 14px;
-} */
+  .dashboard-number {
+    font-size: 48px;
+    font-weight: bold;
+    align-self: flex-end;
+  }
+
+  .dashboard-subtitle {
+    font-size: 14px;
+  }
+
+   /* Dhanashree_EmergencyDashboard_19/09 */

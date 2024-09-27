@@ -311,7 +311,7 @@ useEffect(() => {
   useEffect(() => {
     const fetchMedicines = async () => {
       try {
-        const response = await axios.get("http://192.168.1.39:1415/api/medicine/find-all-medicine-details");
+        const response = await axios.get("http://localhost:1415/api/medicine/find-all-medicine-details");
         setMedicines(response.data);
         console.log(response.data+"Med");
       } catch (error) {
@@ -360,7 +360,7 @@ useEffect(() => {
 
   useEffect(() => {
     axios
-      .get("http://192.168.1.39:1415/api/ward-department/get-all-ward")
+      .get("http://localhost:1415/api/ward-department/get-all-ward")
       .then((response) => {
         const data = response.data;
 
@@ -391,7 +391,7 @@ useEffect(() => {
   useEffect(() => {
     const fetchMedicines = async () => {
       try {
-        const response = await axios.get("http://192.168.1.39:1415/api/medicine/find-all-medicine-details");
+        const response = await axios.get("http://localhost:1415/api/medicine/find-all-medicine-details");
         setMedicines(response.data); // assuming response.data contains the list of medicines
       } catch (error) {
         console.error("Error fetching medicine data:", error);
@@ -438,7 +438,7 @@ useEffect(() => {
     let patientType="Patient"
       try {
      
-      const response = await axios.post(`http://192.168.1.39:1415/api/medicine/save-medicine-details/${id}/${patientType}`, payload);
+      const response = await axios.post(`http://localhost:1415/api/medicine/save-medicine-details/${id}/${patientType}`, payload);
       console.log("Payload:", payload);
       alert("Consumption added successfully");
       
@@ -468,7 +468,7 @@ useEffect(() => {
 
     await axios
       .get(
-        `http://192.168.1.39:1415/api/admissions/ward-data/${wardDepartmentId}`
+        `http://localhost:1415/api/admissions/ward-data/${wardDepartmentId}`
       )
       .then((response) => {
         setPatients(response.data); // Assuming setPatients is part of your state
@@ -501,7 +501,7 @@ useEffect(() => {
   return (
     <>
       <div className="hospital-wards-container" onClick={showPatientwardwise}>
-        <h2>Select your Ward</h2>
+        <h5>Select your Ward</h5>
         <div className="ward-info-grid">
           {wards.map((ward, index) => (
             <WardInfoCard

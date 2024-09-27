@@ -1,8 +1,11 @@
 /* Mohini_UserCollectionReport_WholePage_14/sep/2024 */
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './UserCollectionReport.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const UserCollectionReport = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
+
   return (
     <div className="user-collection-report-container">
       <h2 className='user-collection-header'> ⚛ User Collection Report (Detailed)</h2>
@@ -44,25 +47,44 @@ const UserCollectionReport = () => {
           <button className="item-wise-sales-btn">Print</button>
         </div>
       </div>
-      <div className='user-collection-ta'>
-      <table className="user-collection-report-table">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Type</th>
-            <th>Receipt No</th>
-            <th>Hospital</th>
-            <th>Patient Name</th>
-            <th>SubTotal</th>
-            <th>Discount</th>
-            <th>Net Total</th>
-            <th>Cash Collected</th>
-            <th>User</th>
-            <th>Remarks</th>
-            <th>Counter</th>
-            <th>Store</th>
-          </tr>
-        </thead>
+      <div className='table-container'>
+      <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Date",
+                 "Type",
+                 "Receipt No",
+                 "Hospital",
+                 "Patient Name",
+                 "SubTotal",
+                 "Discount",
+                 "Net Total",
+                 "Cash Collected",
+                 "User",
+                 "Remarks",
+                 "Counter",
+                 "Store"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           <tr>
             <td colSpan="13" className="user-collectionno-rows">No Rows To Show</td>

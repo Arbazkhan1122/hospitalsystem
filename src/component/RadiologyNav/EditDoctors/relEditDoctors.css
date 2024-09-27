@@ -1,6 +1,11 @@
+ /* Ajhar Tamboli relEditDoctors.css 19-09-24 */
+
+
 /* Akash Pawar Radiology 14/24 */
 .relEditDoctors-active-imaging-request {
     padding: 10px;
+    background-color: var(--background-color);
+    height: 75vh;
   }
   
   .relEditDoctors-active-imaging-request header {
@@ -11,7 +16,7 @@
   }
   
   .relEditDoctors-active-imaging-request h4 {
-    color: black;
+    /* color: black; */
     font-size: var(--heading-font);
     margin: 0;
   }
@@ -19,13 +24,13 @@
 
   .relEditDoctors-filter select {
     padding: 3px 5px 3px 5px;
-    background-color: #f0f0f0;
+    /* background-color: #f0f0f0; */
     margin-left: 10px;
     width: 100px;
   }
   .relEditDoctors-filter label {
-font-size: 14px;
-font-weight: bold;
+font-size: var(--font-size);
+/* font-weight: bold; */
 }
   
   .relEditDoctors-controls {
@@ -36,50 +41,67 @@ font-weight: bold;
   .relEditDoctors-date-range {
     display: flex;
     align-items: center;
+    width: 50%;
     gap: 10px;
     background-color: #f0f0f0;
-    margin-bottom: 10px;
+    padding: 1px 10px;
   }
   .relEditDoctors-date-range label{
+    display: flex;
+    align-items: center;
     margin-left: 20px;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: var(--font-size);
   }
   
   .relEditDoctors-date-range input[type="date"] {
-    padding: 5px;
+    padding: 3px;
+    margin-left: 10px;
   }
-  
   .relEditDoctors-star-button {
     background: none;
     border: none;
-    font-size: 1.2em;
-    color: #0011ff;
+    font-size: 24px;
+    color:var(--button-color) ;
     cursor: pointer;
   }
-  
   .relEditDoctors-ok-button {
-    background-color: var(--button-color);
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
+    /* border: none; */
+    /* margin-right: 10px; */
     border-radius: 5px;
-    padding: 5px 15px;
     cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
   }
-  
   .relEditDoctors-ok-button:hover {
-    background-color: var(--button-hover-background-color);
+    border: 1px solid var( --button-hover-border-color);
     color: var(--button-hover-text-color);
-     border: 1px solid var(--button-hover-border-color);
+    background-color: var(--button-hover-background-color);
+  }
+   .relEditDoctors-more-btn {
+    background-color: #B9B9CA;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
   }
   
   .relEditDoctors-search-bar {
     display: flex;
-    background-color: #f2f2f2;
+    background-color: white;
+    border: 1px solid gray;
     align-items: center;
     justify-content: center;
+<<<<<<< HEAD
     padding: 5px;
     margin-bottom: 10px;
+=======
+    padding: 3px;
+>>>>>>> 9f2a38c15825231657e9214b1750e759062c2c86
   }
   
   .relEditDoctors-search-bar input {
@@ -93,9 +115,9 @@ font-weight: bold;
   
   .relEditDoctors-results-info {
     text-align: right;
-    color: black;
+    /* color: black; */
     font-size: var(--font-size);
-    font-weight: bold;
+    /* font-weight: bold; */
   }
   .relEditDoctors-search-N-results{
     display: flex;
@@ -104,12 +126,22 @@ font-weight: bold;
 }
 
   .relEditDoctors-ex-pri-buttons{
-    background-color: var(--button-color);
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
     color: white;
-    border: none;
-    border-radius: 5px ;
-    padding: 5px 10px;
-    margin-left: 10px;
+    /* border: none; */
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    /* margin: 1px; */
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .relEditDoctors-ex-pri-buttons:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
   }
   .relEditDoctors-action-button-add-report{
     background-color: var(--button-color);

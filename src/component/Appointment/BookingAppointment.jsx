@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef } from 'react';
 import './BookingAppointment.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import axios if you are using it
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const BookingAppointment = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        // Replace with your API endpoint
         const response = await axios.get('http://localhost:1415/api/appointments/fetch-all-appointment');
         setPatients(response.data);
       } catch (error) {
@@ -46,33 +48,53 @@ const BookingAppointment = () => {
   if (error) return <div>{error}</div>;
 
   return (
+
     <div className="book-appointment-container">
-      <button className="book-appointment-new-patient-btn" onClick={handleNewPatient}>+ New Patient</button>
+      <button className="book-appointment-new-patient-btn" onClick={handleNewPatient}>+ New Patient</button><br></br>
       
-      <div className="book-appointment-search-bar">
+      <div className="search-bar">
         <input
           type="text"
           placeholder="Search (Minimum 3 Characters)"
           value={searchTerm}
           onChange={handleSearch}
         />
-        <button className="book-appointment-search-btn">🔍</button>
+        <button className="search-btn">🔍</button>
       </div>
-      <div className="book-appointment-results-info">
+      <div className="results-info">
         <span>Showing {filteredPatients.length} / {patients.length} results</span>
-        <button className="book-appointment-print-btn">Print</button>
+        <button className="print-btn">Print</button>
       </div>
-      <table className='book-appointment'>
-        <thead>
-          <tr>
-            {/* <th>Hospital Number</th> */}
-            <th>Patient Name</th>
-            <th>Age/Sex</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+
+      <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Patient Name",
+              "Age/Sex",
+              "Address",
+              "Phone",
+              "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {filteredPatients.map((patient, index) => (
             <tr key={index}>
@@ -82,20 +104,20 @@ const BookingAppointment = () => {
               <td>{patient.address}</td>
               <td>{patient.contactNumber}</td>
               <td>
-                <button className="book-appointment-create-appointment-btn" onClick={handleNewPatient}>Create Appointment</button>
+                <button className="create-appointment-btn" onClick={handleNewPatient}>Create Appointment</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      {/* <div className="pagination">
+      <div className="pagination">
         <span>1 to 20 of 200</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 1 of 10</span>
         <button>Next</button>
         <button>Last</button>
-      </div> */}
+      </div>
     </div>
   );
 };

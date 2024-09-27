@@ -1,3 +1,4 @@
+ /* Ajhar Tamboli sSIIReportsTransfer.jsx 19-09-24 */
 
 
 import React, { useState, useRef } from 'react';
@@ -60,7 +61,8 @@ function SSIIReportsTransfer() {
           </div>
         </header>
         <div className="sSIIReportsTransfer-controls">
-          <div className="sSIIReportsTransfer-date-range">
+
+        <div className="sSIIReportsTransfer-date-range">
             <label>
               From:
               <input type="date" defaultValue="2024-08-09" />
@@ -70,17 +72,13 @@ function SSIIReportsTransfer() {
               <input type="date" defaultValue="2024-08-16" />
             </label>
             <button className="sSIIReportsTransfer-star-button">☆</button>
+          <button className="sSIIReportsTransfer-more-btn">-</button>
             <button className="sSIIReportsTransfer-ok-button">OK</button>
           </div>
+
+     
           <div className="sSIIReportsTransfer-filter">
-            {/* <label>SubCategory</label>
-            <select>
-              <option value="">ALL</option>
-              <option value="">Some Sub Category</option>
-              <option value="">Tissue</option>
-              <option value="">Cotton</option>
-              <option value="">Soap</option>
-            </select> */}
+          
             <button className='sSIIReportsTransfer-print-btn'>Show Report</button>
           </div>
         </div>
@@ -94,7 +92,7 @@ function SSIIReportsTransfer() {
             <button className='sSIIReportsTransfer-print-btn' onClick={handleExportToExcel}>
               <i className="fa-regular fa-file-excel"></i> Export
             </button>
-            <button className='sSIIReportsTransfer-print-btn' onClick={handlePrint}>Print</button>
+            <button className='sSIIReportsTransfer-print-btn' onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
           </div>
         </div>
         <div style={{ display: 'none' }}>
@@ -145,14 +143,14 @@ function SSIIReportsTransfer() {
               </tr>
             </tbody>
           </table>
-          <div className="sSIIReportsTransfer-pagination">
+          {/* <div className="sSIIReportsTransfer-pagination">
             <span>0 to 0 of 0</span>
             <button>First</button>
             <button>Previous</button>
             <span>Page 0 of 0</span>
             <button>Next</button>
             <button>Last</button>
-          </div>
+          </div> */}
         </div>
       </>
     </div>

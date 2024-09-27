@@ -1,3 +1,5 @@
+/* Ajhar Tamboli rdlListRequest.jsx 19-09-24 */
+
 import React, { useState, useEffect, useRef } from "react";
 import "../ListRequest/rdlListRequest.css";
 import AddReportForm from "./rdlAddReport";
@@ -16,7 +18,7 @@ function RDLListRequest() {
 
   useEffect(() => {
     // Fetch imaging requests and patients data
-    fetch("http://localhost:8888/api/patient-imaging-requisitions/all")
+    fetch("http://localhost:1415/api/imaging-requisitions/all")
       .then((response) => response.json())
       .then((data) => {
         setImagingRequests(data);
@@ -27,7 +29,7 @@ function RDLListRequest() {
 
   const updateStatus = (id, filmTypeId, quantity, status, scannedOn) => {
     fetch(
-      `http://localhost:8888/api/patient-imaging-requisitions/update-film-type-and-quantity?filmTypeId=${filmTypeId}&quantity=${quantity}&imagingId=${id}&status=${status}&scannedOn=${scannedOn}`,
+      `http://localhost:1415/api/imaging-requisitions/update-film-type-and-quantity?filmTypeId=${filmTypeId}&quantity=${quantity}&status=${status}&scannedOn=${scannedOn}&imagingId=${id}`,
       {
         method: "PUT",
         headers: {
@@ -39,7 +41,7 @@ function RDLListRequest() {
         if (!response.ok) {
           throw new Error(`Error: ${response.statusText}`);
         }
-        return response.json();
+        console.log("Scanned Done");
       })
       .then((data) => {
         // Update local state to reflect changes
@@ -87,9 +89,7 @@ function RDLListRequest() {
       const matchesSearch =
         request.patientDTO?.firstName.toLowerCase().includes(searchQuery) ||
         request.patientDTO?.lastName.toLowerCase().includes(searchQuery) ||
-        request.prescriberDTO?.employeeName
-          .toLowerCase()
-          .includes(searchQuery) ||
+        request.prescriberDTO?.firstName.toLowerCase().includes(searchQuery) ||
         request.imagingItemDTO?.imagingItemName
           .toLowerCase()
           .includes(searchQuery);
@@ -130,6 +130,7 @@ function RDLListRequest() {
             <input type="date" defaultValue="2024-08-16" />
           </label>
           <button className="rDLListRequest-star-button">☆</button>
+          <button className="rDLListRequest-more-btn">-</button>
           <button className="rDLListRequest-ok-button">OK</button>
         </div>
       </div>
@@ -155,6 +156,7 @@ function RDLListRequest() {
             <tr>
               {[
                 "Id",
+                "Requested Date",
                 "Patient Name",
                 "Age/Sex",
                 "Prescriber",
@@ -186,8 +188,16 @@ function RDLListRequest() {
               filteredRequests.map((request, index) => (
                 <tr key={request.imagingId}>
                   <td>{index + 1}</td>
-                  <td>{request.patientDTO?.firstName}</td>
-                  <td>{request.patientDTO?.age}</td>
+                  <td>{request.requestedDate}</td>
+                  <td>
+                    {request.patientDTO?.firstName ||
+                      request.newPatientVisitDTO?.firstName}{" "}
+                    {request.patientDTO?.lastName ||
+                      request.newPatientVisitDTO?.lastName}
+                  </td>
+                  <td>
+                    {request.patientDTO?.age || request.newPatientVisitDTO?.age}
+                  </td>
                   <td>{request.prescriberDTO?.employeeName || "self"}</td>
                   <td>{request.imagingTypeDTO?.imagingTypeName}</td>
                   <td>{request.imagingItemDTO?.imagingItemName}</td>

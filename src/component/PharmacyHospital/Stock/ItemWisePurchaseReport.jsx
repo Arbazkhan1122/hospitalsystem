@@ -1,7 +1,7 @@
 /* Mohini_ItemWisePurchaseReport_WholePage_14/sep/2024 */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './PharmacyExpiryReport.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const ItemWisePurchaseReport = () => {
   const [fromDate, setFromDate] = useState('24-08-2024');
   const [toDate, setToDate] = useState('24-08-2024');
@@ -11,7 +11,8 @@ const ItemWisePurchaseReport = () => {
   const [nearlyExpired, setNearlyExpired] = useState(false);
   const [expired, setExpired] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   return (
     <div className="pharmacy-expiry-report-container">
       <h1>⚛ Item Wise Purchase Report</h1>
@@ -69,32 +70,48 @@ const ItemWisePurchaseReport = () => {
         <button className="pharmacy-expiry-report-print-btn">Print</button>
       </div>
      
-   <div className='pharmacy-expiry-report-ta'>
-   <div className='pharmacy-expiry-report-table-container'>
-    <table className="pharmacy-expiry-report-expiry-table">
-      <thead>
-        <tr>
-          <th>Ward Name</th>
-          
-          <th>Issue No</th>
-          <th>Req No</th>
-          <th>Item Code</th>
-          <th>Item Name</th>
-          <th>Exp Date</th>
-          <th>Batch</th>
-          <th>Qty</th>
-          <th>C.P</th>
-          <th>Dispatch Value</th>
-          <th>Supply Value</th>
-          <th>Received By</th>
-          <th>Consumed Qty</th>
-          <th>Consumed Value</th>
-          <th>Balance Qty</th>
-          <th>Balance Value</th>
-
-
-        </tr>
-      </thead>
+   {/* <div className='pharmacy-expiry-report-ta'> */}
+   <div className='table-container'>
+   <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Ward Name",
+  "Issue No",
+  "Req No",
+  "Item Code",
+  "Item Name",
+  "Exp Date",
+  "Batch",
+  "Qty",
+  "C.P",
+  "Dispatch Value",
+  "Supply Value",
+  "Received By",
+  "Consumed Qty",
+  "Consumed Value",
+  "Balance Qty",
+  "Balance Value"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
       <tbody>
         <tr>
           <td colSpan="16" className="pharmacy-expiry-report-no-rows">No Rows To Show</td>
@@ -110,7 +127,7 @@ const ItemWisePurchaseReport = () => {
         <button>Next</button>
         <button>Last</button>
       </div> */}
-      </div>
+      {/* </div> */}
       {/* <div className="pharmacy-expiry-report-summary">
         <h2>Summary</h2>
         <div>

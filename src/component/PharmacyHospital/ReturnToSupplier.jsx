@@ -1,8 +1,10 @@
 /* Mohini_ReturnToSupplier_WholePage_14/sep/2024 */
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './ReturnToSupplier.css';
-
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 const ReturnToSupplier = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   return (
     <div className="return-to-supplier-container">
       <h2 className="return-to-supplier-header-title">Return To Supplier Report</h2>
@@ -64,23 +66,47 @@ const ReturnToSupplier = () => {
       </div>
      
       <div className='return-to-supplier-retuurn-store-supplier'>
-      <table className="return-to-supplier-data-table">
-        <thead>
-          <tr>
-            <th>GRNo</th>
-            <th>GRDate</th>
-            <th>Supplier Name</th>
-            <th>InvoiceNo</th>
-            <th>Sub Total</th>
-            <th>Discount Amount</th>
-            <th>VAT Amount</th>
-            <th>Total Amount</th>
-            <th>Action</th>
-          </tr>
-        </thead>
+      <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                  "S.N.",
+                  "Date",
+                  "Supplier Name",
+                  "Generic Name",
+                  "Item Name",
+                  "Return Date",
+                  "Qty",
+                  "Sub Total",
+                  "Dis. Amt",
+                  "VAT Amt",
+                  "Total Amt",
+                  "Supplier CreditNote Num",
+                  "CreditNote Num",
+                  "Remarks" 
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           <tr>
-            <td colSpan="9" className="return-to-supplier-no-rows">
+            <td colSpan="14" className="return-to-supplier-no-rows">
               No Rows To Show
             </td>
           </tr>

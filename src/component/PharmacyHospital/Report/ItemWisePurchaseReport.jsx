@@ -1,9 +1,11 @@
 /* Mohini_ItemWisePurchaseReport_14/sep/2024 */
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './ItemWisePurchaseReport.css';
-
+import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 const ItemWisePurchaseReportCom = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef=useRef(null);
   return (
     <div className="iten-purchase-container">
       <h2 className="iten-purchase-header">⚛ Item Wise Purchase Report</h2>
@@ -54,24 +56,43 @@ const ItemWisePurchaseReportCom = () => {
         <button className="iten-purchase-button">Print</button>
       </div>
       <div className='item-purchase-ta'>
-      <table className="iten-purchase-table">
-        <thead>
-          <tr>
-            <th>GR Date</th>
-            <th>GR NO.</th>
-            <th>Supplier</th>
-            <th>Bill ...</th>
-            <th>Generic Name</th>
-            <th>Item</th>
-            <th>Batch</th>
-            <th>Expiry</th>
-            <th>Qua...</th>
-            <th>Purchase Rate</th>
-            <th>SubTotal</th>
-            <th>VAT Amt.</th>
-            <th>TotalAmount</th>
-          </tr>
-        </thead>
+      <table  ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "GR Date",
+  "GR NO.",
+  "Supplier",
+  "Bill ...",
+  "Generic Name",
+  "Item",
+  "Batch",
+  "Expiry",
+  "Qua...",
+  "Purchase Rate",
+  "SubTotal",
+  "VAT Amt.",
+  "TotalAmount"      
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           <tr>
             <td colSpan="13" className="iten-purchase-noRows">No Rows To Show</td>

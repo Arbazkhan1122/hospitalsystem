@@ -1,3 +1,5 @@
+/* Ajhar Tamboli relEditDoctors.jsx 19-09-24 */
+
 import React, { useState, useEffect, useRef } from "react";
 import "../EditDoctors/relEditDoctors.css";
 import TransactionDetails from "./rdlEditDrEditBtn";
@@ -15,7 +17,7 @@ function RDLEditDoctors() {
 
   // Function to fetch data from API
   useEffect(() => {
-    fetch("http://localhost:8888/api/patient-imaging-requisitions/all")
+    fetch("http://localhost:1415/api/imaging-requisitions/getAll-Prescriber")
       .then((response) => response.json())
       .then((data) => {
         setImagingData(data);
@@ -94,6 +96,7 @@ function RDLEditDoctors() {
             <input type="date" defaultValue="2024-08-16" />
           </label>
           <button className="relEditDoctors-star-button">☆</button>
+          <button className="relEditDoctors-more-btn">-</button>
           <button className="relEditDoctors-ok-button">OK</button>
         </div>
       </div>
@@ -107,7 +110,7 @@ function RDLEditDoctors() {
               setFilteredData(
                 imagingData.filter(
                   (item) =>
-                    item.patientDTO.patientName
+                    item.patientDTO.firstName
                       .toLowerCase()
                       .includes(searchTerm) ||
                     item.imagingItemDTO.imagingItemName
@@ -131,7 +134,7 @@ function RDLEditDoctors() {
             className="relEditDoctors-ex-pri-buttons"
             onClick={printTable}
           >
-            Print
+            <i class="fa-solid fa-print"></i> Print
           </button>
         </div>
       </div>
@@ -146,7 +149,7 @@ function RDLEditDoctors() {
                 "Type",
                 "Imaging Name",
                 "Prescriber Name",
-                "Radiologist/Reporting Doctor",
+                // "Radiologist/Reporting Doctor",
                 "Action",
               ].map((header, index) => (
                 <th
@@ -171,15 +174,24 @@ function RDLEditDoctors() {
           <tbody>
             {filteredData.map((item, index) => (
               <tr key={index}>
-                <td>{new Date(item.imagingDate).toDateString()}</td>
+                <td>{item.imagingDate}</td>
                 {/* <td>{item.invoiceNumber}</td> */}
-                <td>{item.patientDTO.firstName}</td>
-                <td>{`${item.patientDTO.age} / ${item.patientDTO?.gender}`}</td>
+                <td>
+                  {item.patientDTO?.firstName ||
+                    item.newPatientVisitDTO?.firstName}{" "}
+                  {item.patientDTO?.lastName ||
+                    item.newPatientVisitDTO?.lastName}
+                </td>
+                <td>
+                  {item.patientDTO?.age || item.newPatientVisitDTO?.age} Y
+                </td>
                 <td>{item.imagingTypeDTO?.imagingTypeName}</td>
                 <td>{item.imagingItemDTO?.imagingItemName}</td>
-                <td>{item.prescriberDTO?.employeeName}</td>
-                <td>{item.performerDTO?.employeeName}</td>
-                {/* <td>{item.billingStatus}</td> */}
+                <td>
+                  {item.prescriberDTO?.salutation}{" "}
+                  {item.prescriberDTO?.firstName} {item.prescriberDTO?.lastName}
+                </td>
+                {/* <td>{item.performerDTO?.firstName}</td> */}
                 <td>
                   <button
                     className="relEditDoctors-action-button-add-report"

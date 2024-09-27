@@ -152,9 +152,9 @@ font-size: 16px;
 
 .pharmacy-home-page-pharmacy-chart-div {
   display: flex;
-  padding-left: 40px;
+  padding-left: 200px;
   background-color: var(--background-color);
-  margin-top: -50px;
+  margin-top: -90px;
   justify-content: flex-end;
   width: 100%;
 }
