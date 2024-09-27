@@ -1809,7 +1809,7 @@ const Sidebar = ({
                 <Link
                   to="/triagedPatients"
                   className="appointment-booking-list-nav-link"
-                ></Link>
+                >Triaged Patients</Link>
               </li>
               <li
                 onClick={() => handleItemClick("emergency", "submenu3")}

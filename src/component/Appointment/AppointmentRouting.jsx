@@ -8,7 +8,7 @@ import OnlineAppointment from '../Appointment/OnlineAppointment';
 import SSFClaim from '../Appointment/SSFClaim';
 import AppointmentBookingList from '../Appointment/AppointmentBookingList';
 import CheckIn from '../Appointment/CheckIn';
-import AddNewAppointmentForm from './AddNewappointment';
+import AddNewAppointmentForm from './CreateAdmission';
 
 const AppointmentRouting = () => {
   return (

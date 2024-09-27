@@ -222,51 +222,138 @@ const SearchPatient = () => {
       </div>
 
       {/* Admit Modal */}
-      <Modal show={showModal} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Admit Patient</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {selectedPatient && (
-            <form>
+      <Modal show={showModal} onHide={handleClose} size="lg" centered>
+  <Modal.Header closeButton className="adt-septn-admission-header">
+    <Modal.Title>Create Admission</Modal.Title>
+  </Modal.Header>
+  <Modal.Body className="adt-septn-admission-body">
+    <div className="adt-septn-admission-form-section" style={{border:"1px solid gray", padding:"10px"}}>
+      <div className="adt-septn-admission-row">
+        <label>Membership:</label>
+        <select className="adt-septn-admission-select">
+          <option>General</option>
+          <option>Premium</option>
+        </select>
+      </div>
+      <div className="adt-septn-admission-row">
+        <label>Price Category:</label>
+        <select className="adt-septn-admission-select">
+          <option>Normal</option>
+          <option>VIP</option>
+        </select>
+      </div>
+    </div>
 
-              <div className="form-group">
-                <label>Patient Name:</label>
-                <input type="text" value={`${selectedPatient.firstName} ${selectedPatient.middleName || ''} ${selectedPatient.lastName}`} readOnly />
-              </div>
-              <div className="form-group">
-                <label>Age:</label>
-                <input type="text" value={selectedPatient.age} readOnly />
-              </div>
-              <div className="form-group">
-                <label>Gender:</label>
-                <input type="text" value={selectedPatient.gender} readOnly />
-              </div>
-              <div className="form-group">
-                <label>Phone Number:</label>
-                <input type="text" value={selectedPatient.phoneNumber} readOnly />
-              </div>
-              <div className="form-group">
-                <label>Address:</label>
-                <input type="text" value={selectedPatient.address} readOnly />
-              </div>
-              <div className="form-group">
-                <label>Visit Type:</label>
-                <input type="text" value={selectedPatient.visitType} readOnly />
-              </div>
-              {/* Add more fields as needed */}
-              <Button variant="primary" onClick={submitAdmission}>
-                Submit Admission
-              </Button>
-            </form>
-          )}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+    {/* Existing Fields */}
+    <div className="adt-septn-admission-form-section">
+      <div className="adt-septn-admission-row">
+        <label>Case:</label>
+        <select className="adt-septn-admission-select">
+          <option>Select</option>
+          <option>Case 1</option>
+          <option>Case 2</option>
+        </select>
+      </div>
+      <div className="adt-septn-admission-row">
+        <label>Requesting Department:</label>
+        <input type="text" className="adt-septn-admission-input" placeholder="Enter Department Name" />
+      </div>
+    </div>
+
+    <div className="adt-septn-admission-form-section">
+      <div className="adt-septn-admission-row">
+        <label>Admitting Doctor:</label>
+        <input type="text" className="adt-septn-admission-input" placeholder="Enter Doctor Name" />
+      </div>
+      <div className="adt-septn-admission-row">
+        <label>Ward:</label>
+        <select className="adt-septn-admission-select">
+          <option>Select Ward</option>
+        </select>
+      </div>
+    </div>
+
+    <div className="adt-septn-admission-form-section">
+      <div className="adt-septn-admission-row">
+        <label>Bed Feature:</label>
+        <select className="adt-septn-admission-select">
+          <option>Price-0</option>
+        </select>
+      </div>
+      <div className="adt-septn-admission-row">
+        <label>Bed:</label>
+        <select className="adt-septn-admission-select">
+          <option>Select Bed</option>
+        </select>
+      </div>
+    </div>
+
+    {/* New Fields */}
+    <div className="adt-septn-admission-form-section">
+      <div className="adt-septn-admission-row">
+        <label>Admission Date:</label>
+        <input type="datetime-local" className="adt-septn-admission-input" />
+      </div>
+      <div className="adt-septn-admission-row">
+        <label>Admission Notes:</label>
+        <textarea className="adt-septn-admission-input" placeholder="Admission Notes"></textarea>
+      </div>
+    </div>
+
+    <div className="adt-septn-admission-form-section">
+      <div className="adt-septn-admission-row">
+        <label>Care Of Person Name:</label>
+        <input type="text" className="adt-septn-admission-input" placeholder="Care Of Person Name" />
+      </div>
+      <div className="adt-septn-admission-row">
+        <label>Care Of Person Phone:</label>
+        <input type="text" className="adt-septn-admission-input" placeholder="Care Of Person Phone" />
+      </div>
+      </div>
+      <div className="adt-septn-admission-form-section">
+      <div className="adt-septn-admission-row">
+        <label>Care Of Person Relation:</label>
+        <select className="adt-septn-admission-select">
+          <option>Select Relation</option>
+          <option>Parent</option>
+          <option>Sibling</option>
+        </select>
+      </div>
+      <div className="adt-septn-admission-row">
+        <label>Deposit Balance:</label>
+        <span className="adt-septn-admission-deposit">Kshs. 0</span>
+      </div>
+    </div>
+
+    <div className="adt-septn-admission-form-section">
+      
+      <div className="adt-septn-admission-row">
+        <label>Deposit Amount:</label>
+        <input type="number" className="adt-septn-admission-input" placeholder="0" />
+      </div>
+      <div className="adt-septn-admission-row">
+        <label>Deposit Remarks:</label>
+        <input type="text" className="adt-septn-admission-input" placeholder="Deposit Remark" />
+      </div>
+    </div>
+
+    <div className="adt-septn-admission-form-section">
+      <div className="adt-septn-admission-row">
+        <label>Payment Options:</label>
+        <select className="adt-septn-admission-select">
+          <option>Cash</option>
+          <option>Credit</option>
+        </select>
+      </div>
+    </div>
+  </Modal.Body>
+  <Modal.Footer className="adt-septn-admission-footer">
+   
+    <Button variant="primary" onClick={handleClose} className='adt-septn-admission-footer-btn'>
+      Save Admission
+    </Button>
+  </Modal.Footer>
+</Modal>
     </div>
   );
 };

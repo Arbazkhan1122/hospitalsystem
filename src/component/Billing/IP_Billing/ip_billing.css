@@ -84,9 +84,9 @@
 .ipd-billing-tables{
   margin-top: auto;
 }
-.ipdbill-printbtn{ */
-  /* background-color:var(--button-color); */
-  /* background-color: #00c9c0;
+.ipdbill-printbtn{
+  background-color: #00c9c0;
+
  color: white; 
   padding: 5px;
   border-radius: 5px;
@@ -104,12 +104,3 @@
   justify-content: flex-end;
   gap: 20px;
 } */
-
-
-
-
-
-
-
-
-

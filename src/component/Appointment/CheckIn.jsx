@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './CheckIn.css';
 
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../api/api';
 
 const CheckIn = () => {
   const navigate = useNavigate();
@@ -85,7 +86,7 @@ const handleSubmit = async (e) => {
 
 
 
-  const apiUrl = 'http://192.168.42.16:1415/api/new-patient-visits/save-new-patient';
+  const apiUrl = `${API_BASE_URL}/new-patient-visits/save-new-patient`;
 
 
 

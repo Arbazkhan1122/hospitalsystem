@@ -4,6 +4,7 @@ import './NewVisitedList.css';
 import AddNewPateint from './AddNewPateint';
 import { useNavigate } from 'react-router-dom';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../api/api';
 
 const NewVisitedList = () => {
   const [patients, setPatients] = useState([]);
@@ -17,7 +18,7 @@ const NewVisitedList = () => {
     // Fetch data from the API when the component mounts
     const fetchPatients = async () => {
       try {
-        const response = await axios.get('http://192.168.42.16:1415/api/new-patient-visits');
+        const response = await axios.get(`${API_BASE_URL}/new-patient-visits`);
         // Transform API data to fit the table structure
         const formattedData = response.data.map(patient => ({
           patientNo: patient.newPatientVisitId, // Assuming `id` is used as hospital number
