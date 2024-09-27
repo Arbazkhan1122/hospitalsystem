@@ -50,6 +50,10 @@
   color: var(--button-hover-text-color);
 }
 
+.Inv-purchase-request-input-subDiv
+{
+  width: 80%;
+}
 
 
 .purchase-request-create-purchase-form {

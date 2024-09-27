@@ -1,5 +1,5 @@
 /* neha-Billing-IPD-billing-20/09/24 */
-.ipd_billing-container {
+/* .ipd_billing-container {
   padding: 20px;
   background-color: #f9f9f9; 
   border-radius: 8px; 
@@ -84,9 +84,9 @@
 .ipd-billing-tables{
   margin-top: auto;
 }
-.ipdbill-printbtn{
+.ipdbill-printbtn{ */
   /* background-color:var(--button-color); */
-  background-color: #00c9c0;
+  /* background-color: #00c9c0;
  color: white; 
   padding: 5px;
   border-radius: 5px;
@@ -103,7 +103,7 @@
   display: flex;
   justify-content: flex-end;
   gap: 20px;
-}
+} */
 
 
 

@@ -25,19 +25,20 @@ const Vitals = ({patientId,newPatientVisitId}) => {
   });
 
   useEffect(() => {
-    // Fetch vitals from API
-    axios
-      .get(`${API_BASE_URL}/vitals/get-by-opd-patient-id/${newPatientVisitId}`)
-      .then((response) => {
-        if (response.data.lgth > 0) {
-          setLatestVitals(response.data[response.data.length-1]); 
-          console.log(response.data[response.data.length-1]);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching vitals:", error);
-      });
-  }, []);
+    if (newPatientVisitId) {
+      axios
+        .get(`${API_BASE_URL}/vitals/get-by-opd-patient-id/${newPatientVisitId}`)
+        .then((response) => {
+          if (response.data.length > 0) {
+            setLatestVitals(response.data[response.data.length - 1]);
+            console.log(response.data);
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching vitals:", error);
+        });
+    }
+  }, [newPatientVisitId]);
 
 
   const handleAddVitals = () => {
@@ -117,10 +118,10 @@ const Vitals = ({patientId,newPatientVisitId}) => {
     }
   };
 
-  const handleEdit=(selectedVital)=>{
+  // const handleEdit=(selectedVital)=>{
     
 
-  }
+  // }
 
   return (
     <div className="vitals-container">
@@ -132,20 +133,54 @@ const Vitals = ({patientId,newPatientVisitId}) => {
         </button>
         </div>
         {latestVitals ? (
-        <ul>
-          <li><strong>Recorded On:</strong> {new Date(latestVitals.addedOn).toLocaleString()}</li>
-          <li><strong>Taken On:</strong> {new Date(latestVitals.addedOn).toLocaleString()}</li>
-          <li><strong>Height:</strong> {latestVitals.height} cm</li>
-          <li><strong>Weight:</strong> {latestVitals.weight} kg</li>
-          <li><strong>BMI:</strong> {latestVitals.bmi}</li>
-          <li><strong>Temperature:</strong> {latestVitals.temperature} °C</li>
-          <li><strong>Pulse:</strong> {latestVitals.pulse} bpm</li>
-          <li><strong>Blood Pressure:</strong> {latestVitals.bpSystolic}/{latestVitals.bpDiastolic} mmHg</li>
-          <li><strong>Respiratory Rate:</strong> {latestVitals.respiratoryRate} breaths/min</li>
-          <li><strong>SpO₂:</strong> {latestVitals.spO2} %</li>
-          <li><strong>O₂ Delivery Method:</strong> {latestVitals.o2DeliveryPlan}</li>
-          <li><strong>Pain Scale (/10):</strong> {latestVitals.painScale}</li>
-        </ul>
+        <div className="Patient-Dashboard-tableRecord">
+        <table className='Patient-Dashboard-patient-table'>
+          <tr>
+            <td className='Patient-Dashboard-td'>Recoreded On</td>
+            <td className='Patient-Dashboard-td'>{new Date(latestVitals?.addedOn).toLocaleString()}</td>
+          </tr>
+          <tr>
+            <td className='Patient-Dashboard-td'>Height</td>
+            <td className='Patient-Dashboard-td'> {latestVitals?.height} cm</td>
+          </tr>
+          <tr>
+            <td className='Patient-Dashboard-td'>Weight</td>
+            <td className='Patient-Dashboard-td'>{latestVitals?.weight}kg</td>
+          </tr>
+          <tr>
+            <td className='Patient-Dashboard-td'>BMI</td>
+            <td className='Patient-Dashboard-td'>{latestVitals?.bmi}</td>
+          </tr>
+          <tr>
+            <td className='Patient-Dashboard-td'>Temprature</td>
+            <td className='Patient-Dashboard-td'>{latestVitals?.temperature} °C</td>
+          </tr>
+          <tr>
+            <td className='Patient-Dashboard-td'>Pulse</td>
+            <td className='Patient-Dashboard-td'>{latestVitals?.pulse} bpm</td>
+          </tr>
+          <tr>
+            <td className='Patient-Dashboard-td'>Blood Pressure</td>
+            <td className='Patient-Dashboard-td'> {latestVitals?.bpSystolic}/{latestVitals?.bpDiastolic} mmHg</td>
+          </tr>
+          <tr>
+            <td className='Patient-Dashboard-td'>Respiratory Rate</td>
+            <td className='Patient-Dashboard-td'>{latestVitals?.respiratoryRate} breaths/min</td>
+          </tr>
+          <tr>
+            <td className='Patient-Dashboard-td'>SpO2</td>
+            <td className='Patient-Dashboard-td'> {latestVitals?.spO2} %</td>
+          </tr>
+          <tr>
+            <td className='Patient-Dashboard-td'>O2 Deliver Method</td>
+            <td className='Patient-Dashboard-td'> {latestVitals?.o2DeliveryPlan}</td>
+          </tr>
+          <tr>
+            <td className='Patient-Dashboard-td'>Pain Scale</td>
+            <td className='Patient-Dashboard-td'>{latestVitals?.painScale}</td>
+          </tr>
+        </table>
+      </div>
       ) : (
         <ul>
           {/* Empty ul to show no data */}

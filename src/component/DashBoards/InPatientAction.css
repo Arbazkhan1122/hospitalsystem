@@ -1,12 +1,4 @@
 /* swapnil Rokade Patient-Dashboard Adding className And color and table css 18/09 */
-
-/* * {
-  margin: 0;
-  padding: 0;
-
-} */
-
-
 .Patient-Dashboard-main-section {
   display: flex;
   justify-content: space-between;
@@ -92,9 +84,9 @@
   font-size: 16px;
 }
 
-.Patient-Dashboard-inputSection {
+/* .Patient-Dashboard-inputSection {
   padding-top: 15px;
-}
+} */
 
 .Patient-Dashboard-inputOne {
   height: 40px;

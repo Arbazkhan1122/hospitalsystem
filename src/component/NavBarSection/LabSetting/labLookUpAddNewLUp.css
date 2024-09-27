@@ -2,9 +2,12 @@
   width: 100%;
   /* max-width: 1200px; */
   margin: auto;
+  height: 100vh;
   border: 1px solid #ddd;
   padding: 14px;
   background-color: white;
+  overflow-y: scroll;
+  scrollbar-width: none;
   border-radius: 8px;
   /* font-family: Arial, sans-serif; */
   /* color: #525151; */

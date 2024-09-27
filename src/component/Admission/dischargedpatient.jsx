@@ -5,6 +5,7 @@ import { Modal, Button } from 'react-bootstrap';
 import './dischargedpatient.css';
 import { FaSearch } from 'react-icons/fa';
 import { startResizing } from '../../TableHeadingResizing/ResizableColumns';
+import { API_BASE_URL } from '../api/api';
 
 function DischargedPatient() {
   const [modalShow, setModalShow] = useState(false);
@@ -25,7 +26,7 @@ function DischargedPatient() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:1415/api/admissions/discharged-summary/Discharged');
+        const response = await axios.get(`${API_BASE_URL}/admissions/discharged-summary/Discharged`);
         console.log('API Response:', response.data); // Debugging API response
         setPatients(response.data);// Assuming the response is an object and needs to be wrapped in an array
         setLoading(false);

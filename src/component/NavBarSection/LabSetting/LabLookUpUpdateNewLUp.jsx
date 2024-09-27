@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../LabSetting/labLookUpAddNewLUp.css";
 import { API_BASE_URL } from '../../api/api';
 
-const LabLookUpAddNewLUp = ({ onClose }) => {
-  const [moduleName, setModuleName] = useState('Lab');
-  const [lookupName, setLookupName] = useState('');
-  const [description, setDescription] = useState('');
-  const [lookupData, setLookupData] = useState(['']);
+const LabLookUpUpdateNewLUp = ({ lookup, onClose }) => {
+  const [moduleName, setModuleName] = useState(lookup.moduleName || 'Lab');
+  const [lookupName, setLookupName] = useState(lookup.lookupName || '');
+  const [description, setDescription] = useState(lookup.description || '');
+  const [lookupData, setLookupData] = useState(lookup.lookupdata || ['']);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  console.log(lookup);
+  
 
   // Handle input changes for form fields
   const handleLookupDataChange = (index, value) => {
@@ -23,13 +26,13 @@ const LabLookUpAddNewLUp = ({ onClose }) => {
     setLookupData([...lookupData, '']);
   };
 
-  // Submit form data to backend API
+  // Submit form data to backend API to update the lookup
   const handleSubmit = async () => {
     if (!lookupName || lookupData.length === 0 || lookupData.some(item => item === '')) {
       setError('Please fill in all required fields');
       return;
     }
-    
+
     const payload = {
       moduleName,
       lookupName,
@@ -41,10 +44,10 @@ const LabLookUpAddNewLUp = ({ onClose }) => {
     setError('');
 
     try {
-      await axios.post(`${API_BASE_URL}/lab-lookups/create-lookup`, payload);
+      await axios.put(`${API_BASE_URL}/lab-lookups/update/${lookup}`, payload); // Assuming `lookup.id` is the unique identifier
       onClose(); // Close modal on successful submission
     } catch (err) {
-      setError('Failed to submit lookup. Please try again later.');
+      setError('Failed to update lookup. Please try again later.');
       console.error(err);
     } finally {
       setLoading(false);
@@ -54,7 +57,7 @@ const LabLookUpAddNewLUp = ({ onClose }) => {
   return (
     <div className="labLookUpAddNewLUp-container">
       <div className="labLookUpAddNewLUp-header">
-        <h3>Add Lookup</h3>
+        <h3>Update Lookup</h3>
         <button className="labLookUpAddNewLUp-close-btn" onClick={onClose}>x</button>
       </div>
 
@@ -71,7 +74,7 @@ const LabLookUpAddNewLUp = ({ onClose }) => {
               />
             </div>
           </div>
-          
+
           <div className="labLookUpAddNewLUp-form-group-1row">
             <div className="labLookUpAddNewLUp-form-group">
               <label>Look Up Name :<span>*</span></label>
@@ -125,11 +128,11 @@ const LabLookUpAddNewLUp = ({ onClose }) => {
           onClick={handleSubmit} 
           disabled={loading}
         >
-          {loading ? 'Submitting...' : 'Add'}
+          {loading ? 'Updating...' : 'Update'}
         </button>
       </div>
     </div>
   );
 };
 
-export default LabLookUpAddNewLUp;
+export default LabLookUpUpdateNewLUp;

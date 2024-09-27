@@ -25,6 +25,7 @@ const SurgicalHistory = ({patientId,newPatientVisitId}) => {
 
   const handleCloseModal = () => {
     setIsAddModalOpen(false);
+    setIsUpdateModalOpen(false)
     
   };
   const handleInputChange = (e) => {
@@ -52,7 +53,7 @@ const SurgicalHistory = ({patientId,newPatientVisitId}) => {
       .then((response) => {
         if (response.data.length > 0) {
           setSurgicalHistories(response.data);
-          // console.log(response.data);
+          console.log(response.data);
         }
       })
       .catch((error) => {
@@ -95,9 +96,11 @@ const SurgicalHistory = ({patientId,newPatientVisitId}) => {
 
 
   const handleUpdateSurgicalHistory = async () => {
+    console.log(updateSurgicalHistory);
+    
     try {
-      const response = await fetch(`${API_BASE_URL}/surgical-histories/save-surgical-history`, {
-        method: 'POST',
+      const response = await fetch(`${API_BASE_URL}/surgical-histories/update/${newSurgicalHistory.surgicalHistoryId}`, {
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },

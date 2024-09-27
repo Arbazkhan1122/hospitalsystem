@@ -1,38 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../LabSetting/labCategoryAddNewLC.css";
 import { API_BASE_URL } from '../../api/api';
 
-const LabCategoryAddNewLC = ({ onClose }) => {
+const LabCategoryUpdateNewLC = ({ labCategory, onClose }) => {
   const [labTestCategoryName, setLabTestCategoryName] = useState('');
   const [isDefault, setIsDefault] = useState(false);
-  const [isActive, setIsActive] = useState(true); // Assuming active status
+  const [isActive, setIsActive] = useState(true); 
   const [errorMessage, setErrorMessage] = useState('');
-  const [createdOn, setCreatedOn] = useState(new Date().toISOString()); // Set created date
+  const [createdOn, setCreatedOn] = useState(new Date().toISOString());
+  
+  // Prepopulate the form when the component mounts or labCategory changes
+  useEffect(() => {
+    if (labCategory) {
+      setLabTestCategoryName(labCategory.labTestCategoryName || '');
+      setIsDefault(labCategory.isDefault || false);
+      setIsActive(labCategory.isActive || true);
+      setCreatedOn(labCategory.createdOn || new Date().toISOString());
+    }
+  }, [labCategory]);
 
-  // handle form submission
-  const handleAddCategory = async () => {
+  // Handle form submission for updating the category
+  const handleUpdateCategory = async () => {
     if (!labTestCategoryName) {
       setErrorMessage('Category Name is required');
       return;
     }
 
-    // Prepare API payload
+    // Prepare API payload for updating the category
     const payload = {
-      labTestCategoryName, // Category name from state
-      isDefault,           // isDefault from state (true/false)
-      isActive,            // isActive (default true)
-      createdOn            // current date/time
+      labTestCategoryName, 
+      isDefault,
+      isActive,
+      createdOn
     };
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/lab-test-categories/create-testCategory`, payload);
-      if (response.status === 200 || response.status === 201) {
-        alert('Category added successfully!');
+      // Sending a PUT request to update the lab category
+      const response = await axios.put(`${API_BASE_URL}/lab-test-categories/update/${labCategory.labTestCategoryId}`, payload);
+      if (response.status === 200) {
+        alert('Category updated successfully!');
         onClose(); // Close the modal after success
       }
     } catch (error) {
-      setErrorMessage('Failed to add category. Please try again.');
+      setErrorMessage('Failed to update category. Please try again.');
       console.error(error);
     }
   };
@@ -40,7 +51,7 @@ const LabCategoryAddNewLC = ({ onClose }) => {
   return (
     <div className="labCategoryAddNewLC-container">
       <div className="labCategoryAddNewLC-header">
-        <h3>Add Lab Category</h3>
+        <h3>Update Lab Category</h3>
         <button className="labCategoryAddNewLC-close-btn" onClick={onClose}>x</button>
       </div>
 
@@ -77,10 +88,10 @@ const LabCategoryAddNewLC = ({ onClose }) => {
       </div>
 
       <div className="labCategoryAddNewLC-form-actions">
-        <button className="labCategoryAddNewLC-add-btn" onClick={handleAddCategory}>Add</button>
+        <button className="labCategoryAddNewLC-add-btn" onClick={handleUpdateCategory}>Update</button>
       </div>
     </div>
   );
 };
 
-export default LabCategoryAddNewLC;
+export default LabCategoryUpdateNewLC;

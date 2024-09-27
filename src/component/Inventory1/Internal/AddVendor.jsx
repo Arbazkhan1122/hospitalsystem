@@ -59,6 +59,7 @@ const AddVendor = ({ isOpen, onClose }) => {
 
         if (response.ok) {
           setSuccessMessage('Vendor added successfully!');
+          onClose(false);
           setErrorMessage('');
           // Clear form values if needed
           setFormValues({
@@ -125,11 +126,11 @@ const AddVendor = ({ isOpen, onClose }) => {
               error={errors.contactNumber}
             />
             <VendddFormRow
-              label="KRA PIN"
+              label="PIN CODE"
               name="kraPin"
               value={formValues.kraPin}
               onChange={handleInputChange}
-              placeholder="KRA PIN"
+              placeholder="PIN CODE"
             />
             <VendddFormRow
               label="Vendor Country"

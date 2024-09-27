@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './searchpatient.css';
 import { FaSearch } from 'react-icons/fa';
 import { startResizing } from '../../TableHeadingResizing/ResizableColumns';
+import { API_BASE_URL } from '../api/api';
 
 const SearchPatient = () => {
   const [patients, setPatients] = useState([]);
@@ -19,7 +20,7 @@ const SearchPatient = () => {
   // Fetch data from the new API
   useEffect(() => {
 
-    fetch('http://localhost:1415/api/new-patient-visits', {
+    fetch(`${API_BASE_URL}/new-patient-visits`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -115,7 +116,7 @@ const SearchPatient = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:1415/api/admissions/add-admission-details', {
+      const response = await fetch(`${API_BASE_URL}/admissions/add-admission-details`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

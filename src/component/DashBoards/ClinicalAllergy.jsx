@@ -8,7 +8,10 @@ const Allergy = ({ patientId, newPatientVisitId }) => {
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
   const [showForm, setShowForm] = useState(false);
+  const [showUpdateForm,setShowUpdateForm] = useState(false);
   const [allergies, setAllergies] = useState(null);
+  const [allergy,setAllergy]=useState({});
+  const [updateAllergy,setUpdateAllergy]= useState({});
   const [formData, setFormData] = useState({
     recordedDate: new Date().toLocaleDateString(),
     typeOfAllergy: "",
@@ -18,12 +21,26 @@ const Allergy = ({ patientId, newPatientVisitId }) => {
     comments: "",
   });
 
+
+
+  useEffect(() => {
+    setUpdateAllergy({
+      recordedDate: new Date().toLocaleDateString(),
+      typeOfAllergy: allergy.typeOfAllergy || "",
+      severity: allergy.severity || "",
+      verified: allergy.verified || "",
+      reaction: allergy.reaction || "",
+      comments: allergy.comments || ""
+    });
+  }, [allergy]);
+
   const handleAddNew = () => {
     setShowForm(true);
   };
 
   const handleCloseForm = () => {
     setShowForm(false);
+    setShowUpdateForm(false);
   };
   // Handle radio input for type of allergy
   const handleTypeOfAllergyChange = (e) => {
@@ -78,6 +95,38 @@ const Allergy = ({ patientId, newPatientVisitId }) => {
     }));
   };
 
+  const handleUpdateTypeOfAllergyChange = (e) => {
+    const { value } = e.target;
+    setUpdateAllergy((prevData) => ({
+      ...prevData,
+      typeOfAllergy: value,
+    }));
+  };
+
+  const handleUpdateSeverityChange = (e) => {
+    const { value } = e.target;
+    setUpdateAllergy((prevData) => ({
+      ...prevData,
+      severity: value,
+    }));
+  };
+
+  const handleUpdateVerifiedChange = (e) => {
+    const value = e.target.value === "true";
+    setUpdateAllergy((prevData) => ({
+      ...prevData,
+      verified: value,
+    }));
+  };
+
+  const handleUpdateInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdateAllergy((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -98,6 +147,39 @@ const Allergy = ({ patientId, newPatientVisitId }) => {
 
       if (response.ok) {
         alert("Allergy added successfully!");
+        setShowForm(false);
+        setFormData({
+          typeOfAllergy: "",
+          severity: "",
+          verified: null,
+          reaction: "",
+          comments: "",
+        });
+      } else {
+        alert("Failed to add allergy");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error submitting form");
+    }
+  }; 
+
+
+
+  const handleUpdateSubmit = async (e) => {
+    e.preventDefault();    
+    try {
+      const response = await fetch(`${API_BASE_URL}/allergies/update/${allergy.allergiesId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateAllergy),
+      });
+
+      if (response.ok) {
+        alert("Allergy added successfully!");
+        setShowUpdateForm(false);
         setFormData({
           typeOfAllergy: "",
           severity: "",
@@ -113,6 +195,13 @@ const Allergy = ({ patientId, newPatientVisitId }) => {
       alert("Error submitting form");
     }
   };
+
+  const updateAllergies = (allergies)=>{
+    console.log(allergies);
+    
+    setAllergy(allergies);
+    setShowUpdateForm(true);
+  }
 
   return (
     <div className="allergy-container">
@@ -161,12 +250,12 @@ const Allergy = ({ patientId, newPatientVisitId }) => {
                   <td>{allergy.recordedDate}</td>
                   <td>{allergy.typeOfAllergy}</td>
                   <td>{allergy.severity}</td>
-                  <td>{allergy.verified ? "Yes" : "No"}</td>
                   <td>{allergy.reaction}</td>
+                  <td>{allergy.verified ==="true" ? "Yes" : "No"}</td>
                   <td>{allergy.comments}</td>
                   <td>
                     {/* You can add an edit button here */}
-                    <button>Edit</button>
+                    <button onClick={()=>updateAllergies(allergy)}>Edit</button>
                   </td>
                 </tr>
               ))
@@ -304,6 +393,135 @@ const Allergy = ({ patientId, newPatientVisitId }) => {
 
               <button type="submit" className="allergy-add-button">
                 Add
+              </button>
+            </form>
+          </div>
+        )}
+
+{showUpdateForm && (
+          <div className="add-allergy-form">
+            <div className="allergy-form-header">
+              <h3>Update Allergy</h3>
+              <button
+                className="allergy-close-button"
+                onClick={handleCloseForm}
+              >
+                ✖
+              </button>
+            </div>
+            <form onSubmit={handleUpdateSubmit}>
+              <div className="allergy-form-row">
+                <label>Type Of Allergy*:</label>
+                <div className="allergy-form-row-subdiv">
+                  <input
+                    type="radio"
+                    value="Medication"
+                    name="typeOfAllergy"
+                    onChange={handleUpdateTypeOfAllergyChange}
+                  />{" "}
+                  Medication
+                  <input
+                    type="radio"
+                    value="Non Medication"
+                    name="typeOfAllergy"
+                    onChange={handleUpdateTypeOfAllergyChange}
+                  />{" "}
+                  Non Medication
+                  <input
+                    type="radio"
+                    value="Food"
+                    name="typeOfAllergy"
+                    onChange={handleUpdateTypeOfAllergyChange}
+                  />{" "}
+                  Food
+                  <input
+                    type="radio"
+                    value="AdvRec"
+                    name="typeOfAllergy"
+                    onChange={handleUpdateTypeOfAllergyChange}
+                  />{" "}
+                  AdvRec
+                </div>
+              </div>
+
+              <div className="allergy-form-row">
+                <label>Severity:</label>
+                <div className="allergy-form-row-subdiv">
+                  <input
+                    type="radio"
+                    value="Mild"
+                    name="severity"
+                    onChange={handleUpdateSeverityChange}
+                  />{" "}
+                  Mild
+                  <input
+                    type="radio"
+                    value="Moderate"
+                    name="severity"
+                    onChange={handleUpdateSeverityChange}
+                  />{" "}
+                  Moderate
+                  <input
+                    type="radio"
+                    value="Severe"
+                    name="severity"
+                    onChange={handleUpdateSeverityChange}
+                  />{" "}
+                  Severe
+                </div>
+              </div>
+
+              <div className="allergy-form-row">
+                <label>Verified:</label>
+                <div className="allergy-form-row-subdiv">
+                  <input
+                    type="radio"
+                    name="verified"
+                    value="unknown"
+                    onChange={handleUpdateVerifiedChange}
+                  />{" "}
+                  Unknown
+                  <input
+                    type="radio"
+                    name="verified"
+                    value="true"
+                    onChange={handleUpdateVerifiedChange}
+                  />{" "}
+                  Yes
+                  <input
+                    type="radio"
+                    name="verified"
+                    value="false"
+                    onChange={handleUpdateVerifiedChange}
+                    defaultChecked
+                  />{" "}
+                  No
+                </div>
+              </div>
+
+              <div className="allergy-form-row">
+                <label>Reaction*:</label>
+                <input
+                  type="text"
+                  name="reaction"
+                  placeholder="Reaction"
+                  value={updateAllergy.reaction}
+                  onChange={handleUpdateInputChange}
+                />
+              </div>
+
+              <div className="allergy-form-row">
+                <label>Comments:</label>
+                <textarea
+                  name="comments"
+                  placeholder="Comments"
+                  value={updateAllergy.comments}
+                  onChange={handleUpdateInputChange}
+                ></textarea>
+              </div>
+
+              <button type="submit" className="allergy-add-button">
+                Update
               </button>
             </form>
           </div>

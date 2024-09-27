@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Activeproblems.css"; // Import the CSS file for styling
 import { Label } from "recharts";
 import { startResizing } from "../TableHeadingResizing/resizableColumns";
@@ -58,6 +58,8 @@ const ActiveProblems = ({ patientId, newPatientVisitId }) => {
         );
         if (response.ok) {
           const data = await response.json();
+          console.log(data);
+          
           setActiveProblems(data);
         } else {
           console.error("Failed to fetch active problems");
@@ -180,15 +182,15 @@ const ActiveProblems = ({ patientId, newPatientVisitId }) => {
                   {activeProblems.map((problem, index) => (
                     <tr key={index}>
                       <td className="actproblem-tabledata">
-                        {problem.description}
+                        {problem.searchProblem}
                       </td>
-                      <td className="actproblem-tabledata">{problem.date}</td>
-                      <td className="actproblem-tabledata">{problem.notes}</td>
+                      <td className="actproblem-tabledata">{problem.onsetDate}</td>
+                      <td className="actproblem-tabledata">{problem.note}</td>
                       <td className="actproblem-tabledata">
                         <input
                           type="checkbox"
                           disabled
-                          checked={problem.resolved}
+                          checked={problem.isPrincipalProblem}
                         />
                       </td>
                       <td className="actproblem-tabledata">

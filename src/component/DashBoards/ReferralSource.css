@@ -1,78 +1,73 @@
 /* swapnil Rokade ReferralSource Adding className And color and table css 18/09 */
 .hist-container {
-    width: 100%;
-    padding: 10px;
-    background-color: #f5f6fa; /* Light gray background color */
-  }
-  
-  .hist-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid #e1f5fe; /* Light blue border */
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-  }
-  
-  .hist-required {
-    color: red;
-    font-size: 20px;
-    margin-right: 5px;
-  }
-  
-  .hist-title {
-    font-size: var(--heading-font);
-    font-weight: bold;
-    color: black; /* Dark blue color */
-  }
-  
-  .hist-add-button {
-    background-color: var(--button-color); /* Purple background color */
-    color: white;
-    padding: 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .hist-add-button:hover {
-    background-color: var(--button-hover-background-color); /* Darker purple on hover */
-  }
-  
-  .hist-problem-list-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .hist-problem-list-table th {
-    background-color: #e1f5fe; /* Light blue header background */
-    color: #607d8b; /* Grayish text color */
-    padding: 10px;
-    text-align: left;
-    font-weight: normal;
-    font-size: 14px;
-    border-bottom: 2px solid #e1f5fe;
-  }
-  
-  .hist-problem-list-table th:first-child {
-    border-top-left-radius: 5px;
-  }
-  
-  .hist-problem-list-table th:last-child {
-    border-top-right-radius: 5px;
-  }
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+}
+
+.hist-main {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hist-subdiv{
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hist {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.hist-section {
+  margin-bottom: 20px;
+}
+
+.hist-section label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* .add-button {
+  background-color: #4c5baf;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+} */
+.hist-subdiv
+{
+width: 100%;
+display: flex;
+justify-content: space-between;
+}
+
+.hist-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.hist-table th,
+.hist-table td {
+  padding: 8px;
+  text-align: left;
+}
+
+.hist-table th {
+  background-color: #f2f2f2;
+}
 
   .hist-modal-overlay {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
   }
   
@@ -81,13 +76,16 @@
     padding: 20px;
     border-radius: 5px;
     width: 400px;
+    height: 70%;
+    overflow-y: scroll;
+    scrollbar-width: none;
     position: relative;
   }
   
   .hist-close-button {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0px;
+    right: 0px;
     background: none;
     border: none;
     font-size: var(--heading-font);

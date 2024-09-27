@@ -13,6 +13,7 @@ import Allergy from './ClinicalAllergy';
 import CinicalDocument from './ClinicalDocuments';
 import axios from 'axios';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import RadiologyReportDoc from './RadiologyReportDoc';
 
 const Section = ({ title, handleAddClick, children }) => (
   <div className="Patient-Dashboard-firstBox">
@@ -31,12 +32,17 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
   
   const [columnWidths,setColumnWidths] = useState({});
   const tableRef = useRef(null);
+  const [selectedRadiology, setSelectedRadiology] = useState(null);
   const [activeSection, setActiveSection] = useState('dashboard'); 
   const [prevAction, setPrevAction] = useState('dashboard');
   const [latestVitals, setLatestVitals] = useState(null);
   const [medications, setMedications] = useState([]);
   const [filteredMedications, setFilteredMedications] = useState([]);
   const [allergies,setAllergies]=useState(null);
+  const [activeProblem,setActiveProblem] = useState([]);
+  const [radiology,setRadiology] = useState([]);
+  const [LabRequest,setLabRequest] = useState([]);
+  const [showRadioReport,setShowRadioReport] = useState(false);
 
   useEffect(() => {
     // Fetch medications data from the API
@@ -72,7 +78,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
   }, [setIsPatientOPEN,isPatientOPEN]);
 
   useEffect(() => {
-    // Fetch vitals from API
     axios
       .get(
         `${API_BASE_URL}/allergies/by-newVisitPatientId/${patient.newPatientVisitId}`
@@ -80,13 +85,61 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
       .then((response) => {
         if (response.data.length > 0) {
           setAllergies(response.data);
-          // console.log(response.data);
         }
       })
       .catch((error) => {
         console.error("Error fetching vitals:", error);
       });
   }, []);
+
+
+  useEffect(() => {
+    axios
+      .get(
+        `${API_BASE_URL}/active-problems/by-newVisitPatientId/${patient.newPatientVisitId}`
+      )
+      .then((response) => {
+        if (response.data.length > 0) {
+          setActiveProblem(response.data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching vitals:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(
+        `${API_BASE_URL}/imaging-requisitions/by-opd-patient-id?opdPatientId=${patient.newPatientVisitId}`
+      )
+      .then((response) => {
+        if (response.data.length > 0) {
+          console.log(response.data);
+          
+          setRadiology(response.data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching vitals:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(
+        `${API_BASE_URL}/lab-requests/by-opd-patient-id?opdPatientId=${patient.newPatientVisitId}`
+      )
+      .then((response) => {
+        if (response.data.length > 0) {
+          console.log(response.data);
+          setLabRequest(response.data);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching vitals:", error);
+      });
+  }, [patient.newPatientVisitId]);
  
 
  useEffect(() => {
@@ -102,6 +155,11 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
     setFilteredMedications(filtered);
   }
 }, [medications, patient.patientId, patient.newPatientVisitId]);
+
+const ShowImagingReport =(item)=>{
+  setSelectedRadiology(item);
+  setShowRadioReport(true);
+}
 
 
 
@@ -240,6 +298,33 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
                 setActiveSection("actionRecord");
                 setPrevAction(activeSection);
               }}
+              children={<> {LabRequest.length > 0 ? (
+                <div className='Patient-Dashboard-inputSection'>
+              <table border="1" cellPadding="10" cellSpacing="0" className='patient-table'>
+                <thead>
+                  <tr>
+                    <th className='Patient-Dashboard-th'>Test</th>
+                    <th className='Patient-Dashboard-th'>Date</th>
+                    <th className='Patient-Dashboard-th'>Result</th>
+                  
+
+                  </tr>
+                </thead>
+                <tbody>
+                  {LabRequest.map((radiology,index) => (
+                    <tr key={index}>
+                      <td className='Patient-Dashboard-td'>{radiology.labTestName}</td>
+                      <td className='Patient-Dashboard-td'>{radiology.requisitionDate}</td>
+                      <td className='Patient-Dashboard-td'>{radiology.status}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              </div>
+            ) : (
+              <p>No Radiology order for this patient or visit.</p>
+            )}</>}
+              
             />
         </div>
 
@@ -247,6 +332,35 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
             <Section
               title="🖼 Imaging"
               handleAddClick={() => setActiveSection("actionRecord")}
+              children={<> {radiology.length > 0 ? (
+                <div className='Patient-Dashboard-inputSection'>
+              <table border="1" cellPadding="10" cellSpacing="0" className='patient-table'>
+                <thead>
+                  <tr>
+                    <th className='Patient-Dashboard-th'>Type</th>
+                    <th className='Patient-Dashboard-th'>Item</th>
+                    <th className='Patient-Dashboard-th'>Date</th>
+                    <th className='Patient-Dashboard-th'>Status</th>
+                  
+
+                  </tr>
+                </thead>
+                <tbody>
+                  {radiology.map((radiology,index) => (
+                    <tr key={index}>
+                      <td className='Patient-Dashboard-td'>{radiology.imagingTypeDTO.imagingTypeName}</td>
+                      <td className='Patient-Dashboard-td'>{radiology.imagingItemDTO.imagingItemName}</td>
+                      <td className='Patient-Dashboard-td'>{radiology.requestedDate}</td>
+                      <td className='Patient-Dashboard-td'>{radiology.status ==="Completed"?(<><button onClick={()=>ShowImagingReport(radiology)}>View</button></>):radiology.status}</td>
+                      
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              </div>
+            ) : (
+              <p>No Radiology order for this patient or visit.</p>
+            )}</>}
             />
         </div>
 
@@ -254,6 +368,30 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
             <Section
               title="⚠ Active Problems"
               handleAddClick={() => setActiveSection("problems")}
+              children={<> {activeProblem.length > 0 ? (
+                <div className='Patient-Dashboard-inputSection'>
+              <table border="1" cellPadding="10" cellSpacing="0" className='patient-table'>
+                <thead>
+                  <tr>
+                    <th className='Patient-Dashboard-th'>Problem</th>
+                    <th className='Patient-Dashboard-th'>Onset Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {activeProblem.map((active) => (
+                    <tr key={active.activeId}>
+                      <td className='Patient-Dashboard-td'>{active.searchProblem}</td>
+                      <td className='Patient-Dashboard-td'>{active.onsetDate}</td>
+                  
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              </div>
+            ) : (
+              <p>No medications found for this patient or visit.</p>
+            )}</>}
+
             />
         </div>
 
@@ -398,7 +536,7 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
               ))
             ) : (
               <tr>
-                <td colSpan="7">No allergies found</td>
+                <td colSpan="4">No allergies found</td>
               </tr>
             )}
           </tbody>
@@ -407,8 +545,15 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
           />
         </div>
       </aside>
+      {showRadioReport && (
+      <RadiologyReportDoc 
+      reportData={selectedRadiology} 
+        onClose={() => setShowRadioReport(false)} 
+      />
+    )}
     </div>
   );
+ 
 
   return (
     <div

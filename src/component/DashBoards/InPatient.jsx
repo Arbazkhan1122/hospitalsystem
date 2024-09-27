@@ -18,125 +18,14 @@ const PatientList = () => {
   const [filterPending, setFilterPending] = useState(false);
   const tableRef = useRef();
 
-
-  const newPatient = [
-    {
-      "newPatientVisitId": 1,
-      "firstName": "John",
-      "middleName": "A.",
-      "lastName": "Doe",
-      "haveDOB": true,
-      "religion": "Christianity",
-      "age": 30,
-      "gender": "Male",
-      "phoneNumber": "1234567890",
-      "landlineNumber": "0987654321",
-      "address": "123 Main St",
-      "email": "john.doe@example.com",
-      "careOfPerson": "Jane Doe",
-      "relationWithPatient": "Spouse",
-      "careOfPersonContact": "0987654321",
-      "visitType": "Consultation",
-      "visitDate": "2024-08-30",
-      "visitTime": "10:00:00",
-      "referredBy": "Dr. Smith",
-      "isExternal": "No",
-      "discount": 10.0,
-      "discountPercentage": 5.0,
-      "discountAmount": 50.0,
-      "subTotal": 200.0,
-      "totalAmount": 150.0,
-      "changeReturn": 20.0,
-      "tender": 150.0,
-      "paymentOptions": "Cash",
-      "department": null,
-      "patientQueue": {
-          "patientQueueId": 1,
-          "date": "2024-01-01",
-          "hospitalNumber": null,
-          "name": "John Doe",
-          "phone": "1234567890",
-          "ageSex": null,
-          "department": "Operation Theater",
-          "visitType": "No",
-          "appointmentType": "Consultation",
-          "queueNumber": "QN-1",
-          "employeeId": 0,
-          "status": null,
-          "newPatientVisitDTO": null,
-          "employeeDTO": null
-      },
-      "employeeDTO": {
-          "employeeId": 1,
-          "salutation": "Dr.",
-          "firstName": "Arbaz",
-          "middleName": "s.",
-          "lastName": "Pathan",
-          "dateOfBirth": "1990-01-01",
-          "gender": "Male",
-          "kmpdcNo": null,
-          "knncNo": null,
-          "knhpcNo": null,
-          "contactNumber": "1234567890",
-          "emailId": "john.doe@example.com",
-          "signatureShort": "J.D",
-          "signatureLong": "John Doe",
-          "dateOfJoining": "2020-08-23",
-          "contactAddress": "123, Elm Street, Nairobi",
-          "kraPin": null,
-          "taxPercentage": null,
-          "isIncentiveApplicable": null,
-          "extension": null,
-          "speedDial": null,
-          "officeHour": "9 AM - 5 PM",
-          "roomNo": null,
-          "bloodGroup": null,
-          "drivingLicenseNo": null,
-          "isActive": true,
-          "radiologySignature": "John Doe Rad",
-          "displaySequence": 1,
-          "signatureImage": "signature_image_path",
-          "appointmentApplicable": true,
-          "userName": null,
-          "password": null,
-          "departmentDTO": {
-              "departmentId": 1,
-              "departmentCode": null,
-              "departmentName": "Cardiology",
-              "parentDepartmentName": null,
-              "description": null,
-              "noticeText": null,
-              "departmentHead": null,
-              "roomNumber": null,
-              "employees": null,
-              "active": false,
-              "appointmentApplicable": false
-          },
-          "employeeRoleDTO": {
-              "employeeRoleId": 1,
-              "role": "Doctor",
-              "description": null,
-              "isActive": true
-          },
-          "employeeTypeDTO": {
-              "employeeTypeId": 1,
-              "employeeType": "Full-time",
-              "description": null,
-              "isActive": true
-          }
-      },
-      "medicineDetails": null,
-      "medicineBill": null,
-      "opd": true
-  },
-  ]
-
   // Fetch patients from the API
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/new-patient-visits`);
+        const response = await fetch(`${API_BASE_URL}/patients/getAllPatients`);
         const data = await response.json();
+        console.log(data);
+        
         setPatients(data);
       } catch (error) {
         console.error('Error fetching patient data:', error);
@@ -253,11 +142,11 @@ const PatientList = () => {
             </tr>
           </thead>
         <tbody>
-          {newPatient.map((patient, index) => (
+          {patients.map((patient, index) => (
             <tr key={index}>
               <td>{patient.hospitalNo}</td>
               <td>{`${patient.firstName} ${patient.lastName}`}</td>
-              <td>{patient.age}/{patient.sex}</td>
+              <td>{patient.age}/{patient.gender}</td>
               <td>{patient.admissionStatus}</td>
               <td>{patient.admittedOn}</td>
               <td>{patient.wardBed}</td>

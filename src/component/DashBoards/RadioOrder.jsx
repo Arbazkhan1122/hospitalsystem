@@ -2,68 +2,59 @@ import React, { useState, useEffect } from 'react';
 import { API_BASE_URL } from '../api/api';
 
 const RadioOrder = ({ selectedOrders, setActiveSection, patientId, newPatientVisitId, employeeId }) => {
-  const [labTestName, setLabTestName] = useState('');
-  const [urgency, setUrgency] = useState('Normal');
-  const [note, setNote] = useState('');
+  const [orders, setOrders] = useState([]);
 
-  // Use useEffect to autofill form fields based on selected orders
+  // Use useEffect to initialize the orders state with selectedOrders data
   useEffect(() => {
     if (selectedOrders.length > 0) {
-      const firstOrder = selectedOrders[0]; // Assuming you're autofilling from the first selected order
-      setLabTestName(firstOrder.imagingItemName || ''); // Autofill labTestName from the first selected order
-      setUrgency(firstOrder.urgency || 'Normal'); // Autofill urgency if available
-      setNote(firstOrder.requisitionRemark || ''); // Autofill note from requisition remark
+      // Initialize the form fields with the values from the selected orders
+      const initializedOrders = selectedOrders.map((order) => ({
+        imagingItemName: order.imagingItemName || '',
+        urgency: order.urgency || 'Normal',
+        note: order.requisitionRemark || '',
+        imagingTypeId: order.imagingType.imagingTypeId,
+        imagingItemId: order.imagingItemId
+      }));
+      setOrders(initializedOrders);
     }
-  }, [selectedOrders]); // Dependency on selectedOrders
+  }, [selectedOrders]);
 
   const handleSign = async () => {
-    const requisitionData = selectedOrders.map((order) => ({
+    const requisitionData = orders.map((order) => ({
       requisitionDTO: {
-        patientDTO: {
-          patientId: patientId,
-        },
-        newPatientVisitDto:{
-          newPatientVisitId:newPatientVisitId
-        },
+        ...(newPatientVisitId ? {
+          newPatientVisitDTO: {
+            newPatientVisitId: newPatientVisitId
+          }
+        } : {
+          patientDTO: {
+            patientId: patientId
+          }
+        }),
         imagingTypeDTO: {
           imagingTypeId: order.imagingTypeId,
         },
         imagingItemDTO: {
           imagingItemId: order.imagingItemId,
         },
-        procedureCode: order.procedureCode,
-        requisitionRemark: note,
-        orderStatus: 'PENDING',
+        requisitionRemark: order.note,
         prescriberDTO: {
           employeeId: employeeId,
         },
-        urgency: urgency,
+        urgency: order.urgency,
         requestedDate: new Date().toISOString().split('T')[0],
         requestedTime: new Date().toISOString().split('T')[1].split('.')[0],
-        hasInsurance: '',
-        wardName: '',
+        hasInsurance: 'No',
+        wardName: 'Male Ward',
         isActive: 'Yes',
-        isScanned: '',
-        type: labTestName,
+        type: order.imagingItemName,
         status: 'Pending',
         signatureList: '',
-      },
-      serviceBilling: {
-        serviceName: order.serviceName,
-        serviceFee: order.serviceFee,
-        discount: 0.0,
-        totalServiceFee: order.serviceFee,
-        department: 'Radiology',
-        patient: {
-          patientId: patientId,
-        },
-        services: {
-          serviceId: order.serviceId,
-        },
-      },
+      }
     }));
 
     try {
+      console.log(requisitionData);
       const response = await fetch(`${API_BASE_URL}/imaging-requisitions/createMultiple`, {
         method: 'POST',
         headers: {
@@ -73,8 +64,7 @@ const RadioOrder = ({ selectedOrders, setActiveSection, patientId, newPatientVis
       });
 
       if (response.ok) {
-        const result = await response.json();
-        console.log('Submission successful:', result);
+        console.log('Submission successful:');
         handleCancel(); // Reset form
       } else {
         console.error('Error submitting form:', response.statusText);
@@ -86,9 +76,14 @@ const RadioOrder = ({ selectedOrders, setActiveSection, patientId, newPatientVis
 
   const handleCancel = () => {
     setActiveSection(true);
-    setLabTestName('');
-    setUrgency('Normal');
-    setNote('');
+    setOrders([]);
+  };
+
+  // Function to handle changes to each field for each order
+  const handleOrderChange = (index, field, value) => {
+    const updatedOrders = [...orders];
+    updatedOrders[index][field] = value;
+    setOrders(updatedOrders);
   };
 
   return (
@@ -103,54 +98,56 @@ const RadioOrder = ({ selectedOrders, setActiveSection, patientId, newPatientVis
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <input
-                type="text"
-                value={labTestName}
-                onChange={(e) => setLabTestName(e.target.value)}
-                className="RadioOrder-input"
-              />
-            </td>
-            <td>
-              <div className="RadioOrder-radio-group">
-                <label>
-                  <input
-                    type="radio"
-                    value="Normal"
-                    checked={urgency === 'Normal'}
-                    onChange={(e) => setUrgency(e.target.value)}
-                  />
-                  Normal
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    value="Urgent"
-                    checked={urgency === 'Urgent'}
-                    onChange={(e) => setUrgency(e.target.value)}
-                  />
-                  Urgent
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    value="STAT"
-                    checked={urgency === 'STAT'}
-                    onChange={(e) => setUrgency(e.target.value)}
-                  />
-                  STAT
-                </label>
-              </div>
-            </td>
-            <td>
-              <textarea
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
-                className="table-textarea"
-              />
-            </td>
-          </tr>
+          {orders.map((order, index) => (
+            <tr key={index}>
+              <td>
+                <input
+                  type="text"
+                  value={order.imagingItemName}
+                  onChange={(e) => handleOrderChange(index, 'imagingItemName', e.target.value)}
+                  className="RadioOrder-input"
+                />
+              </td>
+              <td>
+                <div className="RadioOrder-radio-group">
+                  <label>
+                    <input
+                      type="radio"
+                      value="Normal"
+                      checked={order.urgency === 'Normal'}
+                      onChange={(e) => handleOrderChange(index, 'urgency', e.target.value)}
+                    />
+                    Normal
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      value="Urgent"
+                      checked={order.urgency === 'Urgent'}
+                      onChange={(e) => handleOrderChange(index, 'urgency', e.target.value)}
+                    />
+                    Urgent
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      value="STAT"
+                      checked={order.urgency === 'STAT'}
+                      onChange={(e) => handleOrderChange(index, 'urgency', e.target.value)}
+                    />
+                    STAT
+                  </label>
+                </div>
+              </td>
+              <td>
+                <textarea
+                  value={order.note}
+                  onChange={(e) => handleOrderChange(index, 'note', e.target.value)}
+                  className="table-textarea"
+                />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
       <div className="RadioOrder-action-container">
@@ -163,6 +160,6 @@ const RadioOrder = ({ selectedOrders, setActiveSection, patientId, newPatientVis
       </div>
     </div>
   );
-}
+};
 
 export default RadioOrder;

@@ -12,7 +12,7 @@
   
   .rd-billing-title {
     font-size: 24px;
-    /* color: #333; */
+    color: #333;
   }
   
   .rd-billing-controls {
@@ -64,7 +64,6 @@
     background-color:var(--button-color);
     padding: 5px;
     font-size: 14px;
-    border:1px solid var(--button-hover-border-color) ;
   }
 
   .rd-btn.print-btn:hover{
@@ -147,9 +146,6 @@
     gap: 15px;
     padding: 20px;
     background-color: white;
-    
-    
-
   }
 
  
@@ -213,4 +209,15 @@
   }
   
 
- 
+  /* .modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center; */
+    /* min-height: 90vh;  */
+  /* }
+  
+  .modal-content {
+    width: 100%;
+    max-width: 800px; 
+  } */
+  

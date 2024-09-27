@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css'; // Make sure this contains relevant styles
+import { API_BASE_URL } from '../api/api';
 
 const SettingItemType = () => {
   const [itemTypes, setItemTypes] = useState([]);
@@ -13,7 +14,7 @@ const SettingItemType = () => {
 
   // Fetch item types from API
   useEffect(() => {
-    axios.get('http://localhost:1415/api/itemtypes')
+    axios.get(`${API_BASE_URL}/itemtypes`)
       .then(response => {
         console.log('Data fetched successfully:', response.data); // Debugging line
         setItemTypes(response.data);
@@ -49,7 +50,7 @@ const SettingItemType = () => {
     };
 
     if (formMode === 'Add') {
-      axios.post('http://localhost:1415/api/itemtypes', itemTypeData)
+      axios.post(`${API_BASE_URL}/itemtypes`, itemTypeData)
         .then(response => {
           setItemTypes([...itemTypes, response.data]);
           handleCloseModal();
@@ -58,7 +59,7 @@ const SettingItemType = () => {
           console.error('There was an error adding the item type!', error);
         });
     } else if (formMode === 'Edit') {
-      axios.put(`http://localhost:1415/api/itemtypes/${selectedItem.id}`, itemTypeData)
+      axios.put(`${API_BASE_URL}/itemtypes/${selectedItem.id}`, itemTypeData)
         .then(response => {
           const updatedItemTypes = itemTypes.map(item =>
             item.id === selectedItem.id ? response.data : item

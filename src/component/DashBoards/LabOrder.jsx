@@ -1,23 +1,73 @@
-
 import React, { useState } from 'react';
 import './LabOrder.css';
+import { API_BASE_URL } from '../api/api';
 
-const LabOrder = ({selectedOrders,setActiveSection,patientId,newPatientVisitId}) => {
-  const [labTestName, setLabTestName] = useState('');
-  const [urgency, setUrgency] = useState('Normal');
-  const [note, setNote] = useState('');
+const LabOrder = ({ selectedOrders, setActiveSection, patientId, newPatientVisitId }) => {
+  const [ordersData, setOrdersData] = useState(
+    selectedOrders.map(order => ({
+      labTestName: order.labTestName || '',
+      urgency: order.urgency || 'Normal',
+      note: order.note || '',
+    }))
+  );
 
-  const handleSign = () => {
-    // Handle sign logic here
-    console.log('Signed:', { labTestName, urgency, note });
+  // Handle updating the form values
+  const handleInputChange = (index, field, value) => {
+    const updatedOrders = [...ordersData];
+    updatedOrders[index][field] = value;
+    setOrdersData(updatedOrders);
+  };
+
+  const handleSign = async () => {
+    // Prepare the payload data for the request
+    const payload = {
+      labTestName: ordersData[0].labTestName,  // Assuming you're sending only the first order's lab test name
+      urgency: ordersData[0].urgency,
+      note: ordersData[0].note,
+      status: "Pending", 
+      requisitionDate: new Date().toISOString().slice(0, 10), // Current date in 'YYYY-MM-DD' format
+      runNumber: "RN12345", // Example run number
+      labTestIds: selectedOrders.map(order => order.labTestId),  // Assuming each order contains labTestId
+    };
+
+    const formData =
+        patientId > 0
+          ? { ...payload, patientDTO: { patientId } }
+          : { ...payload, newPatientVisitDTO: { newPatientVisitId } };
+    console.log(formData);
+
+    try {
+      console.log(formData);
+      
+      const response = await fetch(`${API_BASE_URL}/lab-requests/create`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log('Lab order created successfully:');
+        setActiveSection();
+      } else {
+        // Handle error response
+        console.error('Error creating lab order:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+    }
   };
 
   const handleCancel = () => {
-    // Handle cancel logic here
+    setOrdersData(
+      selectedOrders.map(order => ({
+        labTestName: order.labTestName || '',
+        urgency: 'Normal',
+        note: '',
+      }))
+    );
     console.log('Cancelled');
-    setLabTestName('');
-    setUrgency('Normal');
-    setNote('');
   };
 
   return (
@@ -32,55 +82,57 @@ const LabOrder = ({selectedOrders,setActiveSection,patientId,newPatientVisitId})
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <input
-                type="text"
-                value={labTestName}
-                onChange={(e) => setLabTestName(e.target.value)}
-                placeholder="CREATININE"
-                className="table-input"
-              />
-            </td>
-            <td>
-              <div className="radio-group">
-                <label>
-                  <input
-                    type="radio"
-                    value="Normal"
-                    checked={urgency === 'Normal'}
-                    onChange={(e) => setUrgency(e.target.value)}
-                  />
-                  Normal
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    value="Urgent"
-                    checked={urgency === 'Urgent'}
-                    onChange={(e) => setUrgency(e.target.value)}
-                  />
-                  Urgent
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    value="STAT"
-                    checked={urgency === 'STAT'}
-                    onChange={(e) => setUrgency(e.target.value)}
-                  />
-                  STAT
-                </label>
-              </div>
-            </td>
-            <td>
-              <textarea
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
-                className="table-textarea"
-              />
-            </td>
-          </tr>
+          {ordersData.map((order, index) => (
+            <tr key={index}>
+              <td>
+                <input
+                  type="text"
+                  value={order.labTestName}
+                  onChange={(e) => handleInputChange(index, 'labTestName', e.target.value)}
+                  placeholder="Enter Lab Test Name"
+                  className="table-input"
+                />
+              </td>
+              <td>
+                <div className="radio-group">
+                  <label>
+                    <input
+                      type="radio"
+                      value="Normal"
+                      checked={order.urgency === 'Normal'}
+                      onChange={(e) => handleInputChange(index, 'urgency', e.target.value)}
+                    />
+                    Normal
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      value="Urgent"
+                      checked={order.urgency === 'Urgent'}
+                      onChange={(e) => handleInputChange(index, 'urgency', e.target.value)}
+                    />
+                    Urgent
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      value="STAT"
+                      checked={order.urgency === 'STAT'}
+                      onChange={(e) => handleInputChange(index, 'urgency', e.target.value)}
+                    />
+                    STAT
+                  </label>
+                </div>
+              </td>
+              <td>
+                <textarea
+                  value={order.note}
+                  onChange={(e) => handleInputChange(index, 'note', e.target.value)}
+                  className="table-textarea"
+                />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
       <div className="lab-action-container">

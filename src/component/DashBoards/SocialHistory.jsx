@@ -27,6 +27,7 @@ const SocialHistory = ({patientId,newPatientVisitId}) => {
 
   const handleCloseModal = () => {
     setIsAddModalOpen(false);
+    setIsUpdateModalOpen(false);
   };
 
 

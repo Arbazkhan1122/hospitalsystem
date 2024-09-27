@@ -3,9 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css'; 
+import { API_BASE_URL } from '../api/api';
 
-const genericApiUrl = 'http://localhost:1415/api/generic-names';
-const categoryApiUrl = 'http://localhost:1415/api/categories';
+const genericApiUrl = `${API_BASE_URL}/generic-names`;
+const categoryApiUrl = `${API_BASE_URL}/categories`;
 
 const SettingGeneric = () => {
   const [suppliers, setSuppliers] = useState([]);
