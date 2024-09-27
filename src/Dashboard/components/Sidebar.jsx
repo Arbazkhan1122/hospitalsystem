@@ -46,7 +46,8 @@ const Sidebar = ({
   onSubstoreClick,
   onMedicalRecord,
   onProcurement,
-  onBilling
+  onBilling,
+  onBloodbank
 }) => {
   const [openMenus, setOpenMenus] = useState({});
   const [activeLink, setActiveLink] = useState(null);
@@ -208,6 +209,11 @@ const Sidebar = ({
   const handleBilling=()=>{
     handleLinkClick("billing");
     onBilling();
+  }
+  
+  const handlebBloodbank=()=>{
+    handleLinkClick("bloodbank");
+    onBloodbank();
   }
 
   return (
@@ -420,7 +426,108 @@ const Sidebar = ({
 
 
 
-
+<li className={`custom-nav-item ${
+            activeLink === "bloodbank-submenu1" ||
+            activeLink === "bloodbank-submenu2" ||
+            activeLink === "bloodbank-submenu3" ||
+            activeLink === "bloodbank-submenu4" ||
+            activeLink === "bloodbank-submenu5" ||
+            activeLink === "bloodbank-submenu6" 
+       
+              ? "custom-nav-item-active"
+              : ""
+          }`}
+        >
+          <div
+            className="custom-nav-link-content"
+            onClick={handlebBloodbank}
+          >
+            <span>
+              <FaClinicMedical />
+            </span>
+            {isOpen && (
+              <span className="custom-nav-link-text">BloodBank</span>
+            )}
+            <span className="custom-dropdown-icon">
+              {openMenus.bloodbank ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.bloodbank && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu1")}
+                className={
+                  activeLink === "bloodbank-submenu1"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodDonationForm">Blood Donation Registration</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu2")}
+                className={
+                  activeLink === "bloodbank-submenu2"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodcollectionmain">Blood Collection</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu3")}
+                className={
+                  activeLink === "bloodbank-submenu3"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/hIMSSampleDataTable">Blood Testing and Screening</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu4")}
+                className={
+                  activeLink === "bloodbank-submenu4"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodStorageDashboard">Blood Storage</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu5")}
+                className={
+                  activeLink === "bloodbank-submenu5"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodReq">Blood Request</Link>
+              </li>
+               <li
+                onClick={() => handleItemClick("bloodbank", "submenu6")}
+                className={
+                  activeLink === "bloodbank-submenu6"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodIssue">Blood Issues</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu6")}
+                className={
+                  activeLink === "bloodbank-submenu6"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bBReport">Reports</Link>
+              </li>
+             
+            </ul>
+          )}
+        </li>
 
 
 

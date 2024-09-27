@@ -1,0 +1,91 @@
+.activebloodBank-btn {
+  background-color: var( --button-color);
+  color: white;
+  /* margin-left: 60px; */
+  font-size: var(--heading-font);
+  padding: 5px 5px;
+  border: none;
+  float: right;
+}
+
+.bloodBank-Navigation-bar {
+  background-color: white;
+}
+
+.bloodBank-Navigation-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Enable wrapping for smaller screens */
+}
+
+.bloodBank-Navigation-bar li {
+  margin: 0;
+}
+
+.bloodBank-Navigation-bar a {
+  background-color: var( --button-color);
+  border: 1px solid var( --button-color);
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.bloodBank-Navigation-bar a:hover {
+  background-color: white;
+  color: var( --button-color);;
+  border: 1px solid gray;
+}
+
+.bloodBank-Navigation-bar .active {
+  background-color: var( --button-bg-color);
+  color: white;
+}
+
+.bloodBank-Activebtn-N-LogOut {
+  display: flex;
+  justify-content: start;
+  gap: 5px;
+  margin-right: 20px;
+
+}
+
+.bloodBank-LogOut {
+  border: none;
+  background: none;
+  font-size: 18px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.bloodBank-LogOut i {
+  color: #333;
+}
+
+.disPrescription-Navbttn-N-act {
+  display: flex;
+}
+
+.disPrescription-Navbttn-N-act li {
+  padding: 0 5px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .bloodBank-Navigation-bar ul {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .bloodBank-Navigation-bar li {
+    margin-bottom: 10px; /* Add some space between items */
+  }
+
+  .disPrescription-Navbttn-N-act {
+    flex-direction: column; /* Stack prescription nav buttons vertically */
+  }
+}

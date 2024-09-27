@@ -43,6 +43,7 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRouting";
 import ReportRoute from "../../component/Reports/ReportRoute";
 import Billing from "../../component/Billing/billing";
+import BloodBank from "../../component/BloodBank/bloodBankRoute";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -80,6 +81,7 @@ const Layout = () => {
   const [showMedicalRecord, setShowMedicalRecord] = useState(false);
   const [showProcurement,setShowProcurement]=useState(false)
   const [showBilling,setShowBilling]=useState(false)
+  const [showBloodBank,setShowBloodBank]=useState(false)
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -116,6 +118,7 @@ const Layout = () => {
     setShowMedicalRecord(false);
     setShowProcurement(false);
     setShowBilling(false)
+    setShowBloodBank(false)
   };
 
   const toggelAppointment = () => {
@@ -256,6 +259,10 @@ const Layout = () => {
     resetAllToggles();
     setShowBilling(!showBilling);
   }
+  const toggelBloodBank=()=>{
+    resetAllToggles();
+    setShowBloodBank(!showBloodBank);
+  }
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -293,6 +300,7 @@ const Layout = () => {
         onMedicalRecord={toggelMedicalRecord}
         onProcurement={toggelProcurement}
         onBilling={toggelBilling}
+        onBloodbank={toggelBloodBank}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
@@ -336,6 +344,7 @@ const Layout = () => {
           {showSubStore && <SubstoreRouting />}
           {showMedicalRecord && <MedicalReportRouting />}
           {showBilling && <Billing/>}
+          {showBloodBank && <BloodBank/>}
         </main>
       </div>
     </div>

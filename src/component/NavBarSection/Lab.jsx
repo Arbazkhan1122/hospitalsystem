@@ -26,6 +26,8 @@ import MapGovernmentItemxs from './LabSetting/mapGovernmentItems';
 import HospitalNav from "./hospitalNav"
 import CollectSample from './CollectSample';
 import Opdlab from './OPDBillingLab/opdlab';
+import AddResultForm from "./addResultForm"
+import LabResult from "./labResult"
 const Lab = () => {
 
   return (
@@ -57,6 +59,8 @@ const Lab = () => {
           <Route path="/mapGovernmentItemxs" element={<MapGovernmentItemxs />} />
           <Route path="/collect-sample/:id" element={<CollectSample />}></Route>
           <Route path="/OpdLadbilling" element={<Opdlab/>}></Route>
+          <Route path="/addResultForm" element={<AddResultForm/>}></Route>
+          <Route path="/labResult" element={<LabResult/>}></Route>
 
 
         </Routes>
