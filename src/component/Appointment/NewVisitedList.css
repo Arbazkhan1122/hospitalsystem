@@ -1,20 +1,20 @@
-.patient-list {
+.newPatient-list {
   padding: 20px;
   font-family: Arial, sans-serif;
 }
 
-.header {
+.newPatient-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.header h3 {
+.newPatient-header h3 {
   color: #007bff;
 }
 
-.new-patient {
+.newPatient-new-patient {
   background-color: var(--button-color);
   color: white;
   border: none;
@@ -23,26 +23,26 @@
   cursor: pointer;
 }
 
-.new-patient:hover {
-  border: 1px solid var( --button-hover-border-color);
+.newPatient-new-patient:hover {
+  border: 1px solid var(--button-hover-border-color);
   color: var(--button-hover-text-color);
   background-color: var(--button-hover-background-color);
 }
-.new-search-bar {
+
+.newPatient-search-bar {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.search-bar input {
+.newPatient-search-bar input {
   padding: 10px;
   width: 48%;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-
-.action-button {
+.newPatient-action-button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -50,27 +50,12 @@
   cursor: pointer;
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.pagination button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  margin: 0 5px;
-  cursor: pointer;
-}
-
-.footer-buttons {
+.newPatient-footer-buttons {
   display: flex;
   justify-content: right;
 }
 
-
-.new-footer-buttons button {
+.newPatient-footer-buttons button {
   background-color: var(--button-color);
   color: white;
   border: none;
@@ -80,9 +65,8 @@
   margin-top: 10px;
 }
 
-.new-footer-buttons button:hover {
-  border: 1px solid var( --button-hover-border-color);
+.newPatient-footer-buttons button:hover {
+  border: 1px solid var(--button-hover-border-color);
   color: var(--button-hover-text-color);
   background-color: var(--button-hover-background-color);
-
 }

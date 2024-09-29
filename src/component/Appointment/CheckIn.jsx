@@ -85,7 +85,7 @@ const handleSubmit = async (e) => {
 
 
 
-  const apiUrl = 'http://192.168.42.16:1415/api/new-patient-visits/save-new-patient';
+  const apiUrl = 'http://localhost:1415/api/new-patient-visits/save-new-patient';
 
 
 

@@ -15,7 +15,7 @@ const ListVisited = () => {
     // Fetch data from the API when the component mounts
     const fetchAppointments = async () => {
       try {
-        const response = await axios.get('http://192.168.42.16:1415/api/new-patient-visits');
+        const response = await axios.get('http://localhost:1415/api/new-patient-visits');
         setAppointments(response.data); // Assume the data is in response.data
       } catch (error) {
         console.error('Error fetching data:', error);
