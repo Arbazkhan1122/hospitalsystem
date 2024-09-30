@@ -21,6 +21,7 @@
 }
 
 table {
+  overflow: hidden; 
   background-color: #f2f2f2;
   border-collapse: collapse;
   table-layout: fixed; 
@@ -56,7 +57,6 @@ table th {
   user-select: none;
   white-space: nowrap;
 }
-
 table th .header-content {
   display: flex;
   align-items: center;

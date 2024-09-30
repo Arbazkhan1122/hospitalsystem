@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
-import "../LabSetting/labTest.css"
-import LSLabTestAddNLTest from './lSLabTestAddNLTest';
-const labTests = [
-  { labTestName: "Sugar Fasting", reportingName: "Sugar Fasting", category: "Biochemistry", isActive: true, displaySequence: 1000 },
-  { labTestName: "RFT", reportingName: "RFT", category: "Biochemistry", isActive: true, displaySequence: 1000 },
-  // Add more rows as needed
-];
+import React, { useState, useRef, useEffect } from "react";
+import "../LabSetting/labTest.css";
+import LSLabTestAddNLTest from "./lSLabTestAddNLTest";
+import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
 const LabTestSetting = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
+  const [labTest, setLabTest] = useState(null);
+  useEffect(() => {
+    fetch(`http://localhost:1415/api/labTestSetting/getAll`)
+      .then((res) => res.json())
+      .then((data) => setLabTest(data))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const handleAddNewLabTestClick = () => {
     setShowPopup(true); // Show the popup
@@ -20,15 +27,26 @@ const LabTestSetting = () => {
 
   return (
     <div className="labTestLS-container">
-    <div className="labTestLS-firstRow">
-    <div className="labTestLS-addBtn">
-      <button className="labTestLS-add-button" onClick={handleAddNewLabTestClick}>+Add New Lab Test</button>
-      </div>
+      <div className="labTestLS-firstRow">
+        <div className="labTestLS-addBtn">
+          <button
+            className="labTestLS-add-button"
+            onClick={handleAddNewLabTestClick}
+          >
+            +Add New Lab Test
+          </button>
+        </div>
         <div className="labTestLS-filters">
           <span>Search Filters: </span>
-          <label><input type="checkbox" /> Active</label>
-          <label><input type="checkbox" /> Inactive</label>
-          <label><input type="checkbox" /> ALL</label>
+          <label>
+            <input type="checkbox" /> Active
+          </label>
+          <label>
+            <input type="checkbox" /> Inactive
+          </label>
+          <label>
+            <input type="checkbox" /> ALL
+          </label>
         </div>
         <div className="labTestLS-category-filter">
           <label>Category: </label>
@@ -48,52 +66,81 @@ const LabTestSetting = () => {
             <option>VIROLOGY</option>
             <option>SPECIAL CHEMISTRY</option>
             <option>Blood Transfusion</option>
-            
+
             {/* Add more categories as needed */}
           </select>
         </div>
       </div>
-      <div className='labTestLS-search-N-result'>
-      <div className="labTestLS-search-bar">
+      <div className="labTestLS-search-N-result">
+        <div className="labTestLS-search-bar">
           <i className="fa-solid fa-magnifying-glass"></i>
-          <input 
-            type="text" 
-            placeholder="Search..." 
-            
-          />
+          <input type="text" placeholder="Search..." />
         </div>
         <div className="labTestLS-results-info">
-          <span>Showing 0 / 0 results</span>
-          <button className="labTestLS-print-button"><i class="fa-solid fa-print"></i> Print</button>
+          <span>
+            Showing {labTest?.length} / {labTest?.length} results
+          </span>
+          <button className="labTestLS-print-button">
+            <i class="fa-solid fa-print"></i> Print
+          </button>
         </div>
-        </div>
-      <table >
-        <thead>
-          <tr>
-            <th>Lab Test Name</th>
-            <th>Reporting Name</th>
-            <th>Category</th>
-            <th>Is Active</th>
-            <th>Display Sequence</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {labTests.map((test, index) => (
-            <tr key={index}>
-              <td>{test.labTestName}</td>
-              <td>{test.reportingName}</td>
-              <td>{test.category}</td>
-              <td>{test.isActive ? 'True' : 'False'}</td>
-              <td>{test.displaySequence}</td>
-              <td>
-                <button className="labTestLS-edit-button"onClick={handleAddNewLabTestClick}>Edit</button>
-                <button className="labTestLS-deactivate-button">Deactivate</button>
-              </td>
+      </div>
+      <div className="table-container">
+        <table ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Lab Test Name",
+                "Reporting Name",
+                "Category",
+                "Is Active",
+                "Display Sequence",
+                // "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {labTest != null &&
+              labTest.map((test, index) => (
+                <tr key={index}>
+                  <td>{test?.labTestName}</td>
+                  <td>{test?.reportingName}</td>
+                  <td>{test?.category}</td>
+                  <td>{test?.isActive ? "True" : "False"}</td>
+                  <td>{test?.displaySequence}</td>
+                  {/* <td>
+                  <button
+                    className="labTestLS-edit-button"
+                    onClick={handleAddNewLabTestClick}
+                  >
+                    Edit
+                  </button>
+                  <button className="labTestLS-deactivate-button">
+                    Deactivate
+                  </button>
+                </td> */}
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
       {/* <div className="labTestLS-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>

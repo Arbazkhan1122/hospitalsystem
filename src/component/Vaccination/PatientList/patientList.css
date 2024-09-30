@@ -90,11 +90,7 @@
 .patientList-more-options{
   position: absolute;
   right: 80px;
-  /* top: 0; */
-  /* margin: 10px; */
-  /* transform: translate(-50%, -50%); */
   background-color: white;
-  /* padding: 20px; */
   border-radius: 10px;
   top: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

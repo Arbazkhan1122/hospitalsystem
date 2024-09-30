@@ -5,6 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 150;
+  width: 100%;
 }
 
 .samplecodepopup-container {
@@ -12,7 +14,8 @@
   padding: 1.5rem;
   border-radius: 0.5rem;
   width: 100%;
-  max-width: 42rem;
+  max-width: 80%;
+  position: relative;
 }
 
 .samplecodepopup-header {
@@ -23,15 +26,26 @@
 }
 
 .samplecodepopup-title {
-  font-size: 1.25rem;
-  font-weight: bold;
+  font-size: var(--heading-font);
+  /* font-weight: bold; */
+}
+
+.samplecodepopup-divided{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 .samplecodepopup-close-button {
-  background: none;
+  background: red !important;
   border: none;
   cursor: pointer;
-  color: #6b7280;
+  color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 6px 12px;
 }
 
 .samplecodepopup-close-button:hover {
@@ -43,9 +57,9 @@
 }
 
 .samplecodepopup-table {
-  width: 100%;
   margin-bottom: 1rem;
   border-collapse: collapse;
+  height: fit-content;
 }
 
 .samplecodepopup-table th {
@@ -56,19 +70,32 @@
 
 .samplecodepopup-table td {
   padding: 0.5rem;
+  white-space: wrap;
 }
 
 .samplecodepopup-barcode-container {
-  border: 1px solid #e5e7eb;
   padding: 1rem;
+  width: 35%;
   margin-bottom: 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
-
+.samplecodepopup-barcode-info{
+  border: 1px dashed black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 10px;
+}
 .samplecodepopup-barcode-info p {
   margin: 0.25rem 0;
+  font-size: var(--font-size);
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .samplecodepopup-barcode-placeholder {
@@ -83,6 +110,7 @@
 .samplecodepopup-copies {
   display: flex;
   align-items: center;
+  gap: 10px;
   margin-bottom: 1rem;
 }
 
@@ -127,8 +155,7 @@
 }
 
 .samplecodepopup-print-button,
-.samplecodepopup-empty-sheet-button,
-.samplecodepopup-close-button {
+.samplecodepopup-empty-sheet-button{
   background-color: #10b981;
   color: white;
   border: none;
@@ -145,10 +172,6 @@
 
 .samplecodepopup-empty-sheet-button {
   margin-right: 0.5rem;
-}
-
-.samplecodepopup-close-button {
-  background-color: #3b82f6;
 }
 
 @media print {

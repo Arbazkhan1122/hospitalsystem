@@ -6,7 +6,12 @@ import AddReportForm from "./rdlAddReport";
 import RDLAddScanDoneDetails from "./rdlScanDone";
 import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
+const getCurrentDate = () => {
+  return new Date().toISOString().split("T")[0];
+};
 function RDLListRequest() {
+  const [dateFrom, setDateFrom] = useState(getCurrentDate());
+  const [dateTo, setDateTo] = useState(getCurrentDate());
   const [columnWidths, setColumnWidths] = useState({});
   const [showAddReport, setShowAddReport] = useState(false);
   const [showScanDone, setShowScanDone] = useState(false);
@@ -16,16 +21,60 @@ function RDLListRequest() {
   const [searchQuery, setSearchQuery] = useState("");
   const tableRef = useRef(null);
 
+  const handleDateFromChange = (event) => {
+    setDateFrom(event.target.value);
+  };
+
+  const handleDateToChange = (event) => {
+    setDateTo(event.target.value);
+  };
+
   useEffect(() => {
-    // Fetch imaging requests and patients data
-    fetch("http://localhost:1415/api/imaging-requisitions/all")
-      .then((response) => response.json())
-      .then((data) => {
-        setImagingRequests(data);
-        console.log(data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
+    const currentDate = getCurrentDate();
+    setDateFrom(currentDate);
+    setDateTo(currentDate);
   }, []);
+
+  const fetchImagingRequest = () => {
+    let linkPending, linkActive;
+
+    if (dateFrom && dateTo) {
+      linkPending = `http://localhost:1415/api/imaging-requisitions/by-status-date?status=Pending&startDate=${dateFrom}&endDate=${dateTo}`;
+      linkActive = `http://localhost:1415/api/imaging-requisitions/by-status-date?status=Active&startDate=${dateFrom}&endDate=${dateTo}`;
+    } else {
+      const todayDate = getCurrentDate();
+      linkPending = `http://localhost:1415/api/imaging-requisitions/by-status-date?status=Pending&startDate=${todayDate}&endDate=${todayDate}`;
+      linkActive = `http://localhost:1415/api/imaging-requisitions/by-status-date?status=Active&startDate=${todayDate}&endDate=${todayDate}`;
+    }
+
+    // Fetch the data for Pending and Active statuses
+    Promise.all([
+      fetch(linkPending).then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      }),
+      fetch(linkActive).then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      }),
+    ])
+      .then(([pendingData, activeData]) => {
+        const combinedData = [...pendingData, ...activeData]; // Combine both data
+        console.log("Fetched data: ", combinedData);
+        setImagingRequests(combinedData);
+      })
+      .catch((err) => {
+        console.log("Fetch error: ", err);
+      });
+  };
+
+  useEffect(() => {
+    fetchImagingRequest();
+  }, [dateFrom, dateTo]);
 
   const updateStatus = (id, filmTypeId, quantity, status, scannedOn) => {
     fetch(
@@ -123,11 +172,21 @@ function RDLListRequest() {
         <div className="rDLListRequest-date-range">
           <label>
             From:
-            <input type="date" defaultValue="2024-08-09" />
+            <input
+              type="date"
+              id="dateFrom"
+              defaultValue={dateFrom}
+              onChange={handleDateFromChange}
+            />
           </label>
           <label>
             To:
-            <input type="date" defaultValue="2024-08-16" />
+            <input
+              type="date"
+              id="dateTo"
+              defaultValue={dateTo}
+              onChange={handleDateToChange}
+            />
           </label>
           <button className="rDLListRequest-star-button">☆</button>
           <button className="rDLListRequest-more-btn">-</button>
@@ -261,7 +320,7 @@ function RDLListRequest() {
                   selectedRequest.imagingId,
                   filmType,
                   quantity,
-                  "active",
+                  "Active",
                   scannedOn
                 );
               }}
