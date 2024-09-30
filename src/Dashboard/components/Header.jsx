@@ -1,11 +1,19 @@
 import React from "react";
 import { GoBell } from "react-icons/go";
 import "./Header.css";
+import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 
-const Header = () => {
+const Header = ({ isOpen, setIsOpen }) => {
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div className="hrmsDashSidebarHeader">
-      <div>{/* Add content if needed */}</div>
+      <div>
+        <button className="custom-toggle-button" onClick={toggleSidebar}>
+          {isOpen ? <LuChevronLeft size={20} /> : <LuChevronRight size={20} />}
+        </button>
+      </div>
       <div className="hrmsDashHeaderRight">
         {/* <div className="hrmsDashHeaderRight">
           <button className="hrmsDashNotificationButton">

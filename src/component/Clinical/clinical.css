@@ -1,9 +1,8 @@
 .clinical-component {
-    background-color: #CAF2FF;
     width: 100%;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: var(--background-color);
   }
   
   .clinical-component-header {
@@ -24,7 +23,6 @@
   }
   
   .clinical-component-header ul li {
-    color: #1890ff;
     /* margin-right: 20px; */
     cursor: pointer;
     font-size: 14px;
@@ -32,7 +30,7 @@
   }
   .clinical-component-header a{
     text-decoration: none;
-    color: #1890ff;
+    color: black;
   }
   
   .clinical-component-header ul li .active {
@@ -40,7 +38,7 @@
     font-weight: bold;
     color: white;
     padding: 5px 10px;
-    background-color: #2D68EA;
+    background-color: var(--button-bg-color);
   }
   
   .clinical-component-header-right {

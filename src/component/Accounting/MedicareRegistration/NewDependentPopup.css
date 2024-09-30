@@ -6,19 +6,24 @@
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
+    z-index: 150;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .ndp {
     background-color: white;
+    padding: 10px;
+    position: relative;
   }
   .ndp h2{
-    padding: 10px;
-    color: #007bff;
-    font-size: 18px;
+    color: black;
     border-bottom: 1px solid black;
   }
   
   .ndp h2, .ndp h3 {
+    font-size: var(--heading-font);
     margin-top: 0;
   }
   
@@ -62,11 +67,16 @@
   }
    */
   .ndp-actions button[type="submit"] {
-    background-color: #4CAF50;
+    background-color: var(--button-color);
     color: white;
     border: none;
     border-radius: 5px;
-    padding: 10px;
+    padding:5px 10px;
+  }
+  .ndp-actions button[type="submit"]:hover {
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+    border: 1px solid var(--button-hover-border-color);
   }
   
   .ndp-form{
@@ -74,12 +84,12 @@
   } 
   .ndp-close-btn{
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: -10px;
+    right: -10px;
     background-color: #f44336;
     color: white;
     border-radius: 50%;
     border: none;
-    padding: 8px 11px;
+    padding: 6px 12px;
     /* padding: 0;   */
   }

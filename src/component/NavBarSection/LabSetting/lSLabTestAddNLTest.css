@@ -104,7 +104,7 @@
     text-align: center;
   }
   
-  .lSLabTestAddNLTest-add-component-btn {
+  .lSLabTestAddNLTest-add-component-btn,.lSLabTestAddNLTest-add-new-component-btn {
     background-color:var( --button-color);
     border: 1px solid var( --button-hover-border-color);
     color: white;
@@ -117,7 +117,7 @@
     transition: background-color 0.3s ease;
     padding: 1px 5px;
   }
-  .lSLabTestAddNLTest-add-component-btn:hover {
+  .lSLabTestAddNLTest-add-component-btn:hover,.lSLabTestAddNLTest-add-new-component-btn:hover {
     border: 1px solid var( --button-hover-border-color);
     color: var(--button-hover-text-color);
     background-color: var(--button-hover-background-color);

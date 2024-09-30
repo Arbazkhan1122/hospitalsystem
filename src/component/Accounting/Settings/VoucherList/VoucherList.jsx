@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./VoucherList.css";
 import CreateVoucherPopup from "./AddVoucherPopup";
+import { startResizing } from "../../../TableHeadingResizing/resizableColumns";
 
 const VoucherData = [
   {
     voucherName: "Payment Voucher",
     voucherCode: "PV001",
     description: "Payment for office supplies",
-    isActive: true,
-    isCopyDescription: false,
+    isActive: "true",
+    isCopyDescription: "false",
     chequeNumber: "123456",
     payeeName: "Office Supplies Co.",
   },
@@ -16,8 +17,8 @@ const VoucherData = [
     voucherName: "Receipt Voucher",
     voucherCode: "RV002",
     description: "Receipt from customer",
-    isActive: true,
-    isCopyDescription: true,
+    isActive: "true",
+    isCopyDescription: "true",
     chequeNumber: "654321",
     payeeName: "Customer A",
   },
@@ -25,8 +26,8 @@ const VoucherData = [
     voucherName: "Journal Voucher",
     voucherCode: "JV003",
     description: "Adjustment entry",
-    isActive: true,
-    isCopyDescription: false,
+    isActive: "true",
+    isCopyDescription: "false",
     chequeNumber: "789012",
     payeeName: "N/A",
   },
@@ -34,8 +35,8 @@ const VoucherData = [
     voucherName: "Contra Voucher",
     voucherCode: "CV004",
     description: "Transfer between accounts",
-    isActive: false,
-    isCopyDescription: true,
+    isActive: "false",
+    isCopyDescription: "true",
     chequeNumber: "210987",
     payeeName: "Bank Transfer",
   },
@@ -43,8 +44,8 @@ const VoucherData = [
     voucherName: "Credit Note",
     voucherCode: "CN005",
     description: "Credit for returned goods",
-    isActive: true,
-    isCopyDescription: false,
+    isActive: "true",
+    isCopyDescription: "false",
     chequeNumber: "345678",
     payeeName: "Supplier B",
   },
@@ -62,31 +63,6 @@ function VoucherList() {
   };
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
-
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
 
   return (
     <div className="voucher">
@@ -107,58 +83,64 @@ function VoucherList() {
           <button className="voucher-print-btn">Print</button>
         </div>
       </div>
-      <table className="voucher-table" ref={tableRef}>
-        <thead>
-          <tr>
-            {[
-              "Voucher Name",
-              "Voucher Code",
-              "Description",
-              "Is Active",
-              "Is Copy Description",
-              "Cheque Number",
-              "Payee Name",
-            ].map((header, index) => (
-              <th
-                key={index}
-                style={{ width: columnWidths[index] }}
-                className="resizable-th"
-              >
-                <div className="header-content">
-                  <span>{header}</span>
-                  <div
-                    className="resizer"
-                    onMouseDown={startResizing(index)}
-                  ></div>
-                </div>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {VoucherData?.map((item, index) => (
-            <tr key={index}>
-              <td>{item.voucherName}</td>
-              <td>{item.voucherCode}</td>
-              <td>{item.description}</td>
-              <td>{item.isActive}</td>
-              <td>{item.isCopyDescription}</td>
-              <td>
-                <button className="voucher-show-btn">show</button>
-              </td>
-              <td>
-                <button className="voucher-show-btn">show</button>
-              </td>
+      <div className="table-container">
+        <table className="voucher-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Voucher Name",
+                "Voucher Code",
+                "Description",
+                "Is Active",
+                "Is Copy Description",
+                "Cheque Number",
+                "Payee Name",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {VoucherData?.map((item, index) => (
+              <tr key={index}>
+                <td>{item.voucherName}</td>
+                <td>{item.voucherCode}</td>
+                <td>{item.description}</td>
+                <td>{item.isActive}</td>
+                <td>{item.isCopyDescription}</td>
+                <td>
+                  <button className="voucher-show-btn">show</button>
+                </td>
+                <td>
+                  <button className="voucher-show-btn">show</button>
+                </td>
+              </tr>
+            ))}
 
-          {/* <tr>
+            {/* <tr>
             <td className="no-show-coa" colSpan="15">
               No Rows To Show
             </td>
           </tr> */}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
+
       {showCreateSubLedgerPopup && (
         <CreateVoucherPopup onClose={handleClosePopup} />
       )}

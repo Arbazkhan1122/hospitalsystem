@@ -3,67 +3,15 @@ import "./labResult.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Lab2 = () => {
-  const [selectedSignatory, setSelectedSignatory] = useState("");
-  const [comment, setComment] = useState("");
+const FinalizedReportLabResult = ({ data, setShowLabResult }) => {
   const navigate = useNavigate();
-  const [labResult, setLabResult] = useState(null);
-  const location = useLocation();
-  const { labRequestId } = location.state;
+  const [labResult, setLabResult] = useState(data);
 
   useEffect(() => {
-    fetch(
-      `http://localhost:1415/api/lab-result/by-labRequest?labRequestId=${labRequestId}`
-    )
-      .then((res) => res.json())
-      .then((res) => setLabResult(res))
-      .catch((err) => {
-        console.log(err);
-      });
+    setLabResult(data);
   }, []);
 
-  const handleSignatoryChange = (event) => {
-    setSelectedSignatory(event.target.value);
-  };
-
-  const handleCommentChange = (event) => {
-    setComment(event.target.value); // Update comment state when input changes
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    // Check if a signatory is selected
-    if (!selectedSignatory) {
-      alert("Please select a signatory.");
-      return;
-    }
-
-    // Prepare the data for updating the lab result
-    const updatedLabResult = {
-      verifyBy: selectedSignatory,
-      verifyById: 0,
-      comments: comment,
-      isVerified: "Yes",
-      verifiedDate: new Date().toLocaleTimeString().split("-")[0],
-    };
-
-    try {
-      // Call the API to update the lab result
-      await axios.put(
-        `http://localhost:1415/api/lab-result/update/${labResult.labResultId}`,
-        updatedLabResult
-      );
-      console.log("Lab result updated successfully!");
-
-      // Trigger print after successful update
-      handlePrint();
-    } catch (err) {
-      console.error("Error updating lab result:", err);
-    }
-  };
-
-  const handlePrint = () => {
+  const handlePrint = async () => {
     const printContents = document.querySelector(".lab-container2").innerHTML;
     const printWindow = window.open("", "_blank");
 
@@ -73,6 +21,7 @@ const Lab2 = () => {
         <head>
           <title>Print Lab Result</title>
           <style>
+            /* Add the necessary CSS for printing */
             body {
               font-family: Arial, sans-serif;
               margin: 0;
@@ -104,8 +53,12 @@ const Lab2 = () => {
         }
 
 .lab-plus {
+  /* position: absolute; */
   font-size: 40px;
   font-weight: bolder;
+  margin-top: -10px;
+  /* left: 50%; */
+  /* top: 50%; */
 }
 
 .lab-text {
@@ -172,11 +125,16 @@ const Lab2 = () => {
     printWindow.focus(); // Focus on the new window for printing
     printWindow.print(); // Trigger the print dialog
     printWindow.close();
-    navigate("/add-results");
+    const response = await axios.put(
+      `http://localhost:1415/api/lab-result/update-isPrinted/${data.labResultId}`
+    );
+    if (response.status === 200) {
+      setShowLabResult(false);
+    }
   };
 
   const handleBackClick = () => {
-    navigate("/addResultForm");
+    setShowLabResult(false);
   };
 
   return (
@@ -255,8 +213,6 @@ const Lab2 = () => {
                 <th>Tests</th>
                 <th>Findings</th>
                 <th>Unit</th>
-                {/* <th>Reference</th>
-                <th>Method</th> */}
               </tr>
             </thead>
             <tbody>
@@ -276,46 +232,20 @@ const Lab2 = () => {
 
         <div className="lab-comments">
           <p>Comments:</p>
-          <textarea
-            value={comment}
-            onChange={handleCommentChange}
-            rows={5}
-            placeholder="Enter comments here..."
-          />
+          <textarea value={labResult?.comments} rows={5} disabled />
           <p className="lab-disclaimer">
             This laboratory report must be integrated in conjunction with
             clinical history of the patient by a clinician test
           </p>
         </div>
       </div>
-
-      {/* <div className="lab-signatory-section">
-        <div className="lab-signatory">
-          <input type="text" placeholder="Not found" />
-        </div>
-        <div className="lab-signatory">
-          <input type="text" placeholder="BMUTHONI" />
-        </div>
-        <div className="lab-signatory">
-          <input type="text" placeholder="Not found" />
-        </div>
-      </div> */}
-      <div className="lab-signatories">
-        <p>Select Signatories:</p>
-        <select value={selectedSignatory} onChange={handleSignatoryChange}>
-          <option value="">Select a signatory</option>
-          <option value="Dr. VICTOR OCHIENG OKECH">
-            Dr. VICTOR OCHIENG OKECH
-          </option>
-        </select>
-      </div>
       <div className="lab-update">
-        <button onClick={handleSubmit} className="lab-print-button">
-          Update Signatories and Print
+        <button onClick={handlePrint} className="lab-print-button">
+          Print
         </button>
       </div>
     </div>
   );
 };
 
-export default Lab2;
+export default FinalizedReportLabResult;

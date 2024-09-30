@@ -137,7 +137,7 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection,employee
           </div>
 
           {/* Active Orders Section */}
-          <div className="action_record_active_orders">
+          {/* <div className="action_record_active_orders">
             <h2 className='action-records-h2'>🔍 Active Orders</h2>
             <table className="action_record_table">
               <thead>
@@ -154,7 +154,7 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection,employee
                 </tr>
               </tbody>
             </table>
-          </div>
+          </div> */}
         </div>
         
         {/* New Orders Section */}

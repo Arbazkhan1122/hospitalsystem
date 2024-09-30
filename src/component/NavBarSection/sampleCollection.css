@@ -1,10 +1,7 @@
 /* sampleCollection.css */
 
 .sampleCollection-Container {
-  padding: 16px;
-  background-color: #e0f7fa;
-  height: 80vh;
-  overflow-y: scroll;
+  padding: 10px;
 }
 
 .sampleCollection-Header {
@@ -85,26 +82,21 @@
   background-color: var(--button-hover-background-color);
 }
 .sampleCollection-search-bar{
-  margin-left: -15px;
   position: relative;
-  /* margin-bottom: 10px; */
-  /* padding-left: -10px; */
-  /* opacity: 0; */
-  /* animation: slideIn 1s forwards 0.8s; */
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+}
+.sampleCollection-search-bar input{
+  width: 200px;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 .sampleCollection-search-bar i{
   position: absolute;
-  top: 8px;
-  left: 180px;
-  /* display: flex;
-  justify-content: ; */
+  right: 5px;
   color: gray;
-}
-.sampleCollection-search-input {
-  padding: 5px;
-  width: 200px;
-  border: 1px solid black;
-  border-radius: 15px;
 }
 .sampleCollection-print-btn{
   background-color:var( --button-color);
@@ -145,27 +137,6 @@ align-items: center; */
 }
 .sampleCollection-TableWrapper {
   overflow-x: auto;
-}
-
-.sampleCollection-Table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: white;
-  margin-top: 10px;
-}
-
-.sampleCollection-TableHeader {
-  background-color: #f1f1f1;
-  text-align: center;
-  padding: 3px;
-  font-size: var(--heading-font);
-}
-
-.sampleCollection-TableCell {
-  padding: 3px;
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-  font-size: var(--font-size);
 }
 .sampleCollection-viewDetails{
   background-color:var( --button-color);

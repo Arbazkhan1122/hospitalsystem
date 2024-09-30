@@ -23,12 +23,15 @@
 }
 
 .reports__item:hover {
-    background-color: #4285f4;
+    background-color: var(--button-hover-border-color);
     color: white !important;
+}
+.reports__item:hover .reports__icon {
+    background-color: var(--button-hover-background-color);
 }
 
 .reports__icon {
-    background-color: #4285f4;
+    background-color: var(--button-color);
     color: white;
     width: 40px;
     height: 40px;

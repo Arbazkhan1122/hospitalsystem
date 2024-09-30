@@ -168,7 +168,7 @@ const SearchPatient = () => {
           </div>
 
           {/* Pagination */}
-          <div className="pagination">
+          {/* <div className="pagination">
             {Array.from({ length: Math.ceil(patients.length / patientsPerPage) }, (_, i) => (
               <button
                 key={i + 1}
@@ -178,7 +178,7 @@ const SearchPatient = () => {
                 {i + 1}
               </button>
             ))}
-          </div>
+          </div> */}
         </>
       )}
     </div>

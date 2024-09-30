@@ -9,15 +9,15 @@ overflow: hidden;
    width: 100%;
    background-color: var(--background-color);
    overflow: auto;
-   height: 92lvh;
-
 }
 .hrmsLayoutMainContent {
    flex: 1;
    transition: all 0.3s ease;
-   width: 80%;
-   height: 80vh;
+   width: 100%;
+   overflow: auto;
+   background-color: var(--background-color);
 }
+
 
 /* .hrmsLayoutMainContentClosed {
   margin-left: 4rem;

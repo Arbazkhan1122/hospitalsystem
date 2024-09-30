@@ -8,9 +8,9 @@ import AppRoutes from "../../component/Employee/AppRoutes";
 import Inventory from "../../component/Inventory1/Inventory";
 import Incentive from "../../component/IncentiveMain/incentiveApp";
 import Lab from "../../component/NavBarSection/Lab";
-import Emergency from "../../component/Emergency/Emergency"
+import Emergency from "../../component/Emergency/Emergency";
 import Utilitiesmain from "../../component/UTILITIES/utilitiesmain";
-import SystemAdmin from "../../component/SystemAdmin/SystemAdmin"
+import SystemAdmin from "../../component/SystemAdmin/SystemAdmin";
 import SocialServicePage from "../../component/SocialServicesMain/SocialServicePage";
 import Disprensary from "../../component/DispensaryPage/disprensaryRoute";
 import DynamicReport from "../../component/DynamicReport/DynamicReport";
@@ -79,9 +79,9 @@ const Layout = () => {
   const [showVerification, setShowVerification] = useState(false);
   const [showSubStore, setShowSubStore] = useState(false);
   const [showMedicalRecord, setShowMedicalRecord] = useState(false);
-  const [showProcurement,setShowProcurement]=useState(false)
-  const [showBilling,setShowBilling]=useState(false)
-  const [showBloodBank,setShowBloodBank]=useState(false)
+  const [showProcurement, setShowProcurement] = useState(false);
+  const [showBilling, setShowBilling] = useState(false);
+  const [showBloodBank, setShowBloodBank] = useState(false);
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -117,8 +117,8 @@ const Layout = () => {
     setShowSubStore(false);
     setShowMedicalRecord(false);
     setShowProcurement(false);
-    setShowBilling(false)
-    setShowBloodBank(false)
+    setShowBilling(false);
+    setShowBloodBank(false);
   };
 
   const toggelAppointment = () => {
@@ -251,18 +251,19 @@ const Layout = () => {
     resetAllToggles();
     setShowMedicalRecord(!showMedicalRecord);
   };
-  const toggelProcurement=()=>{
+  const toggelProcurement = () => {
     resetAllToggles();
     setShowProcurement(!showProcurement);
-  }
-  const toggelBilling=()=>{
+  };
+  const toggelBilling = () => {
     resetAllToggles();
     setShowBilling(!showBilling);
-  }
-  const toggelBloodBank=()=>{
+  };
+  const toggelBloodBank = () => {
     resetAllToggles();
     setShowBloodBank(!showBloodBank);
-  }
+  };
+
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -309,7 +310,7 @@ const Layout = () => {
           isOpen ? "hrmsLayoutMainContentOpen" : "hrmsLayoutMainContentClosed"
         }`}
       >
-        <Header />
+        <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         <main className="hrmsLayoutMainPadding">
           {showAppointment && <AppointmentRouting />}
           {showSetting && <AppRoutes />}
@@ -343,8 +344,8 @@ const Layout = () => {
           {showVerification && <VerificationRouting />}
           {showSubStore && <SubstoreRouting />}
           {showMedicalRecord && <MedicalReportRouting />}
-          {showBilling && <Billing/>}
-          {showBloodBank && <BloodBank/>}
+          {showBilling && <Billing />}
+          {showBloodBank && <BloodBank />}
         </main>
       </div>
     </div>

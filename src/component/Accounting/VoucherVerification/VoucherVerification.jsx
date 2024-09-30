@@ -1,34 +1,10 @@
 import React, { useState, useRef } from "react";
 import "./VoucherVerification.css";
+import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
 const VoucherVerification = () => {
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
-
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
   return (
     <div className="vv">
       <main className="vv-main">
@@ -84,42 +60,47 @@ const VoucherVerification = () => {
           </div>
         </div>
 
-        <table className="vv-table" ref={tableRef}>
-          <thead>
-            <tr>
-              {[
-                "Voucher No.",
-                "Fiscal Year",
-                "Transaction Date",
-                "Voucher Type",
-                "Total Amount",
-                "Narration",
-                "Action",
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(index)}
-                    ></div>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td colSpan="7" className="vv-no-rows">
-                No Rows To Show
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="table-container">
+          <table ref={tableRef}>
+            <thead>
+              <tr>
+                {[
+                  "Voucher No.",
+                  "Fiscal Year",
+                  "Transaction Date",
+                  "Voucher Type",
+                  "Total Amount",
+                  "Narration",
+                  "Action",
+                ].map((header, index) => (
+                  <th
+                    key={index}
+                    style={{ width: columnWidths[index] }}
+                    className="resizable-th"
+                  >
+                    <div className="header-content">
+                      <span>{header}</span>
+                      <div
+                        className="resizer"
+                        onMouseDown={startResizing(
+                          tableRef,
+                          setColumnWidths
+                        )(index)}
+                      ></div>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colSpan="7" className="vv-no-rows">
+                  No Rows To Show
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </main>
     </div>
   );

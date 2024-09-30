@@ -91,7 +91,7 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:8888/api/vaccinations/${patient?.vaccinationId}/doses`,
+        `http://localhost:1415/api/vaccinations/${patient?.vaccinationId}/doses`,
         {
           method: "POST",
           headers: {
@@ -102,7 +102,7 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
       );
       if (response.ok) {
         console.log("Vaccination record added successfully.");
-        setIsEditing(false);
+        onClose();
         // Optionally, you can refresh the vaccine list here
       } else {
         console.error("Failed to add vaccination record.");
@@ -125,7 +125,7 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:8888/api/vaccinations/${patient?.vaccinationId}/doses/${vaccines?.doseId}`,
+        `http://localhost:1415/api/vaccinations/${patient?.vaccinationId}/doses/${vaccines?.doseId}`,
         {
           method: "PUT",
           headers: {
@@ -343,7 +343,7 @@ const PatientVaccinationDetails = ({ patient, onClose }) => {
                 <tr key={index}>
                   <td>{vaccine.vaccinationDate}</td>
                   <td>{vaccine.vaccineName}</td>
-                  <td>{vaccine.remarks}</td>
+                  <td>{vaccine.remark}</td>
                   <td>{vaccine.vaccinationDose}</td>
                   <td>{vaccine.enteredBy}</td>
                   <td>

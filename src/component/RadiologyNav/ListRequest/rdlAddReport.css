@@ -48,6 +48,11 @@
   border: 1px solid #ccc;
 }
 
+.rdlAddReport-prescrider-name{
+  display: flex;
+  align-items: center;
+}
+
 .rDLListRequest-add-report-form h2 {
     color: black;
     font-size: var(--heading-font);
@@ -57,7 +62,8 @@
   
   .rDLListRequest-add-report-info-row {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    gap: 10px;
     margin-bottom: 10px;
   }
   

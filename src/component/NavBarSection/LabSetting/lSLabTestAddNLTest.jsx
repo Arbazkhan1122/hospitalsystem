@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 // import './AddLabTest.css';
 import "../LabSetting/lSLabTestAddNLTest.css";
-import { API_BASE_URL } from "../../api/api";
 import { Link } from "react-router-dom";
 const LSLabTestAddNLTest = ({ onClose }) => {
   const [labCategories, setLabCategories] = useState([]);
   const [labComponents, setLabComponents] = useState([]);
   const [labTestData, setLabTestData] = useState({
-    labTestName: '',
-    labTestCode: '',
-    reportingName: '',
-    serviceDepartment: '',
-    selectedSpecimen: '',
-    runNoType: 'normal',
+    labTestName: "",
+    labTestCode: "",
+    reportingName: "",
+    serviceDepartment: "",
+    selectedSpecimen: "",
+    runNoType: "normal",
     displaySequence: 1000,
     isSmsApplicable: false,
     isLisApplicable: false,
@@ -20,14 +19,16 @@ const LSLabTestAddNLTest = ({ onClose }) => {
     isOutsourcedTest: false,
     taxApplicable: false,
     hasNegativeResults: false,
-    interpretation: '',
+    interpretation: "",
     components: [],
   });
 
   useEffect(() => {
     const fetchLabCategories = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/lab-test-categories/getAll-testCategory`);
+        const response = await fetch(
+          `http://localhost:1415/api/lab-test-categories/getAll-testCategory`
+        );
         if (response.ok) {
           const data = await response.json();
           setLabCategories(data);
@@ -42,7 +43,9 @@ const LSLabTestAddNLTest = ({ onClose }) => {
 
     const fetchLabComponents = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/lab-components/getAllComponents`);
+        const response = await fetch(
+          `http://localhost:1415/api/lab-components/getAllComponents`
+        );
         if (response.ok) {
           const data = await response.json();
           setLabComponents(data);
@@ -63,13 +66,15 @@ const LSLabTestAddNLTest = ({ onClose }) => {
     const { name, value, type, checked } = e.target;
     setLabTestData((prevData) => ({
       ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
   const handleComponentChange = (index, e) => {
     const { value } = e.target;
-    const selectedComponent = labComponents.find(comp => comp.componentName === value);
+    const selectedComponent = labComponents.find(
+      (comp) => comp.componentName === value
+    );
 
     // Update the specific component data based on the selected component
     setLabTestData((prevData) => {
@@ -77,10 +82,10 @@ const LSLabTestAddNLTest = ({ onClose }) => {
       newComponents[index] = {
         id: selectedComponent ? selectedComponent.componentId : null, // Store only the ID
         componentName: value,
-        unit: selectedComponent ? selectedComponent.unit : '',
-        valueType: selectedComponent ? selectedComponent.valueType : '',
-        range: selectedComponent ? selectedComponent.componentRange : '',
-        displaySequence:selectedComponent ? selectedComponent.displayName : ''
+        unit: selectedComponent ? selectedComponent.unit : "",
+        valueType: selectedComponent ? selectedComponent.valueType : "",
+        range: selectedComponent ? selectedComponent.componentRange : "",
+        displaySequence: selectedComponent ? selectedComponent.displayName : "",
       };
       return { ...prevData, components: newComponents };
     });
@@ -97,7 +102,7 @@ const LSLabTestAddNLTest = ({ onClose }) => {
           unit: "",
           valueType: "",
           range: "",
-          displaySequence:""
+          displaySequence: "",
         },
       ],
     }));
@@ -109,7 +114,9 @@ const LSLabTestAddNLTest = ({ onClose }) => {
       labTestName: labTestData.labTestName,
       labTestSpecimen: labTestData.selectedSpecimen,
       hasNegativeResults: labTestData.hasNegativeResults ? "Yes" : "No",
-      negativeResultText: labTestData.hasNegativeResults ? labTestData.interpretation : '',
+      negativeResultText: labTestData.hasNegativeResults
+        ? labTestData.interpretation
+        : "",
       isValidForReporting: labTestData.isValidForReporting ? "Yes" : "No",
       displaySequence: labTestData.displaySequence,
       reportingName: labTestData.reportingName,
@@ -119,30 +126,31 @@ const LSLabTestAddNLTest = ({ onClose }) => {
       isOutsourceTest: labTestData.isOutsourcedTest ? "Yes" : "No",
       smsApplicable: labTestData.isSmsApplicable ? "Yes" : "No",
       isLISApplicable: labTestData.isLisApplicable ? "Yes" : "No",
-      labComponentIds: labTestData.components.map(comp => comp.id).filter(Boolean), // Only get IDs that are defined
+      labComponentIds: labTestData.components
+        .map((comp) => comp.id)
+        .filter(Boolean), // Only get IDs that are defined
     };
 
     console.log(dataToSend);
-    
 
     try {
       const response = await fetch(`${API_BASE_URL}/labTestSetting/create`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(dataToSend),
       });
 
       if (response.ok) {
         const result = await response.json();
-        console.log('Lab test data saved successfully:', result);
+        console.log("Lab test data saved successfully:", result);
         onClose(); // Close the form after saving
       } else {
-        console.error('Failed to save lab test data:', response.statusText);
+        console.error("Failed to save lab test data:", response.statusText);
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
   return (
@@ -158,53 +166,53 @@ const LSLabTestAddNLTest = ({ onClose }) => {
         <div className="lSLabTestAddNLTest-form-row">
           <div className="lSLabTestAddNLTest-form-group-1row">
             <div className="lSLabTestAddNLTest-form-group">
-            <label>
-          Lab Test Name<span>*</span>
-        </label>
-        <input
-          type="text"
-          name="labTestName"
-          placeholder="Lab Test Name"
-          value={labTestData.labTestName}
-          onChange={handleInputChange}
-        />
+              <label>
+                Lab Test Name<span>*</span>
+              </label>
+              <input
+                type="text"
+                name="labTestName"
+                placeholder="Lab Test Name"
+                value={labTestData.labTestName}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="lSLabTestAddNLTest-form-group">
-            <label>
-          Lab Test Code<span>*</span>
-        </label>
-        <input
-          type="text"
-          name="labTestCode"
-          placeholder="Lab Test Code"
-          value={labTestData.labTestCode}
-          onChange={handleInputChange}
-        />
+              <label>
+                Lab Test Code<span>*</span>
+              </label>
+              <input
+                type="text"
+                name="labTestCode"
+                placeholder="Lab Test Code"
+                value={labTestData.labTestCode}
+                onChange={handleInputChange}
+              />
             </div>
           </div>
 
           <div className="lSLabTestAddNLTest-form-group-1row">
             <div className="lSLabTestAddNLTest-form-group">
-            <label>Reporting Name</label>
-          <input
-            type="text"
-            name="reportingName"
-            placeholder="Lab Test Reporting Name"
-            value={labTestData.reportingName}
-            onChange={handleInputChange}
-          />
+              <label>Reporting Name</label>
+              <input
+                type="text"
+                name="reportingName"
+                placeholder="Lab Test Reporting Name"
+                value={labTestData.reportingName}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="lSLabTestAddNLTest-form-group">
-            <label>
-            Report Template Name<span>*</span>
-          </label>
-          <input
-            type="text"
-            name="reportTemplateName"
-            placeholder="Select Report Template Short Name"
-            // value={labTestData.reportTemplateName}
-            // onChange={handleInputChange}
-          />
+              <label>
+                Report Template Name<span>*</span>
+              </label>
+              <input
+                type="text"
+                name="reportTemplateName"
+                placeholder="Select Report Template Short Name"
+                // value={labTestData.reportTemplateName}
+                // onChange={handleInputChange}
+              />
             </div>
           </div>
           <div className="lSLabTestAddNLTest-form-group-1row">
@@ -230,135 +238,141 @@ const LSLabTestAddNLTest = ({ onClose }) => {
               </select>
             </div>
             <div className="lSLabTestAddNLTest-form-group">
-            <label>
-          Service Department<span>*</span>
-        </label>
-        <input
-          type="text"
-          name="serviceDepartment"
-          placeholder="Select Service Department Name"
-          value={labTestData.serviceDepartment}
-          onChange={handleInputChange}
-        />
+              <label>
+                Service Department<span>*</span>
+              </label>
+              <input
+                type="text"
+                name="serviceDepartment"
+                placeholder="Select Service Department Name"
+                value={labTestData.serviceDepartment}
+                onChange={handleInputChange}
+              />
             </div>
           </div>
           <div className="lSLabTestAddNLTest-form-group-1row">
-          <div className="lSLabTestAddNLTest-form-group">
-          <label>
-            Select Specimen(s)<span>*</span>
-          </label>
-          <select
-            name="selectedSpecimen"
-            value={labTestData.selectedSpecimen}
-            onChange={handleInputChange}
-          >
-            <option value="">--Select Specimens--</option>
-            <option value="Blood">Blood</option>
-            <option value="Urine">Urine</option>
-            <option value="Saliva">Saliva</option>
-            <option value="Tissue">Tissue</option>
-            <option value="Sputum">Sputum</option>
-            <option value="CSF">CSF (Cerebrospinal Fluid)</option>
-            <option value="Serum">Serum</option>
-            <option value="Plasma">Plasma</option>
-            <option value="Bone Marrow">Bone Marrow</option>
-            <option value="Nasal Swab">Nasal Swab</option>
-            <option value="Throat Swab">Throat Swab</option>
-            <option value="Stool">Stool</option>
-          </select>
-        </div>
+            <div className="lSLabTestAddNLTest-form-group">
+              <label>
+                Select Specimen(s)<span>*</span>
+              </label>
+              <select
+                name="selectedSpecimen"
+                value={labTestData.selectedSpecimen}
+                onChange={handleInputChange}
+              >
+                <option value="">--Select Specimens--</option>
+                <option value="Blood">Blood</option>
+                <option value="Urine">Urine</option>
+                <option value="Saliva">Saliva</option>
+                <option value="Tissue">Tissue</option>
+                <option value="Sputum">Sputum</option>
+                <option value="CSF">CSF (Cerebrospinal Fluid)</option>
+                <option value="Serum">Serum</option>
+                <option value="Plasma">Plasma</option>
+                <option value="Bone Marrow">Bone Marrow</option>
+                <option value="Nasal Swab">Nasal Swab</option>
+                <option value="Throat Swab">Throat Swab</option>
+                <option value="Stool">Stool</option>
+              </select>
+            </div>
 
             <div className="lSLabTestAddNLTest-form-group-sub">
-            <div className="lSLabTestAddNLTest-form-group">
-            <label>Run No. Type</label>
-            <select
-              name="runNoType"
-              value={labTestData.runNoType}
-              onChange={handleInputChange}
-            >
-              <option value="normal">Normal</option>
-              {/* Add other options here */}
-            </select>
-          </div>
+              <div className="lSLabTestAddNLTest-form-group">
+                <label>Run No. Type</label>
+                <select
+                  name="runNoType"
+                  value={labTestData.runNoType}
+                  onChange={handleInputChange}
+                >
+                  <option value="normal">Normal</option>
+                  {/* Add other options here */}
+                </select>
+              </div>
 
-          <div className="lSLabTestAddNLTest-form-group">
-            <label>Display Sequence</label>
-            <input
-              type="number"
-              name="displaySequence"
-              value={labTestData.displaySequence}
-              onChange={handleInputChange}
-            />
-          </div>
+              <div className="lSLabTestAddNLTest-form-group">
+                <label>Display Sequence</label>
+                <input
+                  type="number"
+                  name="displaySequence"
+                  value={labTestData.displaySequence}
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
           </div>
         </div>
         <div className="lSLabTestAddNLTest-AddNew">
-        <a href="#" className="add-new-specimen">
-          Add New Specimen
-        </a>
-      </div>
+          <a href="#" className="add-new-specimen">
+            Add New Specimen
+          </a>
+        </div>
 
         <div className="lSLabTestAddNLTest-checkbox-N-form-group">
-        <div className="lSLabTestAddNLTest-checkbox-row">
-          <label>
-            <input
-              type="checkbox"
-              name="isSmsApplicable"
-              checked={labTestData.isSmsApplicable}
-              onChange={handleInputChange}
-            /> Is SMS Applicable?
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="isLisApplicable"
-              checked={labTestData.isLisApplicable}
-              onChange={handleInputChange}
-            /> Is LIS Applicable?
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="isValidForReporting"
-              checked={labTestData.isValidForReporting}
-              onChange={handleInputChange}
-            /> Is Valid for Reporting
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="isOutsourcedTest"
-              checked={labTestData.isOutsourcedTest}
-              onChange={handleInputChange}
-            /> Is Outsourced Test?
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="taxApplicable"
-              checked={labTestData.taxApplicable}
-              onChange={handleInputChange}
-            /> Tax Applicable
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="hasNegativeResults"
-              checked={labTestData.hasNegativeResults}
-              onChange={handleInputChange}
-            /> Has Negative Results
-          </label>
-        </div>
+          <div className="lSLabTestAddNLTest-checkbox-row">
+            <label>
+              <input
+                type="checkbox"
+                name="isSmsApplicable"
+                checked={labTestData.isSmsApplicable}
+                onChange={handleInputChange}
+              />{" "}
+              Is SMS Applicable?
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="isLisApplicable"
+                checked={labTestData.isLisApplicable}
+                onChange={handleInputChange}
+              />{" "}
+              Is LIS Applicable?
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="isValidForReporting"
+                checked={labTestData.isValidForReporting}
+                onChange={handleInputChange}
+              />{" "}
+              Is Valid for Reporting
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="isOutsourcedTest"
+                checked={labTestData.isOutsourcedTest}
+                onChange={handleInputChange}
+              />{" "}
+              Is Outsourced Test?
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="taxApplicable"
+                checked={labTestData.taxApplicable}
+                onChange={handleInputChange}
+              />{" "}
+              Tax Applicable
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="hasNegativeResults"
+                checked={labTestData.hasNegativeResults}
+                onChange={handleInputChange}
+              />{" "}
+              Has Negative Results
+            </label>
+          </div>
 
           <div className="lSLabTestAddNLTest-form-group lSLabTestAddNLTest-full-width">
-          <label>Interpretation</label>
-          <textarea
-            name="interpretation"
-            value={labTestData.interpretation}
-            onChange={handleInputChange}
-          ></textarea>
-        </div>
+            <label>Interpretation</label>
+            <textarea
+              name="interpretation"
+              value={labTestData.interpretation}
+              onChange={handleInputChange}
+            ></textarea>
+          </div>
         </div>
       </div>
 
@@ -375,54 +389,45 @@ const LSLabTestAddNLTest = ({ onClose }) => {
             </tr>
           </thead>
           <tbody>
-          {labTestData.components.map((component, index) => (
-            <tr key={index}>
-              <td>
-                <select
-                  name="componentName"
-                  value={component.componentName}
-                  onChange={(e) => handleComponentChange(index, e)}
-                  className="lSLabTestAddNLTest-component-input"
-                >
-                  <option value="">Select Component</option>
-                  {labComponents.map((labComponent) => (
-                    <option key={labComponent.componentId} value={labComponent.componentName}>
-                      {labComponent.componentName}
-                    </option>
-                  ))}
-                </select>
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={component.unit}
-                  readOnly
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={component.valueType}
-                  readOnly
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={component.range}
-                  readOnly
-                />
-              </td>
-              <td>
-                <input
-                  type="text"
-                  value={component.displaySequence}
-                  onChange={(e) => handleInputChange(e, index)}
-                />
-              </td>
-            </tr>
-          ))}
-        </tbody>
+            {labTestData.components.map((component, index) => (
+              <tr key={index}>
+                <td>
+                  <select
+                    name="componentName"
+                    value={component.componentName}
+                    onChange={(e) => handleComponentChange(index, e)}
+                    className="lSLabTestAddNLTest-component-input"
+                  >
+                    <option value="">Select Component</option>
+                    {labComponents.map((labComponent) => (
+                      <option
+                        key={labComponent.componentId}
+                        value={labComponent.componentName}
+                      >
+                        {labComponent.componentName}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+                <td>
+                  <input type="text" value={component.unit} readOnly />
+                </td>
+                <td>
+                  <input type="text" value={component.valueType} readOnly />
+                </td>
+                <td>
+                  <input type="text" value={component.range} readOnly />
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    value={component.displaySequence}
+                    onChange={(e) => handleInputChange(e, index)}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
         <button
           onClick={addNewComponent}
@@ -430,13 +435,21 @@ const LSLabTestAddNLTest = ({ onClose }) => {
         >
           Add New Component
         </button>
-        <Link to="/labTestComponent" className="lSLabTestAddNLTest-create-new-component">
+        <Link
+          to="/labTestComponent"
+          className="lSLabTestAddNLTest-create-new-component"
+        >
           Create New Component?
         </Link>
       </div>
 
       <div className="lSLabTestAddNLTest-form-actions">
-        <button className="lSLabTestAddNLTest-add-btn" onClick={saveLabTestData}>Add</button>
+        <button
+          className="lSLabTestAddNLTest-add-btn"
+          onClick={saveLabTestData}
+        >
+          Add
+        </button>
         <button className="lSLabTestAddNLTest-close-btn">Close</button>
       </div>
     </div>

@@ -3,19 +3,19 @@
 }
 .FinancialYear-create button{
     border: none;
-    background-color: #2D68EA;
+    background-color: var(--button-color);
     opacity: 0.5;
-    padding: 10px;
+    padding: 5px 10px;
     border-radius: 5px;
     color: white;
-    font-size: 14px;
+    font-size: var(--font-size);
     cursor: not-allowed;
 }
 
 .FinancialYear-search-container{
     margin-top: 10px;
     background-color: white;
-    padding: 8px;
+    padding: 5px;
 }
 .FinancialYear-search-container input[type="text"]{
    background-color: transparent;
@@ -31,86 +31,35 @@
   }
 
   .FinancialYear-print-btn{
-    background-color: #007bff;
+    background-color: var(--button-color);
     color: white;
     margin-left: 10px;
-    padding: 6px 15px;
+    padding: 5px 10px;
     border: none;
     border-radius: 5px;
   }
+  .FinancialYear-print-btn:hover{
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+    border: 1px solid var(--button-hover-border-color);
+  }
   .FinancialYear-results-count{
-    color: #007bff;
+    color: black;
   }
 
-  /* MedicareTable.css */
-  .FinancialYear-table {
-    width: 100%;
-    background-color: #f2f2f2;
-    border-collapse: collapse;
-  }
-  
-  .FinancialYear-table th,
-  .FinancialYear-table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
-    font-size: 14px;
-  }
-  
-  .FinancialYear-table th {
-    position: relative;
-    user-select: none; /* Disable text selection in header */
-    white-space: nowrap; /* Prevent text from wrapping */
-  }
-  
-  .FinancialYear-table th .header-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .resizable-th {
-    position: relative;
-  }
-  
-  .resizer {
-    width: 5px;
-    height: 100%;
-    position: absolute;
-    right: 0;
-    top: 0;
-    cursor: col-resize;
-    z-index: 1;
-  }
-  
-  .FinancialYear-table th .resizer:hover {
-    background-color: #aaa;
-  }
-  
-  .no-show-FinancialYear {
-    text-align: center;
-    font-style: italic;
-    color: #999;
-  }
-  
-  /* Custom styling for table text */
-  .FinancialYear-table th span {
-    font-size: 14px;
-    color: #333;
-  }
-  
-  .FinancialYear-table td {
-    font-size: 14px;
-    color: #333;
-  }
 .FinancialYear-table-btn{
-    background-color: #007bff;
+    background-color: var(--button-color);
     color: white;
-    border-radius: 15px;
+    border-radius: 5px;
     border: none;
-    padding: 2px 10px;
+    padding: 5px 10px;
     margin: 0 5px;
     cursor: pointer;
+}
+.FinancialYear-table-btn:hover{
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
 }
 
 .financialYear-popup-overlay{
@@ -123,13 +72,14 @@
     padding-top: 50px;
     display: flex;
     justify-content: center;
+    z-index: 150;
+    align-items: center;
 }
 .financialYear-popup-container{
   position: relative;
   background-color: #f0f0f0;
   padding: 30px;
   width: 500px;
-  height: 250px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -153,17 +103,22 @@
   background-color: #f44336;
   color: white;
   border: none;
-  /* border-radius: 50%; */
-  padding: 2px 12px;
-  font-size: 16px;
+  border-radius: 50%;
+  padding: 5px 12px;
+  font-size: var(--font-size);
 }
 .financialYear-popup-savebtn{
-  background-color: #4a4af4;
+  background-color: var(--button-color);
   color: white;
-  padding: 5px 20px;
+  padding: 5px 10px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
   margin: 10px;
   float: right;
+}
+.financialYear-popup-savebtn:hover{
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
 }
