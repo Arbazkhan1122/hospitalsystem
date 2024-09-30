@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CheckIn.css';
+import axios from 'axios';
 
 import { useNavigate } from 'react-router-dom';
 
 const CheckIn = () => {
   const navigate = useNavigate();
+   const [departments, setDepartments] = useState([]);
+  const [employees, setEmployees] = useState([]);
 
   const [formData, setFormData] = useState({
 
@@ -65,6 +68,30 @@ const CheckIn = () => {
     employeeId: '', // Employee ID field
 
 });
+
+useEffect(() => {
+    axios.get('http://localhost:1415/api/departments/getAllDepartments')
+      .then(response => {
+        setDepartments(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching departments:', error);
+      });
+  }, []);
+
+  // Fetch employees based on selected department
+  const handleDepartmentChange = (e) => {
+    const departmentId = e.target.value;
+    setFormData({ ...formData, departmentId });
+    
+    axios.get(`http://localhost:1415/api/employees/department/${departmentId}`)
+      .then(response => {
+        setEmployees(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching employees:', error);
+      });
+  };
 
 const handleChange = (e) => {
 
@@ -444,45 +471,54 @@ const handleSubmit = async (e) => {
         </div>
       </div>
     </div>
-      <div className='checkIn-visit-billing'>
-        <div className="checkIn__section checkIn__section--visit">
-          <h3 className="checkIn__section-title">Visit Information</h3>
-          <div className="checkIn__form">
-            <div className="checkIn__form-group">
-              <label>Department <span className="checkIn__required">*</span></label>
-              <input type="text" value="Dental" />
-            </div>
-            <div className="checkIn__form-group">
-              <label>Doctor <span className="checkIn__required">*</span></label>
-              <input type="text" placeholder="Doctor's Name" />
-            </div>
-            <div className="checkIn__form-group">
-              <label>Referred By</label>
-              <input type="text" placeholder="Enter Name" name='referedBy' value={formData.referredBy} onChange={handleChange}/>
-            </div>
-            <div className="checkIn__form-group">
-              <label>Visit Date <span className="checkIn__required">*</span></label>
-              <input type="date" value={formData.visitDate} name='visitDate'  onChange={handleChange}/>
-            </div>
-            <div className="checkIn__form-group">
-              <label>Visit Time <span className="checkIn__required">*</span></label>
-              <input type="time" value={formData.visitTime}  onChange={handleChange}/>
-            </div>
-            <div className=" checkIn__form-group--external">
-              <label>External?</label>
-              <select
-                    name="isExternal"
-                    value={formData.isExternal}
-                    onChange={handleChange}
-                >
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select>
-              {/* <button className="checkIn__add-button">+</button> */}
-            </div>
+       <div className='checkIn-visit-billing'>
+      <div className="checkIn__section checkIn__section--visit">
+        <h3 className="checkIn__section-title">Visit Information</h3>
+        <div className="checkIn__form">
+          <div className="checkIn__form-group">
+            <label>Department <span className="checkIn__required">*</span></label>
+            <select value={formData.departmentId} onChange={handleDepartmentChange}>
+              <option value="">Select Department</option>
+              {departments.map(dept => (
+                <option key={dept.departmentId} value={dept.departmentId}>{dept.departmentName}</option>
+              ))}
+            </select>
+          </div>
+          <div className="checkIn__form-group">
+            <label>Doctor <span className="checkIn__required">*</span></label>
+            <select   value={formData.employeeId} name="employeeId" onChange={handleChange}>
+              <option value="">Select Doctor</option>
+              {employees.map(emp => (
+                <option key={emp.employeeId} value={emp.employeeId}>{emp.firstName+""+emp.middleName+""+emp.lastName}</option>
+              ))}
+            </select>
+          </div>
+          <div className="checkIn__form-group">
+            <label>Referred By</label>
+            <input type="text" placeholder="Enter Name" name='referredBy' value={formData.referredBy} onChange={handleChange}/>
+          </div>
+          <div className="checkIn__form-group">
+            <label>Visit Date <span className="checkIn__required">*</span></label>
+            <input type="date" value={formData.visitDate} name='visitDate' onChange={handleChange}/>
+          </div>
+          <div className="checkIn__form-group">
+            <label>Visit Time <span className="checkIn__required">*</span></label>
+            <input type="time" value={formData.visitTime} name='visitTime' onChange={handleChange}/>
+          </div>
+          <div className="checkIn__form-group checkIn__form-group--external">
+            <label>External?</label>
+            <select
+              name="isExternal"
+              value={formData.isExternal}
+              onChange={handleChange}
+            >
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
           </div>
         </div>
-
+      </div>
+    
         <div className="checkIn__section checkIn__section--billing">
           <h3 className="checkIn__section-title">Billing Information</h3>
           <div className="checkIn__form">
@@ -542,7 +578,7 @@ const handleSubmit = async (e) => {
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <div>
+            {/* <div>
                 <label>Employee ID:</label>
                 <input
                     type="text"
@@ -551,7 +587,7 @@ const handleSubmit = async (e) => {
                     onChange={handleChange}
                     required
                 />
-            </div>
+            </div> */}
             <button type='submit' className="checkIn__print-btn">Print Invoice</button>
           </div>
         </div>

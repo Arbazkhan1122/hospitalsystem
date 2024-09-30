@@ -3,9 +3,11 @@
 .hrmsLayout {
  display: flex;
  height: 100%;
-/* height: 100%; */
-height: 100vh;
 overflow-x: scroll;
+}
+
+.hrmsLayout::-webkit-scrollbar{
+   display:none;
 }
 .hrmsLayout-center{
    width: 100%;
