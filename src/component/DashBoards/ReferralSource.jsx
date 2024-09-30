@@ -4,6 +4,8 @@ import { startResizing } from "../TableHeadingResizing/resizableColumns";
 import { API_BASE_URL } from "../api/api";
 
 const ReferralSource = ({ patientId, newPatientVisitId }) => {
+  console.log(newPatientVisitId);
+  
   const [columnWidths, setColumnWidths] = useState({});
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // Manage modal visibility
   const [referralData, setReferralData] = useState([]); // Store fetched referral data
@@ -22,30 +24,40 @@ const ReferralSource = ({ patientId, newPatientVisitId }) => {
 
   const tableRef = useRef(null);
 
-  // Fetch referral data by newVisitPatientId when the component mounts
   useEffect(() => {
     const fetchReferralData = async () => {
       try {
-        const response = await fetch(
-          `${API_BASE_URL}/referral-sources/by-newVisitPatientId/${newPatientVisitId}`
-        );
-        if (response) {
-          const data = await response.json();
-          console.log(data);
-                
-          setReferralData(data); // Store fetched data in state
-        } else {
-          console.error("Failed to fetch referral data.");
+        let endpoint = "";
+  
+        // Check if newPatientVisitId or admissionId is present
+        if (newPatientVisitId) {
+          endpoint = `${API_BASE_URL}/referral-sources/by-newVisitPatientId/${newPatientVisitId}`;
+        } else if (patientId) {
+          endpoint = `${API_BASE_URL}/referral-sources/by-patientId/${patientId}`;
+        }
+  
+        // If an endpoint is determined, fetch data
+        if (endpoint) {
+          const response = await fetch(endpoint);
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            setReferralData(data); // Store fetched data in state
+          } else {
+            console.error("Failed to fetch referral data.");
+          }
         }
       } catch (error) {
         console.error("Error:", error);
       }
     };
-
-    if (newPatientVisitId) {
-      fetchReferralData(); // Only fetch data if newPatientVisitId exists
+  
+    // Fetch referral data if newPatientVisitId or admissionId exists
+    if (newPatientVisitId || patientId) {
+      fetchReferralData();
     }
-  }, [newPatientVisitId]);
+  }, [patientId, newPatientVisitId]); // Dependencies to re-fetch when IDs change
+  
 
   const handleOpenModal = () => {
     setIsAddModalOpen(true); // Open modal

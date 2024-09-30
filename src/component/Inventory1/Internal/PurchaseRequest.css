@@ -33,6 +33,9 @@
   align-items: center; /* Centers icon vertically */
   justify-content: center;
 }
+.purchase-request-select{
+  width: 250px;
+}
 .purchase-request-ok
 {
   padding: 5px 10px; /* Adjust padding */

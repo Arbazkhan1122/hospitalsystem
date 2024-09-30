@@ -25,20 +25,38 @@ const Vitals = ({patientId,newPatientVisitId}) => {
   });
 
   useEffect(() => {
-    if (newPatientVisitId) {
-      axios
-        .get(`${API_BASE_URL}/vitals/get-by-opd-patient-id/${newPatientVisitId}`)
-        .then((response) => {
-          if (response.data.length > 0) {
-            setLatestVitals(response.data[response.data.length - 1]);
-            console.log(response.data);
-          }
-        })
-        .catch((error) => {
-          console.error("Error fetching vitals:", error);
-        });
+    const fetchVitals = () => {
+      let endpoint = "";
+  
+      // Determine which endpoint to use based on available IDs
+      if (newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/vitals/get-by-opd-patient-id/${newPatientVisitId}`;
+      } else if (patientId) {
+        endpoint = `${API_BASE_URL}/vitals/get-by-in-patient-id/${patientId}`;
+      }
+  
+      // Fetch data if a valid endpoint is determined
+      if (endpoint) {
+        axios
+          .get(endpoint)
+          .then((response) => {
+            if (response.data.length > 0) {
+              setLatestVitals(response.data[response.data.length - 1]);
+              console.log(response.data);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching vitals:", error);
+          });
+      }
+    };
+  
+   
+    if (newPatientVisitId || patientId) {
+      fetchVitals();
     }
-  }, [newPatientVisitId]);
+  }, [newPatientVisitId, patientId]); // Dependencies to track ID changes
+  
 
 
   const handleAddVitals = () => {

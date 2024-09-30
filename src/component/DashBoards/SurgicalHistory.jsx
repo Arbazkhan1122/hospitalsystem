@@ -45,22 +45,35 @@ const SurgicalHistory = ({patientId,newPatientVisitId}) => {
   },[newSurgicalHistory])
 
   useEffect(() => {
-
-    axios
-      .get(
-        `${API_BASE_URL}/surgical-histories/by-newVisitPatientId/${newPatientVisitId}`
-      )
-      .then((response) => {
-        if (response.data.length > 0) {
-          setSurgicalHistories(response.data);
-          console.log(response.data);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching vitals:", error);
-      });
-  }, []);
-
+    const fetchSurgicalHistories = () => {
+      let endpoint = "";
+  
+      // Check if newPatientVisitId or admissionId is present
+      if (newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/surgical-histories/by-newVisitPatientId/${newPatientVisitId}`;
+      } else if (patientId) {
+        endpoint = `${API_BASE_URL}/surgical-histories/by-patientId/${patientId}`;
+      }
+  
+      // If an endpoint is determined, make the API call
+      if (endpoint) {
+        axios
+          .get(endpoint)
+          .then((response) => {
+            if (response.data.length > 0) {
+              setSurgicalHistories(response.data);
+              console.log(response.data);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching surgical histories:", error);
+          });
+      }
+    };
+  
+    fetchSurgicalHistories();
+  }, [patientId, newPatientVisitId]); // Dependencies to track patient IDs
+  
   const handleAddSurgicalHistory = async () => {
     const Surgical =
         patientId > 0
@@ -97,7 +110,6 @@ const SurgicalHistory = ({patientId,newPatientVisitId}) => {
 
   const handleUpdateSurgicalHistory = async () => {
     console.log(updateSurgicalHistory);
-    
     try {
       const response = await fetch(`${API_BASE_URL}/surgical-histories/update/${newSurgicalHistory.surgicalHistoryId}`, {
         method: 'PUT',

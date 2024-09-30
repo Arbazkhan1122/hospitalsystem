@@ -22,7 +22,7 @@ const PatientList = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/patients/getAllPatients`);
+        const response = await fetch(`${API_BASE_URL}/admissions/fetch`);
         const data = await response.json();
         console.log(data);
         
@@ -108,6 +108,7 @@ const PatientList = () => {
         </div>
       </div>
 
+   <div className='patientList-table-container'>
       <table className="patientList-table" ref={tableRef}>
           <thead>
             <tr>
@@ -144,25 +145,26 @@ const PatientList = () => {
         <tbody>
           {patients.map((patient, index) => (
             <tr key={index}>
-              <td>{patient.hospitalNo}</td>
-              <td>{`${patient.firstName} ${patient.lastName}`}</td>
-              <td>{patient.age}/{patient.gender}</td>
+              <td>{patient.patientDTO.hospitalNo}</td>
+              <td>{`${patient.patientDTO.firstName} ${patient.patientDTO.lastName}`}</td>
+              <td>{ patient.patientDTO.age}/{patient.patientDTO.gender}</td>
               <td>{patient.admissionStatus}</td>
-              <td>{patient.admittedOn}</td>
-              <td>{patient.wardBed}</td>
-              <td>{patient.dept}</td>
-              <td>{patient.providerName}</td>
+              <td>{patient.admissionDate}</td>
+              <td>{patient?.manageBedDTO?.bedNumber}</td>
+              <td>{patient?.wardDepartmentDTO?.wardName}</td>
+              <td>{patient?.admittedDoctorDTO?.firstName}</td>
               <td>
-                <button onClick={() => handlePatientClick(patient)}>👤</button>
-                <button>🔔</button>
-                <button>🖼</button>
-                <button onClick={() => handleOrdersClick(patient)}>📄</button>
-                <button>♥</button>
+                <button className='in-patient-button' onClick={() => handlePatientClick(patient)}>👤</button>
+                <button className='in-patient-button' >🔔</button>
+                <button className='in-patient-button' >🖼</button>
+                <button className='in-patient-button' onClick={() => handleOrdersClick(patient)}>📄</button>
+                <button className='in-patient-button' >♥</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

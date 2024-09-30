@@ -88,7 +88,6 @@ const AddItemSubCategory = ({onClose}) => {
           >
             <option value="">-- Select Ledger --</option>
             <option value="Pharmacy Ledger">Pharmacy Ledger</option>
-            {/* Add more options here */}
           </select>
           <a href="#" className="goryCreateLedger">Create new ledger for SubCategory</a>
         </div>

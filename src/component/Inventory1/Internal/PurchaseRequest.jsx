@@ -34,7 +34,7 @@ const PurchaseRequest = () => {
 
   // Fetch purchase requests when the component mounts
   useEffect(() => {
-    fetch("http://localhost:8080/api/purchase-requests/fetchAllPurchase")
+    fetch(`${API_BASE_URL}/purchase-requests/fetchAllPurchase`)
       .then((response) => response.json())
       .then((data) => {
         setPurchaseRequests(data);
@@ -47,10 +47,10 @@ const PurchaseRequest = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/vendors/getAllVendors")
+    fetch(`${API_BASE_URL}/vendors/getAllVendors`)
       .then((response) => response.json())
       .then((data) => {
-        setVendorList(data);
+        setVendorList(data);        
         setLoading(false);
       })
       .catch((err) => {
@@ -108,7 +108,6 @@ const PurchaseRequest = () => {
       prCategory,
       itemName,
       quantity,
-      availableQty,
       quantityVerifiedOn,
       uom,
       status: "pending",
@@ -151,10 +150,6 @@ const PurchaseRequest = () => {
   const openAddItemModel = () => setOpenAddItem(true);
   const closeAddItemModel = () => setOpenAddItem(false);
 
-  // Display loading or error message if needed
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-
   return (
     <div className="purchase-request-content">
       {isCreatingRequest ? (
@@ -166,6 +161,7 @@ const PurchaseRequest = () => {
                 <label>Vendor:</label>
                 <select
                  value={vendor}
+                 className="purchase-request-select"
                  onChange={(e) => setVendor(e.target.value)}>
                   {vendorList.map((vendor) => (
                     <option key={vendor.id} value={vendor.vendorName}>

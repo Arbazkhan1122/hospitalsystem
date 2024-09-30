@@ -204,7 +204,7 @@ td button {
 }
 .patient-record-sub-div
 {
-  width: 60%;
+  width: 40%;
   padding: 5px;
   display: flex;
 }
@@ -232,4 +232,8 @@ td button {
   border: 1px solid var(--button-color);
   border-radius: 5px;
   color: white;
+}
+.patient-record-button{
+  background: none;
+  border: none;
 }

@@ -3,6 +3,7 @@ import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
 import "./PurchaseOrder.css";
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from "../api/api";
 
 
 const SupplierLedgerComponent = () => {

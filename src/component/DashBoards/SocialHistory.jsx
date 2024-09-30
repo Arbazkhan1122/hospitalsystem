@@ -42,21 +42,35 @@ const SocialHistory = ({patientId,newPatientVisitId}) => {
     });
   }, [socialHistory]);
   useEffect(() => {
-    // Fetch vitals from API
-    axios
-      .get(
-        `${API_BASE_URL}/social-histories/by-newVisitPatientId/${newPatientVisitId}`
-      )
-      .then((response) => {
-        if (response.data.length > 0) {
-          setSocialHistories(response.data);
-          console.log(response.data);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching vitals:", error);
-      });
-  }, []);
+    const fetchSocialHistories = () => {
+      let endpoint = "";
+  
+      // Check if newPatientVisitId or admissionId is present
+      if (newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/social-histories/by-newVisitPatientId/${newPatientVisitId}`;
+      } else if (patientId) {
+        endpoint = `${API_BASE_URL}/social-histories/by-patientId/${patientId}`;
+      }
+  
+      // If an endpoint is determined, make the API call
+      if (endpoint) {
+        axios
+          .get(endpoint)
+          .then((response) => {
+            if (response.data.length > 0) {
+              setSocialHistories(response.data);
+              console.log(response.data);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching social histories:", error);
+          });
+      }
+    };
+  
+    fetchSocialHistories();
+  }, [patientId, newPatientVisitId]); // Dependencies to re-fetch when IDs change
+  
 
   const handleAddSocialHistory = async () => {
     const formData =

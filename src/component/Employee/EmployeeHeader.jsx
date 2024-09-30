@@ -26,29 +26,29 @@ const EmployeeHeader = ({ onNavClick }) => {
               >Radiology</li> 
             <li onClick={() => handleNavClick('adt')}
              className={activeNav === 'adt' ? 'active' : ''}   >ADT</li>
-            <li onClick={() => handleNavClick('security')}              className={activeNav === 'security' ? 'active' : ''}
+            {/* <li onClick={() => handleNavClick('security')}              className={activeNav === 'security' ? 'active' : ''}
             >Security</li>
 
             <li onClick={() => handleNavClick('billing')}              className={activeNav === 'billing' ? 'active' : ''}
-            >Billing</li> {/* Updated to handle 'Billing' */}
+            >Billing</li>  */}
 
             <li onClick={() => handleNavClick('employee')}              className={activeNav === 'employee' ? 'active' : ''}
             >Employee</li>
-            <li onClick={() => handleNavClick('geolocation')}              className={activeNav === 'geolocation' ? 'active' : ''}
-            >Geolocation</li> {/* Added onClick */}
+            {/* <li onClick={() => handleNavClick('geolocation')}              className={activeNav === 'geolocation' ? 'active' : ''}
+            >Geolocation</li> Added onClick */}
             <li onClick={() => handleNavClick('clinical')}              className={activeNav === 'clinical' ? 'active' : ''}
-            >Clinical</li> {/* Added onClick */}
-            <li><Link to= '/manage-tax' className='SettingLinks'>Manage Tax</Link></li> {/* Direct navigation */}
+            >Clinical</li> 
+            {/* <li><Link to= '/manage-tax' className='SettingLinks'>Manage Tax</Link></li> 
             <li onClick={() => handleNavClick('dynamicTemplates')}              className={activeNav === 'dynamicTemplates' ? 'active' : ''}
-            >Dynamic Templates</li> {/* Added onClick */}
+            >Dynamic Templates</li> 
             <li><Link to= '/external-referrals' className='SettingLinks'>External Referrals</Link></li>
             <li><Link to= '/core-cfg-prmeter' className='SettingLinks'>Core CFG Parameters</Link></li>
-            
-      <li><Link to="/manage-banks" className='SettingLinks'>Banks</Link></li>
+             */}
+      {/* <li><Link to="/manage-banks" className='SettingLinks'>Banks</Link></li>
       <li><Link to="/manage-printers" className='SettingLinks'>Printers</Link></li>
       <li><Link to="/print-export-configuration" className='SettingLinks'>PrintExport Configuration</Link></li>
       <li><Link to="/payment-mode-settings" className='SettingLinks'>Payment Mode Settings</Link></li>
-      <li><Link to="/price-category" className='SettingLinks'>PriceCategory</Link></li>
+      <li><Link to="/price-category" className='SettingLinks'>PriceCategory</Link></li> */}
 
           </ul>
         </nav>
@@ -66,8 +66,8 @@ const EmployeeHeader = ({ onNavClick }) => {
         <div className="department-sub-nav">
           <ul>
             <li><Link to="/manage-department" >Manage Department</Link></li>
-            <li><Link to="/manage-substore" >Manage Substore</Link></li>
-            <li><Link to="/manage-ward-substore" >Manage Ward Substore</Link></li>
+            {/* <li><Link to="/manage-substore" >Manage Substore</Link></li> */}
+            {/* <li><Link to="/manage-ward-substore" >Manage Ward Substore</Link></li> */}
           </ul>
         </div>
       )}
@@ -77,9 +77,9 @@ const EmployeeHeader = ({ onNavClick }) => {
             <li><Link to="/manage-ward" >Manage Ward</Link></li>
             <li><Link to="/manage-bed-feature" >Manage Bed Feature</Link></li>
             <li><Link to="/manage-bed" >Manage Bed</Link></li>
-            <li><Link to="/manage-auto-add-billing-items" >Manage Auto Add Billing Items</Link></li>
+            {/* <li><Link to="/manage-auto-add-billing-items" >Manage Auto Add Billing Items</Link></li>
             <li><Link to="/manage-bed-feature-scheme" >Manage Bed Feature Scheme And PriceCategory</Link></li>
-            <li><Link to="/deposit-settings" >Deposit Settings</Link></li>
+            <li><Link to="/deposit-settings" >Deposit Settings</Link></li> */}
           </ul>
         </div>
       )}
@@ -88,20 +88,20 @@ const EmployeeHeader = ({ onNavClick }) => {
           <ul>
             <li><Link to="/manage-imaging-type">Manage Imaging Type</Link></li>
             <li><Link to="/manage-imaging-item" >Manage Imaging Item</Link></li>
-            <li><Link to="/manage-radiology-template" >Manage Radiology Template</Link></li>
-            <li><Link to="/default-signatories" >Default Signatories</Link></li>
+            {/* <li><Link to="/manage-radiology-template" >Manage Radiology Template</Link></li> */}
+            {/* <li><Link to="/default-signatories" >Default Signatories</Link></li> */}
           </ul>
         </div>
       )}
-     {activeNav === 'security' && (
+     {/* {activeNav === 'security' && (
         <div className="security-sub-nav">
           <ul>
             <li><Link to="/manage-user" >Manage User</Link></li>
             <li><Link to="/manage-role" >Manage Role</Link></li>
           </ul>
         </div>
-      )}
-      {activeNav === 'geolocation' && (  /* Added Geolocation sub-nav */
+      )} */}
+      {/* {activeNav === 'geolocation' && (  
         <div className="geolocation-sub-nav">
           <ul>
             <li><Link to="/manage-municipality" >Manage Municipality</Link></li>
@@ -109,7 +109,7 @@ const EmployeeHeader = ({ onNavClick }) => {
             <li><Link to="/manage-subdivision" >Manage SubDivision</Link></li>
           </ul>
         </div>
-      )}
+      )} */}
        {activeNav === 'clinical' && ( /* Added Clinical sub-nav */
         <div className="clinical-sub-nav">
           <ul>
@@ -119,7 +119,7 @@ const EmployeeHeader = ({ onNavClick }) => {
           </ul>
         </div>
       )}
-       {activeNav === 'dynamicTemplates' && ( /* Added Dynamic Templates sub-nav */
+       {/* {activeNav === 'dynamicTemplates' && ( 
         <div className="dynamic-templates-sub-nav">
           <ul>
             <li><Link to="/templates">Templates</Link></li>
@@ -127,8 +127,8 @@ const EmployeeHeader = ({ onNavClick }) => {
             <li><Link to="/filed-master" >Filed Master</Link></li>
           </ul>
         </div>
-      )}
-      {activeNav === 'billing' && (  /* Added Billing sub-nav */
+      )} */}
+      {/* {activeNav === 'billing' && ( 
         <div className="billing-sub-nav">
           <ul>
             <li><Link to="/map-ap-scheme" >Map AP Scheme And PriceCategory</Link></li>
@@ -144,7 +144,7 @@ const EmployeeHeader = ({ onNavClick }) => {
             <li><Link to="/registration-sticker" >Registration Sticker</Link></li>
           </ul>
         </div>
-      )}
+      )} */}
      
     </>
   );

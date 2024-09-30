@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './SearchPatient.css';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../api/api';
 
 function SearchPatient() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -18,9 +19,11 @@ function SearchPatient() {
 
   useEffect(() => {
     // Fetch patients from the API when the component mounts
-    axios.get('http://192.168.1.39:1415/api/patients/getAllPatients')
+    axios.get(`${API_BASE_URL}/patients/getAllPatients`)
       .then(response => {
         setPatients(response.data);
+        console.log(response.data);
+        
       })
       .catch(error => {
         console.error('There was an error fetching the patient data!', error);

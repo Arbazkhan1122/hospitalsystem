@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import './InPatientAction.css';
 import VitalsPage from './ClinicalVitals'; 
 import ActionRecordPage from './ActionRecordPage';
-import { useNavigate } from 'react-router-dom';
 import Problems from './Problems';
 import { API_BASE_URL } from '../api/api';
 import AddVitalsForm from './AddVitals';
@@ -14,6 +13,8 @@ import CinicalDocument from './ClinicalDocuments';
 import axios from 'axios';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
 import RadiologyReportDoc from './RadiologyReportDoc';
+import VisitTable from './EncounterHistory';
+import LabReportResult from './LabReportResult';
 
 const Section = ({ title, handleAddClick, children }) => (
   <div className="Patient-Dashboard-firstBox">
@@ -33,6 +34,7 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
   const [columnWidths,setColumnWidths] = useState({});
   const tableRef = useRef(null);
   const [selectedRadiology, setSelectedRadiology] = useState(null);
+  const [selectedLabrotary, setSelectedLabrotary] = useState(null);
   const [activeSection, setActiveSection] = useState('dashboard'); 
   const [prevAction, setPrevAction] = useState('dashboard');
   const [latestVitals, setLatestVitals] = useState(null);
@@ -43,6 +45,9 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
   const [radiology,setRadiology] = useState([]);
   const [LabRequest,setLabRequest] = useState([]);
   const [showRadioReport,setShowRadioReport] = useState(false);
+  const [ShowLabReport,setShowLabReport] =useState(false);
+  console.log(patient);
+  
 
   useEffect(() => {
     // Fetch medications data from the API
@@ -62,84 +67,159 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
   }, [activeSection]);
 
   useEffect(() => {
-    // Fetch vitals from API
-    axios
-      .get(`${API_BASE_URL}/vitals/get-by-opd-patient-id/${patient.newPatientVisitId}`)
-      .then((response) => {
-        if (response.data.length > 0) {
-          setLatestVitals(response.data[response.data.length-1]); 
-          console.log(response.data[response.data.length-1]);
-          
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching vitals:", error);
-      });
-  }, [setIsPatientOPEN,isPatientOPEN]);
+    const fetchVitals = () => {
+      let endpoint = "";
+      if (patient.newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/vitals/get-by-opd-patient-id/${patient.newPatientVisitId}`;
+      } else if (patient.admissionId) {
+        endpoint = `${API_BASE_URL}/vitals/get-by-in-patient-id/${patient.admissionId}`;
+      }
+  
+      // If an endpoint is determined, make the API call
+      if (endpoint) {
+        axios
+          .get(endpoint)
+          .then((response) => {
+            if (response.data.length > 0) {
+              // Set the latest vitals
+              setLatestVitals(response.data[response.data.length - 1]);
+              console.log(response.data[response.data.length - 1]);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching vitals:", error);
+          });
+      }
+    };
+  
+    fetchVitals();
+  }, [patient.newPatientVisitId, patient.admissionId]); // Dependencies
+  
 
   useEffect(() => {
-    axios
-      .get(
-        `${API_BASE_URL}/allergies/by-newVisitPatientId/${patient.newPatientVisitId}`
-      )
-      .then((response) => {
-        if (response.data.length > 0) {
-          setAllergies(response.data);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching vitals:", error);
-      });
-  }, []);
+    const fetchAllergies = () => {
+      let endpoint = "";
+  
+      // Check if newPatientVisitId is present
+      if (patient.newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/allergies/by-newVisitPatientId/${patient.newPatientVisitId}`;
+      } else if (patient.admissionId) {
+        endpoint = `${API_BASE_URL}/allergies/by-patientId/${patient.admissionId}`;
+      }
+  
+      // If an endpoint is determined, make the API call
+      if (endpoint) {
+        axios
+          .get(endpoint)
+          .then((response) => {
+            if (response.data.length > 0) {
+              console.log(response.data);
+              
+              setAllergies(response.data);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching allergies:", error);
+          });
+      }
+    };
+  
+    fetchAllergies();
+  }, [patient.newPatientVisitId, patient.admissionId]); // Dependencies to re-run useEffect when IDs change
+  
 
 
   useEffect(() => {
-    axios
-      .get(
-        `${API_BASE_URL}/active-problems/by-newVisitPatientId/${patient.newPatientVisitId}`
-      )
-      .then((response) => {
-        if (response.data.length > 0) {
-          setActiveProblem(response.data);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching vitals:", error);
-      });
-  }, []);
+    const fetchActiveProblems = () => {
+      let endpoint = "";
+  
+      // Check if newPatientVisitId is present
+      if (patient.newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/active-problems/by-newVisitPatientId/${patient.newPatientVisitId}`;
+      } else if (patient.admissionId) {
+        endpoint = `${API_BASE_URL}/active-problems/by-patientId/${patient.admissionId}`;
+      }
+  
+      // If an endpoint is determined, make the API call
+      if (endpoint) {
+        axios
+          .get(endpoint)
+          .then((response) => {
+            if (response.data.length > 0) {
+              setActiveProblem(response.data);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching active problems:", error);
+          });
+      }
+    };
+  
+    fetchActiveProblems();
+  }, [patient.newPatientVisitId, patient.admissionId]); // Dependencies for re-fetching when IDs change
+  
 
   useEffect(() => {
-    axios
-      .get(
-        `${API_BASE_URL}/imaging-requisitions/by-opd-patient-id?opdPatientId=${patient.newPatientVisitId}`
-      )
-      .then((response) => {
-        if (response.data.length > 0) {
-          console.log(response.data);
-          
-          setRadiology(response.data);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching vitals:", error);
-      });
-  }, []);
+    const fetchImagingRequisitions = () => {
+      let endpoint = "";
+  
+      // Check if newPatientVisitId or admissionId is present
+      if (patient.newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/imaging-requisitions/by-opd-patient-id?opdPatientId=${patient.newPatientVisitId}`;
+      } else if (patient.admissionId) {
+        endpoint = `${API_BASE_URL}/imaging-requisitions/by-in-patient-id?inPatientId=${patient.admissionId}`;
+      }
+  
+      // If an endpoint is determined, make the API call
+      if (endpoint) {
+        axios
+          .get(endpoint)
+          .then((response) => {
+            if (response.data.length > 0) {
+              console.log(response.data);
+              setRadiology(response.data);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching imaging requisitions:", error);
+          });
+      }
+    };
+  
+    fetchImagingRequisitions();
+  }, [patient.newPatientVisitId, patient.admissionId]); // Dependencies to re-run useEffect when patient IDs change
+  
 
   useEffect(() => {
-    axios
-      .get(
-        `${API_BASE_URL}/lab-requests/by-opd-patient-id?opdPatientId=${patient.newPatientVisitId}`
-      )
-      .then((response) => {
-        if (response.data.length > 0) {
-          console.log(response.data);
-          setLabRequest(response.data);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching vitals:", error);
-      });
-  }, [patient.newPatientVisitId]);
+    const fetchLabRequests = () => {
+      let endpoint = "";
+  
+      // Check if newPatientVisitId or admissionId is present
+      if (patient.newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/lab-requests/by-opd-patient-id?opdPatientId=${patient.newPatientVisitId}`;
+      } else if (patient.admissionId) {
+        endpoint = `${API_BASE_URL}/lab-requests/by-in-patient-id?inPatientId=${patient.admissionId}`;
+      }
+  
+      // If an endpoint is determined, make the API call
+      if (endpoint) {
+        axios
+          .get(endpoint)
+          .then((response) => {
+            if (response.data.length > 0) {
+              console.log(response.data);
+              setLabRequest(response.data);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching lab requests:", error);
+          });
+      }
+    };
+  
+    fetchLabRequests();
+  }, [patient.newPatientVisitId, patient.admissionId]); // Dependencies to track patient IDs
+  
  
 
  useEffect(() => {
@@ -161,24 +241,31 @@ const ShowImagingReport =(item)=>{
   setShowRadioReport(true);
 }
 
+const ShowlabReportResult = (item)=>{
+  setSelectedLabrotary(item);
+  setShowLabReport(true);
+}
+
 
 
   const renderContent = () => {
     switch (activeSection) {
       case 'clinical':
-        return <VitalsPage patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId} />;
+        return <VitalsPage patientId={patient.admissionId} newPatientVisitId={patient.newPatientVisitId} />;
       case 'actionRecord':
-        return <ActionRecordPage patientId={patient.patientId} setActiveSection={setActiveSection} newPatientVisitId={patient.newPatientVisitId} employeeId={patient.employeeDTO.employeeId} />;
+        return <ActionRecordPage patientId={patient.admissionId} setActiveSection={setActiveSection} newPatientVisitId={patient.newPatientVisitId} employeeId={patient?.employeeDTO?.employeeId || patient?.admittedDoctorDTO?.employeeId } />;
       case 'problems':
-        return <Problems patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId} />;
+        return <Problems patientId={patient.admissionId} newPatientVisitId={patient.newPatientVisitId} />;
         case 'Vitals':
-          return <AddVitalsForm patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId}  />
+          return <AddVitalsForm patientId={patient.admissionId} newPatientVisitId={patient.newPatientVisitId}  />
           case 'dischargeSummary':
-            return <PatientDischargeForm patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId}  />
+            return <PatientDischargeForm patient={patient}/>
             case 'Allergies':
-            return <Allergy patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId}  />
+            return <Allergy patientId={patient.admissionId} newPatientVisitId={patient.newPatientVisitId}  />
             case 'Clinical-Document':
-              return <CinicalDocument patientId={patient.patientId} newPatientVisitId={patient.newPatientVisitId}  />
+              return <CinicalDocument patientId={patient.admissionId} newPatientVisitId={patient.newPatientVisitId}  />
+              case 'encounte-rHistory':
+                return <Problems patientId={patient.admissionId} newPatientVisitId={patient.newPatientVisitId} />
 
       default:
         return renderDashboard();
@@ -191,17 +278,16 @@ const ShowImagingReport =(item)=>{
           <div className="Patient-Dashboard-outDiv">
             <div className="Patient-Dashboard-divOne">
               <div className="Patient-Dashboard-logoOne"></div>
-              <button className="Patient-Dashboard-btnIpd">IPD</button>
+              <button className="Patient-Dashboard-btnIpd">{patient.admissionId ? "IPD" : "OPD"}</button>
             </div>
-            <span className="Patient-Dashboard-textName">{`${patient.firstName} ${patient.lastName}`}</span>
+            <span className="Patient-Dashboard-textName">{`${patient?.firstName || patient?.patientDTO?.firstName} ${patient?.lastName || patient?.patientDTO?.lastName}`}</span>
             <br></br>
-            <span className="Patient-Dashboard-ageGen">{`${patient.age}/${patient.gender}`}</span>
+            <span className="Patient-Dashboard-ageGen">{`${patient?.age || patient?.patientDTO?.age}/${patient?.gender || patient?.patientDTO?.gender}`}</span>
           </div>
-
           <hr></hr>
           <div className="Patient-Dashboard-divTwoDetails">
             <span className="Patient-Dashboard-detailHeading">Hospital No:</span>
-            <span> 2406003766</span>
+            <span>{patient?.patientDTO?.hospitalNo}</span>
             <br></br>
             <div className="Patient-Dashboard-ward">
               <span className="Patient-Dashboard-detailHeading">Ward/Bed:</span>
@@ -210,7 +296,7 @@ const ShowImagingReport =(item)=>{
             </div>
             <div className="Patient-Dashboard-attending">
               <span className="Patient-Dashboard-detailHeading">Attending:</span>
-              <span>{`${patient.employeeDTO.salutation} ${patient.employeeDTO.firstName} ${patient.employeeDTO.lastName}`}</span>
+              <span>{`${patient?.employeeDTO?.salutation || patient.admittedDoctorDTO.salutation} ${patient?.employeeDTO?.firstName || patient?.admittedDoctorDTO?.firstName} ${patient?.employeeDTO?.lastName || patient?.admittedDoctorDTO?.lastName}`}</span>
             </div>
           </div>
         </div>
@@ -237,7 +323,10 @@ const ShowImagingReport =(item)=>{
 
           <div className="Patient-Dashboard-boxOne">
             <div className="Patient-Dashboard-textAndLogo">
-              <span className="Patient-Dashboard-textOne">Encounter History</span>
+              <span className="Patient-Dashboard-textOne" onClick={() => {
+                  setActiveSection("encounte-rHistory");
+                  setPrevAction(...activeSection);
+                }}>Encounter History</span>
             </div>
           </div>
 
@@ -279,6 +368,7 @@ const ShowImagingReport =(item)=>{
               <span className="Patient-Dashboard-textOne">Scanned images</span>
             </div>
           </div>
+          {patient.admissionId &&(
           <div className="Patient-Dashboard-boxOne">
             <div className="Patient-Dashboard-textAndLogo">
               <span className="Patient-Dashboard-textOne"  onClick={() => {
@@ -286,7 +376,8 @@ const ShowImagingReport =(item)=>{
                   setPrevAction(...activeSection);
                 }}>Discharge Summary</span>
             </div>
-          </div>
+          </div>)
+          }
         </div>
       </aside>
 
@@ -306,8 +397,6 @@ const ShowImagingReport =(item)=>{
                     <th className='Patient-Dashboard-th'>Test</th>
                     <th className='Patient-Dashboard-th'>Date</th>
                     <th className='Patient-Dashboard-th'>Result</th>
-                  
-
                   </tr>
                 </thead>
                 <tbody>
@@ -315,7 +404,7 @@ const ShowImagingReport =(item)=>{
                     <tr key={index}>
                       <td className='Patient-Dashboard-td'>{radiology.labTestName}</td>
                       <td className='Patient-Dashboard-td'>{radiology.requisitionDate}</td>
-                      <td className='Patient-Dashboard-td'>{radiology.status}</td>
+                      <td className='Patient-Dashboard-td'>{radiology.status ==="Completed" ?(<><button onClick={()=>ShowlabReportResult(radiology)}>View</button></>):radiology.status}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -341,8 +430,6 @@ const ShowImagingReport =(item)=>{
                     <th className='Patient-Dashboard-th'>Item</th>
                     <th className='Patient-Dashboard-th'>Date</th>
                     <th className='Patient-Dashboard-th'>Status</th>
-                  
-
                   </tr>
                 </thead>
                 <tbody>
@@ -549,6 +636,12 @@ const ShowImagingReport =(item)=>{
       <RadiologyReportDoc 
       reportData={selectedRadiology} 
         onClose={() => setShowRadioReport(false)} 
+      />
+    )}
+     {ShowLabReport && (
+      <LabReportResult 
+      reportData={selectedLabrotary} 
+        onClose={() => setShowLabReport(false)} 
       />
     )}
     </div>

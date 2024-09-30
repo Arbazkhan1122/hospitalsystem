@@ -1,4 +1,4 @@
-.manage-reaction-container {
+.ManageReaction-container {
     background-color: var(--background-color);
     padding: 20px;
     height: 90vh;
@@ -6,13 +6,13 @@
     font-family: Arial, sans-serif;
 }
 
-.manage-reaction-header {
+.ManageReaction-header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
 }
 
-.manage-reaction-add-button {
+.ManageReaction-addButton {
     background-color: var(--button-color);
     color: white;
     border: none;
@@ -20,7 +20,7 @@
     border-radius: 5px;
     cursor: pointer;
 }
-.manage-reaction-add-button:hover{
+.ManageReaction-addButton:hover{
     color: var(--button-color);
     background-color: white;
     border-bottom:  1px solid var(--button-color);
@@ -75,7 +75,7 @@
     gap: 10px;
 }
 
-.manage-reaction-action-button {
+.ManageReaction-editButton {
     background-color: var(--button-color);
     color: white;
     border: none;
@@ -86,7 +86,7 @@
     border-bottom: 1px solid var(--button-color);
 
 }
-.manage-reaction-action-button:hover{
+.ManageReaction-editButton:hover{
     color: var(--button-color);
     background-color: white;
     border-bottom: 1px solid var(--button-color);
@@ -104,7 +104,7 @@
 .manage-reaction-pagination-controls button {
     margin: 0 4px;
     padding: 4px 8px;
-    background-color: #5b73e8;
+    background-color: var(--button-color);
     color: white;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -135,4 +135,66 @@
     .manage-reaction-users-table td {
         font-size: 12px;
     }
+}
+
+.ManageReaction-modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.ManageReaction-modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    max-width: 90%;
+}
+
+.ManageReaction-closeButton {
+    float: right;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.ManageReaction-form {
+    /* Form styles */
+}
+
+.ManageReaction-formGroup {
+    margin-bottom: 15px;
+}
+
+.ManageReaction-formGroup label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.ManageReaction-formGroup input[type="text"] {
+    width: 100%;
+    padding: 5px;
+}
+
+.ManageReaction-submitButton {
+    background-color: var(--button-color);
+    color: white;
+    border: 1px solid var(--button-color);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.ManageReaction-submitButton:hover {
+    background-color: var(--button-hover-color);
+    color: var(--button-color);
+    border: 1px solid var(--button-color);
 }

@@ -1,21 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import "./DischargeSummary.css";
+import { API_BASE_URL } from "../api/api";
 
-const PatientDischargeForm = ({patientId,newPatientVisitId}) => {
-  console.log(patientId+""+newPatientVisitId);
+const PatientDischargeForm = ({patient}) => {
+  console.log(patient);
   
+  const [formData, setFormData] = useState({
+    dischargeDate: "",
+    dischargedType: "",
+    consultant: "",
+    doctorIncharge: "",
+    anesthetists: "",
+    residentDr: "",
+    selectDiagnosis: "",
+    provisonalDiagnosis: "",
+    otherDiagnosis: "",
+    clinicalFindings: "",
+    cheifComplain: "",
+    historyOfPresentingIllness: "",
+    treatmentDuringHospitalStay: "",
+    conditionOnDischarge: "",
+    pendingReport: "",
+    specialNotes: "",
+    allergies: "",
+    dischargeOrder: "",
+    restDay: "",
+    followUp: "",
+    showResult: "",
+    labTests: "",
+    imaging: "",
+    medications: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Create the data object for the backend
+      const data = {
+        ...formData,
+        patientId: patient.patientId, // Assuming patient object contains patientId
+      };
+      const response = await axios.post(
+        `${API_BASE_URL}/discharge-summaries/save`,
+        data
+      );
+
+      if (response.status === 200) {
+        alert("Discharge summary saved successfully");
+      } else {
+        alert("Failed to save the discharge summary");
+      }
+    } catch (error) {
+      console.error("Error saving discharge summary:", error);
+      alert("An error occurred while saving the discharge summary");
+    }
+  };  
   return (
     <div className="pat-container">
       <div className="pat-header">
         <div>
-        <h2>ANGEL VARGAS MONTERO</h2>
-        <p><strong>Address:</strong> quinarayan, narvacan, ilocos sur</p>
+        <h2>{`${patient?.firstName || patient?.patientDTO?.firstName} ${patient?.lastName || patient?.patientDTO?.lastName}`}</h2>
+        <p><strong>Address:</strong>{patient.address}</p>
         <p><strong>Hospital No:</strong> 2407007399</p>
         <p><strong>Admitted On:</strong> 2024-07-30 11:06 AD</p>
         <p><strong>Discharged On:</strong> 2024-08-28 10:57 AD</p>
         </div>
         <div>
-        <p><strong>Contact No:</strong> 0926641813</p>
+        <p><strong>Contact No:</strong>{patient?.patientQueue?.phone ||patient?.patientDTO?.contactNo}</p>
         <p><strong>InPatient No:</strong> H2400023</p>
         <p><strong>Ward:</strong> ICU</p>
         <p><strong>Guardian:</strong> S I | Father-in-law</p>

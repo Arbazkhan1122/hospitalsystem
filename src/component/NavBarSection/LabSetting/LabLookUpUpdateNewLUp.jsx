@@ -13,15 +13,12 @@ const LabLookUpUpdateNewLUp = ({ lookup, onClose }) => {
 
   console.log(lookup);
   
-
-  // Handle input changes for form fields
   const handleLookupDataChange = (index, value) => {
     const newLookupData = [...lookupData];
     newLookupData[index] = value;
     setLookupData(newLookupData);
   };
 
-  // Add new empty field for Lookup Data
   const handleAddLookupData = () => {
     setLookupData([...lookupData, '']);
   };

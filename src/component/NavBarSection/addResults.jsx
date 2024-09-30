@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Barcode from 'react-barcode'; // Import the barcode generator
 import "../NavBarSection/addResults.css";
 import LabAddResultWorkList from './labAddresultWorkList';
+import { useNavigate } from 'react-router-dom';
 
 function AddResults() {
   const [dateFrom, setDateFrom] = useState('08/08/2024');
@@ -9,6 +10,10 @@ function AddResults() {
   const [category, setCategory] = useState('');
   const [showWorkList, setShowWorkList] = useState(false);
   const [stickerData, setStickerData] = useState(null); // State to hold sticker data
+
+    const navigate = useNavigate();
+
+
 
   const toggleWorkList = () => {
     setShowWorkList(!showWorkList);
@@ -18,6 +23,10 @@ function AddResults() {
     // Set sticker data to display in a modal/popup
     setStickerData(patientDetails);
   };
+  const handleAddResult=()=>{
+        navigate('/addResultForm'); 
+
+  }
 
   return (
     <div className="addResults-work-list">
@@ -108,7 +117,7 @@ function AddResults() {
               <td>8/5</td>
               <td>1000059</td>
               <td>
-                <p>Add Result</p>
+                <p onClick={handleAddResult}>Add Result</p>
                 <p onClick={() => handleStickerClick({
                   hospitalNo: 'HOS53526722',
                   patientName: 'Arbaz Pathan',

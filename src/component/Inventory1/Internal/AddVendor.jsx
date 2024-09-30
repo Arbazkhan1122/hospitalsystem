@@ -49,6 +49,8 @@ const AddVendor = ({ isOpen, onClose }) => {
       setErrors(newErrors);
     } else {
       try {
+        console.log(formValues);
+        
         const response = await fetch(`${API_BASE_URL}/vendors/createVendor`, {
           method: 'POST',
           headers: {

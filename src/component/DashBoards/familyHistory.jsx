@@ -45,21 +45,38 @@ const FamilyHistory = ({patientId,newPatientVisitId}) => {
   };
 
   useEffect(() => {
-    // Fetch vitals from API
-    axios
-      .get(
-        `${API_BASE_URL}/family-histories/by-newVisitPatientId/${newPatientVisitId}`
-      )
-      .then((response) => {
-        if (response.data.length > 0) {
-          setFamilyHistories(response.data);
-          // console.log(response.data);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching vitals:", error);
-      });
-  }, [newPatientVisitId]);
+    const fetchFamilyHistories = () => {
+      let endpoint = "";
+  
+      // Determine if newPatientVisitId or admissionId should be used
+      if (newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/family-histories/by-newVisitPatientId/${newPatientVisitId}`;
+      } else if (patientId) {
+        endpoint = `${API_BASE_URL}/family-histories/by-patientId/${patientId}`;
+      }
+  
+      // Fetch data if a valid endpoint is determined
+      if (endpoint) {
+        axios
+          .get(endpoint)
+          .then((response) => {
+            if (response.data.length > 0) {
+              setFamilyHistories(response.data);
+              // console.log(response.data);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching family histories:", error);
+          });
+      }
+    };
+  
+    // Fetch family histories if patient.newPatientVisitId or patient.admissionId exists
+    if (newPatientVisitId || patientId) {
+      fetchFamilyHistories();
+    }
+  }, [newPatientVisitId, patientId]); // Dependencies to track ID changes
+  
 
   const handleAddFamilyHistory = async () => {
     const formData =

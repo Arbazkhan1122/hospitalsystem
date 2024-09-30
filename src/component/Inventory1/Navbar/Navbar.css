@@ -12,6 +12,7 @@
     color:white;
     font-size: var(--heading-font);
     cursor: pointer;
+    padding: 5px 10px;
     border-radius: 5px;
     margin-right: 10px; /* Gap between home button and the rest */
   }
@@ -22,13 +23,13 @@
   }  
   .inventory-nav-links {
     display: flex;
+    align-items: center;
     gap: 10px; /* 10px gap between buttons */
   }
   
   .inventory-nav-links button {
     border: none;
     background: none;
-    padding: 5px;
     cursor: pointer;
     font-size: var(--heading-font);
     color: #333;

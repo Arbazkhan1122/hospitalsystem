@@ -9,6 +9,12 @@
   justify-content: space-between;
   align-items: center;
 }
+.clinical-blood-sugar-monitoring-sub-div
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
 
 .clinical-blood-sugar-monitoring-add-new {
   background-color: var(--button-color);

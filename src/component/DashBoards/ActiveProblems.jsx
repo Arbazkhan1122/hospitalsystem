@@ -10,8 +10,10 @@ const ActiveProblems = ({ patientId, newPatientVisitId }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [activeProblems, setActiveProblems] = useState([]);
   const [newProblem, setNewProblem] = useState({});
-  const [newPastProblem, setNewPastProblem] = useState({});
   const [isAddPastModalOpen, setIsAddPastModalOpen] = useState(false);
+  const [pastProblem,setPastProblem] =useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const [activeProblem, setActiveProblem] = useState({
     searchProblem: "",
     icdCode: "",
@@ -19,6 +21,18 @@ const ActiveProblems = ({ patientId, newPatientVisitId }) => {
     currentStatus: "",
     onsetDate: "",
     note: "",
+  });
+  
+  const [newPastProblem, setNewPastProblem] = useState({
+    searchProblem: '',        // Search Problem field
+    isPrincipalProblem: false, // Principal Problem checkbox
+    currentStatus: '',        // Current Status field
+    onSetDate: '',            // OnSet Date field
+    resolvedDate: '',         // Resolved Date field
+    note: '',                 // Note field
+    isActive: true,           // Active status (default to true)
+    addedDate: new Date().toISOString().split('T')[0], // Current date
+    addedTime: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }), // Current time
   });
 
   const handleOpenModal = () => {
@@ -52,27 +66,73 @@ const ActiveProblems = ({ patientId, newPatientVisitId }) => {
 
   useEffect(() => {
     const fetchActiveProblems = async () => {
-      try {
-        const response = await fetch(
-          `${API_BASE_URL}/active-problems/by-newVisitPatientId/${newPatientVisitId}`
-        );
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data);
-          
-          setActiveProblems(data);
-        } else {
-          console.error("Failed to fetch active problems");
+      let endpoint = "";
+  
+      // Determine which endpoint to use based on available IDs
+      if (newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/active-problems/by-newVisitPatientId/${newPatientVisitId}`;
+      } else if (patientId) {
+        endpoint = `${API_BASE_URL}/active-problems/by-patientId/${patientId}`;
+      }
+  
+      // Fetch data if a valid endpoint is determined
+      if (endpoint) {
+        try {
+          const response = await fetch(endpoint);
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            setActiveProblems(data);
+          } else {
+            console.error("Failed to fetch active problems");
+          }
+        } catch (error) {
+          console.error("Error fetching active problems:", error);
         }
-      } catch (error) {
-        console.error("Error fetching active problems:", error);
       }
     };
-
-    if (newPatientVisitId) {
+  
+    // Only fetch active problems if there is a newPatientVisitId or admissionId
+    if (newPatientVisitId || patientId) {
       fetchActiveProblems();
     }
-  }, [newPatientVisitId]);
+  }, [newPatientVisitId, patientId]); // Dependencies to track ID changes
+  
+
+  useEffect(() => {
+    const fetchPastProblems = async () => {
+      let endpoint = "";
+  
+      // Determine which endpoint to use based on available IDs
+      if (newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/past-problem/by-newPatientVisitId?newPatientVisitId=${newPatientVisitId}`;
+      } else if (patientId) {
+        endpoint = `${API_BASE_URL}/past-problem/by-patientId?patientId=${patientId}`;
+      }
+  
+      // Fetch data if a valid endpoint is determined
+      if (endpoint) {
+        try {
+          const response = await fetch(endpoint);
+          if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            setPastProblem(data);
+          } else {
+            console.error("Failed to fetch active problems");
+          }
+        } catch (error) {
+          console.error("Error fetching active problems:", error);
+        }
+      }
+    };
+  
+    // Only fetch active problems if there is a newPatientVisitId or admissionId
+    if (newPatientVisitId || patientId) {
+      fetchPastProblems();
+    }
+  }, [newPatientVisitId, patientId]); // Dependencies to track ID changes
+  
   
 
   const handleAddProblem = async () => {
@@ -112,24 +172,48 @@ const ActiveProblems = ({ patientId, newPatientVisitId }) => {
       alert("Error submitting form");
     }
   };
-  const handleAddPastProblem = () => {
-    // Add new past problem to your list (if you have a list for past problems)
-    handleClosePastModal(); // Close the modal
-  };
+ 
 
-  // Function to handle input changes for active problems
-  const handlepastInputChange = (e) => {
-    setNewProblem({ ...newProblem, [e.target.name]: e.target.value });
-  };
+const handleAddPastProblem = async () => {
+  const formData =
+  patientId > 0
+    ? { ...newPastProblem, patientDTO: { patientId } }
+    : { ...newPastProblem, newPatientVisitDTO: { newPatientVisitId } };
 
-  // Function to handle input changes for past problems
-  const handlePastInputChange = (e) => {
-    setNewPastProblem({
-      ...newPastProblem,
-      [e.target.name]:
-        e.target.type === "checkbox" ? e.target.checked : e.target.value,
+
+  try {
+    console.log(formData);
+    
+    const response = await fetch(`${API_BASE_URL}/past-problem/save`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
     });
-  };
+
+    if (!response.ok) {
+      throw new Error('Failed to add past problem');
+    }
+
+    // Optionally, you can update your state or list of past problems here
+    // setPastProblems((prev) => [...prev, newPastProblem]);
+
+    handleClosePastModal(); // Close the modal
+    setNewPastProblem({}); // Reset the form
+  } catch (error) {
+    setError(error.message); // Set error message
+  } finally {
+    setIsLoading(false); // Reset loading state
+  }
+};
+
+const handlePastInputChange = (e) => {
+  setNewPastProblem({
+    ...newPastProblem,
+    [e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value,
+  });
+};
 
   return (
     <div className="medical-problems-container">
@@ -246,15 +330,22 @@ const ActiveProblems = ({ patientId, newPatientVisitId }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {/* Example data - replace with your state data */}
-                  <tr>
-                    <td>(1A02) Intestinal infections due to Shigella</td>
-                    <td>2024-09-05</td>
-                    <td>2024-09-15</td>
-                    <td>
-                      <input type="checkbox" />
-                    </td>
-                  </tr>
+                  {pastProblem.map((problem, index) => (
+                    <tr key={index}>
+                      <td className="actproblem-tabledata">
+                        {problem.searchProblem}
+                      </td>
+                      <td className="actproblem-tabledata">{problem.onSetDate}</td>
+                      <td className="actproblem-tabledata">{problem.note}</td>
+                      <td className="actproblem-tabledata">
+                        <input
+                          type="checkbox"
+                          disabled
+                          checked={problem.isPrincipalProblem}
+                        />
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -338,73 +429,71 @@ const ActiveProblems = ({ patientId, newPatientVisitId }) => {
         )}
 
         {isAddPastModalOpen && (
-          <div className="activeproblems-modal-overlay">
-            <div className="activeproblems-modal-content">
-              <h4 className="activeproblems-sectionh5 ">Add Past Problem</h4>
-              <button
-                className="activeproblems-close-button"
-                onClick={handleClosePastModal}
-              >
-                ❌
-              </button>
-              <div className="activeproblems-form-group">
-                <label>Search Problem*:</label>
-                <input
-                  type="text"
-                  name="description"
-                  placeholder="ICD-11"
-                  onChange={handlePastInputChange}
-                />
-              </div>
-              <div className="activeproblems-form-group">
-                <label>Mark if Principle Problem:</label>
-                <input
-                  type="checkbox"
-                  name="isPrincipleProblem"
-                  onChange={handlePastInputChange}
-                />
-              </div>
-              <div className="activeproblems-form-group">
-                <label>Current Status:</label>
-                <input
-                  type="text"
-                  name="status"
-                  onChange={handlePastInputChange}
-                />
-              </div>
-              <div className="activeproblems-form-group">
-                <label>OnSet Date*:</label>
-                <input
-                  type="date"
-                  name="onsetDate"
-                  value="2024-09-05"
-                  onChange={handlePastInputChange}
-                />
-              </div>
-              <div className="activeproblems-form-group">
-                <label>Resolved Date:</label>
-                <input
-                  type="date"
-                  name="resolvedDate"
-                  value="2024-09-05"
-                  onChange={handlePastInputChange}
-                />
-              </div>
-              <div className="activeproblems-form-group">
-                <label>Note:</label>
-                <textarea
-                  name="notes"
-                  onChange={handlePastInputChange}
-                ></textarea>
-              </div>
-              <button
-                className="activeproblems-add-problem-button"
-                onClick={handleAddPastProblem}
-              >
-                Add Problem
-              </button>
-            </div>
-          </div>
+           <div className="activeproblems-modal-overlay">
+           <div className="activeproblems-modal-content">
+             <h4 className="activeproblems-sectionh5">Add Past Problem</h4>
+             <button
+               className="activeproblems-close-button"
+               onClick={handleClosePastModal}
+             >
+               ❌
+             </button>
+             <div className="activeproblems-form-group">
+               <label>Search Problem*:</label>
+               <input
+                 type="text"
+                 name="searchProblem" // Updated name attribute
+                 placeholder="ICD-11"
+                 onChange={handlePastInputChange}
+               />
+             </div>
+             <div className="activeproblems-form-group">
+               <label>Mark if Principal Problem:</label>
+               <input
+                 type="checkbox"
+                 name="isPrincipalProblem" // Updated name attribute
+                 onChange={handlePastInputChange}
+               />
+             </div>
+             <div className="activeproblems-form-group">
+               <label>Current Status:</label>
+               <input
+                 type="text"
+                 name="currentStatus" // Updated name attribute
+                 onChange={handlePastInputChange}
+               />
+             </div>
+             <div className="activeproblems-form-group">
+               <label>OnSet Date*:</label>
+               <input
+                 type="date"
+                 name="onSetDate" // Updated name attribute
+                 onChange={handlePastInputChange}
+               />
+             </div>
+             <div className="activeproblems-form-group">
+               <label>Resolved Date:</label>
+               <input
+                 type="date"
+                 name="resolvedDate" // Updated name attribute
+                 onChange={handlePastInputChange}
+               />
+             </div>
+             <div className="activeproblems-form-group">
+               <label>Note:</label>
+               <textarea
+                 name="note" // Updated name attribute
+                 onChange={handlePastInputChange}
+               ></textarea>
+             </div>
+             <button
+               className="activeproblems-add-problem-button"
+               onClick={handleAddPastProblem}
+             >
+               Add Problem
+             </button>
+           </div>
+         </div>
         )}
       </div>
     </div>

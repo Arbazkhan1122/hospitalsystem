@@ -20,118 +20,6 @@ const OutPatient = () => {
   const [isLoading, setIsLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
   const [selectedPatient, setSelectedPatient] = useState(null); // State to store the selected patient
-
-  // const newPatient = [
-  //   {
-  //     "newPatientVisitId": 1,
-  //     "firstName": "John",
-  //     "middleName": "A.",
-  //     "lastName": "Doe",
-  //     "haveDOB": true,
-  //     "religion": "Christianity",
-  //     "age": 30,
-  //     "gender": "Male",
-  //     "phoneNumber": "1234567890",
-  //     "landlineNumber": "0987654321",
-  //     "address": "123 Main St",
-  //     "email": "john.doe@example.com",
-  //     "careOfPerson": "Jane Doe",
-  //     "relationWithPatient": "Spouse",
-  //     "careOfPersonContact": "0987654321",
-  //     "visitType": "Consultation",
-  //     "visitDate": "2024-08-30",
-  //     "visitTime": "10:00:00",
-  //     "referredBy": "Dr. Smith",
-  //     "isExternal": "No",
-  //     "discount": 10.0,
-  //     "discountPercentage": 5.0,
-  //     "discountAmount": 50.0,
-  //     "subTotal": 200.0,
-  //     "totalAmount": 150.0,
-  //     "changeReturn": 20.0,
-  //     "tender": 150.0,
-  //     "paymentOptions": "Cash",
-  //     "department": null,
-  //     "patientQueue": {
-  //         "patientQueueId": 1,
-  //         "date": "2024-01-01",
-  //         "hospitalNumber": null,
-  //         "name": "John Doe",
-  //         "phone": "1234567890",
-  //         "ageSex": null,
-  //         "department": "Operation Theater",
-  //         "visitType": "No",
-  //         "appointmentType": "Consultation",
-  //         "queueNumber": "QN-1",
-  //         "employeeId": 0,
-  //         "status": null,
-  //         "newPatientVisitDTO": null,
-  //         "employeeDTO": null
-  //     },
-  //     "employeeDTO": {
-  //         "employeeId": 1,
-  //         "salutation": "Dr.",
-  //         "firstName": "Arbaz",
-  //         "middleName": "s.",
-  //         "lastName": "Pathan",
-  //         "dateOfBirth": "1990-01-01",
-  //         "gender": "Male",
-  //         "kmpdcNo": null,
-  //         "knncNo": null,
-  //         "knhpcNo": null,
-  //         "contactNumber": "1234567890",
-  //         "emailId": "john.doe@example.com",
-  //         "signatureShort": "J.D",
-  //         "signatureLong": "John Doe",
-  //         "dateOfJoining": "2020-08-23",
-  //         "contactAddress": "123, Elm Street, Nairobi",
-  //         "kraPin": null,
-  //         "taxPercentage": null,
-  //         "isIncentiveApplicable": null,
-  //         "extension": null,
-  //         "speedDial": null,
-  //         "officeHour": "9 AM - 5 PM",
-  //         "roomNo": null,
-  //         "bloodGroup": null,
-  //         "drivingLicenseNo": null,
-  //         "isActive": true,
-  //         "radiologySignature": "John Doe Rad",
-  //         "displaySequence": 1,
-  //         "signatureImage": "signature_image_path",
-  //         "appointmentApplicable": true,
-  //         "userName": null,
-  //         "password": null,
-  //         "departmentDTO": {
-  //             "departmentId": 1,
-  //             "departmentCode": null,
-  //             "departmentName": "Cardiology",
-  //             "parentDepartmentName": null,
-  //             "description": null,
-  //             "noticeText": null,
-  //             "departmentHead": null,
-  //             "roomNumber": null,
-  //             "employees": null,
-  //             "active": false,
-  //             "appointmentApplicable": false
-  //         },
-  //         "employeeRoleDTO": {
-  //             "employeeRoleId": 1,
-  //             "role": "Doctor",
-  //             "description": null,
-  //             "isActive": true
-  //         },
-  //         "employeeTypeDTO": {
-  //             "employeeTypeId": 1,
-  //             "employeeType": "Full-time",
-  //             "description": null,
-  //             "isActive": true
-  //         }
-  //     },
-  //     "medicineDetails": null,
-  //     "medicineBill": null,
-  //     "opd": true
-  // },
-  // ]
   const handleViewChange = (newView) => {
     setView(newView);
     if (newView !== 'favorite') setShowFavorites(false);
@@ -151,7 +39,6 @@ const OutPatient = () => {
     setSelectedPatient(patient); // Set the selected patient to open the dashboard
   };
 
-  // Fetch data from the API when the component mounts
   useEffect(() => {
    
     const fetchPatientData = async () => {
@@ -174,6 +61,8 @@ const OutPatient = () => {
     fetchPatientData();
   }, []);
 
+  console.log(patients);
+  
 
   // If a patient is selected, render the PatientDashboard
   if (isPatientOPEN) {
@@ -201,9 +90,9 @@ const OutPatient = () => {
         <div>
           <div className="OutPatient-actions">
             <div className='OutPatient-actions-subDiv'>
-            <button className="OutPatient-favorite" onClick={toggleFavorites}>
+            {/* <button className="OutPatient-favorite" onClick={toggleFavorites}>
               ★ My Favorites
-            </button>
+            </button> */}
             <button className="OutPatient-follow-up" onClick={toggleFollowUp}>
               Follow Up List
             </button>
@@ -284,39 +173,6 @@ const OutPatient = () => {
                   </td>
                 </tr>
               )}
-              {/* {isLoading ? (
-                <tr>
-                  <td colSpan="6">Loading...</td>
-                </tr>
-              ) : error ? (
-                <tr>
-                  <td colSpan="6">{error}</td>
-                </tr>
-              ) : OTpatients.length > 0 ? (
-                OTpatients.map((patient, index) => (
-                  <tr key={index}>
-                    <td>{`${patient.firstName} ${patient.lastName}`}</td>
-                    <td>{patient.age}/{patient.sex}</td>
-                    <td>{patient.visitType}</td> */}
-                    {/* <td>{patient.admittedOn}</td> */}
-                    {/* <td>{`${patient?.employeeDTO?.salutation} ${patient?.employeeDTO?.firstName} ${patient?.employeeDTO?.lastName}`}</td>
-                    <td>
-                      <button
-                        className="OutPatient-action-button"
-                        onClick={() => handlePatientClick(patient)} // Open the PatientDashboard when clicked
-                      >
-                        👤
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="6" className="OutPatient-no-data">
-                    No Rows To Show
-                  </td>
-                </tr>
-              )} */}
             </tbody>
           </table>
         </div>

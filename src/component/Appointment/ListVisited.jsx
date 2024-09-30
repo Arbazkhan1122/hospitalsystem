@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Table, Button, FormControl, InputGroup } from 'react-bootstrap';
 import './ListVisited.css';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
-import { API_BASE_URL } from '../api/api';
 
 const ListVisited = () => {
   const [appointments, setAppointments] = useState([]);
@@ -16,7 +15,7 @@ const ListVisited = () => {
     // Fetch data from the API when the component mounts
     const fetchAppointments = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/new-patient-visits`);
+        const response = await axios.get('http://192.168.42.16:1415/api/new-patient-visits');
         setAppointments(response.data); // Assume the data is in response.data
       } catch (error) {
         console.error('Error fetching data:', error);

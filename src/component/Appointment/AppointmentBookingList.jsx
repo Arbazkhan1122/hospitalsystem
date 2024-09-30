@@ -2,7 +2,6 @@ import React, { useEffect, useState,useRef } from 'react';
 import './AppointmentBookingList.css';
 import { Link } from 'react-router-dom';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
-import { API_BASE_URL } from '../api/api';
 
 const AppointmentBookingList = () => {
   const [appointments, setAppointments] = useState([]);
@@ -13,7 +12,7 @@ const AppointmentBookingList = () => {
 
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/appointments/fetch-all-appointment`)
+    fetch('http://192.168.42.16:1415/api/appointments/fetch-all-appointment')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -31,7 +30,7 @@ const AppointmentBookingList = () => {
   }, []);
 
   useEffect(()=>{
-    fetch(`${API_BASE_URL}/new-patient-visits`)
+    fetch('http://192.168.42.16:1415/api/new-patient-visits')
     .then(response=>{
       if(!response.ok){
         throw new Error('Network response was not ok');

@@ -3,7 +3,6 @@ import './BookingAppointment.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import axios if you are using it
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
-import { API_BASE_URL } from '../api/api';
 
 const BookingAppointment = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -18,7 +17,7 @@ const BookingAppointment = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/appointments/fetch-all-appointment`);
+        const response = await axios.get('http://localhost:1415/api/appointments/fetch-all-appointment');
         setPatients(response.data);
       } catch (error) {
         setError('Failed to fetch patient data.');

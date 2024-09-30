@@ -44,6 +44,17 @@
   color: var(--button-color);
   font-size: 18px;
 }
+.in-patient-button
+{
+  border: none;
+  padding: 2px;
+}
+.patientList-table-container
+{
+  height: 75vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
 
 .InPatient-PatientSearchBar {
   display: flex;
