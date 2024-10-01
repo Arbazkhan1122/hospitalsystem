@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './NewPatientRegistrationForm.css';
+import { API_BASE_URL } from '../api/api';
 
 const NewPatientRegistrationForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ const NewPatientRegistrationForm = ({ onClose }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:1415/api/patients/register', {
+      const response = await fetch(`${API_BASE_URL}/patients/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

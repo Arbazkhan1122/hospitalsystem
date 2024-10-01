@@ -1,13 +1,9 @@
 .labTestLS-container {
-  background-color: var(--background-color);
-  padding: 10px;
+    padding: 10px;
   border-radius: 5px;
-  /* font-family: Arial, Helvetica, sans-serif; */
-  /* width: 100%; */
-  /* max-width: 1200px; */
   margin: 0 auto;
-  height: 75vh;
 }
+
 .labTestLS-firstRow{
   display: flex;
   justify-content: space-between;
@@ -33,19 +29,24 @@
   background-color: var(--button-hover-background-color);
 }
 .labTestLS-search-bar{
-  /* margin: 0; */
-  margin-left: -33px;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }  
   .labTestLS-search-bar input {
     /* padding: 5px; */
+    background-color: transparent;
+    border: none;
+    outline: none;
     width: 200px;
   }
   .labTestLS-search-bar i{
-    position: relative;
     color:gray;
-    top: 3px;
-  left: 205px;
-  }
+    position: absolute;
+    right: 5px;  
+}
 
 .labTestLS-search-filters {
   display: flex;
@@ -115,26 +116,6 @@
   /* font-weight: bold; */
   margin-right: 10px;
 }
-
-.labTestLS-container table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  background-color: white;
-}
-
-.labTestLS-container th, .labTestLS-container td {
-  font-size: var(--font-size);
-  padding:3px;
-  text-align: center;
-  border: 1px solid #ddd;
-  /* color: rgb(78, 78, 78); */
-}
-
-.labTestLS-container th {
-  background-color: #f2f2f2;
-}
-
 .labTestLS-edit-button, .labTestLS-deactivate-button {
   background-color:var( --button-color);
   border: 1px solid var( --button-hover-border-color);

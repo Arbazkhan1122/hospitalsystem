@@ -1,13 +1,10 @@
 .labLookUpAddNewLUp-container {
   width: 100%;
-  /* max-width: 1200px; */
   margin: auto;
   border: 1px solid #ddd;
   padding: 14px;
   background-color: white;
   border-radius: 8px;
-  /* font-family: Arial, sans-serif; */
-  /* color: #525151; */
 }
 
 .labLookUpAddNewLUp-header {
@@ -129,11 +126,17 @@ background-color: #F5F7F9;
 .labLookUpAddNewLUp-create-new-component {
   display: block;
   margin-top: 8px;
-  color: #0F63AF;
+  color: black;
   font-size: var(--font-size);
   /* font-weight: bold; */
   text-decoration: none;
   cursor: pointer;
+}
+
+.labLookUpAddDataContainer{
+  height: 280px;
+  overflow: auto;
+  margin-bottom: 10px;
 }
 
 .labLookUpAddNewLUp-form-actions {

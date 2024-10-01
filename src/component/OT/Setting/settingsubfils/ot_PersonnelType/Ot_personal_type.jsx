@@ -50,7 +50,7 @@ function Ot_personnelType() {
     if (editingPersonnelType) {
       // Update existing personnel type
       try {
-        const response = await fetch(`http://localhost:8888/api/personnel-types/${editingPersonnelType.id}`, {
+        const response = await fetch(`http://localhost:1415/api/personnel-types/${editingPersonnelType.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ function Ot_personnelType() {
     } else {
       // Add new personnel type
       try {
-        const response = await fetch('http://localhost:8888/api/personnel-types', {
+        const response = await fetch('http://localhost:1415/api/personnel-types', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

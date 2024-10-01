@@ -51,20 +51,30 @@
 
 // export default LabTestComponent;
 
+import React, { useState, useRef, useEffect } from "react";
+import "../LabSetting/labTestComponents.css";
+import LSLabTestAddNLTest from "./lSLabTestAddNLTest";
+import LabTestComponentsAddNewLTC from "./labTestComponentsAddNewLTC";
 
-import React, { useState } from 'react';
-import "../LabSetting/labTestComponents.css"
-import LSLabTestAddNLTest from './lSLabTestAddNLTest';
-import LabTestComponentsAddNewLTC from './labTestComponentsAddNewLTC';
-const labTests = [
-  { componentName: "2 hr PP Blood Sugar", displayName: "2 hr PP Blood Sugar", unit: "mg/dl", range: "70-140", rangeDescription: "", method:"", controleType:"",valueType:"number", valueLookUp:""},
-  { componentName: "RFT", displayName: "RFT", unit: "Biochemistry", range: true, rangeDescription: 1000,method:"",controleType:"",valueType:"", valueLookUp:""},
-  // Add more rows as needed
-  
-];
+import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
 const LabTestComponent = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
+  const [labComponentData, setLabComponentData] = useState(null);
+
+  useEffect(() => {
+    fetch(`http://localhost:1415/api/lab-components/getAllComponents`).then(
+      (res) =>
+        res
+          .json()
+          .then((res) => setLabComponentData(res))
+          .catch((err) => {
+            console.log(err);
+          })
+    );
+  }, []);
 
   const handleAddNewLabTestClick = () => {
     setShowPopup(true); // Show the popup
@@ -76,62 +86,92 @@ const LabTestComponent = () => {
 
   return (
     <div className="labTestComponents-container">
-    <div className="labTestComponents-firstRow">
-    <div className="labTestComponents-addBtn">
-      <button className="labTestComponents-add-button" onClick={handleAddNewLabTestClick}>+Add New Lab Test Component</button>
+      <div className="labTestComponents-firstRow">
+        <div className="labTestComponents-addBtn">
+          <button
+            className="labTestComponents-add-button"
+            onClick={handleAddNewLabTestClick}
+          >
+            +Add New Lab Test Component
+          </button>
+        </div>
       </div>
-       
-      </div>
-      <div className='labTestComponents-search-N-result'>
-      <div className="labTestComponents-search-bar">
+      <div className="labTestComponents-search-N-result">
+        <div className="labTestComponents-search-bar">
           <i className="fa-solid fa-magnifying-glass"></i>
-          <input 
-            type="text" 
-            placeholder="Search..." 
-            
-          />
+          <input type="text" placeholder="Search..." />
         </div>
         <div className="labTestComponents-results-info">
-          <span>Showing 0 / 0 results</span>
-          <button className="labTestComponents-print-button"><i class="fa-solid fa-print"></i> Print</button>
+          <span>
+            Showing {labComponentData?.length} / {labComponentData?.length}{" "}
+            results
+          </span>
+          <button className="labTestComponents-print-button">
+            <i class="fa-solid fa-print"></i> Print
+          </button>
         </div>
-        </div>
-      <table >
-        <thead>
-          <tr>
-            <th>Component Name</th>
-            <th>Display Name</th>
-            <th>Unit</th>
-            <th>Range</th>
-            <th>Range Description</th>
-            <th>Method</th>
-            <th>Controle Type</th>
-            <th>Value Type</th>
-            <th>Value LookUp</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {labTests.map((test, index) => (
-            <tr key={index}>
-              <td>{test.componentName}</td>
-              <td>{test.displayName}</td>
-              <td>{test.unit}</td>
-              <td>{test.range}</td>
-              <td>{test.rangeDescription}</td>
-              <td>{test.method}</td>
-              <td>{test.controleType}</td>
-              <td>{test.valueType}</td>
-              <td>{test.valueLookUp}</td>
-              {/* <td>{test.isActive ? 'True' : 'False'}</td> */}
-              <td>
-                <button className="labTestComponents-edit-button"onClick={handleAddNewLabTestClick}>Edit</button>
-                {/* <button className="labTestComponents-deactivate-button">Deactivate</button> */}
-              </td>
+      </div>
+      <div className="table-container" id="table-to-print">
+        <table ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Component Name",
+                "Display Name",
+                "Unit",
+                "Range",
+                "Range Description",
+                "Method",
+                "Control Type",
+                "Value Type",
+                "Value Lookup",
+                // "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {labComponentData != null &&
+              labComponentData.map((test, index) => (
+                <tr key={index}>
+                  <td>{test?.componentName}</td>
+                  <td>{test?.displayName}</td>
+                  <td>{test?.unit}</td>
+                  <td>{test?.componentRange}</td>
+                  <td>{test?.rangeDescription}</td>
+                  <td>{test?.method}</td>
+                  <td>{test?.controleType}</td>
+                  <td>{test?.valueType}</td>
+                  <td>{test?.valueLookup?.lookupName}</td>
+                  {/* <td>
+                  <button
+                    className="labTestComponents-edit-button"
+                    onClick={handleAddNewLabTestClick}
+                  >
+                    Edit
+                  </button>
+                </td> */}
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
       {/* <div className="labTestComponents-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>

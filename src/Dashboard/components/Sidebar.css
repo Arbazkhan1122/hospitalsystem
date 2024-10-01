@@ -41,22 +41,21 @@ display: none;
   font-size: 1.2rem;
 }
 
-
-.custom-toggle-button {
-  position: absolute;
-  top: 1rem;
-  right: -1rem;
-  background-color: white;
-  border-radius: 50%;
-  padding: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border: none;
-  z-index: 100;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  /* .custom-toggle-button {
+    position: absolute;
+    top: 1rem;
+    right: -1rem;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: none;
+    z-index: 8888;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
 
 .custom-toggle-button:hover {
   background-color: #f0f0f0; /* Optional: Change background color on hover */
@@ -135,8 +134,6 @@ display: none;
 .custom-submenu li:hover a{
   color: var(--font-color);
 }
-
-
 
 .custom-submenu-active {
   background-color: var(--button-bg-color);

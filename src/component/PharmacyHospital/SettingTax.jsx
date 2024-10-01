@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css'; 
+import { API_BASE_URL } from '../api/api';
 
 const SettingTax = () => {
   const [suppliers, setSuppliers] = useState([]);
@@ -13,7 +14,7 @@ const SettingTax = () => {
 
   useEffect(() => {
     // Fetch data from API
-    axios.get('http://localhost:1415/api/taxes')
+    axios.get(`${API_BASE_URL}/taxes`)
       .then(response => {
         setSuppliers(response.data);
       })
@@ -47,7 +48,7 @@ const SettingTax = () => {
     event.preventDefault();
     if (isEditMode) {
       // Update the existing item
-      axios.put(`http://localhost:1415/api/taxes/${selectedUser.id}`, selectedUser)
+      axios.put(`${API_BASE_URL}/taxes/${selectedUser.id}`, selectedUser)
         .then(response => {
           setSuppliers(suppliers.map(supplier =>
             supplier.id === selectedUser.id ? response.data : supplier
@@ -59,7 +60,7 @@ const SettingTax = () => {
         });
     } else {
       // Add a new item
-      axios.post('http://localhost:1415/api/taxes', selectedUser)
+      axios.post(`${API_BASE_URL}/taxes`, selectedUser)
         .then(response => {
           setSuppliers([...suppliers, response.data]);
           handleCloseModal();

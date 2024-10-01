@@ -3,6 +3,7 @@ import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
 import "./PurchaseOrder.css";
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from "../api/api";
 
 
 const SupplierLedgerComponent = () => {
@@ -16,7 +17,7 @@ const SupplierLedgerComponent = () => {
         // Fetch data from the API
         const fetchSuppliers = async () => {
             try {
-                const response = await axios.get("http://localhost:1415/api/suppliers");
+                const response = await axios.get(`${API_BASE_URL}/suppliers`);
                 setSuppliers(response.data);
                 setLoading(false);
             } catch (error) {
@@ -33,7 +34,7 @@ const SupplierLedgerComponent = () => {
         // Refresh suppliers list
         const fetchSuppliers = async () => {
             try {
-                const response = await axios.get("http://localhost:1415/api/suppliers");
+                const response = await axios.get(`${API_BASE_URL}/suppliers`);
                 setSuppliers(response.data);
             } catch (error) {
                 setError("Failed to fetch suppliers");
@@ -44,7 +45,7 @@ const SupplierLedgerComponent = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:1415/api/suppliers/${id}`);
+            await axios.delete(`${API_BASE_URL}/suppliers/${id}`);
             setSuppliers(suppliers.filter(supplier => supplier.id !== id));
         } catch (error) {
             setError("Failed to delete supplier");

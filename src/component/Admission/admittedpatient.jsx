@@ -6,6 +6,7 @@ import { FaSearch } from 'react-icons/fa';
 import { Modal, Button, Form, Row, Col, Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { startResizing } from '../../TableHeadingResizing/ResizableColumns';
+import { API_BASE_URL } from '../api/api';
 
 const AdmittedPatient = () => {
   const [startDate, setStartDate] = useState('');
@@ -73,7 +74,7 @@ const AdmittedPatient = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:1415/api/admissions/fetch');
+        const response = await axios.get(`${API_BASE_URL}/admissions/fetch`);
         setPatients(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);

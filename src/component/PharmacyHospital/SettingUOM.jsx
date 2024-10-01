@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css'; 
+import { API_BASE_URL } from '../api/api';
 
 const SettingUOM = () => {
   const [suppliers, setSuppliers] = useState([]);
@@ -11,7 +12,7 @@ const SettingUOM = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [selectedUser, setSelectedUser] = useState({ name: '', description: '', isActive: true });
 
-  const apiUrl = 'http://localhost:1415/api/units-of-measurement';
+  const apiUrl = `${API_BASE_URL}/units-of-measurement`;
 
   useEffect(() => {
     // Fetch data from the API when the component mounts

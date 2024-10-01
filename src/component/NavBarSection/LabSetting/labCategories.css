@@ -1,12 +1,6 @@
 .labCategories-container {
-  background-color: var(--background-color);
   padding: 10px;
   border-radius: 5px;
-  font-family: Arial, Helvetica, sans-serif;
-  /* width: 100%; */
-  /* max-width: 1200px; */
-  margin: 0 auto;
-  height: 75vh;
 }
 .labCategories-firstRow{
   display: flex;
@@ -33,19 +27,21 @@
   background-color: var(--button-hover-background-color);
 }
 .labCategories-search-bar{
-  margin-left: -35px;
-  /* margin: 0; */
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  position: relative;
 }  
   .labCategories-search-bar input {
-    /* margin-top: 10px; */
-    /* padding: 5px; */
+    border: none;
+    background-color: transparent;
+    outline: none;
     width: 200px;
   }
   .labCategories-search-bar i{
-    position: relative;
+    position: absolute;
     color:gray;
-    top: 3px;
-  left: 205px;
+    right: 5px;
   }
 
 .labCategories-search-filters {
@@ -83,27 +79,6 @@
   /* font-weight: bold; */
   margin-right: 10px;
 }
-
-.labCategories-container table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  background-color: white;
-}
-
-.labCategories-container th, .labCategories-container td {
-  font-size: var(--font-size);
-  padding: 3px;
-  text-align: center;
-  border: 1px solid #ddd;
-  /* color: rgb(78, 78, 78); */
-}
-
-.labCategories-container th {
-  font-size: var(--heading-font);
-  background-color: #f2f2f2;
-}
-
 .labCategories-edit-button, .labCategories-deactivate-button {
   background-color:var( --button-color);
   border: 1px solid var( --button-hover-border-color);

@@ -23,7 +23,6 @@
   }
   
   .ac-fiscal-details h2, .ac-activity h2 {
-    color: #ff0000;
     background-color: #f2f2f2;
     padding: 10px;
     font-size: 1.2em;
@@ -41,12 +40,19 @@
   }
   
   .ac-close-btn {
-    background-color: #6c5ce7;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 10px;
     cursor: pointer;
+    border-radius: 5px; 
     float: right;
+    font-size: var(--font-size);
+  }
+  .ac-close-btn:hover {
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+    border: 1px solid var(--button-hover-border-color);
   }
   
   .ac-search {
@@ -72,7 +78,6 @@
   .ac-results {
     display: block;
     text-align: right;
-    color: #007bff;
     margin-bottom: 10px;
   }
   

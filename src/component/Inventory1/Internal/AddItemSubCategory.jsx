@@ -26,7 +26,7 @@ const AddItemSubCategory = ({onClose}) => {
     };
 
     try {
-      const response = await fetch('http://192.168.1.39:8080/api/subcategories/add', {
+      const response = await fetch(`${API_BASE_URL}/subcategories/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +88,6 @@ const AddItemSubCategory = ({onClose}) => {
           >
             <option value="">-- Select Ledger --</option>
             <option value="Pharmacy Ledger">Pharmacy Ledger</option>
-            {/* Add more options here */}
           </select>
           <a href="#" className="goryCreateLedger">Create new ledger for SubCategory</a>
         </div>

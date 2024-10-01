@@ -85,6 +85,7 @@ const Layout = () => {
   const [showBloodBank,setShowBloodBank]=useState(false)
   const [showTransport,setShowTransport]=useState(false)
 
+
   const resetAllToggles = () => {
     setShowAppointment(false);
     setShowSetting(false);
@@ -122,6 +123,7 @@ const Layout = () => {
     setShowBilling(false)
     setShowBloodBank(false)
     setShowTransport(false)
+
   };
 
   const toggelAppointment = () => {
@@ -254,15 +256,15 @@ const Layout = () => {
     resetAllToggles();
     setShowMedicalRecord(!showMedicalRecord);
   };
-  const toggelProcurement=()=>{
+  const toggelProcurement = () => {
     resetAllToggles();
     setShowProcurement(!showProcurement);
-  }
-  const toggelBilling=()=>{
+  };
+  const toggelBilling = () => {
     resetAllToggles();
     setShowBilling(!showBilling);
-  }
-  const toggelBloodBank=()=>{
+  };
+  const toggelBloodBank = () => {
     resetAllToggles();
     setShowBloodBank(!showBloodBank);
   }
@@ -317,7 +319,7 @@ const Layout = () => {
           isOpen ? "hrmsLayoutMainContentOpen" : "hrmsLayoutMainContentClosed"
         }`}
       >
-        <Header />
+        <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         <main className="hrmsLayoutMainPadding">
           {showAppointment && <AppointmentRouting />}
           {showSetting && <AppRoutes />}
@@ -354,6 +356,7 @@ const Layout = () => {
           {showBilling && <Billing/>}
           {showBloodBank && <BloodBank/>}
           {showTransport && <TransportMainRouting/>}
+
         </main>
       </div>
     </div>

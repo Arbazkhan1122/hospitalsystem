@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css'; // Ensure this contains relevant styles
+import { API_BASE_URL } from '../api/api';
 
 const SettingItemComponent = () => {
   const [items, setItems] = useState([]);
@@ -22,12 +23,12 @@ const SettingItemComponent = () => {
     const fetchData = async () => {
       try {
         const [itemsResponse, companiesResponse, categoriesResponse, unitsResponse, itemTypesResponse, genericNamesResponse] = await Promise.all([
-          axios.get('http://localhost:1415/api/add-items'),
-          axios.get('http://localhost:1415/api/companies'),
-          axios.get('http://localhost:1415/api/categories'),
-          axios.get('http://localhost:1415/api/units-of-measurement'),
-          axios.get('http://localhost:1415/api/itemtypes'),
-          axios.get('http://localhost:1415/api/generic-names'), // Fetch generic names
+          axios.get(`${API_BASE_URL}/add-items`),
+          axios.get(`${API_BASE_URL}/companies`),
+          axios.get(`${API_BASE_URL}/categories`),
+          axios.get(`${API_BASE_URL}/units-of-measurement`),
+          axios.get(`${API_BASE_URL}/itemtypes`),
+          axios.get(`${API_BASE_URL}/generic-names`), // Fetch generic names
         ]);
 
         console.log('Items Response:', itemsResponse.data);
@@ -103,8 +104,8 @@ const SettingItemComponent = () => {
     event.preventDefault();
     try {
       const url = isEditMode
-        ? `http://localhost:1415/api/add-items/${selectedItem.itemCode}`
-        : 'http://localhost:1415/api/add-items';
+        ? `${API_BASE_URL}/add-items/${selectedItem.itemCode}`
+        : `${API_BASE_URL}/add-items`;
       const method = isEditMode ? 'put' : 'post';
 
       const response = await axios({
@@ -140,7 +141,7 @@ const SettingItemComponent = () => {
 
   const handleDelete = async (itemCode) => {
     try {
-      await axios.delete(`http://localhost:1415/api/add-items/${itemCode}`);
+      await axios.delete(`${API_BASE_URL}/add-items/${itemCode}`);
       setItems(prevItems =>
         prevItems.filter(item => item.itemCode !== itemCode)
       );

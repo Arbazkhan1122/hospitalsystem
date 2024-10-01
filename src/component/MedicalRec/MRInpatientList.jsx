@@ -2,8 +2,10 @@ import React, { useState, useEffect,useRef } from 'react';
 import axios from 'axios';
 import '../MedicalRec/MRInpatientList.css';
 import { useNavigate } from 'react-router-dom';
+
 import Modal from 'react-modal';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+
 
 function RecordMedical() {
   const [isMenuVisible, setisMenuVisible] = useState(false);
@@ -29,7 +31,7 @@ function RecordMedical() {
 
   // Fetch patients data from API
   useEffect(() => {
-    axios.get('http://localhost:8989/api/mrinpatients/getAllMRInpatients')
+    axios.get('http://localhost:1415/api/mrinpatients/getAllMRInpatients')
       .then(response => {
         setPatients(response.data);
         setFilteredPatients(response.data);

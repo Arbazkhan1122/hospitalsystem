@@ -13,6 +13,8 @@ function VaccinationsReports() {
   const [selectedGender, setSelectedGender] = useState("");
   const [patients, setPatients] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [rawPatients, setRawPatients] = useState([]); // Store unfiltered data
+  const [filteredPatients, setFilteredPatients] = useState([]); // Store filtered data
   const [dataFetched, setDataFetched] = useState(false);
 
   const vaccines = ["BCG", "DPT", "Rotavirus", "HBV", "IPV", "OPV", "PCV"];
@@ -41,35 +43,50 @@ function VaccinationsReports() {
     fetch(`http://localhost:1415/api/vaccinations/allVaccine?${queryParams}`)
       .then((response) => response.json())
       .then((patientsData) => {
-        // Process the fetched patient data
-        const resultPatients = patientsData.map((patient) => {
-          // Filter doses directly in the data
-          const doses =
-            patient.vaccinationDoses?.filter(
-              (dose) =>
-                new Date(dose.vaccinationDate) >= new Date(fromDate) &&
-                new Date(dose.vaccinationDate) <= new Date(toDate) &&
-                (selectedVaccines.length === 0 ||
-                  selectedVaccines.includes(dose.vaccineName))
-            ) || [];
-
-          return {
-            ...patient,
-            doses,
-          };
-        });
-
-        setPatients(resultPatients);
-        console.log(resultPatients);
-
+        setRawPatients(patientsData); // Store raw unfiltered data
         setDataFetched(true);
+        applyFilters(patientsData); // Apply filters to the fetched data
       })
       .catch((error) => console.error("Error fetching patient data:", error));
   };
 
+  const applyFilters = (data) => {
+    const resultPatients = data
+      .map((patient) => {
+        // Filter doses directly in the data
+        const doses =
+          patient.vaccinationDoses?.filter(
+            (dose) =>
+              (!fromDate ||
+                new Date(dose.vaccinationDate) >= new Date(fromDate)) &&
+              (!toDate || new Date(dose.vaccinationDate) <= new Date(toDate)) &&
+              (selectedVaccines.length === 0 ||
+                selectedVaccines.includes(dose.vaccineName))
+          ) || [];
+
+        return {
+          ...patient,
+          doses,
+        };
+      })
+      .filter((patient) => {
+        // Filter by gender (if selected)
+        return !selectedGender || patient.gender === selectedGender;
+      });
+
+    setFilteredPatients(resultPatients); // Update filtered data
+  };
+
+  // UseEffect to refetch data when filters change or to apply filters after fetch
   useEffect(() => {
-    fetchData();
-  }, [selectedVaccines, selectedGender, fromDate, toDate]);
+    if (dataFetched) {
+      applyFilters(rawPatients); // Re-apply filters when the filters change
+    }
+  }, [selectedVaccines, selectedGender, fromDate, toDate]); // Listen to changes in filters
+
+  useEffect(() => {
+    fetchData(); // Fetch data on component mount
+  }, []);
 
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
@@ -245,7 +262,7 @@ function VaccinationsReports() {
           <i className="fas fa-search"></i>
         </div>
         <div className="vaccinationsReports-results">
-          <span>Showing {patients?.length} results</span>
+          <span>Showing {filteredPatients?.length} results</span>
           <button className="vaccinationsReports-export-btn">Export</button>
           <button
             className="vaccinationsReports-print-btn"
@@ -255,106 +272,107 @@ function VaccinationsReports() {
           </button>
         </div>
       </div>
-
-      <table className="vaccinationsReports-table" ref={tableRef}>
-        <thead>
-          <tr>
-            {[
-              "Vacc. Date",
-              "Vacc. Regd. No.",
-              "Baby's Name",
-              "Age/Sex",
-              "Mother's Name",
-              "Father's Name",
-              "Date Of Birth",
-              "Religion",
-              "Address",
-              "Phone Number",
-              "Vacc. Name",
-              "Dose",
-            ].map((header, index) => (
-              <th
-                key={index}
-                style={{ width: columnWidths[index] }}
-                className="resizable-th"
-              >
-                <div className="header-content">
-                  <span>{header}</span>
-                  <div
-                    className="resizer"
-                    onMouseDown={startResizing(
-                      tableRef,
-                      setColumnWidths
-                    )(index)}
-                  ></div>
-                </div>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {dataFetched ? (
-            patients ? (
-              patients.map((patient, index) => (
-                <tr key={index}>
-                  <td>
-                    {patient?.vaccinationDoses &&
-                    patient.vaccinationDoses.length > 0
-                      ? patient.vaccinationDoses[
-                          patient.vaccinationDoses.length - 1
-                        ].vaccinationDate
-                      : ""}
-                  </td>
-                  <td>
-                    {patient?.vaccinationDoses &&
-                    patient.vaccinationDoses.length > 0
-                      ? patient.vaccinationDoses[
-                          patient.vaccinationDoses.length - 1
-                        ].doseId
-                      : ""}
-                  </td>
-                  <td>{patient.babyName}</td>
-                  <td>{`${patient.age} ${patient.ageUnit}`}</td>
-                  <td>{patient.motherName}</td>
-                  <td>{patient.fatherName}</td>
-                  <td>{patient.dateOfBirth}</td>
-                  <td>{patient.religion}</td>
-                  <td>{patient.address}</td>
-                  <td>{patient.phoneNumber}</td>
-                  <td>
-                    {patient?.vaccinationDoses &&
-                    patient.vaccinationDoses.length > 0
-                      ? patient.vaccinationDoses[
-                          patient.vaccinationDoses.length - 1
-                        ].vaccineName
-                      : ""}
-                  </td>
-                  <td>
-                    {patient?.vaccinationDoses &&
-                    patient.vaccinationDoses.length > 0
-                      ? patient.vaccinationDoses[
-                          patient.vaccinationDoses.length - 1
-                        ].vaccinationDose
-                      : ""}
+      <div className="table-container">
+        <table className="vaccinationsReports-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Vacc. Date",
+                "Vacc. Regd. No.",
+                "Baby's Name",
+                "Age/Sex",
+                "Mother's Name",
+                "Father's Name",
+                "Date Of Birth",
+                "Religion",
+                "Address",
+                "Phone Number",
+                "Vacc. Name",
+                "Dose",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {dataFetched ? (
+              filteredPatients ? (
+                filteredPatients.map((patient, index) => (
+                  <tr key={index}>
+                    <td>
+                      {patient?.vaccinationDoses &&
+                      patient.vaccinationDoses.length > 0
+                        ? patient.vaccinationDoses[
+                            patient.vaccinationDoses.length - 1
+                          ].vaccinationDate
+                        : ""}
+                    </td>
+                    <td>
+                      {patient?.vaccinationDoses &&
+                      patient.vaccinationDoses.length > 0
+                        ? patient.vaccinationDoses[
+                            patient.vaccinationDoses.length - 1
+                          ].doseId
+                        : ""}
+                    </td>
+                    <td>{patient.babyName}</td>
+                    <td>{`${patient.age} ${patient.ageUnit}`}</td>
+                    <td>{patient.motherName}</td>
+                    <td>{patient.fatherName}</td>
+                    <td>{patient.dateOfBirth}</td>
+                    <td>{patient.religion}</td>
+                    <td>{patient.address}</td>
+                    <td>{patient.phoneNumber}</td>
+                    <td>
+                      {patient?.vaccinationDoses &&
+                      patient.vaccinationDoses.length > 0
+                        ? patient.vaccinationDoses[
+                            patient.vaccinationDoses.length - 1
+                          ].vaccineName
+                        : ""}
+                    </td>
+                    <td>
+                      {patient?.vaccinationDoses &&
+                      patient.vaccinationDoses.length > 0
+                        ? patient.vaccinationDoses[
+                            patient.vaccinationDoses.length - 1
+                          ].vaccinationDose
+                        : ""}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="13" className="vaccinationsReports-no-rows">
+                    No Rows To Show
                   </td>
                 </tr>
-              ))
+              )
             ) : (
               <tr>
-                <td colSpan="13" className="vaccinationsReports-no-rows">
-                  No Rows To Show
+                <td colSpan="13" className="vaccinationsReports-loading">
+                  Loading...
                 </td>
               </tr>
-            )
-          ) : (
-            <tr>
-              <td colSpan="13" className="vaccinationsReports-loading">
-                Loading...
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

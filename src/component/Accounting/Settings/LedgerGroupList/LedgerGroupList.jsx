@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./LedgerGroup.css";
 import CreateledgergroupPopup from "./CreateLedgerGroupPopup";
 import UpdateLedgerGroupPopup from "./UpdateLedgerGroupPopup"; // Assuming this component exists
+import { startResizing } from "../../../../TableHeadingResizing/ResizableColumns";
 
 const dummyData = [
   {
@@ -63,32 +64,6 @@ function LedgerGroupList() {
 
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
-
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
-
   return (
     <div className="ledger-group">
       <div className="ledger-group-create">
@@ -108,54 +83,59 @@ function LedgerGroupList() {
           <button className="ledger-group-print-btn">Print</button>
         </div>
       </div>
-      <table className="ledger-group-table" ref={tableRef}>
-        <thead>
-          <tr>
-            {[
-              "Primary Group",
-              "Chart Of Account",
-              "Ledger Group",
-              "Description",
-              "Is Active",
-              "Action",
-            ].map((header, index) => (
-              <th
-                key={index}
-                style={{ width: columnWidths[index] }}
-                className="resizable-th"
-              >
-                <div className="header-content">
-                  <span>{header}</span>
-                  <div
-                    className="resizer"
-                    onMouseDown={startResizing(index)}
-                  ></div>
-                </div>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {dummyData?.map((item, index) => (
-            <tr key={index}>
-              <td>{item.primaryGroup}</td>
-              <td>{item.chartOfAccount}</td>
-              <td>{item.ledgerGroup}</td>
-              <td>{item.description}</td>
-              <td>{item.isActive}</td>
-              <td>
-                <button
-                  onClick={() => handleUpdateLedger(item)}
-                  className="ledger-group-table-btn"
-                  type="button"
+      <div className="table-container">
+        <table ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Primary Group",
+                "Chart Of Account",
+                "Ledger Group",
+                "Description",
+                "Is Active",
+                "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
                 >
-                  {item.action}
-                </button>
-              </td>
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {dummyData?.map((item, index) => (
+              <tr key={index}>
+                <td>{item.primaryGroup}</td>
+                <td>{item.chartOfAccount}</td>
+                <td>{item.ledgerGroup}</td>
+                <td>{item.description}</td>
+                <td>{item.isActive}</td>
+                <td>
+                  <button
+                    onClick={() => handleUpdateLedger(item)}
+                    className="ledger-group-table-btn"
+                    type="button"
+                  >
+                    {item.action}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       {showCreateledgergroupPopup && (
         <CreateledgergroupPopup
           onClose={handleClosePopup}

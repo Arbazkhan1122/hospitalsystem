@@ -96,7 +96,12 @@ font-size: var(--font-size);
     border: 1px solid gray;
     align-items: center;
     justify-content: center;
+<<<<<<< HEAD
+    padding: 5px;
+    margin-bottom: 10px;
+=======
     padding: 3px;
+>>>>>>> 9f2a38c15825231657e9214b1750e759062c2c86
   }
   
   .relEditDoctors-search-bar input {
@@ -146,8 +151,11 @@ font-size: var(--font-size);
     /* padding: 6px; */
     padding: 5px;
     cursor: pointer;
-
-
+  }
+  .relEditDoctors-ex-pri-buttons:hover,.relEditDoctors-action-button-add-report:hover{
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+    border: 1px solid var(--button-hover-border-color);
   }
 
 

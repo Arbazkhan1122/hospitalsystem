@@ -140,6 +140,18 @@ function Patientlist() {
                   Sticker
                 </button>
                 <button
+                  className="patientList-table-btn"
+                  onClick={() => handleUpdateRegister(patient)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="patientList-table-btn"
+                  onClick={() => handleVaccinationDetails(patient)}
+                >
+                  Vaccination
+                </button>
+                {/* <button
                   onClick={() => openFollowupPopup(patient)}
                   className="patientList-table-btn"
                   type="button"
@@ -152,17 +164,10 @@ function Patientlist() {
                   type="button"
                 >
                   More...
-                </button>
-                {activeMoreOptionsIndex === index && (
-                  <div className="patientList-more-options">
-                    <button onClick={() => handleUpdateRegister(patient)}>
-                      Edit Vaccination Info
-                    </button>
-                    <button onClick={() => handleVaccinationDetails(patient)}>
-                      Vaccination
-                    </button>
-                  </div>
-                )}
+                </button> */}
+                {/* {activeMoreOptionsIndex === index && (
+                  <div className="patientList-more-options"></div>
+                )} */}
               </td>
             </tr>
           ))}

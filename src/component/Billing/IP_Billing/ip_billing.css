@@ -86,6 +86,7 @@
 }
 .ipdbill-printbtn{
   background-color: #00c9c0;
+
  color: white; 
   padding: 5px;
   border-radius: 5px;
@@ -102,13 +103,4 @@
   display: flex;
   justify-content: flex-end;
   gap: 20px;
-}
-
-
-
-
-
-
-
-
- */
+} */

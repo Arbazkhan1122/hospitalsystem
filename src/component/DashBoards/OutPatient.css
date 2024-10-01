@@ -1,41 +1,51 @@
+/* swapnil Rokade OutPatient Adding className And color and table css 18/09 */
 .OutPatient-out-patient {
   font-family: Arial, sans-serif;
   margin: 0 auto;
-  padding: 20px;
-  background-color: #e6f3ff;
+  padding: 1px;
+  background-color:var(--background-color);
+  height: 90vh;
+  
 }
 
 .OutPatient-nav {
+  background-color: #ddd;
   display: flex;
   margin-bottom: 10px;
 }
 
 .OutPatient-nav button {
-  padding: 10px 20px;
+  padding: 5px;
   border: none;
-  background-color: #4a90e2;
+  background-color: var(--button-color);
   color: white;
   cursor: pointer;
 }
 
 .OutPatient-nav button.OutPatient-active {
-  background-color: #2171cd;
+  background-color: var(--button-bg-color);
 }
 
 .OutPatient-sub-nav {
   display: flex;
+  padding: 5px 0px;
+  border-bottom: 2px solid rgb(199, 190, 190);
+  gap: 5px;
   margin-bottom: 10px;
 }
 
 .OutPatient-sub-nav button {
-  padding: 5px 10px;
-  border: none;
-  background-color: #f0f0f0;
+  height: 30px;
+  padding: 0px 5px;
+  color: white;
+  border-radius: 5px;
+  background-color: var(--button-color);
   cursor: pointer;
+  border: 1px solid var(--background-color);
 }
 
 .OutPatient-sub-nav button.OutPatient-active {
-  background-color: #4a90e2;
+  background-color: var(--button-bg-color);
   color: white;
 }
 
@@ -46,12 +56,39 @@
   margin-bottom: 10px;
 }
 
-.OutPatient-actions button {
-  padding: 5px 10px;
-  background-color: #4a90e2;
+.OutPatient-favorite
+{
+  padding: 5px;
+  background-color: var(--button-color);
+  border-radius: 5px;
   color: white;
   border: none;
   cursor: pointer;
+}
+.OutPatient-actions-subDiv
+{
+  width: 40%;
+  display: flex;
+  gap: 5px;
+}
+.OutPatient-follow-up{
+  height: 30px;
+  padding: 0px 5px;
+  background-color: var(--button-color);
+  border-radius: 5px;
+  border: 1px solid var(--button-color);
+  color: white;
+  cursor: pointer;
+}
+.OutPatient-favorite :hover{
+  color: var( --button-hover-text-color);
+  border: 1px solid var(--button-hover-border-color);
+  background-color: var(--button-hover-background-color);
+}
+.OutPatient-follow-up:hover{
+  color: var( --button-hover-text-color);
+  border: 1px solid var(--button-hover-border-color);
+  background-color: var(--button-hover-background-color);
 }
 
 .OutPatient-filters {
@@ -81,7 +118,14 @@
 .OutPatient-th {
   background-color: #f2f2f2;
 }
-
+.OutPatient-input
+{
+  padding: var(--input-box-padding);
+}
+.OutPatient-action-button
+{
+  border: none;
+}
 .OutPatient-no-data {
   text-align: center;
   padding: 20px;
@@ -97,8 +141,8 @@
 
 .OutPatient-pagination button {
   margin: 0 5px;
-  padding: 5px 10px;
-  background-color: #4a90e2;
+  padding: 5px;
+  background-color: var(--button-color);
   color: white;
   border: none;
   cursor: pointer;

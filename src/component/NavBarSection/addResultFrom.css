@@ -1,7 +1,6 @@
 .lab-addResult-page1 {
-  height: 80%;
   width: 100%;
-  background-color: lightblue;
+  padding: 10px;
 }
 
 .lab-addResult-header {
@@ -10,12 +9,17 @@
 }
 
 .lab-addResult-back-button {
-  background-color: blue;
+  background-color: var(--button-color);
   color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 .lab-addResult-back-button:hover {
-  background-color: #0277bd;
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+  border:1px solid var(--button-hover-border-color);
 }
 
 .lab-addResult-container {
@@ -39,43 +43,39 @@
 }
 
 .lab-addResult-prescribed-by {
-  color: #00796b;
-  font-weight: bold;
+  color: black;
+  font-size: var(--heading-font);
+  /* font-weight: bold; */
 }
 
 .lab-addResult-load-button,
 .lab-addResult-save-button {
-  background-color: #4caf50;
+  background-color: var(--button-color);
   color: white;
-  padding: 10px;
   border: none;
+  padding: 5px 10px;
   border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
+}
+.lab-addResult-load-button:hover,
+.lab-addResult-save-button:hover {
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+  border:1px solid var(--button-hover-border-color);
 }
 
 .lab-addResult-load-button {
   margin-right: 2px;
 }
 
-.lab-addResult-load-button:hover {
-  background-color: #43a047;
-}
-
-.lab-addResult-save-button:hover {
-  background-color: #388e3c;
-}
-
 .lab-addResult-content {
   margin-top: 10px;
   padding: 10px;
-  background-color: lightblue;
   border-radius: 5px;
   color: black;
 }
 
 .lab-addResult-bio {
-  height: 20px;
+  padding: 5px;
   margin-bottom: 0px;
   background-color: grey;
   align-items: center;
@@ -135,9 +135,13 @@
 }
 
 .lab-addResult-form {
-  background-color: lightblue;
   padding: 20px;
+  background-color: #f2f2f2;
   border-radius: 5px;
+  font-size: var(--font-size);
+}
+.lab-addResult-form h5{
+  font-size: var(--font-size);
 }
 
 .lab-addResult-form-row {
@@ -151,6 +155,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  padding: 10px;
   background-color: white;
 }
 
@@ -160,7 +165,7 @@
   background-color: #f44336;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -176,21 +181,23 @@
 
 .lab-addResult-save-btn,
 .lab-addResult-cancel-btn {
-  padding: 10px;
+  padding: 5px 10px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: var(--font-size);
   cursor: pointer;
   margin-right: 10px;
 }
 
 .lab-addResult-save-btn {
-  background-color: #4caf50;
+  background-color: var(--button-color);
   color: white;
 }
 
 .lab-addResult-save-btn:hover {
-  background-color: #43a047;
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+  border: 1px solid var(--button-hover-border-color);
 }
 
 .lab-addResult-cancel-btn {
@@ -202,36 +209,11 @@
   background-color: #d32f2f;
 }
 
-/* Add the new button styling */
-.lab-addResult-add-btn {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
+.lab-addResult-add-btn{
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.lab-addResult-add-btn:hover {
-  background-color: #43a047;
-}
-
-.lab-addResult-remove-btn {
-  background-color: #f44336;
+  background-color: var(--button-color);
   color: white;
-  padding: 10px;
-  border: none;
+  padding: 5px 10px;
   border-radius: 5px;
-  cursor: pointer;
+  margin: 5px;
 }
-
-.lab-addResult-remove-btn:hover {
-  background-color: #d32f2f;
-}
-
-.lab-addResult-form-actions {
-  text-align: center;
-  margin-top: 20px;
-}
-

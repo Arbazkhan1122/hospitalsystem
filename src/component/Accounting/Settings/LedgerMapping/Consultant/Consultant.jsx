@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import "./consultant.css";
+import { startResizing } from "../../../../../TableHeadingResizing/ResizableColumns";
 
 function Consultant() {
   const consultants = [
@@ -85,6 +86,9 @@ function Consultant() {
     },
   ];
 
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
+
   return (
     <div className="Consultant">
       <div className="Consultant-form">
@@ -106,7 +110,7 @@ function Consultant() {
         </div>
         <div className="Consultant-search-group">
           <input type="text" placeholder="type here to search consultant" />
-          <button className="Consultant-search-button">🔍</button>
+          <i class="fa-solid fa-magnifying-glass"></i>
         </div>
         <div className="checkbox-group">
           <label>
@@ -121,24 +125,43 @@ function Consultant() {
         </div>
       </div>
 
-      <div className="Consultant-table">
-        <table>
+      <div className="table-container">
+        <table className="coa-table" ref={tableRef}>
           <thead>
             <tr>
-              <th></th>
-              <th>Department</th>
-              <th>EmployeeName</th>
-              <th>Ledger Code</th>
-              <th>Ledger Name</th>
-              <th>Description</th>
-              <th>Opening Balance</th>
-              <th>Opening Balance Type</th>
-              <th>Active</th>
-              <th>TDS Percent</th>
-              <th>KRA PIN</th>
-              <th>Address</th>
-              <th>Mobile No.</th>
-              <th>Landline No.</th>
+              {[
+                "",
+                "Department",
+                "Employee Name",
+                "Ledger Code",
+                "Ledger Name",
+                "Description",
+                "Opening Balance",
+                "Opening Balance Type",
+                "Active",
+                "TDS Percent",
+                "PIN Code",
+                "Address",
+                "Mobile No",
+                "Landline No",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -169,11 +192,21 @@ function Consultant() {
                 <td>
                   <input type="checkbox" checked={consultant.active} />
                 </td>
-                <td>0</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                  <input type="text" />
+                </td>
+                <td>
+                  <input type="text" />
+                </td>
+                <td>
+                  <input type="text" />
+                </td>
+                <td>
+                  <input type="text" />
+                </td>
+                <td>
+                  <input type="text" />
+                </td>
               </tr>
             ))}
           </tbody>

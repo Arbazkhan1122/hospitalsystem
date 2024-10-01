@@ -130,57 +130,59 @@ const FixedAssetsMovement = () => {
             <button className="fixedAssetMovement-print-btn">Print</button>
           </div>
         </div>
-        <table className="fixedAssetMovement-table" ref={tableRef}>
-          <thead>
-            <tr>
-              {[
-                "Item Code",
-                "Bar Code",
-                "Asset Code",
-                "Item Name",
-                "Action",
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
-                    ></div>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {filteredData.length > 0 ? (
-              filteredData.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.itemCode}</td>
-                  <td>{item.barCode}</td>
-                  <td>{item.assetCode}</td>
-                  <td>{item.itemName}</td>
-                  <td>
-                    <button>Action</button>
+        <div className="table-container">
+          <table ref={tableRef}>
+            <thead>
+              <tr>
+                {[
+                  "Item Code",
+                  "Bar Code",
+                  "Asset Code",
+                  "Item Name",
+                  "Action",
+                ].map((header, index) => (
+                  <th
+                    key={index}
+                    style={{ width: columnWidths[index] }}
+                    className="resizable-th"
+                  >
+                    <div className="header-content">
+                      <span>{header}</span>
+                      <div
+                        className="resizer"
+                        onMouseDown={startResizing(
+                          tableRef,
+                          setColumnWidths
+                        )(index)}
+                      ></div>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {filteredData.length > 0 ? (
+                filteredData.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.itemCode}</td>
+                    <td>{item.barCode}</td>
+                    <td>{item.assetCode}</td>
+                    <td>{item.itemName}</td>
+                    <td>
+                      <button className="fixedAssestMovement-action-btn">Action</button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td className="no-show-fixedAssetMovement" colSpan={5}>
+                    No Row To Show
                   </td>
                 </tr>
-              ))
-            ) : (
-              <tr>
-                <td className="no-show-fixedAssetMovement" colSpan={5}>
-                  No Row To Show
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+              )}
+            </tbody>
+          </table>
+        </div>
       </section>
     </div>
   );

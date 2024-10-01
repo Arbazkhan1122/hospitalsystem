@@ -3,6 +3,7 @@ import './ReturnToVendor.css';
 import CreateReturnToVendor from './CreateReturnToVendor';
 import CustomModal from "../CustomModel/CustomModal";
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../../api/api';
 
 const ReturnToVendor = () => {
   const [columnWidths,setColumnWidths] = useState({});
@@ -23,7 +24,7 @@ const ReturnToVendor = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/returnToVendor');
+        const response = await fetch(`${API_BASE_URL}/returnToVendor`);
         if (response.ok) {
           const data = await response.json();
           setReturnData(data); // Set the fetched data

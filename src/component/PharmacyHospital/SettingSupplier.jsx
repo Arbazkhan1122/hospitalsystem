@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css'; 
+import { API_BASE_URL } from '../api/api';
 
 const initialUser = {
   name: '',
@@ -57,11 +58,11 @@ const SettingSupplierComponent = () => {
     try {
       if (isEditMode) {
         // Update existing supplier
-        const response = await axios.put(`http://localhost:1415/api/suppliers/${selectedUser.kraPin}`, dataToSend);
+        const response = await axios.put(`${API_BASE_URL}/suppliers/${selectedUser.kraPin}`, dataToSend);
         console.log('Update Response:', response.data);
       } else {
         // Add new supplier
-        const response = await axios.post('http://localhost:1415/api/suppliers', dataToSend);
+        const response = await axios.post(`${API_BASE_URL}/suppliers/create-supplier`, dataToSend);
         console.log('Add Response:', response.data);
       }
 

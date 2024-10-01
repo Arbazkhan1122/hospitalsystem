@@ -1,12 +1,7 @@
 .labTestComponents-container {
-  background-color: var(--background-color);
   padding: 10px;
   border-radius: 5px;
-  font-family: Arial, Helvetica, sans-serif;
-  /* width: 100%; */
-  /* max-width: 1200px; */
   margin: 0 auto;
-  height: 75vh;
 }
 .labTestComponents-firstRow{
   display: flex;
@@ -33,19 +28,24 @@
   background-color: var(--button-hover-background-color);
 }
 .labTestComponents-search-bar{
-  margin-left: -35px;
-  /* margin: 0; */
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  position: relative;
+
 }  
   .labTestComponents-search-bar input {
     /* margin-top: 10px; */
     /* padding: 5px; */
+    border: none;
+    background-color: transparent;
+    outline: none;
     width: 200px;
   }
   .labTestComponents-search-bar i{
-    position: relative;
+    position: absolute;
     color:gray;
-    top: 3px;
-  left: 205px;
+    right: 5px;
   }
 
 .labTestComponents-search-filters {
@@ -84,27 +84,6 @@
   /* font-weight: bold; */
   margin-right: 10px;
 }
-
-.labTestComponents-container table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  background-color: white;
-}
-
-.labTestComponents-container th, .labTestComponents-container td {
-  padding: 3px;
-  text-align: center;
-  border: 1px solid #ddd;
-  /* color: rgb(78, 78, 78); */
-  font-size: var(--font-size);
-}
-
-.labTestComponents-container th {
-  background-color: #f2f2f2;
-  font-size: var(--heading-font);
-}
-
 .labTestComponents-edit-button {
   background-color:var( --button-color);
   border: 1px solid var( --button-hover-border-color);

@@ -1,5 +1,4 @@
- /* Ajhar Tamboli rdlListRequest.jsx 19-09-24 */
-
+/* Ajhar Tamboli rdlListRequest.jsx 19-09-24 */
 
 import React, { useState, useEffect, useRef } from "react";
 import "../ListRequest/rdlListRequest.css";
@@ -7,7 +6,12 @@ import AddReportForm from "./rdlAddReport";
 import RDLAddScanDoneDetails from "./rdlScanDone";
 import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
+const getCurrentDate = () => {
+  return new Date().toISOString().split("T")[0];
+};
 function RDLListRequest() {
+  const [dateFrom, setDateFrom] = useState(getCurrentDate());
+  const [dateTo, setDateTo] = useState(getCurrentDate());
   const [columnWidths, setColumnWidths] = useState({});
   const [showAddReport, setShowAddReport] = useState(false);
   const [showScanDone, setShowScanDone] = useState(false);
@@ -17,20 +21,64 @@ function RDLListRequest() {
   const [searchQuery, setSearchQuery] = useState("");
   const tableRef = useRef(null);
 
+  const handleDateFromChange = (event) => {
+    setDateFrom(event.target.value);
+  };
+
+  const handleDateToChange = (event) => {
+    setDateTo(event.target.value);
+  };
+
   useEffect(() => {
-    // Fetch imaging requests and patients data
-    fetch("http://localhost:1415/api/patient-imaging-requisitions/all")
-      .then((response) => response.json())
-      .then((data) => {
-        setImagingRequests(data);
-        console.log(data);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
+    const currentDate = getCurrentDate();
+    setDateFrom(currentDate);
+    setDateTo(currentDate);
   }, []);
+
+  const fetchImagingRequest = () => {
+    let linkPending, linkActive;
+
+    if (dateFrom && dateTo) {
+      linkPending = `http://localhost:1415/api/imaging-requisitions/by-status-date?status=Pending&startDate=${dateFrom}&endDate=${dateTo}`;
+      linkActive = `http://localhost:1415/api/imaging-requisitions/by-status-date?status=Active&startDate=${dateFrom}&endDate=${dateTo}`;
+    } else {
+      const todayDate = getCurrentDate();
+      linkPending = `http://localhost:1415/api/imaging-requisitions/by-status-date?status=Pending&startDate=${todayDate}&endDate=${todayDate}`;
+      linkActive = `http://localhost:1415/api/imaging-requisitions/by-status-date?status=Active&startDate=${todayDate}&endDate=${todayDate}`;
+    }
+
+    // Fetch the data for Pending and Active statuses
+    Promise.all([
+      fetch(linkPending).then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      }),
+      fetch(linkActive).then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      }),
+    ])
+      .then(([pendingData, activeData]) => {
+        const combinedData = [...pendingData, ...activeData]; // Combine both data
+        console.log("Fetched data: ", combinedData);
+        setImagingRequests(combinedData);
+      })
+      .catch((err) => {
+        console.log("Fetch error: ", err);
+      });
+  };
+
+  useEffect(() => {
+    fetchImagingRequest();
+  }, [dateFrom, dateTo]);
 
   const updateStatus = (id, filmTypeId, quantity, status, scannedOn) => {
     fetch(
-      `http://localhost:1415/api/patient-imaging-requisitions/update-film-type-and-quantity?filmTypeId=${filmTypeId}&quantity=${quantity}&imagingId=${id}&status=${status}&scannedOn=${scannedOn}`,
+      `http://localhost:1415/api/imaging-requisitions/update-film-type-and-quantity?filmTypeId=${filmTypeId}&quantity=${quantity}&status=${status}&scannedOn=${scannedOn}&imagingId=${id}`,
       {
         method: "PUT",
         headers: {
@@ -42,7 +90,7 @@ function RDLListRequest() {
         if (!response.ok) {
           throw new Error(`Error: ${response.statusText}`);
         }
-        return response.json();
+        console.log("Scanned Done");
       })
       .then((data) => {
         // Update local state to reflect changes
@@ -90,9 +138,7 @@ function RDLListRequest() {
       const matchesSearch =
         request.patientDTO?.firstName.toLowerCase().includes(searchQuery) ||
         request.patientDTO?.lastName.toLowerCase().includes(searchQuery) ||
-        request.prescriberDTO?.employeeName
-          .toLowerCase()
-          .includes(searchQuery) ||
+        request.prescriberDTO?.firstName.toLowerCase().includes(searchQuery) ||
         request.imagingItemDTO?.imagingItemName
           .toLowerCase()
           .includes(searchQuery);
@@ -123,20 +169,29 @@ function RDLListRequest() {
         </div>
       </header>
       <div className="rDLListRequest-controls">
-      <div className="rDLListRequest-date-range">
-      <label>
-        From:
-        <input type="date" defaultValue="2024-08-09" />
-      </label>
-      <label>
-        To:
-        <input type="date" defaultValue="2024-08-16" />
-      </label>
-      <button className="rDLListRequest-star-button">☆</button>
-    <button className="rDLListRequest-more-btn">-</button>
-      <button className="rDLListRequest-ok-button">OK</button>
-    </div>
-
+        <div className="rDLListRequest-date-range">
+          <label>
+            From:
+            <input
+              type="date"
+              id="dateFrom"
+              defaultValue={dateFrom}
+              onChange={handleDateFromChange}
+            />
+          </label>
+          <label>
+            To:
+            <input
+              type="date"
+              id="dateTo"
+              defaultValue={dateTo}
+              onChange={handleDateToChange}
+            />
+          </label>
+          <button className="rDLListRequest-star-button">☆</button>
+          <button className="rDLListRequest-more-btn">-</button>
+          <button className="rDLListRequest-ok-button">OK</button>
+        </div>
       </div>
       <div className="rDLListRequest-search-N-results">
         <div className="rDLListRequest-search-bar">
@@ -160,6 +215,7 @@ function RDLListRequest() {
             <tr>
               {[
                 "Id",
+                "Requested Date",
                 "Patient Name",
                 "Age/Sex",
                 "Prescriber",
@@ -191,8 +247,16 @@ function RDLListRequest() {
               filteredRequests.map((request, index) => (
                 <tr key={request.imagingId}>
                   <td>{index + 1}</td>
-                  <td>{request.patientDTO?.firstName}</td>
-                  <td>{request.patientDTO?.age}</td>
+                  <td>{request.requestedDate}</td>
+                  <td>
+                    {request.patientDTO?.firstName ||
+                      request.newPatientVisitDTO?.firstName}{" "}
+                    {request.patientDTO?.lastName ||
+                      request.newPatientVisitDTO?.lastName}
+                  </td>
+                  <td>
+                    {request.patientDTO?.age || request.newPatientVisitDTO?.age}
+                  </td>
                   <td>{request.prescriberDTO?.employeeName || "self"}</td>
                   <td>{request.imagingTypeDTO?.imagingTypeName}</td>
                   <td>{request.imagingItemDTO?.imagingItemName}</td>
@@ -256,7 +320,7 @@ function RDLListRequest() {
                   selectedRequest.imagingId,
                   filmType,
                   quantity,
-                  "active",
+                  "Active",
                   scannedOn
                 );
               }}

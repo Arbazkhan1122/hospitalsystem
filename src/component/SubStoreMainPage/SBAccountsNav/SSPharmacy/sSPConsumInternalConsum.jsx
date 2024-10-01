@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../SSPharmacy/sSPConsumInternalConsum.css';
+import { API_BASE_URL } from '../../../api/api';
 
 function SSPConsumInternalConsum() {
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ function SSPConsumInternalConsum() {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/pharmacyRequisitions/getAll');
+        const response = await fetch(`${API_BASE_URL}/pharmacyRequisitions/getAll`);
         const data = await response.json();
         setItems(data); // Adjust based on actual API response structure
       } catch (error) {
@@ -65,7 +66,7 @@ function SSPConsumInternalConsum() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/api/internal-consumption/add', {
+      const response = await fetch('http://localhost:1415/api/internal-consumption/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -5,6 +5,7 @@ import axios from 'axios'; // Make sure axios is installed
 import './PurchaseOrder.css'; // Ensure you have this CSS file
 import GoodsReceiptForm from './GoodsReceiptForm';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../api/api';
 
 
 const GoodReceiptComponent = () => {
@@ -24,7 +25,7 @@ const GoodReceiptComponent = () => {
 
   const fetchGoodReceipts = async () => {
     try {
-      const response = await axios.get('http://localhost:1415/api/good-receipts/good-receipts'); // Adjust URL to your backend endpoint
+      const response = await axios.get(`${API_BASE_URL}/good-receipts/good-receipts`); // Adjust URL to your backend endpoint
       setGoodReceipts(response.data);
     } catch (error) {
       console.error('Error fetching good receipts:', error);

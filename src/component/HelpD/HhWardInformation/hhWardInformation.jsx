@@ -6,7 +6,7 @@ function HHWardInformation() {
 
   useEffect(() => {
     // Fetch data from API
-    fetch("http://192.168.1.34:1415/api/ward-department/getAllWardDepartment")
+    fetch("http://localhost:1415/api/ward-department/getAllWardDepartment")
       .then(response => response.json())
       .then(data => setWardData(data))
       .catch(error => console.error("Error fetching data:", error));

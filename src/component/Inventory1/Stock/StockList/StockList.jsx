@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import "./StockList.css";
 import StockManage from './StockManage'; // Import StockManage component
 import { startResizing } from '../../../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../../../api/api';
 
 
 const StockList = () => {
@@ -13,7 +14,7 @@ const StockList = () => {
   const [selectedItem, setSelectedItem] = useState(null); // Track selected item for StockManage
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/items/getAllItem')
+    fetch(`${API_BASE_URL}/items/all`)
       .then(response => response.json())
       .then(data => setItems(data))
       .catch(error => console.error('Error fetching data:', error));
@@ -45,10 +46,11 @@ const StockList = () => {
             <label className='stock-list-label'>
               SubCategory *:
               <select value={subcategory} onChange={handleSubcategoryChange}>
-                <option value="">Select SubCategory</option>
-                <option value="furniture">Furniture</option>
-                <option value="soap">Soap</option>
-                <option value="tissue">Tissue</option>
+              {filteredItems.map((item)=>(
+                <option>{item.subCategory}</option>
+              ))
+
+              }
               </select>
             </label>
             <label>

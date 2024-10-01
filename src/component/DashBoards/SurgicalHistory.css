@@ -1,12 +1,19 @@
+/* swapnil Rokade surgical-history Adding className And color and table css 18/09 */
 .surgical-history-container {
   padding: 20px;
   font-family: Arial, sans-serif;
   display: flex;
 }
+.surgical-history-subdiv
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .surgical-history-main {
   margin: 0 auto;
-  max-width: 800px;
 }
 .surgicalhist{
   display: flex;
@@ -24,11 +31,11 @@
   font-weight: bold;
 }
 
-.add-button {
-  background-color: #4c5baf;
+.surgical-history-add-button {
+  background-color: var(--button-color);
   color: white;
   border: none;
-  padding: 8px;
+  padding: 5px;
   margin-bottom: 10px;
   cursor: pointer;
 }
@@ -105,10 +112,11 @@
 }
 
 .surgical-history-add-button {
-  background-color: #4c82af;
+  background-color: var(--button-color);
   color: white;
   border: none;
-  padding: 8px;
+  padding: 5px;
+  border-radius: 5px;
   cursor: pointer;
 }
 

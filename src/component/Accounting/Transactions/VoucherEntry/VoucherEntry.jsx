@@ -368,7 +368,7 @@ const VoucherEntry = () => {
               <th>Dr Amount</th>
               <th>Cr Amount</th>
               <th>Description</th>
-              <th></th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody className="voucher-entry-tablebody">
@@ -481,9 +481,10 @@ const VoucherEntry = () => {
                     }}
                   />
                 </td>
-                <td className="VE-action-btn">
+                <td>
                   <button
                     className="remove-entry-btn"
+                    type="button"
                     onClick={() => handleRemoveEntry(index)}
                   >
                     -

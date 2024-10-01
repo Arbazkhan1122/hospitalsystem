@@ -49,6 +49,7 @@ const Sidebar = ({
   onBilling,
   onBloodbank,
   onTransport
+
 }) => {
   const [openMenus, setOpenMenus] = useState({});
   const [activeLink, setActiveLink] = useState(null);
@@ -202,20 +203,20 @@ const Sidebar = ({
     handleLinkClick("medicalrecord");
     onMedicalRecord();
   };
-  const handleProcurement=()=>{
+  const handleProcurement = () => {
     handleLinkClick("procurement");
     onProcurement();
-  }
+  };
 
-  const handleBilling=()=>{
+  const handleBilling = () => {
     handleLinkClick("billing");
     onBilling();
-  }
-  
-  const handlebBloodbank=()=>{
+  };
+
+  const handlebBloodbank = () => {
     handleLinkClick("bloodbank");
     onBloodbank();
-  }
+  };
 
   const handleTransport=()=>{
     handleLinkClick("transport");
@@ -224,9 +225,9 @@ const Sidebar = ({
 
   return (
     <div className={`custom-sidebar ${isOpen ? "" : "custom-sidebar-closed"}`}>
-      <button className="custom-toggle-button" onClick={toggleSidebar}>
+      {/* <button className="custom-toggle-button" onClick={toggleSidebar}>
         {isOpen ? <LuChevronLeft size={20} /> : <LuChevronRight size={20} />}
-      </button>
+      </button> */}
       <div className="custom-logo-container">
         {isOpen ? (
           <span>
@@ -543,27 +544,22 @@ const Sidebar = ({
 
 
 <li className={`custom-nav-item ${
+
             activeLink === "bloodbank-submenu1" ||
             activeLink === "bloodbank-submenu2" ||
             activeLink === "bloodbank-submenu3" ||
             activeLink === "bloodbank-submenu4" ||
             activeLink === "bloodbank-submenu5" ||
-            activeLink === "bloodbank-submenu6" 
-       
+            activeLink === "bloodbank-submenu6"
               ? "custom-nav-item-active"
               : ""
           }`}
         >
-          <div
-            className="custom-nav-link-content"
-            onClick={handlebBloodbank}
-          >
+          <div className="custom-nav-link-content" onClick={handlebBloodbank}>
             <span>
               <FaClinicMedical />
             </span>
-            {isOpen && (
-              <span className="custom-nav-link-text">BloodBank</span>
-            )}
+            {isOpen && <span className="custom-nav-link-text">BloodBank</span>}
             <span className="custom-dropdown-icon">
               {openMenus.bloodbank ? <LuChevronUp /> : <LuChevronDown />}
             </span>
@@ -598,7 +594,9 @@ const Sidebar = ({
                     : ""
                 }
               >
-                <Link to="/hIMSSampleDataTable">Blood Testing and Screening</Link>
+                <Link to="/hIMSSampleDataTable">
+                  Blood Testing and Screening
+                </Link>
               </li>
               <li
                 onClick={() => handleItemClick("bloodbank", "submenu4")}
@@ -620,7 +618,7 @@ const Sidebar = ({
               >
                 <Link to="/bloodReq">Blood Request</Link>
               </li>
-               <li
+              <li
                 onClick={() => handleItemClick("bloodbank", "submenu6")}
                 className={
                   activeLink === "bloodbank-submenu6"
@@ -640,34 +638,23 @@ const Sidebar = ({
               >
                 <Link to="/bBReport">Reports</Link>
               </li>
-             
             </ul>
           )}
         </li>
 
-
-
-
-
-
-        <li className={`custom-nav-item ${
+        <li
+          className={`custom-nav-item ${
             activeLink === "billing-submenu1" ||
-            activeLink === "billing-submenu2" 
-       
+            activeLink === "billing-submenu2"
               ? "custom-nav-item-active"
               : ""
           }`}
         >
-          <div
-            className="custom-nav-link-content"
-            onClick={handleBilling}
-          >
+          <div className="custom-nav-link-content" onClick={handleBilling}>
             <span>
               <FaClinicMedical />
             </span>
-            {isOpen && (
-              <span className="custom-nav-link-text">Billing</span>
-            )}
+            {isOpen && <span className="custom-nav-link-text">Billing</span>}
             <span className="custom-dropdown-icon">
               {openMenus.billing ? <LuChevronUp /> : <LuChevronDown />}
             </span>
@@ -694,22 +681,9 @@ const Sidebar = ({
               >
                 <Link to="/Search_Patient">Op Billing</Link>
               </li>
-             
             </ul>
           )}
         </li>
-
-
-
-
-
-
-
-
-
-
-
-
 
         <li
           className={`custom-nav-item ${
@@ -812,10 +786,7 @@ const Sidebar = ({
           )}
         </li>
 
-
-
-
-         <li
+        <li
           className={`custom-nav-item ${
             activeLink === "procurement-submenu1" ||
             activeLink === "procurement-submenu2" ||
@@ -827,10 +798,7 @@ const Sidebar = ({
               : ""
           }`}
         >
-          <div
-            className="custom-nav-link-content"
-            onClick={handleProcurement}
-          >
+          <div className="custom-nav-link-content" onClick={handleProcurement}>
             <span>
               <FaClinicMedical />
             </span>
@@ -2032,7 +2000,9 @@ const Sidebar = ({
                 <Link
                   to="/triagedPatients"
                   className="appointment-booking-list-nav-link"
-                >Triaged Patients</Link>
+                >
+                  Triaged Patients
+                </Link>
               </li>
               <li
                 onClick={() => handleItemClick("emergency", "submenu3")}

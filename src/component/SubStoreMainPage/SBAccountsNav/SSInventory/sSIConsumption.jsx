@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 // import SSIPatientConsumNewPCbtn from './sSIPatientConsumNewPCbtn';
 import SSIPatientConsumConsumEntry from './sSIPatientConsumConsumEntry';
 import { useParams } from 'react-router-dom';
+import { API_BASE_URL } from '../../../api/api';
 function SSIPatientConsumption() {
   const { store } = useParams();
   const [consumptions, setConsumptions] = useState([]);
@@ -16,7 +17,7 @@ function SSIPatientConsumption() {
   useEffect(() => {
     const fetchConsumptions = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/inventory-consumption/getAll');
+        const response = await fetch(`${API_BASE_URL}/inventory-consumption/getAll`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -73,9 +74,6 @@ function SSIPatientConsumption() {
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Report');
     XLSX.writeFile(workbook, 'Consumption_Report.xlsx');
   };
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
 
   return (
     <div className="sSIConsumption-active-imaging-request">

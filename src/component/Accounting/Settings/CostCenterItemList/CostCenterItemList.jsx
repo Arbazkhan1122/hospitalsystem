@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import "./CostCenterItemList.css"; // Assuming you'll create a CSS file for styling
+import { startResizing } from "../../../TableHeadingResizing/resizableColumns";
 
 const CostCenterItemList = () => {
   const [showEdit, setShowEdit] = useState(false);
@@ -53,32 +54,6 @@ const CostCenterItemList = () => {
 
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
-
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
-
   return (
     <div className="CostCenterManager">
       <section className="CostCenterManager-addCostCenter">
@@ -177,74 +152,80 @@ const CostCenterItemList = () => {
             <button className="CostCenterManager-print-btn">Print</button>
           </div>
         </div>
-        <table className="CostCenterManager-table" ref={tableRef}>
-          <thead>
-            <tr>
-              {[
-                "Cost Center",
-                "Parent Cost Center",
-                "Description",
-                "Is Active",
-                "Action",
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(index)}
-                    ></div>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {costCenters.map((cc) => (
-              <tr key={cc.name}>
-                <td>{cc.name}</td>
-                <td>{cc.parentCostCenter}</td>
-                <td>{cc.description}</td>
-                <td>{cc.isActive.toString()}</td>
-                <td>
-                  {!cc.isActive ? (
-                    <button
-                      onClick={() => {
-                        setDeactivate(false);
-                        cc.isActive = true;
-                      }}
-                      className="CostCenterManager-deactivateButton"
-                    >
-                      Activate
-                    </button>
-                  ) : (
-                    <>
-                      <button
-                        className="CostCenterManager-editButton"
-                        onClick={() => handleEdit(cc)}
-                      >
-                        Edit
-                      </button>
+        <div className="table-container">
+          <table ref={tableRef}>
+            <thead>
+              <tr>
+                {[
+                  "Cost Center",
+                  "Parent Cost Center",
+                  "Description",
+                  "Is Active",
+                  "Action",
+                ].map((header, index) => (
+                  <th
+                    key={index}
+                    style={{ width: columnWidths[index] }}
+                    className="resizable-th"
+                  >
+                    <div className="header-content">
+                      <span>{header}</span>
+                      <div
+                        className="resizer"
+                        onMouseDown={startResizing(
+                          tableRef,
+                          setColumnWidths
+                        )(index)}
+                      ></div>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {costCenters.map((cc) => (
+                <tr key={cc.name}>
+                  <td>{cc.name}</td>
+                  <td>{cc.parentCostCenter}</td>
+                  <td>{cc.description}</td>
+                  <td>{cc.isActive.toString()}</td>
+                  <td>
+                    {!cc.isActive ? (
                       <button
                         onClick={() => {
-                          setDeactivate(true);
-                          cc.isActive = false;
+                          setDeactivate(false);
+                          cc.isActive = true;
                         }}
                         className="CostCenterManager-deactivateButton"
                       >
-                        Deactivate
+                        Activate
                       </button>
-                    </>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                    ) : (
+                      <>
+                        <button
+                          className="CostCenterManager-editButton"
+                          onClick={() => handleEdit(cc)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => {
+                            setDeactivate(true);
+                            cc.isActive = false;
+                          }}
+                          className="CostCenterManager-deactivateButton"
+                        >
+                          Deactivate
+                        </button>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
         {/* <div className="CostCenterManager-pagination">
           <button className="CostCenterManager-paginationButton">First</button>
           <button className="CostCenterManager-paginationButton">

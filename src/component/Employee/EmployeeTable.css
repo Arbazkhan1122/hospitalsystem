@@ -61,6 +61,7 @@
   color: #333;
 }
 
+
 /* Hover effect for table rows */
 .employee-table tbody tr:hover {
   background-color: #f0f0f0; /* Light gray background on hover */
@@ -109,9 +110,6 @@
 /* Employee Header Styles */
 .employee-header {
   background-color: white;
-  color: #3598dc;
-  padding: 0;
-  width: 90%;
   font-size: 16px;
   position: static;
   /* overflow-x: scroll;  */
@@ -133,20 +131,18 @@
 .employee-header-form {
   list-style-type: none;
   display: flex;
-  padding: 0;
+  gap: 10px;
+  padding: 5px;
   margin: 0;
   overflow-x: scroll;
+  width: 100%;
 }
 
 .employee-header-form li {
-  
   padding: 10px 15px;
   cursor: pointer;
-  /* white-space: nowrap; */
-  /* font-size: 16px; */
-  background-color: var( --button-color);
   text-decoration: none;
-  color: white;
+  color: black;
   font-size: 16px;
   padding: 5px;
   border-radius: 5px;
@@ -219,8 +215,6 @@
  
 } */
 
-
-/*  */
 /* Common Sub-navigation Styles */
 .employee-sub-nav ul,
 .department-sub-nav ul,

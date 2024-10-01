@@ -1,5 +1,4 @@
- /* Ajhar Tamboli rdlListReports.jsx 19-09-24 */
-
+/* Ajhar Tamboli rdlListReports.jsx 19-09-24 */
 
 import React, { useState, useEffect, useRef } from "react";
 import "../ListReports/rdlListReports.css";
@@ -7,7 +6,13 @@ import * as XLSX from "xlsx"; // Import xlsx library
 import RadiologyReportPopup from "./RadiologyReportPopup";
 import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
+const getCurrentDate = () => {
+  return new Date().toISOString().split("T")[0];
+};
+
 function RDLListReports() {
+  const [dateFrom, setDateFrom] = useState(getCurrentDate());
+  const [dateTo, setDateTo] = useState(getCurrentDate());
   const [columnWidths, setColumnWidths] = useState({});
   const [showAddReport, setShowAddReport] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
@@ -16,16 +21,52 @@ function RDLListReports() {
   const [filter, setFilter] = useState("--All--");
   const tableRef = useRef(null);
 
-  // Fetch radiology report data and patient data from the APIs
+  const handleDateFromChange = (event) => {
+    setDateFrom(event.target.value);
+  };
+
+  const handleDateToChange = (event) => {
+    setDateTo(event.target.value);
+  };
+
   useEffect(() => {
-    fetch("http://localhost:1415/api/patient-imaging-requisitions/all")
-      .then((response) => response.json())
-      .then((data) => {
-        setReportsData(data);
-        setFilteredReportsData(data); // Initialize filtered data
-      })
-      .catch((error) => console.error("Error fetching reports data:", error));
+    const currentDate = getCurrentDate();
+    setDateFrom(currentDate);
+    setDateTo(currentDate);
   }, []);
+
+  const fetchImagingRequest = () => {
+    let link;
+
+    if (dateFrom && dateTo) {
+      link = `http://localhost:1415/api/imaging-requisitions/by-status-date?status=Completed&startDate=${dateFrom}&endDate=${dateTo}`;
+    } else {
+      const todayDate = getCurrentDate();
+      console.log(todayDate);
+
+      link = `http://localhost:1415/api/imaging-requisitions/by-status-date?status=Completed&startDate=${todayDate}&endDate=${todayDate}`;
+    }
+
+    // Fetch the data
+    fetch(link)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Fetched data: ", data);
+        setReportsData(data);
+      })
+      .catch((err) => {
+        console.log("Fetch error: ", err);
+      });
+  };
+
+  useEffect(() => {
+    fetchImagingRequest();
+  }, [dateFrom, dateTo]);
 
   useEffect(() => {
     // Apply the filter whenever the filter state changes
@@ -75,6 +116,9 @@ function RDLListReports() {
         report.imagingDate,
         report.patientId,
         report.patientDTO?.firstName + " " + report.patientDTO?.lastName ||
+          report.newPatientVisitDTO?.firstName +
+            " " +
+            report.newPatientVisitDTO?.lastName ||
           "N/A",
         `${report.patientDTO?.age || "N/A"}Y / ${
           report.patientDTO?.gender || "N/A"
@@ -128,20 +172,29 @@ function RDLListReports() {
         </div>
       </header>
       <div className="rDLListReport-controls">
-      <div className="rDLListReport-date-range">
-      <label>
-        From:
-        <input type="date" defaultValue="2024-08-09" />
-      </label>
-      <label>
-        To:
-        <input type="date" defaultValue="2024-08-16" />
-      </label>
-      <button className="rDLListReport-star-button">☆</button>
-    <button className="rDLListReport-more-btn">-</button>
-      <button className="rDLListReport-ok-button">OK</button>
-    </div>
-
+        <div className="rDLListReport-date-range">
+          <label>
+            From:
+            <input
+              type="date"
+              id="dateFrom"
+              defaultValue={dateFrom}
+              onChange={handleDateFromChange}
+            />
+          </label>
+          <label>
+            To:
+            <input
+              type="date"
+              id="dateTo"
+              defaultValue={dateTo}
+              onChange={handleDateToChange}
+            />
+          </label>
+          <button className="rDLListReport-star-button">☆</button>
+          <button className="rDLListReport-more-btn">-</button>
+          <button className="rDLListReport-ok-button">OK</button>
+        </div>
       </div>
       <div className="rDLListReport-search-N-results">
         <div className="rDLListReport-search-bar">
@@ -157,7 +210,7 @@ function RDLListReports() {
             <i className="fa-regular fa-file-excel"></i> Export
           </button>
           <button className="rDLListReport-ex-pri-buttons" onClick={printTable}>
-          <i class="fa-solid fa-print"></i> Print
+            <i class="fa-solid fa-print"></i> Print
           </button>
         </div>
       </div>
@@ -199,16 +252,21 @@ function RDLListReports() {
             {filteredReportsData.map((report, index) => (
               <tr key={report.imagingId}>
                 <td>{index + 1}</td>
-                <td>{new Date(report.imagingDate).toDateString()}</td>
+                <td>{report.imagingDate}</td>
                 <td>
-                  {report?.patientDTO?.firstName +
-                    " " +
-                    report?.patientDTO?.lastName || "N/A"}
+                  {report.patientDTO?.firstName ||
+                    report.newPatientVisitDTO?.firstName}{" "}
+                  {report.patientDTO?.lastName ||
+                    report.newPatientVisitDTO?.lastName}
                 </td>
-                <td>{`${report.patientDTO?.age} Y / ${
-                  report.patientDTO?.gender || ""
-                }`}</td>
-                <td>{report.patientDTO?.phoneNumber || "N/A"}</td>
+                <td>
+                  {report.patientDTO?.age || report.newPatientVisitDTO?.age} Y
+                </td>
+                <td>
+                  {report.patientDTO?.phoneNumber ||
+                    report.newPatientVisitDTO?.phoneNumber ||
+                    "N/A"}
+                </td>
                 <td>{report.prescriberDTO?.employeeName || "Self"}</td>
                 <td>{report.imagingTypeDTO?.imagingTypeName}</td>
                 <td>{report.imagingItemDTO?.imagingItemName}</td>

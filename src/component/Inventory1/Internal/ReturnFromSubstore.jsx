@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import "./Requisition.css"; // Updated to match the provided file
+import "./ReturnFromSubstore.css"; // Updated to match the provided file
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 
 const ReturnFromSubstore = () => {
@@ -20,25 +20,25 @@ const ReturnFromSubstore = () => {
   };
 
   return (
-    <div className="requisition-inventory-content"> {/* Updated class name */}
-      <div className="requisition-inventory-date-range"> {/* Updated class name */}
-        <label>From: <input type="date" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} /></label>
-        <label>To: <input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} /></label>
+    <div className="return-form-substore-content"> {/* Updated class name */}
+      <div className="return-form-substore-date-range"> {/* Updated class name */}
+        <div className='return-from-substore-container-left'>
+        <label className='return-from-substore-label'>From: <input type="date" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} /></label>
+        <label className='return-from-substore-label'>To: <input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} /></label>
         <button className="requisition-inventory-star">☆</button> {/* Updated class name */}
         <button className="requisition-inventory-minus">-</button> {/* Updated class name */}
         <button className="requisition-inventory-ok">✓ OK</button> {/* Updated class name */}
-        <div className="substore-select-container">
+        </div>
+        <div className="return-from-substore-container-right">
       <label >Substore:</label>
-      <select
-       
-      >
+      <select>
         <option value="">Select Substore</option>
-       
       </select>
     </div>
       </div>
       
-      <div className="requisition-inventory-search-bar"> {/* Updated class name */}
+      <div className="return-from-substore-search-bar"> {/* Updated class name */}
+        <div className='return-from-substore-container-left'>
         <input 
           type="text" 
           placeholder="Search" 
@@ -46,12 +46,14 @@ const ReturnFromSubstore = () => {
           onChange={(e) => setSearchQuery(e.target.value)}
         />
         <button onClick={handleSearch}>🔍</button>
-      </div>
-   
-      <div className="requisition-inventory-results"> {/* Updated class name */}
+        </div>
+        <div className="return-from-substore-container-right"> {/* Updated class name */}
         <span className='requisition-inventory-results-span'>Showing 0 / 0 results</span>
         <button className='requisition-inventory-results-print' onClick={handlePrint}>Print</button>
       </div>
+      </div>
+   
+      
       <div className="requisition-ta">
       <table className="patientList-table" ref={tableRef}>
           <thead>

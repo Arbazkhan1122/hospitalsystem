@@ -7,7 +7,7 @@ const Navbar = ({ handleNavigation }) => {
   const location = useLocation(); // Access the current route
 
   return (
-    <header className="header">
+    <header className="admission-header">
       <div className="logo">
         <Link to="/"><i className="fa-solid fa-house-chimney" ></i></Link>
       </div>

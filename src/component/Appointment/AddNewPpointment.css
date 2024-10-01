@@ -11,6 +11,7 @@
 /* Styles for left and right sections */
 .addnewaptmtpatient-left,
 .addnewaptmtpatient-right {
+
     width: 48%;
 }
 
@@ -35,6 +36,7 @@
 .addnewaptmtpatient-group input[type="time"],
 .addnewaptmtpatient-group select {
     width: 65%; /* Adjust input width for consistency */
+
     padding: 5px;
     border: 1px solid #ced4da;
     border-radius: 4px;

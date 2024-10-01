@@ -1,28 +1,56 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 import './ManageWard.css';
+import { API_BASE_URL } from '../../api/api';
 
 const ManageWard = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState(''); // 'add' or 'edit'
   const [selectedWard, setSelectedWard] = useState(null);
+
+  // State variables for form fields
   const [wardName, setWardName] = useState('');
   const [wardCode, setWardCode] = useState('');
   const [wardLocation, setWardLocation] = useState('');
   const [subStore, setSubStore] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const [occupied, setOccupied] = useState(0);
+  const [vacant, setVacant] = useState(0);
+  const [reserved, setReserved] = useState(0);
+  const [numberOfBeds, setNumberOfBeds] = useState(0);
+
+  const [wardsData, setWardsData] = useState([]);
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
+
+  // Fetch wards data when component mounts
+  useEffect(() => {
+    fetchWards();
+  }, []);
+
+  const fetchWards = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ward-department/get-all-ward`);
+      const data = await response.json();
+      setWardsData(data); // Update this based on the response structure
+    } catch (error) {
+      console.error('Error fetching wards:', error);
+    }
+  };
 
   const handleEditClick = (ward) => {
     setModalType('edit');
     setSelectedWard(ward);
-    setWardName(ward.name);
-    setWardCode(ward.code);
-    setWardLocation(ward.address);
-    setSubStore(ward.parent);
+    setWardName(ward.wardName);
+    setWardCode(ward.wardCode);
+    setWardLocation(ward.wardLocation);
+    setSubStore(ward.subStore);
     setIsActive(ward.isActive);
+    setOccupied(ward.occupied);
+    setVacant(ward.vacant);
+    setReserved(ward.reserved);
+    setNumberOfBeds(ward.numberOfBeds);
     setShowModal(true);
   };
 
@@ -34,6 +62,10 @@ const ManageWard = () => {
     setWardLocation('');
     setSubStore('');
     setIsActive(false);
+    setOccupied(0);
+    setVacant(0);
+    setReserved(0);
+    setNumberOfBeds(0);
     setShowModal(true);
   };
 
@@ -42,53 +74,89 @@ const ManageWard = () => {
     setSelectedWard(null);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const updatedWard = {
+    const wardData = {
       wardName,
       wardCode,
       wardLocation,
       subStore,
       isActive,
+      occupied,
+      vacant,
+      reserved,
+      numberOfBeds,
     };
-    if (modalType === 'edit') {
-      console.log('Updated Ward:', updatedWard);
-      // Logic for updating the selected ward's details
-    } else if (modalType === 'add') {
-      console.log('Added New Ward:', updatedWard);
-      // Logic for adding a new ward
-    }
-    handleCloseModal();
-  };
 
-  const wardsData = [
-    { name: 'Brain Ward', code: 'BW', parent: 'Ward', email: 'brainward@example.com', phone: '123-456-7890', address: '123 Brain St, City, State', label: 'Ward Code', verification: 'Ward Location', isActive: true },
-    { name: 'Female Ward', code: 'Female Ward', parent: 'Ward', email: 'femaleward@example.com', phone: '987-654-3210', address: '456 Female St, City, State', label: '006', verification: 'MATERNITY', isActive: true },
-    { name: 'ICU', code: '006', parent: 'Ward', email: 'icu@example.com', phone: '456-123-7890', address: '789 ICU St, City, State', label: 'Male Ward', verification: 'MATERNITY', isActive: true },
-    { name: 'Male Ward', code: 'Male Ward', parent: 'Ward', email: 'maleward@example.com', phone: '321-654-9870', address: '321 Male St, City, State', label: 'MATERNITY', verification: 'MATERNITY', isActive: true },
-    { name: 'MATERNITY WARD', code: 'MATERNITY', parent: 'Ward', email: 'maternityward@example.com', phone: '654-321-0987', address: '654 Maternity St, City, State', label: '003', verification: 'MATERNITY', isActive: true },
-    { name: 'NICU', code: '003', parent: 'Ward', email: 'nicu@example.com', phone: '789-456-1230', address: '789 NICU St, City, State', label: '007', verification: 'MATERNITY', isActive: true },
-    { name: 'Private Ward', code: '007', parent: 'Ward', email: 'privateward@example.com', phone: '432-123-5678', address: '234 Private St, City, State', label: 'Ward Location', verification: 'MATERNITY', isActive: true },
-  ];
+    try {
+      if (modalType === 'edit') {
+        await fetch(`${API_BASE_URL}/ward-department/update/${selectedWard.id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(wardData),
+        });
+        console.log('Updated Ward:', wardData);
+      } else if (modalType === 'add') {
+        await fetch(`${API_BASE_URL}/ward-department/add-ward-data`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(wardData),
+        });
+        console.log('Added New Ward:', wardData);
+      }
+      fetchWards(); // Refresh the list after adding or updating
+      handleCloseModal();
+    } catch (error) {
+      console.error('Error saving ward:', error);
+    }
+  };
 
   return (
     <div className="manage-add-ward-page">
       <div className="manage-add-ward-table-container">
         <div className="manage-add-ward-manage-section">
-          <Button className="manage-add-ward-btn" onClick={handleAddClick}>+ Add Ward</Button>
+          <Button className="manage-add-ward-btn" onClick={handleAddClick}>
+            + Add Ward
+          </Button>
         </div>
-        <input type="text" placeholder="Search" className="manage-add-ward-search-input" />
-        <div className="manage-add-ward-results-info">Showing {wardsData.length} results</div>
+        <input
+          type="text"
+          placeholder="Search"
+          className="manage-add-ward-search-input"
+        />
+        <div className="manage-add-ward-results-info">
+          Showing {wardsData.length} results
+        </div>
 
-        <div className='table-container'>
+        <div className="table-container">
           <table ref={tableRef}>
             <thead>
               <tr>
-                {['Name', 'Code', 'Parent Substore', 'Email', 'Phone', 'Address', 'Label', 'Verification', 'Is Active', 'Action'].map((header, index) => (
-                  <th key={index} style={{ width: columnWidths[index] }} className="resizable-th">
+                {[
+                  'Ward Name',
+                  'Ward Code',
+                  'Ward Location',
+                  'Sub Store',
+                  'Occupied',
+                  'Vacant',
+                  'Reserved',
+                  'Number of Beds',
+                  'Is Active',
+                  'Action',
+                ].map((header, index) => (
+                  <th
+                    key={index}
+                    style={{ width: columnWidths[index] }}
+                    className="resizable-th"
+                  >
                     <div className="header-content">
                       <span>{header}</span>
-                      <div className="resizer" onMouseDown={startResizing(tableRef, setColumnWidths)(index)}></div>
+                      <div
+                        className="resizer"
+                        onMouseDown={startResizing(tableRef, setColumnWidths)(
+                          index
+                        )}
+                      ></div>
                     </div>
                   </th>
                 ))}
@@ -97,17 +165,22 @@ const ManageWard = () => {
             <tbody>
               {wardsData.map((ward, index) => (
                 <tr key={index}>
-                  <td>{ward.name}</td>
-                  <td>{ward.code}</td>
-                  <td>{ward.parent}</td>
-                  <td>{ward.email}</td>
-                  <td>{ward.phone}</td>
-                  <td>{ward.address}</td>
-                  <td>{ward.label}</td>
-                  <td>{ward.verification}</td>
-                  <td>{ward.isActive.toString()}</td>
+                  <td>{ward.wardName}</td>
+                  <td>{ward.wardCode}</td>
+                  <td>{ward.wardLocation}</td>
+                  <td>{ward.subStore}</td>
+                  <td>{ward.occupied}</td>
+                  <td>{ward.vacant}</td>
+                  <td>{ward.reserved}</td>
+                  <td>{ward.numberOfBeds}</td>
+                  <td>{ward.isActive ? 'True' : 'False'}</td>
                   <td>
-                    <Button className="manage-add-ward-edit-btn" onClick={() => handleEditClick(ward)}>Edit</Button>
+                    <Button
+                      className="manage-add-ward-edit-btn"
+                      onClick={() => handleEditClick(ward)}
+                    >
+                      Edit
+                    </Button>
                   </td>
                 </tr>
               ))}
@@ -116,13 +189,22 @@ const ManageWard = () => {
         </div>
       </div>
 
-      <Modal show={showModal} onHide={handleCloseModal} dialogClassName="manage-add-employee-role">
+      <Modal
+        show={showModal}
+        onHide={handleCloseModal}
+        dialogClassName="manage-add-employee-role"
+      >
         <div className="manage-modal-dialog">
           <div className="manage-modal-modal-header">
             <div className="manage-modal-modal-title">
               {modalType === 'edit' ? 'Update Ward Department' : 'Add New Ward'}
             </div>
-            <Button onClick={handleCloseModal} className="manage-modal-employee-role-btn">X</Button>
+            <Button
+              onClick={handleCloseModal}
+              className="manage-modal-employee-role-btn"
+            >
+              X
+            </Button>
           </div>
           <div className="manage-modal-modal-body">
             <Form onSubmit={handleSubmit}>
@@ -141,7 +223,9 @@ const ManageWard = () => {
               </Form.Group>
 
               <Form.Group controlId="wardCode">
-                <Form.Label className="manage-modal-form-label">Ward Code:</Form.Label>
+                <Form.Label className="manage-modal-form-label">
+                  Ward Code:
+                </Form.Label>
                 <Form.Control
                   type="text"
                   value={wardCode}
@@ -152,7 +236,9 @@ const ManageWard = () => {
               </Form.Group>
 
               <Form.Group controlId="wardLocation">
-                <Form.Label className="manage-modal-form-label">Ward Location:</Form.Label>
+                <Form.Label className="manage-modal-form-label">
+                  Ward Location:
+                </Form.Label>
                 <Form.Control
                   type="text"
                   value={wardLocation}
@@ -163,7 +249,9 @@ const ManageWard = () => {
               </Form.Group>
 
               <Form.Group controlId="subStore">
-                <Form.Label className="manage-modal-form-label">Sub Store:</Form.Label>
+                <Form.Label className="manage-modal-form-label">
+                  Sub Store:
+                </Form.Label>
                 <Form.Control
                   type="text"
                   value={subStore}
@@ -173,8 +261,62 @@ const ManageWard = () => {
                 />
               </Form.Group>
 
+              <Form.Group controlId="occupied">
+                <Form.Label className="manage-modal-form-label">
+                  Occupied:
+                </Form.Label>
+                <Form.Control
+                  type="number"
+                  value={occupied}
+                  onChange={(e) => setOccupied(parseInt(e.target.value))}
+                  placeholder="Occupied"
+                  className="manage-modal-form-control"
+                />
+              </Form.Group>
+
+              <Form.Group controlId="vacant">
+                <Form.Label className="manage-modal-form-label">
+                  Vacant:
+                </Form.Label>
+                <Form.Control
+                  type="number"
+                  value={vacant}
+                  onChange={(e) => setVacant(parseInt(e.target.value))}
+                  placeholder="Vacant"
+                  className="manage-modal-form-control"
+                />
+              </Form.Group>
+
+              <Form.Group controlId="reserved">
+                <Form.Label className="manage-modal-form-label">
+                  Reserved:
+                </Form.Label>
+                <Form.Control
+                  type="number"
+                  value={reserved}
+                  onChange={(e) => setReserved(parseInt(e.target.value))}
+                  placeholder="Reserved"
+                  className="manage-modal-form-control"
+                />
+              </Form.Group>
+
+              <Form.Group controlId="numberOfBeds">
+                <Form.Label className="manage-modal-form-label">
+                  Number of Beds:
+                </Form.Label>
+                <Form.Control
+                  type="number"
+                  value={numberOfBeds}
+                  onChange={(e) => setNumberOfBeds(parseInt(e.target.value))}
+                  placeholder="Number of Beds"
+                  className="manage-modal-form-control"
+                />
+              </Form.Group>
+
               <Form.Group controlId="isActive" className="manage-modal-form-group">
-                <Form.Label className="manage-modal-form-label">Is Active:</Form.Label>
+                <Form.Label className="manage-modal-form-label">
+                  Is Active:
+                </Form.Label>
                 <Form.Check
                   type="checkbox"
                   checked={isActive}
@@ -184,7 +326,7 @@ const ManageWard = () => {
               </Form.Group>
 
               <div className="manage-modal-modal-footer">
-                <Button type="submit" className="manage-modal-employee-role-btn">
+                <Button type="submit" className="manage-add-modal-employee-role-btn">
                   {modalType === 'edit' ? 'Update Ward' : 'Add Ward'}
                 </Button>
               </div>

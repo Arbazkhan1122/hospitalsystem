@@ -98,7 +98,9 @@ const DepreciationAndDiscarding = () => {
                   <td>{item.barCode}</td>
                   <td>{item.assetCode}</td>
                   <td>{item.itemName}</td>
-                  <td>{item.action}</td>
+                  <td>
+                    <button className="DAD-action-btns">{item.action}</button>
+                  </td>
                 </tr>
               ))
             ) : (

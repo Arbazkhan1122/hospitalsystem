@@ -52,7 +52,7 @@ function BookingList() {
 
     try {
       // Send POST request to add a new booking
-      const response = await axios.post('http://localhost:8888/api/operation-bookings', payload);
+      const response = await axios.post('http://localhost:1415/api/operation-bookings', payload);
       console.log('Operation booked successfully:', response.data);
 
       // Reset the form after submission
@@ -66,7 +66,7 @@ function BookingList() {
       setStatus('Booked');
 
       // Fetch updated patient list after adding a new booking
-      const updatedPatientList = await axios.get('http://localhost:8888/api/operation-bookings/fetch-all');
+      const updatedPatientList = await axios.get('http://localhost:1415/api/operation-bookings/fetch-all');
       setOtPatientList(updatedPatientList.data);
     } catch (error) {
       console.error('Error booking operation:', error);

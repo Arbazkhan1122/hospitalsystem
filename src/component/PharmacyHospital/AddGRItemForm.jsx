@@ -5,11 +5,9 @@ import './AddGRItemForm.css';
 const AddGRItemForm = ({ onClose }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Add your form submission logic here
     console.log("Form submitted");
-    onClose(); // Close the modal after submission
+    onClose();
   };
-
   return (
     <div className="add-gr-item-modal-form-com">
       <div className="add-gr-item-modal-content">
