@@ -76,8 +76,8 @@ function ManageOtChecklist() {
 
     try {
       const url = editingIndex !== null 
-        ? `http://localhost:8888/api/otchecklists/${checklists[editingIndex].id}`
-        : 'http://localhost:8888/api/otchecklists';
+        ? `http://localhost:1415/api/otchecklists/${checklists[editingIndex].id}`
+        : 'http://localhost:1415/api/otchecklists';
 
       const method = editingIndex !== null ? 'PUT' : 'POST';
 

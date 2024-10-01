@@ -13,7 +13,7 @@ const VerifyPurchaseRequests = () => {
   const [selectedRequest, setSelectedRequest] = useState(null); // State to hold selected purchase request
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/purchase-requests/fetchAllPurchase")
+    fetch("http://localhost:1415/api/purchase-requests/fetchAllPurchase")
       .then((response) => response.json())
       .then((data) => {
         setPurchaseRequests(data);

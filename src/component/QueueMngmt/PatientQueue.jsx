@@ -15,17 +15,19 @@ const PatientQueue = () => {
 
   useEffect(() => {
 
-    fetch(`${API_BASE_URL}/queues/employee/role`)
+
+    fetch(`${API_BASE_URL}/patient-queues`)
 
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         
         // Assuming the API returns an array of doctors with 'salutation', 'firstname', and 'lastname' fields
-        const formattedDoctors = data.map((doctor) => ({
-          id: doctor.employeeId,
-          name: `${doctor.salutation} ${doctor.firstName} ${doctor.lastName}`,
-        }));
+       const formattedDoctors = data.map((item) => ({
+  id: item.newPatientVisitDTO?.employeeDTO?.employeeId, // Employee ID
+  name: `${item.newPatientVisitDTO?.employeeDTO?.salutation || ''} ${item.newPatientVisitDTO?.employeeDTO?.firstName || ''} ${item.newPatientVisitDTO?.employeeDTO?.middleName ? item.newPatientVisitDTO?.employeeDTO?.middleName + ' ' : ''}${item.newPatientVisitDTO?.employeeDTO?.lastName || ''}`,
+}));
+
         setDoctors(formattedDoctors);
       })
       .catch((error) => console.error('Error fetching doctors:', error));

@@ -1,4 +1,4 @@
-import React, { useState, useEffect,useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './BookingAppointment.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import axios if you are using it
@@ -44,80 +44,68 @@ const BookingAppointment = () => {
     navigate('/add-new-appointment');
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
-
   return (
+    <div className="bookAppointment-container">
+      <button className="bookAppointment-new-patient-btn" onClick={handleNewPatient}>+ New Patient</button><br></br>
 
-    <div className="book-appointment-container">
-      <button className="book-appointment-new-patient-btn" onClick={handleNewPatient}>+ New Patient</button><br></br>
-      
-      <div className="search-bar">
+      <div className="bookAppointment-search-bar">
         <input
           type="text"
           placeholder="Search (Minimum 3 Characters)"
           value={searchTerm}
           onChange={handleSearch}
         />
-        <button className="search-btn">🔍</button>
+        <button className="bookAppointment-search-btn">🔍</button>
       </div>
-      <div className="results-info">
+      <div className="bookAppointment-results-info">
         <span>Showing {filteredPatients.length} / {patients.length} results</span>
-        <button className="print-btn">Print</button>
+        <button className="bookAppointment-print-btn">Print</button>
       </div>
 
-      <table className="patientList-table" ref={tableRef}>
-          <thead>
-            <tr>
-              {[
-               "Patient Name",
+      <table className="bookAppointment-patientList-table" ref={tableRef}>
+        <thead>
+          <tr>
+            {[
+              "Patient Name",
               "Age/Sex",
               "Address",
               "Phone",
               "Actions"
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
-                    ></div>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
+            ].map((header, index) => (
+              <th
+                key={index}
+                style={{ width: columnWidths[index] }}
+                className="bookAppointment-resizable-th"
+              >
+                <div className="bookAppointment-header-content">
+                  <span>{header}</span>
+                  <div
+                    className="bookAppointment-resizer"
+                    onMouseDown={startResizing(
+                      tableRef,
+                      setColumnWidths
+                    )(index)}
+                  ></div>
+                </div>
+              </th>
+            ))}
+          </tr>
+        </thead>
         <tbody>
           {filteredPatients.map((patient, index) => (
             <tr key={index}>
-              {/* <td>{patient.hospitalNumber}</td> */}
               <td>{patient.firstName}</td>
               <td>{patient.age}</td>
               <td>{patient.address}</td>
               <td>{patient.contactNumber}</td>
               <td>
-                <button className="create-appointment-btn" onClick={handleNewPatient}>Create Appointment</button>
+                <button className="bookAppointment-create-appointment-btn" onClick={handleNewPatient}>Create Appointment</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <div className="pagination">
-        <span>1 to 20 of 200</span>
-        <button>First</button>
-        <button>Previous</button>
-        <span>Page 1 of 10</span>
-        <button>Next</button>
-        <button>Last</button>
-      </div>
+
     </div>
   );
 };

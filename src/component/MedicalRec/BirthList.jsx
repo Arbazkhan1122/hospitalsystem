@@ -105,7 +105,7 @@ function BirthList() {
   const handleSubmitBirth = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8989/api/birth-certificates/save-birthCertificate', formBirthData);
+      const response = await axios.post('http://localhost:1415/api/birth-certificates/save-birthCertificate', formBirthData);
       alert('Birth Certificate Saved:', response.data);
       console.log('Birth Certificate Saved ', response.data);
       closeModal(); // Close the modal after successful submission

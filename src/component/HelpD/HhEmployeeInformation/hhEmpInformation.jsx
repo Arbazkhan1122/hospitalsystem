@@ -8,7 +8,7 @@ const HHEmpInformation = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const response = await fetch('http://192.168.1.34:1415/api/employees');
+        const response = await fetch('http://localhost:1415/api/employees');
         if (!response.ok) {
           const errorText = await response.text();
           throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);

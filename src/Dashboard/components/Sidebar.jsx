@@ -48,6 +48,8 @@ const Sidebar = ({
   onProcurement,
   onBilling,
   onBloodbank,
+  onTransport
+
 }) => {
   const [openMenus, setOpenMenus] = useState({});
   const [activeLink, setActiveLink] = useState(null);
@@ -215,6 +217,11 @@ const Sidebar = ({
     handleLinkClick("bloodbank");
     onBloodbank();
   };
+
+  const handleTransport=()=>{
+    handleLinkClick("transport");
+    onTransport();
+  }
 
   return (
     <div className={`custom-sidebar ${isOpen ? "" : "custom-sidebar-closed"}`}>
@@ -423,8 +430,121 @@ const Sidebar = ({
           )}
         </li>
 
-        <li
-          className={`custom-nav-item ${
+
+
+
+
+
+
+<li className={`custom-nav-item ${
+            activeLink === "transport-submenu1" ||
+            activeLink === "transport-submenu2" ||
+            activeLink === "transport-submenu3" ||
+            activeLink === "transport-submenu4" ||
+            activeLink === "transport-submenu5" ||
+            activeLink === "transport-submenu6" ||
+            activeLink === "transport-submenu7" 
+              ? "custom-nav-item-active"
+              : ""
+          }`}
+        >
+          <div
+            className="custom-nav-link-content"
+            onClick={handleTransport}
+          >
+            <span>
+              <FaClinicMedical />
+            </span>
+            {isOpen && (
+              <span className="custom-nav-link-text">Transport</span>
+            )}
+            <span className="custom-dropdown-icon">
+              {openMenus.transport ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.transport && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("transport", "submenu1")}
+                className={
+                  activeLink === "transport-submenu1"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodDonationForm">Blood Donation Registration</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("transport", "submenu2")}
+                className={
+                  activeLink === "transport-submenu2"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodcollectionmain">Blood Collection</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("transport", "submenu3")}
+                className={
+                  activeLink === "transport-submenu3"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/hIMSSampleDataTable">Blood Testing and Screening</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("transport", "submenu4")}
+                className={
+                  activeLink === "transport-submenu4"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodStorageDashboard">Blood Storage</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("transport", "submenu5")}
+                className={
+                  activeLink === "transport-submenu5"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodReq">Blood Request</Link>
+              </li>
+               <li
+                onClick={() => handleItemClick("transport", "submenu6")}
+                className={
+                  activeLink === "transport-submenu6"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodIssue">Blood Issues</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu7")}
+                className={
+                  activeLink === "bloodbank-submenu7"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bBReport">Reports</Link>
+              </li>
+             
+            </ul>
+          )}
+        </li>
+
+
+
+
+
+<li className={`custom-nav-item ${
+
             activeLink === "bloodbank-submenu1" ||
             activeLink === "bloodbank-submenu2" ||
             activeLink === "bloodbank-submenu3" ||

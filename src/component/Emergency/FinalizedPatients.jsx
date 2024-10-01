@@ -14,7 +14,7 @@ import DOR from './DOR';
 // Reusable NavTab component
 const NavTab = ({ tabName, selectedTab, setSelectedTab }) => (
   <a 
-    href={`http://localhost:5174/finalizedPatients/${tabName}`}
+    href={`http://localhost:3107/finalizedPatients/${tabName}`}
     className={selectedTab === tabName ? 'FinalizedPatients-active' : ''}
     onClick={(e) => {
       e.preventDefault();

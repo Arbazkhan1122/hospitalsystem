@@ -65,7 +65,7 @@ function ClinicalBookAdmission({ onclose, selectedapatient }) {
     };
 
     axios
-      .post("http://localhost:8888/api/clinical-book-appointments", data)
+      .post("http://localhost:1415/api/clinical-book-appointments", data)
       .then((response) => {
         alert("Admission booked successfully!");
         onclose();

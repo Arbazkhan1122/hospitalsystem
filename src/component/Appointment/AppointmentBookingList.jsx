@@ -12,7 +12,7 @@ const AppointmentBookingList = () => {
 
 
   useEffect(() => {
-    fetch('http://192.168.42.16:1415/api/appointments/fetch-all-appointment')
+    fetch('http://localhost:1415/api/appointments/fetch-all-appointment')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -30,7 +30,7 @@ const AppointmentBookingList = () => {
   }, []);
 
   useEffect(()=>{
-    fetch('http://192.168.42.16:1415/api/new-patient-visits')
+    fetch('http://localhost:1415/api/new-patient-visits')
     .then(response=>{
       if(!response.ok){
         throw new Error('Network response was not ok');
@@ -69,7 +69,7 @@ const AppointmentBookingList = () => {
         <td>{`${newPatientVisit[index]?.employeeDTO?.salutation}${newPatientVisit[index]?.employeeDTO?.firstName}${newPatientVisit[index]?.employeeDTO?.lastName}`}</td>
         <td>{appointment.visitType}</td>
         <td>
-          <button className="appointments__action-btn">
+          <button className="appointments__action-btn"  >
             <Link to="/checkIn">Check-In</Link>
           </button>
           <button className="appointments__action-btn">Cancel</button>

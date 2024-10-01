@@ -37,7 +37,7 @@ const AddNewAppointmentForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const apiUrl = 'http://192.168.42.16:1415/api/appointments/save-new-appointment';
+        const apiUrl = 'http://localhost:1415/api/appointments/save-new-appointment';
 
 
         try {
@@ -102,7 +102,7 @@ const AddNewAppointmentForm = () => {
             <div className="addnewaptmtpatient-left">
                 {/* Left Side Inputs */}
                 <div className="addnewaptmtpatient-group">
-                    <label>First Name *</label>
+                    <label>First Name *</label>:
                     <input
                         type="text"
                         name="firstName"
@@ -113,7 +113,7 @@ const AddNewAppointmentForm = () => {
                     />
                 </div>
                 <div className="addnewaptmtpatient-group">
-                    <label>Middle Name</label>
+                    <label>Middle Name</label>:
                     <input
                         type="text"
                         name="middleName"
@@ -123,7 +123,7 @@ const AddNewAppointmentForm = () => {
                     />
                 </div>
                 <div className="addnewaptmtpatient-group">
-                    <label>Last Name *</label>
+                    <label>Last Name *</label>:
                     <input
                         type="text"
                         name="lastName"
@@ -134,7 +134,7 @@ const AddNewAppointmentForm = () => {
                     />
                 </div>
                 <div className="addnewaptmtpatient-group">
-                    <label>Gender *</label>
+                    <label>Gender *</label>:
                     <div className="addnewaptmtpatient-gender-options">
                         <label>
                             <input
@@ -169,7 +169,7 @@ const AddNewAppointmentForm = () => {
                     </div>
                 </div>
                 <div className="addnewaptmtpatient-group">
-                    <label>Age *</label>
+                    <label>Age *</label>:
                     <input
                         type="number"
                         name="age"
@@ -177,6 +177,7 @@ const AddNewAppointmentForm = () => {
                         onChange={handleChange}
                         placeholder="Age"
                         required
+                        style={{width:"30%"}}
                     />
                     <div className="addnewaptmtpatient-age-options">
                         <label>
@@ -212,7 +213,7 @@ const AddNewAppointmentForm = () => {
                     </div>
                 </div>
                 <div className="addnewaptmtpatient-group">
-                    <label>Reason</label>
+                    <label>Reason</label>:
                     <input
                         type="text"
                         name="reason"
@@ -222,7 +223,7 @@ const AddNewAppointmentForm = () => {
                     />
                 </div>
                 <div className="addnewaptmtpatient-group">
-                    <label>Contact Number *</label>
+                    <label>Contact Number *</label>:
                     <input
                         type="text"
                         name="contactNumber"
@@ -233,7 +234,7 @@ const AddNewAppointmentForm = () => {
                     />
                 </div>
                 <div className="addnewaptmtpatient-group">
-                    <label>Appointment Date *</label>
+                    <label>Appointment Date *</label>:
                     <input
                         type="date"
                         name="appointmentDate"
@@ -243,7 +244,7 @@ const AddNewAppointmentForm = () => {
                     />
                 </div>
                 <div className="addnewaptmtpatient-group">
-                    <label>Appointment Time</label>
+                    <label>Appointment Time</label>:
                     <input
                         type="time"
                         name="appointmentTime"
@@ -252,7 +253,7 @@ const AddNewAppointmentForm = () => {
                     />
                 </div>
                 <div className="addnewaptmtpatient-group">
-                    <label>Employee ID *</label>
+                    <label>Employee ID *</label>:
                     <input
                         type="text"
                         name="employeeId"
@@ -269,7 +270,7 @@ const AddNewAppointmentForm = () => {
             <div className="addnewaptmtpatient-right">
                 {/* Right Side Inputs */}
                 <div className="addnewaptmtpatient-group">
-                    <label>Department</label>
+                    <label>Department</label>:
                     <input
                         type="text"
                         name="department"
@@ -279,7 +280,7 @@ const AddNewAppointmentForm = () => {
                     />
                 </div>
                 <div className="addnewaptmtpatient-group">
-                    <label>Doctor</label>
+                    <label>Doctor</label>:
                     <input
                         type="text"
                         name="doctor"
@@ -289,7 +290,7 @@ const AddNewAppointmentForm = () => {
                     />
                 </div>
                 <div className="addnewaptmtpatient-group">
-                    <label>Select Visit Type</label>
+                    <label>Select Visit Type</label>:
                     <select
                         name="visitType"
                         value={formData.visitType}
