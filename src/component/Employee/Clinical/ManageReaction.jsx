@@ -1,91 +1,130 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './MaanageReaction.css'; // Ensure this is the correct filename
+import { X } from 'lucide-react';
+import './MaanageReaction.css';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+
 const usersData = [
     { code: 'AN', name: 'ANNAPHYLAXIS' },
     { code: 'ANX', name: 'ANXIETY' },
     { code: 'AP', name: 'ABDOMINAL PAIN' },
-    { code: 'BL', name: 'BLISTERING' },
-    { code: 'BP', name: 'BLOOD PRESSURE DECREASE' },
-    { code: 'CA', name: 'CARDIAC ARREST' },
-    { code: 'CON', name: 'CONFUSTION' },
-    { code: 'COU', name: 'COUGH' },
-    { code: 'DB', name: 'DIFFICULTY BREATHING' },
-    { code: 'DIA', name: 'DIARRHEA' },
-    { code: 'DIZ', name: 'DIZZINESS' },
-    { code: 'HI', name: 'HIVES' },
-    { code: 'IE', name: 'ITCHING EYES' },
-    { code: 'LH', name: 'LIGHT HEADNESS' },
-    { code: 'MU', name: 'MULTIPLE: PLEASE ADD COMMENTS' },
-    { code: 'NA', name: 'NAUSEA' },
-    { code: 'NC', name: 'NASAL CONGESTION' },
-    { code: 'NV', name: 'NAUSEA AND VOMITING' },
-    { code: 'RA', name: 'RASH' },
-    { code: 'RE', name: 'REDNESS EYES' },
+    // ... other user data
 ];
 
 const ManageReaction = () => {
-    const [columnWidths,setColumnWidths] = useState({});
-  const tableRef=useRef(null);
+    const [columnWidths, setColumnWidths] = useState({});
+    const tableRef = useRef(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [newReaction, setNewReaction] = useState({ name: '', code: '', isActive: true });
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+    const handleInputChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        setNewReaction(prev => ({
+            ...prev,
+            [name]: type === 'checkbox' ? checked : value
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('New Reaction:', newReaction);
+        closeModal();
+    };
+
     return (
-        <div className="manage-reaction-container">
-            <div className="manage-reaction-header">
-                <button className="manage-reaction-add-button">+ Add Reaction</button>
+        <div className="ManageReaction-container">
+            <div className="ManageReaction-header">
+                <button className="ManageReaction-addButton" onClick={openModal}>+ Add Reaction</button>
             </div>
-            <input type="text" placeholder="Search" className="manage-reaction-search-input" />
-            <div className="manage-reaction-span">
+            <input type="text" placeholder="Search" className="ManageReaction-searchInput" />
+            <div className="ManageReaction-resultCount">
                 <span>Showing 34/34 results</span>
             </div>
-            <div className="table-container">
-            <table  ref={tableRef}>
-          <thead>
-            <tr>
-              {[
-'Reaction Code', 'Reaction Name', 'Action'       
-               ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
-                    ></div>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
+            <div className="ManageReaction-tableContainer">
+                <table ref={tableRef} className="ManageReaction-table">
+                    <thead>
+                        <tr>
+                            {['Reaction Code', 'Reaction Name', 'Action'].map((header, index) => (
+                                <th
+                                    key={index}
+                                    style={{ width: columnWidths[index] }}
+                                    className="ManageReaction-resizableTh"
+                                >
+                                    <div className="ManageReaction-headerContent">
+                                        <span>{header}</span>
+                                        <div
+                                            className="ManageReaction-resizer"
+                                            onMouseDown={startResizing(
+                                                tableRef,
+                                                setColumnWidths
+                                            )(index)}
+                                        ></div>
+                                    </div>
+                                </th>
+                            ))}
+                        </tr>
+                    </thead>
                     <tbody>
                         {usersData.map((user, index) => (
                             <tr key={index}>
                                 <td>{user.code}</td>
                                 <td>{user.name}</td>
-                                <td className="manage-reaction-action-buttons">
-                                    <button className="manage-reaction-action-button">Edit</button>
-                                    {/* <button className="manage-reaction-action-button">Delete</button> */}
+                                <td className="ManageReaction-actionButtons">
+                                    <button className="ManageReaction-editButton">Edit</button>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
-                <div className="manage-reaction-pagination">
-                    {/* <div className="manage-reaction-pagination-controls">
-                        <button>First</button>
-                        <button>Previous</button>
-                        <button>1</button>
-                        <button>Next</button>
-                        <button>Last</button>
-                    </div> */}
-                </div>
             </div>
-            
+
+            {isModalOpen && (
+                <div className="ManageReaction-modalOverlay">
+                    <div className="ManageReaction-modal">
+                        <button className="ManageReaction-closeButton" onClick={closeModal}>
+                            <X size={24} />
+                        </button>
+                        <h2>Add Reaction</h2>
+                        <form onSubmit={handleSubmit} className="ManageReaction-form">
+                            <div className="ManageReaction-formGroup">
+                                <label htmlFor="name">Reaction Name*</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value={newReaction.name}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                            </div>
+                            <div className="ManageReaction-formGroup">
+                                <label htmlFor="code">Reaction Code</label>
+                                <input
+                                    type="text"
+                                    id="code"
+                                    name="code"
+                                    value={newReaction.code}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className="ManageReaction-formGroup">
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        name="isActive"
+                                        checked={newReaction.isActive}
+                                        onChange={handleInputChange}
+                                    />
+                                    Is Active
+                                </label>
+                            </div>
+                            <button type="submit" className="ManageReaction-submitButton">Add Reaction</button>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

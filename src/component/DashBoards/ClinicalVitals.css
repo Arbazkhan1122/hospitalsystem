@@ -1,108 +1,33 @@
 .vitals-page {
     font-family: Arial, sans-serif;
     background-color: #f0f8ff;
-    padding: 20px;
     position: relative;
   }
   
-  .tab-navigation {
+  .vitals-page-tab-navigation {
+    width: 100%;
     display: flex;
-    margin-bottom: 20px;
   }
   
-  .tab {
+  .vitals-page-tab {
     padding: 10px 15px;
     background-color: #e0e0e0;
     border: none;
-    margin-right: 5px;
     cursor: pointer;
   }
   
-  .tab.active {
-    background-color: #4169e1;
+  .vitals-page-tab.active {
+    background-color: var(--button-color);
     color: white;
   }
   
-  .content-area {
+  .vitals-page-content-area {
     display: flex;
     background-color: white;
     padding: 20px;
     border-radius: 5px;
   }
-  
-  .vitals-list {
-    flex: 1;
-    margin-right: 20px;
-  }
-  
-  .vitals-list h2 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .new-vitals-btn {
-    background-color: #9370db;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .vitals-list ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .vitals-list li {
-    margin-bottom: 10px;
-    color: #666;
-  }
-  
-  .add-vitals-form {
-    flex: 2;
-  }
-  
-  .form-row {
-    display: flex;
-    margin-bottom: 10px;
-    align-items: center;
-  }
-  
-  .form-row label {
-    width: 150px;
-    color: #666;
-  }
-  
-  .form-row input, .form-row select {
-    margin-right: 10px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  .add-btn {
-    background-color: #4169e1;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
-  }
-  
-  .save-btn {
-    background-color: #4169e1;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  
-  .close-btn {
+  .vitals-page-close-btn {
     position: absolute;
     top: 10px;
     right: 10px;

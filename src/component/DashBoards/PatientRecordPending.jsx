@@ -48,14 +48,6 @@ const ConsultNotes = () => {
           </tr>
         </tbody>
       </table>
-      <div className="pagination">
-        <span>1 to 2 of 2</span>
-        <button className="pagination-button" disabled>First</button>
-        <button className="pagination-button" disabled>Previous</button>
-        <span>Page 1 of 1</span>
-        <button className="pagination-button" disabled>Next</button>
-        <button className="pagination-button" disabled>Last</button>
-      </div>
     </div>
   );
 };

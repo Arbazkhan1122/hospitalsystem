@@ -2,7 +2,9 @@
 
 .search-patient-container{
   background-color: var(--background-color);
-  
+  overflow-y: scroll;
+  scrollbar-width: none;
+  padding: 10px;
 }
 
 
@@ -26,7 +28,7 @@
   .adt-search-patient-pagination-btn {
     margin: 0 5px;
     padding: 5px ;
-    background-color: #0F63AF;
+    background-color: var(--button-color);
     color: white;
     border: none;
     border-radius: 3px;
@@ -118,19 +120,17 @@
 }
 
 /* Button Styles */
-.save-admission-adt-btn[type="submit"] {
+.save-admission-adt-btn[type="submit"],.admit-button {
   background-color: var(--button-color);
   color: white;
-  padding: 10px 20px;
+  padding: 5px 10px;
   border-radius: 5px;
-  border: none;
-  font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s;
-  
+  border: 1px solid var(--button-color);
 }
 
-.save-admission-adt-btn[type="submit"]:hover {
+.save-admission-adt-btn[type="submit"]:hover,.admit-button:hover {
   background-color: var(--button-hover-background-color);
   color: var(--button-hover-text-color);
   border:1px solid var(--button-hover-border-color);

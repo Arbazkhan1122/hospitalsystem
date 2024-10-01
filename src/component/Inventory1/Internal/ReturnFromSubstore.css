@@ -1,121 +1,29 @@
 /* ReturnFromSubstore.css */
 
 .return-form-substore-content {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
-
-.return-form-substore-date-range {
+.return-form-substore-date-range
+{
+    width: 100%;
+    display: flex;
+}
+.return-from-substore-container-left
+{
+    width: 40%;
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
 }
-
-.return-form-substore-date-range label {
-    margin-right: 10px;
-}
-
-.return-form-substore-date-range button {
-    margin-right: 10px;
-    padding: 10px;
-    cursor: pointer;
-    border: none;
-}
-
-.return-form-substore-star {
-    background-color: #f2f2f2;
-}
-
-.return-form-substore-minus {
-    background-color: #f2f2f2f2;
-    /* color: #fff; */
-}
-
-.return-form-substore-ok {
-    background-color: #4caf50;
-    color: #fff;
-}
-
-.return-form-substore-search-bar {
+.return-from-substore-container-right
+{
+    width: 40%;
     display: flex;
-    margin-bottom: 20px;
-}
-
-.return-form-substore-search-bar input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-}
-
-.return-form-substore-search-bar button {
-    padding: 10px;
-    border: none;
-    background-color: #2196F3;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 0 4px 4px 0;
-}
-
-.return-form-substore-results {
-    display: flex;
+    justify-content: end;
     align-items: center;
+}
+.return-from-substore-search-bar
+{
+    width: 100%;
+    display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.return-form-substore-results span {
-    margin-right: 10px;
-}
-
-.return-form-substore-results button {
-    padding: 10px;
-    border: none;
-    background-color: #2196F3;
-    color: #fff;
-    cursor: pointer;
-}
-
-.return-form-substore-return-from-substore-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-    table-layout: fixed; /* Ensures table doesn't overflow */
-}
-
-.return-form-substore-return-from-substore-table thead {
-    background-color: #2196F3;
-    color: #fff;
-}
-
-.return-form-substore-return-from-substore-table th,
-.return-form-substore-return-from-substore-table td {
-    padding: 10px;
-    text-align: left;
-    border: 1px solid #ccc;
-    word-wrap: break-word; /* Prevents text overflow in cells */
-}
-
-.return-form-substore-return-pagination {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap; /* Ensure the elements wrap on smaller screens */
-    margin-top: 20px;
-}
-
-.return-form-substore-return-pagination-div {
-    width: 50%;
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2px;
-}
-
-.return-form-substore-return-pagination-div button {
-    background: #2196F3;
-    border: none;
-    padding: 5px 7px;
-    color: white;
 }

@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css';
+import { API_BASE_URL } from '../api/api';
 
-const apiEndpoint = 'http://localhost:1415/api/v1/invoice-headers';
+const apiEndpoint = `${API_BASE_URL}/v1/invoice-headers`;
 
 const SettingInvoiceHeaders = () => {
   const [invoiceHeaders, setInvoiceHeaders] = useState([]);

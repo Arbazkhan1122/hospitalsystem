@@ -5,6 +5,7 @@ import { Modal } from 'react-bootstrap';
 import PurchaseOrderForm from './PurchaseOrderForm';
 import './PurchaseOrder.css';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../api/api';
 const PurchaseOrder = () => {
     const [purchaseOrders, setPurchaseOrders] = useState([]);
     const [showEditModal, setShowEditModal] = useState(false);
@@ -23,7 +24,7 @@ const PurchaseOrder = () => {
 
     const fetchPurchaseOrders = async () => {
         try {
-            const response = await axios.get('http://localhost:1415/api/order-purchase-orders');
+            const response = await axios.get(`${API_BASE_URL}/order-purchase-orders`);
             console.log('API Response:', response.data); // Log the API response
             setPurchaseOrders(response.data); // Set the data in state
             console.log('Purchase Orders State:', purchaseOrders); // Log the state to ensure it's updated

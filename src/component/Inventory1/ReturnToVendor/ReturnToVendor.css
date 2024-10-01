@@ -90,7 +90,7 @@
 .returnToVendor-receipt-table th {
     background-color: #f2f2f2;
     color: black;
-    font-size: 16px;
+    font-size: var(--heading-font);
 }
 
 .returnToVendor-no-rows {
@@ -98,7 +98,7 @@
     color: #856404;
     text-align: center;
     padding: 15px 0;
-    font-size: 16px;
+    font-size: var(--heading-font);
 }
 .returnToVendor-returnToVendor-pagination {
     margin-top: 10px;
@@ -118,8 +118,6 @@
     padding: 8px 12px; /* Optional: adjust padding */
     cursor: pointer; /* Optional: change cursor to pointer */
   }
-  
- /*  */
 
  .returnToVendor-ret-button {
     background-color: var(--button-color); /* Sets the background color to blue */

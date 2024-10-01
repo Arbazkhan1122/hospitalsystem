@@ -3,9 +3,11 @@ import './NewPatientsMyFavourite.css';
 
 const TableComponent = () => {
     return (
-        <div className="table-container">
-            <input type="text" className="search-input" placeholder="Search" />
-            <table className="custom-table">
+        <div className="New-Patient-fav-table-container">
+            <input type="text" className="New-Patient-fav-search-input" placeholder="Search" />
+            <button className="New-Patient-fav-print-button">Print</button>
+
+            <table className="New-Patient-fav-custom-table">
                 <thead>
                     <tr>
                         <th>Hospital </th>
@@ -19,13 +21,13 @@ const TableComponent = () => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td colSpan="7" className="no-rows">
+                        <td colSpan="7" className="New-Patient-fav-no-rows">
                             No Rows To Show
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div className="pagination-container">
+            {/* <div className="pagination-container">
                 <span>0 to 0 of 0</span>
                 <div className="pagination-buttons">
                     <button disabled>First</button>
@@ -34,8 +36,7 @@ const TableComponent = () => {
                     <button disabled>Next</button>
                     <button disabled>Last</button>
                 </div>
-            </div>
-            <button className="print-button">Print</button>
+            </div> */}
         </div>
     );
 };

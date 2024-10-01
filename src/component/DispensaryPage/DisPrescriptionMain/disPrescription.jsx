@@ -133,6 +133,7 @@ import PrescriptionDetails from "../DisPrescriptionMain/viewAvailability";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import axios from 'axios';
+import { API_BASE_URL } from '../../api/api';
 
 const DisPrescription = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -149,10 +150,8 @@ const DisPrescription = () => {
 
   const fetchPrescriptions = async () => {
     try {
-      const response = await axios.get('http://localhost:1415/api/medications');
-      console.log(response.data);
-      
-      // setPrescriptions(response.data);
+      const response = await axios.get(`${API_BASE_URL}/hospital/fetch-all-prescription-data`);
+      setPrescriptions(response.data);
       setLoading(false);
     } catch (err) {
       setError('Failed to fetch prescriptions');

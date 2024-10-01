@@ -2,8 +2,10 @@ import React, { useState, useEffect,useRef } from 'react';
 import axios from 'axios';
 import '../MedicalRec/MRInpatientList.css';
 import { useNavigate } from 'react-router-dom';
+
 import Modal from 'react-modal';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+
 
 function RecordMedical() {
   const [isMenuVisible, setisMenuVisible] = useState(false);

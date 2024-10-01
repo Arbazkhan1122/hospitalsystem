@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './UnitOfMeasurement.css';
+import { API_BASE_URL } from '../../api/api';
 
 const UnitOfMeasurement = ({onClose}) => {
   // State management for form inputs
@@ -23,7 +24,7 @@ const UnitOfMeasurement = ({onClose}) => {
 
     try {
       // Send a POST request to the backend
-      await axios.post('http://192.168.1.39:8080/api/unitofmeasurement/add', data);
+      await axios.post(`${API_BASE_URL}/unitofmeasurement/add`, data);
       setSuccess('Unit of Measurement added successfully!');
       setError('');
     } catch (err) {

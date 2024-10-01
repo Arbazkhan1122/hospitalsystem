@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './EncounterHistory.css';
 import VisitSummary from './EncounterHistoryViewSummary'; // Import the VisitSummary component
 
-const VisitTable = () => {
+const VisitTable = ({patientId,newPatientVisitId}) => {
   const [showSummary, setShowSummary] = useState(false);
 
   const visits = [
@@ -34,7 +34,7 @@ const VisitTable = () => {
               <th>Visit Time</th>
               <th>Provider Name</th>
               <th>Comments</th>
-              <th>Referred By Provider</th>
+              {/* <th>Referred By Provider</th> */}
             </tr>
           </thead>
           <tbody>
@@ -46,11 +46,11 @@ const VisitTable = () => {
                 <td>{visit.visitTime}</td>
                 <td>{visit.providerName}</td>
                 <td>{visit.comments}</td>
-                <td>
+                {/* <td>
                   <a href="#" className="Encounter-view-summary" onClick={handleViewSummary}>
                     View Summary
                   </a>
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>

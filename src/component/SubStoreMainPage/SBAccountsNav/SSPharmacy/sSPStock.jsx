@@ -103,6 +103,7 @@ import SSPIssues from './sSPIssues';
 import SSPReports from './sSPReports'; // Import the Reports component
 import SSPharmacyNInven from './sSPharmacyNInven';
 import { useParams } from 'react-router-dom';
+import { API_BASE_URL } from '../../../api/api';
 
 function SSPStock() { 
   const {store} = useParams();
@@ -121,7 +122,7 @@ function SSPStock() {
   const fetchStockData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8080/api/pharmacyRequisitions/getAll');
+      const response = await fetch(`${API_BASE_URL}/pharmacyRequisitions/getAll`);
       if (!response.ok) {
         throw new Error('Failed to fetch stock data');
       }
@@ -220,7 +221,7 @@ function SSPStock() {
     <div className="sSPStock-stock-container">
     <SSPharmacyNInven/>
     <nav className='sSPStock-stock-nav'>
-      <ul>
+      <ul className='sSPStock-stock-nav-ul'>
         <li className={activeTab === 'Stock' ? 'active' : ''} onClick={() => setActiveTab('Stock')}>Stock</li>
         <li className={activeTab === 'Requisition' ? 'active' : ''} onClick={() => setActiveTab('Requisition')}>Requisition</li>
         <li className={activeTab === 'Consumption' ? 'active' : ''} onClick={() => setActiveTab('Consumption')}>Consumption</li>

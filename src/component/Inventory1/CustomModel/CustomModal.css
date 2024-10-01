@@ -1,4 +1,4 @@
-
+/* Swapnil Rokade CustomModal Adding className 23/09 */
 .Cus-modal-overlay {
     position: fixed;
     top: 0;
@@ -31,7 +31,7 @@
     z-index: 1;
   }
   
-  .Cus-modal-content {
-    margin-top: 20px;
+  .Cus-modal-content{
+    width: 100%;
   }
   

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css';
+import { API_BASE_URL } from '../api/api';
 
 const SettingCategory = () => {
   const [suppliers, setSuppliers] = useState([]);
@@ -13,7 +14,7 @@ const SettingCategory = () => {
 
   useEffect(() => {
     // Fetch initial data
-    axios.get('http://localhost:1415/api/categories')
+    axios.get(`${API_BASE_URL}/categories`)
       .then(response => {
         setSuppliers(response.data);
       })
@@ -45,8 +46,8 @@ const SettingCategory = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const apiUrl = isEditMode
-      ? `http://localhost:1415/api/categories/${selectedUser.id}` // Assuming `id` is part of the user object for updates
-      : 'http://localhost:1415/api/categories';
+      ? `${API_BASE_URL}/categories/${selectedUser.id}` // Assuming `id` is part of the user object for updates
+      : `${API_BASE_URL}/categories`;
     const method = isEditMode ? 'put' : 'post';
 
     axios({

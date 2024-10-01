@@ -49,7 +49,7 @@ function NavigationBar() {
             <Link to="/purchase-order">
               <button className={styles.navigationBarActionButton}>Purchase Order</button>
             </Link>
-            <Link to="/requisition">
+            <Link to="/requisitionPharmacy">
               <button className={styles.navigationBarActionButton}>Requisition</button>
             </Link>
           </>

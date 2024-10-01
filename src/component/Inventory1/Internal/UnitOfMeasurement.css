@@ -38,7 +38,7 @@
   display: block;
   color: #f0a500;
   margin-top: 5px;
-  font-size: 12px;
+  font-size: var(--heading-font);
 }
 
 .unit-of-MeasssFormGroup input[type="checkbox"] {

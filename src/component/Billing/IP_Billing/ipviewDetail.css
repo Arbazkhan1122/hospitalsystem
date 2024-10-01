@@ -180,9 +180,9 @@
     z-index: 1000;
     opacity: 0;
     transition: opacity 0.3s ease;
-  }
+  } */
   
-  .fade-in {
+  /* .fade-in {
     opacity: 1;
   }
   
@@ -202,7 +202,7 @@
     align-items: center;
     border-bottom: 1px solid #ddd;
     margin-bottom: 20px;
-  }
+  } */
   
   .close-button {
     background: none;
@@ -211,7 +211,7 @@
     cursor: pointer;
   }
   
-  .modal-body {
+  /* .modal-body {
     padding: 20px 0;
   }
   
@@ -221,7 +221,7 @@
     border-top: 1px solid #ddd;
     padding-top: 10px;
     background-color: #ccc;
-  }
+  } */
   
   .save-button, .cancel-button {
     background-color: #007bff;
@@ -469,4 +469,4 @@
   padding: 5px 15px;
   border: none;
   cursor: pointer;
-} */
+} 

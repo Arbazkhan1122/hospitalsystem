@@ -1,59 +1,71 @@
-.PatientContainer {
+/* swapnil Rokade InPatient Adding className And color and table css 18/09 */
+.InPatient-PatientContainer {
   display: flex;
   justify-content: space-between;
   align-items: center; /* Align items horizontally */
   margin-bottom: 5px;
-  background-color: #f2f2f2;
+  background-color: var(--background-color);
   padding: 5px;
 }
 
-.PatientLeftSection,
-.PatientRightSection {
+.InPatient-PatientLeftSection,
+.InPatient-PatientRightSection {
   display: flex;
   align-items: center;
 }
 
-.PatientLeftSection {
+.InPatient-PatientLeftSection {
   width: 75%;
 }
 
-.PatientRightSection {
+.InPatient-PatientRightSection {
   width: 25%;
 }
 
-.PatientFilterSection {
+.InPatient-PatientFilterSection {
   display: flex;
   align-items: center;
   margin-right: 20px; /* Add space between the filter and search */
 }
 
-.PatientFilterSection h2 {
-  font-size: 16px;
+.InPatient-PatientFilterSection h2 {
+  font-size: var(--heading-font);
   margin-right: 20px; /* Add space between "Department Filter" and filter items */
 }
 
-.PatientFilterItem {
+.InPatient-PatientFilterItem {
   display: flex;
   align-items: center;
   margin-right: 20px; /* Add space between each filter item */
 }
 
-.PatientFilterItem .PatientIcon {
+.InPatient-PatientFilterItem .PatientIcon {
   margin-right: 10px;
-  color: #4a90e2;
+  color: var(--button-color);
   font-size: 18px;
 }
+.in-patient-button
+{
+  border: none;
+  padding: 2px;
+}
+.patientList-table-container
+{
+  height: 75vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
 
-.PatientSearchBar {
+.InPatient-PatientSearchBar {
   display: flex;
   align-items: center;
   width: 100%;
-  background-color: #f2f2f2;
+  background-color: var(--background-color);
   padding: 5px;
   border-radius: 5px;
 }
 
-.PatientSearchBar input {
+.InPatient-PatientSearchBar input {
   flex-grow: 1;
   padding: 5px;
   border: none;
@@ -61,8 +73,8 @@
   outline: none;
 }
 
-.PatientSearchIcon {
-  color: #4a90e2;
+.InPatient-PatientSearchIcon {
+  color: var(--button-color);
   font-size: 20px;
   margin-left: 10px;
 }

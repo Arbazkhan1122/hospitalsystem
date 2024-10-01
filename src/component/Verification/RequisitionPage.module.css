@@ -98,11 +98,11 @@
 }
 
 /* Table section */
-.requisitionTableContainer {
-  margin-top: 20px;
-  background-color: #eaf4fd;
-  padding: 10px;
-  border-radius: 4px;
+.table-container {
+ width: 100%;
+ height: 75%;
+ overflow-y: scroll;
+ scrollbar-width: none;
 }
 
 .requisitionDataTable {

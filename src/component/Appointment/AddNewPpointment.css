@@ -6,6 +6,9 @@
     background-color:#e3fffe;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 85vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
   }
   
   /* Styles for left and right sections */
@@ -30,7 +33,7 @@
   .addnewaptmtpatient-group input[type="time"],
   .addnewaptmtpatient-group select {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     border: 1px solid #ced4da;
     border-radius: 4px;
     font-size: 14px;

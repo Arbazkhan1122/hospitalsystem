@@ -47,9 +47,11 @@
 
 
 .admit-actions {
+  width: 100%;
+  overflow: scroll;
+  scrollbar-width: none;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .admitbtn {

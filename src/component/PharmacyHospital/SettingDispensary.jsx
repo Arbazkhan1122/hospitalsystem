@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './SettingSupplier.css'; 
+import { API_BASE_URL } from '../api/api';
 
 const SettingDispensary = () => {
   const [suppliers, setSuppliers] = useState([]); // Initialize with empty array to load from API
@@ -12,7 +13,7 @@ const SettingDispensary = () => {
 
   // Fetch suppliers from API when the component mounts
   useEffect(() => {
-    fetch('http://localhost:1415/api/dispensaries')
+    fetch(`${API_BASE_URL}/dispensaries`)
       .then(response => response.json())
       .then(data => setSuppliers(data))
       .catch(error => console.error('Error fetching dispensaries:', error));
@@ -64,7 +65,7 @@ const SettingDispensary = () => {
 
     if (isEditMode) {
       // Update existing user via API
-      fetch(`http://localhost:1415/api/dispensaries/${selectedUser.id}`, {
+      fetch(`${API_BASE_URL}/dispensaries/${selectedUser.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -79,7 +80,7 @@ const SettingDispensary = () => {
       .catch(error => console.error('Error updating dispensary:', error));
     } else {
       // Add new user via API
-      fetch('http://localhost:1415/api/dispensaries', {
+      fetch(`${API_BASE_URL}/dispensaries`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

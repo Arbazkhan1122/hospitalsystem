@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import '../SSInventory/sSIPatientConsumNewPCbtn.css';
 import { useParams } from 'react-router-dom';
+import { API_BASE_URL } from '../../../api/api';
 
 const SSIPatientConsumNewPCbtn = ({ onBack }) => {
   const {store} = useParams();
@@ -20,7 +21,7 @@ const SSIPatientConsumNewPCbtn = ({ onBack }) => {
   const [consumptionTypeName, setConsumptionTypeName] = useState('YourTypeName'); // Replace with actual type logic  
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('http://localhost:8080/api/inventory-requisitions/getAll');
+      const response = await fetch(`${API_BASE_URL}/inventory-requisitions/getAll`);
       const data = await response.json();
       const completedItems = data.filter(item => item.status === 'completed');
       setItems(completedItems);
@@ -54,7 +55,7 @@ const SSIPatientConsumNewPCbtn = ({ onBack }) => {
       // Update the inventory requisition by subtracting the consumed quantity
       const updatedQty = selectedItem.requiredQuantity - parseFloat(consumedQty);
       
-      await fetch(`http://localhost:8080/api/inventory-requisitions/update/${selectedItem.id}`, {
+      await fetch(`${API_BASE_URL}/inventory-requisitions/update/${selectedItem.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -80,7 +81,7 @@ const SSIPatientConsumNewPCbtn = ({ onBack }) => {
       };
   
       // Add the new consumption entry
-      await fetch('http://localhost:8080/api/patient-consumption/add', {
+      await fetch(`${API_BASE_URL}/patient-consumption/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

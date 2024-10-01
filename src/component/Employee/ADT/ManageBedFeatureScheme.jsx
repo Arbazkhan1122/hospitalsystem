@@ -1,24 +1,42 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import axios from 'axios'; // For making API requests
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
 import './ManageWard.css';
+import { API_BASE_URL } from '../../api/api';
+
+// Replace with your actual base URL
 
 const ManageBedFeatureScheme = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState('add'); // Track whether adding or editing
   const [selectedBedFeature, setSelectedBedFeature] = useState(null);
-  const [role, setRole] = useState('');
-  const [description, setDescription] = useState('');
-  const [isActive, setIsActive] = useState(false);
+  const [bedFeatureCode, setBedFeatureCode] = useState(''); // Updated field
+  const [featureName, setFeatureName] = useState(''); // Updated field
+  const [featureFullName, setFeatureFullName] = useState(''); // Updated field
+  const [isActive, setIsActive] = useState(false); // Updated field
+  const [bedFeatures, setBedFeatures] = useState([]); // State to hold fetched bed features
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
 
+  // Fetch bed features when the component mounts
+  useEffect(() => {
+    axios.get(`${API_BASE_URL}/ward-bedFeature/getAllWardBed`)
+      .then(response => {
+        setBedFeatures(response.data); // Assuming response.data is an array of bed features
+      })
+      .catch(error => {
+        console.error("Error fetching bed features", error);
+      });
+  }, []);
+
   // Handle opening the modal for editing a bed feature
-  const handleEditClick = (type) => {
-    setSelectedBedFeature(type);
-    setRole(type.name);
-    setDescription(type.feature); // Assuming 'feature' is the description
-    setIsActive(type.isActive);
+  const handleEditClick = (feature) => {
+    setSelectedBedFeature(feature);
+    setBedFeatureCode(feature.bedFeatureCode); // Set bed feature code
+    setFeatureName(feature.featureName); // Set feature name
+    setFeatureFullName(feature.featureFullName); // Set feature full name
+    setIsActive(feature.isActive === "true"); // Set isActive, assuming it's a string like "true" or "false"
     setModalType('edit'); // Set mode to edit
     setShowModal(true);
   };
@@ -26,9 +44,10 @@ const ManageBedFeatureScheme = () => {
   // Handle opening the modal for adding a new bed feature
   const handleAddClick = () => {
     setSelectedBedFeature(null);
-    setRole('');
-    setDescription('');
-    setIsActive(false);
+    setBedFeatureCode(''); // Reset bed feature code
+    setFeatureName(''); // Reset feature name
+    setFeatureFullName(''); // Reset feature full name
+    setIsActive(false); // Reset isActive
     setModalType('add'); // Set mode to add
     setShowModal(true);
   };
@@ -42,29 +61,38 @@ const ManageBedFeatureScheme = () => {
   // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
+    const newFeature = {
+      bedFeatureCode,
+      featureName,
+      featureFullName,
+      isActive: isActive.toString() // Convert boolean to string
+    };
+
     if (modalType === 'edit') {
-      // Logic for updating the bed feature goes here
-      console.log('Updated:', { role, description, isActive });
+      console.log(newFeature);
+      
+      axios.put(`${API_BASE_URL}/ward-bedFeature/update/${selectedBedFeature.wardBedFeatureId}`, newFeature)
+        .then(response => {
+          console.log("Updated:", response.data);
+          // Update the state with the edited feature
+          const updatedFeatures = bedFeatures.map(feature =>
+            feature.id === selectedBedFeature.wardBedFeatureId ? response.data : feature
+          );
+          setBedFeatures(updatedFeatures); // Update state
+        })
+        .catch(error => console.error("Error updating bed feature", error));
     } else {
-      // Logic for adding a new bed feature goes here
-      console.log('Added:', { role, description, isActive });
+      console.log(newFeature);
+      
+      axios.post(`${API_BASE_URL}/ward-bedFeature/add-ward-bed-data`, newFeature)
+        .then(response => {
+          console.log("Added:", response.data);
+          setBedFeatures([...bedFeatures, response.data]); // Add the new feature to the state
+        })
+        .catch(error => console.error("Error adding bed feature", error));
     }
     handleCloseModal();
   };
-
-  const data = [ 
-    { code: 'BF-14', feature: 'Bed 7', name: 'Smooth', isActive: true },
-    { code: 'BF-17', feature: 'Bed 10', name: 'Automatic', isActive: true },
-    { code: '0010', feature: 'Bed 3', name: 'Recliner', isActive: true },
-    { code: 'BF-11', feature: 'Bed 4', name: 'Recliner', isActive: true },
-    { code: 'BF-12', feature: 'Bed 5', name: 'Recliner', isActive: true },
-    { code: 'BF-13', feature: 'Bed 6', name: 'Smooth', isActive: true },
-    { code: 'BF-15', feature: 'Bed 8', name: 'Smooth', isActive: true },
-    { code: 'BF-16', feature: 'Bed 9', name: 'Automatic', isActive: true },
-    { code: 'BD111', feature: 'Electronic', name: 'Electronic Bed', isActive: true },
-    { code: 'BF-8', feature: 'FEMALE WARD', name: '', isActive: true },
-    { code: 'BF-9', feature: 'MATERNITY', name: 'MATERNITY WARD', isActive: true }
-  ];
 
   return (
     <div className="manage-add-ward-page">
@@ -75,13 +103,13 @@ const ManageBedFeatureScheme = () => {
           </Button>
         </div>
         <input type="text" placeholder="Search" className="manage-add-ward-search-input" />
-        <div className="manage-add-ward-results-info">Showing 17/17 results</div>
+        <div className="manage-add-ward-results-info">Showing {bedFeatures.length}/{bedFeatures.length} results</div>
 
         <div className='table-container'>
           <table ref={tableRef}>
             <thead>
               <tr>
-                {["Code", "Bed Feature", "Full Name", "IsActive", "Action"].map((header, index) => (
+                {["Code", "Feature Name", "Full Name", "Is Active", "Action"].map((header, index) => (
                   <th key={index} style={{ width: columnWidths[index] }} className="resizable-th">
                     <div className="header-content">
                       <span>{header}</span>
@@ -92,12 +120,12 @@ const ManageBedFeatureScheme = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((item, index) => (
+              {bedFeatures.map((item, index) => (
                 <tr key={index}>
-                  <td>{item.code}</td>
-                  <td>{item.feature}</td>
-                  <td>{item.name}</td>
-                  <td>{item.isActive.toString()}</td>
+                  <td>{item.bedFeatureCode}</td>
+                  <td>{item.featureName}</td>
+                  <td>{item.featureFullName}</td>
+                  <td>{item.isActive}</td>
                   <td>
                     <Button className="manage-add-ward-edit-btn" onClick={() => handleEditClick(item)}>
                       Edit
@@ -129,27 +157,38 @@ const ManageBedFeatureScheme = () => {
           </div>
           <div className="manage-modal-modal-body">
             <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="role">
+              <Form.Group controlId="bedFeatureCode">
                 <Form.Label className="manage-modal-form-label">
                   Bed Feature Code <span className="manage-modal-text-danger">*</span>:
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
+                  value={bedFeatureCode}
+                  onChange={(e) => setBedFeatureCode(e.target.value)}
                   placeholder="Bed Feature Code"
                   required
                   className="manage-modal-form-control"
                 />
               </Form.Group>
 
-              <Form.Group controlId="description">
+              <Form.Group controlId="featureName">
                 <Form.Label className="manage-modal-form-label">Feature Name:</Form.Label>
                 <Form.Control
                   type="text"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  value={featureName}
+                  onChange={(e) => setFeatureName(e.target.value)}
                   placeholder="Feature Name"
+                  className="manage-modal-form-control"
+                />
+              </Form.Group>
+
+              <Form.Group controlId="featureFullName">
+                <Form.Label className="manage-modal-form-label">Full Name:</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={featureFullName}
+                  onChange={(e) => setFeatureFullName(e.target.value)}
+                  placeholder="Full Name"
                   className="manage-modal-form-control"
                 />
               </Form.Group>
