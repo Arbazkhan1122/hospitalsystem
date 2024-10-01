@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../LabSetting/labLookUpAddNewLUp.css";
+import { API_BASE_URL } from "../../api/api";
 
 const LabLookUpUpdateNewLUp = ({ lookup, onClose }) => {
   const [moduleName, setModuleName] = useState(lookup.moduleName || "Lab");
@@ -45,7 +46,7 @@ const LabLookUpUpdateNewLUp = ({ lookup, onClose }) => {
 
     try {
       await axios.put(
-        `http://localhost:1415/lab-lookups/update/${lookup}`,
+        `${API_BASE_URL}/lab-lookups/update/${lookup}`,
         payload
       );
       onClose();

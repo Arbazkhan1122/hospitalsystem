@@ -1,9 +1,10 @@
 /* Employee Table Styles */
 .employee-page-table {
   background-color: var(--background-color);
-  padding: 20px;
+  padding: 5px;
   height: 90vh;
   overflow-y: scroll;
+  scrollbar-width: none;
 
 }
 
