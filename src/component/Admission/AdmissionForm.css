@@ -26,9 +26,16 @@
   }
   
   .create-admission-form-field {
-    margin-bottom: 1rem;
+    width: 100%;
+    display: flex;
+    padding: 4px;
+    justify-content: space-around;
+    align-items: center;
   }
-  
+  .create-admission-form-label
+  {
+    width:30% ;
+  }
   .create-admission-required {
     color: red;
   }

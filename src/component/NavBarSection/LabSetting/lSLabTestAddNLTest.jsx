@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 // import './AddLabTest.css';
 import "../LabSetting/lSLabTestAddNLTest.css";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../../api/api";
 const LSLabTestAddNLTest = ({ onClose }) => {
   const [labCategories, setLabCategories] = useState([]);
   const [labComponents, setLabComponents] = useState([]);
@@ -27,7 +28,7 @@ const LSLabTestAddNLTest = ({ onClose }) => {
     const fetchLabCategories = async () => {
       try {
         const response = await fetch(
-          `http://localhost:1415/api/lab-test-categories/getAll-testCategory`
+          `${API_BASE_URL}/lab-test-categories/getAll-testCategory`
         );
         if (response.ok) {
           const data = await response.json();
@@ -44,7 +45,7 @@ const LSLabTestAddNLTest = ({ onClose }) => {
     const fetchLabComponents = async () => {
       try {
         const response = await fetch(
-          `http://localhost:1415/api/lab-components/getAllComponents`
+          `${API_BASE_URL}/lab-components/getAllComponents`
         );
         if (response.ok) {
           const data = await response.json();

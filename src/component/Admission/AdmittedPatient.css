@@ -109,6 +109,10 @@
   border-color: #007bff;
   outline: none;
 }
+.admit-formDepartment-container
+{
+  width: 100%;
+}
 
 /* Media Queries for responsiveness */
 @media (max-width: 768px) {
@@ -149,4 +153,8 @@
   .admitbtn-select {
     width: 100%; /* Full width */
   }
+}
+
+.custom-modal-width .modal-dialog {
+  width: 900px; /* Adjust the width as per your need */
 }

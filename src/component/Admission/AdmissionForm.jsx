@@ -159,21 +159,21 @@ const AdmissionForm = ({ patient, onClose }) => {
         {/* Left Column */}
         <div>
           <div className="create-admission-form-field">
-            <label>Membership<span className="create-admission-required">*</span></label>
+            <label className='create-admission-form-label'>Membership<span className="create-admission-required">*</span></label>
             <select name="membership" className="create-admission-form-input" onChange={handleChange}>
               <option value="General">General</option>
               <option value="Premium">Premium</option>
             </select>
           </div>
           <div className="create-admission-form-field">
-            <label>Price Category</label>
+            <label className='create-admission-form-label'>Price Category</label>
             <select name="priceCategory" className="create-admission-form-input" onChange={handleChange}>
               <option value="Normal">Normal</option>
               <option value="VIP">VIP</option>
             </select>
           </div>
           <div className="create-admission-form-field">
-            <label>Case<span className="create-admission-required">*</span></label>
+            <label className='create-admission-form-label'>Case<span className="create-admission-required">*</span></label>
             <select name="caseType" className="create-admission-form-input" onChange={handleChange}>
               <option value="">Select</option>
               <option value="Case 1">Case 1</option>
@@ -181,7 +181,7 @@ const AdmissionForm = ({ patient, onClose }) => {
             </select>
           </div>
           <div className="create-admission-form-field">
-            <label>Requesting Department<span className="create-admission-required">*</span></label>
+            <label className='create-admission-form-label'>Requesting Department<span className="create-admission-required">*</span></label>
             <select name="requestingDepartment" className="create-admission-form-input" onChange={handleChange}>
               <option value="">Select Doctor</option>
               {departments.map((doctor) => (
@@ -190,7 +190,7 @@ const AdmissionForm = ({ patient, onClose }) => {
             </select>
           </div>
           <div className="create-admission-form-field">
-            <label>Admitting Doctor<span className="create-admission-required">*</span></label>
+            <label className='create-admission-form-label'>Admitting Doctor<span className="create-admission-required">*</span></label>
             <select name="admittedDoctor" className="create-admission-form-input" onChange={handleChange}>
               <option value="">Select Doctor</option>
               {doctors.map((doctor) => (
@@ -199,7 +199,7 @@ const AdmissionForm = ({ patient, onClose }) => {
             </select>
           </div>
           <div className="create-admission-form-field">
-            <label>Ward<span className="create-admission-required">*</span></label>
+            <label className='create-admission-form-label'>Ward<span className="create-admission-required">*</span></label>
             <select name="wardDepatment" className="create-admission-form-input" onChange={handleChange}>
               <option value="">Select Ward</option>
               {wards.map((ward) => (
@@ -208,7 +208,7 @@ const AdmissionForm = ({ patient, onClose }) => {
             </select>
           </div>
           <div className="create-admission-form-field">
-            <label>Bed Feature<span className="create-admission-required">*</span></label>
+            <label className='create-admission-form-label'>Bed Feature<span className="create-admission-required">*</span></label>
             <select name="wardBedFeature" className="create-admission-form-input" onChange={handleChange}>
               <option value="">Select Bed Feature</option>
               {bedFeatures.map((feature) => (
@@ -217,7 +217,7 @@ const AdmissionForm = ({ patient, onClose }) => {
             </select>
           </div>
           <div className="create-admission-form-field">
-            <label>Bed<span className="create-admission-required">*</span></label>
+            <label className='create-admission-form-label'>Bed<span className="create-admission-required">*</span></label>
             <select name="manageBed" className="create-admission-form-input" onChange={handleChange}>
               <option value="">Select Bed</option>
               {beds.map((bed) => (
@@ -230,7 +230,7 @@ const AdmissionForm = ({ patient, onClose }) => {
         {/* Right Column */}
         <div>
           <div className="create-admission-form-field">
-            <label>Admission Date</label>
+            <label className='create-admission-form-label'>Admission Date</label>
             <input
               type="datetime-local"
               name="admissionDate"
@@ -239,7 +239,7 @@ const AdmissionForm = ({ patient, onClose }) => {
             />
           </div>
           <div className="create-admission-form-field">
-            <label>Admission Notes</label>
+            <label className='create-admission-form-label'>Admission Notes</label>
             <textarea
               name="admissionNotes"
               className="create-admission-form-input"
@@ -248,7 +248,7 @@ const AdmissionForm = ({ patient, onClose }) => {
             ></textarea>
           </div>
           <div className="create-admission-form-field">
-            <label>Care Of Person Name</label>
+            <label className='create-admission-form-label'>Care Of Person Name</label>
             <input
               type="text"
               name="careOfPersonName"
@@ -258,7 +258,7 @@ const AdmissionForm = ({ patient, onClose }) => {
             />
           </div>
           <div className="create-admission-form-field">
-            <label>Care Of Person Phone</label>
+            <label className='create-admission-form-label'>Care Of Person Phone</label>
             <input
               type="text"
               name="careOfPersonPhone"
@@ -268,7 +268,7 @@ const AdmissionForm = ({ patient, onClose }) => {
             />
           </div>
           <div className="create-admission-form-field">
-            <label>Care Of Person Relation</label>
+            <label className='create-admission-form-label'>Care Of Person Relation</label>
             <select name="careOfPersonRelation" className="create-admission-form-input" onChange={handleChange}>
               <option value="">Select Relation</option>
               <option value="Father">Father</option>
@@ -278,7 +278,7 @@ const AdmissionForm = ({ patient, onClose }) => {
             </select>
           </div>
           <div className="create-admission-form-field">
-            <label>Deposit Balance</label>
+            <label className='create-admission-form-label'>Deposit Balance</label>
             <input
               type="number"
               name="depositBalance"
@@ -288,7 +288,7 @@ const AdmissionForm = ({ patient, onClose }) => {
             />
           </div>
           <div className="create-admission-form-field">
-            <label>Deposit Amount</label>
+            <label className='create-admission-form-label'>Deposit Amount</label>
             <input
               type="number"
               name="depositAmount"
@@ -298,7 +298,7 @@ const AdmissionForm = ({ patient, onClose }) => {
             />
           </div>
           <div className="create-admission-form-field">
-            <label>Deposit Remarks</label>
+            <label className='create-admission-form-label'>Deposit Remarks</label>
             <textarea
               name="depositRemarks"
               className="create-admission-form-input"
