@@ -1,18 +1,16 @@
 // AppointmentList.js
-import React, { useState, useRef } from 'react';
-import './OnlineAppointment.css';
-import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import React, { useState, useRef } from "react";
+import "./OnlineAppointment.css";
+import { startResizing } from "../TableHeadingResizing/resizableColumns";
 
 const OnlineAppointment = () => {
-  
-  const [activeTab, setActiveTab] = useState('Initiated');
-  
+  const [activeTab, setActiveTab] = useState("Initiated");
 
   const renderTabContent = () => {
-    switch(activeTab) {
-      case 'Initiated':
+    switch (activeTab) {
+      case "Initiated":
         return <InitiatedAppointments />;
-      case 'Completed':
+      case "Completed":
         return <CompletedAppointments />;
       default:
         return null;
@@ -22,33 +20,35 @@ const OnlineAppointment = () => {
   return (
     <div className="onlineAppointment-list">
       <div className="onlineAppointment-tab-header">
-        <div 
-          className={`onlineAppointment-tab ${activeTab === 'Initiated' ? 'active' : ''}`}
-          onClick={() => setActiveTab('Initiated')}
+        <div
+          className={`onlineAppointment-tab ${
+            activeTab === "Initiated" ? "active" : ""
+          }`}
+          onClick={() => setActiveTab("Initiated")}
         >
           Initiated Appointment
         </div>
-        <div 
-          className={`onlineAppointment-tab ${activeTab === 'Completed' ? 'active' : ''}`}
-          onClick={() => setActiveTab('Completed')}
+        <div
+          className={`onlineAppointment-tab ${
+            activeTab === "Completed" ? "active" : ""
+          }`}
+          onClick={() => setActiveTab("Completed")}
         >
           Completed Appointment
         </div>
       </div>
-      <div className="onlineAppointment-tab-content">
-        {renderTabContent()}
-      </div>
+      <div className="onlineAppointment-tab-content">{renderTabContent()}</div>
     </div>
   );
 };
 
 const InitiatedAppointments = () => {
-  const [fromDate, setFromDate] = useState('08-08-2024');
-  const [toDate, setToDate] = useState('08-08-2024');
-  const [paymentStatus, setPaymentStatus] = useState('All');
-  const [department, setDepartment] = useState('');
-  const [doctor, setDoctor] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [fromDate, setFromDate] = useState("08-08-2024");
+  const [toDate, setToDate] = useState("08-08-2024");
+  const [paymentStatus, setPaymentStatus] = useState("All");
+  const [department, setDepartment] = useState("");
+  const [doctor, setDoctor] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
 
@@ -57,41 +57,68 @@ const InitiatedAppointments = () => {
       <div className="onlineAppointment-filters">
         <div className="onlineAppointment-date-range">
           <label>From:</label>
-          <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
+          <input
+            type="date"
+            value={fromDate}
+            onChange={(e) => setFromDate(e.target.value)}
+          />
           <label>To:</label>
-          <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} />
-          <button className="onlineAppointment-star-btn">☆</button>
-          <button className="onlineAppointment-minus-btn">-</button>
+          <input
+            type="date"
+            value={toDate}
+            onChange={(e) => setToDate(e.target.value)}
+          />
+          {/* <button className="onlineAppointment-star-btn">☆</button>
+          <button className="onlineAppointment-minus-btn">-</button> */}
         </div>
         <div className="onlineAppointment-filter-row">
           <div className="onlineAppointment-filter-item">
             <label>Payment Status:</label>
-            <select value={paymentStatus} onChange={(e) => setPaymentStatus(e.target.value)}>
+            <select
+              value={paymentStatus}
+              onChange={(e) => setPaymentStatus(e.target.value)}
+            >
               <option value="All">All</option>
-              {/* Add other options here */}
             </select>
           </div>
           <div className="onlineAppointment-filter-item">
             <label>Department:</label>
-            <input type="text" placeholder="Department Name" value={department} onChange={(e) => setDepartment(e.target.value)} />
+            <input
+              type="text"
+              placeholder="Department Name"
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
+            />
           </div>
           <div className="onlineAppointment-filter-item">
             <label>Doctor:</label>
-            <input type="text" placeholder="Doctor's Name" value={doctor} onChange={(e) => setDoctor(e.target.value)} />
+            <input
+              type="text"
+              placeholder="Doctor's Name"
+              value={doctor}
+              onChange={(e) => setDoctor(e.target.value)}
+            />
           </div>
         </div>
       </div>
       <button className="onlineAppointment-reload-btn">↻ Reload Data</button>
-      <div className="onlineAppointment-search-bar">
-        <input type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-        <button className="onlineAppointment-search-btn">🔍</button>
+      <div className="onlineAppointment-searchContainer">
+        <div className="onlineAppointment-search-bar">
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <i class="fas fa-search"></i>
+        </div>
+        <div className="onlineAppointment-results-actions">
+          <span>Showing 0 / 0 results </span>
+          <button className="onlineAppointment-export-btn">Export</button>
+          <button className="onlineAppointment-print-btn">Print</button>
+        </div>
       </div>
-      <div className="onlineAppointment-results-actions">
-        <span>Showing results</span>
-        <button className="onlineAppointment-export-btn">Export</button>
-        <button className="onlineAppointment-print-btn">Print</button>
-      </div>
-      <div className='onlineAppointment-table-container'>
+      <div className="onlineAppointment-table-container">
         <table className="onlineAppointment-patientList-table" ref={tableRef}>
           <thead>
             <tr>
@@ -106,7 +133,7 @@ const InitiatedAppointments = () => {
                 "Doctor",
                 "Payment St...",
                 "Payment M...",
-                "Actions"
+                "Actions",
               ].map((header, index) => (
                 <th
                   key={index}
@@ -117,7 +144,10 @@ const InitiatedAppointments = () => {
                     <span>{header}</span>
                     <div
                       className="onlineAppointment-resizer"
-                      onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
                     ></div>
                   </div>
                 </th>
@@ -126,7 +156,9 @@ const InitiatedAppointments = () => {
           </thead>
           <tbody>
             <tr>
-              <td colSpan="11" className="onlineAppointment-loading">Loading...</td>
+              <td colSpan="11" className="onlineAppointment-loading">
+                No Data Found
+              </td>
             </tr>
           </tbody>
         </table>
@@ -136,12 +168,12 @@ const InitiatedAppointments = () => {
 };
 
 const CompletedAppointments = () => {
-  const [fromDate, setFromDate] = useState('08-08-2024');
-  const [toDate, setToDate] = useState('08-08-2024');
-  const [paymentStatus, setPaymentStatus] = useState('All');
-  const [department, setDepartment] = useState('');
-  const [doctor, setDoctor] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [fromDate, setFromDate] = useState("08-08-2024");
+  const [toDate, setToDate] = useState("08-08-2024");
+  const [paymentStatus, setPaymentStatus] = useState("All");
+  const [department, setDepartment] = useState("");
+  const [doctor, setDoctor] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
 
@@ -150,23 +182,39 @@ const CompletedAppointments = () => {
       <div className="onlineAppointment-filters">
         <div className="onlineAppointment-date-range">
           <label>From:</label>
-          <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
+          <input
+            type="date"
+            value={fromDate}
+            onChange={(e) => setFromDate(e.target.value)}
+          />
           <label>To:</label>
-          <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} />
-          <button className="onlineAppointment-star-btn">☆</button>
-          <button className="onlineAppointment-minus-btn">-</button>
+          <input
+            type="date"
+            value={toDate}
+            onChange={(e) => setToDate(e.target.value)}
+          />
+          {/* <button className="onlineAppointment-star-btn">☆</button>
+          <button className="onlineAppointment-minus-btn">-</button> */}
         </div>
       </div>
       <button className="onlineAppointment-reload-btn">↻ Reload Data</button>
-      <div className="onlineAppointment-search-bar">
-        <input type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-        <button className="onlineAppointment-search-btn">🔍</button>
+      <div className="onlineAppointment-searchContainer">
+        <div className="onlineAppointment-search-bar">
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <i class="fas fa-search"></i>
+        </div>
+        <div className="onlineAppointment-results-actions">
+          <span>Showing 0 / 0 results </span>
+          <button className="onlineAppointment-export-btn">Export</button>
+          <button className="onlineAppointment-print-btn">Print</button>
+        </div>
       </div>
-      <div className="onlineAppointment-results-actions">
-        <button className="onlineAppointment-export-btn">Export</button>
-        <button className="onlineAppointment-print-btn">Print</button>
-      </div>
-      <div className='onlineAppointment-table-container'>
+      <div className="onlineAppointment-table-container">
         <table className="onlineAppointment-patientList-table" ref={tableRef}>
           <thead>
             <tr>
@@ -181,7 +229,7 @@ const CompletedAppointments = () => {
                 "Doctor",
                 "Payment St...",
                 "Payment M...",
-                "Actions"
+                "Actions",
               ].map((header, index) => (
                 <th
                   key={index}
@@ -192,7 +240,10 @@ const CompletedAppointments = () => {
                     <span>{header}</span>
                     <div
                       className="onlineAppointment-resizer"
-                      onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
                     ></div>
                   </div>
                 </th>
@@ -201,7 +252,9 @@ const CompletedAppointments = () => {
           </thead>
           <tbody>
             <tr>
-              <td colSpan="11" className="onlineAppointment-loading">Loading...</td>
+              <td colSpan="11" className="onlineAppointment-loading">
+                Loading...
+              </td>
             </tr>
           </tbody>
         </table>

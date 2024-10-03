@@ -3,15 +3,12 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
-    background-color: #e3fffe;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Styles for left and right sections */
 .addnewaptmtpatient-left,
 .addnewaptmtpatient-right {
-
     width: 48%;
 }
 
@@ -25,9 +22,7 @@
 /* Adjust label and input alignment */
 .addnewaptmtpatient-group label {
     width: 30%; /* Adjust width of labels to create space */
-    font-weight: bold;
-    font-size: 16px;
-    text-align: right; /* Align label text to the right */
+    font-size: var(--font-size);
 }
 
 .addnewaptmtpatient-group input[type="text"],
@@ -36,7 +31,6 @@
 .addnewaptmtpatient-group input[type="time"],
 .addnewaptmtpatient-group select {
     width: 65%; /* Adjust input width for consistency */
-
     padding: 5px;
     border: 1px solid #ced4da;
     border-radius: 4px;
@@ -52,6 +46,7 @@
 .addnewaptmtpatient-gender-options label,
 .addnewaptmtpatient-age-options label {
     display: flex;
+    width: 100%;
     align-items: center;
 }
 
@@ -69,4 +64,7 @@
     border: 1px solid var(--button-hover-border-color);
     color: var(--button-hover-text-color);
     background-color: var(--button-hover-background-color);
+}
+.appointment-error-message{
+    color: red;
 }

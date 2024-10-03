@@ -1,17 +1,12 @@
 /* Layout.css */
 .hrmsLayout {
  display: flex;
- height: 100%;
-<<<<<<< HEAD
+ height: 100vh;
 overflow-x: scroll;
 }
 
 .hrmsLayout::-webkit-scrollbar{
    display:none;
-=======
-height: 100vh;
-overflow: hidden;
->>>>>>> 73100207a3c5d853bbcd92a1da4d8a2fc719a04c
 }
 .hrmsLayout-center{
    width: 100%;
@@ -24,6 +19,9 @@ overflow: hidden;
    width: 100%;
    overflow: auto;
    background-color: var(--background-color);
+}
+.hrmsLayoutMainContent::-webkit-scrollbar {
+   display: none;
 }
 
 

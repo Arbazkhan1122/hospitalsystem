@@ -72,6 +72,16 @@ const LabCategories = () => {
   useEffect(() => {
     fetch(`http://localhost:1415/api/lab-test-categories/getAll-testCategory`)
       .then((res) => res.json())
+
+      .then((data) => setLabCategory(data))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch(`http://localhost:1415/api/lab-test-categories/getAll-testCategory`)
+      .then((res) => res.json())
       .then((data) => setLabCategories(data))
       .catch((err) => {
         console.log(err);

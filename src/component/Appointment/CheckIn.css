@@ -4,10 +4,10 @@
   font-family: Arial, sans-serif;
   width: 100%;
   height: 90vh;
+  overflow: auto;
 }
 
 .checkIn__header {
-  /* color: #fff; */
   font-size: 12px;
 }
 
@@ -38,12 +38,10 @@
 }
 
 .checkIn__content {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   margin-top: 20px;
   gap: 10px;
-  height: 80vh;
-  overflow-x: scroll;
 }
 
 .checkIn__section {
@@ -96,9 +94,10 @@
   width: calc(80% - 15px); */
 }
 
-.checkIn__name-inputs, .checkIn__age-inputs, .checkIn__phone-inputs {
-  display: flex;
-  gap: 5px;
+.checkIn__name-inputs, .checkIn__age-inputs, .checkIn__phone-inputs,.checkIn__address-inputs,.checkIn__DOB-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 10px;
 }
 
 .checkIn__form-group--external {
@@ -109,8 +108,10 @@
 
 .checkIn__billing-item {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+flex-direction: column;  
+}
+.checkIn__consultation_feesInput{
+  height: fit-content;
 }
 
 .checkIn__print-btn {
@@ -120,6 +121,7 @@
     padding: 5px 5px;
     border-radius: 5px;
     cursor: pointer;
+    height: fit-content;
 }
 .checkIn__print-btn:hover {
   border: 1px solid var( --button-hover-border-color);
@@ -181,13 +183,6 @@
   flex: 1; /* Makes each input take equal space */
   min-width: 0; /* Prevents overflow */
 }
-
-.checkIn__name-inputs {
-  display: flex; /* Align inputs in a row */
-  gap: 0.5rem; /* Space between inputs */
-  flex-grow: 1; /* Allow inputs to take remaining space */
-}
-
 .checkIn__label {
   font-weight: bold;
   font-size: 14px;
@@ -204,19 +199,18 @@
   width: 100%;
   box-sizing: border-box;
 }
+.checkIn__checkBox{
+  outline: none;
+  width: 15px;
+  height: 35px;
+  margin-top: -10px !important;
+}
 
 /* .checkIn__name-inputs {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
 } */
-
-.checkIn__age-inputs,
-.checkIn__phone-inputs {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 10px;
-}
 
 
 
