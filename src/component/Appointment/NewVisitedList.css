@@ -1,20 +1,21 @@
-.patient-list {
+.newPatient-list {
   padding: 20px;
   font-family: Arial, sans-serif;
 }
 
-.header {
+.newPatient-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.header h3 {
-  color: #007bff;
+.newPatient-header h5 {
+  color: black;
+  font-size: var(--heading-font);
 }
 
-.new-patient {
+.newPatient-new-patient {
   background-color: var(--button-color);
   color: white;
   border: none;
@@ -23,54 +24,46 @@
   cursor: pointer;
 }
 
-.new-patient:hover {
-  border: 1px solid var( --button-hover-border-color);
+.newPatient-new-patient:hover {
+  border: 1px solid var(--button-hover-border-color);
   color: var(--button-hover-text-color);
   background-color: var(--button-hover-background-color);
 }
-.new-search-bar {
+.newPatient-searchContainer{
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  align-items: center;
+}
+.newPatient-search-bar {
+  width: 200px;
+  background-color: #f2f2f2;
+  padding: 5px;
+}
+.newPatientVisitPrint{
+  background-color: var(--button-color);
+  padding: 5px 10px;
+  margin-left: 5px;
+}
+.newPatient-search-bar input {
+  border: none;
+  background-color: transparent;
+  outline: none;
 }
 
-.search-bar input {
-  padding: 10px;
-  width: 48%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-
-.action-button {
-  background-color: #007bff;
+.newPatient-action-button {
+  background-color: var(--button-color);
   color: white;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.pagination button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  margin: 0 5px;
-  cursor: pointer;
-}
-
-.footer-buttons {
+.newPatient-footer-buttons {
   display: flex;
   justify-content: right;
 }
 
-
-.new-footer-buttons button {
+.newPatient-footer-buttons button {
   background-color: var(--button-color);
   color: white;
   border: none;
@@ -80,9 +73,8 @@
   margin-top: 10px;
 }
 
-.new-footer-buttons button:hover {
-  border: 1px solid var( --button-hover-border-color);
+.newPatient-footer-buttons button:hover {
+  border: 1px solid var(--button-hover-border-color);
   color: var(--button-hover-text-color);
   background-color: var(--button-hover-background-color);
-
 }

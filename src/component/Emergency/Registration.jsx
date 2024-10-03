@@ -49,7 +49,7 @@ const EmergencyPatientRegistration = () => {
         e.preventDefault();
 
         // API call to register a patient
-        axios.post('http://localhost:1415/api/patients/register', formData)
+        axios.post('http://localhost:3107/api/patients/register', formData)
             .then(response => {
                 console.log('Success:', response.data);
                 // Handle successful registration here

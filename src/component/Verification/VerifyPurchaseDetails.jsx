@@ -9,7 +9,7 @@ const VerifyPurchaseDetails = ({ onclose, request,handleCloseForm  }) => {
   const currentDate = new Date(Date.now()).toLocaleDateString();
 
   const handleSubmit = async () => {
-    const apiUrl = `http://localhost:8080/api/purchase-requests/${request.id}/updateStatusAndRemarks`;
+    const apiUrl = `http://localhost:1415/api/purchase-requests/${request.id}/updateStatusAndRemarks`;
 
     try {
       const response = await fetch(`${apiUrl}?status=${status}&remarks=${remarks}`, {

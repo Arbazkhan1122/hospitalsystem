@@ -44,6 +44,7 @@ import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRoutin
 import ReportRoute from "../../component/Reports/ReportRoute";
 import Billing from "../../component/Billing/billing";
 import BloodBank from "../../component/BloodBank/bloodBankRoute";
+import TransportMainRouting from "../../component/TransportMain/transportMainRoute"
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -79,9 +80,11 @@ const Layout = () => {
   const [showVerification, setShowVerification] = useState(false);
   const [showSubStore, setShowSubStore] = useState(false);
   const [showMedicalRecord, setShowMedicalRecord] = useState(false);
-  const [showProcurement, setShowProcurement] = useState(false);
-  const [showBilling, setShowBilling] = useState(false);
-  const [showBloodBank, setShowBloodBank] = useState(false);
+  const [showProcurement,setShowProcurement]=useState(false)
+  const [showBilling,setShowBilling]=useState(false)
+  const [showBloodBank,setShowBloodBank]=useState(false)
+  const [showTransport,setShowTransport]=useState(false)
+
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -117,8 +120,10 @@ const Layout = () => {
     setShowSubStore(false);
     setShowMedicalRecord(false);
     setShowProcurement(false);
-    setShowBilling(false);
-    setShowBloodBank(false);
+    setShowBilling(false)
+    setShowBloodBank(false)
+    setShowTransport(false)
+
   };
 
   const toggelAppointment = () => {
@@ -262,8 +267,11 @@ const Layout = () => {
   const toggelBloodBank = () => {
     resetAllToggles();
     setShowBloodBank(!showBloodBank);
-  };
-
+  }
+  const toggelTransport=()=>{
+     resetAllToggles();
+     setShowTransport(!showTransport)
+  }
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -302,6 +310,7 @@ const Layout = () => {
         onProcurement={toggelProcurement}
         onBilling={toggelBilling}
         onBloodbank={toggelBloodBank}
+        onTransport={toggelTransport}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
@@ -344,8 +353,10 @@ const Layout = () => {
           {showVerification && <VerificationRouting />}
           {showSubStore && <SubstoreRouting />}
           {showMedicalRecord && <MedicalReportRouting />}
-          {showBilling && <Billing />}
-          {showBloodBank && <BloodBank />}
+          {showBilling && <Billing/>}
+          {showBloodBank && <BloodBank/>}
+          {showTransport && <TransportMainRouting/>}
+
         </main>
       </div>
     </div>

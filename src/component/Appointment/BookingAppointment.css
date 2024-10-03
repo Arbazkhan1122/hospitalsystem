@@ -1,96 +1,64 @@
-.book-appointment {
-  background-color: #e6f3ff;
+.bookAppointment-container {
   padding: 20px;
-  font-family: Arial, sans-serif;
 }
 
-
-.book-appointment-new-patient-btn {
+.bookAppointment-new-patient-btn {
   background-color: var(--button-color);
-    color: white;
-    border: none;
-    padding: 5px 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 5px;
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
 }
-.book-appointment-new-patient-btn:hover {
-  border: 1px solid var( --button-hover-border-color);
+
+.bookAppointment-new-patient-btn:hover {
+  border: 1px solid var(--button-hover-border-color);
   color: var(--button-hover-text-color);
   background-color: var(--button-hover-background-color);
-
 }
-
-.search-bar {
-  display: flex;
-  margin-bottom: 20px;
-}
-
-.search-bar input {
-  flex-grow: 1;
-  padding: 10px;
-  font-size: 16px;
-}
-
-.search-btn {
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.results-info {
+.bookAppointment-search-bar-container{
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin:10px 0 20px 0;
+  align-items: center;
+}
+.bookAppointment-search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 5px 10px;
+}
+.bookAppointment-search-bar i {
+  color: gray;
 }
 
-.print-btn {
-  background-color: #f0f0f0;
+
+.bookAppointment-search-bar input {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.bookAppointment-results-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bookAppointment-print-btn {
+  background-color: var(--button-color);
   border: 1px solid #ccc;
   padding: 5px 10px;
   cursor: pointer;
 }
 
-/* table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: white;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: left;
-}
-
-th {
-  background-color: #f2f2f2;
-} */
-
-.create-appointment-btn {
-  background-color: #008CBA;
+.bookAppointment-create-appointment-btn {
+  background-color: var(--button-color);
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 5px 10px;
   cursor: pointer;
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.pagination button {
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  padding: 5px 5px;
-  margin: 0 5px;
-  cursor: pointer;
-}
-
-.pagination span {
-  margin: 0 10px;
-}
+/* Add any additional styles as needed */

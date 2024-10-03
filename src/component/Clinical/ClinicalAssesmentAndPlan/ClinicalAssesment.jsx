@@ -12,7 +12,7 @@ function ClinicalAssessment() {
 
   useEffect(() => {
     // Fetch all patients on component mount
-    fetch("http://localhost:8888/api/patients/getAllPatients")
+    fetch("http://localhost:1415/api/patients/getAllPatients")
       .then((response) => response.json())
       .then((data) => setPatients(data))
       .catch((error) => console.error("Error fetching patients:", error));

@@ -64,7 +64,7 @@ const AddItem = ({ isOpen, onClose }) => {
   const fetchSubCategories = async () => {
     try {
       const response = await fetch(
-        "http://192.168.1.38:8080/api/subcategories/fetchAll"
+        "http://localhost:1415/api/subcategories/fetchAll"
       );
       const data = await response.json();
       setSubCategories(data);

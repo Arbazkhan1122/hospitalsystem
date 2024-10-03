@@ -1,27 +1,29 @@
-import React, { useState, useEffect,useRef } from 'react';
-import './BookingAppointment.css';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Import axios if you are using it
-import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import React, { useState, useEffect, useRef } from "react";
+import "./BookingAppointment.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios"; // Import axios if you are using it
+import { startResizing } from "../TableHeadingResizing/resizableColumns";
+import AddNewAppointmentForm from "./AddNewappointment";
 
 const BookingAppointment = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
-
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await axios.get('http://localhost:1415/api/appointments/fetch-all-appointment');
+        const response = await axios.get(
+          "http://localhost:1415/api/appointments/fetch-all-appointment"
+        );
         setPatients(response.data);
       } catch (error) {
-        setError('Failed to fetch patient data.');
-        console.error('Error fetching patient data:', error);
+        setError("Failed to fetch patient data.");
+        console.error("Error fetching patient data:", error);
       } finally {
         setLoading(false);
       }
@@ -34,91 +36,105 @@ const BookingAppointment = () => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredPatients = patients.filter(patient =>
-    Object.values(patient).some(value =>
+  const filteredPatients = patients.filter((patient) =>
+    Object.values(patient).some((value) =>
       value.toString().toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
 
-  const handleNewPatient = () => {
-    navigate('/add-new-appointment');
+  const handleUpdatePatient = (patient) => {
+    navigate("/add-new-appointment", { state: { patientData: patient } });
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+  const handleNewPatient = () => {
+    navigate("/add-new-appointment");
+  };
 
   return (
-
-    <div className="book-appointment-container">
-      <button className="book-appointment-new-patient-btn" onClick={handleNewPatient}>+ New Patient</button><br></br>
-      
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Search (Minimum 3 Characters)"
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-        <button className="search-btn">🔍</button>
-      </div>
-      <div className="results-info">
-        <span>Showing {filteredPatients.length} / {patients.length} results</span>
-        <button className="print-btn">Print</button>
-      </div>
-
-      <table className="patientList-table" ref={tableRef}>
-          <thead>
-            <tr>
-              {[
-               "Patient Name",
-              "Age/Sex",
-              "Address",
-              "Phone",
-              "Actions"
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
-                    ></div>
-                  </div>
-                </th>
+    <>
+      <div className="bookAppointment-container">
+        <button
+          className="bookAppointment-new-patient-btn"
+          onClick={handleNewPatient}
+        >
+          + New Patient
+        </button>
+        <br></br>
+        <div className="bookAppointment-search-bar-container">
+          <div className="bookAppointment-search-bar">
+            <input
+              type="text"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+            <i className="fas fa-search"></i>
+          </div>
+          <div className="bookAppointment-results-info">
+            <span>
+              Showing {filteredPatients.length} / {patients.length} results
+            </span>
+            <button className="bookAppointment-print-btn">Print</button>
+          </div>
+        </div>
+        <div className="table-container">
+          <table ref={tableRef}>
+            <thead>
+              <tr>
+                {[
+                  "Patient Name",
+                  "Age/Sex",
+                  "Appointment Date & Time",
+                  "Phone",
+                  "Actions",
+                ].map((header, index) => (
+                  <th
+                    key={index}
+                    style={{ width: columnWidths[index] }}
+                    className="bookAppointment-resizable-th"
+                  >
+                    <div className="bookAppointment-header-content">
+                      <span>{header}</span>
+                      <div
+                        className="bookAppointment-resizer"
+                        onMouseDown={startResizing(
+                          tableRef,
+                          setColumnWidths
+                        )(index)}
+                      ></div>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {filteredPatients?.map((patient, index) => (
+                <tr key={index}>
+                  <td>
+                    {patient.firstName} {patient.lastName}
+                  </td>
+                  <td>
+                    {patient.age} {patient.ageUnit} / {patient.gender}
+                  </td>
+                  <td>
+                    {patient.appointmentDate} {patient.appointmentTime}
+                  </td>
+                  <td>{patient.contactNumber}</td>
+                  <td>
+                    <button
+                      className="bookAppointment-create-appointment-btn"
+                      onClick={() => handleUpdatePatient(patient)}
+                    >
+                      Update Appointment
+                    </button>
+                  </td>
+                </tr>
               ))}
-            </tr>
-          </thead>
-        <tbody>
-          {filteredPatients.map((patient, index) => (
-            <tr key={index}>
-              {/* <td>{patient.hospitalNumber}</td> */}
-              <td>{patient.firstName}</td>
-              <td>{patient.age}</td>
-              <td>{patient.address}</td>
-              <td>{patient.contactNumber}</td>
-              <td>
-                <button className="create-appointment-btn" onClick={handleNewPatient}>Create Appointment</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <div className="pagination">
-        <span>1 to 20 of 200</span>
-        <button>First</button>
-        <button>Previous</button>
-        <span>Page 1 of 10</span>
-        <button>Next</button>
-        <button>Last</button>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
