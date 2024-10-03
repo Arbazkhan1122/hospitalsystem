@@ -12,13 +12,13 @@ const SettingUOM = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [selectedUser, setSelectedUser] = useState({ name: '', description: '', isActive: true });
 
-  const apiUrl = `${API_BASE_URL}/units-of-measurement`;
+  const apiUrl = `${API_BASE_URL}/unitofmeasurement`;
 
   useEffect(() => {
     // Fetch data from the API when the component mounts
     const fetchData = async () => {
       try {
-        const response = await axios.get(apiUrl);
+        const response = await axios.get(`${apiUrl}/fetchAll`);
         setSuppliers(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -59,7 +59,7 @@ const SettingUOM = () => {
         setSuppliers(suppliers.map(u => (u.id === selectedUser.id ? selectedUser : u)));
       } else {
         // Add new UOM
-        const response = await axios.post(apiUrl, selectedUser);
+        const response = await axios.post(`${apiUrl}/add`, selectedUser);
         setSuppliers([...suppliers, response.data]);
       }
       handleCloseModal();

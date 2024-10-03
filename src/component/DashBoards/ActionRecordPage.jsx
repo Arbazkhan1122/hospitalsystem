@@ -189,7 +189,7 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection,employee
                 >
                   <option value="">Select an order item</option>
                   {orderData.map((order) => (
-                    <option key={order.id || order.imagingItemId || order.labTestId} value={order.id || order.imagingItemId ||order.labTestId }>
+                    <option key={order.addItemId || order.imagingItemId || order.labTestId} value={order.addItemId || order.imagingItemId ||order.labTestId }>
                       {order.itemName || order.imagingItemName || order.labTestName}
                     </option>
                   ))}

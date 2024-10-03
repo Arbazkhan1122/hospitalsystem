@@ -148,16 +148,17 @@ const DisPrescription = () => {
     fetchPrescriptions();
   }, []);
 
-  const fetchPrescriptions = async () => {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/hospital/fetch-all-prescription-data`);
-      setPrescriptions(response.data);
-      setLoading(false);
-    } catch (err) {
-      setError('Failed to fetch prescriptions');
-      setLoading(false);
-    }
-  };
+ const fetchPrescriptions = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/medications`);
+    setPrescriptions(response.data);  // assuming response is an array of medications
+    setLoading(false);
+  } catch (err) {
+    setError('Failed to fetch prescriptions');
+    setLoading(false);
+  }
+};
+
 
   const handleViewAvailability = (prescription) => {
     setSelectedPrescription(prescription);
@@ -214,10 +215,13 @@ const DisPrescription = () => {
   };
   
 
-  const filteredPrescriptions = prescriptions.filter(prescription =>
-    prescription.patientName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    prescription.code.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+const filteredPrescriptions = prescriptions.filter(prescription =>
+  prescription?.patientDTO?.firstName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  prescription?.medicationName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  prescription?.medicationId.toString().includes(searchTerm)  // search by medication ID
+);
+
+
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
@@ -251,13 +255,15 @@ const DisPrescription = () => {
               <th className="disPrescription-action-column">Actions</th>
             </tr>
           </thead>
-          {/* <tbody className="disPrescription-requisition-tableBody">
+          <tbody className="disPrescription-requisition-tableBody">
             {filteredPrescriptions.map((prescription, index) => (
               <tr key={index}>
-                <td>{prescription.code}</td>
-                <td>{prescription.patientName}</td>
+                <td>{prescription.medicationId}</td>
+               <td>
+        {prescription.patientDTO?.salutation} {prescription.patientDTO?.firstName} {prescription.patientDTO?.lastName}
+      </td>
                 <td>{prescription.requestedBy}</td>
-                <td>{prescription.date}</td>
+                 <td>{prescription.medicationDate}</td>
                 <td className="disPrescription-action-column">
                   <button 
                     className="disPrescription-Availability-button"
@@ -268,7 +274,7 @@ const DisPrescription = () => {
                 </td>
               </tr>
             ))}
-          </tbody> */}
+          </tbody>
         </table>
 
         {/* <div className="disPrescription-pagination">

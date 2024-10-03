@@ -26,7 +26,7 @@ const SettingItemComponent = () => {
           axios.get(`${API_BASE_URL}/add-items`),
           axios.get(`${API_BASE_URL}/companies`),
           axios.get(`${API_BASE_URL}/categories`),
-          axios.get(`${API_BASE_URL}/units-of-measurement`),
+          axios.get(`${API_BASE_URL}/unitofmeasurement/fetchAll`),
           axios.get(`${API_BASE_URL}/itemtypes`),
           axios.get(`${API_BASE_URL}/generic-names`), // Fetch generic names
         ]);
@@ -69,7 +69,7 @@ const SettingItemComponent = () => {
       setIsEditMode(true);
     } else {
       setSelectedItem({
-        salesCategory: '',
+        categories: '',
         itemName: '',
         itemCode: '',
         companyName: '',
@@ -151,8 +151,7 @@ const SettingItemComponent = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>{error}</div>;
+ 
 
   return (
     <div className="setting-supplier-container">

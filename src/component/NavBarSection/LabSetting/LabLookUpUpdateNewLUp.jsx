@@ -42,10 +42,10 @@ const LabLookUpUpdateNewLUp = ({ lookup, onClose }) => {
 
     setLoading(true);
     setError("");
-
+    const lookUpId = lookup.labLookupId;
     try {
       await axios.put(
-        `http://localhost:1415/lab-lookups/update/${lookup}`,
+        `http://localhost:1415/api/lab-lookups/update/${lookUpId}`,
         payload
       );
       onClose();
