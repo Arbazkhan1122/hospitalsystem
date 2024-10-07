@@ -1,6 +1,6 @@
 .out-patient-container {
     background-color: #e3fffe;
-    padding: 20px;
+    padding: 5px;
     font-size: var( --font-size);
   }
   
@@ -351,7 +351,6 @@
 
 .opd-tabs {
   background-color:white; /* Light blue background */
-  padding: 10px 0;
   display: flex;
   justify-content: flex-start; /* Align the tabs to the left */
 }

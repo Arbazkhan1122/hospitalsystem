@@ -1,242 +1,988 @@
- /* prachi parab user interface changed  14/9 */
+/* prachi parab user interface changed  14/9 */
 
-
-import React, { useState, useEffect } from 'react';
-import './OpdTriagePage.css';
-import { Modal } from 'react-bootstrap';
+import React, { useState, useEffect, useRef } from "react";
+import "./OpdTriagePage.css";
+import { Modal } from "react-bootstrap";
 import axios from "axios";
+import { API_BASE_URL } from "../api/api";
+import NursingCustomModal from "./NursingCustomModal";
+import { startResizing } from "../TableHeadingResizing/resizableColumns";
 
 function OPDTriagePage({ onClose, data }) {
+  console.log(data);
+  
   const [isTriageModalOpen, setIsTriageModalOpen] = useState(true);
-  const [vitals, setVitals] = useState([]);
-  const [newVitals, setNewVitals] = useState({
-    addedOn: '',
-    height: '',
-    weight: '',
-    bmi: '',
-    temperature: '',
-    pulse: '',
-    bloodPressureSystolic: '',
-    bloodPressureDiastolic: '',
-    respiratoryRate: '',
-    spo2: '',
-    painScale: '',
-    bodyPart: ''
-  });
-  const [allergy, setAllergy] = useState({});
-  const [chiefComplaint, setChiefComplaint] = useState({});
+  const [showForm, setShowForm] = useState(false);
+  const [latestVitals, setLatestVitals] = useState(null);
+  const [chiefComplaint, setChiefComplaint] = useState("");
 
-  const openTriAgeModal = () => setIsTriageModalOpen(true);
+  const [vitalData, setVitalData] = useState({
+    addedOn: "",
+    height: "",
+    weight: "",
+    bmi: "",
+    temperature: "",
+    pulse: "",
+    bpSystolic: "",
+    bpDiastolic: "",
+    respiratoryRate: "",
+    spO2: "",
+    o2DeliveryPlan: "",
+    painScale: "",
+  });
+
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
+  const [showAllergyForm, setShowAllergyForm] = useState(false);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [allergies, setAllergies] = useState(null);
+  const [allergy, setAllergy] = useState({});
+  const [updateAllergy, setUpdateAllergy] = useState({});
+  const [formData, setFormData] = useState({
+    recordedDate: new Date().toLocaleDateString(),
+    typeOfAllergy: "",
+    severity: "",
+    verified: null,
+    reaction: "",
+    comments: "",
+  });
+
+  useEffect(() => {
+    setUpdateAllergy({
+      recordedDate: new Date().toLocaleDateString(),
+      typeOfAllergy: allergy.typeOfAllergy || "",
+      severity: allergy.severity || "",
+      verified: allergy.verified || "",
+      reaction: allergy.reaction || "",
+      comments: allergy.comments || "",
+    });
+  }, [allergy]);
+
+  const handleAddNew = () => {
+    setShowAllergyForm(true);
+  };
+
+  const handleCloseForm = () => {
+    setShowAllergyForm(false);
+    setShowUpdateForm(false);
+  };
+  // Handle radio input for type of allergy
+  const handleTypeOfAllergyChange = (e) => {
+    const { value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      typeOfAllergy: value,
+    }));
+  };
+
+  useEffect(() => {
+    const fetchAllergies = () => {
+      let endpoint = "";
+
+      // Determine if newPatientVisitId or admissionId should be used
+      if (data.newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/allergies/by-newVisitPatientId/${data.newPatientVisitId}`;
+      } else if (data.patientId) {
+        endpoint = `${API_BASE_URL}/allergies/by-patientId/${data.patientId}`;
+      }
+
+      // Fetch data if a valid endpoint is determined
+      if (endpoint) {
+        axios
+          .get(endpoint)
+          .then((response) => {
+            if (response.data.length > 0) {
+              setAllergies(response.data);
+              // console.log(response.data);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching allergies:", error);
+          });
+      }
+    };
+
+    if (data.newPatientVisitId || data.patientId) {
+      fetchAllergies();
+    }
+  }, [data.newPatientVisitId, data.patientId,showAllergyForm,showUpdateForm]); // Dependencies to track ID changes
+
+  // Handle radio input for severity
+  const handleSeverityChange = (e) => {
+    const { value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      severity: value,
+    }));
+  };
+
+  // Handle verified radio buttons
+  const handleVerifiedChange = (e) => {
+    const value = e.target.value === "true";
+    setFormData((prevData) => ({
+      ...prevData,
+      verified: value,
+    }));
+  };
+
+  // Handle text input fields
+  const handleInputAllergyChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleUpdateTypeOfAllergyChange = (e) => {
+    const { value } = e.target;
+    setUpdateAllergy((prevData) => ({
+      ...prevData,
+      typeOfAllergy: value,
+    }));
+  };
+
+  const handleUpdateSeverityChange = (e) => {
+    const { value } = e.target;
+    setUpdateAllergy((prevData) => ({
+      ...prevData,
+      severity: value,
+    }));
+  };
+
+  const handleUpdateVerifiedChange = (e) => {
+    const value = e.target.value === "true";
+    setUpdateAllergy((prevData) => ({
+      ...prevData,
+      verified: value,
+    }));
+  };
+
+  const handleUpdateInputChange = (e) => {
+    const { name, value } = e.target;
+    setUpdateAllergy((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const allergy =
+    data.patientId > 0
+        ? { ...formData, patientDTO: {patientId:data.patientId }}
+        : { ...formData, newPatientVisitDTO:{newPatientVisitId: data.newPatientVisitId} };
+    try {
+      const response = await fetch(`${API_BASE_URL}/allergies/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(allergy),
+      });
+
+      if (response.ok) {
+        alert("Allergy added successfully!");
+        setShowAllergyForm(false);
+        setFormData({
+          typeOfAllergy: "",
+          severity: "",
+          verified: null,
+          reaction: "",
+          comments: "",
+        });
+      } else {
+        alert("Failed to add allergy");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error submitting form");
+    }
+  };
+
+  const handleUpdateSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        `${API_BASE_URL}/allergies/update/${allergy.allergiesId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updateAllergy),
+        }
+      );
+
+      if (response.ok) {
+        alert("Allergy added successfully!");
+        setShowUpdateForm(false);
+        setFormData({
+          typeOfAllergy: "",
+          severity: "",
+          verified: null,
+          reaction: "",
+          comments: "",
+        });
+      } else {
+        alert("Failed to add allergy");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error submitting form");
+    }
+  };
+
+  const updateAllergies = (allergies) => {
+    console.log(allergies);
+
+    setAllergy(allergies);
+    setShowUpdateForm(true);
+  };
+
+
   const closeTriAgeModal = () => {
     setIsTriageModalOpen(false);
     onClose();
   };
 
-  const handleAllergyChange = (e) => {
-    const { name, value } = e.target;
-    setAllergy((prevAllergy) => ({
-      ...prevAllergy,
-      [name]: value
-    }));
+  const handleChiefComplaintChange = (event) => {
+    setChiefComplaint(event.target.value);
   };
 
-  const handleAllergyCheckboxChange = (e) => {
-    const { name, checked } = e.target;
-    setAllergy((prevAllergy) => ({
-      ...prevAllergy,
-      [name]: checked
-    }));
-  };
-
-  const handleChiefComplaintChange = (e) => {
-    const { name, value } = e.target;
-    setChiefComplaint((prevComplaint) => ({
-      ...prevComplaint,
-      [name]: value
-    }));
-  };
-
-  const handleVitalsChange = (e) => {
-    const { name, value } = e.target;
-    setNewVitals((prevVitals) => ({
-      ...prevVitals,
-      [name]: value
-    }));
-  };
-
-  const handleVitalsSubmit = async (e) => {
+  const handleChiefComplaintSave = async (e) => {
     e.preventDefault();
+    const formData = data.patientId > 0
+    ? { cheifComplaint:chiefComplaint, patientDTO: {patientId:data.patientId }}
+    : { cheifComplaint:chiefComplaint, newPatientVisitDTO:{newPatientVisitId: data.newPatientVisitId} };
     try {
-      await axios.post("http://localhost:1415/api/vitals", newVitals);
-      fetchData(); // Refresh data after saving
+      console.log(formData);
+      
+      const response = await axios.post(
+        `${API_BASE_URL}/cheifComplaints/create`,formData);
+        console.log("Chief Complaint saved successfully");
+        setChiefComplaint("")
     } catch (error) {
-      console.error('Error saving vitals:', error);
-    }
-  };
-
-  const handleAllergySave = async () => {
-    try {
-      const response = await axios.post("http://localhost:1415/api/patients/add", {
-        allergen: allergy.allergen,
-        severity: allergy.severity,
-        reaction: allergy.reaction,
-        verified: allergy.verified,
-        comments: allergy.comments,
-      });
-
-      if (response.status === 200) {
-        console.log('Allergy saved successfully');
-      } else {
-        console.error('Failed to save Allergy:', response.status);
-      }
-    } catch (error) {
-      console.error('Error saving Allergy:', error);
-    }
-  };
-
-  const handleChiefComplaintSave = async () => {
-    try {
-      const response = await axios.post("http://localhost:1415/api/patients/add", {
-        description: chiefComplaint.description,
-        comments: chiefComplaint.comments,
-      });
-
-      if (response.status === 200) {
-        console.log('Chief Complaint saved successfully');
-      } else {
-        console.error('Failed to save Chief Complaint:', response.status);
-      }
-    } catch (error) {
-      console.error('Error saving Chief Complaint:', error);
+      console.error("Error saving Chief Complaint:", error);
     }
   };
 
   useEffect(() => {
-    // Populate modal with data if available
-    if (data) {
-      setVitals(data || {});
-      console.log(data+'tttttttttttttt')
-      // setAllergy(data.allergy || {});
-      // setChiefComplaint(data.chiefComplaint || {});
+    const fetchVitals = () => {
+      let endpoint = "";
+      if (data.newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/vitals/get-by-opd-patient-id/${data.newPatientVisitId}`;
+      } else if (data.admissionId) {
+        endpoint = `${API_BASE_URL}/vitals/get-by-in-patient-id/${data.admissionId}`;
+      }
+
+      // If an endpoint is determined, make the API call
+      if (endpoint) {
+        axios
+          .get(endpoint)
+          .then((response) => {
+            if (response.data.length > 0) {
+              // Set the latest vitals
+              setLatestVitals(response.data[response.data.length - 1]);
+              console.log(response.data[response.data.length - 1]);
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching vitals:", error);
+          });
+      }
+    };
+
+    fetchVitals();
+  }, [data.newPatientVisitId,showForm]);
+
+  const handleAddVitals = () => {
+    setShowForm(true); // Show form when "Add Vitals" button is clicked
+  };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    // Update the form state
+    setVitalData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+
+    if (name === "height" || name === "weight") {
+      const newBMI = calculateBMI(
+        name === "height" ? value : vitalData.height,
+        name === "weight" ? value : vitalData.weight
+      );
+      setVitalData((prevState) => ({
+        ...prevState,
+        bmi: newBMI,
+      }));
     }
-  }, [data]);
+  };
+  const calculateBMI = (height, weight) => {
+    const heightInMeters = height / 100;
+    if (heightInMeters > 0 && weight > 0) {
+      return (weight / (heightInMeters * heightInMeters)).toFixed(1);
+    }
+    return "";
+  };
+  const handleSave = async () => {
+    const formData =
+      data.patientId > 0
+        ? { ...vitalData, patientDTO:{patientId: data.patientId} }
+        : { ...vitalData, newPatientVisitDTO: {newPatientVisitId: data.newPatientVisitId }};
+    try {
+      console.log(formData);
+      
+      const response = await fetch(`${API_BASE_URL}/vitals/add`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        console.log("Vitals saved successfully");
+        setShowForm(false);
+        // Clear the form after successful submission
+        setVitalData({
+          addedOn: "",
+          height: "",
+          weight: "",
+          bmi: "",
+          temperature: "",
+          pulse: "",
+          bpSystolic: "",
+          bpDiastolic: "",
+          respiratoryRate: "",
+          spO2: "",
+          o2DeliveryPlan: "",
+          painScale: "",
+        });
+      } else {
+        alert("Failed to save vitals");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <>
-      <Modal show={isTriageModalOpen} onHide={closeTriAgeModal} size="lg" className="custom-modal">
-        <Modal.Header closeButton onClick={onClose}>
-          <Modal.Title>OPD Triage</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div className="triage-container">
-            <header>
-              <h2>OPD Triage of {vitals.length > 0 && vitals[0].patientDTO.firstName}</h2>
-              <p>Doctor Name: {vitals.length > 0 && vitals[0].doctor}</p>
-            </header>
-            <main>
-              <section className="vitals-list">
-                <div>
-                  <h2>Vitals List</h2>
-                  {vitals.length > 0 ? (
-                    vitals.map((vital) => (
-                      <table key={vital.vitalId} className="vertical-table">
-                        <tbody>
-                          <tr>
-                            <th>Date</th>
-                            <td>{vital.addedOn}</td>
-                          </tr>
-                          <tr>
-                            <th>Height (cm)</th>
-                            <td>{vital.height}</td>
-                          </tr>
-                          <tr>
-                            <th>Weight (kg)</th>
-                            <td>{vital.weight}</td>
-                          </tr>
-                          <tr>
-                            <th>BMI</th>
-                            <td>{vital.bmi}</td>
-                          </tr>
-                          <tr>
-                            <th>Temperature (C)</th>
-                            <td>{vital.temperature}</td>
-                          </tr>
-                          <tr>
-                            <th>Pulse</th>
-                            <td>{vital.pulse}</td>
-                          </tr>
-                          <tr>
-                            <th>BP (Systolic/Diastolic)</th>
-                            <td>{vital.bpSystolic}/{vital.bpDiastolic}</td>
-                          </tr>
-                          <tr>
-                            <th>Respiratory Rate</th>
-                            <td>{vital.respiratoryRate}</td>
-                          </tr>
-                          <tr>
-                            <th>SpO2</th>
-                            <td>{vital.spO2}</td>
-                          </tr>
-                          <tr>
-                            <th>Pain Scale</th>
-                            <td>{vital.painScale}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    ))
-                  ) : (
-                    <p>No vitals data available.</p>
-                  )}
+      <NursingCustomModal
+        isOpen={isTriageModalOpen}
+        onClose={closeTriAgeModal}
+        title="OPD Triage"
+      >
+        <div className="triage-container">
+          <header>
+            <h2>OPD Triage of {data?.firstName} {data?.lastName}</h2>
+            <p>Doctor Name: {data?.employeeDTO?.salutation} {data?.employeeDTO?.firstName}</p>
+          </header>
+          <main className="triage-container-main">
+            <section className="main-upperSeection">
+              <div className="triage-vital-table">
+                <div className="triage-vital-table-subDiv">
+                  <h1>Vital List</h1>
+                  <button onClick={handleAddVitals}>Add New</button>
                 </div>
-                <div className="vitals-actions">
-                  <button>Edit</button>
-                  <button>Print</button>
+                {latestVitals && (
+                  <div className="triage-Patient-Dashboard-tableRecord">
+                    <table className="triage-Patient-Dashboard-patient-table">
+                      <tr>
+                        <td className="triage-Patient-Dashboard-td">
+                          Recoreded On
+                        </td>
+                        <td className="triage-Patient-Dashboard-td">
+                          {new Date(latestVitals?.addedOn).toLocaleString()}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="triage-Patient-Dashboard-td">Height</td>
+                        <td className="triage-Patient-Dashboard-td">
+                          {" "}
+                          {latestVitals?.height} cm
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="triage-Patient-Dashboard-td">Weight</td>
+                        <td className="triage-Patient-Dashboard-td">
+                          {latestVitals?.weight}kg
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="triage-Patient-Dashboard-td">BMI</td>
+                        <td className="triage-Patient-Dashboard-td">
+                          {latestVitals?.bmi}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="triage-Patient-Dashboard-td">
+                          Temprature
+                        </td>
+                        <td className="triage-Patient-Dashboard-td">
+                          {latestVitals?.temperature} °C
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="triage-Patient-Dashboard-td">Pulse</td>
+                        <td className="triage-Patient-Dashboard-td">
+                          {latestVitals?.pulse} bpm
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="triage-Patient-Dashboard-td">
+                          Blood Pressure
+                        </td>
+                        <td className="triage-Patient-Dashboard-td">
+                          {" "}
+                          {latestVitals?.bpSystolic}/{latestVitals?.bpDiastolic}{" "}
+                          mmHg
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="triage-Patient-Dashboard-td">
+                          Respiratory Rate
+                        </td>
+                        <td className="triage-Patient-Dashboard-td">
+                          {latestVitals?.respiratoryRate} breaths/min
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="triage-Patient-Dashboard-td">SpO2</td>
+                        <td className="triage-Patient-Dashboard-td">
+                          {" "}
+                          {latestVitals?.spO2} %
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="triage-Patient-Dashboard-td">
+                          O2 Deliver Method
+                        </td>
+                        <td className="triage-Patient-Dashboard-td">
+                          {" "}
+                          {latestVitals?.o2DeliveryPlan}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="triage-Patient-Dashboard-td">
+                          Pain Scale
+                        </td>
+                        <td className="triage-Patient-Dashboard-td">
+                          {latestVitals?.painScale}
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                )}
+              </div>
+              <div className="triage-vital-Form">
+                {showForm && (
+                  <div className="triage-vitals-form">
+                    <div className="triage-vitals-form-header">
+                      <h3>Add New Vitals</h3>
+                      <button
+                        className="vitals-form-header-close"
+                        onClick={() => setShowForm(!showForm)}
+                      >
+                        X
+                      </button>
+                    </div>
+                    <form>
+                      <div className="vitals-form-form-row">
+                        <label>Added On:</label>
+                        <input
+                          className="vitals-form-form-row-input"
+                          type="date"
+                          name="addedOn"
+                          value={vitalData.addedOn}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+
+                      <div className="vitals-form-form-row">
+                        <label>Height (cm):</label>
+                        <input
+                          className="vitals-form-form-row-input"
+                          type="number"
+                          name="height"
+                          placeholder="cm"
+                          value={vitalData.height}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+
+                      <div className="vitals-form-form-row">
+                        <label>Weight (kg):</label>
+                        <input
+                          className="vitals-form-form-row-input"
+                          type="number"
+                          name="weight"
+                          placeholder="Kg"
+                          value={vitalData.weight}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+
+                      <div className="vitals-form-form-row">
+                        <label>BMI:</label>
+                        <input
+                          className="vitals-form-form-row-input"
+                          type="number"
+                          name="bmi"
+                          value={vitalData.bmi}
+                          readOnly
+                        />
+                      </div>
+
+                      <div className="vitals-form-form-row">
+                        <label>Temperature:</label>
+                        <input
+                          className="vitals-form-form-row-input"
+                          type="number"
+                          name="temperature"
+                          value={vitalData.temperature}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+
+                      <div className="vitals-form-form-row">
+                        <label>Pulse:</label>
+                        <input
+                          className="vitals-form-form-row-input"
+                          type="number"
+                          name="pulse"
+                          value={vitalData.pulse}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+
+                      <div className="vitals-form-form-row">
+                        <label>Blood Pressure:</label>
+                        <div className="vitals-form-form-row-input">
+                          <input
+                            className="vitals-form-form-row-input"
+                            type="number"
+                            name="bpSystolic"
+                            placeholder="BP Systolic"
+                            value={vitalData.bpSystolic}
+                            onChange={handleInputChange}
+                          />
+                          <input
+                            className="vitals-form-form-row-input"
+                            type="number"
+                            name="bpDiastolic"
+                            placeholder="BP Diastolic"
+                            value={vitalData.bpDiastolic}
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="vitals-form-form-row">
+                        <label>Respiratory Rate:</label>
+                        <input
+                          className="vitals-form-form-row-input"
+                          type="number"
+                          name="respiratoryRate"
+                          value={vitalData.respiratoryRate}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+
+                      <div className="vitals-form-form-row">
+                        <label>SpO₂:</label>
+                        <input
+                          className="vitals-form-form-row-input"
+                          type="number"
+                          name="spO2"
+                          value={vitalData.spO2}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+
+                      <div className="vitals-form-form-row">
+                        <label>O₂ Delivery Plan:</label>
+                        <input
+                          className="vitals-form-form-row-input"
+                          type="text"
+                          name="o2DeliveryPlan"
+                          value={vitalData.o2DeliveryPlan}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+
+                      <div className="vitals-form-form-row">
+                        <label>Pain Scale (/10):</label>
+                        <input
+                          className="vitals-form-form-row-input"
+                          type="number"
+                          name="painScale"
+                          value={vitalData.painScale}
+                          onChange={handleInputChange}
+                        />
+                      </div>
+
+                      <button
+                        type="button"
+                        className="triage-vitals-form-save-button"
+                        onClick={handleSave}
+                      >
+                        Save
+                      </button>
+                    </form>
+                  </div>
+                )}
+              </div>
+              <div className="triage-Chief-Complaint">
+                <section className="triage-chief-complaint-card">
+                  <h3>Chief Complaint</h3>
+                  <form className="triage-complaint-form">
+                    <label>Description:</label>
+                    <textarea className="triage-complaint-form-textarea" name="cheifComplaint"
+            value={chiefComplaint}
+            onChange={handleChiefComplaintChange}></textarea>
+                    <button className="triage-add-complaint-btn" onClick={handleChiefComplaintSave}>
+                      Add New Complaint
+                    </button>
+                  </form>
+                </section>
+              </div>
+            </section>
+            <section className="triage-allergy-container">
+              <div className="allergy-list">
+                <div className="triage-allergy-list-subdiv">
+                  <h3>Allergy List</h3>
+                  <button
+                    className="allergy-add-new-button"
+                    onClick={handleAddNew}
+                  >
+                    + Add New
+                  </button>
                 </div>
-              </section>
+                <table className="patientList-table" ref={tableRef}>
+                  <thead>
+                    <tr>
+                      {[
+                        "Recorded On",
+                        "Allergen",
+                        "Severity",
+                        "Reaction",
+                        "Verified",
+                        "Comments",
+                        "Edit",
+                      ].map((header, index) => (
+                        <th
+                          key={index}
+                          style={{ width: columnWidths[index] }}
+                          className="resizable-th"
+                        >
+                          <div className="header-content">
+                            <span>{header}</span>
+                            <div
+                              className="resizer"
+                              onMouseDown={startResizing(
+                                tableRef,
+                                setColumnWidths
+                              )(index)}
+                            ></div>
+                          </div>
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {allergies && allergies.length > 0 ? (
+                      allergies.map((allergy) => (
+                        <tr key={allergy.allergiesId}>
+                          <td>{allergy.recordedDate}</td>
+                          <td>{allergy.typeOfAllergy}</td>
+                          <td>{allergy.severity}</td>
+                          <td>{allergy.reaction}</td>
+                          <td>{allergy.verified === "true" ? "Yes" : "No"}</td>
+                          <td>{allergy.comments}</td>
+                          <td>
+                            {/* You can add an edit button here */}
+                            <button onClick={() => updateAllergies(allergy)}>
+                              Edit
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan="7">No allergies found</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
 
-              <section className="add-new-vitals">
-                <h3>Add New Vitals</h3>
-                <input type="date" name="addedOn" placeholder="Added On" value={newVitals.addedOn} onChange={handleVitalsChange} />
-                <input type="number" name="height" placeholder="Height (cm)" value={newVitals.height} onChange={handleVitalsChange} />
-                <input type="number" name="weight" placeholder="Weight (kg)" value={newVitals.weight} onChange={handleVitalsChange} />
-                <input type="number" name="bmi" placeholder="BMI" value={newVitals.bmi} onChange={handleVitalsChange} />
-                <input type="number" name="temperature" placeholder="Temperature (C)" value={newVitals.temperature} onChange={handleVitalsChange} />
-                <input type="number" name="pulse" placeholder="Pulse" value={newVitals.pulse} onChange={handleVitalsChange} />
-                <input type="number" name="bloodPressureSystolic" placeholder="BP Systolic" value={newVitals.bloodPressureSystolic} onChange={handleVitalsChange} />
-                <input type="number" name="bloodPressureDiastolic" placeholder="BP Diastolic" value={newVitals.bloodPressureDiastolic} onChange={handleVitalsChange} />
-                <input type="number" name="respiratoryRate" placeholder="Respiratory Rate" value={newVitals.respiratoryRate} onChange={handleVitalsChange} />
-                <input type="number" name="spo2" placeholder="SpO2" value={newVitals.spo2} onChange={handleVitalsChange} />
-                <input type="number" name="painScale" placeholder="Pain Scale" value={newVitals.painScale} onChange={handleVitalsChange} />
-                <input type="text" name="bodyPart" placeholder="Body Part" value={newVitals.bodyPart} onChange={handleVitalsChange} />
-                <button onClick={handleVitalsSubmit}>Save Vitals</button>
-              </section>
+              <div className="triage-allergy-add-new-section">
+                {showAllergyForm && (
+                  <div className="triage-add-allergy-form">
+                    <div className="triage-allergy-form-header">
+                      <h3>Add Allergy</h3>
+                      <button
+                        className="allergy-close-button"
+                        onClick={handleCloseForm}
+                      >
+                        ✖
+                      </button>
+                    </div>
+                    <form onSubmit={handleSubmit}>
+                      <div className="allergy-form-row">
+                        <label>Type Of Allergy*:</label>
+                        <div className="allergy-form-row-subdiv">
+                          <input
+                            type="radio"
+                            value="Medication"
+                            name="typeOfAllergy"
+                            onChange={handleTypeOfAllergyChange}
+                          />{" "}
+                          Medication
+                          <input
+                            type="radio"
+                            value="Non Medication"
+                            name="typeOfAllergy"
+                            onChange={handleTypeOfAllergyChange}
+                          />{" "}
+                          Non Medication
+                          <input
+                            type="radio"
+                            value="Food"
+                            name="typeOfAllergy"
+                            onChange={handleTypeOfAllergyChange}
+                          />{" "}
+                          Food
+                          <input
+                            type="radio"
+                            value="AdvRec"
+                            name="typeOfAllergy"
+                            onChange={handleTypeOfAllergyChange}
+                          />{" "}
+                          AdvRec
+                        </div>
+                      </div>
 
-              <section className="allergy-section">
-                <h3>Allergy</h3>
-                <input type="text" name="allergen" placeholder="Allergen" value={allergy.allergen} onChange={handleAllergyChange} />
-                <input type="text" name="severity" placeholder="Severity" value={allergy.severity} onChange={handleAllergyChange} />
-                <input type="text" name="reaction" placeholder="Reaction" value={allergy.reaction} onChange={handleAllergyChange} />
-                <input type="text" name="comments" placeholder="Comments" value={allergy.comments} onChange={handleAllergyChange} />
-                <label>
-                  <input type="checkbox" name="verified" checked={allergy.verified || false} onChange={handleAllergyCheckboxChange} />
-                  Verified
-                </label>
-                <button onClick={handleAllergySave}>Save Allergy</button>
-              </section>
+                      <div className="allergy-form-row">
+                        <label>Severity:</label>
+                        <div className="allergy-form-row-subdiv">
+                          <input
+                            type="radio"
+                            value="Mild"
+                            name="severity"
+                            onChange={handleSeverityChange}
+                          />{" "}
+                          Mild
+                          <input
+                            type="radio"
+                            value="Moderate"
+                            name="severity"
+                            onChange={handleSeverityChange}
+                          />{" "}
+                          Moderate
+                          <input
+                            type="radio"
+                            value="Severe"
+                            name="severity"
+                            onChange={handleSeverityChange}
+                          />{" "}
+                          Severe
+                        </div>
+                      </div>
 
-              <section className="chief-complaint-section">
-                <h3>Chief Complaint</h3>
-                <input type="text" name="description" placeholder="Description" value={chiefComplaint.description} onChange={handleChiefComplaintChange} />
-                <input type="text" name="comments" placeholder="Comments" value={chiefComplaint.comments} onChange={handleChiefComplaintChange} />
-                <button onClick={handleChiefComplaintSave}>Save Chief Complaint</button>
-              </section>
-            </main>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <button variant="primary" onClick={closeTriAgeModal} style={{backgroundColor:' background-color: var(--button-color);'}}>Close</button>
-        </Modal.Footer>
-      </Modal>
+                      <div className="allergy-form-row">
+                        <label>Verified:</label>
+                        <div className="allergy-form-row-subdiv">
+                          <input
+                            type="radio"
+                            name="verified"
+                            value="unknown"
+                            onChange={handleVerifiedChange}
+                          />{" "}
+                          Unknown
+                          <input
+                            type="radio"
+                            name="verified"
+                            value="true"
+                            onChange={handleVerifiedChange}
+                          />{" "}
+                          Yes
+                          <input
+                            type="radio"
+                            name="verified"
+                            value="false"
+                            onChange={handleVerifiedChange}
+                            defaultChecked
+                          />{" "}
+                          No
+                        </div>
+                      </div>
+
+                      <div className="allergy-form-row">
+                        <label>Reaction*:</label>
+                        <input
+                          type="text"
+                          name="reaction"
+                          placeholder="Reaction"
+                          value={formData.reaction}
+                          onChange={handleInputAllergyChange}
+                        />
+                      </div>
+
+                      <div className="allergy-form-row">
+                        <label>Comments:</label>
+                        <textarea
+                          name="comments"
+                          placeholder="Comments"
+                          value={formData.comments}
+                          onChange={handleInputAllergyChange}
+                        ></textarea>
+                      </div>
+
+                      <button type="submit" className="allergy-add-button">
+                        Add
+                      </button>
+                    </form>
+                  </div>
+                )}
+
+                {showUpdateForm && (
+                  <div className="triage-add-allergy-form">
+                    <div className="allergy-form-header">
+                      <h3>Update Allergy</h3>
+                      <button
+                        className="allergy-close-button"
+                        onClick={handleCloseForm}
+                      >
+                        ✖
+                      </button>
+                    </div>
+                    <form onSubmit={handleUpdateSubmit}>
+                      <div className="allergy-form-row">
+                        <label>Type Of Allergy*:</label>
+                        <div className="allergy-form-row-subdiv">
+                          <input
+                            type="radio"
+                            value="Medication"
+                            name="typeOfAllergy"
+                            onChange={handleUpdateTypeOfAllergyChange}
+                          />{" "}
+                          Medication
+                          <input
+                            type="radio"
+                            value="Non Medication"
+                            name="typeOfAllergy"
+                            onChange={handleUpdateTypeOfAllergyChange}
+                          />{" "}
+                          Non Medication
+                          <input
+                            type="radio"
+                            value="Food"
+                            name="typeOfAllergy"
+                            onChange={handleUpdateTypeOfAllergyChange}
+                          />{" "}
+                          Food
+                          <input
+                            type="radio"
+                            value="AdvRec"
+                            name="typeOfAllergy"
+                            onChange={handleUpdateTypeOfAllergyChange}
+                          />{" "}
+                          AdvRec
+                        </div>
+                      </div>
+
+                      <div className="allergy-form-row">
+                        <label>Severity:</label>
+                        <div className="allergy-form-row-subdiv">
+                          <input
+                            type="radio"
+                            value="Mild"
+                            name="severity"
+                            onChange={handleUpdateSeverityChange}
+                          />{" "}
+                          Mild
+                          <input
+                            type="radio"
+                            value="Moderate"
+                            name="severity"
+                            onChange={handleUpdateSeverityChange}
+                          />{" "}
+                          Moderate
+                          <input
+                            type="radio"
+                            value="Severe"
+                            name="severity"
+                            onChange={handleUpdateSeverityChange}
+                          />{" "}
+                          Severe
+                        </div>
+                      </div>
+
+                      <div className="allergy-form-row">
+                        <label>Verified:</label>
+                        <div className="allergy-form-row-subdiv">
+                          <input
+                            type="radio"
+                            name="verified"
+                            value="unknown"
+                            onChange={handleUpdateVerifiedChange}
+                          />{" "}
+                          Unknown
+                          <input
+                            type="radio"
+                            name="verified"
+                            value="true"
+                            onChange={handleUpdateVerifiedChange}
+                          />{" "}
+                          Yes
+                          <input
+                            type="radio"
+                            name="verified"
+                            value="false"
+                            onChange={handleUpdateVerifiedChange}
+                            defaultChecked
+                          />{" "}
+                          No
+                        </div>
+                      </div>
+
+                      <div className="allergy-form-row">
+                        <label>Reaction*:</label>
+                        <input
+                          type="text"
+                          name="reaction"
+                          placeholder="Reaction"
+                          value={updateAllergy.reaction}
+                          onChange={handleUpdateInputChange}
+                        />
+                      </div>
+
+                      <div className="allergy-form-row">
+                        <label>Comments:</label>
+                        <textarea
+                          name="comments"
+                          placeholder="Comments"
+                          value={updateAllergy.comments}
+                          onChange={handleUpdateInputChange}
+                        ></textarea>
+                      </div>
+
+                      <button type="submit" className="allergy-add-button">
+                        Update
+                      </button>
+                    </form>
+                  </div>
+                )}
+              </div>
+            </section>
+          </main>
+        </div>
+      </NursingCustomModal>
     </>
   );
 }

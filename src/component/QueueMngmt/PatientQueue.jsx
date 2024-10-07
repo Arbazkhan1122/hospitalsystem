@@ -1,8 +1,9 @@
 /* PatientQueue_Mohini_4/9/2024/ */
-import React, { useState,useEffect } from 'react';
+import React, { useState,useEffect, useRef } from 'react';
 import axios from 'axios';
 import './PatientQueue.css';
 import { API_BASE_URL } from '../api/api';
+import { startResizing } from '../../TableHeadingResizing/ResizableColumns';
 
 const PatientQueue = () => {
   const [data, setData] = useState([]);
@@ -12,12 +13,12 @@ const PatientQueue = () => {
   const [showTable, setShowTable] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('all');
+  const [isActive, setIsActive] = useState(false);
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   useEffect(() => {
-
-
     fetch(`${API_BASE_URL}/patient-queues`)
-
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -84,13 +85,22 @@ console.log(selectedDoctor);
       });
   };
 
+  const handleClick = () => {
+    setIsActive(!isActive); // Toggle the active state
+  };
+
 
 
   return (
     <div className="patient-queue-management-container">
       <div className='patient-queue-management-header'>
         <header className="queue-management-header">
-          <button className="queue-management-header-button">OPD</button>
+        <button
+      className={`queue-management-header-button ${isActive ? 'active' : ''}`}
+      onClick={handleClick}
+    >
+      OPD
+    </button>
         </header>
       </div>
       <div className="queue-management-content">
@@ -167,24 +177,42 @@ console.log(selectedDoctor);
             </div>
             <div className="queue-management-results-info">Showing 0/ 0 results</div>
               
-            <div className='queue-management-table-wrapper'>
-              <table className='queue-managemnt-table'>
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>Age</th>
-                    <th>Department</th>
-                    <th>Doctor</th>
-                    <th>Visit Type</th>
-                    <th>Appt. Type</th>
-                    {/* <th>Day</th> */}
-                    <th>Queue No.</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
+            <div className='table-container'>
+            <table className="patientList-table" ref={tableRef}>
+        <thead>
+          <tr>
+            {[
+              "Date",
+              "Name",
+              "Phone",
+              "Age",
+              "Department",
+              "Doctor",
+              "Visit Type",
+              "Appt.Type",
+              "Queue.No",
+              "Status",
+              "Actions",
+            ].map((header, index) => (
+              <th
+                key={index}
+                style={{ width: columnWidths[index] }}
+                className="resizable-th"
+              >
+                <div className="header-content">
+                  <span>{header}</span>
+                  <div
+                    className="resizer"
+                    onMouseDown={startResizing(
+                      tableRef,
+                      setColumnWidths
+                    )(index)}
+                  ></div>
+                </div>
+              </th>
+            ))}
+          </tr>
+        </thead>
                 <tbody>
                 {filteredData.length === 0? (
                     <tr>

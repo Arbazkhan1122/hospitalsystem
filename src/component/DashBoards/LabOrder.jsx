@@ -3,6 +3,8 @@ import './LabOrder.css';
 import { API_BASE_URL } from '../api/api';
 
 const LabOrder = ({ selectedOrders, setActiveSection, patientId, newPatientVisitId }) => {
+  console.log(patientId);
+  
   const [ordersData, setOrdersData] = useState(
     selectedOrders.map(order => ({
       labTestName: order.labTestName || '',

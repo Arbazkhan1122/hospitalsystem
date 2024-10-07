@@ -10,19 +10,18 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
   const tableRef = useRef(null);
   console.log(patientId +""+ newPatientVisitId);
   
-  const [medicationList, setMedicationList] = useState(
-    selectedOrders.map(order => ({
-      type: order?.genericNameDTO?.genericName || "", 
-      medicationName: order?.itemName || "",
-      dose: "",
-      route: "mouth",
-      frequency: 0,
-      lastTaken: "",
-      comments: "",
-      status:"pending",
-      medicationDate:new Date().toLocaleDateString()
-    }))
-  );
+  const [medicationList, setMedicationList] = useState(selectedOrders.map(order => ({
+    type: order?.genericNameDTO?.genericName || "", 
+    medicationName: order?.itemName || "",
+    dose: "",
+    route: "mouth",
+    frequency: 0,
+    lastTaken: "",
+    comments: "",
+    status:"pending",
+    medicationDate:new Date().toLocaleDateString(),
+    ...(patientId ? { patientDTO: { patientId } } : { newPatientVisitDTO: { newPatientVisitId } })
+  })));
 
   const handleInputChange = (index, e) => {
     const { name, value } = e.target;
@@ -33,26 +32,21 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
   };
 
   const handleSubmit = async () => {
-    console.log(medicationList);
-    for (let i = 0; i < medicationList.length; i++) {
-      const medication = medicationList[i];
-      const formData =
-        patientId > 0
-          ? { ...medication, patientDTO: { patientId } }
-          : { ...medication, newPatientVisitDTO: { newPatientVisitId } };
-      try {
-        const response = await axios.post(
-          `${API_BASE_URL}/medications/save-medication-details`,
-          formData
-        );
-        setActiveSection('dashboard')
-        console.log(`Success for medication ${i + 1}:`, response.data);
-
-      } catch (error) {
-        console.error(`Error submitting medication ${i + 1}:`, error);
-      }
+    try { 
+      console.log(medicationList);
+      
+      const response = await axios.post(
+        `${API_BASE_URL}/medications/save-medication-details`,
+        medicationList // Sending the entire formData array as the payload
+      );
+      setActiveSection('dashboard');
+      console.log("Success:", response.data);
+    } catch (error) {
+      console.error("Error submitting medication list:", error);
     }
   };
+  
+  
 
   return (
     <div className="MedicationOrder-form">

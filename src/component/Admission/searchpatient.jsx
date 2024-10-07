@@ -16,6 +16,8 @@ const SearchPatient = () => {
   const [selectedPatient, setSelectedPatient] = useState(null);
   const tableRef = useRef(null);
   const [columnWidths, setColumnWidths] = useState(0);
+  const [admitted,setAdmitted] = useState([]);
+  const [admittedPatientsMap, setAdmittedPatientsMap] = useState({}); // To store admission status
 
   // Fetch data from the new API
   useEffect(() => {
@@ -37,9 +39,27 @@ const SearchPatient = () => {
       })
       .catch((error) => {
         console.error('Error fetching patient data:', error);
-        alert(`Error fetching patient data: ${error.message}`);
+        // alert(`Error fetching patient data: ${error.message}`);
       });
   }, []);
+
+
+  useEffect(()=>{
+    fetch(`${API_BASE_URL}/admissions/fetch`,{
+      method:'GET',
+      headers :
+      {
+        'Content-Type':"application/json",
+      },
+    })
+    .then((response)=>response.json())
+    .then((data)=>{    
+      setAdmitted(data);
+      mapAdmittedPatients(data);
+    })
+    .catch((error)=>console.error("failed to fetch")
+    )
+  },[showModal])
 
   // Pagination logic
   const indexOfLastPatient = currentPage * patientsPerPage;
@@ -62,6 +82,14 @@ const SearchPatient = () => {
     setShowModal(true);
   };
 
+  const mapAdmittedPatients = (admittedPatients) => {
+    const admittedMap = {};
+    admittedPatients.forEach((admittedPatient) => {
+      admittedMap[admittedPatient.patientDTO.patientId] = true; // Mark admitted patients
+    });
+    setAdmittedPatientsMap(admittedMap); // Store the map
+  };
+
   const handleClose = () => setShowModal(false);
 
   const submitAdmission = async () => {
@@ -72,7 +100,6 @@ const SearchPatient = () => {
 
     // Define the admission details
     const admissionDetails = {
-      // Admission data structure here
     };
 
     try {
@@ -157,10 +184,12 @@ const SearchPatient = () => {
                     <td>{patient.address}</td>
                     <td>{patient.visitType}</td>
                     <td>
-                      <button className="admit-button" onClick={() => handleAdmit(patient)}>
-                        Admit
-                      </button>
-                    </td>
+                  {admittedPatientsMap[patient.patientId] ? (
+                    <span className='Addmitted-btn'>Admitted</span> // Display if admitted
+                  ) : (
+                    <button onClick={() => handleAdmit(patient)}>Admit</button>
+                  )}
+                </td>
                   </tr>
                 ))}
               </tbody>

@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './exchangebed.css'; 
 
 const ExchangeBed = () => {
   const [desiredBed, setDesiredBed] = useState('');
-
+  const [patients,setPatients] = useState('');
   const handleDesiredBedChange = (event) => {
     setDesiredBed(event.target.value);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/admissions/fetch`);
+        setPatients(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  
 
   const handleSave = () => {
     
@@ -45,7 +59,6 @@ const ExchangeBed = () => {
               <option value="">Select desired bed</option>
               <option value="Male Ward-002">Male Ward-002</option>
               <option value="Male Ward-003">Male Ward-003</option>
-              {/* Add more options as needed */}
             </select>
           </div>
         </div>

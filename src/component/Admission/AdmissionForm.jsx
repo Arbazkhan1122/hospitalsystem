@@ -10,7 +10,6 @@ const AdmissionForm = ({ patient, onClose }) => {
     caseType: '',
     admissionDate: '',
     admissionNotes: '',
-    
     requestingDepartment:'',
     careOfPersonName: '',
     careOfPersonPhone: '',
@@ -116,16 +115,14 @@ const AdmissionForm = ({ patient, onClose }) => {
       wardDepatment: {wardDepartmentId:formData.wardDepatment},
       wardBedFeature: {wardBedFeatureId:formData.wardBedFeature},
       manageBed: {bedId:formData.manageBed},
-      secondaryDoctor:{employeeId:formData.admittedDoctor},
       allocatedNurse:{employeeId:formData.admittedDoctor},
       depositBalance: parseFloat(formData.depositBalance),
       depositAmount: parseFloat(formData.depositAmount),
     };
 
     try {
-      console.log(admissionData);
-      
-      const response = await fetch(`${API_BASE_URL}/admissions/add-admission-details`, {
+
+        const response = await fetch(`${API_BASE_URL}/admissions/add-admission-details`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

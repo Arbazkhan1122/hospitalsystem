@@ -55,14 +55,14 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection,employee
     setSelectedOrderType(e.target.value);
   };
 
+  console.log(orderData);
+  
   const handleOrderSelect = (e) => {
     const orderId = e.target.value;    
     setSelectedOrderId(orderId);
     console.log(orderId);
-    
-
     if (orderId) {
-      const selectedOrder = orderData.find(order => order.id || order.imagingItemId == orderId || order.labTestId ==orderId);    
+      const selectedOrder = orderData.find(order => order.addItemId== orderId || order.imagingItemId == orderId || order.labTestId ==orderId);    
       if (selectedOrder) {
         setSelectedOrders(prevOrders => [...prevOrders, selectedOrder]);
         setSelectedOrderId('');
@@ -189,7 +189,7 @@ const ActionRecordPage = ({patientId,newPatientVisitId,setActiveSection,employee
                 >
                   <option value="">Select an order item</option>
                   {orderData.map((order) => (
-                    <option key={order.id || order.imagingItemId || order.labTestId} value={order.id || order.imagingItemId ||order.labTestId }>
+                    <option key={order.id || order.imagingItemId || order.labTestId} value={order.addItemId || order.imagingItemId ||order.labTestId }>
                       {order.itemName || order.imagingItemName || order.labTestName}
                     </option>
                   ))}

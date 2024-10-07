@@ -64,7 +64,6 @@
 
 
 .Patient-Dashboard-btnAdd {
-  height: 25px;
   width: 65px;
   border-radius: 5px;
   border: 1px solid var(--button-hover-border-color);
@@ -261,9 +260,6 @@ img {
   height: auto;
   padding-left: 15px;
   padding-top: 15px;
-
-  /* background-color: blue; */
-  height: 100px;
   font-size: var(--font-size);
   border: 1px solid black;
   border: none;
@@ -485,9 +481,6 @@ img {
       margin-bottom: 10px;
   }
 
-  .Patient-Dashboard-btnAdd {
-      width: 100px;
-  }
 
   .Patient-Dashboard-left-aside {
       width: 100%;
@@ -518,9 +511,7 @@ img {
       padding: 10px;
 
   }
-  .Patient-Dashboard-btnAdd {
-      width: 80px;
-  }
+ 
 
   .Patient-Dashboard-main-section {
       gap: 5px; 

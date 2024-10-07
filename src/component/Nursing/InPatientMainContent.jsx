@@ -1,29 +1,64 @@
- /* prachi parab user interface changed  14/9 */
+/* prachi parab user interface changed  14/9 */
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../Nursing/InPatientMainContent.css";
 import { useNavigate } from "react-router-dom";
 import { Modal, Button, Form, Table, Row, Col } from "react-bootstrap";
+import { API_BASE_URL } from "../api/api";
+import MyFavPatient from "./MyFavPatient";
+import AllPatient from "./AllPatient";
+import Consumptions from "./Consumptions";
+import DietSheet from "./DietSheet";
 
 const numberToWordsInIndian = (num) => {
   const units = [
-    '', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'
+    "",
+    "One",
+    "Two",
+    "Three",
+    "Four",
+    "Five",
+    "Six",
+    "Seven",
+    "Eight",
+    "Nine",
+    "Ten",
+    "Eleven",
+    "Twelve",
+    "Thirteen",
+    "Fourteen",
+    "Fifteen",
+    "Sixteen",
+    "Seventeen",
+    "Eighteen",
+    "Nineteen",
   ];
-  const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
-  const scales = ['', 'Thousand', 'Lakh', 'Crore'];
+  const tens = [
+    "",
+    "",
+    "Twenty",
+    "Thirty",
+    "Forty",
+    "Fifty",
+    "Sixty",
+    "Seventy",
+    "Eighty",
+    "Ninety",
+  ];
+  const scales = ["", "Thousand", "Lakh", "Crore"];
 
-  if (num === 0) return 'Zero Rupees';
+  if (num === 0) return "Zero Rupees";
 
-  let wordString = '';
+  let wordString = "";
   let remainder = num;
 
   const getChunk = (number, divisor, scale) => {
     let chunk = Math.floor(number / divisor);
     let remainder = number % divisor;
-    
+
     if (chunk > 0) {
-      let chunkString = '';
+      let chunkString = "";
       if (chunk > 99) {
         chunkString += `${units[Math.floor(chunk / 100)]} Hundred `;
         chunk %= 100;
@@ -37,39 +72,38 @@ const numberToWordsInIndian = (num) => {
       }
       return `${chunkString.trim()} ${scale}`;
     }
-    return '';
+    return "";
   };
 
   // For Crores
   if (remainder >= 10000000) {
     const croreChunk = getChunk(remainder, 10000000, scales[3]);
-    wordString += croreChunk + ' ';
+    wordString += croreChunk + " ";
     remainder %= 10000000;
   }
 
   // For Lakhs
   if (remainder >= 100000) {
     const lakhChunk = getChunk(remainder, 100000, scales[2]);
-    wordString += lakhChunk + ' ';
+    wordString += lakhChunk + " ";
     remainder %= 100000;
   }
 
   // For Thousands
   if (remainder >= 1000) {
     const thousandChunk = getChunk(remainder, 1000, scales[1]);
-    wordString += thousandChunk + ' ';
+    wordString += thousandChunk + " ";
     remainder %= 1000;
   }
 
   // For Hundreds and units (1-999)
   if (remainder > 0) {
     const hundredsChunk = getChunk(remainder, 1, scales[0]);
-    wordString += hundredsChunk + ' ';
+    wordString += hundredsChunk + " ";
   }
 
-  return wordString.trim() + ' Rupees';
+  return wordString.trim() + " Rupees";
 };
-
 
 function MainContent() {
   const [showConsumtion, setShowConsumption] = useState(false);
@@ -81,11 +115,10 @@ function MainContent() {
   const [transferRemarks, setTransferRemarks] = useState("");
   const [showWardwise, setShowWardwise] = useState(false);
   // const [wardDepartmentId, setWardDepartmentId] = useState(null);
-  const [patientConsumption,setpatientConsumption]=useState("");
+  const [patientConsumption, setpatientConsumption] = useState("");
   const handleCloseConsumption = () => setShowConsumption(false);
   const [medicines, setMedicines] = useState([]);
   const [selectedMedicine, setSelectedMedicine] = useState(null);
-
 
   const [medicineDetails, setMedicineDetails] = useState([]);
   const [prescriberName, setPrescriberName] = useState("");
@@ -97,9 +130,18 @@ function MainContent() {
   const [quantity, setQuantity] = useState(0); // User-entered quantity
   const [subTotal, setSubTotal] = useState(0); // Calculated subtotal
   const [rows, setRows] = useState([
-    {genericName: '',medicineName: '', expiry: '', batch: '', availableQuantity: '',currentQuantity:'', salePrice: '', subTotal: '',discountPercentage:'' }
+    {
+      genericName: "",
+      medicineName: "",
+      expiry: "",
+      batch: "",
+      availableQuantity: "",
+      currentQuantity: "",
+      salePrice: "",
+      subTotal: "",
+      discountPercentage: "",
+    },
   ]);
-
 
   const handleShowConsumption = (patient) => {
     console.log(patient);
@@ -109,7 +151,7 @@ function MainContent() {
 
   const handleMedicineChange = (index, value) => {
     const medicine = JSON.parse(value);
-  
+
     const updatedRows = [...rows];
     updatedRows[index] = {
       ...updatedRows[index],
@@ -121,29 +163,32 @@ function MainContent() {
       currentQuantity: medicine.currentQuantity,
       salePrice: medicine.salePrice,
       discountPercentage: medicine.discountPercentage || 0, // Default to 0 if no discount
-      subTotal: calculateSubTotal(medicine.currentQuantity, medicine.salePrice, medicine.discountPercentage)
+      subTotal: calculateSubTotal(
+        medicine.currentQuantity,
+        medicine.salePrice,
+        medicine.discountPercentage
+      ),
     };
     setRows(updatedRows);
-    calculateSubTotalForAllmedicine()
+    calculateSubTotalForAllmedicine();
   };
-  
+
   // Quantity change with discount calculation
   const handleQuantityChange = (index, event) => {
     const quantity = event.target.value;
     const updatedRows = [...rows];
     const salePrice = updatedRows[index]?.salePrice || 0;
     const discountPercentage = updatedRows[index]?.discountPercentage || 0;
-  
+
     updatedRows[index] = {
       ...updatedRows[index],
       currentQuantity: quantity,
-      subTotal: calculateSubTotal(quantity, salePrice, discountPercentage)
+      subTotal: calculateSubTotal(quantity, salePrice, discountPercentage),
     };
     setRows(updatedRows);
-    calculateSubTotalForAllmedicine()
-
+    calculateSubTotalForAllmedicine();
   };
-  
+
   // Function to calculate the subtotal based on quantity, sale price, and discount
   const calculateSubTotal = (quantity, salePrice, discountPercentage) => {
     const totalBeforeDiscount = quantity * salePrice;
@@ -152,43 +197,54 @@ function MainContent() {
   };
 
   const isRowValid = (row) => {
-    return row.genericName && row.currentQuantity !== '';
+    return row.genericName && row.currentQuantity !== "";
   };
 
   const handleAddRow = () => {
     const lastRow = rows[rows.length - 1];
     if (isRowValid(lastRow)) {
       const newRowId = rows.length ? rows[rows.length - 1].id + 1 : 1;
-      setRows([...rows, { genericName: '',medicineName: '', expiry: '', batch: '', availableQuantity: '',currentQuantity:'', salePrice: '', subTotal: '' }]);
+      setRows([
+        ...rows,
+        {
+          genericName: "",
+          medicineName: "",
+          expiry: "",
+          batch: "",
+          availableQuantity: "",
+          currentQuantity: "",
+          salePrice: "",
+          subTotal: "",
+        },
+      ]);
     } else {
-      alert('Please fill in the current row before adding a new one.');
+      alert("Please fill in the current row before adding a new one.");
     }
   };
 
+  // Calculate subtotal for all medicines
+  const calculateSubTotalForAllmedicine = () => {
+    const sumOfSubtotals = rows.reduce((sum, row) => {
+      const subTotal = parseFloat(row.subTotal) || 0; // Ensures subTotal is a number
+      return sum + subTotal;
+    }, 0);
 
-// Calculate subtotal for all medicines
-const calculateSubTotalForAllmedicine = () => {
-  const sumOfSubtotals = rows.reduce((sum, row) => {
-    const subTotal = parseFloat(row.subTotal) || 0; // Ensures subTotal is a number
-    return sum + subTotal;
-  }, 0);
+    setSubTotal(sumOfSubtotals);
+  };
 
-  setSubTotal(sumOfSubtotals);
-};
+  // Effect to recalculate total whenever rows change
+  useEffect(() => {
+    calculateSubTotalForAllmedicine();
+  }, [rows]);
 
-// Effect to recalculate total whenever rows change
-useEffect(() => {
-  calculateSubTotalForAllmedicine();
-}, [rows]);
-
-useEffect(() => {
-  calculateTotal();
-}, [discountAmount, subTotal]);
+  useEffect(() => {
+    calculateTotal();
+  }, [discountAmount, subTotal]);
 
   const calculateTotal = () => {
-    const totalAfterDiscount = subTotal - (subTotal * (discountAmount / 100));
+    const totalAfterDiscount = subTotal - subTotal * (discountAmount / 100);
     // alert(totalAfterDiscount);
-    setTotalAmount(totalAfterDiscount)
+    setTotalAmount(totalAfterDiscount);
   };
 
   // Update total amount when discount or rows change
@@ -197,12 +253,10 @@ useEffect(() => {
     // calculateTotal()
   };
 
-
-
   // Convert the final amount to words
   const totalInWords = numberToWordsInIndian(totalAmount);
 
-  const [showWard, setShowWard] = useState(false);  
+  const [showWard, setShowWard] = useState(false);
 
   const handleCloseWard = () => setShowWard(false);
   const handleShowWard = () => setShowWard(true);
@@ -294,11 +348,10 @@ useEffect(() => {
 
   // }
 
-
-
   const [activeTab, setActiveTab] = useState("My Patients"); // Default tab
   const [patients, setPatients] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showDetails,setShowDetails] = useState(false);
   const navigate = useNavigate();
 
   const handleTabClick = (tabName) => {
@@ -311,9 +364,11 @@ useEffect(() => {
   useEffect(() => {
     const fetchMedicines = async () => {
       try {
-        const response = await axios.get("http://localhost:1415/api/medicine/find-all-medicine-details");
+        const response = await axios.get(
+          `${API_BASE_URL}/medicine/find-all-medicine-details`
+        );
         setMedicines(response.data);
-        console.log(response.data+"Med");
+        console.log(response.data + "Med");
       } catch (error) {
         console.error("Error fetching medicine data:", error);
       }
@@ -323,7 +378,7 @@ useEffect(() => {
 
   // const handleMedicineChange = (selectedMedicineString) => {
   //   const selectedMedicine = JSON.parse(selectedMedicineString);
-    
+
   //   // Update the specific row
   //   const updatedRows = rows.map((row, i) =>
   //     i === index ? {
@@ -336,15 +391,10 @@ useEffect(() => {
   //       subTotal: (row.availableQuantity || 0) * selectedMedicine.salePrice
   //     } : row
   //   );
-    
+
   //   setRows(updatedRows);
   //   console.log(selectedMedicine);
   // };
-  
-  
-  
-
-
 
   const filteredPatients = patients.filter(
     (patient) =>
@@ -360,7 +410,7 @@ useEffect(() => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:1415/api/ward-department/get-all-ward")
+      .get(`${API_BASE_URL}/ward-department/get-all-ward`)
       .then((response) => {
         const data = response.data;
 
@@ -391,7 +441,9 @@ useEffect(() => {
   useEffect(() => {
     const fetchMedicines = async () => {
       try {
-        const response = await axios.get("http://localhost:1415/api/medicine/find-all-medicine-details");
+        const response = await axios.get(
+          `${API_BASE_URL}/medicine/find-all-medicine-details`
+        );
         setMedicines(response.data); // assuming response.data contains the list of medicines
       } catch (error) {
         console.error("Error fetching medicine data:", error);
@@ -419,7 +471,6 @@ useEffect(() => {
     }
   };
 
-
   const handleSaveConsumption = async () => {
     const payload = {
       medicineDetails: [...rows],
@@ -433,26 +484,37 @@ useEffect(() => {
       },
     };
     console.log(payload);
-    
-    let id=1;
-    let patientType="Patient"
-      try {
-     
-      const response = await axios.post(`http://localhost:1415/api/medicine/save-medicine-details/${id}/${patientType}`, payload);
+
+    let id = 1;
+    let patientType = "Patient";
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}medicine/save-medicine-details/${id}/${patientType}`,
+        payload
+      );
       console.log("Payload:", payload);
       alert("Consumption added successfully");
-      
-        setRows([
-      { genericName: '', medicineName: '', expiry: '', batch: '', availableQuantity: '', currentQuantity: '', salePrice: '', subTotal: '', discountPercentage: '' }
-    ]);
-    setPrescriberName('');  // Reset prescriber name
-    setStore('');  // Reset store
-    setSubTotalAmount('');  // Reset sub-total amount
-    setDiscountAmount('');  // Reset discount amount
-    setTotalAmount('');  // Reset total amount
-    setRemark('');  // Reset remark
-    totalInWords('');
-    
+
+      setRows([
+        {
+          genericName: "",
+          medicineName: "",
+          expiry: "",
+          batch: "",
+          availableQuantity: "",
+          currentQuantity: "",
+          salePrice: "",
+          subTotal: "",
+          discountPercentage: "",
+        },
+      ]);
+      setPrescriberName(""); // Reset prescriber name
+      setStore(""); // Reset store
+      setSubTotalAmount(""); // Reset sub-total amount
+      setDiscountAmount(""); // Reset discount amount
+      setTotalAmount(""); // Reset total amount
+      setRemark(""); // Reset remark
+      totalInWords("");
 
       // Handle success (e.g., close modal, show success message)
     } catch (error) {
@@ -460,16 +522,15 @@ useEffect(() => {
     }
   };
 
-  const showTableData = async(wardDepartmentId) => {
+  const showTableData = async (wardDepartmentId) => {
+    setShowDetails(true);
     if (!wardDepartmentId) {
       console.error("wardDepartmentId is undefined");
       return;
     }
 
     await axios
-      .get(
-        `http://localhost:1415/api/admissions/ward-data/${wardDepartmentId}`
-      )
+      .get(`${API_BASE_URL}/admissions/ward-data/${wardDepartmentId}`)
       .then((response) => {
         setPatients(response.data); // Assuming setPatients is part of your state
       })
@@ -477,7 +538,6 @@ useEffect(() => {
         console.error("There was an error fetching the patient data!", error);
       });
   };
-
 
   // const handleAddRow = () => {
   //   if (selectedMedicine && quantity > 0) {
@@ -496,11 +556,9 @@ useEffect(() => {
   //   }
   // };
 
-
-
   return (
     <>
-      <div className="hospital-wards-container" onClick={showPatientwardwise}>
+    {!showDetails ?(<div className="hospital-wards-container" onClick={showPatientwardwise}>
         <h5>Select your Ward</h5>
         <div className="ward-info-grid">
           {wards.map((ward, index) => (
@@ -515,33 +573,37 @@ useEffect(() => {
             />
           ))}
         </div>
-      </div>
-
-      {showWardwise && (
+      </div>):(<>{showWardwise && (
         <>
           <div className="inpatient-component-container">
+            <a
+              className={`opd-tab-item ${
+                activeTab === "My Patients" ? "active" : ""
+              }`}
+              onClick={() => handleTabClick("My Patients")}
+            >
+              All Patients
+            </a>
 
-          <a
-      
-        className={`opd-tab-item ${activeTab === 'My Patients' ? 'active' : ''}`}
-        onClick={() => handleTabClick("My Patients")}
-      >
-                      All Patients
+            <a
+              className={`opd-tab-item ${
+                activeTab === "Consumptions" ? "active" : ""
+              }`}
+              onClick={() => handleTabClick("Consumptions")}
+            >
+              Consumptions
+            </a>
 
-      </a>
-     
-      <a       
-      className={`opd-tab-item ${activeTab === 'Consumptions' ? 'active' : ''}`}
-      onClick={() => handleTabClick("Consumptions")}
-    > Consumptions </a>
-    
-    <a       
-      className={`opd-tab-item ${activeTab === 'Diet Sheet' ? 'active' : ''}`}
-      onClick={() => handleTabClick("Diet Sheet")}
-    > Diet Sheet </a>
+            <a
+              className={`opd-tab-item ${
+                activeTab === "Diet Sheet" ? "active" : ""
+              }`}
+              onClick={() => handleTabClick("Diet Sheet")}
+            >
+              Diet Sheet
+            </a>
 
-
-    {/* <button
+            {/* <button
               className={`inpatient-component-tab ${
                 activeTab === "My Patients" ? "active" : ""
               }`}
@@ -568,323 +630,25 @@ useEffect(() => {
             </button> */}
           </div>
           {activeTab === "My Patients" && (
-            <div className="MyPatientsTable-tableContainer">
-              <div className="Nephrology-Header">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="Nephrology-searchInput"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <div className="Nephrology-actions">
-                  <span className="Nephrology-results">
-                    Showing {filteredPatients.length}/{patients.length} results
-                  </span>
-                  <button className="Nephrology-button">Export</button>
-                  <button className="Nephrology-button">Print</button>
-                </div>
-              </div>
-
-              <table className="MyPatientsTable-patientsTable">
-                <thead>
-                  <tr>
-                    <th>Serial No</th>
-                    <th>Admitted Date</th>
-                    <th>Doctor Name</th>
-                    {/* <th>Hospital Num</th> */}
-                    <th>IP Number</th>
-                    <th>Name</th>
-                    <th>Phone Number</th>
-                    <th>Age</th>
-                    <th>Bed Detail </th>
-                    <th>Scheme</th>
-                    <th>Patient Type</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {patients && patients.length > 0 ? (
-                    patients.map((patient, index) => (
-                      <tr key={patient.admissionId || index}>
-                        <td>{patient.admissionId}</td> {/* Row numbers */}
-                        <td>{patient.admissionDate}</td>
-                        <td>{patient.doctorName}</td>
-                        <td>{patient.admissionId}</td>
-                        <td>
-                          {patient.firstName} {patient.lastName}
-                        </td>
-                        <td>{patient.contactNumber}</td>
-                        <td>{patient.age}</td>
-                        <td>{patient.wardCode}</td>
-                        <td>{patient.scheme}</td>
-                        <td>{patient.patientType}</td>
-                        <td>
-                          <div className="Actions-actions">
-                            <button
-                              className="Actions-btn Actions-consumption"
-                              onClick={() =>
-                                handleShowConsumption(patient)
-                              }
-                            >
-                              Consumption
-                            </button>
-                            <button
-                              className="Actions-btn Actions-wardRequest"
-                              onClick={handleShowWard}
-                            >
-                              Ward Request
-                            </button>
-                            <button
-                              className="Actions-btn Actions-transfer"
-                              onClick={handleShowTransfer}
-                            >
-                              Transfer
-                            </button>
-                            <button className="Actions-btn Actions-vitals">
-                              Vitals
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan="10">No patient data available</td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
+           <MyFavPatient patients={patients}/>
           )}
 
           {activeTab === "All Patients" && (
-            <div className="MyPatientsTable-tableContainer">
-              <div className="Nephrology-Header">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="Nephrology-searchInput"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <div className="Nephrology-actions">
-                  <span className="Nephrology-results">
-                    Showing {filteredPatients.length}/{patients.length} results
-                  </span>
-                  <button className="Nephrology-button">Export</button>
-                  <button className="Nephrology-button">Print</button>
-                </div>
-              </div>
-
-              <table className="MyPatientsTable-patientsTable">
-                <thead>
-                  <tr>
-                    <th>Serial No</th>
-                    <th>Admitted Date</th>
-                    <th>Doctor Name</th>
-                    <th>Hospital Num</th>
-                    <th>IP Number</th>
-                    <th>Name</th>
-                    <th>Phone Number</th>
-                    <th>Age/Sex</th>
-                    <th>Bed Detail</th>
-                    <th>Scheme</th>
-                    {/* <th>Actions</th> */}
-                  </tr>
-                </thead>
-                <tbody>
-                  {patients && patients.length > 0 ? (
-                    patients.map((patient, index) => (
-                      <tr key={patient.id || index}>
-                        <td>{index + 1}</td>{" "}
-                        {/* This will give you row numbers */}
-                        <td>{patient.admissionDate}</td>
-                        <td>{patient.doctorName}</td>
-                        {/* <td>{patient.hospitalNo}</td> */}
-                        <td>{patient.admissionId}</td>
-                        <td>
-                          {patient.firstName} {patient.lastName}
-                        </td>
-                        <td>{patient.contactNumber}</td>
-                        <td>{patient.age}</td>
-                        <td>{patient.wardCode}</td>
-                        <td>{patient.scheme}</td>
-                        <td>
-                          <div className="Actions-actions">
-                            <button
-                              className="Actions-btn Actions-consumption"
-                              onClick={handleShowConsumption(patient.admissionId)}
-                            >
-                              Consumption hh
-                            </button>
-                            <button
-                              className="Actions-btn Actions-wardRequest"
-                              onClick={handleShowWard}
-                            >
-                              Ward Request
-                            </button>
-                            <button
-                              className="Actions-btn Actions-transfer"
-                              onClick={handleShowTransfer}
-                            >
-                              Transfer
-                            </button>
-                            <button className="Actions-btn Actions-vitals">
-                              Vitals
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan="10">No patient data available</td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
+          <AllPatient patients={patients} />
           )}
 
           {activeTab === "Consumptions" && (
-            <div className="MyPatientsTable-tableContainer">
-              <div className="Nephrology-Header">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="Nephrology-searchInput"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <div className="Nephrology-actions">
-                  <span className="Nephrology-results">
-                    Showing 0/0 results
-                  </span>
-                  <button className="Nephrology-button">Export</button>
-                  <button className="Nephrology-button">Print</button>
-                </div>
-              </div>
-
-              <table className="MyPatientsTable-patientsTable">
-                <thead>
-                  <tr>
-                    <th>Request Date</th>
-                    <th>Hospital Number</th>
-                    <th>DialysisCode</th>
-                    <th>Patient Name</th>
-                    <th>Phone Number</th>
-                    <th>Age</th>
-                    <th>Sex</th>
-                    <th>Service Name</th>
-                    <th>Performer Name</th>
-                    {/* <th>Actions</th> */}
-                  </tr>
-                </thead>
-                <tbody>
-                  {patientsDetail.map((patient, index) => (
-                    <tr key={patient.id}>
-                      <td>{index + 1}</td>
-                      <td>{patient["Unit/Address"]}</td>
-                      <td>{patient["Bed Strength"]}</td>
-                      <td>{patient["Age/Sex"]}</td>
-                      <td>{patient["DOA(HD)"]}</td>
-                      <td>{patient["DOD(BS)"]}</td>
-                      <td>{patient.Diagnosis}</td>
-                      <td>{patient.Remarks}</td>
-                      <td className="actions">
-                        {Array.isArray(patient.actions) &&
-                          patient.actions.includes("edit") && (
-                            <i
-                              className="fas fa-edit"
-                              onClick={() => handleEdit(patient.id)}
-                            ></i>
-                          )}
-                        {Array.isArray(patient.actions) &&
-                          patient.actions.includes("delete") && (
-                            <i
-                              className="fas fa-trash"
-                              onClick={() => handleDelete(patient.id)}
-                            ></i>
-                          )}
-                        {/* <button className='EditButton'>Edit</button> */}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <Consumptions patientsDetail={patientsDetail}/>
           )}
 
           {activeTab === "Diet Sheet" && (
-            <div className="MyPatientsTable-tableContainer">
-              <div className="Nephrology-Header">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  className="Nephrology-searchInput"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <div className="Nephrology-actions">
-                  <span className="Nephrology-results">
-                    Showing {patientsDetail.length}/0 results
-                  </span>
-                  <button className="Nephrology-button">Export</button>
-                  <button className="Nephrology-button">Print</button>
-                </div>
-              </div>
-
-              <table className="MyPatientsTable-patientsTable">
-                <thead>
-                  <tr>
-                    <th>SN</th>
-                    <th>Unit/Address</th>
-                    <th>Bed Strength</th>
-                    <th>Age/Sex</th>
-                    <th>DOA(HD)</th>
-                    <th>DOD(BS)</th>
-                    <th>Diagnosis</th>
-                    <th>Remarks</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {patientsDetail.map((patient, index) => (
-                    <tr key={patient.id}>
-                      <td>{index + 1}</td>
-                      <td>{patient["Unit/Address"]}</td>
-                      <td>{patient["Bed Strength"]}</td>
-                      <td>{patient["Age/Sex"]}</td>
-                      <td>{patient["DOA(HD)"]}</td>
-                      <td>{patient["DOD(BS)"]}</td>
-                      <td>{patient.Diagnosis}</td>
-                      <td>{patient.Remarks}</td>
-                      <td className="actions">
-                        {Array.isArray(patient.actions) &&
-                          patient.actions.includes("edit") && (
-                            <i
-                              className="fas fa-edit"
-                              onClick={() => handleEdit(patient.id)}
-                            ></i>
-                          )}
-                        {Array.isArray(patient.actions) &&
-                          patient.actions.includes("delete") && (
-                            <i
-                              className="fas fa-trash"
-                              onClick={() => handleDelete(patient.id)}
-                            ></i>
-                          )}
-                        <button className='wardEditButton'>Edit</button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+          <DietSheet patientsDetail={patientsDetail} />
           )}
         </>
-      )}
+      )}</>)}
+      
+
+      
 
       <Modal
         show={showConsumtion}
@@ -903,19 +667,18 @@ useEffect(() => {
                   <Form.Label>Prescriber:</Form.Label>
                   <Form.Control type="text" placeholder="Enter Name" />
                 </Form.Group> */}
-                 <Form.Group controlId="formPrescriber">
-                <Form.Label>Prescriber:</Form.Label>
-                <Form.Control as="select">
-                  <option value="">Select Prescriber</option>
-                  <option value="dr-john-doe">Dr. John Doe</option>
-                  <option value="dr-jane-smith">Dr. Jane Smith</option>
-                  <option value="dr-alex-jones">Dr. Alex Jones</option>
-                  <option value="dr-emma-wilson">Dr. Emma Wilson</option>
-                </Form.Control>
-              </Form.Group>
-                
+                <Form.Group controlId="formPrescriber">
+                  <Form.Label>Prescriber:</Form.Label>
+                  <Form.Control as="select">
+                    <option value="">Select Prescriber</option>
+                    <option value="dr-john-doe">Dr. John Doe</option>
+                    <option value="dr-jane-smith">Dr. Jane Smith</option>
+                    <option value="dr-alex-jones">Dr. Alex Jones</option>
+                    <option value="dr-emma-wilson">Dr. Emma Wilson</option>
+                  </Form.Control>
+                </Form.Group>
               </Col>
-             
+
               <Col md={6}>
                 <Form.Group controlId="formStore">
                   <Form.Label>Store:</Form.Label>
@@ -933,11 +696,12 @@ useEffect(() => {
                   </Form.Label>
                   <br></br>
                   <Form.Label className="ml-3">
-                    {patientConsumption?.age || "23Y"} /{patientConsumption?.gender}Male
+                    {patientConsumption?.age || "23Y"} /
+                    {patientConsumption?.gender}Male
                   </Form.Label>
                   <br></br>
                   <Form.Label className="ml-3">
-                  {patientConsumption?.contactNumber || "8765432456"} 
+                    {patientConsumption?.contactNumber || "8765432456"}
                   </Form.Label>
                 </Form.Group>
               </Col>
@@ -977,115 +741,154 @@ useEffect(() => {
                 </tr>
               </thead>
               <tbody>
-              {rows.map((row, index) => (
-          <tr key={index}>
-            <td>
-              <Form.Control
-                as="select"
-                onChange={(e) => handleMedicineChange(index, e.target.value)}
-               
-              >
-                <option>--Select Medicine--</option>
-                {medicines.map(medicine => (
-                  <option key={medicine.genericId} value={JSON.stringify(medicine)}>
-                    {medicine.genericName}
-                  </option>
+                {rows.map((row, index) => (
+                  <tr key={index}>
+                    <td>
+                      <Form.Control
+                        as="select"
+                        onChange={(e) =>
+                          handleMedicineChange(index, e.target.value)
+                        }
+                      >
+                        <option>--Select Medicine--</option>
+                        {medicines.map((medicine) => (
+                          <option
+                            key={medicine.genericId}
+                            value={JSON.stringify(medicine)}
+                          >
+                            {medicine.genericName}
+                          </option>
+                        ))}
+                      </Form.Control>
+                    </td>
+                    <td>
+                      <Form.Control
+                        type="text"
+                        placeholder="0"
+                        value={row?.expiry || ""}
+                        disabled
+                      />
+                    </td>
+                    <td>
+                      <Form.Control
+                        type="text"
+                        placeholder="0"
+                        value={row?.batch || ""}
+                        disabled
+                      />
+                    </td>
+                    <td>
+                      <Form.Control
+                        type="text"
+                        placeholder="0"
+                        value={row?.availableQuantity}
+                        disabled
+                      />
+                    </td>
+                    <td>
+                      <Form.Control
+                        type="text"
+                        placeholder="0"
+                        value={row.currentQuantity}
+                        onChange={(e) => handleQuantityChange(index, e)}
+                      />
+                    </td>
+                    <td>
+                      <Form.Control
+                        type="text"
+                        placeholder="0"
+                        value={row?.salePrice || ""}
+                        disabled
+                      />
+                    </td>
+                    <td>
+                      <Form.Control
+                        type="text"
+                        placeholder="0"
+                        value={row.subTotal}
+                        disabled
+                      />
+                    </td>
+                    <td>
+                      <Form.Control
+                        type="text"
+                        placeholder="0"
+                        value={row.discountPercentage}
+                        disabled
+                      />
+                    </td>
+                    <td>
+                      <Button
+                        variant="primary"
+                        onClick={handleAddRow}
+                        className="consum-add-row "
+                      >
+                        +
+                      </Button>
+                    </td>
+                  </tr>
                 ))}
-              </Form.Control>
-            </td>
-            <td>
-              <Form.Control type="text" placeholder="0" value={row?.expiry || ''} disabled />
-            </td>
-            <td>
-              <Form.Control type="text" placeholder="0" value={row?.batch || ''} disabled />
-            </td>
-            <td>
-             
-              <Form.Control type="text" placeholder="0" value={row?.availableQuantity} disabled />
-            </td>
-            <td>
-            <Form.Control
-                type="text"
-                placeholder="0"
-                value={row.currentQuantity}
-                onChange={(e) => handleQuantityChange(index, e)}
-              />
-            </td>
-            <td>
-              <Form.Control type="text" placeholder="0" value={row?.salePrice || ''} disabled />
-            </td>
-            <td>
-              <Form.Control type="text" placeholder="0" value={row.subTotal} disabled />
-            </td>
-            <td>
-              <Form.Control type="text" placeholder="0" value={row.discountPercentage} disabled />
-            </td>
-            <td>
-              <Button variant="primary" onClick={handleAddRow} className="consum-add-row ">+</Button>
-            </td>
-          </tr>
-        ))}
-            </tbody>
-          </Table>
+              </tbody>
+            </Table>
 
-          <Row>
-        <Col md={4}>
-          <Form.Group controlId="formSubTotal">
-            <Form.Label>SubTotal Amount:</Form.Label>
-            <Form.Control
-              type="text"
-              value={subTotal}
-              onChange={calculateTotal}
-              placeholder="0"
-              disabled
-            />
-          </Form.Group>
-        </Col>
-        <Col md={4}>
-          <Form.Group controlId="formDiscountAmount">
-            <Form.Label>Discount Amount:</Form.Label>
-            <Form.Control
-              type="number"
-              onChange={handleDiscountChange}
-              placeholder="0"
-            />
-          </Form.Group>
-        </Col>
-        <Col md={4}>
-          <Form.Group controlId="formTotalAmount">
-            <Form.Label>Total Amount:</Form.Label>
-            <Form.Control
-              type="text"
-              value={totalAmount}
-              placeholder="0"
-              disabled
-            />
-          </Form.Group>
-        </Col>
-      </Row>
-      <Form.Group controlId="formInWords">
-        <Form.Label>In Words:</Form.Label>
-        <Form.Control
-          type="text"
-          value={totalInWords}
-          placeholder="In Words"
-          disabled
-        />
-      </Form.Group>
-          <Form.Group controlId="formRemarks">
-            <Form.Label>Remarks:</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              value={remark}
-              onChange={(e) => setRemark(e.target.value)}
-              placeholder="Remarks"
-            />
-          </Form.Group>
+            <Row>
+              <Col md={4}>
+                <Form.Group controlId="formSubTotal">
+                  <Form.Label>SubTotal Amount:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={subTotal}
+                    onChange={calculateTotal}
+                    placeholder="0"
+                    disabled
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={4}>
+                <Form.Group controlId="formDiscountAmount">
+                  <Form.Label>Discount Amount:</Form.Label>
+                  <Form.Control
+                    type="number"
+                    onChange={handleDiscountChange}
+                    placeholder="0"
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={4}>
+                <Form.Group controlId="formTotalAmount">
+                  <Form.Label>Total Amount:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={totalAmount}
+                    placeholder="0"
+                    disabled
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Form.Group controlId="formInWords">
+              <Form.Label>In Words:</Form.Label>
+              <Form.Control
+                type="text"
+                value={totalInWords}
+                placeholder="In Words"
+                disabled
+              />
+            </Form.Group>
+            <Form.Group controlId="formRemarks">
+              <Form.Label>Remarks:</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                value={remark}
+                onChange={(e) => setRemark(e.target.value)}
+                placeholder="Remarks"
+              />
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-        <Button variant="primary" onClick={handleSaveConsumption}>
+          <Button variant="primary" onClick={handleSaveConsumption}>
             Save Consumption
           </Button>
           <Button variant="primary" onClick={handleCloseConsumption}>
@@ -1196,7 +999,7 @@ useEffect(() => {
                   <Form.Control type="text" placeholder="0" disabled />
                 </Col>
                 <Col md={4}>
-                  <Button variant="primary" className="mt-4 request-button" >
+                  <Button variant="primary" className="mt-4 request-button">
                     Request
                   </Button>
                 </Col>

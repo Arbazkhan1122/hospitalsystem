@@ -6,6 +6,9 @@ import OpdTriagePage from './OpdTriagePage';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../api/api';
+import PatientDashboard from '../DashBoards/PatientDashboard';
+import VitalsPage from '../DashBoards/ClinicalVitals';
 
 const OutPatientComponent = () => {
   const [isTriageModalOpen, setIsTriageModalOpen] = useState(false);
@@ -20,19 +23,27 @@ const OutPatientComponent = () => {
   const [toDate, setToDate] = useState('');
   const [filteredPatients, setFilteredPatients] = useState([]);
   const [modalData, setModalData] = useState({}); 
+  const [isPatientOPEN,setIsPatientOPEN] = useState(false);
+  const [selectedPatient,setSelectedPatient] = useState(null)
+  const [isNursing,setIsNursing] = useState(false);
+  const [selectedPatientId,setSelectedPatientId] = useState();
+  const [showClinic,setShowClinic] = useState(false);
   
 const [columnWidths, setColumnWidths] = useState({});
 const tableRef = useRef(null);
-  // Fetch patient data from API
+
   useEffect(() => {
-    fetch('http://localhost:1415/api/new-patient-visits')
+    fetch(`${API_BASE_URL}/new-patient-visits`)
       .then(response => response.json())
       .then(data => {
         setPatients(data);
         filterTodayData(data);
+        console.log(data);
       })
       .catch(error => console.error('Error fetching patient data:', error));
   }, []);
+
+
   useEffect(() => {
     handleFilterData();
   }, [fromDate, toDate]);
@@ -52,7 +63,8 @@ const tableRef = useRef(null);
 
   // Function to close the modal
   const closeTriAgeModal = () => {
-    setIsTriageModalOpen(false);
+    setIsTriageModalOpen(false)
+    setShowClinic(false);
   };
 
   const handlePageChange = (page) => {
@@ -87,11 +99,23 @@ const tableRef = useRef(null);
     setFilteredPatients(filtered);
   };
 
+  const handlePatientClick = (patient) => {    
+    setSelectedPatient(patient); 
+    setIsNursing(true)
+    setIsPatientOPEN(!isPatientOPEN)
+  };
+  const handleClinic=(id)=>{
+    setShowClinic(true);
+    setSelectedPatientId(id);
+  }
+
   
   return (
     <>
+    {!isPatientOPEN ? (
+    <>
+    {!showClinic ?(
       <div className="out-patient-container">
-
       <div className="opd-tabs">
       <a
         href="#today"
@@ -108,13 +132,8 @@ const tableRef = useRef(null);
         Past Days
       </a>
     </div>
-
-
-       
-
         {activeTab === 'Today' && (
           <>            
-         
             <div className="search-and-filter">
               <input
                 type="text"
@@ -248,7 +267,7 @@ const tableRef = useRef(null);
 
                 
                 <div className="OutPatient_PastDays-actions">
-                  <span className="OutPatient_PastDays-results">Showing 0/0 results</span>
+                  <span className="OutPatient_PastDays-results">Showing {patients.length}/{patients.length} results</span>
                   <button className="OutPatient_PastDays-button">Export</button>
                   <button className="OutPatient_PastDays-button">Print</button>
                 </div>
@@ -305,9 +324,9 @@ const tableRef = useRef(null);
                     <td>{patient.visitType}</td>
                     <td>
                         <div className="Actions-actions">
-                          <button className="Actions-btn Actions-consumption" onClick={openTriAgeModal}>Add Triage</button>
-                          <button className="Actions-btn Actions-wardRequest">&#x1F5A5;</button>
-                          <button className="Actions-btn Actions-transfer">Clinical</button>
+                          <button className="Actions-btn Actions-consumption" onClick={()=>openTriAgeModal(patient)}>Add Triage</button>
+                          <button className="Actions-btn Actions-wardRequest" onClick={()=>handlePatientClick(patient)}>&#x1F5A5;</button>
+                          <button className="Actions-btn Actions-transfer" onClick={()=>handleClinic(patient.newPatientVisitId)}>Clinical</button>
                           {/* <button className="Actions-btn Actions-vitals">&#x21E7;</button> */}
                         </div>
                       </td>
@@ -316,7 +335,7 @@ const tableRef = useRef(null);
               </tbody>
               </table>
             </div>
-            <div className="OutPatient_PastDays-pagination">
+            {/* <div className="OutPatient_PastDays-pagination">
               <button 
                 className="OutPatient_PastDays-pagination-btn" 
                 onClick={() => handlePageChange(1)}
@@ -348,10 +367,9 @@ const tableRef = useRef(null);
               >
                 Last
               </button>
-            </div>
+            </div> */}
           </>
         )}
-
         {showPopup && (
           <div className="popup">
             <div className="popup-inner">
@@ -366,16 +384,15 @@ const tableRef = useRef(null);
             </div>
           </div>
         )}
-
         {isTriageModalOpen && (
                 <OpdTriagePage
                   onClose={closeTriAgeModal}
                   data={modalData} 
                 />
               )}
-
-      
-      </div>
+      </div>):(
+      <VitalsPage patientId={selectedPatientId} Type={true} onClose={closeTriAgeModal}/>)}
+    </>):(<><PatientDashboard  isPatientOPEN={isPatientOPEN} setIsPatientOPEN={setIsPatientOPEN} patient={selectedPatient} type={isNursing} /></>)}
     </>
   );
 };

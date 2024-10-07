@@ -6,7 +6,7 @@
   background-color:var(--background-color);
   width: 100%;
   height: 100%;
-  /* padding: 10px; */
+  padding: 10px;
   box-sizing: border-box;
   }
   
@@ -22,13 +22,21 @@
   }
   
   .queue-management-header-button {
-    background-color: var(--button-color);
-    color: white;
-    padding: 8px 8px;
+    background-color: white;
+    color: black;
+    padding: 5px 10px;
     border: none;
     font-size: 14px;
     border-radius: 5px;
     cursor: pointer;
+  }
+  .queue-management-header-button:hover{
+    background-color: var(--button-color);
+    color: white;
+  }
+  .queue-management-header-button.active {
+    background-color: var(--sideBar-bg-color); 
+    color: white; 
   }
   
   .queue-management-content {

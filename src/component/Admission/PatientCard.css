@@ -47,4 +47,14 @@
     text-decoration: underline;
     cursor: pointer;
   }
-  
+  @media print {
+    .patient-card-print-button {
+      display: none;
+    }
+
+    .patient-card {
+      border: none;
+      background-color: white;
+      font-size: 14px;
+    }
+  }

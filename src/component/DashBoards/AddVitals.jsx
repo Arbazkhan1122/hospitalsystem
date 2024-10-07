@@ -55,7 +55,7 @@ const Vitals = ({patientId,newPatientVisitId}) => {
     if (newPatientVisitId || patientId) {
       fetchVitals();
     }
-  }, [newPatientVisitId, patientId]); // Dependencies to track ID changes
+  }, [newPatientVisitId, patientId,showForm]); // Dependencies to track ID changes
   
 
 
