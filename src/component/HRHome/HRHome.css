@@ -1,0 +1,32 @@
+/* Ravindra_Sanap_HRHome.css_04_10_2024_Start */
+
+
+.hrhome-navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--background-color);
+    justify-content: flex-start;
+    gap: 20px;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    padding-left: 10px;
+
+}
+
+.hrhome-navbar {
+    font-size: 16px;
+}
+
+.section.active {
+    border-bottom: 2px solid blue;
+}
+
+.section {
+    padding: 5px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+
+/* Ravindra_Sanap_HRHome.css_04_10_2024_End */

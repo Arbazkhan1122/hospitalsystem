@@ -1,0 +1,113 @@
+/* Ravindra_Sanap_EmpLeave.css_04_10_2024_Start */
+
+
+.leave-container {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.leave-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 18px;
+}
+
+.leave-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: auto;
+    background-color: white;
+}
+
+.leave-table th,
+.leave-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.leave-table th {
+    color: #333;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.leave-table tr:hover {
+    background-color: #ddd;
+}
+
+.leave-table td {
+    color: #555;
+}
+
+@media (max-width: 600px) {
+
+    .leave-table,
+    .leave-table th,
+    .leave-table td {
+        font-size: 12px;
+    }
+}
+
+.leave-pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.leave-pagination button {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.leave-pagination button.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.leave-pagination button.active {
+    background-color: #333;
+    color: white;
+}
+
+
+.leave-header {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+}
+
+.leave-button {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.nodatatoshow {
+    text-align: center;
+    background-color: rgba(212, 194, 29, 0.582);
+    padding: 10px;
+}
+
+/* Ravindra_Sanap_EmpLeave.css_04_10_2024_End */

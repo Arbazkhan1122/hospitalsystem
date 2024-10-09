@@ -255,26 +255,34 @@ const filteredPrescriptions = prescriptions.filter(prescription =>
               <th className="disPrescription-action-column">Actions</th>
             </tr>
           </thead>
-          <tbody className="disPrescription-requisition-tableBody">
-            {filteredPrescriptions.map((prescription, index) => (
-              <tr key={index}>
-                <td>{prescription.medicationId}</td>
-               <td>
-        {prescription.patientDTO?.salutation} {prescription.patientDTO?.firstName} {prescription.patientDTO?.lastName}
+   <tbody className="disPrescription-requisition-tableBody">
+  {filteredPrescriptions.map((prescription, index) => (
+    <tr key={index}>
+      <td>{prescription.medicationId}</td>
+      <td>
+        {/* Check if the prescription has patientDTO or newPatientVisitDTO and display accordingly */}
+        {prescription.patientDTO 
+          ? `${prescription.patientDTO.salutation || ''} ${prescription.patientDTO.firstName || ''} ${prescription.patientDTO.lastName || ''}`
+          : prescription.newPatientVisitDTO 
+            ? `${prescription.newPatientVisitDTO.firstName || ''} ${prescription.newPatientVisitDTO.middleName || ''} ${prescription.newPatientVisitDTO.lastName || ''}`
+            : 'Unknown Patient'
+        }
       </td>
-                <td>{prescription.requestedBy}</td>
-                 <td>{prescription.medicationDate}</td>
-                <td className="disPrescription-action-column">
-                  <button 
-                    className="disPrescription-Availability-button"
-                    onClick={() => handleViewAvailability(prescription)}
-                  >
-                    View Availability
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+      <td>{prescription.requestedBy || 'Unknown Requester'}</td>
+      <td>{prescription.medicationDate || 'Unknown Date'}</td>
+      <td className="disPrescription-action-column">
+        <button 
+          className="disPrescription-Availability-button"
+          onClick={() => handleViewAvailability(prescription)}
+        >
+          View Availability
+        </button>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
+
         </table>
 
         {/* <div className="disPrescription-pagination">
