@@ -46,7 +46,9 @@ const LabLookUpAddNewLUp = ({ onClose }) => {
 
     try {
       await axios.post(
+
         `${API_BASE_URL}/lab-lookups/create-lookup`,
+
         payload
       );
       onClose(); // Close modal on successful submission

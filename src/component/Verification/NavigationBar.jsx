@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './NavigationBar.module.css';
+import './NavigationBar.css';
 
 function NavigationBar() {
   const [activeTab, setActiveTab] = useState('Inventory');
@@ -12,45 +12,45 @@ function NavigationBar() {
   };
 
   return (
-    <div className={styles.navigationBarContainer}>
-      <div className={styles.navigationBarTabMenu}>
+    <div className="navigationBarContainer">
+      <div className="navigationBarTabMenu">
         <button
-          className={`${styles.navigationBarTabButton} ${activeTab === 'Inventory' ? styles.navigationBarActive : ''}`}
+          className={`navigationBarTabButton ${activeTab === 'Inventory' ? 'navigationBarActive' : ''}`}
           onClick={() => handleTabClick('Inventory')}
         >
           Inventory
         </button>
         <button
-          className={`${styles.navigationBarTabButton} ${activeTab === 'Pharmacy' ? styles.navigationBarActive : ''}`}
+          className={`navigationBarTabButton ${activeTab === 'Pharmacy' ? 'navigationBarActive' : ''}`}
           onClick={() => handleTabClick('Pharmacy')}
         >
           Pharmacy
         </button>
       </div>
-      <div className={styles.navigationBarActionButtons}>
+      <div className='navigationBarActionButtons'>
         {activeTab === 'Inventory' && (
           <>
             <Link to="/requisition">
-              <button className={styles.navigationBarActionButton}>Requisition</button>
+              <button className='navigationBarActionButton'>Requisition</button>
             </Link>
             <Link to="/purchase-request">
-              <button className={styles.navigationBarActionButton}>Purchase Request</button>
+              <button className='navigationBarActionButton'>Purchase Request</button>
             </Link>
-            <Link to="/purchase-order">
-              <button className={styles.navigationBarActionButton}>Purchase Order</button>
+            <Link to="/verify-purchase-order">
+              <button className='navigationBarActionButton'>Purchase Order</button>
             </Link>
             <Link to="/gr-quality-inspection">
-              <button className={styles.navigationBarActionButton}>GR Quality Inspection</button>
+              <button className='navigationBarActionButton'>GR Quality Inspection</button>
             </Link>
           </>
         )}
         {activeTab === 'Pharmacy' && (
           <>
-            <Link to="/purchase-order">
-              <button className={styles.navigationBarActionButton}>Purchase Order</button>
+            <Link to="/verify-purchase-order">
+              <button className='navigationBarActionButton'>Purchase Order</button>
             </Link>
             <Link to="/requisitionPharmacy">
-              <button className={styles.navigationBarActionButton}>Requisition</button>
+              <button className='navigationBarActionButton'>Requisition</button>
             </Link>
           </>
         )}

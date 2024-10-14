@@ -3,14 +3,13 @@
     border: 2px solid black;
     padding: 20px;
     border-radius: 5px;
-    max-width: 400px;
     margin: 20px auto;
-    font-family: Arial, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
   }
   
   .patient-header {
     text-align: center;
-    font-size: 18px;
+    font-size: var(--heading-font);
     margin-bottom: 15px;
   }
   
@@ -35,11 +34,7 @@
   
   .printer-info {
     margin-top: 15px;
-    font-size: 14px;
-  }
-  
-  .printer-name {
-    font-weight: bold;
+    font-size: var(--font-size);
   }
   
   .change-link {

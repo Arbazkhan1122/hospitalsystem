@@ -72,7 +72,7 @@ const SurgicalHistory = ({patientId,newPatientVisitId}) => {
     };
   
     fetchSurgicalHistories();
-  }, [patientId, newPatientVisitId]); // Dependencies to track patient IDs
+  }, [patientId, newPatientVisitId,isUpdateModalOpen,isAddModalOpen]); // Dependencies to track patient IDs
   
   const handleAddSurgicalHistory = async () => {
     const Surgical =

@@ -74,7 +74,7 @@ const LabTestComponent = () => {
             console.log(err);
           })
     );
-  }, []);
+  }, [showPopup]);
 
   const handleAddNewLabTestClick = () => {
     setShowPopup(true); // Show the popup
@@ -156,7 +156,7 @@ const LabTestComponent = () => {
                   <td>{test?.componentRange}</td>
                   <td>{test?.rangeDescription}</td>
                   <td>{test?.method}</td>
-                  <td>{test?.controleType}</td>
+                  <td>{test?.controlType}</td>
                   <td>{test?.valueType}</td>
                   <td>{test?.valueLookup?.lookupName}</td>
                   {/* <td>

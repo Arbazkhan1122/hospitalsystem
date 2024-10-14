@@ -79,12 +79,32 @@
   .pat-investigations label {
     margin-right: 10px;
   }
-  
+
   .pat-investigations .pat-lab-tests ul {
     list-style: none;
     padding-left: 0;
   }
-  
+  .pat-lab-tests h3{
+    text-align: start;
+  }
+  .pat-lab-test-subdiv
+  {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+  .pat-lab-test-subdiv-label
+  {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .pat-lab-test-subdiv-label-checkBox
+  {
+    width: fit-content !important;
+  }
   .pat-investigations .pat-lab-tests li {
     display: flex;
     align-items: center;
@@ -99,11 +119,37 @@
     margin-right: 10px;
   }
   
-  .pat-save {
-    width: 20%;
+  .pat-save-add{
+    margin-top: 5px;
     background-color: var(--button-color);
     color: white;
-    padding: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .pat-form-group-subdiv
+  {
+    width: 100%;
+    padding: 5px 0px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  .pat-close
+  {
+    padding: 5px 8px;
+    margin-left: 5px;
+    border-radius: 50%;
+    border: none;
+    background-color: #dc3545;
+    color: white;
+  }
+  .pat-save {
+    width: 15%;
+    background-color: var(--button-color);
+    color: white;
+    padding: 5px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;

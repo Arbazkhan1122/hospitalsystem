@@ -1,6 +1,5 @@
 .onlineAppointment-list {
   padding: 20px;
-  background-color: #f9f9f9;
 }
 
 .onlineAppointment-tab-header {
@@ -18,7 +17,7 @@
 }
 
 .onlineAppointment-tab.active {
-  background-color: #007bff;
+  background-color: var(--button-bg-color);
   color: white;
 }
 
@@ -78,7 +77,7 @@
 .onlineAppointment-print-btn {
   padding: 5px 10px;
   border: none;
-  background-color: #007bff;
+  background-color: var(--button-color);
   color: white;
   cursor: pointer;
   margin-right: 10px;
@@ -89,27 +88,37 @@
 .onlineAppointment-search-btn:hover, 
 .onlineAppointment-export-btn:hover, 
 .onlineAppointment-print-btn:hover {
-  background-color: #0056b3;
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+  /* border: 1px solid var(--button-hover-border-color); */
 }
 
 .onlineAppointment-star-btn, 
 .onlineAppointment-minus-btn {
-  padding: 5px;
+  padding: 5px 11px;
   background-color: #f0f0f0;
   cursor: pointer;
   margin-left: 5px;
   border-radius: 50%;
 }
-
-.onlineAppointment-search-bar {
+.onlineAppointment-searchContainer{
+  display: flex;
+  justify-content: space-between;
   margin-top: 10px;
+  align-items: center;
+}
+.onlineAppointment-search-bar {
+  background-color: #f2f2f2;
+  height: fit-content;
 }
 
 .onlineAppointment-search-bar input {
   padding: 5px;
-  border: 1px solid #ccc;
   border-radius: 4px;
   margin-right: 10px;
+  background-color: transparent;
+  outline: none;
+  border: none;
 }
 
 .onlineAppointment-results-actions {
@@ -124,18 +133,16 @@
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
+  background-color: #f2f2f2;
 }
 
 .onlineAppointment-patientList-table th, 
 .onlineAppointment-patientList-table td {
   padding: 10px;
-  border: 1px solid #ccc;
   text-align: left;
 }
 
 .onlineAppointment-patientList-table th {
-  background-color: #007bff;
-  color: white;
   position: relative;
 }
 
@@ -151,7 +158,6 @@
 .onlineAppointment-resizer {
   width: 5px;
   height: 100%;
-  background-color: #ccc;
   position: absolute;
   top: 0;
   right: 0;

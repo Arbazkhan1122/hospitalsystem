@@ -2,6 +2,15 @@ import React, { useState } from 'react'
 
 const MyFavPatient = ({patients}) => {
     const [searchTerm, setSearchTerm] = useState("");
+    const [showWard, setShowWard] = useState(false);
+
+  const handleCloseWard = () => setShowWard(false);
+  const handleShowWard = () => setShowWard(true);
+
+  const [showTransfer, setShowTransfer] = useState(false);
+
+  const handleCloseTransfer = () => setShowTransfer(false);
+  const handleShowTransfer = () => setShowTransfer(true);
   return (
     <div className="MyPatientsTable-tableContainer">
               <div className="Nephrology-Header">

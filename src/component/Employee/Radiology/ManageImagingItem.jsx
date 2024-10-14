@@ -125,7 +125,7 @@ const ManageImagingItem = () => {
 
   return (
     <div className="manage-imaging-item-container">
-      <div className='manage-imaging-sub-item-container'>
+      <div>
         <button
           className="manage-imaging-item-btn"
           onClick={() => handleOpenModal()}

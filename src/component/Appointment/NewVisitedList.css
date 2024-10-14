@@ -10,8 +10,9 @@
   margin-bottom: 20px;
 }
 
-.newPatient-header h3 {
-  color: #007bff;
+.newPatient-header h5 {
+  color: black;
+  font-size: var(--heading-font);
 }
 
 .newPatient-new-patient {
@@ -28,22 +29,29 @@
   color: var(--button-hover-text-color);
   background-color: var(--button-hover-background-color);
 }
-
-.newPatient-search-bar {
+.newPatient-searchContainer{
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  align-items: center;
 }
-
+.newPatient-search-bar {
+  width: 200px;
+  background-color: #f2f2f2;
+  padding: 5px;
+}
+.newPatientVisitPrint{
+  background-color: var(--button-color);
+  padding: 5px 10px;
+  margin-left: 5px;
+}
 .newPatient-search-bar input {
-  padding: 10px;
-  width: 48%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: none;
+  background-color: transparent;
+  outline: none;
 }
 
 .newPatient-action-button {
-  background-color: #007bff;
+  background-color: var(--button-color);
   color: white;
   border: none;
   padding: 5px 10px;

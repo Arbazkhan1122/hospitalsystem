@@ -103,7 +103,6 @@ const PatientList = () => {
             </select>
 
             <input type="text" placeholder="Search..." />
-            <FaSearch className="PatientSearchIcon" />
           </div>
         </div>
       </div>

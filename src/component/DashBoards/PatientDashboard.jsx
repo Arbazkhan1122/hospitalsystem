@@ -16,17 +16,15 @@ import RadiologyReportDoc from "./RadiologyReportDoc";
 import VisitTable from "./EncounterHistory";
 import LabReportResult from "./LabReportResult";
 
-const Section = ({ title, handleAddClick, children, type }) => (
+const Section = ({ title, handleAddClick, children }) => (
   <div className="Patient-Dashboard-firstBox">
     <div className="Patient-Dashboard-subNav">
       <div className="Patient-Dashboard-labAndImg">
         <span className="Patient-Dashboard-spanText">{title}</span>
       </div>
-      {!type && (
-        <button className="Patient-Dashboard-btnAdd" onClick={handleAddClick}>
-          + Add
-        </button>
-      )}
+      <button className="Patient-Dashboard-btnAdd" onClick={handleAddClick}>
+        + Add
+      </button>
     </div>
     {children || (
       <div className="Patient-Dashboard-inputOne">No Records Found</div>
@@ -34,14 +32,9 @@ const Section = ({ title, handleAddClick, children, type }) => (
   </div>
 );
 
-const PatientDashboard = ({
-  isPatientOPEN,
-  patient,
-  setIsPatientOPEN,
-  type,
-}) => {
-  console.log(patient.admissionId);
-  
+const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
+
+  console.log(patient);
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
   const [selectedRadiology, setSelectedRadiology] = useState(null);
@@ -57,11 +50,19 @@ const PatientDashboard = ({
   const [LabRequest, setLabRequest] = useState([]);
   const [showRadioReport, setShowRadioReport] = useState(false);
   const [ShowLabReport, setShowLabReport] = useState(false);
+  console.log(patient);
+
   useEffect(() => {
     // Fetch medications data from the API
     const fetchMedications = async () => {
+      let endpoint = "";
+      if (patient?.newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/medications/by-opd-id?opdPatientId=${patient?.newPatientVisitId}`;
+      } else if (patient?.admissionId) {
+        endpoint = `${API_BASE_URL}/medications/by-ipd-id?ipdPatientId= ${patient?.patientDTO?.patientId || patient?.patientId}`;
+      }
       try {
-        const response = await fetch(`${API_BASE_URL}/medications`);
+        const response = await fetch(endpoint);
         const data = await response.json();
         console.log(data);
 
@@ -77,10 +78,10 @@ const PatientDashboard = ({
   useEffect(() => {
     const fetchVitals = () => {
       let endpoint = "";
-      if (patient.newPatientVisitId) {
-        endpoint = `${API_BASE_URL}/vitals/get-by-opd-patient-id/${patient.newPatientVisitId}`;
-      } else if (patient.admissionId) {
-        endpoint = `${API_BASE_URL}/vitals/get-by-in-patient-id/${patient.admissionId}`;
+      if (patient?.newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/vitals/get-by-opd-patient-id/${patient?.newPatientVisitId}`;
+      } else if (patient?.admissionId) {
+        endpoint = `${API_BASE_URL}/vitals/get-by-in-patient-id/${patient?.patientDTO?.patientId || patient?.patientId}`;
       }
 
       // If an endpoint is determined, make the API call
@@ -101,16 +102,20 @@ const PatientDashboard = ({
     };
 
     fetchVitals();
-  }, [patient.newPatientVisitId, patient.admissionId]); // Dependencies
+  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies
 
   useEffect(() => {
     const fetchAllergies = () => {
       let endpoint = "";
-      if (patient.newPatientVisitId) {
-        endpoint = `${API_BASE_URL}/allergies/by-newVisitPatientId/${patient.newPatientVisitId}`;
-      } else if (patient.admissionId) {
-        endpoint = `${API_BASE_URL}/allergies/by-patientId/${patient.admissionId}`;
+
+      // Check if newPatientVisitId is present
+      if (patient?.newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/allergies/by-newVisitPatientId/${patient?.newPatientVisitId}`;
+      } else if (patient?.admissionId) {
+        endpoint = `${API_BASE_URL}/allergies/by-patientId/${patient?.patientDTO?.patientId || patient?.patientId}`;
       }
+
+      // If an endpoint is determined, make the API call
       if (endpoint) {
         axios
           .get(endpoint)
@@ -128,17 +133,17 @@ const PatientDashboard = ({
     };
 
     fetchAllergies();
-  }, [patient.newPatientVisitId, patient.admissionId]); // Dependencies to re-run useEffect when IDs change
+  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies to re-run useEffect when IDs change
 
   useEffect(() => {
     const fetchActiveProblems = () => {
       let endpoint = "";
 
       // Check if newPatientVisitId is present
-      if (patient.newPatientVisitId) {
-        endpoint = `${API_BASE_URL}/active-problems/by-newVisitPatientId/${patient.newPatientVisitId}`;
-      } else if (patient.admissionId) {
-        endpoint = `${API_BASE_URL}/active-problems/by-patientId/${patient.admissionId}`;
+      if (patient?.newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/active-problems/by-newVisitPatientId/${patient?.newPatientVisitId}`;
+      } else if (patient?.admissionId) {
+        endpoint = `${API_BASE_URL}/active-problems/by-patientId/${patient?.patientDTO?.patientId || patient?.patientId}`;
       }
 
       // If an endpoint is determined, make the API call
@@ -157,17 +162,17 @@ const PatientDashboard = ({
     };
 
     fetchActiveProblems();
-  }, [patient.newPatientVisitId, patient.admissionId]); // Dependencies for re-fetching when IDs change
+  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies for re-fetching when IDs change
 
   useEffect(() => {
     const fetchImagingRequisitions = () => {
       let endpoint = "";
 
       // Check if newPatientVisitId or admissionId is present
-      if (patient.newPatientVisitId) {
-        endpoint = `${API_BASE_URL}/imaging-requisitions/by-opd-patient-id?opdPatientId=${patient.newPatientVisitId}`;
-      } else if (patient.admissionId) {
-        endpoint = `${API_BASE_URL}/imaging-requisitions/by-in-patient-id?inPatientId=${patient.admissionId}`;
+      if (patient?.newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/imaging-requisitions/by-opd-patient-id?opdPatientId=${patient?.newPatientVisitId}`;
+      } else if (patient?.admissionId) {
+        endpoint = `${API_BASE_URL}/imaging-requisitions/by-ipd-patient-id?ipdPatientId=${patient?.patientDTO?.patientId || patient?.patientId}`;
       }
 
       // If an endpoint is determined, make the API call
@@ -187,17 +192,17 @@ const PatientDashboard = ({
     };
 
     fetchImagingRequisitions();
-  }, [patient.newPatientVisitId, patient.admissionId]); // Dependencies to re-run useEffect when patient IDs change
+  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies to re-run useEffect when patient IDs change
 
   useEffect(() => {
     const fetchLabRequests = () => {
       let endpoint = "";
 
       // Check if newPatientVisitId or admissionId is present
-      if (patient.newPatientVisitId) {
-        endpoint = `${API_BASE_URL}/lab-requests/by-opd-patient-id?opdPatientId=${patient.newPatientVisitId}`;
-      } else if (patient.admissionId) {
-        endpoint = `${API_BASE_URL}/lab-requests/by-in-patient-id?inPatientId=${patient.admissionId}`;
+      if (patient?.newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/lab-requests/by-opd-patient-id?opdPatientId=${patient?.newPatientVisitId}`;
+      } else if (patient?.admissionId) {
+        endpoint = `${API_BASE_URL}/lab-requests/by-ipd-patient-id?ipdPatientId=${patient?.patientDTO?.patientId || patient?.patientId}`;
       }
 
       // If an endpoint is determined, make the API call
@@ -217,27 +222,27 @@ const PatientDashboard = ({
     };
 
     fetchLabRequests();
-  }, [patient.newPatientVisitId, patient.admissionId]); // Dependencies to track patient IDs
+  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies to track patient IDs
 
-  useEffect(() => {
-    if (
-      patient &&
-      (patient.patientId !== 0 || patient.newPatientVisitId !== 0)
-    ) {
-      const filtered = medications
-        .filter(
-          (medication) =>
-            (patient.patientId &&
-              medication.patientDTO.patientId === patient.patientId) ||
-            (patient.newPatientVisitId &&
-              medication.newPatientVisitDTO?.newPatientVisitId ===
-                patient.newPatientVisitId)
-        )
-        .sort((a, b) => new Date(b.lastTaken) - new Date(a.lastTaken)); // Sort by recent date
+  // useEffect(() => {
+  //   if (
+  //     patient &&
+  //     (patient.patientId !== 0 || patient.newPatientVisitId !== 0)
+  //   ) {
+  //     const filtered = medications
+  //       .filter(
+  //         (medication) =>
+  //           (patient.patientId &&
+  //             medication.patientDTO.patientId === patient.patientId) ||
+  //           (patient.newPatientVisitId &&
+  //             medication.newPatientVisitDTO?.newPatientVisitId ===
+  //               patient.newPatientVisitId)
+  //       )
+  //       .sort((a, b) => new Date(b.lastTaken) - new Date(a.lastTaken)); // Sort by recent date
 
-      setFilteredMedications(filtered);
-    }
-  }, [medications, patient.patientId, patient.newPatientVisitId]);
+  //     setFilteredMedications(filtered);
+  //   }
+  // }, [medications, patient.patientId, patient.newPatientVisitId]);
 
   const ShowImagingReport = (item) => {
     setSelectedRadiology(item);
@@ -254,16 +259,17 @@ const PatientDashboard = ({
       case "clinical":
         return (
           <VitalsPage
-            patientId={patient.admissionId}
-            newPatientVisitId={patient.newPatientVisitId}
+            patientId={patient?.patientDTO?.patientId || patient?.patientId}
+            newPatientVisitId={patient?.newPatientVisitId}
           />
         );
       case "actionRecord":
         return (
           <ActionRecordPage
-            patientId={patient.admissionId}
+          patient={patient}
+            patientId={patient?.patientDTO?.patientId || patient?.patientId}
             setActiveSection={setActiveSection}
-            newPatientVisitId={patient.newPatientVisitId}
+            newPatientVisitId={patient?.newPatientVisitId}
             employeeId={
               patient?.employeeDTO?.employeeId ||
               patient?.admittedDoctorDTO?.employeeId
@@ -273,14 +279,14 @@ const PatientDashboard = ({
       case "problems":
         return (
           <Problems
-            patientId={patient.admissionId}
-            newPatientVisitId={patient.newPatientVisitId}
+            patientId={patient?.patientDTO?.patientId || patient?.patientId}
+            newPatientVisitId={patient?.newPatientVisitId}
           />
         );
       case "Vitals":
         return (
           <AddVitalsForm
-            patientId={patient.admissionId}
+            patientId={patient?.patientDTO?.patientId || patient?.patientId}
             newPatientVisitId={patient.newPatientVisitId}
           />
         );
@@ -289,21 +295,21 @@ const PatientDashboard = ({
       case "Allergies":
         return (
           <Allergy
-            patientId={patient.admissionId}
+            patientId={patient?.patientDTO?.patientId || patient?.patientId}
             newPatientVisitId={patient.newPatientVisitId}
           />
         );
       case "Clinical-Document":
         return (
           <CinicalDocument
-            patientId={patient.admissionId}
+            patientId={patient?.patientDTO?.patientId || patient?.patientId}
             newPatientVisitId={patient.newPatientVisitId}
           />
         );
       case "encounte-rHistory":
         return (
           <Problems
-            patientId={patient.admissionId}
+            patientId={patient?.patientDTO?.patientId || patient?.patientId}
             newPatientVisitId={patient.newPatientVisitId}
           />
         );
@@ -320,27 +326,21 @@ const PatientDashboard = ({
             <div className="Patient-Dashboard-divOne">
               <div className="Patient-Dashboard-logoOne"></div>
               <button className="Patient-Dashboard-btnIpd">
-                {patient?.admissionId ? "IPD" : "OPD"}
+                {patient.admissionId ? "IPD" : "OPD"}
               </button>
             </div>
             <span className="Patient-Dashboard-textName">{`${
               patient?.firstName || patient?.patientDTO?.firstName
-            } ${patient?.lastName || patient?.patientDTO?.lastName}`}</span>
+            ||patient?.patientFirstName} ${patient?.lastName || patient?.patientDTO?.lastName || patient?.patientLastName}`}</span>
             <br></br>
             <span className="Patient-Dashboard-ageGen">{`${
-              patient?.age || patient?.patientDTO?.age
-            }/${patient?.gender || patient?.patientDTO?.gender}`}</span>
+              patient?.age || patient?.patientDTO?.age || patient?.patientAge}/${patient?.gender || patient?.patientDTO?.gender ||patient?.patientGender}`}</span>
           </div>
           <hr></hr>
           <div className="Patient-Dashboard-divTwoDetails">
-            <span className="Patient-Dashboard-detailHeading">
-              Hospital No:
-            </span>
-            <span>{patient?.patientDTO?.hospitalNo}</span>
-            <br></br>
             <div className="Patient-Dashboard-ward">
-              <span className="Patient-Dashboard-detailHeading">Ward/Bed:</span>
-              <span> Private Ward/09</span>
+              <span className="Patient-Dashboard-detailHeading">Ward/Bed: {patient?.wardName} / {patient?.bedNumber}</span>
+              <span></span>
               <br></br>
             </div>
             <div className="Patient-Dashboard-attending">
@@ -349,13 +349,13 @@ const PatientDashboard = ({
               </span>
               <span>{`${
                 patient?.employeeDTO?.salutation ||
-                patient?.admittedDoctorDTO?.salutation
+                patient?.admittedDoctorDTO?.salutation || patient?.doctorSalutationName
               } ${
                 patient?.employeeDTO?.firstName ||
-                patient?.admittedDoctorDTO?.firstName
+                patient?.admittedDoctorDTO?.firstName || patient?.doctorFirstName
               } ${
                 patient?.employeeDTO?.lastName ||
-                patient?.admittedDoctorDTO?.lastName
+                patient?.admittedDoctorDTO?.lastName || patient?.doctorLastName
               }`}</span>
             </div>
           </div>
@@ -401,7 +401,7 @@ const PatientDashboard = ({
             </div>
           </div>
 
-          <div className="Patient-Dashboard-boxOne">
+          {/* <div className="Patient-Dashboard-boxOne">
             <div className="Patient-Dashboard-textAndLogo">
               <span
                 className="Patient-Dashboard-textOne"
@@ -413,7 +413,7 @@ const PatientDashboard = ({
                 Clinical Documents
               </span>
             </div>
-          </div>
+          </div> */}
 
           <div className="Patient-Dashboard-boxOne">
             <div className="Patient-Dashboard-textAndLogo">
@@ -464,7 +464,6 @@ const PatientDashboard = ({
               setActiveSection("actionRecord");
               setPrevAction(activeSection);
             }}
-            type={type}
             children={
               <>
                 {" "}
@@ -524,7 +523,6 @@ const PatientDashboard = ({
           <Section
             title="🖼 Imaging"
             handleAddClick={() => setActiveSection("actionRecord")}
-            type={type}
             children={
               <>
                 {" "}
@@ -586,10 +584,9 @@ const PatientDashboard = ({
           <Section
             title="⚠ Active Problems"
             handleAddClick={() => setActiveSection("problems")}
-            type={type}
             children={
               <>
-      
+                {" "}
                 {activeProblem.length > 0 ? (
                   <div className="Patient-Dashboard-inputSection">
                     <table
@@ -633,11 +630,10 @@ const PatientDashboard = ({
               setPrevAction(activeSection);
               setActiveSection("actionRecord");
             }}
-            type={type}
             children={
               <>
                 {" "}
-                {filteredMedications.length > 0 ? (
+                {medications.length > 0 ? (
                   <div className="Patient-Dashboard-inputSection">
                     <table
                       border="1"
@@ -655,7 +651,7 @@ const PatientDashboard = ({
                         </tr>
                       </thead>
                       <tbody>
-                        {filteredMedications.map((medication) => (
+                        {medications.map((medication) => (
                           <tr key={medication.medicationId}>
                             <td className="Patient-Dashboard-td">
                               {medication.medicationName}
@@ -848,11 +844,13 @@ const PatientDashboard = ({
     >
       <nav className="Patient-Dashboard-navbar">
         <div className="Patient-Dashboard-navText">
+          <div className="Patient-Dashboard-navLogoOne"></div>
           <span
             onClick={() => {
               setIsPatientOPEN(false);
             }}
           >
+            {" "}
             🏠 Home
           </span>
         </div>

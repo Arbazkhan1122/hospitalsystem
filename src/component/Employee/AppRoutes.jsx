@@ -51,7 +51,6 @@ import PaymentModeSetting from './Bank/PaymentModeSetting';
 import PriceCategory from './Bank/PriceCategory';
 import PaymentExportConfiguration from './Bank/PaymentExportConfiguration';
 import EmployeeHeader from './EmployeeHeader';
-import FilmTypeList from './Radiology/FilmTypeList';
 
 
 const AppRoutes = () => {
@@ -81,7 +80,6 @@ const AppRoutes = () => {
       <Route path="manage-user" element={<ManageUsers/>}/>
       <Route path="manage-role" element={<ManageRole/>}/>
       <Route  path="manage-municipality" element={<ManageMunicipality/>}/>
-      <Route path='film-type' element={<FilmTypeList/>} />
     <Route path="manage-country" element={<ManageCountry/>}/>
      <Route path="manage-subdivision" element={<ManageSubDivision/>}/>
      <Route path="manage-reaction" element={<ManageReaction/>}/>

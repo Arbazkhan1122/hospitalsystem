@@ -1,17 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./ClinicalMedication.css"; // Separate CSS file for uniqueness
 import { startResizing } from "../TableHeadingResizing/resizableColumns";
 import axios from "axios";
 import { API_BASE_URL } from "../api/api";
 
-const ClinicalMedication = ({patientId,newPatientVisitId}) => {
+const ClinicalMedication = ({ patientId, newPatientVisitId }) => {
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
   const [showForm, setShowForm] = useState(false);
+  const [medicationType, setMedicationType] = useState([]);
+  const [medications, setMedications] = useState([]);
   const [medicationList, setMedicationList] = useState([
     {
-      type: "Generic Type", 
-      medicationName: "Medication Example",
+      type: "", // Initially empty; populate based on form selection
+      medicationName: "",
       dose: "",
       route: "mouth",
       frequency: 0,
@@ -19,15 +21,37 @@ const ClinicalMedication = ({patientId,newPatientVisitId}) => {
       comments: "",
       status: "pending",
       medicationDate: new Date().toLocaleDateString(),
+      ...(patientId ? { patientDTO: { patientId } } : { newPatientVisitDTO: { newPatientVisitId } }),
     },
   ]);
 
   const handleAddClick = () => setShowForm(true);
-  const handleCloseForm = () => setShowForm(false);
+  const handleCloseForm = () => {
+    setShowForm(false);
+    clearForm();
+  };
+
+  // Clear form after submission or cancel
+  const clearForm = () => {
+    setMedicationList([
+      {
+        type: "",
+        medicationName: "",
+        dose: "",
+        route: "mouth",
+        frequency: 0,
+        lastTaken: "",
+        comments: "",
+        status: "pending",
+        medicationDate: new Date().toLocaleDateString(),
+        ...(patientId ? { patientDTO: { patientId } } : { newPatientVisitDTO: { newPatientVisitId } }),
+      },
+    ]);
+  };
 
   // Handle input change for the form fields
   const handleInputChange = (e, field) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     setMedicationList((prevList) => {
       const updatedList = [...prevList];
       updatedList[0][field] = value; // Update first medication for simplicity
@@ -35,21 +59,55 @@ const ClinicalMedication = ({patientId,newPatientVisitId}) => {
     });
   };
 
+
+  useEffect(() => {
+    const fetchMedications = async () => {
+      let endpoint = "";
+      if (newPatientVisitId) {
+        endpoint = `${API_BASE_URL}/medications/by-opd-id?opdPatientId=${newPatientVisitId}`;
+      } else if (patientId) {
+        endpoint = `${API_BASE_URL}/medications/by-ipd-id?ipdPatientId= ${patientId}`;
+      }
+      try {
+        const response = await fetch(endpoint);
+        const data = await response.json();
+        setMedications(data);
+      } catch (error) {
+        console.error("Error fetching medications:", error);
+      }
+    };
+
+    fetchMedications();
+  }, []);
+
+
+
+  useEffect(() => {
+    axios
+      .get(`${API_BASE_URL}/add-items`)
+      .then((response) => {
+        setMedicationType(response.data);
+      })
+      .catch((error) => console.error("Error fetching medication types:", error));
+  }, []);
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(medicationList);
-
-    try {
+    try { 
+      console.log(medicationList);
+      
       const response = await axios.post(
         `${API_BASE_URL}/medications/save-medication-details`,
-        medicationList
+        medicationList // Sending the entire formData array as the payload
       );
-      console.log("Medication added successfully:", response.data);
-      setShowForm(false);
+      console.log("Success:", response.data);
     } catch (error) {
-      console.error("Error submitting medication:", error);
+      console.error("Error submitting medication list:", error);
     }
   };
+
+
 
   return (
     <div className="clinical-medication-container">
@@ -73,8 +131,7 @@ const ClinicalMedication = ({patientId,newPatientVisitId}) => {
                 "Route",
                 "Last Taken",
                 "Frequency",
-                "Comments",
-                "Edit",
+                "Comments"
               ].map((header, index) => (
                 <th
                   key={index}
@@ -85,10 +142,7 @@ const ClinicalMedication = ({patientId,newPatientVisitId}) => {
                     <span>{header}</span>
                     <div
                       className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
+                      onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
                     ></div>
                   </div>
                 </th>
@@ -96,7 +150,7 @@ const ClinicalMedication = ({patientId,newPatientVisitId}) => {
             </tr>
           </thead>
           <tbody>
-            {medicationList.map((medication, index) => (
+            {medications.map((medication, index) => (
               <tr key={index}>
                 <td>{medication.medicationName}</td>
                 <td>{medication.type}</td>
@@ -105,16 +159,11 @@ const ClinicalMedication = ({patientId,newPatientVisitId}) => {
                 <td>{medication.lastTaken}</td>
                 <td>{medication.frequency}</td>
                 <td>{medication.comments}</td>
-                <td>
-                  {/* Implement Edit functionality here */}
-                  <button>Edit</button>
-                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-
       <div className="clinical-medication-add-new-section">
         {showForm && (
           <div className="clinical-add-medication-form">
@@ -131,19 +180,36 @@ const ClinicalMedication = ({patientId,newPatientVisitId}) => {
               <div className="clinical-medication-form-row">
                 <label>Type*:</label>
                 <div className="clinical-medication-form-row-subdiv">
-                  <input type="checkbox" name="type" /> Current
-                  <input type="checkbox" name="type" /> Home
+                  <input
+                    type="checkbox"
+                    name="type"
+                    onChange={(e) => handleInputChange(e, "type")}
+                    value="current"
+                  />
+                  Current
+                  <input
+                    type="checkbox"
+                    name="type"
+                    onChange={(e) => handleInputChange(e, "type")}
+                    value="home"
+                  />
+                  Home
                 </div>
               </div>
               <div className="clinical-medication-form-row">
                 <label>Name*:</label>
-                <input
-                  type="text"
-                  placeholder="Medication Name"
+                <select
                   name="medicationName"
-                  required
                   onChange={(e) => handleInputChange(e, "medicationName")}
-                />
+                  required
+                >
+                  <option value="">Select Medication</option>
+                  {medicationType.map((medication, index) => (
+                    <option key={index} value={medication.itemName}>
+                      {medication.itemName}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="clinical-medication-form-row">
                 <label>Dose*:</label>
@@ -194,10 +260,7 @@ const ClinicalMedication = ({patientId,newPatientVisitId}) => {
                   onChange={(e) => handleInputChange(e, "comments")}
                 ></textarea>
               </div>
-              <button
-                type="submit"
-                className="clinical-medication-add-button"
-              >
+              <button type="submit" className="clinical-medication-add-button">
                 Add
               </button>
             </form>

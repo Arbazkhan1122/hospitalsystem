@@ -125,13 +125,13 @@ const StockList = () => {
             <tbody>
               {filteredItems.map(item => (
                 <tr key={item.id}>
-                  <td>{item.inventory}</td>
-                  <td>{item.subCategory}</td>
-                  <td>{item.itemName}</td>
-                  <td>{item.itemCode}</td>
-                  <td>{item.unitOfMeasurement}</td>
-                  <td>{item.unitQuantity}</td>
-                  <td>{item.minStockQuantity}</td>
+                  <td>{item?.inventory}</td>
+                  {/* <td>{item?.subCategory}</td> */}
+                  <td>{item?.itemName}</td>
+                  <td>{item?.itemCode}</td>
+                  {/* <td>{item?.unitOfMeasurement}</td> */}
+                  <td>{item?.unitQuantity}</td>
+                  <td>{item?.minStockQuantity}</td>
                   <td>
                     <button className="stock-view-button">View</button>
                     <button

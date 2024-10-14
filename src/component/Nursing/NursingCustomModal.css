@@ -17,6 +17,7 @@
     border-radius: 8px;
     width: 90%;
     height: 90vh;
+    overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     animation: modalFadeIn 0.3s ease-in-out;
   }
@@ -48,11 +49,11 @@
     color: white;
   }
   
-  .Nursing-close-button {
+  /* .Nursing-close-button {
     font-size: 1.2rem;
     background-color: transparent;
     color: #333;
-  }
+  } */
   
   @keyframes modalFadeIn {
     from {

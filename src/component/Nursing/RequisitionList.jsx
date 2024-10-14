@@ -101,7 +101,7 @@ const RequisitionList = () => {
                                 <td>{item.medicationDate || 'N/A'}</td>
                                 <td>pending</td>
                                 <td>{item.medicationName || 'N/A'}</td>
-                                <td><button onClick={()=>handleClick(item)}>View</button></td>
+                                <td><button className='RequisitionList-button' onClick={()=>handleClick(item)}>View</button></td>
                                 {/* <td>{item.comments || 'N/A'}</td> */}
                                
                             </tr>
@@ -126,11 +126,8 @@ const RequisitionList = () => {
                                     <td>{selectedItem.medicationName}</td>
                                     <td>{selectedItem.medicationName}</td>
                                 </tr>
-                          
                         </tbody>
                     </table>
-                    
-
                 </div>
             </div> }           
         </>

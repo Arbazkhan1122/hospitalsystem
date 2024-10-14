@@ -13,14 +13,14 @@
 }
 
 .verify-purchase-title {
+  width: 50%;
   display: flex;
   align-items: center;
 }
 
 .verify-purchase-title h2 {
-  margin-left: 10px;
   font-size: 18px;
-  font-weight: 600;
+  
 }
 
 .verify-purchase-filters button {
@@ -32,34 +32,30 @@
 }
 
 .verify-purchase-filters button.active {
-  background-color: #1890ff;
+  background-color: var(--button-bg-color);
   color: white;
   border-radius: 4px;
 }
 
 .verify-purchase-date-range {
   display: flex;
+  gap: 10px;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
-
-.date-input {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
-}
-
-.date-input input {
-  margin: 0 10px;
+.verify-purchase-date-input input
+{
   padding: 5px;
-  border: 1px solid #d9d9d9;
-  border-radius: 4px;
+}
+.verify-purchase-search-input
+{
+  padding: 5px;
 }
 
 .ok-button {
   display: flex;
   align-items: center;
-  background-color: #1890ff;
+  background-color: var(--button-color);
   color: white;
   border: none;
   padding: 5px 10px;
@@ -78,12 +74,6 @@
   position: relative;
 }
 
-.search-input input {
-  padding: 5px 5px 5px 30px;
-  border: 1px solid #d9d9d9;
-  border-radius: 4px;
-}
-
 .search-input svg {
   position: absolute;
   left: 8px;
@@ -93,7 +83,7 @@
 }
 
 .print-button {
-  background-color: #1890ff;
+  background-color: var(--button-color);
   color: white;
   border: none;
   padding: 5px 10px;
@@ -110,7 +100,7 @@
 }
 
 .view-button {
-  background-color: #1890ff;
+  background-color: var(--button-color);
   color: white;
   border: none;
   padding: 5px 10px;
@@ -118,7 +108,7 @@
   cursor: pointer;
 }
 
-.verify-purchase-pagination {
+/* .verify-purchase-pagination {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -137,4 +127,4 @@
 
 .pagination-buttons span {
   margin: 0 10px;
-}
+} */

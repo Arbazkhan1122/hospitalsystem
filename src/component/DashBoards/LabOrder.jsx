@@ -21,7 +21,6 @@ const LabOrder = ({ selectedOrders, setActiveSection, patientId, newPatientVisit
   };
 
   const handleSign = async () => {
-    // Prepare the payload data for the request
     const payload = {
       labTestName: ordersData[0].labTestName,  // Assuming you're sending only the first order's lab test name
       urgency: ordersData[0].urgency,

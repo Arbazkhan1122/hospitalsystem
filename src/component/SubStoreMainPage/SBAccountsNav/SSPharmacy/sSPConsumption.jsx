@@ -36,7 +36,7 @@ function SSPConsumption() {
       {isPopupOpen && (
         <div className="sSPConsumption-popup-overlay">
           <div className="sSPConsumption-popup-content">
-            <SSPConsumInternalConsum />
+            <SSPConsumInternalConsum  onClose={handlePopupToggle}/>
             <button className="sSPConsumption-popup-close-button" onClick={handlePopupToggle}>X</button>
           </div>
         </div>

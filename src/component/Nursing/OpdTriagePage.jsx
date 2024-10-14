@@ -386,7 +386,7 @@ function OPDTriagePage({ onClose, data }) {
               <div className="triage-vital-table">
                 <div className="triage-vital-table-subDiv">
                   <h1>Vital List</h1>
-                  <button onClick={handleAddVitals}>Add New</button>
+                  <button onClick={handleAddVitals} className="triage-allergy-add-new-button">Add New</button>
                 </div>
                 {latestVitals && (
                   <div className="triage-Patient-Dashboard-tableRecord">
@@ -642,9 +642,9 @@ function OPDTriagePage({ onClose, data }) {
                   <form className="triage-complaint-form">
                     <label>Description:</label>
                     <textarea className="triage-complaint-form-textarea" name="cheifComplaint"
-            value={chiefComplaint}
-            onChange={handleChiefComplaintChange}></textarea>
-                    <button className="triage-add-complaint-btn" onClick={handleChiefComplaintSave}>
+                    value={chiefComplaint}
+                    onChange={handleChiefComplaintChange}></textarea>
+                    <button className="triage-allergy-add-new-button" onClick={handleChiefComplaintSave}>
                       Add New Complaint
                     </button>
                   </form>
@@ -656,7 +656,7 @@ function OPDTriagePage({ onClose, data }) {
                 <div className="triage-allergy-list-subdiv">
                   <h3>Allergy List</h3>
                   <button
-                    className="allergy-add-new-button"
+                    className="triage-allergy-add-new-button"
                     onClick={handleAddNew}
                   >
                     + Add New
@@ -705,7 +705,7 @@ function OPDTriagePage({ onClose, data }) {
                           <td>{allergy.comments}</td>
                           <td>
                             {/* You can add an edit button here */}
-                            <button onClick={() => updateAllergies(allergy)}>
+                            <button className="triage-allergy-add-new-button" onClick={() => updateAllergies(allergy)}>
                               Edit
                             </button>
                           </td>

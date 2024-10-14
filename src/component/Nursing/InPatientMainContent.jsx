@@ -6,7 +6,7 @@ import "../Nursing/InPatientMainContent.css";
 import { useNavigate } from "react-router-dom";
 import { Modal, Button, Form, Table, Row, Col } from "react-bootstrap";
 import { API_BASE_URL } from "../api/api";
-import MyFavPatient from "./MyFavPatient";
+// import MyFavPatient from "./MyFavPatient";
 import AllPatient from "./AllPatient";
 import Consumptions from "./Consumptions";
 import DietSheet from "./DietSheet";
@@ -317,7 +317,7 @@ function MainContent() {
         <span className="ward-info-patients">{patients} Patients</span>
       </div>
       <div className="ward-info-occupancy">
-        <span className="ward-info-occupied">{reserved} Beds Occupied</span>
+        <span className="ward-info-occupied">{patients} Beds Occupied</span>
         <span className="ward-info-vacant">{vacant} Beds Vacant</span>
       </div>
     </div>
@@ -348,7 +348,7 @@ function MainContent() {
 
   // }
 
-  const [activeTab, setActiveTab] = useState("My Patients"); // Default tab
+  const [activeTab, setActiveTab] = useState(""); // Default tab
   const [patients, setPatients] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [showDetails,setShowDetails] = useState(false);
@@ -410,27 +410,28 @@ function MainContent() {
 
   useEffect(() => {
     axios
-      .get(`${API_BASE_URL}/ward-department/get-all-ward`)
+      .get(`${API_BASE_URL}/manage-bed/all-bed-details`)
       .then((response) => {
         const data = response.data;
-
-        const wardMap = data.reduce((acc, ward) => {
-          if (!acc[ward.wardName]) {
-            acc[ward.wardName] = {
-              wardDepartmentId: ward.wardDepartmentId,
-              name: ward.wardName,
-              patients: 0,
-              reserved: 0,
-              vacant: 0,
-            };
-          }
-          acc[ward.wardName].patients += ward.reserved;
-          acc[ward.wardName].reserved += ward.reserved;
-          acc[ward.wardName].vacant += ward.vacant;
-          return acc;
-        }, {});
-        const wardData = Object.values(wardMap);
-        setWards(wardData);
+        console.log(data);
+        
+        // const wardMap = data.reduce((acc, ward) => {
+        //   if (!acc[ward.wardName]) {
+        //     acc[ward.wardName] = {
+        //       wardDepartmentId: ward.wardDepartmentId,
+        //       name: ward.wardName,
+        //       patients: 0,
+        //       reserved: 0,
+        //       vacant: 0,
+        //     };
+        //   }
+        //   acc[ward.wardName].patients += ward.reserved;
+        //   acc[ward.wardName].reserved += ward.reserved;
+        //   acc[ward.wardName].vacant += ward.vacant;
+        //   return acc;
+        // }, {});
+        // const wardData = Object.values(wardMap);
+        setWards(data);
         // console.log(wardData);
       })
       .catch((error) => {
@@ -532,8 +533,14 @@ function MainContent() {
     await axios
       .get(`${API_BASE_URL}/admissions/ward-data/${wardDepartmentId}`)
       .then((response) => {
-        setPatients(response.data); // Assuming setPatients is part of your state
-      })
+        const filteredPatients = response.data.filter(
+          (patient) =>
+            patient.patientId != null &&
+            patient.patientFirstName != null &&
+            patient.patientLastName != null
+          );
+          setPatients(filteredPatients)
+        })
       .catch((error) => {
         console.error("There was an error fetching the patient data!", error);
       });
@@ -565,11 +572,11 @@ function MainContent() {
             <WardInfoCard
               key={index}
               wardDepartmentId={ward.wardDepartmentId}
-              name={ward.name}
-              patients={ward.patients}
-              reserved={ward.reserved}
-              vacant={ward.vacant}
-              onWardClick={() => showTableData(ward.wardDepartmentId)}
+              name={ward.wardName}
+              patients={ward.totalOccupiedBedsForSelectedWard}
+              reserved={ward.totalOccupiedBedsForSelectedWard}
+              vacant={ward.totalAvailableBedsForSelectedWard}
+              onWardClick={() => showTableData(ward.wardId)}
             />
           ))}
         </div>
@@ -578,9 +585,9 @@ function MainContent() {
           <div className="inpatient-component-container">
             <a
               className={`opd-tab-item ${
-                activeTab === "My Patients" ? "active" : ""
+                activeTab === "All Patients" ? "active" : ""
               }`}
-              onClick={() => handleTabClick("My Patients")}
+              onClick={() => handleTabClick("All Patients")}
             >
               All Patients
             </a>
@@ -628,6 +635,7 @@ function MainContent() {
             >
               Diet Sheet
             </button> */}
+            
           </div>
           {activeTab === "My Patients" && (
            <MyFavPatient patients={patients}/>
@@ -895,7 +903,7 @@ function MainContent() {
             Discard Changes
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal>  
 
       <>
         <Modal show={showWard} onHide={handleCloseWard} size="lg" centered>

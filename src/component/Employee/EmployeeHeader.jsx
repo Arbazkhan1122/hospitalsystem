@@ -88,7 +88,6 @@ const EmployeeHeader = ({ onNavClick }) => {
           <ul>
             <li><Link to="/manage-imaging-type">Manage Imaging Type</Link></li>
             <li><Link to="/manage-imaging-item" >Manage Imaging Item</Link></li>
-            <li><Link to="/film-type">Film Type</Link></li>
             {/* <li><Link to="/manage-radiology-template" >Manage Radiology Template</Link></li> */}
             {/* <li><Link to="/default-signatories" >Default Signatories</Link></li> */}
           </ul>

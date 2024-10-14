@@ -98,7 +98,7 @@ left: 190px;
 }
 
 .sSPRequisition-btn-view, .sSPRequisition-btn-receive {
-  background-color: #79C879;
+  background-color:var(--button-color);
   color: white;
   border: none;
   padding: 5px 10px;

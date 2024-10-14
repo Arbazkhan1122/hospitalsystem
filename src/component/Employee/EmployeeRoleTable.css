@@ -69,7 +69,6 @@ body, html {
     padding: 20px;
     height: 90vh;
     overflow-y: scroll;
-    scrollbar-width: none;
   }
   
   .employee-role-role-table-container {

@@ -19,7 +19,7 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
     lastTaken: "",
     comments: "",
     status:"pending",
-    medicationDate:new Date().toLocaleDateString(),
+    medicationDate:new Date().toISOString().slice(0, 10),
     ...(patientId ? { patientDTO: { patientId } } : { newPatientVisitDTO: { newPatientVisitId } })
   })));
 
@@ -32,9 +32,9 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
   };
 
   const handleSubmit = async () => {
-    try { 
-      console.log(medicationList);
-      
+    console.log(medicationList);
+    
+    try {  
       const response = await axios.post(
         `${API_BASE_URL}/medications/save-medication-details`,
         medicationList // Sending the entire formData array as the payload

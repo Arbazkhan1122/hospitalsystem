@@ -34,7 +34,7 @@ const LookUps = () => {
 
   useEffect(() => {
     fetchLabLookups();
-  }, []);
+  }, [showPopup, showUpdatePopup]);
 
   const handleAddNewLabTestClick = () => {
     setShowPopup(true);

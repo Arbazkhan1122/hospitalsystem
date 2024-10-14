@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Search } from 'lucide-react';
 import './VerifyPurchaseRequests.css';
 import VerifyPurchaseDetails from './VerifyPurchaseDetails';
+import { API_BASE_URL } from '../api/api';
 
 const VerifyPurchaseRequests = () => {
   const [dateFrom, setDateFrom] = useState('');
@@ -13,7 +14,7 @@ const VerifyPurchaseRequests = () => {
   const [selectedRequest, setSelectedRequest] = useState(null); // State to hold selected purchase request
 
   useEffect(() => {
-    fetch("http://localhost:1415/api/purchase-requests/fetchAllPurchase")
+    fetch(`${API_BASE_URL}/purchase-requests/fetchAllPurchase`)
       .then((response) => response.json())
       .then((data) => {
         setPurchaseRequests(data);
@@ -53,8 +54,8 @@ const VerifyPurchaseRequests = () => {
         <div className="verify-purchase-container">
           <div className="verify-purchase-header">
             <div className="verify-purchase-title">
-              <input type="checkbox" />
-              <h2>Check and Verify Purchase Requests</h2>
+              <label ><input type="checkbox" />
+              Check and Verify Purchase Requests</label>
             </div>
             <div className="verify-purchase-filters">
               <button 
@@ -85,7 +86,7 @@ const VerifyPurchaseRequests = () => {
           </div>
 
           <div className="verify-purchase-date-range">
-            <div className="date-input">
+            <div className="verify-purchase-date-input">
               <span>From:</span>
               <input
                 type="date"
@@ -93,7 +94,7 @@ const VerifyPurchaseRequests = () => {
                 onChange={(e) => setDateFrom(e.target.value)}
               />
             </div>
-            <div className="date-input">
+            <div className="verify-purchase-date-input">
               <span>To:</span>
               <input
                 type="date"
@@ -102,13 +103,12 @@ const VerifyPurchaseRequests = () => {
               />
             </div>
             <button className="ok-button">
-              <Search size={16} />
               OK
             </button>
           </div>
 
           <div className="verify-purchase-search">
-            <div className="search-input">
+            <div className="verify-purchase-search-input">
               <input type="text" placeholder="Search" />
             </div>
             <button className="print-button">Print</button>

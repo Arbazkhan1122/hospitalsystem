@@ -16,7 +16,7 @@ const LabTestSetting = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [showPopup]);
 
   const handleAddNewLabTestClick = () => {
     setShowPopup(true); // Show the popup
