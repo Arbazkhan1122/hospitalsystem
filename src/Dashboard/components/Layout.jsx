@@ -9,9 +9,7 @@ import Inventory from "../../component/Inventory1/Inventory";
 import Incentive from "../../component/IncentiveMain/incentiveApp";
 import Lab from "../../component/NavBarSection/Lab";
 import Emergency from "../../component/Emergency/Emergency";
-
 import Utilitiesmain from "../../component/UTILITIES/utilitiesmain";
-
 import SystemAdmin from "../../component/SystemAdmin/SystemAdmin";
 import SocialServicePage from "../../component/SocialServicesMain/SocialServicePage";
 import Disprensary from "../../component/DispensaryPage/disprensaryRoute";
@@ -47,6 +45,7 @@ import ReportRoute from "../../component/Reports/ReportRoute";
 import Billing from "../../component/Billing/billing";
 import BloodBank from "../../component/BloodBank/bloodBankRoute";
 import TransportMainRouting from "../../component/TransportMain/transportMainRoute"
+import SuperUserMain from "../../component/SuperUserMain/superUserMainRoute";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -86,6 +85,7 @@ const Layout = () => {
   const [showBilling,setShowBilling]=useState(false)
   const [showBloodBank,setShowBloodBank]=useState(false)
   const [showTransport,setShowTransport]=useState(false)
+  const [showSuperUser,setShowSuperUser]=useState(false)
 
 
   const resetAllToggles = () => {
@@ -125,6 +125,7 @@ const Layout = () => {
     setShowBilling(false)
     setShowBloodBank(false)
     setShowTransport(false)
+    setShowSuperUser(false)
 
   };
 
@@ -274,6 +275,10 @@ const Layout = () => {
      resetAllToggles();
      setShowTransport(!showTransport)
   }
+  const toggleSuperUser=()=>{
+    resetAllToggles();
+    setShowSuperUser(!showSuperUser)
+  }
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -313,6 +318,7 @@ const Layout = () => {
         onBilling={toggelBilling}
         onBloodbank={toggelBloodBank}
         onTransport={toggelTransport}
+        onSuperUser={toggleSuperUser}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
@@ -358,6 +364,7 @@ const Layout = () => {
           {showBilling && <Billing/>}
           {showBloodBank && <BloodBank/>}
           {showTransport && <TransportMainRouting/>}
+          {showSuperUser && <SuperUserMain/>}
 
         </main>
       </div>

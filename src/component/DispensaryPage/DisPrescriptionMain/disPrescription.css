@@ -11,9 +11,9 @@
   /* border: 1px solid #CAF2FF; */
 }
 
-.disPrescription-search-bar {
+/* .disPrescription-search-bar {
   margin-left: -35px;
-}
+} */
 
 .disPrescription-search-bar input {
   /* height: 25px; */
@@ -28,7 +28,7 @@
   position: relative;
   color: gray;
   top: 2px;
-  left: 210px;
+  left: 190px;
 }
 
 .disPrescription-results-info {

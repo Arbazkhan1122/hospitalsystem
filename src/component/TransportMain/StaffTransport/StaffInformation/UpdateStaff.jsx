@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './UpdateStaff.css';
 function UpdateStaff({ onSubmit, initialData }) {
     const [formData, setFormData] = useState({

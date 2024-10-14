@@ -48,7 +48,8 @@ const Sidebar = ({
   onProcurement,
   onBilling,
   onBloodbank,
-  onTransport
+  onTransport,
+  onSuperUser
 
 }) => {
   const [openMenus, setOpenMenus] = useState({});
@@ -223,6 +224,11 @@ const Sidebar = ({
     onTransport();
   }
 
+  const handleSuperUserClick=()=>{
+    handleLinkClick("superUser");
+    onSuperUser();
+  }
+
   return (
     <div className={`custom-sidebar ${isOpen ? "" : "custom-sidebar-closed"}`}>
       {/* <button className="custom-toggle-button" onClick={toggleSidebar}>
@@ -337,6 +343,128 @@ const Sidebar = ({
             </ul>
           )}
         </li>
+
+
+
+
+
+
+    <li
+          className={`custom-nav-item ${
+            activeLink === "superUser-submenu1" ||
+            activeLink === "superUser-submenu2" ||
+            activeLink === "superUser-submenu3" ||
+            activeLink === "superUser-submenu4" ||
+            activeLink === "superUser-submenu5" ||
+            activeLink === "superUser-submenu6" ||
+            activeLink === "superUser-submenu7" ||
+            activeLink === "superUser-submenu8"
+
+              ? "custom-nav-item-active"
+              : ""
+          }`}
+        >
+          <div
+            className="custom-nav-link-content"
+            onClick={handleSuperUserClick}
+          >
+            <span>
+              <FaClinicMedical />
+            </span>
+            {isOpen && <span className="custom-nav-link-text">SuperUser</span>}
+            <span className="custom-dropdown-icon">
+              {openMenus.superUser ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.superUser && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("superUser", "submenu1")}
+                className={
+                  activeLink === "superUser-submenu1"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/revenuemgnt">Revenue Management</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu2")}
+                className={
+                  activeLink === "superUser-submenu2"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/sUPermission">Permission</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu3")}
+                className={
+                  activeLink === "superUser-submenu3"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/billingNavbar">Billing Discount Approval</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu4")}
+                className={
+                  activeLink === "superUser-submenu4"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/homePage">Message Broadcast</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu5")}
+                className={
+                  activeLink === "superUser-submenu5"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/facilityService">Facility Services </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu6")}
+                className={
+                  activeLink === "superUser-submenu6"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/administration">Administration </Link>
+              </li>
+               <li
+                onClick={() => handleItemClick("superUser", "submenu7")}
+                className={
+                  activeLink === "superUser-submenu7"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/vendorNavba">Vendor and Supply Management </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu8")}
+                className={
+                  activeLink === "superUser-submenu8"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/controlAllDeptRoute">Control All Department</Link>
+              </li>
+            </ul>
+          )}
+        </li>
+
+
+
+
 
         <li
           className={`custom-nav-item ${

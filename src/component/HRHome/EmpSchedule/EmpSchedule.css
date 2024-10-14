@@ -1,0 +1,102 @@
+/* Ravindra_Sanap_EmpSchedule.css_04_10_2024_Start */
+
+
+.schedule-container {
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.schedule-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 18px;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    table-layout: auto;
+    background-color: white;
+}
+
+.schedule-table th,
+.schedule-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.schedule-table th {
+    color: #333;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.schedule-table tr:hover {
+    background-color: #ddd;
+}
+
+.schedule-table td {
+    color: #555;
+}
+
+@media (max-width: 600px) {
+
+    .schedule-table,
+    .schedule-table th,
+    .schedule-table td {
+        font-size: 12px;
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.pagination button {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.pagination button.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination button.active {
+    background-color: #333;
+    color: white;
+}
+
+.no-data {
+    text-align: center;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.schedule-table tbody tr td {
+    vertical-align: middle;
+}
+
+.nodatatoshow {
+    text-align: center;
+    background-color: rgba(212, 194, 29, 0.582);
+    padding: 10px;
+}
+
+
+/* Ravindra_Sanap_EmpSchedule.css_04_10_2024_End */
