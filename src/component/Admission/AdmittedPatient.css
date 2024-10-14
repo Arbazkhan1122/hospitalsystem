@@ -61,7 +61,6 @@
   color: white;
   border: none;
   cursor: pointer;
-  flex: 1 0 120px; 
   text-align: center; 
 }
 
@@ -100,14 +99,25 @@
 
 /* Dropdown Styling */
 .admitbtn-select {
+  background-color: var(--button-color);
+  width: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding: 6px;
+  color: white;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
 
 .admitbtn-select:focus {
-  border-color: #007bff;
+  background-color: white;
+  color: black;
   outline: none;
+}
+.admit-formDepartment-container
+{
+  width: 100%;
 }
 
 /* Media Queries for responsiveness */
@@ -149,4 +159,8 @@
   .admitbtn-select {
     width: 100%; /* Full width */
   }
+}
+
+.custom-modal-width .modal-dialog {
+  width: 900px; /* Adjust the width as per your need */
 }

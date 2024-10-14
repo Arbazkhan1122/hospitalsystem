@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./DischargeSummary.css";
 import { API_BASE_URL } from "../api/api";
+import axios from "axios";
 
-const PatientDischargeForm = ({patient}) => {
+const PatientDischargeForm = ({ patient }) => {
   console.log(patient);
   
+  const dischargedDate = new Date().toLocaleDateString();
+  console.log(dischargedDate);
+  const [doctors, setDoctors] = useState([]);
+
   const [formData, setFormData] = useState({
-    dischargeDate: "",
+    dischargeDate: dischargedDate,
     dischargedType: "",
     consultant: "",
     doctorIncharge: "",
@@ -32,6 +37,20 @@ const PatientDischargeForm = ({patient}) => {
     medications: "",
   });
 
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/employees/get-all-employee`);
+        const data = await response.json();
+        setDoctors(data);
+        console.log(data);
+      } catch (error) {
+        console.error('Error fetching admitting doctors:', error);
+      }
+    };
+
+    fetchDoctors();
+  }, []); // Empty dependency array to run only on mount
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -40,11 +59,12 @@ const PatientDischargeForm = ({patient}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Create the data object for the backend
       const data = {
         ...formData,
-        patientId: patient.patientId, // Assuming patient object contains patientId
+        patientDTO:{patientId:patient?.patientDTO?.patientId},
       };
+      console.log(data);
+      
       const response = await axios.post(
         `${API_BASE_URL}/discharge-summaries/save`,
         data
@@ -59,134 +79,196 @@ const PatientDischargeForm = ({patient}) => {
       console.error("Error saving discharge summary:", error);
       alert("An error occurred while saving the discharge summary");
     }
-  };  
+  };
   return (
     <div className="pat-container">
       <div className="pat-header">
         <div>
-        <h2>{`${patient?.firstName || patient?.patientDTO?.firstName} ${patient?.lastName || patient?.patientDTO?.lastName}`}</h2>
-        <p><strong>Address:</strong>{patient.address}</p>
-        <p><strong>Hospital No:</strong> 2407007399</p>
-        <p><strong>Admitted On:</strong> 2024-07-30 11:06 AD</p>
-        <p><strong>Discharged On:</strong> 2024-08-28 10:57 AD</p>
+          <h2>{`${patient?.firstName || patient?.patientDTO?.firstName} ${
+            patient?.lastName || patient?.patientDTO?.lastName
+          }`}</h2>
+          <p>
+            <strong>Address:</strong> {patient?.patientDTO?.address}
+          </p>
+          <p>
+            <strong>Admitted On:</strong> {patient?.admissionDate}
+          </p>
+          <p>
+            <strong>Discharged On:</strong>
+            {dischargedDate}
+          </p>
         </div>
         <div>
-        <p><strong>Contact No:</strong>{patient?.patientQueue?.phone ||patient?.patientDTO?.contactNo}</p>
-        <p><strong>InPatient No:</strong> H2400023</p>
-        <p><strong>Ward:</strong> ICU</p>
-        <p><strong>Guardian:</strong> S I | Father-in-law</p>
-        <p><strong>Bed Number:</strong> 02</p>
+          <p>
+            <strong>Contact No:</strong>
+            {patient?.patientDTO?.phoneNumber}
+          </p>
+          <p>
+            <strong>InPatient No:</strong> {patient?.admissionId}
+          </p>
+          <p>
+            <strong>Ward:</strong> {patient.wardDepartmentDTO.wardName}
+          </p>
+          <p>
+            <strong>Bed Number:</strong> {patient?.wardBedFeatureDTO?.bedId}
+          </p>
         </div>
       </div>
 
       <div className="pat-form-section">
         <div className="pat-form-group">
           <label>Discharge Type *</label>
-          <input type="text" placeholder="Discharge Type" />
+          <select name="dischargedType" onChange={handleChange}>
+            <option value="">Choose Option</option>
+            <option value="DOR">DOR</option>
+            <option value="Recovered">Recovered</option>
+            <option value="Not Imporoved">Not Imporoved</option>
+            <option value="LAMA">LAMA</option>
+            <option value="Death">Death</option>
+            <option value="Absconded">Absconded</option>
+            <option value="Referred">Referred</option>
+            <option value="Discharged On Request">Discharged On Request</option>
+            <option value="Stable">Stable</option>
+          </select>
         </div>
 
         <div className="pat-form-group">
           <label>Consultant *</label>
-          <input type="text" placeholder="Consultant: name" />
-          <span className="pat-required-text">Consultant is required</span>
+          <select name="consultant" onChange={handleChange}>
+            <option value="">Select Doctor</option>
+            {doctors.map((doctor) => (
+              <option key={doctor.employeeId} value={`${doctor.salutation} ${doctor.firstName} ${doctor.lastName}`}>
+                {doctor.salutation} {doctor.firstName} {doctor.lastName}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="pat-form-group">
           <label>Doctor Incharge *</label>
-          <input type="text" placeholder="Doctor Incharge: name" />
+          <select name="doctorIncharge" onChange={handleChange}>
+            <option value="">Select Doctor</option>
+            {doctors.map((doctor) => (
+              <option key={doctor.employeeId} value={`${doctor.salutation} ${doctor.firstName} ${doctor.lastName}`}>
+                {doctor.salutation} {doctor.firstName} {doctor.lastName}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="pat-form-group">
           <label>Anaesthetists *</label>
-          <input type="text" placeholder="Anaesthetists: name" />
+          <select name="anesthetists" onChange={handleChange}>
+            <option value="">Select Doctor</option>
+            {doctors.map((doctor) => (
+              <option key={doctor.employeeId} value={`${doctor.salutation} ${doctor.firstName} ${doctor.lastName}`}>
+                {doctor.salutation} {doctor.firstName} {doctor.lastName}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="pat-form-group">
           <label>Resident Dr</label>
-          <input type="text" placeholder="Resident Dr name" />
+          <select name="residentDr" onChange={handleChange}>
+            <option value="">Select Doctor</option>
+            {doctors.map((doctor) => (
+              <option key={doctor.employeeId} value={`${doctor.salutation} ${doctor.firstName} ${doctor.lastName}`}>
+                {doctor.salutation} {doctor.firstName} {doctor.lastName}
+              </option>
+            ))}
+          </select>
         </div>
-
-        <div className="pat-form-group">
-          <label>Diagnosis</label>
-          <input type="text" placeholder="Diagnosis" />
-        </div>
-
         <div className="pat-form-group">
           <label>Select Diagnosis</label>
-          <input type="text" placeholder="Select ICD-11(s) for Select Diagnosis" />
+          <input
+          name="selectDiagnosis"
+            type="text"
+            placeholder="Select ICD-11(s) for Select Diagnosis"
+            onChange={handleChange}
+          />
         </div>
 
         <div className="pat-form-group">
           <label>Provisional Diagnosis</label>
-          <input type="text" placeholder="Select ICD-11(s) for Provisional Diagnosis" />
+          <input
+            type="text"
+            name="provisonalDiagnosis"
+            placeholder="Select ICD-11(s) for Provisional Diagnosis"
+            onChange={handleChange}
+          />
         </div>
 
         <div className="pat-form-group">
           <label>Other Diagnosis</label>
-          <input type="text" placeholder="Enter Other Diagnosis" />
+          <input type="text" name="otherDiagnosis" n placeholder="Enter Other Diagnosis" onChange={handleChange} />
         </div>
 
         <div className="pat-form-group">
           <label>Clinical Findings</label>
-          <textarea placeholder="Clinical Findings"></textarea>
+          <textarea name="clinicalFindings" placeholder="Clinical Findings" onChange={handleChange}></textarea>
         </div>
 
         <div className="pat-form-group">
           <label>Chief Complaint</label>
-          <textarea placeholder="Chief Complaint"></textarea>
+          <textarea name="cheifComplain" placeholder="Chief Complaint" onChange={handleChange}></textarea>
         </div>
 
         <div className="pat-form-group">
           <label>History Of Presenting Illness</label>
-          <textarea placeholder="History Of Presenting Illness"></textarea>
+          <textarea name="historyOfPresentingIllness" placeholder="History Of Presenting Illness" onChange={handleChange}></textarea>
         </div>
 
         <div className="pat-form-group">
           <label>Treatment During Hospital Stay</label>
-          <textarea placeholder="Treatment During Hospital Stay"></textarea>
+          <textarea name="treatmentDuringHospitalStay" placeholder="Treatment During Hospital Stay" onChange={handleChange}></textarea>
         </div>
 
         <div className="pat-form-group">
           <label>Condition On Discharge</label>
-          <textarea placeholder="Condition On Discharge"></textarea>
+          <textarea name="conditionOnDischarge" placeholder="Condition On Discharge" onChange={handleChange}></textarea>
         </div>
 
         <div className="pat-form-group">
           <label>Pending Reports</label>
-          <textarea placeholder="Pending Reports"></textarea>
+          <textarea name="pendingReport" placeholder="Pending Reports" onChange={handleChange}></textarea>
         </div>
 
         <div className="pat-form-group">
           <label>Special Notes</label>
-          <textarea placeholder="Special Notes"></textarea>
+          <textarea name="specialNotes" placeholder="Special Notes" onChange={handleChange}></textarea>
         </div>
 
         <div className="pat-form-group">
           <label>Allergies</label>
-          <textarea placeholder="Allergies"></textarea>
+          <textarea name="allergies" placeholder="Allergies" onChange={handleChange}></textarea>
         </div>
 
         <div className="pat-form-group">
           <label>Discharge Order</label>
-          <textarea placeholder="Discharge Order"></textarea>
+          <textarea name="dischargeOrder" placeholder="Discharge Order" onChange={handleChange}></textarea>
         </div>
 
         <div className="pat-form-group">
           <label>Rest Days</label>
-          <textarea placeholder="Rest Days"></textarea>
+          <textarea name="restDay" placeholder="Rest Days" onChange={handleChange}></textarea>
         </div>
 
         <div className="pat-form-group">
           <label>Follow UP</label>
-          <textarea placeholder="Follow UP"></textarea>
+          <textarea name="followUp" placeholder="Follow UP" onChange={handleChange}></textarea>
         </div>
 
         <div className="pat-form-group pat-investigations">
           <h3>Investigations</h3>
           <div className="pat-form-group-radio-container">
-          <label>Show Result on Report: </label>
-          <label className="pat-form-group-radio-container-label"><input type="radio" name="result" value="yes" /> Yes</label>
-          <label className="pat-form-group-radio-container-label"><input type="radio" name="result" value="no" /> No</label>
+            <label>Show Result on Report: </label>
+            <label className="pat-form-group-radio-container-label">
+              <input type="radio" name="result" value="yes" /> Yes
+            </label>
+            <label className="pat-form-group-radio-container-label">
+              <input type="radio" name="result" value="no" /> No
+            </label>
           </div>
 
           <div className="pat-lab-tests">
@@ -200,7 +282,7 @@ const PatientDischargeForm = ({patient}) => {
             <input type="text" placeholder="Enter Medicines" />
           </div>
         </div>
-        <button className="pat-save">Save</button>
+        <button className="pat-save" onClick={handleSubmit}>Save</button>
       </div>
     </div>
   );

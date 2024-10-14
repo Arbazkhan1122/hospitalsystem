@@ -4,8 +4,7 @@
 .RadioOrder-container {
     margin: 0 auto;
     padding: 20px;
-    background-color: #f0f8ff;
-    border: 1px solid #d0e3f0;
+    background-color: var(--background-color);
     border-radius: 5px;
     font-family: Arial, sans-serif;
   }
@@ -52,6 +51,9 @@
   
   .RadioOrder-action-container-btn-sign {
     background-color: var(--button-color);
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
     color: white;
   }
   
@@ -63,6 +65,9 @@
   
   .RadioOrder-action-container-btn-cancel {
     background-color: #e74c3c;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
     color: white;
   }
   

@@ -69,7 +69,7 @@ const SocialHistory = ({patientId,newPatientVisitId}) => {
     };
   
     fetchSocialHistories();
-  }, [patientId, newPatientVisitId]); // Dependencies to re-fetch when IDs change
+  }, [patientId, newPatientVisitId,isAddModalOpen,isUpdateModalOpen]); // Dependencies to re-fetch when IDs change
   
 
   const handleAddSocialHistory = async () => {

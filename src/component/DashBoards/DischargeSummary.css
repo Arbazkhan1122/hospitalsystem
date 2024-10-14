@@ -46,6 +46,7 @@
   }
   
   .pat-form-group input,
+  .pat-form-group select,
   .pat-form-group textarea {
     width: 100%;
     padding: 5px;

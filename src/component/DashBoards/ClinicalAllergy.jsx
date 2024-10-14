@@ -82,7 +82,7 @@ const Allergy = ({ patientId, newPatientVisitId }) => {
     if (newPatientVisitId || patientId) {
       fetchAllergies();
     }
-  }, [newPatientVisitId, patientId]); // Dependencies to track ID changes
+  }, [newPatientVisitId, patientId,showForm,showUpdateForm]); // Dependencies to track ID changes
   
 
   // Handle radio input for severity

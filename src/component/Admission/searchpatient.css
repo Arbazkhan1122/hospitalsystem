@@ -7,6 +7,14 @@
   padding: 10px;
 }
 
+.Addmitted-btn
+{
+  background-color: red;
+  color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+
 
   .btn-warning {
     background-color: #ffc107;

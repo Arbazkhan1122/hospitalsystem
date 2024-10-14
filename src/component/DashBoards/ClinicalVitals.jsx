@@ -6,7 +6,7 @@ import ClinicalBloodSugarMonitoring from '../DashBoards/ClinicalBloodSugarMonito
 import AddVitalsForm from '../DashBoards/AddVitals'; // Import the AddVitalsForm component
 import Allergy from '../DashBoards/ClinicalAllergy';
 
-const VitalsPage = ({patientId,newPatientVisitId}) => {
+const VitalsPage = ({patientId,newPatientVisitId,Type,onClose}) => {
   console.log(patientId +" "+newPatientVisitId +"------------------");
   
   const [activeTab, setActiveTab] = useState('vitals');
@@ -56,6 +56,7 @@ const VitalsPage = ({patientId,newPatientVisitId}) => {
   return (
     <div className="vitals-page">
       <nav className="vitals-page-tab-navigation">
+        <div className='vitals-page-tab-navigation-navTab'>
         <button className={`vitals-page-tab ${activeTab === 'vitals' ? 'active' : ''}`} onClick={() => setActiveTab('vitals')}>
           Vitals
         </button>
@@ -68,6 +69,9 @@ const VitalsPage = ({patientId,newPatientVisitId}) => {
         <button className={`vitals-page-tab ${activeTab === 'bloodsugar' ? 'active' : ''}`} onClick={() => setActiveTab('bloodsugar')}>
           Blood Sugar Monitoring
         </button>
+        </div>
+        {Type&&<button onClick={onClose}>Back</button>}
+        
       </nav>
 
       <div className="vitals-page-content-area">

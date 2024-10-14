@@ -1,74 +1,53 @@
-/* // neha-ADT-admittedpatient-19/09/24 */
-import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
-import './AdmittedPatient.css';
-import { FaSearch } from 'react-icons/fa';
-import { Modal, Button, Form, Row, Col, Table } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { startResizing } from '../../TableHeadingResizing/ResizableColumns';
-import { API_BASE_URL } from '../api/api';
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import "./AdmittedPatient.css";
+import { FaSearch } from "react-icons/fa";
+import {
+  Modal,
+  Button,
+  Form,
+  Row,
+  Col,
+  Table,
+  ModalDialog,
+} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { startResizing } from "../../TableHeadingResizing/ResizableColumns";
+import { API_BASE_URL } from "../api/api";
+import WardTransfer from "./WardTransfer";
+import CustomModal from "../Inventory1/CustomModel/CustomModal";
+import PatientCard from "./PatientCard";
+import PrintWristWindow from "./PrintWristWindow";
+import PrintGenericSticker from "./PrintGenericSticker";
+import ChangeDoctor from "./ChangeDoctor";
+import CancelAdmission from "./CancelAdmission";
+import PrintAdmissionSlip from "./PrintAdmissionSlip";
 
 const AdmittedPatient = () => {
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [showPrint, setShowPrint] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState("");
   const [patients, setPatients] = useState([]);
-  const patientDataRef = useRef();
+  const [selectPatient, setSelectPatient] = useState({});
   const tableRef = useRef(null);
   const [columnWidths, setColumnWidths] = useState(0);
+  const [showOptionWindow, setShowOptionWindow] = useState(false);
 
-  const handleShow = () => setShowModal(true);
-  const handleClose = () => setShowModal(false);
-
-  const [formData, setFormData] = useState({
-    department: '',
-    primaryDoctor: 'Mrs. BRENDA MWANIA WANJIRU',
-    secondaryDoctor: '',
-    ward: '',
-    bedFeature: '',
-    price: '0',
-    bed: '',
-    transferDate: '',
-    transferRemarks: '',
-  });
-
-  const handlePrint = () => {
-    const printContent = patientDataRef.current.innerHTML;
-    const printWindow = window.open('', '', 'height=500, width=800');
-    printWindow.document.write('<html><head><title>Print Patient Data</title>');
-    printWindow.document.write('</head><body>');
-    printWindow.document.write(printContent);
-    printWindow.document.write('</body></html>');
-    printWindow.document.close();
-    printWindow.print();
+  const handleShow = (item) => {
+    setSelectPatient(item);
+    setShowModal(true);
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const handleClose = () => {
+    setShowModal(false);
+    setShowPrint(false);
+    setShowOptionWindow(false);
+    setSelectedOption("");
   };
 
-  const handledropdownChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-
-  const handlemodelSubmit = () => {
-    console.log(formData);
-    handleClose();
-  };
-
-  const handleStartDateChange = (event) => {
-    setStartDate(event.target.value);
-  };
-
-  const handleEndDateChange = (event) => {
-    setEndDate(event.target.value);
-  };
-
-  const handleSubmit = () => {
-    console.log('Start Date:', startDate);
-    console.log('End Date:', endDate);
+  const handlePrint = (item) => {
+    setSelectPatient(item);
+    setShowPrint(true);
   };
 
   useEffect(() => {
@@ -77,41 +56,78 @@ const AdmittedPatient = () => {
         const response = await axios.get(`${API_BASE_URL}/admissions/fetch`);
         setPatients(response.data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
-
     fetchData();
-  }, []);
+  }, [showOptionWindow]);
+
+  // Function to handle dropdown selection
+  const handledropdownChange = (event, patient) => {
+    const option = event.target.value;
+    setSelectedOption(option);
+    setSelectPatient(patient);
+    setShowOptionWindow(true); // Open modal when option is selected
+  };
+
+  // Function to render modal content based on selected option
+  const renderModalContent = () => {
+    switch (selectedOption) {
+      case "PrintWristband":
+        return <PrintWristWindow patient={selectPatient} />;
+      case "PrintGenericStickers":
+        return <PrintGenericSticker patient={selectPatient} />;
+      case "ChangeDoctor":
+        return (
+          <ChangeDoctor
+            patient={selectPatient}
+            setShowOptionWindow={setShowOptionWindow}
+          />
+        );
+      case "CancelAdmission":
+        return (
+          <CancelAdmission
+            patient={selectPatient}
+            setShowOptionWindow={setShowOptionWindow}
+          />
+        );
+      case "AdmissionSlip":
+        return (
+          <PrintAdmissionSlip
+            patient={selectPatient}
+            setShowOptionWindow={setShowOptionWindow}
+          />
+        );
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="adt-app-container">
-    
-       
-          <div className="adt-search-container">
-            <input
-              type="text"
-              placeholder="Search by Hospitalno/IpNumber/PatientName"
-              className="admitted-search-input"
-            />
-            <button className='admitpatient-export-container-button'>Print</button>
-          </div>
-        <div className="table-container">
-          <table ref={tableRef}>
-            <thead>
-              <tr>
-             { [
-                  'Refund Date',
-                  'Recipt No',
-                  'Scheme',
-                  'Hospital No',
-                  'Patient',
-                  'Age/Sex',
-                  'Inpatient No',
-                  'Refund Amount',
-                  'Entered By',
-                  'Remarks',
-                  'Action'
+      <div className="adt-search-container">
+        <input
+          type="text"
+          placeholder="Search by Hospitalno/IpNumber/PatientName"
+          className="admitted-search-input"
+        />
+        <button className="admitpatient-export-container-button">Print</button>
+      </div>
+      <div className="table-container">
+        <table ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Refund Date",
+                "Recipt No",
+                "Scheme",
+                "Patient",
+                "Age/Sex",
+                "Inpatient No",
+                "Refund Amount",
+                "Entered By",
+                "Remarks",
+                "Action",
               ].map((header, index) => (
                 <th
                   key={index}
@@ -122,188 +138,85 @@ const AdmittedPatient = () => {
                     <span>{header}</span>
                     <div
                       className="resizer"
-                      onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
                     ></div>
                   </div>
                 </th>
               ))}
             </tr>
           </thead>
-            <tbody>
-              {patients.map((patient, index) => (
-                <tr key={index}>
-                  <td>{patient.admissionDate || 'N/A'}</td>
-                  <td >{patient.price || 'N/A'}</td>
-                  <td >{patient.caseType || 'N/A'}</td>
-                  <td >{patient.patientDTO?.hospitalNo || 'N/A'}</td>
-                  <td>{`${patient.patientDTO?.firstName || ''} ${patient.patientDTO?.lastName || ''}`}</td>
-                  <td >{`${patient.patientDTO?.age || 'N/A'}/${patient.patientDTO?.gender || 'N/A'}`}</td>
-                  <td >{patient.manageBedDTO?.bedNumber || 'N/A'}</td>
-                  <td >${patient.price || 'N/A'}</td>
-                  <td >{patient.admittedDoctorDTO?.firstName || 'N/A'}</td>
-                  <td >{patient.admissionNotes || 'N/A'}</td>
-                  <td >
-                    <div className="admit-actions">
-                      <button onClick={handleShow} className='admitbtn'>Transfer</button>
-                      <button onClick={handlePrint} className='admitbtn'>Print</button>
-                      <select id="admitpatient-dropdown" value={selectedOption} onChange={handledropdownChange} className='admitbtn-select'>
-                        <option value="">Select...</option>
-                        <option value="PrintWristband">Print Wristband</option>
-                        <option value="BillHistory">Bill History</option>
-                        <option value="ChangeDoctor">Change Doctor</option>
-                        <option value="PrintGenericStickers">Print Generic Stickers</option>
-                        <option value="Change Bed Feature">Change Bed Feature</option>
-                        <option value="Cancel Admission">Cancel Admission</option>
-                        <option value="ChangeDoctor">Admission Slip</option>
-                      </select>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-     
+          <tbody>
+            {patients.map((patient, index) => (
+              <tr key={index}>
+                <td>{patient.admissionDate || "N/A"}</td>
+                <td>{patient.price || "N/A"}</td>
+                <td>{patient.caseType || "N/A"}</td>
+                <td>{`${patient.patientDTO?.firstName || ""} ${
+                  patient.patientDTO?.lastName || ""
+                }`}</td>
+                <td>{`${patient.patientDTO?.age || "N/A"} ${
+                  patient.patientDTO?.ageUnit
+                } / ${patient.patientDTO?.gender || "N/A"}`}</td>
+                <td>{patient.manageBedDTO?.bedNumber || "N/A"}</td>
+                <td>${patient.price || "N/A"}</td>
+                <td>{patient.admittedDoctorDTO?.firstName || "N/A"}</td>
+                <td>{patient.admissionNotes || "N/A"}</td>
+                <td>
+                  <div className="admit-actions">
+                    <button
+                      onClick={() => handleShow(patient)}
+                      className="admitbtn"
+                    >
+                      Transfer
+                    </button>
+                    <button
+                      onClick={() => handlePrint(patient)}
+                      className="admitbtn"
+                    >
+                      Print
+                    </button>
+                    <select
+                      id="admitpatient-dropdown"
+                      value={selectedOption}
+                      onChange={(event) => handledropdownChange(event, patient)}
+                      className="admitbtn-select"
+                    >
+                      <option value="">Select...</option>
+                      <option value="PrintWristband">Print Wristband</option>
+                      <option value="ChangeDoctor">Change Doctor</option>
+                      <option value="PrintGenericStickers">
+                        Print Generic Stickers
+                      </option>
+                      <option value="CancelAdmission">Cancel Admission</option>
+                      <option value="AdmissionSlip">Admission Slip</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-      <Modal show={showModal} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Transfer Admission</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Row>
-              <Col>
-                <Form.Group controlId="formDepartment">
-                  <Form.Label>Department</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="department"
-                    value={formData.department}
-                    onChange={handleChange}
-                    placeholder="Enter department"
-                  />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group controlId="formPrimaryDoctor">
-                  <Form.Label>Primary Doctor</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="primaryDoctor"
-                    value={formData.primaryDoctor}
-                    onChange={handleChange}
-                    placeholder="Enter primary doctor"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Group controlId="formSecondaryDoctor">
-                  <Form.Label>Secondary Doctor</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="secondaryDoctor"
-                    value={formData.secondaryDoctor}
-                    onChange={handleChange}
-                    placeholder="Enter secondary doctor"
-                  />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group controlId="formWard">
-                  <Form.Label>Ward</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="ward"
-                    value={formData.ward}
-                    onChange={handleChange}
-                    placeholder="Enter ward"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Group controlId="formBedFeature">
-                  <Form.Label>Bed Feature</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="bedFeature"
-                    value={formData.bedFeature}
-                    onChange={handleChange}
-                    placeholder="Enter bed feature"
-                  />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group controlId="formPrice">
-                  <Form.Label>Price</Form.Label>
-                  <Form.Control
-                    type="number"
-                    name="price"
-                    value={formData.price}
-                    onChange={handleChange}
-                    placeholder="Enter price"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Group controlId="formBed">
-                  <Form.Label>Bed</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="bed"
-                    value={formData.bed}
-                    onChange={handleChange}
-                    placeholder="Enter bed"
-                  />
-                </Form.Group>
-              </Col>
-              <Col>
-                <Form.Group controlId="formTransferDate">
-                  <Form.Label>Transfer Date</Form.Label>
-                  <Form.Control
-                    type="date"
-                    name="transferDate"
-                    value={formData.transferDate}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Group controlId="formTransferRemarks">
-                  <Form.Label>Transfer Remarks</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    name="transferRemarks"
-                    value={formData.transferRemarks}
-                    onChange={handleChange}
-                    placeholder="Enter remarks"
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handlemodelSubmit}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {/* Modal for patient card */}
+      <CustomModal isOpen={showPrint} onClose={handleClose}>
+        <PatientCard patient={selectPatient} />
+      </CustomModal>
+
+      {/* Modal for ward transfer */}
+      <CustomModal isOpen={showModal} onClose={handleClose}>
+        <WardTransfer patient={selectPatient} setShowModal={setShowModal} />
+      </CustomModal>
+
+      {/* Modal for handling dropdown options */}
+      <CustomModal isOpen={showOptionWindow} onClose={handleClose}>
+        {renderModalContent()}
+      </CustomModal>
     </div>
   );
 };
 
 export default AdmittedPatient;
-
-

@@ -61,18 +61,19 @@ const ActionRecordPage = ({
   };
 
   console.log(orderData);
-
   const handleOrderSelect = (e) => {
     const orderId = e.target.value;
     setSelectedOrderId(orderId);
     console.log(orderId);
     if (orderId) {
+
       const selectedOrder = orderData.find(
         (order) =>
           order.addItemId == orderId ||
           order.imagingItemId == orderId ||
           order.labTestId == orderId
       );
+
       if (selectedOrder) {
         setSelectedOrders((prevOrders) => [...prevOrders, selectedOrder]);
         setSelectedOrderId("");
@@ -239,6 +240,7 @@ const ActionRecordPage = ({
                       {order.itemName ||
                         order.imagingItemName ||
                         order.labTestName}
+
                     </option>
                   ))}
                 </select>

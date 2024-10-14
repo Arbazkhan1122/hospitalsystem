@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./RadioOrder.css"
 import { API_BASE_URL } from '../api/api';
 
 const RadioOrder = ({ selectedOrders, setActiveSection, patientId, newPatientVisitId, employeeId }) => {
@@ -151,10 +152,10 @@ const RadioOrder = ({ selectedOrders, setActiveSection, patientId, newPatientVis
         </tbody>
       </table>
       <div className="RadioOrder-action-container">
-        <button className="RadioOrder-action-container-btn RadioOrder-action-container-btn-sign" onClick={handleSign}>
+        <button className="RadioOrder-action-container-btn-sign" onClick={handleSign}>
           Sign
         </button>
-        <button className="RadioOrder-action-container-btn RadioOrder-action-container-btn-cancel" onClick={handleCancel}>
+        <button className="RadioOrder-action-container-btn-cancel" onClick={handleCancel}>
           Cancel
         </button>
       </div>

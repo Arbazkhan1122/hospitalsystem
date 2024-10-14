@@ -24,7 +24,7 @@
   .adt-exchange-bed-page-input {
     margin-bottom: 10px;
     padding: 5px;
-    width: 100%;
+    width: 300px;
     border-radius: 4px;
     border: 1px solid #ccc;
   }
@@ -40,7 +40,15 @@
     display: flex;
     justify-content: flex-end;
   }
-  
+  .adt-exchange-bed-page-search-button{
+    background-color: var(--button-color);
+    padding: 5px 10px;
+    margin: 5px;
+  }
+  .adt-exchange-bed-page-search-button:hover{
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+  }
   .adt-exchange-bed-page-discard-button {
     background-color: #ff4d4d;
     color: #fff;
@@ -58,4 +66,9 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+  }
+  .adt-exchange-bed-error-message{
+    color: red;
+    font-size: var(--heading-font);
+    font-weight: bold;
   }
