@@ -12,6 +12,7 @@ const PatientQueue = () => {
   const [selectedStatus, setSelectedStatus] = useState("all"); // Default status is set to "All"
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
+  const [active, isActive] = useState(false);
 
   // Fetch all doctors
   useEffect(() => {
@@ -85,12 +86,22 @@ const PatientQueue = () => {
     }
     return true; // Return all patients for "All"
   });
+  const handleClick = () => {
+    setIsActive(!isActive); // Toggle the active state
+  };
 
   return (
     <div className="patient-queue-management-container">
       <div className="patient-queue-management-header">
         <header className="queue-management-header">
-          <button className="queue-management-header-button">OPD</button>
+          <button
+            className={`queue-management-header-button ${
+              isActive ? "active" : ""
+            }`}
+            onClick={handleClick}
+          >
+            OPD
+          </button>
         </header>
       </div>
 

@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './AddSupplierForm.css';
 import { API_BASE_URL } from '../api/api';
-
 const AddSupplierForm = ({ onClose }) => {
    const [formData, setFormData] = useState({
     name: '',
@@ -32,8 +31,17 @@ const AddSupplierForm = ({ onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent page refresh
+    
     try {
-      const response = await axios.post(`${API_BASE_URL}/suppliers/create-supplier`, formData);
+      const response = await axios.post(
+        `${API_BASE_URL}/suppliers/create-supplier`, 
+        formData, 
+        {
+          headers: {
+            'Content-Type': 'application/json' // Specify content type
+          }
+        }
+      );
       console.log('Response:', response); // Log the response
       setShowSuccessMessage(true);
       setTimeout(() => setShowSuccessMessage(false), 3000); // Hide after 3 seconds

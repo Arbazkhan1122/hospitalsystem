@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import VerifyModal from "./VerifyModal";
-import styles from "./RequisitionPage.module.css";
+import "./RequisitionPage.css";
 import VerifyModalPharmacy from "./VerifyModalPharmacy";
 import { API_BASE_URL } from "../api/api";
 
@@ -37,24 +37,24 @@ function RequisitionPagePharmacy() {
   });
 
   return (
-    <div className={styles.requisitionPageContainer}>
+    <div className="requisitionPageContainer">
   
-      <div className={styles.requisitionFilterSection}>
-        <label className={styles.requisitionCheckboxLabel}>
+      <div className="requisitionFilterSection">
+        <label className="requisitionCheckboxLabel">
           <input type="checkbox" />
           Check and Verify Requisition
         </label>
-        <div className={styles.requisitionDatePickerContainer}>
+        <div className="requisitionDatePickerContainer">
           <label>From:</label>
-          <input type="date" className={styles.requisitionDateInput} />
+          <input type="date" className="requisitionDateInput" />
           <label>To:</label>
-          <input type="date" className={styles.requisitionDateInput} />
-          <button className={styles.requisitionOkButton}>OK</button>
+          <input type="date" className="requisitionDateInput" />
+          <button className="requisitionOkButton">OK</button>
         </div>
       </div>
 
-      <div className={styles.requisitionStatusSection}>
-        <div className={styles.requisitionRadioButtons}>
+      <div className="requisitionStatusSection">
+        <div className="requisitionRadioButtons">
           <label>
             <input
               type="radio"
@@ -93,9 +93,9 @@ function RequisitionPagePharmacy() {
             All
           </label>
         </div>
-        <div className={styles.requisitionDropdownContainer}>
+        <div className="requisitionDropdownContainer">
           <label>Requisition Status:</label>
-          <select className={styles.requisitionDropdown}>
+          <select className="requisitionDropdown">
             <option value="all">--ALL--</option>
             {/* Add more options as needed */}
           </select>
@@ -103,7 +103,7 @@ function RequisitionPagePharmacy() {
       </div>
 
       <div className="table-container">
-        <table className={styles.requisitionDataTable}>
+        <table className="requisitionDataTable">
           <thead>
             <tr>
               <th>Req.No</th>

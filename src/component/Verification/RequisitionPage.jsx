@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import VerifyModal from "./VerifyModal";
-import styles from "./RequisitionPage.module.css";
+import "./RequisitionPage.css";
 import { API_BASE_URL } from "../api/api";
+import { startResizing } from "../TableHeadingResizing/resizableColumns";
 
 function RequisitionPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [requisitions, setRequisitions] = useState([]);
-  const [selectedRequisition, setSelectedRequisition] = useState(null); 
+  const [selectedRequisition, setSelectedRequisition] = useState(null);
   const [filterStatus, setFilterStatus] = useState("pending");
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/inventory-requisitions/getAll`)
@@ -17,13 +20,13 @@ function RequisitionPage() {
   }, []);
 
   const handleVerifyClick = (requisition) => {
-    setSelectedRequisition(requisition); 
-    setIsModalOpen(true); 
+    setSelectedRequisition(requisition);
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedRequisition(null); 
+    setSelectedRequisition(null);
   };
 
   const handleFilterChange = (event) => {
@@ -36,31 +39,30 @@ function RequisitionPage() {
   });
 
   return (
-    <div className={styles.requisitionPageContainer}>
-  
-      <div className={styles.requisitionFilterSection}>
-        <label className={styles.requisitionCheckboxLabel}>
+    <div className="requisitionPageContainer">
+      <div className="requisitionFilterSection">
+        <label className="requisitionCheckboxLabel">
           <input type="checkbox" />
           Check and Verify Requisition
         </label>
-        <div className={styles.requisitionDatePickerContainer}>
+        <div className="requisitionDatePickerContainer">
           <label>From:</label>
-          <input type="date" className={styles.requisitionDateInput} />
+          <input type="date" className="requisitionDateInput" />
           <label>To:</label>
-          <input type="date" className={styles.requisitionDateInput} />
-          <button className={styles.requisitionOkButton}>OK</button>
+          <input type="date" className="requisitionDateInput" />
+          <button className="requisitionOkButton">OK</button>
         </div>
       </div>
 
-      <div className={styles.requisitionStatusSection}>
-        <div className={styles.requisitionRadioButtons}>
+      <div className="requisitionStatusSection">
+        <div className="requisitionRadioButtons">
           <label>
             <input
               type="radio"
               name="verificationStatus"
               value="pending"
               onChange={handleFilterChange}
-              defaultChecked={filterStatus === "pending"} 
+              defaultChecked={filterStatus === "pending"}
             />
             Pending
           </label>
@@ -92,9 +94,9 @@ function RequisitionPage() {
             All
           </label>
         </div>
-        <div className={styles.requisitionDropdownContainer}>
+        <div className="requisitionDropdownContainer">
           <label>Requisition Status:</label>
-          <select className={styles.requisitionDropdown}>
+          <select className="requisitionDropdown">
             <option value="all">--ALL--</option>
             {/* Add more options as needed */}
           </select>
@@ -102,15 +104,34 @@ function RequisitionPage() {
       </div>
 
       <div className="table-container">
-        <table className={styles.requisitionDataTable}>
+        <table className="patientList-table" ref={tableRef}>
           <thead>
             <tr>
-              <th>Req.No</th>
-              <th>StoreName</th>
-              <th>Requested On</th>
-              <th>Req. Status</th>
-              <th>Verification Status</th>
-              <th>Action</th>
+              {[
+                "Req.No",
+                "StoreName",
+                "Requested On",
+                "Req. Status",
+                "Verification Status",
+                "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
@@ -126,7 +147,7 @@ function RequisitionPage() {
                     : "1 verified out of 1"}
                 </td>
                 <td>
-                  <button onClick={() => handleVerifyClick(requisition)}>
+                  <button className="verify-btn" onClick={() => handleVerifyClick(requisition)}>
                     Verify
                   </button>
                 </td>
@@ -136,12 +157,11 @@ function RequisitionPage() {
         </table>
       </div>
 
-   
       {isModalOpen && (
         <VerifyModal
           isOpen={isModalOpen}
           onClose={closeModal}
-          requisitionDetails={selectedRequisition} 
+          requisitionDetails={selectedRequisition}
         />
       )}
     </div>

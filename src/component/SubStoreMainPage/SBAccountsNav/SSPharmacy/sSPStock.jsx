@@ -185,7 +185,7 @@ function SSPStock() {
                       <td>{item.itemName}</td>
                       <td>bat{item.id}</td>
                       <td>{item.expiryDate}</td>
-                      <td>{item.requestingQuantity}</td>
+                      <td>{item.requiredQuantity}</td>
                       <td>{item.salePrice}</td>
                     </tr>
                   ))}

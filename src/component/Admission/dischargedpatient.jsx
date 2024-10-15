@@ -1,10 +1,10 @@
 /* // neha-ADT-discharge-19/09/24 */
+
 import React, { useState, useEffect, useRef } from "react";
 import "./dischargedpatient.css";
 
 import { startResizing } from "../../TableHeadingResizing/ResizableColumns";
 import { API_BASE_URL } from "../api/api";
-
 import AdmissionDischargePrint from "./AdmissionDischargePrint";
 
 function DischargedPatient() {

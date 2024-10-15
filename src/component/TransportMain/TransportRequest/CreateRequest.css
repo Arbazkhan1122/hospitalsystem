@@ -18,7 +18,7 @@
   /* Ensure it is on top */
 }
 
-.modal-content {
+/* .modal-content {
   position: relative;
   width: 400px;
   max-height: 90vh;
@@ -27,7 +27,7 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .modal-content-heading-text {
   display: block;

@@ -44,7 +44,8 @@ import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRoutin
 import ReportRoute from "../../component/Reports/ReportRoute";
 import Billing from "../../component/Billing/billing";
 import BloodBank from "../../component/BloodBank/bloodBankRoute";
-import TransportMainRouting from "../../component/TransportMain/transportMainRoute"
+import TransportMainRouting from "../../component/TransportMain/transportMainRoute";
+import SuperUserMain from "../../component/SuperUserMain/superUserMainRoute";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -80,11 +81,11 @@ const Layout = () => {
   const [showVerification, setShowVerification] = useState(false);
   const [showSubStore, setShowSubStore] = useState(false);
   const [showMedicalRecord, setShowMedicalRecord] = useState(false);
-  const [showProcurement,setShowProcurement]=useState(false)
-  const [showBilling,setShowBilling]=useState(false)
-  const [showBloodBank,setShowBloodBank]=useState(false)
-  const [showTransport,setShowTransport]=useState(false)
-
+  const [showProcurement, setShowProcurement] = useState(false);
+  const [showBilling, setShowBilling] = useState(false);
+  const [showBloodBank, setShowBloodBank] = useState(false);
+  const [showTransport, setShowTransport] = useState(false);
+  const [showSuperUser, setShowSuperUser] = useState(false);
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -120,10 +121,10 @@ const Layout = () => {
     setShowSubStore(false);
     setShowMedicalRecord(false);
     setShowProcurement(false);
-    setShowBilling(false)
-    setShowBloodBank(false)
-    setShowTransport(false)
-
+    setShowBilling(false);
+    setShowBloodBank(false);
+    setShowTransport(false);
+    setShowSuperUser(false);
   };
 
   const toggelAppointment = () => {
@@ -267,11 +268,15 @@ const Layout = () => {
   const toggelBloodBank = () => {
     resetAllToggles();
     setShowBloodBank(!showBloodBank);
-  }
-  const toggelTransport=()=>{
-     resetAllToggles();
-     setShowTransport(!showTransport)
-  }
+  };
+  const toggelTransport = () => {
+    resetAllToggles();
+    setShowTransport(!showTransport);
+  };
+  const toggleSuperUser = () => {
+    resetAllToggles();
+    setShowSuperUser(!showSuperUser);
+  };
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -311,6 +316,7 @@ const Layout = () => {
         onBilling={toggelBilling}
         onBloodbank={toggelBloodBank}
         onTransport={toggelTransport}
+        onSuperUser={toggleSuperUser}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
@@ -353,10 +359,10 @@ const Layout = () => {
           {showVerification && <VerificationRouting />}
           {showSubStore && <SubstoreRouting />}
           {showMedicalRecord && <MedicalReportRouting />}
-          {showBilling && <Billing/>}
-          {showBloodBank && <BloodBank/>}
-          {showTransport && <TransportMainRouting/>}
-
+          {showBilling && <Billing />}
+          {showBloodBank && <BloodBank />}
+          {showTransport && <TransportMainRouting />}
+          {showSuperUser && <SuperUserMain />}
         </main>
       </div>
     </div>

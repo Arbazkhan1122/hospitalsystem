@@ -150,6 +150,7 @@ align-items: first baseline;
   .hhBedInformation-wardNameColumnBTN{
     background-color: transparent;
     color: var(--button-bg-color);
+    border: none;
   }
 
   /* Hide everything except the table during print */

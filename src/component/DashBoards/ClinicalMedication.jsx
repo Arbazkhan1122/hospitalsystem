@@ -164,7 +164,6 @@ const ClinicalMedication = ({ patientId, newPatientVisitId }) => {
           </tbody>
         </table>
       </div>
-
       <div className="clinical-medication-add-new-section">
         {showForm && (
           <div className="clinical-add-medication-form">

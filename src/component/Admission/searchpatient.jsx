@@ -17,6 +17,7 @@ const SearchPatient = () => {
   const tableRef = useRef(null);
   const [columnWidths, setColumnWidths] = useState(0);
   const [admitted, setAdmitted] = useState([]);
+
   const [admittedPatientsMap, setAdmittedPatientsMap] = useState({}); // To store admission status
 
   // Fetch data from the new API
@@ -39,6 +40,7 @@ const SearchPatient = () => {
       })
       .catch((error) => {
         console.error("Error fetching patient data:", error);
+
         // alert(`Error fetching patient data: ${error.message}`);
       });
   }, []);
@@ -70,11 +72,6 @@ const SearchPatient = () => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredPatients = currentPatients.filter((patient) => {
-    if (!patient || !patient.firstName) return false; // Ensure patient and firstName exist
-    return patient.firstName.toLowerCase().includes(searchTerm.toLowerCase());
-  });
-
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleAdmit = (patient) => {
@@ -99,6 +96,7 @@ const SearchPatient = () => {
     }
 
     // Define the admission details
+
     const admissionDetails = {};
 
     try {
@@ -182,30 +180,43 @@ const SearchPatient = () => {
                 </tr>
               </thead>
               <tbody>
-                {patients.map((patient) => (
-                  <tr key={patient.patientId}>
-                    <td>{patient.patientId || "N/A"}</td>
-                    <td>
-                      {`${patient.firstName} ${
-                        patient.middleName ? patient.middleName + " " : ""
-                      }${patient.lastName}`}
-                    </td>
-                    <td>{patient.age}</td>
-                    <td>{patient.gender}</td>
-                    <td>{patient.phoneNumber}</td>
-                    <td>{patient.address}</td>
-                    <td>{patient.isIPD ? "InPatient" : ""}</td>
-                    <td>
-                      {admittedPatientsMap[patient.patientId] ? (
-                        <span className="Addmitted-btn">Admitted</span> // Display if admitted
-                      ) : (
-                        <button onClick={() => handleAdmit(patient)}>
-                          Admit
-                        </button>
-                      )}
-                    </td>
-                  </tr>
-                ))}
+                {patients
+                  ?.filter((patient) => {
+                    const searchLowerCase = searchTerm.toLowerCase();
+                    const firstNameMatch = patient.firstName
+                      ?.toLowerCase()
+                      .includes(searchLowerCase);
+                    const lastNameMatch = patient.lastName
+                      ?.toLowerCase()
+                      .includes(searchLowerCase);
+                    const patientIdMatch = patient.patientId == searchTerm;
+
+                    return firstNameMatch || lastNameMatch || patientIdMatch;
+                  })
+                  .map((patient) => (
+                    <tr key={patient.patientId}>
+                      <td>{patient.patientId || "N/A"}</td>
+                      <td>
+                        {`${patient.firstName} ${
+                          patient.middleName ? patient.middleName + " " : ""
+                        }${patient.lastName}`}
+                      </td>
+                      <td>{patient.age}</td>
+                      <td>{patient.gender}</td>
+                      <td>{patient.phoneNumber}</td>
+                      <td>{patient.address}</td>
+                      <td>{patient.isIPD ? "InPatient" : ""}</td>
+                      <td>
+                        {admittedPatientsMap[patient.patientId] ? (
+                          <span className="Addmitted-btn">Admitted</span> // Display if admitted
+                        ) : (
+                          <button onClick={() => handleAdmit(patient)}>
+                            Admit
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

@@ -45,7 +45,43 @@ const HHEmpInformation = () => {
   }, []);
 
   const handlePrint = () => {
-    window.print();
+    if (tableRef.current) {
+      const printContents = tableRef.current.innerHTML;
+
+      const iframe = document.createElement("iframe");
+      iframe.style.position = "absolute";
+      iframe.style.width = "0";
+      iframe.style.height = "0";
+      iframe.style.border = "none";
+
+      document.body.appendChild(iframe);
+
+      const doc = iframe.contentWindow.document;
+      doc.open();
+      doc.write(`
+        <html>
+        <head>
+          <title>Print Table</title>
+          <style>
+            table { width: 100%; border-collapse: collapse; }
+            th, td { border: 1px solid black; padding: 8px; text-align: left; }
+            th { background-color: #f2f2f2; }
+          </style>
+        </head>
+        <body>
+          <table>
+            ${printContents}
+          </table>
+        </body>
+        </html>
+      `);
+      doc.close();
+
+      iframe.contentWindow.focus();
+      iframe.contentWindow.print();
+
+      document.body.removeChild(iframe);
+    }
   };
 
   const filteredEmployees = employees.filter(

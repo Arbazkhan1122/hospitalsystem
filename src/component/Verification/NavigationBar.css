@@ -13,8 +13,8 @@
 }
 
 .navigationBarTabButton {
-  background-color: var(--button-color);
-  color: white;
+  background-color:transparent;
+  color: black;
   border: none;
   padding: 5px 5px;
   margin-right: 10px;
@@ -22,23 +22,26 @@
   font-size: 14px;
   border-radius: 4px;
 }
-
-.navigationBarActive {
-  background-color:var( --button-color);
+.navigationBarTabButton:hover
+{
+  background-color:var(--button-color) ;
+  color: white;
 }
 
+.navigationBarActive {
+  background-color:var(--upperBar-bg-color);
+  color: white;
+}
 
-/* Action buttons styling */
 .navigationBarActionButtons {
   display: flex;
-  /* background-color: #b3e5fc; */
   padding: 5px;
 }
 
 .navigationBarActionButton {
   background-color: var(--button-color);
   color: white;
-  border: none;
+  border: 1px solid var(--button-color);
   padding: 5px;
   cursor: pointer;
   font-size: 14px;
@@ -47,7 +50,9 @@
 }
 
 .navigationBarActionButton:hover {
-  background-color: #0056b3;
+  background-color: var(--button-hover-color);
+  color: var(--button-color);
+  border: 1px solid var(--button-color);
 }
 
 @media screen and (max-width: 768px) {

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import "../LabSetting/labTest.css";
 import LSLabTestAddNLTest from "./lSLabTestAddNLTest";
 import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
+import { API_BASE_URL } from "../../api/api";
 
 const LabTestSetting = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -9,7 +10,7 @@ const LabTestSetting = () => {
   const tableRef = useRef(null);
   const [labTest, setLabTest] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:1415/api/labTestSetting/getAll`)
+    fetch(`${API_BASE_URL}/labTestSetting/getAll`)
       .then((res) => res.json())
       .then((data) => setLabTest(data))
       .catch((err) => {

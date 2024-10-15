@@ -62,25 +62,8 @@ const PatientRecord = () => {
   }
   return (
     <div className="patient-record">
-      <div className="patient-record-actions">
-        {/* <div className="patient-record-actions-subdiv">
-          <button
-            className="patient-record-favorites"
-            onClick={handleFavouritesClick}
-          >
-            ★ My Favorites
-          </button>
-          <button
-            className="patient-record-pending"
-            onClick={handlePendingListClick}
-          >
-            Pending List
-          </button>
-        </div> */}
-       
-      </div>
       <div className="patient-record-date-range">
-        <div>
+        <div className="patient-date-ranges">
           <label>From:</label>
           <input type="date" value="2024-08-11" />
           <label>To:</label>

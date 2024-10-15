@@ -1,9 +1,8 @@
 import React, { useRef } from "react";
-import "./admissionDischargePrint.css"; // External CSS file
+import "./AdmissionDischargePrint.css"; // External CSS file
 
 const AdmissionDischargePrint = ({ data, onClose }) => {
   console.log(data);
-
   const printRef = useRef();
 
   const handlePrint = () => {
@@ -51,6 +50,7 @@ const AdmissionDischargePrint = ({ data, onClose }) => {
       <button className="PatientDischargeForm-close-btn" onClick={onClose}>
         X
       </button>
+
       <div ref={printRef}>
         <h1 className="PatientDischargeForm-title">Discharge Summary</h1>
 

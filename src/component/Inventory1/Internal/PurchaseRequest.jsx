@@ -37,7 +37,7 @@ const PurchaseRequest = () => {
     fetch(`${API_BASE_URL}/purchase-requests/fetchAllPurchase`)
       .then((response) => response.json())
       .then((data) => {
-        setPurchaseRequests(data);
+        setPurchaseRequests(data);      
         setLoading(false);
       })
       .catch((err) => {
@@ -148,7 +148,7 @@ const PurchaseRequest = () => {
   const closeVendorModal = () => setIsVendorModalOpen(false);
 
   const openAddItemModel = () => setOpenAddItem(true);
-  const closeAddItemModel = () => setOpenAddItem(false);
+  const closeAddItemModel = () => setOpenAddItem(false); 
 
   return (
     <div className="purchase-request-content">
@@ -436,7 +436,7 @@ const PurchaseRequest = () => {
             </tbody>
           </table>
         </div>
-      )}
+      )}  
       <AddVendor isOpen={isVendorModalOpen} onClose={closeVendorModal} />
       <AddItem isOpen={openAddItem} onClose={closeAddItemModel} />
     </div>
