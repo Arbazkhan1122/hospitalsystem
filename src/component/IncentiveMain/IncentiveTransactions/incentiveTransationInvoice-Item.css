@@ -1,0 +1,137 @@
+ /* Ajhar Tamboli IncentiveTransationInvoice.css 18-09-2024 */
+
+.incentiveTransationInvoice-container {
+    /* padding: 20px; */
+    background-color: var(--background-color); /* Light blue background */
+  }
+  
+  .filters {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+  .incentiveTransationInvoice-filters {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .incentiveTransationInvoice-date-range {
+    background-color: #EBF7FF;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 5px 30px;
+}
+.incentiveTransationInvoice-icon-button {
+    background-color: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .incentiveTransationInvoice-star{
+    background: none;
+    border: none;
+    font-size: 24px;
+    color:var(--button-color) ;
+    cursor: pointer; 
+  }
+  .incentiveTransationInvoice-ok-button {
+    background-color:var( --button-color);
+    border: 1px solid var( --button-hover-border-color);
+    color: white;
+    /* border: none; */
+    /* margin-right: 10px; */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    margin: 1px;
+    transition: background-color 0.3s ease;
+    padding: 5px 5px;
+  }
+  .incentiveTransationInvoice-load-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color); 
+}
+.incentiveTransationInvoice-search-N-Infotext{
+    display: flex;
+    justify-content: space-between;
+}
+
+  
+  .date-range {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .date-range label {
+    margin: 0 5px;
+    font-size: 14px;
+  }
+  
+  /* .icon-button {
+    margin-left: 5px;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .icon-button.ok {
+    background-color: #22b573; 
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+  } */
+  
+  .incentiveTransationInvoice-search-input {
+    /* margin-left: auto; */
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 150px;
+  }
+  
+  .incentiveTransationInvoice-info-text {
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 10px;
+    color: #0772BC;
+  }
+  
+  .incentiveTransationInvoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color:white;
+  }
+  
+  .incentiveTransationInvoice-table th,
+  .incentiveTransationInvoice-table td {
+    border: 1px solid #ddd;
+    padding: 3px;
+    text-align: center;
+    font-size: var(--font-size);
+    /* color: #3b3b3b; */
+  }
+  
+  .incentiveTransationInvoice-table th {
+    background-color: #F3F3F3;
+    /* font-weight: bold; */
+    font-size: var(--heading-font);
+  }
+  
+  .incentiveTransationInvoice-edit-button {
+    background-color: #FFA500; /* Yellow background for edit button */
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,77 @@
+ /* Dhanashree_NavBar_19/09 */
+
+.EmergencyNavBar-nav-menu {
+    display: flex;
+    align-items: center;
+    background-color: var(--background-color);
+    padding: 8px 16px;
+}
+
+.EmergencyNavBar-nav-item {
+    padding: 8px 16px;
+    text-decoration: none;
+    color: var(--nav-item-color);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.EmergencyNavBar-nav-item.EmergencyNavBar-active {
+    background-color: var(--background-color);
+    color: var(--nav-item-active-color);
+    border-radius: 4px;
+}
+
+.EmergencyNavBar-home-icon {
+    background-color: var(--background-color);
+    color: var(--nav-item-active-color);
+    padding: 8px;
+    border-radius: 4px;
+    margin-right: 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.EmergencyNavBar-home-icon.EmergencyNavBar-active {
+    background-color: var(--background-color);
+}
+
+.EmergencyNavBar-nav-text {
+    color: var(--nav-text-color);
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+
+
+.EmergencyNavBar-nav-menu {
+    display: flex;
+    gap: 10px;
+}
+
+.EmergencyNavBar-button {
+    background-color: var(--button-color); /* Initial red color */
+    color: white;
+    border: 1px solid var(--button-hover-border-color); /* Black border */
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.EmergencyNavBar-button:hover {
+    background-color: white; /* Change background to black on hover */
+    color: var(--button-color); /* White text on hover */
+}
+
+.EmergencyNavBar-active {
+    background-color: white; /* Active state background */
+    color: white;
+}
+
+ /* Dhanashree_NavBar_19/09 */

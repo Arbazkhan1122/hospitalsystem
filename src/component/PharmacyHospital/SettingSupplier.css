@@ -1,0 +1,404 @@
+/* Mohini_SettingSupplier_WholePage_14/sep/2024 */
+.setting-supplier-container {
+    background-color: var( --background-color);
+    padding: 20px;
+    height: 90vh;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .setting-supplier-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .setting-supplier-add-user-button {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .setting-supplier-add-user-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+  }
+  
+  .manage-users-search-input {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 180px;
+  }
+  
+  .setting-supplier-span {
+    text-align: right;
+    color: black;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .setting-supplier-tab {
+    background-color: white;
+  }
+  
+  .setting-suppliers-users-table {
+    width: 100%;
+    background-color: white;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+  }
+  
+  .setting-suppliers-users-table th,
+  .setting-suppliers-users-table td {
+    border: 1px solid #e0e0e0;
+    padding: 5px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .setting-suppliers-users-table th {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  /* Hover effect for table rows */
+  .setting-suppliers-users-table tbody tr:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .setting-supplier-action-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  .supplier-setting-form-actions button{
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .supplier-setting-form-actions button:hover{
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+
+  }
+ 
+  
+  .setting-supplier-action-button {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+  }
+
+  
+  .setting-supplier-pagination {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .setting-supplier-pagination-controls button {
+    margin: 0 4px;
+    padding: 4px 8px;
+    background-color: #5b73e8;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  
+  .setting-supplier-pagination span {
+    margin: 0 8px;
+    font-size: 13px;
+  }
+  .setting-supplier-add-user-button {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+
+   .setting-supplier-add-user-button:hover {
+    border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+   }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .setting-supplier-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+
+    .manage-users-search-input {
+      width: 100%;
+    }
+  
+    .setting-suppliers-users-table th,
+    .setting-suppliers-users-table td {
+      font-size: 12px;
+    }
+  }
+  
+  
+
+/*  */
+/* Ensures the modal is positioned at the top of the viewport */
+.supplier-setting-supplier-update-modal .modal-dialog {
+  margin: 0; /* Remove default margin */
+  background-color: white;
+  position: fixed; /* Fix the position relative to the viewport */
+  top: 20%; /* Align to the top of the viewport */
+  left: 30%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  width: 80%; /* Adjust the width as needed */
+  max-width: 800px; 
+}
+
+/* Style for the modal content */
+.supplier-setting-supplier-update-modal .modal-content {
+  border-radius: 0; /* Remove default border-radius for a square look */
+  box-shadow: none; /* Remove default box-shadow if needed */
+  max-width: 100%;
+}
+
+/* Style for the modal header, body, and footer */
+.supplier-setting-supplier-update-modal .modal-header, 
+.supplier-setting-supplier-update-modal .modal-body, 
+.supplier-setting-supplier-update-modal .modal-footer {
+  padding: 1.5rem; /* Adjust padding as needed */
+}
+
+/* Optional: Add a border for better separation */
+.supplier-setting-supplier-update-modal .modal-header {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Optional: Add a border for better separation */
+.supplier-setting-supplier-update-modal .modal-footer {
+  border-top: 1px solid #ddd;
+}
+
+/* Ensure that the modal content takes full width */
+.supplier-setting-supplier-update-modal .modal-content {
+  width: 100%;
+}
+
+/* Style for the form row */
+.supplier-setting-form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+
+/* Style for form group */
+.supplier-setting-form-group {
+  margin-bottom: 10px;
+}
+
+/* Style for the text right alignment */
+.supplier-setting-text-right {
+  text-align: right;
+}
+
+/* Ensure buttons have proper margin */
+.supplier-setting-mr-2 {
+  margin-right: 10px;
+}
+
+/* Additional styles for input fields */
+.supplier-setting-form-group .form-control {
+  border-radius: 0; /* Optional: Remove border-radius for a square look */
+}
+.supplier-setting-supplier-update-modal .modal-dialog {
+  margin: 0;
+  max-width: 800px;
+  width: 100%;
+}
+
+.supplier-setting-supplier-update-modal .modal-content {
+  border-radius: 0;
+  border: 1px solid #ddd;
+}
+
+.supplier-setting-supplier-update-modal .modal-header {
+  background-color: #f8f9fa;
+  padding: 10px 15px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.supplier-setting-supplier-update-modal .modal-title {
+  font-size: 16px;
+}
+
+.supplier-setting-supplier-update-modal .modal-body {
+  padding: 15px;
+}
+
+.supplier-setting-form-row {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.supplier-setting-form-group {
+  flex: 1;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.supplier-setting-form-group:last-child {
+  margin-right: 0;
+}
+
+.supplier-setting-form-group label {
+  flex: 0 0 150px;
+  font-weight: 400;
+  margin-right: 5px;
+}
+
+.supplier-setting-form-group .form-control {
+  /* flex: 1; */
+  padding: 5px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.supplier-setting-text-danger {
+  color: red;
+}
+
+.supplier-setting-form-group .form-check {
+  display: flex;
+  align-items: center;
+}
+
+.supplier-setting-form-group .form-check-label {
+  margin-left: 5px;
+}
+
+.supplier-setting-text-right {
+  text-align: right;
+  padding: 10px 15px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+}
+
+.supplier-setting-mr-2 {
+  margin-right: 10px;
+}
+
+.supplier-setting-text-right .btn-primary {
+  background-color: var(--button-color);
+  border-color:var(--button-bg-color);
+   color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.supplier-setting-text-right .btn-primary:hover {
+	border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+}
+.store-setting-incoming-stock-list-header {
+  display: flex;
+  justify-content: flex-end;
+  /* align-items: center; */
+  /* background-color: #f8f9fa; */
+  padding: 15px;
+  /* border-bottom: 1px solid #dee2e6; */
+}
+
+.store-setting-incoming-stock-title {
+  font-size: 16px;
+  /* font-weight: bold; */
+  color: #343a40;
+}
+
+.store-setting-show-zero-quantity,
+.store-setting-filter-by-store {
+  display: flex;
+  align-items: center;
+}
+
+.store-setting-show-zero-quantity {
+  margin-left: 20px;
+}
+
+.store-setting-show-zero-quantity input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.store-setting-show-zero-quantity label {
+  margin-left: 5px;
+}
+
+.store-setting-filter-by-store {
+  margin-left: 20px;
+}
+
+.store-setting-filter-by-store label {
+  margin-right: 10px;
+}
+
+.store-setting-filter-by-store select {
+  padding: 5px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+.setting-supplier-manage-users-search-input{
+  width: 20%;
+}
+/*  */
+/* SettingSupplier.css */
+
+/* General styling for the ReactQuill editor container */
+.supplier-setting-quill {
+  max-width: 100%; /* Ensure it doesn't exceed its container's width */
+  width: 100%;     /* Full width for responsiveness */
+  min-height: 200px; /* Adjust the height as needed */
+}
+
+/* Optional: Style for the Quill editor's toolbar */
+.supplier-setting-quill .ql-toolbar {
+  border: 1px solid #ccc; /* Border around the toolbar */
+  border-radius: 4px;     /* Rounded corners */
+  background-color: #f8f8f8; /* Background color */
+}
+
+/* Optional: Style for the Quill editor's editor area */
+.supplier-setting-quill .ql-editor {
+  border: 1px solid #ccc; /* Border around the editor area */
+  border-radius: 4px;     /* Rounded corners */
+  padding: 10px;          /* Padding inside the editor */
+  min-height: 150px;      /* Minimum height of the editor area */
+}
+/* Custom CSS for modal */
+.supplier-setting-supplier-update-modal .modal-body {
+  max-height: 70vh; /* Limits the height of the modal body */
+  overflow-y: auto; /* Enables vertical scrolling */
+}
+/* Mohini_SettingSupplier_WholePage_14/sep/2024 */

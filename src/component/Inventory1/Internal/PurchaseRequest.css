@@ -1,0 +1,267 @@
+/* PurchaseRequest.css */
+/* Swapnil ROkade purchase-request adding className And Applying colors 14/09 */
+/* General Styles */
+.purchase-request-content {
+  padding: 20px;
+  background-color: var(--background-color);
+}
+
+.purchase-request-header {
+  font-size: var(--font-size); 
+  /* margin-bottom: 20px; */
+}
+.purchase-request-star
+{
+  padding: 8px;
+  border: none;
+  background: none; /* Removes any background */
+  color: var(--button-color); /* Text color */
+  cursor: pointer;
+  font-size: var(--heading-font); /* Font size for star icon */
+  display: inline-flex; /* Keeps it in line with other elements */
+  align-items: center; /* Centers icon vertically */
+  justify-content: center; 
+}
+.purchase-request-minus{
+  padding: 8px;
+  border: none;
+  background: none; /* Removes any background */
+  color: var(--button-color); /* Text color */
+  cursor: pointer;
+  font-size: var(--heading-font); /* Font size for star icon */
+  display: inline-flex; /* Keeps it in line with other elements */
+  align-items: center; /* Centers icon vertically */
+  justify-content: center;
+}
+.purchase-request-select{
+  width: 250px;
+}
+.purchase-request-ok
+{
+  padding: 5px 10px; /* Adjust padding */
+  border: none;
+  background-color: var(--button-color); /* Light green background */
+  color: white; /* Text color */
+  cursor: pointer;
+  border-radius: 4px; /* Rounded corners */
+  font-size: var(--heading-font); /* Font size for OK text */
+}
+.purchase-request-ok:hover
+{
+  background-color: var( --button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
+}
+
+.Inv-purchase-request-input-subDiv
+{
+  width: 80%;
+}
+
+
+.purchase-request-create-purchase-form {
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.purchase-request-create-purchase-form label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.purchase-request-pur-subContent {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.purchase-request-pur-subButton,
+.purchase-request-create-purchase-request {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.purchase-request-create-purchase-request:hover,
+.purchase-request-pur-subButton:hover {
+  background-color: var( --button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
+}
+
+.purchase-request-request-button {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  margin: 10px 5px;
+  cursor: pointer;
+}
+
+.purchase-request-discard-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  margin: 10px 5px;
+  cursor: pointer;
+}
+
+.purchase-request-request-button:hover {
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+  border: 1px solid var(--button-hover-border-color);
+}
+
+.Inv-purchase-request-input
+{
+  width: 100%;
+}
+.purchase-request-discard-button:hover {
+  background-color: #c82333;
+}
+
+.purchase-request-date-range {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.purchase-request-date-range label {
+  margin-right: 10px;
+}
+.purchase-request-filter{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.purchase-request-search-bar {
+  width: 40%;
+  display: flex;
+  justify-content: end;
+}
+
+.purchase-request-search-bar-input {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+  flex: 1;
+}
+
+.purchase-request-search-bar-button {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.purchase-request-search-bar-button:hover {
+  background-color: var( --button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
+}
+
+.purchase-request-purchase-results {
+
+  width: 100%;
+  padding: 5px;
+  gap: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.purchase-request-purchase-results-button {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding:5px;
+  cursor: pointer;
+}
+.purchase-request-purchase-results-span
+{
+  color: var(--button-color);
+}
+
+.purchase-request-purchase-results-button:hover {
+  background-color: var( --button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
+}
+
+.purchase-request-purchase-request-form-table {
+    width: 100%; /* Ensure the table takes up the full width of its container */
+    border-collapse: collapse; /* Removes the gap between table cells */
+    overflow-x: scroll;
+  }
+
+
+.purchase-request-purchase-request-table th,
+.purchase-request-purchase-request-form-table th {
+  background-color: #f2f2f2;
+  color: gray;
+  font-size: var(-heading-font);
+  text-align: left;
+  white-space: nowrap; /* Prevents the table headers from wrapping text */
+}
+
+
+.purchase-request-purchase-request-table td,
+.purchase-request-purchase-request-form-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  white-space: nowrap; /* Ensures table cells don’t break lines */
+  overflow: hidden; /* Ensures overflow is hidden within cells */
+  text-overflow: ellipsis; /* Adds ellipsis (...) for text overflow */
+}
+.purchase-request-table-container
+{
+  width: 100%;
+  overflow: scroll;
+}
+.purchase-remark
+{
+  width: 100%;
+}
+
+/* .purchase-request-purchase-pagination {
+  margin: 20px 0;
+}
+
+.purchase-request-purchase-pagination-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.purchase-request-purchase-pagination-div button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.purchase-request-purchase-pagination-div button:hover {
+  background-color: #0056b3;
+} */
+@media (max-width: 768px) {
+  .purchase-request-table-container {
+    overflow-x: scroll;
+  }
+}

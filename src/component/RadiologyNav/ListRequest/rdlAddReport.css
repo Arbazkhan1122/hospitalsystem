@@ -1,0 +1,173 @@
+/* Akash Pawar Radiology 14/24 */
+   .rDLListRequest-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow: auto;
+    padding: 20px;
+  }
+  
+  /* Modal content styling */
+  .rDLListRequest-modal-content {
+    background: transparent;
+    padding: 20px;
+    width: 80%;
+    border-radius: 8px;
+    position: relative;
+    overflow: auto;
+    height: 90%;
+  }
+  .rDLListRequest-modal-content::-webkit-scrollbar {
+   display: none;
+  }
+  
+  /* Close button styling */
+  .rDLListRequest-close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    border: none;
+    cursor: pointer;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 12px;
+  }
+  
+.rDLListRequest-add-report-form {
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.rdlAddReport-prescrider-name{
+  display: flex;
+  align-items: center;
+}
+
+.rDLListRequest-add-report-form h2 {
+    color: black;
+    font-size: var(--heading-font);
+    padding: 10px;
+    margin: -20px -20px 20px -20px;
+  }
+  
+  .rDLListRequest-add-report-info-row {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .rDLListRequest-add-report-info-row span {
+    flex: 1;
+  }
+  
+  .rDLListRequest-add-report-info-row input[type="text"] {
+    width: 100%;
+    padding: 5px;
+  }
+  
+  .rDLListRequest-add-report-link {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: var(--font-size);
+  }
+  
+  .rDLListRequest-add-report-text-editor {
+    margin-top: 20px;
+  }
+  
+  .rDLListRequest-add-report-toolbar {
+    background-color: #f0f0f0;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+  
+  .rDLListRequest-add-report-textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+  }
+  
+  .rDLListRequest-add-report-signature-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .rDLListRequest-add-report-signature-box {
+    flex: 1;
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 0 5px;
+    text-align: center;
+  }
+  
+  .rDLListRequest-add-report-signature-box.active {
+    background-color: #e6f3ff;
+  }
+  
+  .rDLListRequest-add-report-form-actions {
+    margin-top: 20px;
+  }
+  
+  .rDLListRequest-add-report-select-signatories, .rDLListRequest-add-report-upload-images {
+    margin-bottom: 10px;
+  }
+  
+  .rDLListRequest-add-report select, .rDLListRequest-add-report-file-upload-btn {
+    padding: 5px;
+    margin-left: 10px;
+  }
+  
+  .rDLListRequest-add-report-file-upload-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .rDLListRequest-add-report-submit-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .rDLListRequest-add-report-save-btn,.rDLListRequest-add-report-submit-print-btn {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    background-color: var(--button-color);
+  }
+  .rDLListRequest-add-report-save-btn:hover,.rDLListRequest-add-report-submit-print-btn:hover {
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+     border: 1px solid var(--button-hover-border-color);
+  }
+  
+  .rDLListRequest-add-report-cancel-btn {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin: 5px;
+    background-color: red;
+  }
+  .rDLListRequest-add-report-cancel-btn:hover {
+    background-color: var(--button-hover-background-color);
+    color: red;
+     border: 1px solid red;
+  }
+  .rDLListRequest-add-report-image-preview{
+    margin-top: 10px;
+  }

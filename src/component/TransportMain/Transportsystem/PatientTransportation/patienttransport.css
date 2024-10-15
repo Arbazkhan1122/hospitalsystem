@@ -1,0 +1,121 @@
+/* neha-patient-transport-main-24-9-24 */
+
+/* Container for the form */
+.patient-transport-container {
+    width: 100%;
+   display: flex;
+    margin: 20px auto;
+    padding: 20px;
+    background-color:#e3fffe;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+}
+
+
+
+/* Header for the form */
+
+.patient-transport-header-h2{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.patient-transport-header {
+    font-size: 16px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+
+}
+
+/* Form styles */
+.patient-transport-form {
+    display: flex;
+    flex-direction: column;
+  
+}
+.patient-transport-form-maindiv{
+    display: flex;
+    padding: 10px;
+
+}
+.patient-transport-form-group-subdiv{
+    margin-right: 20px;
+}
+
+
+/* Label styles */
+.patient-transport-form-group label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #555;
+    width: 200px;
+}
+
+/* Input and textarea styles */
+.patient-transport-input, 
+.patient-transport-textarea, 
+.patient-transport-select {
+    padding: 1px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #fff;
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 250px;
+}
+
+/* Input focus styles */
+.patient-transport-input:focus, 
+.patient-transport-textarea:focus, 
+.patient-transport-select:focus {
+    border-color: #007bff;
+}
+
+/* Textarea styles */
+.patient-transport-textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Select dropdown styles */
+.patient-transport-select {
+    appearance: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Submit button styles */
+.patient-transport-submit-btn {
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.patient-transport-submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .patient-transport-container {
+        padding: 15px;
+    }
+
+    .patient-transport-header {
+        font-size: 20px;
+    }
+
+    .patient-transport-form {
+        gap: 10px;
+    }
+}
