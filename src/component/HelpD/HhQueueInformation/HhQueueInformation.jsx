@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import "../HhQueueInformation/hhQueueInformation.css";
 import { API_BASE_URL } from "../../api/api";
@@ -186,6 +187,8 @@ function HHQueueInformation() {
         <div className="queueInformation-notice">Notice</div>
         <marquee>• □</marquee>
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
 import React from 'react';
 import "../HhQueueInformation/hhQueueInformation.css"
@@ -256,6 +259,9 @@ function HHQueueInformation() {
         {/* <div className="queueInformation-footer-icons"> */}
           <marquee > •   □</marquee>
         {/* </div> */}
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       </footer>
     </div>
@@ -264,6 +270,12 @@ function HHQueueInformation() {
 
 export default HHQueueInformation;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
 
 

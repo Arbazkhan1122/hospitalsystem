@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState, useEffect, useRef } from "react";
 import * as XLSX from "xlsx";
 import "../HhBedInformation/hhBedInformation.css";
@@ -74,6 +75,8 @@ function HHBedInformation() {
       document.body.removeChild(iframe);
     }
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 import React, { useState, useEffect } from 'react';
 import * as XLSX from 'xlsx';
 import "../HhBedInformation/hhBedInformation.css";
@@ -91,6 +94,9 @@ function HHBedInformation() {
 
   const handlePrint = () => {
     window.print();
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   };
 
@@ -103,6 +109,7 @@ function HHBedInformation() {
 
     const createdDate = `Created Date: ${new Date().toLocaleDateString()}`;
 <<<<<<< HEAD
+<<<<<<< HEAD
     XLSX.utils.sheet_add_aoa(ws, [[createdDate]], { origin: "A1" });
     XLSX.utils.sheet_add_aoa(ws, [["Ward wise Bed Occupancy"]], {
       origin: "A2",
@@ -110,10 +117,15 @@ function HHBedInformation() {
 
     XLSX.utils.sheet_add_aoa(ws, [[""]], { origin: "A4" });
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
     XLSX.utils.sheet_add_aoa(ws, [[createdDate]], { origin: 'A1' });
     XLSX.utils.sheet_add_aoa(ws, [["Ward wise Bed Occupancy"]], { origin: 'A2' });
 
     XLSX.utils.sheet_add_aoa(ws, [[""]], { origin: 'A4' });
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
     XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
@@ -121,6 +133,7 @@ function HHBedInformation() {
     XLSX.writeFile(wb, "BedInformation.xlsx");
   };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   const calculateTotals = (data) => {
     const totalOccupied = data.reduce(
@@ -154,6 +167,8 @@ function HHBedInformation() {
     setWardName(wardName);
   };
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const calculateTotals = () => {
     return wardData.reduce((totals, ward) => {
       totals.occupied += ward.occupied;
@@ -165,6 +180,9 @@ function HHBedInformation() {
   };
 
   const totals = calculateTotals();
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
   return (
@@ -172,6 +190,7 @@ function HHBedInformation() {
       <div className="bedInformation-stats-container">
         <div className="hhBedInformation-stat-card total">
           <h2>Total No. of Beds</h2>
+<<<<<<< HEAD
 <<<<<<< HEAD
           <span className="hhBedInformation-number">{totals.overallTotal}</span>
         </div>
@@ -190,6 +209,8 @@ function HHBedInformation() {
       </div>
 
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
           <span className="hhBedInformation-number">{totals.total}</span>
         </div>
         <div className="hhBedInformation-stat-card available">
@@ -202,6 +223,9 @@ function HHBedInformation() {
         </div>
       </div>
       
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       <div className="bedInformation-table-container">
         <h4>BED OCCUPANCY STATUS</h4>
@@ -214,7 +238,11 @@ function HHBedInformation() {
           </button>
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <table ref={tableRef}>
+=======
+        <table>
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
         <table>
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -228,6 +256,7 @@ function HHBedInformation() {
             </tr>
           </thead>
           <tbody>
+<<<<<<< HEAD
 <<<<<<< HEAD
             {wardData != null &&
               wardData.map((ward, index) => (
@@ -255,6 +284,8 @@ function HHBedInformation() {
               <td>{totals.totalReserved}</td>
               <td>{totals.overallTotal}</td>
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
             {wardData.map((ward, index) => (
               <tr key={index}>
                 <td className='hhBedInformation-wardNameColumn'>{ward.wardName}</td>
@@ -270,11 +301,15 @@ function HHBedInformation() {
               <td>{totals.vacant}</td>
               <td>{totals.reserved}</td>
               <td>{totals.total}</td>
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
             </tr>
           </tbody>
         </table>
       </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
       {bedStatus && (
         <HelpDeskBedPopup
@@ -283,6 +318,8 @@ function HHBedInformation() {
           setBedStatus={setBedStatus}
         />
       )}
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
     </div>

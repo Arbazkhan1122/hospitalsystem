@@ -1,5 +1,6 @@
 /* // neha-ADT-discharge-19/09/24 */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import React, { useState, useEffect, useRef } from "react";
 import "./dischargedpatient.css";
@@ -8,6 +9,8 @@ import { startResizing } from "../../TableHeadingResizing/ResizableColumns";
 import { API_BASE_URL } from "../api/api";
 import AdmissionDischargePrint from "./AdmissionDischargePrint";
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 import React, { useState, useEffect ,useRef} from 'react';
 import './dischargedpatient.css';
 
@@ -15,6 +18,9 @@ import { startResizing } from '../../TableHeadingResizing/ResizableColumns';
 import { API_BASE_URL } from '../api/api';
 
 import AdmissionDischargePrint from './AdmissionDischargePrint';
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
 function DischargedPatient() {
@@ -39,14 +45,20 @@ function DischargedPatient() {
         setDischargeData(data);
         console.log(data + "discharged");
 <<<<<<< HEAD
+<<<<<<< HEAD
       } catch (err) {
         console.error("Error fetching data:", err); // Debugging error
         setError("Error fetching data");
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
       } catch (err) {
         console.error('Error fetching data:', err); // Debugging error
         setError('Error fetching data');
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
         setLoading(false);
       }
@@ -54,6 +66,7 @@ function DischargedPatient() {
 
     fetchData();
   }, []);
+<<<<<<< HEAD
 <<<<<<< HEAD
   const handlePrintClick = (data) => {
     setPatients(data);
@@ -150,6 +163,8 @@ function DischargedPatient() {
       )}
     </>
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const handlePrintClick =(data)=>{
     setPatients(data);
     setModalShow(true);
@@ -234,6 +249,9 @@ function DischargedPatient() {
         </div>
         ):(<><AdmissionDischargePrint data={patients} onClose={handleClose}/></>)}
         </>
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   );
 }

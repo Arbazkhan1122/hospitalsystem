@@ -1,6 +1,10 @@
 import React from "react";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { NavLink, useLocation } from "react-router-dom";
+=======
+import { Link, useLocation } from "react-router-dom";
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
 import { Link, useLocation } from "react-router-dom";
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -12,7 +16,11 @@ const MaternityHeader = () => {
   return (
     <div className="maternity-header">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <NavLink 
+=======
+      <Link 
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
       <Link 
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -21,8 +29,13 @@ const MaternityHeader = () => {
       >
         Maternity List
 <<<<<<< HEAD
+<<<<<<< HEAD
       </NavLink>
       <NavLink 
+=======
+      </Link>
+      <Link 
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
       </Link>
       <Link 
@@ -32,8 +45,13 @@ const MaternityHeader = () => {
       >
         Payments
 <<<<<<< HEAD
+<<<<<<< HEAD
       </NavLink>
       <NavLink 
+=======
+      </Link>
+      <Link 
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
       </Link>
       <Link 
@@ -42,6 +60,7 @@ const MaternityHeader = () => {
         className={`maternity-header-button ${location.pathname.startsWith('/reports') ? 'active' : ''}`}
       >
         Reports
+<<<<<<< HEAD
 <<<<<<< HEAD
       </NavLink>
 
@@ -58,6 +77,9 @@ const MaternityHeader = () => {
                
                         <NavLink to="/FamilyPlanningService" className={`maternity-header-button ${location.pathname.startsWith('/reports') ? 'active' : ''}`} activeClassName="active">Family Planning Service</NavLink>
                   
+=======
+      </Link>
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
       </Link>
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb

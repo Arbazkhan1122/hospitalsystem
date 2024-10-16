@@ -1,13 +1,19 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom"; // Import useNavigate
 import { RiTeamFill } from "react-icons/ri";
 import "./superUserNav.css";
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom'; // Import useNavigate
 import { RiTeamFill } from "react-icons/ri";
 import "./superUserNav.css"
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
 const SuperUserNavBar = () => {
@@ -15,7 +21,11 @@ const SuperUserNavBar = () => {
 
   const handleLogOut = () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     console.log("hellloooooo");
+=======
+    console.log("hellloooooo")
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
     console.log("hellloooooo")
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -25,6 +35,7 @@ const SuperUserNavBar = () => {
   return (
     <nav className="superUserNav-Navigation-bar">
       <ul>
+<<<<<<< HEAD
 <<<<<<< HEAD
         <div className="superUserNav-Navbttn-N-act">
           <li>
@@ -93,6 +104,8 @@ const SuperUserNavBar = () => {
           {/* <button className='activesuperUserNav-btn'>Active Super User: Main-Super User</button> */}
           <button className="superUserNav-LogOut" onClick={handleLogOut}>
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
         <div className='superUserNav-Navbttn-N-act'>
           <li><NavLink to="/revenuemgnt">Revenue Management</NavLink></li>
           <li><NavLink to="/sUPermission">Permission</NavLink></li>
@@ -106,6 +119,9 @@ const SuperUserNavBar = () => {
         <div className='superUserNav-Activebtn-N-LogOut'>
           {/* <button className='activesuperUserNav-btn'>Active Super User: Main-Super User</button> */}
           <button className='superUserNav-LogOut' onClick={handleLogOut}>
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
             <i className="fa-solid fa-right-from-bracket"></i>
           </button>
@@ -114,7 +130,11 @@ const SuperUserNavBar = () => {
     </nav>
   );
 <<<<<<< HEAD
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
 }
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb

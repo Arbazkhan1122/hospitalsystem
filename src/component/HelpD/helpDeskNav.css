@@ -3,7 +3,13 @@
     background-color: white;
     font-family: Arial, sans-serif;
 <<<<<<< HEAD
+<<<<<<< HEAD
     padding: 10px;
+=======
+    margin-left: 10px;
+
+    /* padding: 10px; */
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
     margin-left: 10px;
 
@@ -30,7 +36,12 @@
   
   .helpDeskNav-bar a {
 <<<<<<< HEAD
+<<<<<<< HEAD
     color: black;
+=======
+    color: white;
+    background-color: var(--button-color);
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
     color: white;
     background-color: var(--button-color);
@@ -45,9 +56,15 @@
   
   .helpDeskNav-bar a:hover {
 <<<<<<< HEAD
+<<<<<<< HEAD
     background-color: var(--button-hover-background-color);
     color: var(--button-hover-text-color);
     border: 1px solid var(--button-hover-border-color);
+=======
+    background-color: white;
+    color: var(--button-color);
+    border: 1px solid gray;
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
     background-color: white;
     color: var(--button-color);

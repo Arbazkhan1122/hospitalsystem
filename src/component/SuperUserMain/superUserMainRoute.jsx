@@ -37,8 +37,11 @@ import Inventory from './ControlAllDepartment/Inventory';
 import QueryPage from './ControlAllDepartment/QueryPage';
 import QueryPageInventory from './ControlAllDepartment/QueryPageInventory';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Superusermodulemain from './SuperUserModuleMain/superusermodulemain';
 import SuperUserRoleManagement from './Rolemgnt/rolemgnt';
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 function SuperUserMain() {
@@ -83,10 +86,14 @@ function SuperUserMain() {
           <Route path="/inventory" element={<Inventory />} />           
           <Route path="/send-query" element={<QueryPage />} />           
 <<<<<<< HEAD
+<<<<<<< HEAD
           <Route path="/send-inventory-query" element={<QueryPageInventory />} />   
 
           <Route path="/Superusermodulemain/*" element={<Superusermodulemain />} />
           <Route path='/rolemgnt' element={<SuperUserRoleManagement />} />       
+=======
+          <Route path="/send-inventory-query" element={<QueryPageInventory />} />           
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
           <Route path="/send-inventory-query" element={<QueryPageInventory />} />           
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb

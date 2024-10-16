@@ -68,9 +68,13 @@
 
 .superUserNav-Navbttn-N-act {
 <<<<<<< HEAD
+<<<<<<< HEAD
   margin-top: 15px;
   display: flex;
  
+=======
+  display: flex;
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
   display: flex;
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -79,7 +83,10 @@
 .superUserNav-Navbttn-N-act li {
   padding: 0 5px;
 <<<<<<< HEAD
+<<<<<<< HEAD
   
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 }

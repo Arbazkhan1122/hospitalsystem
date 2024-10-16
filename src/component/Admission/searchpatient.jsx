@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState, useEffect, useRef } from "react";
 import { Modal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,6 +13,8 @@ const SearchPatient = () => {
   const [patients, setPatients] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -24,6 +27,9 @@ import AdmissionForm from './AdmissionForm';
 const SearchPatient = () => {
   const [patients, setPatients] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const [currentPage, setCurrentPage] = useState(1);
   const [patientsPerPage] = useState(20);
@@ -32,8 +38,12 @@ const SearchPatient = () => {
   const tableRef = useRef(null);
   const [columnWidths, setColumnWidths] = useState(0);
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [admitted, setAdmitted] = useState([]);
 
+=======
+  const [admitted,setAdmitted] = useState([]);
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
   const [admitted,setAdmitted] = useState([]);
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -43,9 +53,15 @@ const SearchPatient = () => {
   useEffect(() => {
     fetch(`${API_BASE_URL}/patients/getAllPatients`, {
 <<<<<<< HEAD
+<<<<<<< HEAD
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+=======
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
       method: 'GET',
       headers: {
@@ -61,6 +77,7 @@ const SearchPatient = () => {
       })
       .then((data) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
         console.log("Fetched Patients:", data); // Log the fetched data
         setPatients(data);
       })
@@ -68,16 +85,22 @@ const SearchPatient = () => {
         console.error("Error fetching patient data:", error);
 
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
         console.log('Fetched Patients:', data); // Log the fetched data
         setPatients(data);
       })
       .catch((error) => {
         console.error('Error fetching patient data:', error);
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
         // alert(`Error fetching patient data: ${error.message}`);
       });
   }, []);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   useEffect(() => {
     fetch(`${API_BASE_URL}/admissions/fetch`, {
@@ -94,6 +117,8 @@ const SearchPatient = () => {
       .catch((error) => console.error("failed to fetch"));
   }, [showModal]);
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
   useEffect(()=>{
     fetch(`${API_BASE_URL}/admissions/fetch`,{
@@ -111,16 +136,23 @@ const SearchPatient = () => {
     .catch((error)=>console.error("failed to fetch")
     )
   },[showModal])
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
   // Pagination logic
   const indexOfLastPatient = currentPage * patientsPerPage;
   const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
 <<<<<<< HEAD
+<<<<<<< HEAD
   const currentPatients = patients.slice(
     indexOfFirstPatient,
     indexOfLastPatient
   );
+=======
+  const currentPatients = patients.slice(indexOfFirstPatient, indexOfLastPatient);
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
   const currentPatients = patients.slice(indexOfFirstPatient, indexOfLastPatient);
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -130,12 +162,18 @@ const SearchPatient = () => {
   };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const filteredPatients = currentPatients.filter((patient) => {
     if (!patient || !patient.firstName) return false; // Ensure patient and firstName exist
     return patient.firstName.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -157,7 +195,11 @@ const SearchPatient = () => {
   const submitAdmission = async () => {
     if (!selectedPatient) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       console.error("No patient selected");
+=======
+      console.error('No patient selected');
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
       console.error('No patient selected');
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -165,6 +207,7 @@ const SearchPatient = () => {
     }
 
     // Define the admission details
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     const admissionDetails = {};
@@ -195,6 +238,8 @@ const SearchPatient = () => {
     } catch (error) {
       console.error("Error adding admission details:", error);
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
     const admissionDetails = {
     };
 
@@ -220,6 +265,9 @@ const SearchPatient = () => {
       }
     } catch (error) {
       console.error('Error adding admission details:', error);
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
     }
   };
@@ -247,6 +295,7 @@ const SearchPatient = () => {
             <table className="patient-table" ref={tableRef}>
               <thead>
                 <tr>
+<<<<<<< HEAD
 <<<<<<< HEAD
                   {[
                     "Patient Id",
@@ -316,6 +365,8 @@ const SearchPatient = () => {
                     </tr>
                   ))}
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
                   {['Hospital No', 'Name', 'Age', 'Gender', 'Phone', 'Address', 'Visit Type', 'Status'].map(
                     (header, index) => (
                       <th
@@ -358,6 +409,9 @@ const SearchPatient = () => {
                 </td>
                   </tr>
                 ))}
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
               </tbody>
             </table>

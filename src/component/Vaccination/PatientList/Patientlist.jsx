@@ -88,6 +88,7 @@ function Patientlist() {
         </div>
       </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div className="table-container">
         <table className="patientList-table" ref={tableRef}>
           <thead>
@@ -177,6 +178,8 @@ function Patientlist() {
         </table>
       </div>
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       <table className="patientList-table" ref={tableRef}>
         <thead>
           <tr>
@@ -263,6 +266,9 @@ function Patientlist() {
           ))}
         </tbody>
       </table>
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       {isVaccinationRegister && (
         <VaccinationRegister onClose={closeRegisterPopup} />

@@ -26,6 +26,10 @@
     "lucide-react": "^0.438.0",
     "moment": "^2.30.1",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    "package.json": "^2.0.1",
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
     "package.json": "^2.0.1",
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -43,7 +47,11 @@
     "react-qr-code": "^2.0.15",
     "react-quill": "^2.0.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "react-router-dom": "^6.26.0",
+=======
+    "react-router-dom": "^6.27.0",
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
     "react-router-dom": "^6.27.0",
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb

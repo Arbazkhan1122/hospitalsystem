@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState, useEffect, useRef } from "react";
 import "../HhWardInformation/hhWardInformation.css";
 import { API_BASE_URL } from "../../api/api";
@@ -169,6 +170,8 @@ function HHWardInformation() {
       </div>
     </>
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 import React, { useState, useEffect } from 'react';
 import "../HhWardInformation/hhWardInformation.css";
 
@@ -243,6 +246,9 @@ function HHWardInformation() {
         </tbody>
       </table>
     </div>
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   );
 }

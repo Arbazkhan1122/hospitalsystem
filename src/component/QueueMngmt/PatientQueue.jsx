@@ -1,22 +1,29 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./PatientQueue.css";
 import { API_BASE_URL } from "../api/api";
 import { startResizing } from "../../TableHeadingResizing/ResizableColumns";
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 /* PatientQueue_Mohini_4/9/2024/ */
 import React, { useState,useEffect, useRef } from 'react';
 import axios from 'axios';
 import './PatientQueue.css';
 import { API_BASE_URL } from '../api/api';
 import { startResizing } from '../../TableHeadingResizing/ResizableColumns';
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
 const PatientQueue = () => {
   const [data, setData] = useState([]);
   const [selectedDoctor, setSelectedDoctor] = useState();
   const [doctors, setDoctors] = useState([]);
+<<<<<<< HEAD
 <<<<<<< HEAD
   const [showTable, setShowTable] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState("all"); // Default status is set to "All"
@@ -51,6 +58,8 @@ const PatientQueue = () => {
         })
         .catch((error) => console.error("Error fetching patient data:", error));
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const[doctorid,setDoctorid] = useState([])
   const [showTable, setShowTable] = useState(false);
   const [searchText, setSearchText] = useState('');
@@ -94,12 +103,16 @@ console.log(selectedDoctor);
           })
           .catch((error) => console.error('Error fetching patient data:', error));
       }
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
     } else {
       setShowTable(false);
     }
   };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   // Handle status change (completed, skipped, attend)
   const handleStatusChange = (patientData, newStatus) => {
@@ -143,6 +156,8 @@ console.log(selectedDoctor);
     return true; // Return all patients for "All"
   });
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const filteredData = data
   .filter((row) => 
     (selectedStatus === 'all' || row.status === selectedStatus) 
@@ -171,11 +186,15 @@ console.log(selectedDoctor);
       });
   };
 
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const handleClick = () => {
     setIsActive(!isActive); // Toggle the active state
   };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   return (
     <div className="patient-queue-management-container">
@@ -198,6 +217,8 @@ console.log(selectedDoctor);
         <div className="queue-management-form-container">
           <div className="queue-management-form-group">
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
 
   return (
@@ -218,6 +239,9 @@ console.log(selectedDoctor);
         </h2>
         <div className="queue-management-form-container">
         <div className="queue-management-form-group">
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
             <label>Doctor :</label>
             <select
@@ -227,6 +251,10 @@ console.log(selectedDoctor);
             >
               <option value="">Select Doctor</option>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+              {/* Populate doctors list dynamically */}
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
               {/* Populate doctors list dynamically */}
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -237,6 +265,7 @@ console.log(selectedDoctor);
               ))}
             </select>
           </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
           <div className="queue-status-filter">
@@ -279,6 +308,8 @@ console.log(selectedDoctor);
           </div>
 
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
            <div className="queue-management-form-group status-group">
             <label>Status :</label>
             <div className="queue-management-status-options">
@@ -316,6 +347,9 @@ console.log(selectedDoctor);
               <label htmlFor="skipped">Skipped</label>
             </div>
           </div>
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
           <button
             className="queue-management-load-data-button"
@@ -327,6 +361,7 @@ console.log(selectedDoctor);
 
         {showTable && (
           <div className="queue-management-table-section">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <h3 className="queue-management-tables-head">
               {selectedStatus} Patients
@@ -377,6 +412,8 @@ console.log(selectedDoctor);
                   ) : (
                     filteredPatients.map((row, index) => (
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
             <div className="queue-management-search-container">
               <input type="text" placeholder="Search" />
               <button className="queue-management-search-button">🔍</button>
@@ -426,6 +463,9 @@ console.log(selectedDoctor);
                     </tr>
                   ) : (
                     filteredData.map((row, index) => (
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
                       <tr key={index}>
                         <td>{row.date}</td>
@@ -433,6 +473,7 @@ console.log(selectedDoctor);
                         <td>{row.phone}</td>
                         <td>{row.ageSex}</td>
                         <td>{row.department}</td>
+<<<<<<< HEAD
 <<<<<<< HEAD
                         <td>
                           {row.newPatientVisitDTO?.employeeDTO?.salutation +
@@ -477,6 +518,8 @@ console.log(selectedDoctor);
                             </button>
                           )}
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
                         <td>{row.newPatientVisitDTO?.employeeDTO?.salutation+" "+row.newPatientVisitDTO?.employeeDTO?.firstName +" "+ row.newPatientVisitDTO?.employeeDTO?.lastName}</td>
                         <td>{row.visitType}</td>
                         <td>{row.appointmentType}</td>
@@ -486,6 +529,9 @@ console.log(selectedDoctor);
                         <td>
                         <button  className="que-complete-button" onClick={() => handleStatusChange(row, 'completed')}>Complete</button>
                         <button  className="que-skipped-button" onClick={() => handleStatusChange(row, 'skipped')}>Skipped</button>
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
                         </td>
                       </tr>
@@ -494,8 +540,11 @@ console.log(selectedDoctor);
                 </tbody>
               </table>
 <<<<<<< HEAD
+<<<<<<< HEAD
             </div>
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
               {/* <div className="queue-management-pagination">
                 <span>0 to 0 of 0</span>
                 <button className="queue-management-pagination-button">First</button>
@@ -506,6 +555,9 @@ console.log(selectedDoctor);
               </div> */}
             </div>
 
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
           </div>
         )}
@@ -516,6 +568,10 @@ console.log(selectedDoctor);
 
 export default PatientQueue;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+/* PatientQueue_Mohini_4/9/2024/css*/
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
 /* PatientQueue_Mohini_4/9/2024/css*/
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb

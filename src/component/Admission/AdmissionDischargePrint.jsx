@@ -2,13 +2,19 @@ import React, { useRef } from "react";
 import "./AdmissionDischargePrint.css"; // External CSS file
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const AdmissionDischargePrint = ({ data, onClose }) => {
   console.log(data);
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 const AdmissionDischargePrint = ({ data,onClose}) => {
   console.log(data);
 
 
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const printRef = useRef();
 
@@ -55,10 +61,14 @@ const AdmissionDischargePrint = ({ data,onClose}) => {
   return (
     <div className="PatientDischargeForm-container">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <button className="PatientDischargeForm-close-btn" onClick={onClose}>
         X
       </button>
 
+=======
+        <button className="PatientDischargeForm-close-btn" onClick={onClose}>X</button>
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
         <button className="PatientDischargeForm-close-btn" onClick={onClose}>X</button>
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -92,8 +102,12 @@ const AdmissionDischargePrint = ({ data,onClose}) => {
           </p>
           <p>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <strong>Date of Admission:</strong>{" "}
             {data?.admissionDTO?.admissionDate}
+=======
+            <strong>Date of Admission:</strong> {data?.admissionDTO?.admissionDate}
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
             <strong>Date of Admission:</strong> {data?.admissionDTO?.admissionDate}
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -170,15 +184,21 @@ const AdmissionDischargePrint = ({ data,onClose}) => {
             {JSON.parse(data?.medications || "[]").map((medication, index) => (
               <div key={index}>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <p>Name: {medication.name}</p>
                 <p>Dosage: {medication.dosage}</p>
                 <p>Frequency: {medication.frequency}</p>
               </div>
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
               <p>Name: {medication.name}</p>
               <p>Dosage: {medication.dosage}</p>
               <p>Frequency: {medication.frequency}</p>
             </div>
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
             ))}
           </ul>
@@ -186,8 +206,12 @@ const AdmissionDischargePrint = ({ data,onClose}) => {
 
         <p>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <strong>Date:</strong>
           {data?.dischargeDate}
+=======
+          <strong>Date:</strong>{data?.dischargeDate}
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
           <strong>Date:</strong>{data?.dischargeDate}
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb

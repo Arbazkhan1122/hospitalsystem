@@ -7,11 +7,15 @@ import PatientComponent from "./PatientList";
 import MaternityAllowanceReportComponent from "./MaternityAllowanceReport ";
 import MaternityHeader from "./MaternityHeader";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import AntenatalCare from './AntenatalCare/antenatalCare';
 import PostnatalCareManagement from './PostnatalCare/postnatalcare';
 import Labourmgnt from './LaborRoomManagement/labourmgnt';
 import BreastfeedingSupportManagement from './BreastfeedingSupportManagement/breastfeedingSupportmgnt';
 import FamilyPlanningSupportManagement from './FamilySupportService/familysupportservice';
+=======
+
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
 
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -25,6 +29,7 @@ const AppConfig = () => {
       <Route path="/reports" element={<ReportComponent />} />
       <Route path="/patient-form" element={<PatientComponent />} />
 <<<<<<< HEAD
+<<<<<<< HEAD
       
       <Route path="/maternity-allowance-report" element={<MaternityAllowanceReportComponent />} />
               <Route path="/AntenatalCare" element={<AntenatalCare />} />
@@ -32,6 +37,10 @@ const AppConfig = () => {
               <Route path='/Labourmgnt/*' element={<Labourmgnt/>}></Route>
               <Route path='/BreastfeedingSupport' element={<BreastfeedingSupportManagement/>}></Route>
               <Route path='/FamilyPlanningService' element={<FamilyPlanningSupportManagement/>}></Route>
+=======
+      <Route path="/maternity-allowance-report" element={<MaternityAllowanceReportComponent />} />
+      {/* Add more routes as needed */}
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
       <Route path="/maternity-allowance-report" element={<MaternityAllowanceReportComponent />} />
       {/* Add more routes as needed */}

@@ -57,6 +57,7 @@ const Home = () => {
   const printTable = () => {
     if (tableRef.current) {
 <<<<<<< HEAD
+<<<<<<< HEAD
       const printContents = tableRef.current.innerHTML;
 
       // Create an iframe element
@@ -100,10 +101,15 @@ const Home = () => {
     }
   };
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       window.print(); // Trigger the print function for the table
     }
   };
 
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   return (
     <div className="home-page-container">

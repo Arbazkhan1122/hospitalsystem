@@ -16,9 +16,13 @@
 
 .table-container {
 <<<<<<< HEAD
+<<<<<<< HEAD
   width: 100%;
   max-height: 60vh;
 
+=======
+  max-height: 70vh;
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
   max-height: 70vh;
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -29,17 +33,23 @@
 
 table {
 <<<<<<< HEAD
+<<<<<<< HEAD
   width: 100%;
   background-color: #f2f2f2;
   border-collapse: collapse;
   table-layout: fixed;
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   overflow: hidden; 
   background-color: #f2f2f2;
   border-collapse: collapse;
   table-layout: fixed; 
   width: 100%;
   text-overflow: ellipsis;
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 }
 thead{
@@ -52,7 +62,11 @@ thead{
 table th,
 table td {
 <<<<<<< HEAD
+<<<<<<< HEAD
   background-color: #f2f2f2;
+=======
+  background-color: #f2f2f2;  
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
   background-color: #f2f2f2;  
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -61,10 +75,13 @@ table td {
   text-align: left;
   font-size: var(--font-size);
 <<<<<<< HEAD
+<<<<<<< HEAD
   white-space: nowrap; /* Prevent wrapping */
   text-overflow: ellipsis;
   overflow: hidden;
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   text-overflow: ellipsis;
   white-space: nowrap; /* Ensure ellipsis for overflowing text */
 }
@@ -79,12 +96,16 @@ table th {
  overflow: hidden; 
   user-select: none;
   white-space: nowrap;
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 }
 table th .header-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
+<<<<<<< HEAD
 <<<<<<< HEAD
   text-overflow: ellipsis;
 
@@ -95,6 +116,10 @@ table td:last-child {
   width: 250px;
   text-align: center;
 }
+=======
+}
+
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
 }
 

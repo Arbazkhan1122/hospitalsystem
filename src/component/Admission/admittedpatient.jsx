@@ -33,11 +33,14 @@ const AdmittedPatient = () => {
   const [columnWidths, setColumnWidths] = useState(0);
   const [showOptionWindow, setShowOptionWindow] = useState(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
@@ -70,6 +73,7 @@ const AdmittedPatient = () => {
     fetchData();
   }, [showOptionWindow]);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   const printList = () => {
     if (tableRef.current) {
@@ -120,19 +124,28 @@ const AdmittedPatient = () => {
 =======
   // Function to handle dropdown selection
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
+  // Function to handle dropdown selection
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const handledropdownChange = (event, patient) => {
     const option = event.target.value;
     setSelectedOption(option);
     setSelectPatient(patient);
 <<<<<<< HEAD
+<<<<<<< HEAD
     setShowOptionWindow(true);
   };
 
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
     setShowOptionWindow(true); // Open modal when option is selected
   };
 
   // Function to render modal content based on selected option
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const renderModalContent = () => {
     switch (selectedOption) {
@@ -172,6 +185,7 @@ const AdmittedPatient = () => {
         <input
           type="text"
 <<<<<<< HEAD
+<<<<<<< HEAD
           placeholder="Search by PatientName/PatientId"
           className="admitted-search-input"
           value={searchTerm}
@@ -184,10 +198,15 @@ const AdmittedPatient = () => {
           Print
         </button>
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
           placeholder="Search by Hospitalno/IpNumber/PatientName"
           className="admitted-search-input"
         />
         <button className="admitpatient-export-container-button">Print</button>
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       </div>
       <div className="table-container">
@@ -195,6 +214,7 @@ const AdmittedPatient = () => {
           <thead>
             <tr>
               {[
+<<<<<<< HEAD
 <<<<<<< HEAD
                 "Admitted Date",
                 "Ip No",
@@ -205,6 +225,8 @@ const AdmittedPatient = () => {
                 "Bed No",
                 "Admitted Doctor",
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
                 "Refund Date",
                 "Recipt No",
                 "Scheme",
@@ -213,6 +235,9 @@ const AdmittedPatient = () => {
                 "Inpatient No",
                 "Refund Amount",
                 "Entered By",
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
                 "Remarks",
                 "Action",
@@ -237,6 +262,7 @@ const AdmittedPatient = () => {
             </tr>
           </thead>
           <tbody>
+<<<<<<< HEAD
 <<<<<<< HEAD
             {patients
               ?.filter((patient) => {
@@ -316,6 +342,8 @@ const AdmittedPatient = () => {
                 </tr>
               ))}
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
             {patients.map((patient, index) => (
               <tr key={index}>
                 <td>{patient.admissionDate || "N/A"}</td>
@@ -364,6 +392,9 @@ const AdmittedPatient = () => {
                 </td>
               </tr>
             ))}
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
           </tbody>
         </table>

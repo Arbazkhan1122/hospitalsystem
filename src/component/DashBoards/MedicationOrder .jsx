@@ -6,6 +6,7 @@ import { API_BASE_URL } from "../api/api";
 import { startResizing } from "../TableHeadingResizing/resizableColumns";
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 const MedicationOrder = ({
   selectedOrders,
   patientId,
@@ -37,6 +38,8 @@ const MedicationOrder = ({
     const { name, value } = e.target;
     const updatedMedications = medicationList.map((medication, i) =>
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiveSection }) => {
   const [columnWidths,setColumnWidths] = useState({});
   const tableRef = useRef(null);
@@ -58,6 +61,9 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
   const handleInputChange = (index, e) => {
     const { name, value } = e.target;
     const updatedMedications = medicationList.map((medication, i) => 
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       i === index ? { ...medication, [name]: value } : medication
     );
@@ -67,8 +73,13 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
   const handleSubmit = async () => {
     console.log(medicationList);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     try {
+=======
+    
+    try {  
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
     
     try {  
@@ -78,7 +89,11 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
         medicationList // Sending the entire formData array as the payload
       );
 <<<<<<< HEAD
+<<<<<<< HEAD
       setActiveSection("dashboard");
+=======
+      setActiveSection('dashboard');
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
       setActiveSection('dashboard');
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -88,6 +103,11 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
     }
   };
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  
+  
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
   
   
@@ -97,6 +117,7 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
     <div className="MedicationOrder-form">
       <h3>Medication Order</h3>
       <table className="patientList-table" ref={tableRef}>
+<<<<<<< HEAD
 <<<<<<< HEAD
         <thead>
           <tr>
@@ -130,6 +151,8 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
           </tr>
         </thead>
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
           <thead>
             <tr>
               {[
@@ -161,6 +184,9 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
               ))}
             </tr>
           </thead>
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
         <tbody>
           {medicationList.map((medication, index) => (

@@ -6,6 +6,10 @@
     margin: 0 auto;
     padding: 20px;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    background-color: #dff0ff;
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
     background-color: #dff0ff;
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
@@ -152,12 +156,15 @@ align-items: first baseline;
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   .hhBedInformation-wardNameColumnBTN{
     background-color: transparent;
     color: var(--button-bg-color);
     border: none;
   }
 
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 =======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   /* Hide everything except the table during print */

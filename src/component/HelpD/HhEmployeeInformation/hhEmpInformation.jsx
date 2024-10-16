@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useEffect, useState, useRef } from "react";
 import "../HhEmployeeInformation/hhEmpInformation.css";
 import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
@@ -8,10 +9,15 @@ const HHEmpInformation = () => {
   const tableRef = useRef(null);
   const [columnWidths, setColumnWidths] = useState(0);
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 import React, { useEffect, useState } from 'react';
 import "../HhEmployeeInformation/hhEmpInformation.css";
 
 const HHEmpInformation = () => {
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const [employees, setEmployees] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -19,6 +25,7 @@ const HHEmpInformation = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
+<<<<<<< HEAD
 <<<<<<< HEAD
         const response = await fetch(
           `${API_BASE_URL}/employees/get-all-employee`
@@ -98,6 +105,8 @@ const HHEmpInformation = () => {
       employee.designation.toLowerCase().includes(searchTerm.toLowerCase()) ||
       employee.department.toLowerCase().includes(searchTerm.toLowerCase())
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
         const response = await fetch('http://localhost:1415/api/employees');
         if (!response.ok) {
           const errorText = await response.text();
@@ -134,6 +143,9 @@ const HHEmpInformation = () => {
     employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     employee.designation.toLowerCase().includes(searchTerm.toLowerCase()) ||
     employee.department.toLowerCase().includes(searchTerm.toLowerCase())
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   );
 
@@ -153,6 +165,7 @@ const HHEmpInformation = () => {
           />
         </div>
         <div className="hh-results-info">
+<<<<<<< HEAD
 <<<<<<< HEAD
           <span>
             Showing {filteredEmployees.length} / {employees.length} results
@@ -195,6 +208,8 @@ const HHEmpInformation = () => {
                 </th>
               ))}
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
           <span>Showing {filteredEmployees.length} / {employees.length} results</span>
           <button className="hh-print-button" onClick={handlePrint}><i class="fa-solid fa-print"></i> Print</button>
         </div>
@@ -212,6 +227,9 @@ const HHEmpInformation = () => {
               <th>SpeedDial</th>
               <th>Room No.</th>
               <th>Office Hours</th>
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
             </tr>
           </thead>
@@ -231,7 +249,10 @@ const HHEmpInformation = () => {
           </tbody>
         </table>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
         {/* <div className="hhEmpInfo-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
@@ -240,6 +261,9 @@ const HHEmpInformation = () => {
           <button>Next</button>
           <button>Last</button>
         </div> */}
+<<<<<<< HEAD
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+=======
 >>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       </div>
     </div>
