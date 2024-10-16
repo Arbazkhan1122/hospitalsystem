@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import "./AdmissionDischargePrint.css"; // External CSS file
+// import "./AdmissionDischargePrint.css"; 
 
 const AdmissionDischargePrint = ({ data, onClose }) => {
   console.log(data);
