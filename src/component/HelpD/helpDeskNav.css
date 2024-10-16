@@ -1,0 +1,65 @@
+
+.helpDeskNav-bar {
+    background-color: white;
+    font-family: Arial, sans-serif;
+<<<<<<< HEAD
+    padding: 10px;
+=======
+    margin-left: 10px;
+
+    /* padding: 10px; */
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+    /* border: 1px solid #007bff; */
+
+  }
+  
+  .helpDeskNav-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 0px 10px 0px;
+    display: flex;
+    gap: 10px;
+    justify-content: left;
+
+  }
+  
+  .helpDeskNav-bar li {
+    margin: 0 0px;
+    
+  }
+  
+  .helpDeskNav-bar a {
+<<<<<<< HEAD
+    color: black;
+=======
+    color: white;
+    background-color: var(--button-color);
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+    text-decoration: none;
+    /* font-weight: bold; */
+    font-size: var(--heading-font);
+    padding: 7px 5px;
+    border-radius: 5px;
+
+  }
+  
+  .helpDeskNav-bar a:hover {
+<<<<<<< HEAD
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+    border: 1px solid var(--button-hover-border-color);
+=======
+    background-color: white;
+    color: var(--button-color);
+    border: 1px solid gray;
+>>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
+
+    
+  }
+  
+  .helpDeskNav-bar .active {
+    background-color: var(--button-bg-color);
+    color: white;
+
+  }
+  

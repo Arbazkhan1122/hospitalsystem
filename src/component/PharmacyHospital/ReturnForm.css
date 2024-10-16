@@ -1,0 +1,140 @@
+/* Mohini_ReturnForm_WholePage_14/sep/2024 */
+.return-form-component {
+    padding: 20px;
+    background-color: #e6f3ff;
+
+  }
+  
+  /* Style for the table */
+  .return-form-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  /* Style for table headers and cells */
+  .return-form-table th, .return-form-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  /* Background color for table headers */
+  .return-form-table th {
+    background-color: #f4f4f4;
+  }
+  
+  /* Style for table inputs and selects */
+  .return-form-table input, .return-form-table select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Style for delete button */
+  .return-delete-btn {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+  .return-delete-btn:hover{
+    background-color: var(--button-bg-color);
+  }
+  
+  /* Style for the summary section */
+  .return-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the summary section horizontally */
+    margin: 20px 0;
+  }
+  
+  /* Style for each summary item */
+  .summary-item-com {
+    display: flex;
+    align-items: center; /* Align label and input horizontally */
+    margin-bottom: 10px;
+    width: 100%; /* Stretch across available width */
+    max-width: 500px; /* Optional: limit the width */
+  }
+  
+  /* Style for labels in the summary section */
+  .summary-item-com label {
+    width: 150px; /* Fixed width for labels */
+    margin-right: 10px; /* Space between label and input */
+    font-weight: bold;
+  }
+  
+  /* Style for inputs in the summary section */
+  .summary-item-com input {
+    flex: 1; /* Allow input to take remaining space */
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  /* Style for the "In Words" section */
+  .summary-item-com-in-words {
+    margin: 20px 0;
+    font-weight: bold;
+    text-align: center; /* Center the text horizontally */
+  }
+  
+  /* Style for the buttons container */
+  .summary-item-com-buttons {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px; /* Space above button container */
+  }
+  
+  /* Style for individual buttons */
+  .summary-item-com-return-btn, .summary-item-com-cancel-btn {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  }
+  .summary-item-com-return-btn:hover, .summary-item-com-cancel-btn:hover {
+    background-color: var(--button-bg-color);
+
+  }
+  
+  /* Style for "Return" button */
+  .summary-item-com-return-btn {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+  
+  .summary-item-com-return-btn:hover {
+    background-color: var(--button-bg-color);
+
+  }
+  
+  /* Style for "Cancel" button */
+  .summary-item-com-cancel-btn {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+  
+  .summary-item-com-cancel-btn:hover {
+    background-color: var(--button-bg-color);
+  }
+/* Mohini_ReturnForm_WholePage_14/sep/2024 */

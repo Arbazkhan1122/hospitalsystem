@@ -1,0 +1,142 @@
+.MROut-patientsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  
+.MROut-patientsTable th, .report-table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #c1e4f8;
+    background-color: #e4f4ff;
+  }
+
+  
+.MROut-patientsTable th {
+    background-color: #f0f2f5;
+  }
+  
+  .MROut-patientsTable tr:nth-child(even) {
+    background-color: #f0faff;
+  }
+  
+  .MROut-patientsTable tr:nth-child(odd) {
+    background-color: #e4f4ff;
+  }
+
+  
+/* Overlay for the modal */
+.deathReport .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Content area of the modal */
+.deathReport .modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+  max-height: 80%;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Header of the modal */
+.modal-header-deathlist {
+  display: flex;
+  justify-content: flex-end; /* Ensures the close button is aligned to the right */
+}
+
+/* Close button styles */
+.deathReport .close-button {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  float: right;
+}
+
+/* Additional styles for the rest of the modal content */
+.deathReport h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.deathReport .form-container {
+  margin-bottom: 20px;
+}
+
+.deathReport .form-group {
+  margin-bottom: 15px;
+}
+
+.deathReport .form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.deathReport .form-group input[type="text"],
+.deathReport .form-group input[type="date"],
+.deathReport .form-group input[type="time"] {
+  width: calc(100% - 20px);
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.deathReport .footer-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.deathReport .submit-button,
+.deathReport .cancel-button,.submit-button-death {
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+/* Optional: Add hover effects for buttons */
+.deathReport .submit-button:hover,.submit-button-death:hover {
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+}
+
+.deathReport .cancel-button:hover {
+  border: 1px solid var( --button-hover-border-color);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+}
+
+/* Styling for mandatory fields */
+.deathReport .mandatory {
+  color: red;
+  font-weight: bold;
+}
+
+.deathReport .select-mother-searchInput {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+

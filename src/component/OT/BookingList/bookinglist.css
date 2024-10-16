@@ -1,0 +1,158 @@
+/* neha-OT-BookingList-14-9-24 */
+.booking-list-container {
+  height: 100vh; 
+  width: 100vw;  
+  background-color:var(--background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px; 
+  box-sizing: border-box; 
+  font-size: var(--font-size);
+}
+
+/* Header section with the button */
+.booking-list-booking-header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; 
+  margin-bottom: 20px; 
+}
+
+/* New OT Booking button */
+.booking-list-btn-btn-success {
+  background-color:var(--button-color);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+/* New OT Booking button */
+.booking-list-btn-btn-success:hover{
+  background-color: var(--button-hover-background-color);
+  color: var( --button-hover-text-color);
+  border: 1px solid var(--button-hover-border-color);
+}
+
+/* Search bar container */
+.booking-list-patient-search-dropdown {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; 
+  margin-bottom: 20px;
+}
+
+.booking-list-patient-search-dropdown input {
+  width: 300px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+/* Table styles */
+.booking-list-ot-patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.booking-list-ot-patient-table th, 
+.booking-list-ot-patient-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.booking-list-ot-patient-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Action buttons in the table */
+.booklist-action-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Modal overlay */
+.booking-list-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050; /* Higher z-index to be above other content */
+}
+
+/* Modal content */
+.booking-list-modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  width: 700px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Close button inside the modal */
+.booking-list-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: red;
+}
+
+/* Form styling inside the modal */
+.booking-list-modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.booking-list-modal-content label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-right: 20px;
+}
+
+.booking-list-modal-content input, 
+.booking-list-modal-content select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.booking-list-modal-content input[type="checkbox"] {
+  width: auto;
+}
+
+.booking-list-modal-content button[type="submit"] {
+  background-color:var(--button-color);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}

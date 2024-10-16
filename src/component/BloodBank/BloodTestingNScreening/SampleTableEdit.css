@@ -1,0 +1,75 @@
+/* Dhanashree_SampleTestCard_24/09 */
+
+.SampleTestCard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+
+.SampleTestCard-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+}
+
+.SampleTestCard-card-header {
+  border-bottom: 2px solid #007bff;
+  margin-bottom: 15px;
+}
+
+.SampleTestCard-card-header h2 {
+  margin: 0;
+  font-size: 1.5em;
+  color: #007bff;
+}
+
+.SampleTestCard-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.SampleTestCard-field {
+  margin-bottom: 15px;
+}
+
+.SampleTestCard-field label {
+  display: flex;
+  flex-direction: column;
+}
+
+.SampleTestCard-field strong {
+  color: #333;
+}
+
+.SampleTestCard-field input {
+  margin-top: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.SampleTestCard-footer {
+  display: flex;
+  justify-content: flex-end; 
+}
+
+.SampleTestCard-update-button {
+  background-color: #007bff; 
+  color: white; 
+  border: none; 
+  border-radius: 4px; 
+  padding: 10px 15px; 
+  cursor: pointer; 
+  font-size: 14px;
+}
+
+.SampleTestCard-update-button:hover {
+  background-color: #0056b3; 
+}
+
+
+/* Dhanashree_SampleTestCard_24/09 */

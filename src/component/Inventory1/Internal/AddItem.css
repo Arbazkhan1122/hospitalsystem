@@ -1,0 +1,146 @@
+/* Modal Overlay */
+.inventory-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Modal Container */
+.inventory-aadddContainer {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+/* Close Button */
+.inventory-aadddCloseButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #dc3545;
+  border: none;
+  color: #fff;
+  font-size: var(--font-size);
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inventory-aadddCloseButton:hover {
+  background: #c82333;
+}
+
+/* Heading */
+.inventory-aadddHeading {
+  margin-bottom: 20px;
+  font-size: var(--heading-font);
+  color: #333;
+  text-align: center;
+}
+
+/* Input */
+.inventory-aadddInput {
+  padding: 8px;
+  font-size: var(--font-size);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.inventory-aadddSelect {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inventory-aadddSelect-span {
+  width: 10%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Error Message */
+.inventory-error {
+  color: red;
+  font-size: var(--font-size);
+}
+
+/* Form Container */
+.inventory-aadddFormContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Form Columns */
+.inventory-aadddColumn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inventory-aadddColumn-part {
+  width: 47%;
+}
+
+/* Form Row */
+.inventory-aadddFormRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Form Label */
+.inventory-aadddLabel {
+  flex: 0 0 30%; /* Fixed width of 30% */
+  color: #333;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Form Elements */
+.inventory-aadddInput,
+.inventory-aadddTextarea {
+  flex: 1 1 60%; /* Flex to take available space */
+}
+
+.inventory-aadddCheckbox {
+  margin-right: 10px;
+}
+
+.inventory-aadddButton {
+  background-color: var( --button-color);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: var(--font-size);
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.inventory-aadddButton:hover {
+  background-color:var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
+  color: var(--button-hover-text-color);
+}
+

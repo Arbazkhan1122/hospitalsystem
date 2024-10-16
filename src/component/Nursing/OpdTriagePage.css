@@ -1,0 +1,152 @@
+/* OpdTriagePage.css */
+
+/* Modal Customization */
+.triage-container {
+  width: 100%;
+  height: 80%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+/* Header styling */
+.triage-container header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.triage-container-main {
+  width: 100%;
+  height: 70vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  /* border: 1px solid black; */
+}
+.main-upperSeection
+{
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.triage-vital-table,.triage-vital-Form,.triage-Chief-Complaint
+{
+  width: 33%;
+
+}
+.triage-vital-table-subDiv
+{
+  width: 100%;
+  padding: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.triage-vital-table-subDiv h1{
+  font-size: 18px;
+  font-weight: 600;
+}
+.triage-vitals-form-header
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.triage-vitals-form-header h3{
+  font-size: 18px;
+}
+.triage-vitals-form
+{
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
+}
+.triage-chief-complaint-card
+{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.triage-chief-complaint-card h3{
+  font-size: 18px;
+  font-weight: 600;
+}
+.triage-complaint-form
+{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: space-between;
+  align-items: start;
+}
+.triage-add-complaint-btn
+{
+
+  padding: 5px 10px;
+}
+.triage-complaint-form-textarea
+{
+  width: 100%;
+}
+.triage-Patient-Dashboard-patient-table
+{
+  background-color: white;
+}
+.triage-Patient-Dashboard-td
+{
+  background-color: white;
+  border: none;
+}
+.triage-allergy-container
+{
+  width: 100%;
+  display: flex;
+  height: 50vh;
+  /* border: 1px solid blue; */
+}
+.triage-allergy-list-subdiv
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.triage-allergy-list-subdiv h3{
+  font-size: 18px;
+  font-weight: 600;
+}
+.triage-allergy-form-header
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.triage-allergy-form-header h3{
+  font-size: 18px;
+  font-weight: 600;
+}
+.triage-add-allergy-form
+{
+  background-color: white;
+}
+.triage-allergy-add-new-button
+{
+  padding: 5px 10px;
+  background-color: var(--button-color);
+  color: white;
+  border-radius: 5px;
+  border: 1px solid var(--button-color);
+}
+.triage-allergy-add-new-button:hover
+{
+  background-color: var(--button-hover-color);
+  color:var(--button-color);
+  border: 1px solid var(--button-color);
+}

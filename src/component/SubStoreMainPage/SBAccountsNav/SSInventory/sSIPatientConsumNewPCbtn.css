@@ -1,0 +1,170 @@
+/* Ajhar Tamboli sSIPatientConsumNewPCbtn.css 19-09-24 */
+
+
+.sSIPatientConsumNewPCbtn-entry {
+  background-color: var(--background-color);
+  padding: 20px;
+  width: 60%;
+  margin: 20px auto;
+  border-radius: 8px;
+  /* align-items: left; */
+  float: left;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sSIPatientConsumNewPCbtn-title {
+  font-size: var(--heading-font);
+  margin-bottom: 20px;
+  /* color: #333333; */
+  /* font-weight: bold; */
+}
+
+.sSIPatientConsumNewPCbtn-form-section {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sSIPatientConsumNewPCbtn-form-section label {
+  font-size: var(--font-size);
+  margin-right: 10px;
+  /* font-weight: bold; */
+}
+.sSIPatientConsumNewPCbtn-form-section input[type="date"]{
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* width: 50%; */
+  font-size: var(--font-size);
+  
+}
+
+.sSIPatientConsumNewPCbtn-form-section input[type="text"] {
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 50%;
+  font-size: var(--font-size);
+}
+
+.sSIPatientConsumNewPCbtn-back-btn {
+  margin-left: auto;
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  /* margin-bottom: 10px; */
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.sSIPatientConsumNewPCbtn-back-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+
+.sSIPatientConsumNewPCbtn-table-section {
+  margin-top: 20px;
+  border: 1px solid #006688;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.sSIPatientConsumNewPCbtn-table-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  background-color: #006688;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.sSIPatientConsumNewPCbtn-table-row {
+  display: grid;
+  grid-template-columns: 40px 2fr 1fr 1fr 1fr 40px;
+  align-items: center;
+  padding: 5px;
+  gap: 5px;
+  background-color: white;
+}
+
+.sSIPatientConsumNewPCbtn-delete-btn, .sSIPatientConsumNewPCbtn-add-btn {
+  background-color: #6666ff;
+  color: white;
+  border: none;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sSIPatientConsumConsumEntry-table input[type="number"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+}
+.sSIPatientConsumNewPCbtn-remark{
+  display: flex;
+  justify-content: right;
+  float: right;
+}
+.sSIPatientConsumNewPCbtn-remark-section {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F5F5F5;
+  padding: 10px;
+}
+
+.sSIPatientConsumNewPCbtn-remark-section label {
+  margin-right: 10px;
+}
+
+/* textarea {
+  flex-grow: 1;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+} */
+
+.sSIPatientConsumNewPCbtn-button-section {
+  margin-top: 20px;
+  display: flex;
+  float: right;
+  gap: 10px;
+}
+
+.sSIPatientConsumNewPCbtn-save-btn {
+  background-color:var( --button-color);
+  border: 1px solid var( --button-hover-border-color);
+  color: white;
+  /* border: none; */
+  /* margin-right: 10px; */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: var(--font-size);
+  /* margin-bottom: 10px; */
+  transition: background-color 0.3s ease;
+  padding: 5px 5px;
+}
+.sSIPatientConsumNewPCbtn-save-btn:hover {
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+
+.sSIPatientConsumNewPCbtn-discard-btn {
+  background-color: #e74c3c;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

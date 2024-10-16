@@ -1,0 +1,117 @@
+.subStore-requisition-details-container {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: auto;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .subStore-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px dotted #ddd;
+  }
+  .subStore-table-header h1{
+    font-size: 18px;
+  }
+  .subStore-table-header span{
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+  }
+  
+  .subStore-logo-title {
+    display: flex;
+    align-items: center;
+  }
+  
+  .subStore-logo {
+    font-size: 24px;
+    color: #007bff;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  
+  .subStore-requisition-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 12px;
+  }
+  
+  .subStore-status-steps {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .subStore-step {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #888;
+    margin: 0 10px;
+  }
+  
+  .subStore-completed {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .subStore-active {
+    background-color: #dc3545;
+    color: white;
+    
+  }
+
+  .subStore-dispatch{
+    background-color: #28a745;
+    color: white;
+    
+  }
+
+  .subStore-receive{
+    background-color: #2eace2;
+    color: white;
+
+  }
+
+  
+  .subStore-edit-button, .subStore-withdraw-button, .subStore-print-button {
+    padding: 5px;
+    margin-left: 2px;
+    border: none;
+    border-radius: 4px;
+    font-size: var(--font-size);
+    cursor: pointer;
+  }
+  
+  .subStore-edit-button {
+    background-color: #ffc107;
+    color: #fff;
+  }
+  
+  .subStore-withdraw-button {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 5px 5px;
+  }
+  
+  .subStore-print-button {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
