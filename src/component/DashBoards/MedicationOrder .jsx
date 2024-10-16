@@ -5,8 +5,6 @@ import "./MedicationOrder.css";
 import { API_BASE_URL } from "../api/api";
 import { startResizing } from "../TableHeadingResizing/resizableColumns";
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 const MedicationOrder = ({
   selectedOrders,
   patientId,
@@ -37,34 +35,6 @@ const MedicationOrder = ({
   const handleInputChange = (index, e) => {
     const { name, value } = e.target;
     const updatedMedications = medicationList.map((medication, i) =>
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiveSection }) => {
-  const [columnWidths,setColumnWidths] = useState({});
-  const tableRef = useRef(null);
-  console.log(patientId +""+ newPatientVisitId);
-  
-  const [medicationList, setMedicationList] = useState(selectedOrders.map(order => ({
-    type: order?.genericNameDTO?.genericName || "", 
-    medicationName: order?.itemName || "",
-    dose: "",
-    route: "mouth",
-    frequency: 0,
-    lastTaken: "",
-    comments: "",
-    status:"pending",
-    medicationDate:new Date().toISOString().slice(0, 10),
-    ...(patientId ? { patientDTO: { patientId } } : { newPatientVisitDTO: { newPatientVisitId } })
-  })));
-
-  const handleInputChange = (index, e) => {
-    const { name, value } = e.target;
-    const updatedMedications = medicationList.map((medication, i) => 
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       i === index ? { ...medication, [name]: value } : medication
     );
     setMedicationList(updatedMedications);
@@ -72,53 +42,23 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
 
   const handleSubmit = async () => {
     console.log(medicationList);
-<<<<<<< HEAD
-<<<<<<< HEAD
 
     try {
-=======
-    
-    try {  
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-    
-    try {  
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       const response = await axios.post(
         `${API_BASE_URL}/medications/save-medication-details`,
         medicationList // Sending the entire formData array as the payload
       );
-<<<<<<< HEAD
-<<<<<<< HEAD
       setActiveSection("dashboard");
-=======
-      setActiveSection('dashboard');
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-      setActiveSection('dashboard');
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       console.log("Success:", response.data);
     } catch (error) {
       console.error("Error submitting medication list:", error);
     }
   };
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  
-  
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-  
-  
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
   return (
     <div className="MedicationOrder-form">
       <h3>Medication Order</h3>
       <table className="patientList-table" ref={tableRef}>
-<<<<<<< HEAD
-<<<<<<< HEAD
         <thead>
           <tr>
             {[
@@ -150,44 +90,6 @@ const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId,setActiv
             ))}
           </tr>
         </thead>
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-          <thead>
-            <tr>
-              {[
-                 "",
-                 "Generic",
-                 "Brand Name",
-                 "Dose",
-                 "Route",
-                 "Frequency",
-                 "Duration (days)",
-                 "Remarks"
-              ].map((header, index) => (
-                <th
-                  key={index}
-                  style={{ width: columnWidths[index] }}
-                  className="resizable-th"
-                >
-                  <div className="header-content">
-                    <span>{header}</span>
-                    <div
-                      className="resizer"
-                      onMouseDown={startResizing(
-                        tableRef,
-                        setColumnWidths
-                      )(index)}
-                    ></div>
-                  </div>
-                </th>
-              ))}
-            </tr>
-          </thead>
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
         <tbody>
           {medicationList.map((medication, index) => (
             <tr key={index}>

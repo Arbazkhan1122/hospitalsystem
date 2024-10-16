@@ -32,17 +32,11 @@ const AdmittedPatient = () => {
   const tableRef = useRef(null);
   const [columnWidths, setColumnWidths] = useState(0);
   const [showOptionWindow, setShowOptionWindow] = useState(false);
-<<<<<<< HEAD
-<<<<<<< HEAD
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
   const handleShow = (item) => {
     setSelectPatient(item);
@@ -73,8 +67,6 @@ const AdmittedPatient = () => {
     fetchData();
   }, [showOptionWindow]);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   const printList = () => {
     if (tableRef.current) {
       const printContents = tableRef.current.innerHTML;
@@ -121,32 +113,13 @@ const AdmittedPatient = () => {
     }
   };
 
-=======
-  // Function to handle dropdown selection
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-  // Function to handle dropdown selection
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const handledropdownChange = (event, patient) => {
     const option = event.target.value;
     setSelectedOption(option);
     setSelectPatient(patient);
-<<<<<<< HEAD
-<<<<<<< HEAD
     setShowOptionWindow(true);
   };
 
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-    setShowOptionWindow(true); // Open modal when option is selected
-  };
-
-  // Function to render modal content based on selected option
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   const renderModalContent = () => {
     switch (selectedOption) {
       case "PrintWristband":
@@ -184,8 +157,6 @@ const AdmittedPatient = () => {
       <div className="adt-search-container">
         <input
           type="text"
-<<<<<<< HEAD
-<<<<<<< HEAD
           placeholder="Search by PatientName/PatientId"
           className="admitted-search-input"
           value={searchTerm}
@@ -197,25 +168,12 @@ const AdmittedPatient = () => {
         >
           Print
         </button>
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-          placeholder="Search by Hospitalno/IpNumber/PatientName"
-          className="admitted-search-input"
-        />
-        <button className="admitpatient-export-container-button">Print</button>
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       </div>
       <div className="table-container">
         <table ref={tableRef}>
           <thead>
             <tr>
               {[
-<<<<<<< HEAD
-<<<<<<< HEAD
                 "Admitted Date",
                 "Ip No",
                 "Case Type",
@@ -224,21 +182,6 @@ const AdmittedPatient = () => {
                 "Ward",
                 "Bed No",
                 "Admitted Doctor",
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-                "Refund Date",
-                "Recipt No",
-                "Scheme",
-                "Patient",
-                "Age/Sex",
-                "Inpatient No",
-                "Refund Amount",
-                "Entered By",
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
                 "Remarks",
                 "Action",
               ].map((header, index) => (
@@ -262,8 +205,6 @@ const AdmittedPatient = () => {
             </tr>
           </thead>
           <tbody>
-<<<<<<< HEAD
-<<<<<<< HEAD
             {patients
               ?.filter((patient) => {
                 const searchLowerCase = searchTerm.toLowerCase();
@@ -341,61 +282,6 @@ const AdmittedPatient = () => {
                   </td>
                 </tr>
               ))}
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-            {patients.map((patient, index) => (
-              <tr key={index}>
-                <td>{patient.admissionDate || "N/A"}</td>
-                <td>{patient.price || "N/A"}</td>
-                <td>{patient.caseType || "N/A"}</td>
-                <td>{`${patient.patientDTO?.firstName || ""} ${
-                  patient.patientDTO?.lastName || ""
-                }`}</td>
-                <td>{`${patient.patientDTO?.age || "N/A"}/${
-                  patient.patientDTO?.gender || "N/A"
-                }`}</td>
-                <td>{patient.manageBedDTO?.bedNumber || "N/A"}</td>
-                <td>${patient.price || "N/A"}</td>
-                <td>{patient.admittedDoctorDTO?.firstName || "N/A"}</td>
-                <td>{patient.admissionNotes || "N/A"}</td>
-                <td>
-                  <div className="admit-actions">
-                    <button
-                      onClick={() => handleShow(patient)}
-                      className="admitbtn"
-                    >
-                      Transfer
-                    </button>
-                    <button
-                      onClick={() => handlePrint(patient)}
-                      className="admitbtn"
-                    >
-                      Print
-                    </button>
-                    <select
-                      id="admitpatient-dropdown"
-                      value={selectedOption}
-                      onChange={(event) => handledropdownChange(event, patient)}
-                      className="admitbtn-select"
-                    >
-                      <option value="">Select...</option>
-                      <option value="PrintWristband">Print Wristband</option>
-                      <option value="ChangeDoctor">Change Doctor</option>
-                      <option value="PrintGenericStickers">
-                        Print Generic Stickers
-                      </option>
-                      <option value="CancelAdmission">Cancel Admission</option>
-                      <option value="AdmissionSlip">Admission Slip</option>
-                    </select>
-                  </div>
-                </td>
-              </tr>
-            ))}
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
           </tbody>
         </table>
       </div>

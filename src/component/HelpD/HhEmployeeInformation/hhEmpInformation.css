@@ -1,16 +1,6 @@
 
   .hh-employee-list {
     font-family: Arial, sans-serif;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    /* max-width: 1200px; */
-    margin: 10px 0px 10px 0px ;
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-    /* max-width: 1200px; */
-    margin: 10px 0px 10px 0px ;
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
     padding: 10px 20px;
     background-color: var(--background-color);
     height: 75vh;
@@ -35,8 +25,6 @@
   
   .hh-search-container {
     display: flex;
-<<<<<<< HEAD
-<<<<<<< HEAD
     background-color: #f2f2f2;
     position: relative;
     align-items: center;
@@ -52,30 +40,6 @@
     border: none;
     outline: none;
     background-color: transparent;
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-    margin-left: -20px;
-}
-.hh-search-container i{
-    margin-left: -16px;
-    position: relative;
-    color:gray;
-    top: 7px;
-    left: 205px;
-}
-
-.hh-search-input {
-      /* border: 1px solid red; */
-    flex-grow: 1;
-    padding: 3px;
-    width: 200px;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   }
   
   .hh-search-button {

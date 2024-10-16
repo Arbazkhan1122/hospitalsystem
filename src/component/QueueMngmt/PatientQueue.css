@@ -45,31 +45,15 @@
   }
   
   .queue-management-title {
-<<<<<<< HEAD
-<<<<<<< HEAD
     font-size: var(--heading-font);
-=======
-    font-size: 16px;
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-    font-size: 16px;
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
     margin-bottom: 20px;
     color: #004080;
     font-weight: bold;
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
   .queue-status-filter{
     display: flex;
     gap: 20px;
   }
-=======
-  
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-  
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   .queue-management-form-container {
     display: flex;
     align-items: center;
@@ -155,45 +139,6 @@
     margin-left: -40px;
   }
   
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-  .queue-management-table-section table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .queue-management-table-section th, 
-  .queue-management-table-section td {
-    padding: 5px;
-    text-align: center; /* Center-align the text in table headers */
-    font-size: 14px;
-    /* text-align: left; */
-    border: 1px solid #ccc;
-  }
-  .queue-managemnt-table{
-    width: 100%;
-    background-color: white;
-  }
-
-.queue-mana-table{
-    background-color: white;
-}
-
-
-  .queue-management-table-section thead th {
-    background-color: #f5f5f5;
-    font-size: 14px;
-    text-align: center; /* Ensure headers are centered in the thead section */
-
-  }
-  
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   .queue-management-no-data {
     text-align: center;
     background-color: #fff3cd;
@@ -226,8 +171,6 @@
     color: #0F63AF;
     font-size: 14px;
     display: flex;
-<<<<<<< HEAD
-<<<<<<< HEAD
     justify-content: flex-end; 
 }
 
@@ -241,33 +184,11 @@
   color: white;
   border: none;
   padding: 5px 10px;
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-    justify-content: flex-end; /* Aligns the text to the left */
-}
-
-
-.que-complete-button {
-  background-color: var(--button-color); /* Green */
-  color: white;
-  border: none;
-  padding: 5px;
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   margin: 5px;
   font-size: 14px;
   cursor: pointer;
   border-radius: 4px;
-<<<<<<< HEAD
-<<<<<<< HEAD
   border: 1px solid var(--button-color);
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 }
 
 .que-complete-button:hover {
@@ -327,21 +248,6 @@
   /* .queue-management-search-button {
     margin-left: 0; 
   } */
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-
-  .queue-management-table-section th,
-  .queue-management-table-section td {
-    padding: 8px 5px; /* Adjust padding for smaller screens */
-  }
-
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   /* .queue-management-pagination {
     flex-direction: column; 
   } */
@@ -423,41 +329,6 @@
   /* margin-bottom: 20px; */
   color: #004080;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-
-.queue-management-table-section {
-  /* margin-top: 20px; */
-  max-height: 500px; /* Adjust the height as needed */
-  overflow-y: auto; /* Only vertical scrollbar when needed */
-}
-
-.queue-management-table-section table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.queue-management-table-section th, 
-.queue-management-table-section td {
-  padding: 5px;
-  font-size: 14px;
-  text-align: center;
-  border: 1px solid #ccc;
-  background-color: white; /* Ensure background remains white */
-}
-
-.queue-management-table-section thead th {
-  background-color: #f5f5f5;
-  font-size: 14px;
-}
-
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 /* Hide scrollbar when not needed */
 .queue-management-table-section::-webkit-scrollbar {
   width: 0; /* For Webkit-based browsers like Chrome */
@@ -490,12 +361,4 @@
     font-size: 14px; /* Adjust font size for smaller screens */
   }
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 /* PatientQueue_Mohini_4/9/2024/css_startLine_1_to_EndLine_406 */
-=======
-/* PatientQueue_Mohini_4/9/2024/css_startLine_1_to_EndLine_406 */
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-/* PatientQueue_Mohini_4/9/2024/css_startLine_1_to_EndLine_406 */
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb

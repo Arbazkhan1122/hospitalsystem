@@ -33,14 +33,6 @@ const Section = ({ title, handleAddClick, children }) => (
 );
 
 const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   console.log(patient);
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
@@ -63,8 +55,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
     // Fetch medications data from the API
     const fetchMedications = async () => {
       let endpoint = "";
-<<<<<<< HEAD
-<<<<<<< HEAD
 
       if (patient?.newPatientVisitId) {
         endpoint = `${API_BASE_URL}/medications/by-opd-id?opdPatientId=${patient?.newPatientVisitId}`;
@@ -72,17 +62,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
         endpoint = `${API_BASE_URL}/medications/by-ipd-id?ipdPatientId= ${
           patient?.patientDTO?.patientId || patient?.patientId
         }`;
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-      if (patient?.newPatientVisitId) {
-        endpoint = `${API_BASE_URL}/medications/by-opd-id?opdPatientId=${patient?.newPatientVisitId}`;
-      } else if (patient?.admissionId) {
-        endpoint = `${API_BASE_URL}/medications/by-ipd-id?ipdPatientId= ${patient?.patientDTO?.patientId || patient?.patientId}`;
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       }
       try {
         const response = await fetch(endpoint);
@@ -101,8 +80,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
   useEffect(() => {
     const fetchVitals = () => {
       let endpoint = "";
-<<<<<<< HEAD
-<<<<<<< HEAD
 
       if (patient?.newPatientVisitId) {
         endpoint = `${API_BASE_URL}/vitals/get-by-opd-patient-id/${patient?.newPatientVisitId}`;
@@ -110,17 +87,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
         endpoint = `${API_BASE_URL}/vitals/get-by-in-patient-id/${
           patient?.patientDTO?.patientId || patient?.patientId
         }`;
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-      if (patient?.newPatientVisitId) {
-        endpoint = `${API_BASE_URL}/vitals/get-by-opd-patient-id/${patient?.newPatientVisitId}`;
-      } else if (patient?.admissionId) {
-        endpoint = `${API_BASE_URL}/vitals/get-by-in-patient-id/${patient?.patientDTO?.patientId || patient?.patientId}`;
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       }
 
       // If an endpoint is determined, make the API call
@@ -141,23 +107,13 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
     };
 
     fetchVitals();
-<<<<<<< HEAD
-<<<<<<< HEAD
   }, [patient.newPatientVisitId, patient.admissionId, activeSection]); // Dependencies
-=======
-  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
   useEffect(() => {
     const fetchAllergies = () => {
       let endpoint = "";
 
       // Check if newPatientVisitId is present
-<<<<<<< HEAD
-<<<<<<< HEAD
 
       if (patient?.newPatientVisitId) {
         endpoint = `${API_BASE_URL}/allergies/by-newVisitPatientId/${patient?.newPatientVisitId}`;
@@ -165,17 +121,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
         endpoint = `${API_BASE_URL}/allergies/by-patientId/${
           patient?.patientDTO?.patientId || patient?.patientId
         }`;
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-      if (patient?.newPatientVisitId) {
-        endpoint = `${API_BASE_URL}/allergies/by-newVisitPatientId/${patient?.newPatientVisitId}`;
-      } else if (patient?.admissionId) {
-        endpoint = `${API_BASE_URL}/allergies/by-patientId/${patient?.patientDTO?.patientId || patient?.patientId}`;
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       }
 
       // If an endpoint is determined, make the API call
@@ -196,23 +141,13 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
     };
 
     fetchAllergies();
-<<<<<<< HEAD
-<<<<<<< HEAD
   }, [patient.newPatientVisitId, patient.admissionId, activeSection]); // Dependencies to re-run useEffect when IDs change
-=======
-  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies to re-run useEffect when IDs change
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies to re-run useEffect when IDs change
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
   useEffect(() => {
     const fetchActiveProblems = () => {
       let endpoint = "";
 
       // Check if newPatientVisitId is present
-<<<<<<< HEAD
-<<<<<<< HEAD
 
       if (patient?.newPatientVisitId) {
         endpoint = `${API_BASE_URL}/active-problems/by-newVisitPatientId/${patient?.newPatientVisitId}`;
@@ -220,17 +155,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
         endpoint = `${API_BASE_URL}/active-problems/by-patientId/${
           patient?.patientDTO?.patientId || patient?.patientId
         }`;
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-      if (patient?.newPatientVisitId) {
-        endpoint = `${API_BASE_URL}/active-problems/by-newVisitPatientId/${patient?.newPatientVisitId}`;
-      } else if (patient?.admissionId) {
-        endpoint = `${API_BASE_URL}/active-problems/by-patientId/${patient?.patientDTO?.patientId || patient?.patientId}`;
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       }
 
       // If an endpoint is determined, make the API call
@@ -249,23 +173,13 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
     };
 
     fetchActiveProblems();
-<<<<<<< HEAD
-<<<<<<< HEAD
   }, [patient.newPatientVisitId, patient.admissionId, activeSection]); // Dependencies for re-fetching when IDs change
-=======
-  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies for re-fetching when IDs change
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies for re-fetching when IDs change
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
   useEffect(() => {
     const fetchImagingRequisitions = () => {
       let endpoint = "";
 
       // Check if newPatientVisitId or admissionId is present
-<<<<<<< HEAD
-<<<<<<< HEAD
 
       if (patient?.newPatientVisitId) {
         endpoint = `${API_BASE_URL}/imaging-requisitions/by-opd-patient-id?opdPatientId=${patient?.newPatientVisitId}`;
@@ -273,17 +187,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
         endpoint = `${API_BASE_URL}/imaging-requisitions/by-ipd-patient-id?ipdPatientId=${
           patient?.patientDTO?.patientId || patient?.patientId
         }`;
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-      if (patient?.newPatientVisitId) {
-        endpoint = `${API_BASE_URL}/imaging-requisitions/by-opd-patient-id?opdPatientId=${patient?.newPatientVisitId}`;
-      } else if (patient?.admissionId) {
-        endpoint = `${API_BASE_URL}/imaging-requisitions/by-ipd-patient-id?ipdPatientId=${patient?.patientDTO?.patientId || patient?.patientId}`;
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       }
 
       // If an endpoint is determined, make the API call
@@ -303,23 +206,13 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
     };
 
     fetchImagingRequisitions();
-<<<<<<< HEAD
-<<<<<<< HEAD
   }, [patient.newPatientVisitId, patient.admissionId, activeSection]); // Dependencies to re-run useEffect when patient IDs change
-=======
-  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies to re-run useEffect when patient IDs change
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies to re-run useEffect when patient IDs change
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
   useEffect(() => {
     const fetchLabRequests = () => {
       let endpoint = "";
 
       // Check if newPatientVisitId or admissionId is present
-<<<<<<< HEAD
-<<<<<<< HEAD
 
       if (patient?.newPatientVisitId) {
         endpoint = `${API_BASE_URL}/lab-requests/by-opd-patient-id?opdPatientId=${patient?.newPatientVisitId}`;
@@ -327,17 +220,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
         endpoint = `${API_BASE_URL}/lab-requests/by-ipd-patient-id?ipdPatientId=${
           patient?.patientDTO?.patientId || patient?.patientId
         }`;
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-      if (patient?.newPatientVisitId) {
-        endpoint = `${API_BASE_URL}/lab-requests/by-opd-patient-id?opdPatientId=${patient?.newPatientVisitId}`;
-      } else if (patient?.admissionId) {
-        endpoint = `${API_BASE_URL}/lab-requests/by-ipd-patient-id?ipdPatientId=${patient?.patientDTO?.patientId || patient?.patientId}`;
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       }
 
       // If an endpoint is determined, make the API call
@@ -357,15 +239,7 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
     };
 
     fetchLabRequests();
-<<<<<<< HEAD
-<<<<<<< HEAD
   }, [patient.newPatientVisitId, patient.admissionId, activeSection]); // Dependencies to track patient IDs
-=======
-  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies to track patient IDs
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-  }, [patient.newPatientVisitId, patient.admissionId,activeSection]); // Dependencies to track patient IDs
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
   // useEffect(() => {
   //   if (
@@ -409,15 +283,7 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
       case "actionRecord":
         return (
           <ActionRecordPage
-<<<<<<< HEAD
-<<<<<<< HEAD
             patient={patient}
-=======
-          patient={patient}
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-          patient={patient}
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
             patientId={patient?.patientDTO?.patientId || patient?.patientId}
             setActiveSection={setActiveSection}
             newPatientVisitId={patient?.newPatientVisitId}
@@ -481,8 +347,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
               </button>
             </div>
             <span className="Patient-Dashboard-textName">{`${
-<<<<<<< HEAD
-<<<<<<< HEAD
               patient?.firstName ||
               patient?.patientDTO?.firstName ||
               patient?.patientFirstName
@@ -499,33 +363,13 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
               patient?.patientDTO?.gender ||
               patient?.patientGender
             }`}</span>
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-              patient?.firstName || patient?.patientDTO?.firstName
-            ||patient?.patientFirstName} ${patient?.lastName || patient?.patientDTO?.lastName || patient?.patientLastName}`}</span>
-            <br></br>
-            <span className="Patient-Dashboard-ageGen">{`${
-              patient?.age || patient?.patientDTO?.age || patient?.patientAge}/${patient?.gender || patient?.patientDTO?.gender ||patient?.patientGender}`}</span>
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
           </div>
           <hr></hr>
           <div className="Patient-Dashboard-divTwoDetails">
             <div className="Patient-Dashboard-ward">
-<<<<<<< HEAD
-<<<<<<< HEAD
               <span className="Patient-Dashboard-detailHeading">
                 Ward/Bed: {patient?.wardName} / {patient?.bedNumber}
               </span>
-=======
-              <span className="Patient-Dashboard-detailHeading">Ward/Bed: {patient?.wardName} / {patient?.bedNumber}</span>
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-              <span className="Patient-Dashboard-detailHeading">Ward/Bed: {patient?.wardName} / {patient?.bedNumber}</span>
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
               <span></span>
               <br></br>
             </div>
@@ -535,8 +379,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
               </span>
               <span>{`${
                 patient?.employeeDTO?.salutation ||
-<<<<<<< HEAD
-<<<<<<< HEAD
                 patient?.admittedDoctorDTO?.salutation ||
                 patient?.doctorSalutationName
               } ${
@@ -547,20 +389,6 @@ const PatientDashboard = ({ isPatientOPEN, patient, setIsPatientOPEN }) => {
                 patient?.employeeDTO?.lastName ||
                 patient?.admittedDoctorDTO?.lastName ||
                 patient?.doctorLastName
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-                patient?.admittedDoctorDTO?.salutation || patient?.doctorSalutationName
-              } ${
-                patient?.employeeDTO?.firstName ||
-                patient?.admittedDoctorDTO?.firstName || patient?.doctorFirstName
-              } ${
-                patient?.employeeDTO?.lastName ||
-                patient?.admittedDoctorDTO?.lastName || patient?.doctorLastName
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
               }`}</span>
             </div>
           </div>

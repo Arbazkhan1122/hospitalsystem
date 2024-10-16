@@ -462,8 +462,6 @@ const Sidebar = ({
               >
                 <Link to="/controlAllDeptRoute">Control All Department</Link>
               </li>
-<<<<<<< HEAD
-<<<<<<< HEAD
               <li
                 onClick={() => handleItemClick("superUser", "submenu8")}
                 className={
@@ -484,10 +482,6 @@ const Sidebar = ({
               >
                 <Link to="/rolemgnt">Role Management</Link>
               </li>
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
             </ul>
           )}
         </li>
@@ -2703,8 +2697,6 @@ const Sidebar = ({
               >
                 <Link to="/reports">Reports</Link>
               </li>
-<<<<<<< HEAD
-<<<<<<< HEAD
               <li
                 onClick={() => handleItemClick("maternity", "submenu3")}
                 className={
@@ -2745,10 +2737,6 @@ const Sidebar = ({
               >
                 <Link to="/FamilyPlanningService">FamilyPlanningService</Link>
               </li>
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
             </ul>
           )}
         </li>
@@ -2872,8 +2860,6 @@ const Sidebar = ({
                   Reports
                 </Link>
               </li>
-<<<<<<< HEAD
-<<<<<<< HEAD
               <li
                 onClick={() => handleItemClick("mkt", "submenu3")}
                 className={
@@ -2926,10 +2912,6 @@ const Sidebar = ({
                 Patient Outreach
                 </Link>
               </li>
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
             </ul>
           )}
         </li>

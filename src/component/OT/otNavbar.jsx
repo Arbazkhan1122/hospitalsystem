@@ -4,21 +4,11 @@ import { Link, useLocation } from 'react-router-dom';
 import './otmain.css';
 
 const Navbar = ({ handleNavigation }) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
   const location = useLocation();
-=======
-  const location = useLocation(); 
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-  const location = useLocation(); 
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
   return (
     <header className="ot_setting-header">
       <nav className="ot_setting-nav-links">
-<<<<<<< HEAD
-<<<<<<< HEAD
         <Link
           to="/"
           className={`ot_setting-header-button ${location.pathname === '/' ? 'active' : ''}`}
@@ -48,27 +38,6 @@ const Navbar = ({ handleNavigation }) => {
 
         <Link to="/postsurgerycare"   className={`ot_setting-header-button ${location.pathname === '/' ? 'active' : ''}`}>Post Surgery Care</Link>
 
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-        <Link 
-          to="/" 
-          className={`ot_setting-header-button ${location.pathname === '/' ? 'active' : ''}`}
-          
-        >
-          Booing List
-        </Link>
-        <Link 
-          to="/Setting" 
-          className={`ot_setting-header-button ${location.pathname === '/Setting' ? 'active' : ''}`}
-          
-        >
-          Setting
-        </Link>
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       </nav>
     </header>
   );

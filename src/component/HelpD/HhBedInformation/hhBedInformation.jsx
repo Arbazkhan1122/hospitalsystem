@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 import React, { useState, useEffect, useRef } from "react";
 import * as XLSX from "xlsx";
 import "../HhBedInformation/hhBedInformation.css";
@@ -74,30 +72,6 @@ function HHBedInformation() {
       // Remove the iframe after printing
       document.body.removeChild(iframe);
     }
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-import React, { useState, useEffect } from 'react';
-import * as XLSX from 'xlsx';
-import "../HhBedInformation/hhBedInformation.css";
-
-function HHBedInformation() {
-  const [wardData, setWardData] = useState([]);
-
-  useEffect(() => {
-    // Fetch data from API
-    fetch("http://localhost:1415/api/ward-department/getAllWardDepartment")
-      .then(response => response.json())
-      .then(data => setWardData(data))
-      .catch(error => console.error("Error fetching data:", error));
-  }, []);
-
-  const handlePrint = () => {
-    window.print();
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
   };
 
   const handleExport = () => {
@@ -108,33 +82,18 @@ function HHBedInformation() {
     const wb = XLSX.utils.book_new();
 
     const createdDate = `Created Date: ${new Date().toLocaleDateString()}`;
-<<<<<<< HEAD
-<<<<<<< HEAD
     XLSX.utils.sheet_add_aoa(ws, [[createdDate]], { origin: "A1" });
     XLSX.utils.sheet_add_aoa(ws, [["Ward wise Bed Occupancy"]], {
       origin: "A2",
     });
 
     XLSX.utils.sheet_add_aoa(ws, [[""]], { origin: "A4" });
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-    XLSX.utils.sheet_add_aoa(ws, [[createdDate]], { origin: 'A1' });
-    XLSX.utils.sheet_add_aoa(ws, [["Ward wise Bed Occupancy"]], { origin: 'A2' });
-
-    XLSX.utils.sheet_add_aoa(ws, [[""]], { origin: 'A4' });
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
     XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
 
     XLSX.writeFile(wb, "BedInformation.xlsx");
   };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   const calculateTotals = (data) => {
     const totalOccupied = data.reduce(
       (sum, row) => sum + row.totalOccupiedBedsForSelectedWard,
@@ -166,32 +125,12 @@ function HHBedInformation() {
     setId(id);
     setWardName(wardName);
   };
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-  const calculateTotals = () => {
-    return wardData.reduce((totals, ward) => {
-      totals.occupied += ward.occupied;
-      totals.vacant += ward.vacant;
-      totals.reserved += ward.reserved;
-      totals.total += ward.numberOfBeds;
-      return totals;
-    }, { occupied: 0, vacant: 0, reserved: 0, total: 0 });
-  };
-
-  const totals = calculateTotals();
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
 
   return (
     <div className="bedInformation-container">
       <div className="bedInformation-stats-container">
         <div className="hhBedInformation-stat-card total">
           <h2>Total No. of Beds</h2>
-<<<<<<< HEAD
-<<<<<<< HEAD
           <span className="hhBedInformation-number">{totals.overallTotal}</span>
         </div>
         <div className="hhBedInformation-stat-card available">
@@ -208,25 +147,6 @@ function HHBedInformation() {
         </div>
       </div>
 
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-          <span className="hhBedInformation-number">{totals.total}</span>
-        </div>
-        <div className="hhBedInformation-stat-card available">
-          <h2>Available No. of Beds</h2>
-          <span className="hhBedInformation-number">{totals.vacant}</span>
-        </div>
-        <div className="hhBedInformation-stat-card occupied">
-          <h2>Occupied No. of Beds</h2>
-          <span className="hhBedInformation-number">{totals.occupied}</span>
-        </div>
-      </div>
-      
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
       <div className="bedInformation-table-container">
         <h4>BED OCCUPANCY STATUS</h4>
         <div className="bedInformation-button-container">
@@ -237,15 +157,7 @@ function HHBedInformation() {
             <i className="fa-regular fa-file-excel"></i> Export
           </button>
         </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
         <table ref={tableRef}>
-=======
-        <table>
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
-        <table>
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
           <thead>
             <tr>
               <th>Ward Name</th>
@@ -256,8 +168,6 @@ function HHBedInformation() {
             </tr>
           </thead>
           <tbody>
-<<<<<<< HEAD
-<<<<<<< HEAD
             {wardData != null &&
               wardData.map((ward, index) => (
                 <tr key={index}>
@@ -283,34 +193,10 @@ function HHBedInformation() {
               <td>{totals.totalAvailable}</td>
               <td>{totals.totalReserved}</td>
               <td>{totals.overallTotal}</td>
-=======
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-            {wardData.map((ward, index) => (
-              <tr key={index}>
-                <td className='hhBedInformation-wardNameColumn'>{ward.wardName}</td>
-                <td>{ward.occupied}</td>
-                <td>{ward.vacant}</td>
-                <td>{ward.reserved}</td>
-                <td>{ward.numberOfBeds}</td>
-              </tr>
-            ))}
-            <tr className="bedInformation-total-row">
-              <td>Total</td>
-              <td>{totals.occupied}</td>
-              <td>{totals.vacant}</td>
-              <td>{totals.reserved}</td>
-              <td>{totals.total}</td>
-<<<<<<< HEAD
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
             </tr>
           </tbody>
         </table>
       </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
       {bedStatus && (
         <HelpDeskBedPopup
           id={id}
@@ -318,10 +204,6 @@ function HHBedInformation() {
           setBedStatus={setBedStatus}
         />
       )}
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
-=======
->>>>>>> e5850bbfdb9398281441ed2e20586b5375c904eb
     </div>
   );
 }
