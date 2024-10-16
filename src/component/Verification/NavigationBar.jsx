@@ -48,6 +48,7 @@ function NavigationBar() {
            Insurance Verification
         </button>
 
+
       </div>
       <div className='navigationBarActionButtons'>
         {activeTab === 'Inventory' && (
@@ -76,6 +77,7 @@ function NavigationBar() {
             </Link>
           </>
         )}
+
 
        {activeTab === 'document-verification' && (
           <>
@@ -107,6 +109,7 @@ function NavigationBar() {
             </Link>
           </>
         )}
+
       </div>
     </div>
   );

@@ -56,6 +56,7 @@ const AddNewAppointmentForm = () => {
     try {
       const response = await fetch(
         `${API_BASE_URL}/employees/department/${departmentId}`
+
       );
       const data = await response.json();
       setDoctors(data);
@@ -354,6 +355,7 @@ const AddNewAppointmentForm = () => {
             {doctors.map((doc) => (
               <option key={doc.employeeId} value={doc.employeeId}>
                 {doc.salutation} {doc.firstName} {doc.lastName}
+
               </option>
             ))}
           </select>

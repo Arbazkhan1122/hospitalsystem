@@ -30,7 +30,8 @@ const Lab1 = () => {
       setComponents(initialComponents);
       setSelectedTests(new Array(test.labTests.length).fill(false)); // Initialize selected tests
     }
-    }, [test]);
+
+  }, [test]);
 
   // Handle changes in component inputs
   const handleInputChange = (index, event) => {

@@ -14,6 +14,7 @@ import PatientIdentityVerificationForm from './Verification Model/PatientIdentit
 import EmployeeInsuranceVerificationForm from './Verification Model/EmployeeInsuranceVerificationForm';
 import PatientInsuranceForm from './Verification Model/PatientInsuranceForm';
 
+
 const VerificationRouting = () => {
   return (
       <>
@@ -32,6 +33,7 @@ const VerificationRouting = () => {
         <Route path='/employee-insurance-verification' element={<EmployeeInsuranceVerificationForm/>}></Route>
         <Route path='/patient-insurance-verification' element={<PatientInsuranceForm/>}></Route>
 
+
         {/* Add other routes here for different pages */}
       </Routes>
       </>
@@ -40,4 +42,5 @@ const VerificationRouting = () => {
 
 
 export default VerificationRouting
+
 

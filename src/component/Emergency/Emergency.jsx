@@ -14,6 +14,7 @@ import ResponseLogForm from './EmergencyCodeResponse/ResponseLogForm';
 import IncidentSummaryForm from './EmergencyCodeResponse/IncidentSummaryForm';
 import EmergencyDrillReportForm from './EmergencyCodeResponse/EmergencyDrillReportForm';
 
+
 const NavBar = () => {
     return (
         <div>
@@ -28,6 +29,7 @@ const NavBar = () => {
                 <Route path="/response-log" element={<ResponseLogForm/>}/>
                 <Route path="/incident-summary" element={<IncidentSummaryForm/>}/>
                 <Route path="/emergency-drill-report" element={<EmergencyDrillReportForm/>}/>
+
 
             </Routes>
         </div>
@@ -104,6 +106,7 @@ const NavMenu = () => {
             >
                    Emergency Drill Report
             </NavLink>
+
         </nav>
     );
 };

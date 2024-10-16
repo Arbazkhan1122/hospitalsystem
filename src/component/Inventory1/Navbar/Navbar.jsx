@@ -57,6 +57,7 @@ const Navbar = () => {
           Drug Registration
         </button>
 
+
       </div>
       <div className="inventory-active-inventory">
         Active Inventory: GENERAL-INVENTORY <span className="inventory-arrow">➔</span>

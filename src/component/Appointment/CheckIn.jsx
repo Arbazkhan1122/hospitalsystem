@@ -183,6 +183,15 @@ const CheckIn = () => {
           departmentId: 0,
           employeeId: "",
         });
+
+
+        const response = await axios.put(
+          `${API_BASE_URL}/appointments/update-status/${patient?.appointmentId}?status=cancelled`
+        );
+        if (response.ok) {
+          console.log("Status Updated Successfully");
+          navigate("/new-visit");
+        }
       } else {
         alert("Failed to add appointment. Please try again.");
       }

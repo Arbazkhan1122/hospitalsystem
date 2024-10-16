@@ -13,6 +13,7 @@ import DrugInventoryManagementForm from './ExpiryManagement/DrugInventoryManagem
 import DrugExpiryReportingForm from './ExpiryManagement/DrugExpiryReportingForm';
 
 
+
 const Inventory = () => {
   return (
     <div>
