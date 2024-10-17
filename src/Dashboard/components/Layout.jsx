@@ -9,7 +9,7 @@ import Inventory from "../../component/Inventory1/Inventory";
 import Incentive from "../../component/IncentiveMain/incentiveApp";
 import Lab from "../../component/NavBarSection/Lab";
 import Emergency from "../../component/Emergency/Emergency";
-import Utilitiesmain from "../../component/Utilities/utilitiesmain";
+import Utilitiesmain from "../../component/UTILITIES/utilitiesmain"
 import SystemAdmin from "../../component/SystemAdmin/SystemAdmin";
 
 import SocialServicePage from "../../component/SocialServicesMain/SocialServicePage";
@@ -44,7 +44,11 @@ import SubstoreRouting from "../../component/SubStoreMainPage/SubstoreRouting";
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRouting";
 import ReportRoute from "../../component/Reports/ReportRoute";
-import Billing from "../../component/Billing/billing"
+import Billing from "../../component/Billing/billing";
+import HomehealthCare from "../../component/HomeHealthCareModule/HomeHealthRoutes";
+import Pediatricoutpatient from "../../component/PediatricOutpatient/PaediatricOutpatientRoutes";
+import Pediatricinpatient from "../../component/pediatricModule/AppRoutes";
+import PhysiotherapyRotes from "../../component/PhysiotherapyModule/PhysiotherapyRotes";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -80,8 +84,15 @@ const Layout = () => {
   const [showVerification, setShowVerification] = useState(false);
   const [showSubStore, setShowSubStore] = useState(false);
   const [showMedicalRecord, setShowMedicalRecord] = useState(false);
-  const [showProcurement,setShowProcurement]=useState(false)
-  const [showBilling,setShowBilling]=useState(false)
+  const [showProcurement,setShowProcurement]=useState(false);
+  const [showBilling,setShowBilling]=useState(false);
+  const [showHomehealthcare,setshowHomehealthcare]=useState(false);
+  const [showonpediatricoutpatient,setshowonpediatricoutpatient]=useState(false);
+  const [showonpediatricinpatient,setshowonpediatricinpatient]=useState(false);
+  const [showphysiotherapy,setshowphysiotherapy]=useState(false);
+
+ 
+
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -117,9 +128,14 @@ const Layout = () => {
     setShowSubStore(false);
     setShowMedicalRecord(false);
     setShowProcurement(false);
-    setShowBilling(false)
-  };
+    setShowBilling(false);
+    setshowHomehealthcare(false);
+    setshowonpediatricoutpatient(false);
+    setshowonpediatricinpatient(false);
+    setshowphysiotherapy(false);
 
+  };
+ 
   const toggelAppointment = () => {
     resetAllToggles();
     setShowAppointment(!showAppointment);
@@ -258,6 +274,27 @@ const Layout = () => {
     resetAllToggles();
     setShowBilling(!showBilling);
   }
+
+  const toggleHomehealthcare=()=>{
+    resetAllToggles();
+    setshowHomehealthcare(!showHomehealthcare);
+  }
+ 
+  const togglePediatricoutpatient=()=>{
+    resetAllToggles();
+    setshowonpediatricoutpatient(!showonpediatricoutpatient);
+  }
+
+  const togglePediatricinpatient=()=>{
+    resetAllToggles();
+    setshowonpediatricinpatient(!showonpediatricinpatient);
+  }
+ 
+  const togglephysiotherapy=()=>{
+    resetAllToggles();
+    setshowphysiotherapy(!showphysiotherapy);
+  }
+
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -297,6 +334,10 @@ const Layout = () => {
         onBilling={toggelBilling}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
+        onHomehealthcare={toggleHomehealthcare}
+        onpediatricoutpatient={togglePediatricoutpatient}
+        onpediatricinpatient={togglePediatricinpatient}
+        onphysiotherapy={togglephysiotherapy}
       />
       <div
         className={`hrmsLayoutMainContent ${
@@ -338,6 +379,11 @@ const Layout = () => {
           {showSubStore && <SubstoreRouting />}
           {showMedicalRecord && <MedicalReportRouting />}
           {showBilling && <Billing/>}
+          {showHomehealthcare && <HomehealthCare/>}
+          {showonpediatricoutpatient && <Pediatricoutpatient/>}
+          {showonpediatricinpatient && <Pediatricinpatient/>}
+          {showphysiotherapy && <PhysiotherapyRotes/>}
+
         </main>
       </div>
     </div>
