@@ -1,34 +1,34 @@
 // export default GRQualityInspection;
 
 import React from 'react';
-import styles from './RequisitionPage.module.css';
+import  './RequisitionPage.css';
 
 function GRQualityInspection() {
   return (
-    <div className={styles.requisitionPageContainer}>
-      <div className={styles.requisitionTabMenu}>
+    <div className="requisitionPageContainer">
+      <div className="requisitionTabMenu">
         {/* <button className={`${styles.requisitionTabButton} ${styles.requisitionTabButtonActive}`}>Requisition</button>
         <button className={styles.requisitionTabButton}>Purchase Request</button>
         <button className={styles.requisitionTabButton}>Purchase Order</button>
         <button className={styles.requisitionTabButton}>GR Quality Inspection</button> */}
       </div>
 
-      <div className={styles.requisitionFilterSection}>
-        <label className={styles.requisitionCheckboxLabel}>
+      <div className="requisitionFilterSection">
+        <label className="requisitionCheckboxLabel">
           <input type="checkbox" />
           Check and Verify GR Quality Inspection
         </label>
-        <div className={styles.requisitionDatePickerContainer}>
+        <div className="requisitionDatePickerContainer">
           <label>From:</label>
-          <input type="date" className={styles.requisitionDateInput} />
+          <input type="date" className="requisitionDateInput"/>
           <label>To:</label>
-          <input type="date" className={styles.requisitionDateInput} />
-          <button className={styles.requisitionOkButton}>OK</button>
+          <input type="date" className="requisitionDateInput" />
+          <button className="requisitionOkButton">OK</button>
         </div>
       </div>
 
-      <div className={styles.requisitionStatusSection}>
-        <div className={styles.requisitionRadioButtons}>
+      <div className="requisitionStatusSection">
+        <div className="requisitionRadioButtons">
           <label>
             <input type="radio" name="verificationStatus" /> Pending
           </label>
@@ -42,17 +42,17 @@ function GRQualityInspection() {
             <input type="radio" name="verificationStatus" /> All
           </label>
         </div>
-        <div className={styles.requisitionDropdownContainer}>
+        <div className="requisitionDropdownContainer">
           <label>Requisition Status:</label>
-          <select className={styles.requisitionDropdown}>
+          <select className="requisitionDropdown">
             <option value="all">--ALL--</option>
             {/* Add more options as needed */}
           </select>
         </div>
       </div>
 
-      <div className={styles.requisitionTableContainer}>
-        <table className={styles.requisitionDataTable}>
+      <div className="requisitionTableContainer">
+        <table className="requisitionDataTable">
           <thead>
             <tr>
               <th>GR No</th>
@@ -67,17 +67,17 @@ function GRQualityInspection() {
           </thead>
           <tbody>
             <tr>
-              <td colSpan="6" className={styles.requisitionNoRows}>No Rows To Show</td>
+              <td colSpan="6" className="requisitionNoRows">No Rows To Show</td>
             </tr>
           </tbody>
         </table>
-        <div className={styles.requisitionPagination}>
+        {/* <div className={styles.requisitionPagination}>
           <button className={styles.requisitionPaginationButton}>First</button>
           <button className={styles.requisitionPaginationButton}>Previous</button>
           <span>Page 0 of 0</span>
           <button className={styles.requisitionPaginationButton}>Next</button>
           <button className={styles.requisitionPaginationButton}>Last</button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

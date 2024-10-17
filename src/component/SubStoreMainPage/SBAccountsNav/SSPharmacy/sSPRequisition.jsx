@@ -31,6 +31,8 @@ function SSPRequisition() {
         }
         const data = await response.json();
         const filteredData = data.filter(item => item.storeName === store);
+        console.log(filteredData);
+        
         setRequisitions(filteredData);
         setLoading(false);
       } catch (error) {
@@ -54,7 +56,7 @@ function SSPRequisition() {
             <button className="sSPRequisition-close-button" onClick={handleClosePopup}>
               &times;
             </button>
-            <SSPharmacyReqCreateReq />
+            <SSPharmacyReqCreateReq onClose={handleClosePopup} />
           </div>
         </div>
       )}
@@ -96,7 +98,7 @@ function SSPRequisition() {
           <tbody>
             {requisitions.map((req) => (
               <tr key={req.id}>
-                <td>{req.id}</td>
+                <td>{req.pharmacyRequisitionId}</td>
                 <td>{req.requestedBy}</td>
                 <td>{req.requestedDate}</td>
                 <td>{req.status}</td>

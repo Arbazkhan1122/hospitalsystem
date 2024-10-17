@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import "../LabSetting/labTestComponentsAddNewLTC.css";
+import { API_BASE_URL } from "../../api/api";
 
 const FormInput = ({
   name,
@@ -61,7 +62,7 @@ const LabTestComponentsAddNewLTC = ({ onClose }) => {
     const fetchLookupData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1415/api/lab-lookups/getAll-lookup"
+          `${API_BASE_URL}/lab-lookups/getAll-lookup`
         );
         setLookupData(response.data);
       } catch (error) {
@@ -136,7 +137,7 @@ const LabTestComponentsAddNewLTC = ({ onClose }) => {
 
     try {
       await axios.post(
-        "http://localhost:1415/api/lab-components/save-components",
+        `${API_BASE_URL}/lab-components/save-components`,
         componentsArray
       );
       onClose();

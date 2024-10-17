@@ -1,34 +1,37 @@
 // export default PurchaseOrder;
 
-import React from 'react';
-import styles from './RequisitionPage.module.css';
+import React, { useRef, useState } from 'react';
+import './RequisitionPage.css';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 function PurchaseOrder() {
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   return (
-    <div className={styles.requisitionPageContainer}>
-      <div className={styles.requisitionTabMenu}>
+    <div className="requisitionPageContainer">
+      <div className="requisitionTabMenu">
         {/* <button className={`${styles.requisitionTabButton} ${styles.requisitionTabButtonActive}`}>Requisition</button>
         <button className={styles.requisitionTabButton}>Purchase Request</button>
         <button className={styles.requisitionTabButton}>Purchase Order</button>
         <button className={styles.requisitionTabButton}>GR Quality Inspection</button> */}
       </div>
 
-      <div className={styles.requisitionFilterSection}>
-        <label className={styles.requisitionCheckboxLabel}>
+      <div className="requisitionFilterSection">
+        <label className="requisitionCheckboxLabel">
           <input type="checkbox" />
           Check and Verify Purchase Order
         </label>
-        <div className={styles.requisitionDatePickerContainer}>
+        <div className="requisitionDatePickerContainer">
           <label>From:</label>
-          <input type="date" className={styles.requisitionDateInput} />
+          <input type="date" className="requisitionDateInput"/>
           <label>To:</label>
-          <input type="date" className={styles.requisitionDateInput} />
-          <button className={styles.requisitionOkButton}>OK</button>
+          <input type="date" className="requisitionDateInput" />
+          <button className="requisitionOkButton">OK</button>
         </div>
       </div>
 
-      <div className={styles.requisitionStatusSection}>
-        <div className={styles.requisitionRadioButtons}>
+      <div className="requisitionStatusSection">
+        <div className="requisitionRadioButtons">
           <label>
             <input type="radio" name="verificationStatus" /> Pending
           </label>
@@ -42,33 +45,52 @@ function PurchaseOrder() {
             <input type="radio" name="verificationStatus" /> All
           </label>
         </div>
-        <div className={styles.requisitionDropdownContainer}>
+        <div className="requisitionDropdownContainer">
           <label>Requisition Status:</label>
-          <select className={styles.requisitionDropdown}>
+          <select className="requisitionDropdown">
             <option value="all">--ALL--</option>
             {/* Add more options as needed */}
           </select>
         </div>
       </div>
 
-      <div className={styles.requisitionTableContainer}>
-        <table className={styles.requisitionDataTable}>
-          <thead>
-            <tr>
-              <th>PO No</th>
-              <th>Req No</th>
-              <th>PO From</th>
-              <th>Vendor</th>
-              <th>Status</th>
-              <th>PO Date</th>
-              <th>PO Status</th>
-              <th>Verification Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
+      <div className="requisitionTableContainer">
+      <table className="patientList-table" ref={tableRef}>
+              <thead>
+                <tr>
+                  {[
+                     "PO No",
+                     "Req No",
+                     "PO From",
+                     "Vendor",
+                     "Status",
+                     "PO Date",
+                     "PO Status",
+                     "Verification Status",
+                     "Action"
+                  ].map((header, index) => (
+                    <th
+                      key={index}
+                      style={{ width: columnWidths[index] }}
+                      className="resizable-th"
+                    >
+                      <div className="header-content">
+                        <span>{header}</span>
+                        <div
+                          className="resizer"
+                          onMouseDown={startResizing(
+                            tableRef,
+                            setColumnWidths
+                          )(index)}
+                        ></div>
+                      </div>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
           <tbody>
             <tr>
-              <td colSpan="9" className={styles.requisitionNoRows}>No Rows To Show</td>
+              <td colSpan="9" className="requisitionNoRows">No Rows To Show</td>
             </tr>
           </tbody>
         </table>

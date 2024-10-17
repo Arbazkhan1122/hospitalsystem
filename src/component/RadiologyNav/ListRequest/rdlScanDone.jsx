@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../ListRequest/rdlScanDone.css";
+import { API_BASE_URL } from "../../api/api";
 
 function RDLAddScanDoneDetails({ onClose, onUpdateStatus }) {
   const [scannedOn, setScannedOn] = useState("");
@@ -10,7 +11,7 @@ function RDLAddScanDoneDetails({ onClose, onUpdateStatus }) {
 
   useEffect(() => {
     // Fetch film types from the API
-    fetch("http://localhost:1415/api/film-types")
+    fetch(`${API_BASE_URL}/film-types`)
       .then((response) => response.json())
       .then((data) => setFilmTypes(data))
       .catch((error) => {

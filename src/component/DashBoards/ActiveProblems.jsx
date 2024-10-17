@@ -96,7 +96,7 @@ const ActiveProblems = ({ patientId, newPatientVisitId }) => {
     if (newPatientVisitId || patientId) {
       fetchActiveProblems();
     }
-  }, [newPatientVisitId, patientId]); // Dependencies to track ID changes
+  }, [newPatientVisitId, patientId,isAddModalOpen]); // Dependencies to track ID changes
   
 
   useEffect(() => {
@@ -131,7 +131,7 @@ const ActiveProblems = ({ patientId, newPatientVisitId }) => {
     if (newPatientVisitId || patientId) {
       fetchPastProblems();
     }
-  }, [newPatientVisitId, patientId]); // Dependencies to track ID changes
+  }, [newPatientVisitId, patientId,isAddPastModalOpen]); // Dependencies to track ID changes
   
   
 

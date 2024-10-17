@@ -18,7 +18,7 @@ const DrDashboard = () => {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className="doctor-dashboard-container">
       <div className="doctor-dashboard-button-group">
         <button
           className={`dashboard-button ${activeSection === 'outPatient' ? 'active' : ''}`}

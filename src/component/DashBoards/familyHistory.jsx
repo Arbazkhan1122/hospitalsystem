@@ -75,7 +75,7 @@ const FamilyHistory = ({patientId,newPatientVisitId}) => {
     if (newPatientVisitId || patientId) {
       fetchFamilyHistories();
     }
-  }, [newPatientVisitId, patientId]); // Dependencies to track ID changes
+  }, [newPatientVisitId, patientId,isAddModalOpen,isUpdateModalOpen]); // Dependencies to track ID changes
   
 
   const handleAddFamilyHistory = async () => {

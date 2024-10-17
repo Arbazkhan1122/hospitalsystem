@@ -56,7 +56,7 @@ const ReferralSource = ({ patientId, newPatientVisitId }) => {
     if (newPatientVisitId || patientId) {
       fetchReferralData();
     }
-  }, [patientId, newPatientVisitId]); // Dependencies to re-fetch when IDs change
+  }, [patientId, newPatientVisitId,isAddModalOpen]); // Dependencies to re-fetch when IDs change
   
 
   const handleOpenModal = () => {

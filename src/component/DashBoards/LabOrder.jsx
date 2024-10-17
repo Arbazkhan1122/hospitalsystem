@@ -3,6 +3,8 @@ import './LabOrder.css';
 import { API_BASE_URL } from '../api/api';
 
 const LabOrder = ({ selectedOrders, setActiveSection, patientId, newPatientVisitId }) => {
+  console.log(patientId);
+  
   const [ordersData, setOrdersData] = useState(
     selectedOrders.map(order => ({
       labTestName: order.labTestName || '',
@@ -19,7 +21,6 @@ const LabOrder = ({ selectedOrders, setActiveSection, patientId, newPatientVisit
   };
 
   const handleSign = async () => {
-    // Prepare the payload data for the request
     const payload = {
       labTestName: ordersData[0].labTestName,  // Assuming you're sending only the first order's lab test name
       urgency: ordersData[0].urgency,

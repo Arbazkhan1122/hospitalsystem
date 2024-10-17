@@ -9,7 +9,8 @@ import Inventory from "../../component/Inventory1/Inventory";
 import Incentive from "../../component/IncentiveMain/incentiveApp";
 import Lab from "../../component/NavBarSection/Lab";
 import Emergency from "../../component/Emergency/Emergency";
-import Utilitiesmain from "../../component/Utilities/utilitiesmain";
+
+import Utilitiesmain from "../../component/UTILITIES/utilitiesmain";
 import SystemAdmin from "../../component/SystemAdmin/SystemAdmin";
 import SocialServicePage from "../../component/SocialServicesMain/SocialServicePage";
 import Disprensary from "../../component/DispensaryPage/disprensaryRoute";
@@ -44,8 +45,10 @@ import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRoutin
 import ReportRoute from "../../component/Reports/ReportRoute";
 import Billing from "../../component/Billing/billing";
 import BloodBank from "../../component/BloodBank/bloodBankRoute";
+
 import TransportMainRouting from "../../component/TransportMain/transportMainRoute"
 import SuperUserMain from "../../component/SuperUserMain/superUserMainRoute";
+import HRHome from "../../component/HRHome/HRHome"
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -81,11 +84,13 @@ const Layout = () => {
   const [showVerification, setShowVerification] = useState(false);
   const [showSubStore, setShowSubStore] = useState(false);
   const [showMedicalRecord, setShowMedicalRecord] = useState(false);
-  const [showProcurement,setShowProcurement]=useState(false)
-  const [showBilling,setShowBilling]=useState(false)
-  const [showBloodBank,setShowBloodBank]=useState(false)
-  const [showTransport,setShowTransport]=useState(false)
-  const [showSuperUser,setShowSuperUser]=useState(false)
+
+  const [showProcurement, setShowProcurement] = useState(false)
+  const [showBilling, setShowBilling] = useState(false)
+  const [showBloodBank, setShowBloodBank] = useState(false)
+  const [showTransport, setShowTransport] = useState(false)
+  const [showSuperUser, setShowSuperUser] = useState(false)
+  const [showHR, setShowHR] = useState(false)
 
 
   const resetAllToggles = () => {
@@ -122,10 +127,12 @@ const Layout = () => {
     setShowSubStore(false);
     setShowMedicalRecord(false);
     setShowProcurement(false);
+
     setShowBilling(false)
     setShowBloodBank(false)
     setShowTransport(false)
     setShowSuperUser(false)
+    setShowHR(false)
 
   };
 
@@ -270,14 +277,20 @@ const Layout = () => {
   const toggelBloodBank = () => {
     resetAllToggles();
     setShowBloodBank(!showBloodBank);
+
   }
-  const toggelTransport=()=>{
-     resetAllToggles();
-     setShowTransport(!showTransport)
+  const toggelTransport = () => {
+    resetAllToggles();
+    setShowTransport(!showTransport)
   }
-  const toggleSuperUser=()=>{
+  const toggleSuperUser = () => {
     resetAllToggles();
     setShowSuperUser(!showSuperUser)
+  }
+
+  const toggleHR = () => {
+    resetAllToggles();
+    setShowHR(!showHR)
   }
   return (
     <div className="hrmsLayout">
@@ -319,13 +332,15 @@ const Layout = () => {
         onBloodbank={toggelBloodBank}
         onTransport={toggelTransport}
         onSuperUser={toggleSuperUser}
+
+        onHr={toggleHR}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
       <div
-        className={`hrmsLayoutMainContent ${
-          isOpen ? "hrmsLayoutMainContentOpen" : "hrmsLayoutMainContentClosed"
-        }`}
+
+        className={`hrmsLayoutMainContent ${isOpen ? "hrmsLayoutMainContentOpen" : "hrmsLayoutMainContentClosed"
+          }`}
       >
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         <main className="hrmsLayoutMainPadding">
@@ -361,10 +376,12 @@ const Layout = () => {
           {showVerification && <VerificationRouting />}
           {showSubStore && <SubstoreRouting />}
           {showMedicalRecord && <MedicalReportRouting />}
-          {showBilling && <Billing/>}
-          {showBloodBank && <BloodBank/>}
-          {showTransport && <TransportMainRouting/>}
-          {showSuperUser && <SuperUserMain/>}
+          {showBilling && <Billing />}
+          {showBloodBank && <BloodBank />}
+          {showTransport && <TransportMainRouting />}
+          {showSuperUser && <SuperUserMain />}
+
+          {showHR && <HRHome />}
 
         </main>
       </div>

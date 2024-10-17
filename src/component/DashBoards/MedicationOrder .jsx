@@ -25,7 +25,7 @@ const MedicationOrder = ({
       lastTaken: "",
       comments: "",
       status: "pending",
-      medicationDate: new Date().toLocaleDateString(),
+      medicationDate: new Date().toISOString().slice(0, 10),
       ...(patientId
         ? { patientDTO: { patientId } }
         : { newPatientVisitDTO: { newPatientVisitId } }),
@@ -41,6 +41,8 @@ const MedicationOrder = ({
   };
 
   const handleSubmit = async () => {
+    console.log(medicationList);
+
     try {
       const response = await axios.post(
         `${API_BASE_URL}/medications/save-medication-details`,

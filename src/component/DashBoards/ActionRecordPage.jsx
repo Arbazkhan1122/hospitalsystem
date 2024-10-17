@@ -5,8 +5,10 @@ import { API_BASE_URL } from "../api/api";
 import LabOrder from "./LabOrder";
 import RadioOrder from "./RadioOrder";
 import axios from "axios";
+import Prescription from "./Prescription";
 
 const ActionRecordPage = ({
+  patient,
   patientId,
   newPatientVisitId,
   setActiveSection,
@@ -19,6 +21,7 @@ const ActionRecordPage = ({
   const [showMedicationOrder, setShowMedicationOrder] = useState(false);
   const [labOrder, showLabOrder] = useState(false);
   const [imagingOrder, setImagingOrder] = useState(false);
+  const [showPrintMedication,setShowPrintMedication] = useState(false);
 
   const apiEndpoints = {
     lab: `${API_BASE_URL}/labTestSetting/getAll`,
@@ -61,18 +64,19 @@ const ActionRecordPage = ({
   };
 
   console.log(orderData);
-
   const handleOrderSelect = (e) => {
     const orderId = e.target.value;
     setSelectedOrderId(orderId);
     console.log(orderId);
     if (orderId) {
+
       const selectedOrder = orderData.find(
         (order) =>
           order.addItemId == orderId ||
           order.imagingItemId == orderId ||
           order.labTestId == orderId
       );
+
       if (selectedOrder) {
         setSelectedOrders((prevOrders) => [...prevOrders, selectedOrder]);
         setSelectedOrderId("");
@@ -107,6 +111,12 @@ const ActionRecordPage = ({
       alert("Please select an order to proceed.");
     }
   };
+  const handleClose = ()=>{
+    setShowPrintMedication(false);
+  }
+  const handlePrintMedication =()=>{
+    setShowPrintMedication(true);
+  }
 
   if (showMedicationOrder) {
     return (
@@ -142,6 +152,7 @@ const ActionRecordPage = ({
 
   return (
     <div className="action_record_container">
+      {!showPrintMedication ?(<>
       <div className="action_record_orders">
         <div className="action-records-selected-container">
           <div className="selected_orders">
@@ -202,7 +213,7 @@ const ActionRecordPage = ({
           <h2 className="action-records-h2">➕ New Orders</h2>
           <div className="action_record_new_order_controls">
             <div className="action-dropdown-container">
-              <label htmlFor="orderType">Order Type:</label>
+              <label htmlFor="orderType" className="action_record_label">Order Type:
               <select
                 id="orderType"
                 className="action_record_dropdown"
@@ -214,12 +225,12 @@ const ActionRecordPage = ({
                 <option value="imaging">Imaging</option>
                 <option value="medication">Medication</option>
                 <option value="others">Others</option>
-              </select>
+              </select></label>
             </div>
 
             {selectedOrderType && (
               <div className="action-dropdown-container">
-                <label htmlFor="orderItem">Order Item:</label>
+                <label htmlFor="orderItem" className="action_record_label">Order Item:
                 <select
                   id="orderItem"
                   className="action_record_dropdown"
@@ -243,14 +254,15 @@ const ActionRecordPage = ({
 
                     </option>
                   ))}
-                </select>
+                </select></label>
               </div>
             )}
           </div>
         </div>
       </div>
 
-      <button className="action_record_print_button">Print Medication</button>
+      <button className="action_record_print_button" onClick={()=>handlePrintMedication()}>Print Medication</button>
+      </>):(<><Prescription patient={patient} handleClose={handleClose}/></>)}
     </div>
   );
 };

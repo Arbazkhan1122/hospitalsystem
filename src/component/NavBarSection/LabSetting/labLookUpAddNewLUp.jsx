@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../LabSetting/labLookUpAddNewLUp.css";
+import { API_BASE_URL } from "../../api/api";
 
 const LabLookUpAddNewLUp = ({ onClose }) => {
   const [moduleName, setModuleName] = useState("Lab");
@@ -45,7 +46,9 @@ const LabLookUpAddNewLUp = ({ onClose }) => {
 
     try {
       await axios.post(
-        `http://localhost:1415/api/lab-lookups/create-lookup`,
+
+        `${API_BASE_URL}/lab-lookups/create-lookup`,
+
         payload
       );
       onClose(); // Close modal on successful submission

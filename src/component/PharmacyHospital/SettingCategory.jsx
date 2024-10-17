@@ -13,7 +13,7 @@ const SettingCategory = () => {
   const [isEditMode, setIsEditMode] = useState(false); // Track if it's edit or add mode
 
   useEffect(() => {
-    // Fetch initial data
+
     axios.get(`${API_BASE_URL}/categories`)
       .then(response => {
         setSuppliers(response.data);
@@ -32,7 +32,7 @@ const SettingCategory = () => {
       setSelectedUser(user);
       setIsEditMode(true); // Set to edit mode
     } else {
-      setSelectedUser({ categoryName: '', description: '', isActive: true }); // Empty fields for new category
+      setSelectedUser({ name: '', description: '', isActive: true }); // Empty fields for new category
       setIsEditMode(false); // Set to add mode
     }
     setShowEditModal(true);
@@ -44,6 +44,8 @@ const SettingCategory = () => {
   };
 
   const handleSubmit = (event) => {
+    console.log(selectedUser);
+    
     event.preventDefault();
     const apiUrl = isEditMode
       ? `${API_BASE_URL}/categories/${selectedUser.id}` // Assuming `id` is part of the user object for updates
