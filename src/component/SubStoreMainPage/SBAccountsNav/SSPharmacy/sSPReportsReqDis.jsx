@@ -5,6 +5,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import * as XLSX from 'xlsx'; // Import the xlsx library
 import "../SSPharmacy/sSPReportsReqDis.css";
 import { useReactToPrint } from 'react-to-print';
+import { API_BASE_URL } from '../../../api/api';
 
 function SSPReportsReqDis() {
   const printRef = useRef();
@@ -21,7 +22,7 @@ function SSPReportsReqDis() {
   const fetchStockData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:8080/api/pharmacyRequisitions/getAll');
+      const response = await fetch(`${API_BASE_URL}/pharmacyRequisitions/getAll`);
       
       // Check if the response is ok (status code in the range 200-299)
       if (!response.ok) {

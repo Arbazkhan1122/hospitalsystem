@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 import './AddEmployeeForm.css';
+import axios from 'axios';
+import { API_BASE_URL } from '../api/api';
 
 const AddEmployeeForm = ({ onClose }) => {
   const [employeeData, setEmployeeData] = useState({
@@ -9,23 +11,20 @@ const AddEmployeeForm = ({ onClose }) => {
     firstName: '',
     middleName: '',
     lastName: '',
-    dob: '',
+    dateOfBirth: '',
     gender: '',
     kmpdcNo: '',
     knncNo: '',
     knhpcNo: '',
     contactNumber: '',
-    email: '',
+    emailId: '',
     signatureShort: '',
     signatureLong: '',
-    department: '',
-    role: '',
-    type: '',
     dateOfJoining: '',
     contactAddress: '',
     kraPin: '',
     taxPercentage: '',
-    incentiveApplicable: false,
+    isIncentiveApplicable: false,
     extension: '',
     speedDial: '',
     officeHour: '',
@@ -37,7 +36,51 @@ const AddEmployeeForm = ({ onClose }) => {
     displaySequence: '',
     signatureImage: null,
   });
-  const [showTable, setShowTable] = useState(false); // State to manage table visibility
+  const [showTable, setShowTable] = useState(false); 
+  const [departments, setDepartments] = useState([]);
+  const [employeeTypes, setEmployeeTypes] = useState([]);
+  const [employeeRoles, setEmployeeRoles] = useState([]);
+  const [selectedDepartment, setSelectedDepartment] = useState("");
+  const [selectedEmployeeRole, setSelectedEmployeeRole] = useState("");
+  const [selectedEmployeeType, setSelectedEmployeeType] = useState("");
+
+  // Fetch departments
+  const fetchDepartments = async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/departments/getAllDepartments`);
+      setDepartments(response.data);
+      console.log(response.data);
+      
+    } catch (error) {
+      console.error("Error fetching departments:", error);
+    }
+  };
+
+  // Fetch employee types
+  const fetchEmployeeTypes = async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/employeeTypes/getAll`);
+      setEmployeeTypes(response.data);
+    } catch (error) {
+      console.error("Error fetching employee types:", error);
+    }
+  };
+
+  // Fetch employee roles
+  const fetchEmployeeRoles = async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/employeeRoles/getAll`);
+      setEmployeeRoles(response.data);
+    } catch (error) {
+      console.error("Error fetching employee roles:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDepartments();
+    fetchEmployeeTypes();
+    fetchEmployeeRoles();
+  }, []);
 
   const handleChange = (e) => {
     const { name, type, checked, value } = e.target;
@@ -49,6 +92,17 @@ const AddEmployeeForm = ({ onClose }) => {
       setShowTable(checked);
     }
   };
+  const handleDepartmentChange = (e) => {
+    setSelectedDepartment(e.target.value);
+  };
+
+  const handleRoleChange = (e) => {
+    setSelectedEmployeeRole(e.target.value);
+  };
+
+  const handleTypeChange = (e) => {
+    setSelectedEmployeeType(e.target.value);
+  };
 
   const handleFileChange = (e) => {
     setEmployeeData((prevData) => ({
@@ -57,12 +111,71 @@ const AddEmployeeForm = ({ onClose }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('New Employee Data:', employeeData);
-    onClose();
-    
+    const updatedEmployeeData = {
+      ...employeeData,
+      department: {
+        departmentId: selectedDepartment, // Add selected department ID
+      },
+      employeeRole: {
+        employeeRoleId: selectedEmployeeRole, // Add selected employee role ID
+      },
+      employeeType: {
+        employeeTypeId: selectedEmployeeType, // Add selected employee type ID
+      },
+    };
+  
+    try {
+      console.log(updatedEmployeeData);
+      const response = await axios.post(`${API_BASE_URL}/employees/save-employee-detail`, updatedEmployeeData, {
+      });
+  
+      console.log('Employee added successfully:', response.data);
+  
+      // Reset form fields
+      setEmployeeData({
+        salutation: '',
+        firstName: '',
+        middleName: '',
+        lastName: '',
+        dateOfBirth: '',
+        gender: '',
+        kmpdcNo: '',
+        knncNo: '',
+        knhpcNo: '',
+        contactNumber: '',
+        emailId: '',
+        signatureShort: '',
+        signatureLong: '',
+        department: '', // Reset department selection
+        role: '', // Reset role selection
+        type: '', // Reset type selection
+        dateOfJoining: '',
+        contactAddress: '',
+        kraPin: '',
+        taxPercentage: '',
+        isIncentiveApplicable: false,
+        extension: '',
+        speedDial: '',
+        officeHour: '',
+        roomNo: '',
+        bloodGroup: '',
+        drivingLicenseNo: '',
+        isActive: false,
+        radiologySignature: '',
+        displaySequence: '',
+        signatureImage: null,
+      });
+      onClose();
+  
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
+  
+  
+
 
   return (
     <div className="add-employee-modal-overlay">
@@ -101,7 +214,7 @@ const AddEmployeeForm = ({ onClose }) => {
             </div>
             <div className="add-employee-group">
               <label className="emp-input">Date Of Birth*:</label>
-              <input  className="emp-input" type="date" name="dob" value={employeeData.dob} onChange={handleChange} required />
+              <input  className="emp-input" type="date" name="dateOfBirth" value={employeeData.dateOfBirth} onChange={handleChange} required />
             </div>
             <div className="add-employee-group">
               <label className="emp-input">Gender*:</label>
@@ -129,7 +242,7 @@ const AddEmployeeForm = ({ onClose }) => {
             </div>
             <div className="add-employee-group">
               <label className="emp-input">Email Id:</label>
-              <input className="emp-input" type="email" name="email" value={employeeData.email} onChange={handleChange}  />
+              <input className="emp-input" type="email" name="emailId" value={employeeData.emailId} onChange={handleChange}  />
             </div>
             <div className="add-employee-group">
               <label className="emp-input">Signature(Short):</label>
@@ -147,26 +260,37 @@ const AddEmployeeForm = ({ onClose }) => {
             <div className='emp-depart'>
             <div className="add-employee-group">
               <label className="emp-input">Employee Department*:</label>
-              <select  className="emp-input" name="department" value={employeeData.department} onChange={handleChange} required>
-                <option value="">Select Department</option>
-                <option>Account</option>
-                {/* Add other department options */}
-              </select>
+              <label htmlFor="department">Department:</label>
+              <select id="department" name="department" value={selectedDepartment} onChange={handleDepartmentChange}>
+          <option value="">Select Department</option>
+          {departments.map((dept) => (
+            <option key={dept.departmentId} value={dept.departmentId}>
+              {dept.departmentName}
+            </option>
+          ))}
+        </select>
             </div>
             <div className="add-employee-group">
               <label className="emp-input">Employee Role:</label>
-              <select  className="emp-input" name="role" value={employeeData.role} onChange={handleChange}>
-                <option value="">Select Role</option>
-                {/* Add role options */}
-              </select>
+              <select id="employeeRole" name="employeeRole" value={selectedEmployeeRole} onChange={handleRoleChange}>
+          <option value="">Select Employee Role</option>
+          {employeeRoles.map((role) => (
+            <option key={role.employeeRoleId} value={role.employeeRoleId}>
+              {role.role}
+            </option>
+          ))}
+        </select>
             </div>
             <div className="add-employee-group">
               <label className="emp-input">Employee Type:</label>
-              <select  className="emp-input" name="type" value={employeeData.type} onChange={handleChange}>
-                <option value="">Select Type</option>
-                <option>Full Time</option>
-                {/* Add other type options */}
-              </select>
+              <select id="employeeType" name="employeeType" value={selectedEmployeeType} onChange={handleTypeChange}>
+          <option value="">Select Employee Type</option>
+          {employeeTypes.map((type) => (
+            <option key={type.employeeTypeId} value={type.employeeTypeId}>
+              {type.employeeType}
+            </option>
+          ))}
+        </select>
             </div>
             <div className="add-employee-group">
               <label className="emp-input">Date Of Joining:</label>
@@ -186,7 +310,7 @@ const AddEmployeeForm = ({ onClose }) => {
             </div>
             <div className="add-employee-group">
               <label className="emp-input">Is Incentive Applicable:</label>
-              <input className="emp-input" type="checkbox" name="incentiveApplicable" checked={employeeData.incentiveApplicable} onChange={handleChange} />
+              <input className="emp-input" type="checkbox" name="isIncentiveApplicable" checked={employeeData.isIncentiveApplicable} onChange={handleChange} />
             </div>
             <div className="add-employee-group">
               <label className="emp-input">Extension:</label>

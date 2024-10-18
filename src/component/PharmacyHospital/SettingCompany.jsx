@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import './SettingSupplier.css'; 
+import { API_BASE_URL } from '../api/api';
 
 const initialUserData = {
   name: '',
@@ -23,7 +24,7 @@ const SettingCompany = () => {
 
   useEffect(() => {
     // Fetch initial data from the API
-    axios.get('http://localhost:1415/api/companies')
+    axios.get(`${API_BASE_URL}/companies`)
       .then(response => setSuppliers(response.data))
       .catch(error => console.error('Error fetching suppliers:', error));
   }, []);
@@ -49,7 +50,7 @@ const filteredUsers = suppliers.filter(user =>
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const apiUrl = 'http://localhost:1415/api/companies';
+    const apiUrl = `${API_BASE_URL}/companies`;
     const apiMethod = isEditMode ? axios.put : axios.post;
     const apiData = {
       companyName: selectedUser.name,

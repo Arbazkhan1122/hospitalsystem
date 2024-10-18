@@ -4,14 +4,12 @@ import "../ListRequest/rdlAddReport.css";
 function AddReportForm({ onClose, selectedRequest }) {
   const [formData, setFormData] = useState({
     mriXRayCTNo: "",
-    requisitionRemark: "",
-    orderStatus: "",
     imagingDate: "",
     urgency: "",
-    hasInsurance: false,
+    hasInsurance: "No",
     wardName: "",
-    isActive: true,
-    isScanned: true,
+    isActive: "Yes",
+    isScanned: "Yes",
     scannedOn: "",
     scanRemark: "",
     quantity: 0,
@@ -30,14 +28,12 @@ function AddReportForm({ onClose, selectedRequest }) {
   useEffect(() => {
     if (selectedRequest) {
       setFormData({
-        procedureCode: selectedRequest.procedureCode || "",
         requisitionRemark: selectedRequest.requisitionRemark || "",
-        orderStatus: selectedRequest.orderStatus || "",
         imagingDate: selectedRequest.imagingDate || "",
         urgency: selectedRequest.urgency || "",
         isActive: selectedRequest.isActive || true,
         isScanned: selectedRequest.isScanned || true,
-        scannedOn: selectedRequest.scannedOn || "",
+        scannedDate: selectedRequest.scannedDate || "",
         scanRemark: selectedRequest.scanRemark || "",
         quantity: selectedRequest.quantity || 0,
         indication: selectedRequest.indication || "",
@@ -90,7 +86,7 @@ function AddReportForm({ onClose, selectedRequest }) {
     formDataToSend.append("requisition", JSON.stringify(requisition));
 
     fetch(
-      `http://localhost:1415/api/patient-imaging-requisitions/update/${selectedRequest.imagingId}`,
+      `http://localhost:1415/api/imaging-requisitions/update/${selectedRequest.imagingId}`,
       {
         method: "PUT",
         body: formDataToSend, // Send the FormData object
@@ -100,7 +96,7 @@ function AddReportForm({ onClose, selectedRequest }) {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        return response.json();
+        console.log("Updated Successfully");
       })
       .then((data) => {
         console.log("Update successful:", data);
@@ -111,15 +107,20 @@ function AddReportForm({ onClose, selectedRequest }) {
 
   return (
     <div className="rDLListRequest-add-report-form">
-      <h2>Add report of USG Chest (X-RAY)</h2>
+      <h2>
+        Add report of {selectedRequest.imagingItemDTO?.imagingItemName} (
+        {selectedRequest.imagingTypeDTO?.imagingTypeName})
+      </h2>
       <div className="rDLListRequest-add-report-patient-info">
         <div className="rDLListRequest-add-report-info-row">
           <span>
             <strong>Patient Name:</strong>{" "}
-            {selectedRequest.patientDTO?.firstName}{" "}
-            {selectedRequest.patientDTO?.lastName}
+            {selectedRequest.patientDTO?.firstName ||
+              selectedRequest.newPatientVisitDTO?.firstName}{" "}
+            {selectedRequest.patientDTO?.lastName ||
+              selectedRequest.newPatientVisitDTO?.lastName}
           </span>
-          <span>
+          <span className="rdlAddReport-prescrider-name">
             <strong>Prescriber:</strong>{" "}
             <input
               type="text"
@@ -133,17 +134,19 @@ function AddReportForm({ onClose, selectedRequest }) {
         <div className="rDLListRequest-add-report-info-row">
           <span>
             <strong>Address:</strong>{" "}
-            {selectedRequest.patientDTO?.address || "N/A"}
+            {selectedRequest.patientDTO?.address ||
+              selectedRequest.newPatientVisitDTO?.address}
           </span>
           <span>
-            <strong>Phone No:</strong> {selectedRequest.patientDTO?.phoneNumber}
+            <strong>Phone No:</strong>{" "}
+            {selectedRequest.patientDTO?.phoneNumber ||
+              selectedRequest.newPatientVisitDTO?.phoneNumber}
           </span>
-          {/* <span>
-            <strong>Req. On:</strong>{" "}
-            {new Date(formData.createdOn).toLocaleString()}
-          </span> */}
           <span>
-            <strong>Scanned On:</strong> {formData.scannedOn}
+            <strong>Req. On:</strong> {selectedRequest.requestedDate}
+          </span>
+          <span>
+            <strong>Scanned On:</strong> {formData.scannedDate}
           </span>
         </div>
       </div>
@@ -203,9 +206,9 @@ function AddReportForm({ onClose, selectedRequest }) {
             value={formData.signatureList}
             onChange={handleChange}
           >
-            <option>DR. ANN NJOKI THIONG'O</option>
-            <option>Mr. Immam</option>
-            <option>Prof. DR. Suresh</option>
+            <option value={"Dr. Akash "}>Dr. Akash</option>
+            <option value={"Mr. Swapnil"}>Mr. Swapnil</option>
+            <option value={"Prof. Rushikesh"}>Prof. Rushikesh</option>
           </select>
         </div>
         <div className="rDLListRequest-add-report-upload-images">

@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './ManageImagingType.css';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../../api/api';
 
 const ManageImagingItem = () => {
   const [showEditModal, setShowEditModal] = useState(false);
@@ -10,75 +11,135 @@ const ManageImagingItem = () => {
   const [description, setDescription] = useState('');
   const [isActive, setIsActive] = useState(false);
   const [isValidForReporting, setIsValidForReporting] = useState(false);
-  const [isEditMode, setIsEditMode] = useState(false); // new state to track mode
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [imagingTypes, setImagingTypes] = useState([]);
+  const [imagingTypeList, setImagingTypeList] = useState([]);
+  const [selectedImagingType, setSelectedImagingType] = useState('');
+  const [procedureCode, setProcedureCode] = useState('');
+  const [itemPrice, setItemPrice] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
 
-  const imagingTypes = [
-    { type: 'CT-SCAN', itemName: 'Brain', procedureCode: 'Bra000010', price: '', isActive: 'true' },
-    { type: 'CT-SCAN', itemName: 'Chest', procedureCode: 'Che000011', price: '', isActive: 'true' },
-    { type: 'CT-SCAN', itemName: 'CT-Neck', procedureCode: 'CTN000012', price: '', isActive: 'true' },
-    { type: 'CT-SCAN', itemName: 'test', procedureCode: '', price: '', isActive: 'true' },
-    { type: 'Dental XRAY', itemName: 'Dental Xray', procedureCode: '', price: '', isActive: 'true' },
-    { type: 'MRI', itemName: 'Brain', procedureCode: '', price: '', isActive: 'true' },
-    { type: 'MRI', itemName: 'Liver and bile ducts', procedureCode: '', price: '', isActive: 'true' },
-    { type: 'MRI', itemName: 'MRI Abdomen', procedureCode: '', price: '', isActive: 'true' },
-    { type: 'X-RAY', itemName: 'Dental', procedureCode: '', price: '', isActive: 'true' },
-    { type: 'X-RAY', itemName: 'USG Chest', procedureCode: '', price: '', isActive: 'true' },
-  ];
+  // Fetch imaging items and imaging types from the API when component mounts
+  useEffect(() => {
+    fetchImagingItems();
+    fetchImagingTypes();
+  }, []);
+
+  const fetchImagingItems = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/radiology-settings/imaging-items`);
+      const data = await response.json();
+      setImagingTypes(data);
+    } catch (error) {
+      console.error('Error fetching imaging items:', error);
+    }
+  };
+
+  const fetchImagingTypes = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/radiology-settings/imaging-types`);
+      const data = await response.json();
+      setImagingTypeList(data);
+    } catch (error) {
+      console.error('Error fetching imaging types:', error);
+    }
+  };
 
   const handleOpenModal = (item = null) => {
     if (item) {
-      // Edit Mode
       setCurrentItem(item);
-      setRole(item.itemName);
-      setDescription(item.description || '');
+      setRole(item.imagingItemName);
       setIsActive(item.isActive === 'true');
       setIsValidForReporting(item.isValidForReporting === 'true');
-      setIsEditMode(true);  // Editing
+      setSelectedImagingType(item.imagingType.imagingTypeId); // Set selected imaging type
+      setProcedureCode(item.procedureCode || '');
+      setItemPrice(item.itemPrice || 0);
+      setDiscount(item.discount || 0);
+      setTotalPrice(item.totalPrice || 0);
+      setIsEditMode(true);
     } else {
-      // Add Mode
       setCurrentItem(null);
       setRole('');
-      setDescription('');
       setIsActive(false);
       setIsValidForReporting(false);
-      setIsEditMode(false);  // Adding new
+      setSelectedImagingType('');
+      setProcedureCode('');
+      setItemPrice(0);
+      setDiscount(0);
+      setTotalPrice(0);
+      setIsEditMode(false);
     }
     setShowEditModal(true);
   };
 
   const handleCloseModal = () => setShowEditModal(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditMode) {
-      // Update existing item logic here
-      console.log('Updated item:', currentItem);
-    } else {
-      // Add new item logic here
-      console.log('New item added');
+    const now = new Date();
+  const date = now.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+  const time = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    const newItem = {
+      imagingItemName: role,
+      isActive: isActive ? 'true' : 'false',
+      isValidForReporting: isValidForReporting ? 'true' : 'false',
+      imagingType:{
+        imagingTypeId:selectedImagingType
+      },
+      createdDate:date,
+      createdTime:time,
+      procedureCode,
+      itemPrice,
+      discount,
+      totalPrice: itemPrice - (itemPrice * (discount / 100)), // Calculate total price
+    };
+
+    try {
+      if (isEditMode) {
+        await fetch(`${API_BASE_URL}/radiology-settings/imaging-items/${currentItem.imagingItemId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newItem),
+        });
+        console.log('Updated item:', newItem);
+      } else {
+        console.log(newItem);
+        
+        await fetch(`${API_BASE_URL}/radiology-settings/imaging-items`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newItem),
+        });
+        console.log('New item added');
+      }
+      fetchImagingItems();
+    } catch (error) {
+      console.error('Error submitting form:', error);
     }
     setShowEditModal(false);
   };
 
   return (
-    <div className="manage-imaging-type-container">
+    <div className="manage-imaging-item-container">
       <div>
         <button
-          className="manage-imaging-type-btn"
-          onClick={() => handleOpenModal()}  // No item passed for adding new
+          className="manage-imaging-item-btn"
+          onClick={() => handleOpenModal()}
         >
           + Add Item
         </button>
       </div>
-      <input type="text" className="manage-imaging-type-search-bar" placeholder="Search" />
+      <input type="text" className="manage-imaging-item-search-bar" placeholder="Search" />
 
-      <div className="manage-type">
+      <div className="manage-item">
         <table ref={tableRef}>
           <thead>
             <tr>
-              {["Type", "Item Name", "Procedure Code", "Price", "Is Active", "Action"].map(
+              {["Type", "Item Name", "Procedure Code", "Price", "Discount", "Total Price", "Is Active", "Action"].map(
                 (header, index) => (
                   <th key={index} style={{ width: columnWidths[index] }} className="resizable-th">
                     <div className="header-content">
@@ -96,15 +157,17 @@ const ManageImagingItem = () => {
           <tbody>
             {imagingTypes.map((item, index) => (
               <tr key={index}>
-                <td>{item.type}</td>
-                <td>{item.itemName}</td>
+                <td>{item.imagingType?.imagingTypeName || ''}</td>
+                <td>{item.imagingItemName}</td>
                 <td>{item.procedureCode}</td>
-                <td>{item.price}</td>
+                <td>{item.itemPrice}</td>
+                <td>{item.discount}</td>
+                <td>{item.totalPrice}</td>
                 <td>{item.isActive}</td>
                 <td>
                   <button
-                    className="manage-imaging-type-edit-button"
-                    onClick={() => handleOpenModal(item)}  // Pass the item for editing
+                    className="manage-imaging-item-edit-button"
+                    onClick={() => handleOpenModal(item)}
                   >
                     Edit
                   </button>
@@ -126,57 +189,134 @@ const ManageImagingItem = () => {
             </Button>
           </div>
           <div className="manage-modal-modal-body">
-            <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="role">
-                <Form.Label className="manage-modal-form-label">
-                  Imaging Type <span className="manage-modal-text-danger">*</span>:
-                </Form.Label>
-                <Form.Control
-                  type="text"
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
-                  placeholder="Imaging Item Name"
-                  required
-                  className="manage-modal-form-control"
-                />
-              </Form.Group>
+  <Form onSubmit={handleSubmit}>
+    {/* Section 1: Imaging Type and Item Details */}
+    <div className="manage-modal-section">
+      <h3 className="manage-modal-section-title">Imaging Details</h3>
+      <Form.Group controlId="imagingType">
+        <Form.Label className="manage-modal-form-label">
+          Imaging Type <span className="manage-modal-text-danger">*</span>:
+        </Form.Label>
+        <Form.Control
+          as="select"
+          value={selectedImagingType}
+          onChange={(e) => setSelectedImagingType(e.target.value)}
+          required
+          className="manage-modal-form-control"
+        >
+          <option value="">Select Imaging Type</option>
+          {imagingTypeList.map((type) => (
+            <option key={type.imagingTypeId} value={type.imagingTypeId}>
+              {type.imagingTypeName}
+            </option>
+          ))}
+        </Form.Control>
+      </Form.Group>
 
-              <Form.Group controlId="description">
-                <Form.Label className="manage-modal-form-label">Description:</Form.Label>
-                <Form.Control
-                  type="text"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Description"
-                  className="manage-modal-form-control"
-                />
-              </Form.Group>
+      <Form.Group controlId="role">
+        <Form.Label className="manage-modal-form-label">
+          Imaging Item Name <span className="manage-modal-text-danger">*</span>:
+        </Form.Label>
+        <Form.Control
+          type="text"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          placeholder="Imaging Item Name"
+          required
+          className="manage-modal-form-control"
+        />
+      </Form.Group>
 
-              <Form.Group controlId="isActive" className="manage-modal-form-group">
-                <Form.Label className="manage-modal-form-label">Is Active:</Form.Label>
-                <Form.Check
-                  type="checkbox"
-                  checked={isActive}
-                  onChange={(e) => setIsActive(e.target.checked)}
-                  className="manage-modal-form-check-input"
-                />
-              </Form.Group>
+      <Form.Group controlId="procedureCode">
+        <Form.Label className="manage-modal-form-label">
+          Procedure Code <span className="manage-modal-text-danger">*</span>:
+        </Form.Label>
+        <Form.Control
+          type="text"
+          value={procedureCode}
+          onChange={(e) => setProcedureCode(e.target.value)}
+          placeholder="Procedure Code"
+          required
+          className="manage-modal-form-control"
+        />
+      </Form.Group>
+    </div>
 
-              <Form.Group controlId="isValidForReporting" className="manage-modal-form-group">
-                <Form.Label className="manage-modal-form-label">Is Valid For Reporting:</Form.Label>
-                <Form.Check
-                  type="checkbox"
-                  checked={isValidForReporting}
-                  onChange={(e) => setIsValidForReporting(e.target.checked)}
-                  className="manage-modal-form-check-input"
-                />
-              </Form.Group>
+    {/* Section 2: Pricing and Description */}
+    <div className="manage-modal-section">
+      <h3 className="manage-modal-section-title">Pricing and Additional Details</h3>
+      <Form.Group controlId="itemPrice">
+        <Form.Label className="manage-modal-form-label">
+          Item Price <span className="manage-modal-text-danger">*</span>:
+        </Form.Label>
+        <Form.Control
+          type="number"
+          value={itemPrice}
+          onChange={(e) => setItemPrice(parseFloat(e.target.value))}
+          placeholder="Item Price"
+          required
+          className="manage-modal-form-control"
+        />
+      </Form.Group>
 
-              <Button type="submit" className="manage-modal-employee-btn">
-                {isEditMode ? 'Update' : 'Add Item'}
-              </Button>
-            </Form>
-          </div>
+      <Form.Group controlId="discount">
+        <Form.Label className="manage-modal-form-label">Discount:</Form.Label>
+        <Form.Control
+          type="number"
+          value={discount}
+          onChange={(e) => setDiscount(parseFloat(e.target.value))}
+          placeholder="Discount (%)"
+          className="manage-modal-form-control"
+        />
+      </Form.Group>
+
+      <Form.Group controlId="totalPrice">
+        <Form.Label className="manage-modal-form-label">Total Price:</Form.Label>
+        <Form.Control
+          type="number"
+          value={itemPrice - (itemPrice * (discount / 100))}
+          readOnly
+          className="manage-modal-form-control"
+        />
+      </Form.Group>
+
+      <Form.Group controlId="description">
+        <Form.Label className="manage-modal-form-label">Description:</Form.Label>
+        <Form.Control
+          as="textarea"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Description"
+          className="manage-modal-form-control"
+        />
+      </Form.Group>
+    </div>
+
+    {/* Active Status */}
+    <Form.Group controlId="isActive">
+      <Form.Check
+        type="checkbox"
+        label="Is Active"
+        checked={isActive}
+        onChange={(e) => setIsActive(e.target.checked)}
+      />
+    </Form.Group>
+
+    <Form.Group controlId="isValidForReporting">
+      <Form.Check
+        type="checkbox"
+        label="Is Valid For Reporting"
+        checked={isValidForReporting}
+        onChange={(e) => setIsValidForReporting(e.target.checked)}
+      />
+    </Form.Group>
+
+    <Button type="submit" className="manage-modal-submit-btn">
+      {isEditMode ? 'Update' : 'Add'}
+    </Button>
+  </Form>
+</div>
+
         </div>
       </Modal>
     </div>

@@ -1,89 +1,58 @@
-/* .requisition-details-container {
+.subStore-requisition-details-container {
     background-color: white;
     border: 1px solid #ddd;
     padding: 20px;
-    max-width: 800px;
     margin: auto;
     border-radius: 4px;
     font-family: Arial, sans-serif;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   
-  .header {
+  
+  .subStore-table-header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     border-bottom: 1px dotted #ddd;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+  }
+  .subStore-table-header h1{
+    font-size: 18px;
+  }
+  .subStore-table-header span{
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
   }
   
-  .logo-title {
+  .subStore-logo-title {
     display: flex;
     align-items: center;
   }
   
-  .logo {
+  .subStore-logo {
     font-size: 24px;
     color: #007bff;
     font-weight: bold;
     margin-right: 10px;
   }
   
-  .title {
-    font-size: 20px;
-    font-weight: bold;
-  }
   
-  .header-info {
-    text-align: right;
-    font-size: 12px;
-  }
-  
-  .contact-info {
-    margin-bottom: 5px;
-  }
-  
-  .requisition-table {
-    margin-bottom: 20px;
-  }
-  
-  .table-header {
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-    font-size: 14px;
-  }
-  
-  th {
-    background-color: #f0f0f0;
-  }
-  
-  .requisition-info {
+  .subStore-requisition-info {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
     font-size: 12px;
   }
   
-  .status-steps {
+  .subStore-status-steps {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
   }
   
-  .step {
+  .subStore-step {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,56 +66,52 @@
     margin: 0 10px;
   }
   
-  .completed {
+  .subStore-completed {
     background-color: #007bff;
     color: white;
   }
   
-  .active {
+  .subStore-active {
     background-color: #dc3545;
     color: white;
     
   }
 
-  .dispatch{
+  .subStore-dispatch{
     background-color: #28a745;
     color: white;
     
   }
 
-  .receive{
+  .subStore-receive{
     background-color: #2eace2;
     color: white;
 
   }
+
   
-  .buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .edit-button, .withdraw-button, .print-button {
-    padding: 8px 12px;
+  .subStore-edit-button, .subStore-withdraw-button, .subStore-print-button {
+    padding: 5px;
+    margin-left: 2px;
     border: none;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: var(--font-size);
     cursor: pointer;
   }
   
-  .edit-button {
+  .subStore-edit-button {
     background-color: #ffc107;
     color: #fff;
   }
   
-  .withdraw-button {
+  .subStore-withdraw-button {
     background-color: #dc3545;
     color: #fff;
-    padding: 0px 8px;
+    padding: 5px 5px;
   }
   
-  .print-button {
+  .subStore-print-button {
     background-color: #28a745;
     color: #fff;
   }
-   */
+  

@@ -1,37 +1,41 @@
-import React, { useState, useRef } from 'react';
-import ReactToPrint from 'react-to-print';
-import PatientRecordAction from './PatientRecordAction'; 
-import './PatientsRecords.css';
+import React, { useState, useRef, useEffect } from "react";
+import ReactToPrint from "react-to-print";
+import "./PatientsRecords.css";
+import PatientDashboard from "./PatientDashboard";
+import { startResizing } from "../TableHeadingResizing/resizableColumns";
+import { API_BASE_URL } from "../api/api";
 
 const PatientRecord = () => {
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [selectedPatient, setSelectedPatient] = useState(null);
   const [showPatientRecordAction, setShowPatientRecordAction] = useState(false);
   const [filterFavourites, setFilterFavourites] = useState(false);
   const [filterPending, setFilterPending] = useState(false);
+  const [isPatientOpen, setIsPatientOPEN] = useState(false);
   const componentRef = useRef();
+  const [patients, setPatients] = useState([]);
 
-  // Sample data with favourite and pending status
-  const patients = [
-    {
-      id: '2406003702',
-      name: 'Philip Juma',
-      ageSex: '34 Y/M',
-      hospitalNo: '2406003702',
-      wardBed: 'Male Ward-001',
-      providerName: 'Mr. COLLINS KIPKEMEI',
-      admissionStatus: 'discharged',
-      admittedOn: 'June 10th 2024, 12:57:00 pm',
-      dept: 'Medicine',
-      isFavourite: true,
-      isPending: false,
-    },
-    // Additional patient records with isFavourite and isPending properties...
-  ];
+  useEffect(() => {
+    const fetchPatients = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/admissions/fetch`);
+        const data = await response.json();
+        console.log(data);
+        
+        setPatients(data);
+      } catch (error) {
+        console.error('Error fetching patient data:', error);
+      }
+    };
+
+    fetchPatients();
+  }, []);
 
   // Filtered patients based on favourite and pending filters
   const filteredPatients = patients
-    .filter(patient => (filterFavourites ? patient.isFavourite : true))
-    .filter(patient => (filterPending ? patient.isPending : true));
+    .filter((patient) => (filterFavourites ? patient.isFavourite : true))
+    .filter((patient) => (filterPending ? patient.isPending : true));
 
   const handlePendingListClick = () => {
     setFilterPending(!filterPending);
@@ -43,108 +47,138 @@ const PatientRecord = () => {
     setFilterPending(false); // Reset pending filter if needed
   };
 
-  const handleViewPatientClick = (patientId) => {
-    const patient = patients.find(p => p.id === patientId);
-    setSelectedPatient(patient);
-    setShowPatientRecordAction(true);
+  const handlePatientClick = (patient) => {
+    setIsPatientOPEN(!isPatientOpen)
+    setSelectedPatient(patient); // Set the selected patient to open the dashboard
   };
 
-  const handleClosePatientRecordAction = () => {
-    setShowPatientRecordAction(false);
-  };
-
+  if (isPatientOpen) {
+    return (
+      <PatientDashboard
+        setIsPatientOPEN={setIsPatientOPEN}
+        patient={selectedPatient}
+      />
+    );
+  }
   return (
     <div className="patient-record">
-      <div className="date-range">
-        <div>
+      <div className="patient-record-date-range">
+        <div className="patient-date-ranges">
           <label>From:</label>
           <input type="date" value="2024-08-11" />
-        </div>
-        <div>
           <label>To:</label>
           <input type="date" value="2024-08-18" />
         </div>
-        <button className="star">☆</button>
-        <button className="reset">-</button>
-        <button className="ok">OK</button>
+        <div>
+          <button className="patient-record-star">☆</button>
+          <button className="patient-record-reset">-</button>
+          <button className="patient-record-ok">OK</button>
+        </div>
+        
       </div>
 
-      <div className="actions">
-        <button className="favorites" onClick={handleFavouritesClick}>★ My Favorites</button>
-        <button className="pending" onClick={handlePendingListClick}>Pending List</button>
-        <div className="department-filter">
+      <div className="patient-record-search-bar">
+        <div className="patient-record-sub-div">
+          <input
+            className="patient-record-select"
+            type="text"
+            placeholder="Search"
+          />
+          <button className="patient-record-button">🔍</button>
+        </div>
+        <div className="patient-record-department-filter">
           <label>Department Filter :</label>
-          <select>
+          <select className="patient-record-select">
             <option>ALL</option>
           </select>
         </div>
-      </div>
-
-      <div className="search-bar">
-        <input type="text" placeholder="Search" />
-        <button>🔍</button>
-        <span className="results">Showing {filteredPatients.length} / {patients.length} results</span>
-        <ReactToPrint
-          trigger={() => <button className="print">Print</button>}
-          content={() => componentRef.current}
-        />
+        <div>
+          <span className="patient-record-results">
+            Showing {filteredPatients.length} / {patients.length} results
+          </span>
+          <ReactToPrint
+            trigger={() => (
+              <button className="patient-record-print">Print</button>
+            )}
+            content={() => componentRef.current}
+          />
+        </div>
       </div>
 
       {/* The content to be printed */}
-      <div ref={componentRef}>
-        <table>
+      <div ref={componentRef} className="table-container">
+        <table className="patientList-table" ref={tableRef}>
           <thead>
             <tr>
-              <th>Hospital No.</th>
-              <th>Name</th>
-              <th>Age/Sex</th>
-              <th>Admission Status</th>
-              <th>Admitted On</th>
-              <th>Ward-Bed</th>
-              <th>Dept</th>
-              <th>Provider Name</th>
-              <th>Actions</th>
+              {[
+                "Hospital No.",
+                "Name",
+                "Age/Sex",
+                "Admission Status",
+                "Admitted On",
+                "Ward-Bed",
+                "Dept",
+                "Provider Name",
+                "Actions",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
-            {filteredPatients.map((patient) => (
-              <tr key={patient.id}>
-                <td>{patient.hospitalNo}</td>
-                <td>{patient.name}</td>
-                <td>{patient.ageSex}</td>
-                <td>{patient.admissionStatus}</td>
-                <td>{patient.admittedOn}</td>
-                <td>{patient.wardBed}</td>
-                <td>{patient.dept}</td>
-                <td>{patient.providerName}</td>
-                <td>
-                  <button onClick={() => handleViewPatientClick(patient.id)}>👤</button>
-                  <button>🔔</button>
-                  <button>🖼</button>
-                  <button>📄</button>
-                  <button>♥</button>
-                </td>
-              </tr>
-            ))}
+          {patients.map((patient, index) => (
+            <tr key={index}>
+              <td>{patient.patientDTO.hospitalNo}</td>
+              <td>{`${patient.patientDTO.firstName} ${patient.patientDTO.lastName}`}</td>
+              <td>{ patient.patientDTO.age}/{patient.patientDTO.gender}</td>
+              <td>{patient.admissionStatus}</td>
+              <td>{patient.admissionDate}</td>
+              <td>{patient?.manageBedDTO?.bedNumber}</td>
+              <td>{patient?.wardDepartmentDTO?.wardName}</td>
+              <td>{patient?.admittedDoctorDTO?.firstName}</td>
+              <td>
+                <button className='in-patient-button' onClick={() => handlePatientClick(patient)}>👤</button>
+                <button className='in-patient-button' >🔔</button>
+                <button className='in-patient-button' >🖼</button>
+                <button className='in-patient-button' onClick={() => handleOrdersClick(patient)}>📄</button>
+                <button className='in-patient-button' >♥</button>
+              </td>
+            </tr>
+          ))}
           </tbody>
         </table>
       </div>
 
-      <div className="pagination">
+      {/* <div className="pagination">
         <span>1 to {filteredPatients.length} of {filteredPatients.length}</span>
         <button>First</button>
         <button>Previous</button>
         <span>Page 1 of 1</span>
         <button>Next</button>
         <button>Last</button>
-      </div>
+      </div> */}
 
-      {showPatientRecordAction && (
+      {/* {showPatientRecordAction && (
         <div className="patient-record-action-modal">
-          <PatientRecordAction patient={selectedPatient} />
+          <PatientDashboard patient={selectedPatient} />
           <button onClick={handleClosePatientRecordAction}>Close</button>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

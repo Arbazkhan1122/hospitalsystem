@@ -1,12 +1,23 @@
-// export default RequisitionPage;
-
-import React, { useState } from 'react';
-import VerifyModal from './VerifyModal';
-import styles from './RequisitionPage.module.css';
+import React, { useEffect, useRef, useState } from "react";
+import VerifyModal from "./VerifyModal";
+import "./RequisitionPage.css";
+import { API_BASE_URL } from "../api/api";
+import { startResizing } from "../TableHeadingResizing/resizableColumns";
 
 function RequisitionPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedRequisition, setSelectedRequisition] = useState({});
+  const [requisitions, setRequisitions] = useState([]);
+  const [selectedRequisition, setSelectedRequisition] = useState(null);
+  const [filterStatus, setFilterStatus] = useState("pending");
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
+
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/inventory-requisitions/getAll`)
+      .then((response) => response.json())
+      .then((data) => setRequisitions(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
 
   const handleVerifyClick = (requisition) => {
     setSelectedRequisition(requisition);
@@ -15,90 +26,144 @@ function RequisitionPage() {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setSelectedRequisition(null);
   };
 
+  const handleFilterChange = (event) => {
+    setFilterStatus(event.target.value);
+  };
+
+  const filteredRequisitions = requisitions.filter((requisition) => {
+    if (filterStatus === "all") return true;
+    return requisition.status.toLowerCase() === filterStatus;
+  });
+
   return (
-    <div className={styles.requisitionPageContainer}>
-      {/* Other components like the filter section and table go here */}
-      <div className={styles.requisitionFilterSection}>
-        <label className={styles.requisitionCheckboxLabel}>
+    <div className="requisitionPageContainer">
+      <div className="requisitionFilterSection">
+        <label className="requisitionCheckboxLabel">
           <input type="checkbox" />
           Check and Verify Requisition
         </label>
-        <div className={styles.requisitionDatePickerContainer}>
+        <div className="requisitionDatePickerContainer">
           <label>From:</label>
-          <input type="date" className={styles.requisitionDateInput} />
+          <input type="date" className="requisitionDateInput" />
           <label>To:</label>
-          <input type="date" className={styles.requisitionDateInput} />
-          <button className={styles.requisitionOkButton}>OK</button>
+          <input type="date" className="requisitionDateInput" />
+          <button className="requisitionOkButton">OK</button>
         </div>
       </div>
 
-      <div className={styles.requisitionStatusSection}>
-        <div className={styles.requisitionRadioButtons}>
+      <div className="requisitionStatusSection">
+        <div className="requisitionRadioButtons">
           <label>
-            <input type="radio" name="verificationStatus" /> Pending
+            <input
+              type="radio"
+              name="verificationStatus"
+              value="pending"
+              onChange={handleFilterChange}
+              defaultChecked={filterStatus === "pending"}
+            />
+            Pending
           </label>
           <label>
-            <input type="radio" name="verificationStatus" /> Approved
+            <input
+              type="radio"
+              name="verificationStatus"
+              value="approved"
+              onChange={handleFilterChange}
+            />
+            Approved
           </label>
           <label>
-            <input type="radio" name="verificationStatus" /> Rejected
+            <input
+              type="radio"
+              name="verificationStatus"
+              value="rejected"
+              onChange={handleFilterChange}
+            />
+            Rejected
           </label>
           <label>
-            <input type="radio" name="verificationStatus" /> All
+            <input
+              type="radio"
+              name="verificationStatus"
+              value="all"
+              onChange={handleFilterChange}
+            />
+            All
           </label>
         </div>
-        <div className={styles.requisitionDropdownContainer}>
+        <div className="requisitionDropdownContainer">
           <label>Requisition Status:</label>
-          <select className={styles.requisitionDropdown}>
+          <select className="requisitionDropdown">
             <option value="all">--ALL--</option>
             {/* Add more options as needed */}
           </select>
         </div>
       </div>
 
-      <div className={styles.requisitionTableContainer}>
-        <table className={styles.requisitionDataTable}>
+      <div className="table-container">
+        <table className="patientList-table" ref={tableRef}>
           <thead>
             <tr>
-              <th>Req.No</th>
-              <th>StoreName</th>
-              <th>Requested On</th>
-              <th>Req. Status</th>
-              <th>Verification Status</th>
-              <th>Action</th>
+              {[
+                "Req.No",
+                "StoreName",
+                "Requested On",
+                "Req. Status",
+                "Verification Status",
+                "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>10</td>
-              <td>Accounts</td>
-              <td>2024-08-06</td>
-              <td>active</td>
-              <td>Pending</td>
-              <td>
-                <button onClick={() => handleVerifyClick({
-                  reqNo: 10,
-                  storeName: 'Accounts',
-                  requisitionDate: '2024-08-06'
-                  // Add more fields as needed
-                })}>
-                  Verify
-                </button>
-              </td>
-            </tr>
-            {/* Add more rows as needed */}
+            {filteredRequisitions.map((requisition) => (
+              <tr key={requisition.inventoryRequisitionId}>
+                <td>{requisition.inventoryRequisitionId}</td>
+                <td>{requisition.storeName}</td>
+                <td>{requisition.requisitionDate}</td>
+                <td>{requisition.status}</td>
+                <td>
+                  {requisition.status === "Pending"
+                    ? "0 verified out of 1"
+                    : "1 verified out of 1"}
+                </td>
+                <td>
+                  <button className="verify-btn" onClick={() => handleVerifyClick(requisition)}>
+                    Verify
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
-      {/* Render the modal */}
-      <VerifyModal 
-        isOpen={isModalOpen} 
-        onClose={closeModal} 
-        requisitionDetails={selectedRequisition}
-      />
+      {isModalOpen && (
+        <VerifyModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          requisitionDetails={selectedRequisition}
+        />
+      )}
     </div>
   );
 }

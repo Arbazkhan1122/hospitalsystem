@@ -7,6 +7,7 @@ import "../SSInventory/sSIReturn.css";
 import { useReactToPrint } from 'react-to-print';
 import SSIRetunReturnItemBtn from './sSIRetunReturnItemBtn';
 import SSIPatientConsumNewPCbtn from './sSIPatientConsumNewPCbtn';
+import { API_BASE_URL } from '../../../api/api';
 
 function SSIReturn() {
   const printRef = useRef();
@@ -35,7 +36,7 @@ function SSIReturn() {
   useEffect(() => {
     const fetchReturns = async () => {
       try {
-        const response = await fetch("http://localhost:8080/api/inventory-return/getAll");
+        const response = await fetch(`${API_BASE_URL}/inventory-return/getAll`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

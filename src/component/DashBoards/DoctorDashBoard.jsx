@@ -8,32 +8,32 @@ const DrDashboard = () => {
   // State to manage which content to display
   const [activeSection, setActiveSection] = useState('outPatient');
 
-  useEffect(()=>{
-    
-  },[activeSection])
+  useEffect(() => {
+    // Add any necessary side effects here
+  }, [activeSection]);
+
   // Function to handle button clicks
   const handleButtonClick = (section) => {
     setActiveSection(section);
   };
 
   return (
-    
-    <div className="dashboard-container">
-      <div className="button-group">
+    <div className="doctor-dashboard-container">
+      <div className="doctor-dashboard-button-group">
         <button
-          className="dashboard-button"
+          className={`dashboard-button ${activeSection === 'outPatient' ? 'active' : ''}`}
           onClick={() => handleButtonClick('outPatient')}
         >
           Out Patient
         </button>
         <button
-          className="dashboard-button"
+          className={`dashboard-button ${activeSection === 'inPatient' ? 'active' : ''}`}
           onClick={() => handleButtonClick('inPatient')}
         >
           In Patient Department
         </button>
         <button
-          className="dashboard-button"
+          className={`dashboard-button ${activeSection === 'patientRecord' ? 'active' : ''}`}
           onClick={() => handleButtonClick('patientRecord')}
         >
           Patient Record
@@ -49,3 +49,4 @@ const DrDashboard = () => {
 }
 
 export default DrDashboard;
+

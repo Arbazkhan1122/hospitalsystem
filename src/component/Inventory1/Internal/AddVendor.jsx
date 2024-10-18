@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './AddVendor.css';
+import { API_BASE_URL } from '../../api/api';
 
 const AddVendor = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -48,7 +49,9 @@ const AddVendor = ({ isOpen, onClose }) => {
       setErrors(newErrors);
     } else {
       try {
-        const response = await fetch('http://192.168.1.39:8080/api/vendors/createVendor', {
+        console.log(formValues);
+        
+        const response = await fetch(`${API_BASE_URL}/vendors/createVendor`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -58,6 +61,7 @@ const AddVendor = ({ isOpen, onClose }) => {
 
         if (response.ok) {
           setSuccessMessage('Vendor added successfully!');
+          onClose(false);
           setErrorMessage('');
           // Clear form values if needed
           setFormValues({
@@ -124,11 +128,11 @@ const AddVendor = ({ isOpen, onClose }) => {
               error={errors.contactNumber}
             />
             <VendddFormRow
-              label="KRA PIN"
+              label="PIN CODE"
               name="kraPin"
               value={formValues.kraPin}
               onChange={handleInputChange}
-              placeholder="KRA PIN"
+              placeholder="PIN CODE"
             />
             <VendddFormRow
               label="Vendor Country"

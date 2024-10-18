@@ -10,21 +10,22 @@
       padding: 20px;
       display: flex;
       justify-content: center;
+      align-items: center;
+      z-index: 150;
   }
   
   .voucher-popup-content {
     position: relative;
     background-color: #f0f0f0;
-    padding: 0 20px;
+    padding: 10px;
     border-radius: 5px;
-    /* overflow-y: auto; */
     width: 600px;
     height: 350px;
   }
   
   .voucher-popup-content h2 {
-    color: #4a4af4;
-    font-size: 16px;
+    color: black;
+    font-size: var(--heading-font);
     margin-bottom: 20px;
   }
   
@@ -53,14 +54,19 @@
   }
   
   .voucher-save-btn {
-    background-color: #4a4af4;
+    background-color: var(--button-color);
     color: white;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
     margin: 10px;
     float: left;
+  }
+  .voucher-save-btn:hover {
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+    border: 1px solid var(--button-hover-border-color);
   }
   
   .voucher-close-btn {
@@ -71,7 +77,7 @@
     color: white;
     border: none;
     border-radius: 50%;
-    padding: 8px 12px;
+    padding: 5px 12px;
     font-size: 16px;
   }
   .voucher-form-group input[type="text"],.voucher-form-group select{

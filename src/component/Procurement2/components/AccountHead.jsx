@@ -22,7 +22,7 @@ const AccountHead = () => {
     // Fetch account heads from the API
     const fetchAccountHeads = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/account-heads/findAll');
+        const response = await axios.get('http://localhost:1415/api/account-heads/findAll');
         setAccountHeads(response.data);
         console.log(response.data);
 

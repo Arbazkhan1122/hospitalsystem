@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './MaternityList.css';
 import NewPatientRegistrationForm from './NewPatientRegistrationForm';
+import { API_BASE_URL } from '../api/api';
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const MaternityList = () => {
@@ -12,7 +13,7 @@ const MaternityList = () => {
 
   useEffect(() => {
     // Fetch patient data from the API
-    fetch('http://localhost:1415/api/patients/fetch-all-patient-registration')
+    fetch(`${API_BASE_URL}/patients/fetch-all-patient-registration`)
       .then(response => response.json())
       .then(data => setPatients(data))
       .catch(error => console.error('Error fetching patient data:', error));

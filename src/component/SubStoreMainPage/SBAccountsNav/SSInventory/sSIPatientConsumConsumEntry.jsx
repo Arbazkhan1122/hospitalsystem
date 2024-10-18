@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../SSInventory/sSIPatientConsumConsumEntry.css';
 import { useLocation, useParams } from 'react-router-dom';
+import { API_BASE_URL } from '../../../api/api';
 
 const SSIPatientConsumConsumEntry = ({ onBack }) => {
   const {store} = useParams();
@@ -16,7 +17,7 @@ const SSIPatientConsumConsumEntry = ({ onBack }) => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const response = await fetch('http://localhost:8080/api/inventory-requisitions/getAll');
+      const response = await fetch(`${API_BASE_URL}/inventory-requisitions/getAll`);
       const data = await response.json();
       const completedItems = data.filter(item => item.status?.toLowerCase() === 'approved' && item.storeName===store);
       setItems(completedItems);
@@ -41,7 +42,7 @@ const SSIPatientConsumConsumEntry = ({ onBack }) => {
       const updatedQty = selectedItem.requiredQuantity - consumedQty;
       console.log(updatedQty);
       
-      await fetch(`http://localhost:8080/api/inventory-requisitions/update/${selectedItem.id}`, {
+      await fetch(`${API_BASE_URL}/inventory-requisitions/update/${selectedItem.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +53,7 @@ const SSIPatientConsumConsumEntry = ({ onBack }) => {
       });
 
       // Add the new consumption entry
-      await fetch('http://localhost:8080/api/inventory-consumption/add', {
+      await fetch(`${API_BASE_URL}/inventory-consumption/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

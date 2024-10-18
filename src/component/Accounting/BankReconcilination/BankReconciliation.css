@@ -86,12 +86,12 @@
     border-radius: 3px !important;
     height: 30px !important;
     width: 100%;
-    font-size: 14px;
+    font-size: var(--font-size);
   }
   .bank-reconciliation-star-btn{
     background-color: transparent;
-    color: #007bff;
-    font-size: 18px;
+    color: var(--button-color);
+    font-size: var(--heading-font);
     border: none;
   }
   
@@ -99,22 +99,30 @@
   .bank-reconciliation__status {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: var(--font-size);
   }
   
   .bank-reconciliation__show-btn,
   .bank-reconciliation__reconcile-btn,
   .bank-reconciliation__cancel-btn {
-    padding: 10px 20px;
+    padding: 5px 10px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
   }
   
   .bank-reconciliation__show-btn,
   .bank-reconciliation__reconcile-btn {
-    background-color: #28a745;
+    background-color: var(--button-color);
     color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  .bank-reconciliation__show-btn:hover,
+  .bank-reconciliation__reconcile-btn:hover {
+    color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
   }
   
   .bank-reconciliation__cancel-btn {
@@ -153,11 +161,17 @@
   }
   
   .bank-reconciliation__add-btn {
-    background-color: #007bff;
+    background-color: var(--button-color);
     color: white;
     border: none;
     padding: 5px 10px;
+    border-radius: 5px;
     cursor: pointer;
+  }
+  .bank-reconciliation__add-btn:hover {
+    color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+  border: 1px solid var(--button-hover-border-color);
   }
   
   .bank-reconciliation__narration {
@@ -197,7 +211,7 @@
     position: absolute;
     bottom: 0;
     height: 4px;
-    background-color: #2D68EA;
+    background-color: var(--button-bg-color);
     transition: left 0.3s ease, width 0.3s ease;
   }
   .bank-reconciliation__nav ul li::after {
@@ -205,7 +219,7 @@
     position: absolute;
     left: 0;
     height: 4px;
-    background-color: #2D68EA;
+    background-color: var(--button-bg-color);
     transform: scaleX(1); /* Expands the underline width */
     transition: transform 0.3s ease-in-out;
   }
@@ -217,7 +231,7 @@
     left: 0; /* Start from the left */
     height: 4px; /* Thickness of the underline */
     width: 0; /* Initially, the underline is collapsed */
-    background-color: #2D68EA; /* Color of the underline */
+    background-color: var(--button-bg-color); /* Color of the underline */
     transition: width 0.3s ease-in-out; /* Smooth transition for width */
   }
   

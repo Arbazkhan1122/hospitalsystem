@@ -120,7 +120,7 @@
   border-radius: 5px; /* Optional: rounded corners */
   padding: 5px 10px; /* Optional: adjust padding */
   cursor: pointer; /* Change cursor to pointer on hover */
-  font-size: 16px; /* Optional: adjust font size */
+  font-size: var(--heading-font); /* Optional: adjust font size */
 }
 .create-render-to-remove{
   background-color: red; /* Green background */
@@ -129,7 +129,7 @@
   border-radius: 5px; /* Optional: rounded corners */
   padding: 5px 10px; /* Optional: adjust padding */
   cursor: pointer; /* Change cursor to pointer on hover */
-  font-size: 16px; /* Optional: adjust font size */
+  font-size: var(--heading-font); /* Optional: adjust font size */
 }
 
 
@@ -160,8 +160,8 @@
   text-align: right; /* Align the text to the right for better appearance */
 }
 
-.create-return-to-vendor-total-field input {
-  width: 150px; /* Adjust width as needed */
+.Inv-Return-Input{
+  width: 100%;
 }
 .create-return-to-vendor-form-row {
   display: flex;

@@ -9,6 +9,127 @@
     padding: 20px; 
     box-sizing: border-box;
     
+  }.new-scheme-refund-modal-container {
+   position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:auto;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .new-scheme-refund-modal-box {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 70%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+  }
+  
+  .new-scheme-refund-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  .new-scheme-refund-modal-header h2 {
+    margin: 0;
+  }
+  
+  .new-scheme-refund-modal-header .close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .new-scheme-refund-modal-patient{
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  .new-scheme-refund-modal-patient-info {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+  }
+  
+  .new-scheme-refund-modal-patient-info p {
+    margin: 5px 0;
+  }
+  
+  .new-scheme-refund-modal-form {
+    margin-top: 20px;
+  }
+  
+  .new-scheme-refund-modal-form label {
+    display: inline-block;
+    width: 220px;
+    font-weight: bold;
+  }
+
+  .new-scheme-refund-modal-form-data{
+    display: flex;
+  }
+  
+  .new-scheme-refund-modal-form input,
+  .new-scheme-refund-modal-form select {
+    width: 200px;
+    padding: 2px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .new-scheme-refund-modal-form button {
+    background-color: #00c2ff;
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 400px;
+  }
+  
+  .new-scheme-refund-modal-form button:hover {
+    background-color: #00a6d1;
+  }
+  
+  .new-scheme-refund-modal-table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .new-scheme-refund-modal-table th,
+  .new-scheme-refund-modal-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .new-scheme-refund-modal-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .new-scheme-refund-modal-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .new-scheme-refund-modal-table tr:hover {
+    background-color: #f1f1f1;
   }
   
   .modelbtn {

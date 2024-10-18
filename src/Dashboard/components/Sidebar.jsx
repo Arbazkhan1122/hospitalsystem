@@ -47,10 +47,17 @@ const Sidebar = ({
   onMedicalRecord,
   onProcurement,
   onBilling,
+
   onHomehealthcare,
   onpediatricoutpatient,
   onpediatricinpatient,
-  onphysiotherapy
+  onphysiotherapy,
+  onBloodbank,
+  onTransport,
+  onSuperUser,
+
+  onHr
+
 }) => {
   const [openMenus, setOpenMenus] = useState({});
   const [activeLink, setActiveLink] = useState(null);
@@ -204,15 +211,27 @@ const Sidebar = ({
     handleLinkClick("medicalrecord");
     onMedicalRecord();
   };
-  const handleProcurement=()=>{
+  const handleProcurement = () => {
     handleLinkClick("procurement");
     onProcurement();
-  }
+  };
 
-  const handleBilling=()=>{
+  const handleBilling = () => {
     handleLinkClick("billing");
     onBilling();
+  };
+
+  const handlebBloodbank = () => {
+    handleLinkClick("bloodbank");
+    onBloodbank();
+  };
+
+  const handleTransport = () => {
+    handleLinkClick("transport");
+    onTransport();
+
   }
+
 
   const handlehomehealthcareClick=()=>{
     handleLinkClick("homehealthcare");
@@ -239,11 +258,23 @@ const Sidebar = ({
     onphysiotherapy();
   }
 
+  const handleSuperUserClick = () => {
+    handleLinkClick("superUser");
+    onSuperUser();
+
+  }
+
+  const handleHr = () => {
+    handleLinkClick("hr");
+    onHr();
+  };
+
+
   return (
     <div className={`custom-sidebar ${isOpen ? "" : "custom-sidebar-closed"}`}>
-      <button className="custom-toggle-button" onClick={toggleSidebar}>
+      {/* <button className="custom-toggle-button" onClick={toggleSidebar}>
         {isOpen ? <LuChevronLeft size={20} /> : <LuChevronRight size={20} />}
-      </button>
+      </button> */}
       <div className="custom-logo-container">
         {isOpen ? (
           <span>
@@ -264,17 +295,16 @@ const Sidebar = ({
       </div>
       <ul className="custom-sidebar-links">
         <li
-          className={`custom-nav-item ${
-            activeLink === "dispensary-submenu1" ||
-            activeLink === "dispensary-submenu2" ||
-            activeLink === "dispensary-submenu3" ||
-            activeLink === "dispensary-submenu4" ||
-            activeLink === "dispensary-submenu5" ||
-            activeLink === "dispensary-submenu6" ||
-            activeLink === "dispensary-submenu7"
+          className={`custom-nav-item ${activeLink === "dispensary-submenu1" ||
+              activeLink === "dispensary-submenu2" ||
+              activeLink === "dispensary-submenu3" ||
+              activeLink === "dispensary-submenu4" ||
+              activeLink === "dispensary-submenu5" ||
+              activeLink === "dispensary-submenu6" ||
+              activeLink === "dispensary-submenu7"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -354,17 +384,160 @@ const Sidebar = ({
           )}
         </li>
 
+
+
+
+
+
+
         <li
-          className={`custom-nav-item ${
-            activeLink === "medicalrecord-submenu1" ||
-            activeLink === "medicalrecord-submenu2" ||
-            activeLink === "medicalrecord-submenu3" ||
-            activeLink === "medicalrecord-submenu4" ||
-            activeLink === "medicalrecord-submenu5" ||
-            activeLink === "medicalrecord-submenu6"
+          className={`custom-nav-item ${activeLink === "superUser-submenu1" ||
+              activeLink === "superUser-submenu2" ||
+              activeLink === "superUser-submenu3" ||
+              activeLink === "superUser-submenu4" ||
+              activeLink === "superUser-submenu5" ||
+              activeLink === "superUser-submenu6" ||
+              activeLink === "superUser-submenu7" ||
+              activeLink === "superUser-submenu8"
+
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`} >
+          <div
+            className="custom-nav-link-content"
+            onClick={handleSuperUserClick}
+          >
+            <span>
+              <FaClinicMedical />
+            </span>
+            {isOpen && <span className="custom-nav-link-text">SuperUser</span>}
+            <span className="custom-dropdown-icon">
+              {openMenus.superUser ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.superUser && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("superUser", "submenu1")}
+                className={
+                  activeLink === "superUser-submenu1"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/revenuemgnt">Revenue Management</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu2")}
+                className={
+                  activeLink === "superUser-submenu2"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/sUPermission">Permission</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu3")}
+                className={
+                  activeLink === "superUser-submenu3"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/billingNavbar">Billing Discount Approval</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu4")}
+                className={
+                  activeLink === "superUser-submenu4"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/homePage">Message Broadcast</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu5")}
+                className={
+                  activeLink === "superUser-submenu5"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/facilityService">Facility Services </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu6")}
+                className={
+                  activeLink === "superUser-submenu6"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/administration">Administration </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu7")}
+                className={
+                  activeLink === "superUser-submenu7"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/vendorNavba">Vendor and Supply Management </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu8")}
+                className={
+                  activeLink === "superUser-submenu8"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/controlAllDeptRoute">Control All Department</Link>
+              </li>
+
+              <li
+                onClick={() => handleItemClick("superUser", "submenu8")}
+                className={
+                  activeLink === "superUser-submenu8"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/Superusermodulemain/*">User Account Management</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("superUser", "submenu8")}
+                className={
+                  activeLink === "superUser-submenu8"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/rolemgnt">Role Management</Link>
+              </li>
+            </ul>
+          )}
+        </li>
+
+
+
+
+
+
+        <li
+          className={`custom-nav-item ${activeLink === "medicalrecord-submenu1" ||
+              activeLink === "medicalrecord-submenu2" ||
+              activeLink === "medicalrecord-submenu3" ||
+              activeLink === "medicalrecord-submenu4" ||
+              activeLink === "medicalrecord-submenu5" ||
+              activeLink === "medicalrecord-submenu6"
+              ? "custom-nav-item-active"
+              : ""
+            }`}
+
         >
           <div
             className="custom-nav-link-content"
@@ -447,33 +620,233 @@ const Sidebar = ({
         </li>
 
 
-
-
-
-
-
-
-
-
-
-        <li className={`custom-nav-item ${
-            activeLink === "billing-submenu1" ||
-            activeLink === "billing-submenu2" 
        
-              ? "custom-nav-item-active"
-              : ""
+
+
+
+
+
+        <li className={`custom-nav-item ${activeLink === "transport-submenu1" ||
+            activeLink === "transport-submenu2" ||
+            activeLink === "transport-submenu3" ||
+            activeLink === "transport-submenu4" ||
+            activeLink === "transport-submenu5" ||
+            activeLink === "transport-submenu6" ||
+            activeLink === "transport-submenu7"
+            ? "custom-nav-item-active"
+            : ""
           }`}
         >
           <div
             className="custom-nav-link-content"
-            onClick={handleBilling}
+            onClick={handleTransport}
           >
             <span>
               <FaClinicMedical />
             </span>
             {isOpen && (
-              <span className="custom-nav-link-text">Billing</span>
+              <span className="custom-nav-link-text">Transport</span>
             )}
+            <span className="custom-dropdown-icon">
+              {openMenus.transport ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.transport && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("transport", "submenu1")}
+                className={
+                  activeLink === "transport-submenu1"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodDonationForm">Blood Donation Registration</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("transport", "submenu2")}
+                className={
+                  activeLink === "transport-submenu2"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodcollectionmain">Blood Collection</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("transport", "submenu3")}
+                className={
+                  activeLink === "transport-submenu3"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+
+                <Link to="/hIMSSampleDataTable">Blood Testing and Screening</Link>
+
+              </li>
+              <li
+                onClick={() => handleItemClick("transport", "submenu4")}
+                className={
+                  activeLink === "transport-submenu4"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodStorageDashboard">Blood Storage</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("transport", "submenu5")}
+                className={
+                  activeLink === "transport-submenu5"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodReq">Blood Request</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("transport", "submenu6")}
+                className={
+                  activeLink === "transport-submenu6"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodIssue">Blood Issues</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu7")}
+                className={
+                  activeLink === "bloodbank-submenu7"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bBReport">Reports</Link>
+              </li>
+
+
+            </ul>
+          )}
+        </li>
+
+
+
+
+
+
+        <li className={`custom-nav-item ${activeLink === "bloodbank-submenu1" ||
+            activeLink === "bloodbank-submenu2" ||
+            activeLink === "bloodbank-submenu3" ||
+            activeLink === "bloodbank-submenu4" ||
+            activeLink === "bloodbank-submenu5" ||
+            activeLink === "bloodbank-submenu6"
+
+            ? "custom-nav-item-active"
+            : ""
+          }`}
+        >
+          <div className="custom-nav-link-content" onClick={handlebBloodbank}>
+            <span>
+              <FaClinicMedical />
+            </span>
+            {isOpen && <span className="custom-nav-link-text">BloodBank</span>}
+            <span className="custom-dropdown-icon">
+              {openMenus.bloodbank ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.bloodbank && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu1")}
+                className={
+                  activeLink === "bloodbank-submenu1"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodDonationForm">Blood Donation Registration</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu2")}
+                className={
+                  activeLink === "bloodbank-submenu2"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodcollectionmain">Blood Collection</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu3")}
+                className={
+                  activeLink === "bloodbank-submenu3"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/hIMSSampleDataTable">
+                  Blood Testing and Screening
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu4")}
+                className={
+                  activeLink === "bloodbank-submenu4"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodStorageDashboard">Blood Storage</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu5")}
+                className={
+                  activeLink === "bloodbank-submenu5"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodReq">Blood Request</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu6")}
+                className={
+                  activeLink === "bloodbank-submenu6"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bloodIssue">Blood Issues</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("bloodbank", "submenu6")}
+                className={
+                  activeLink === "bloodbank-submenu6"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/bBReport">Reports</Link>
+              </li>
+            </ul>
+          )}
+        </li>
+
+        <li
+
+          className={`custom-nav-item ${activeLink === "billing-submenu1" ||
+              activeLink === "billing-submenu2"
+              ? "custom-nav-item-active"
+              : ""
+            }`}
+        >
+          <div className="custom-nav-link-content" onClick={handleBilling}>
+            <span>
+              <FaClinicMedical />
+            </span>
+            {isOpen && <span className="custom-nav-link-text">Billing</span>}
             <span className="custom-dropdown-icon">
               {openMenus.billing ? <LuChevronUp /> : <LuChevronDown />}
             </span>
@@ -500,35 +873,22 @@ const Sidebar = ({
               >
                 <Link to="/Search_Patient">Op Billing</Link>
               </li>
-             
             </ul>
           )}
         </li>
 
-
-
-
-
-
-
-
-
-
-
-
-
         <li
-          className={`custom-nav-item ${
-            activeLink === "pharmacy-submenu1" ||
-            activeLink === "pharmacy-submenu2" ||
-            activeLink === "pharmacy-submenu3" ||
-            activeLink === "pharmacy-submenu4" ||
-            activeLink === "pharmacy-submenu5" ||
-            activeLink === "pharmacy-submenu6" ||
-            activeLink === "pharmacy-submenu7"
+
+          className={`custom-nav-item ${activeLink === "pharmacy-submenu1" ||
+              activeLink === "pharmacy-submenu2" ||
+              activeLink === "pharmacy-submenu3" ||
+              activeLink === "pharmacy-submenu4" ||
+              activeLink === "pharmacy-submenu5" ||
+              activeLink === "pharmacy-submenu6" ||
+              activeLink === "pharmacy-submenu7"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -618,25 +978,19 @@ const Sidebar = ({
           )}
         </li>
 
+        <li
 
-
-
-         <li
-          className={`custom-nav-item ${
-            activeLink === "procurement-submenu1" ||
-            activeLink === "procurement-submenu2" ||
-            activeLink === "procurement-submenu3" ||
-            activeLink === "procurement-submenu4" ||
-            activeLink === "procurement-submenu5" ||
-            activeLink === "procurement-submenu6"
+          className={`custom-nav-item ${activeLink === "procurement-submenu1" ||
+              activeLink === "procurement-submenu2" ||
+              activeLink === "procurement-submenu3" ||
+              activeLink === "procurement-submenu4" ||
+              activeLink === "procurement-submenu5" ||
+              activeLink === "procurement-submenu6"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
-          <div
-            className="custom-nav-link-content"
-            onClick={handleProcurement}
-          >
+          <div className="custom-nav-link-content" onClick={handleProcurement}>
             <span>
               <FaClinicMedical />
             </span>
@@ -714,12 +1068,12 @@ const Sidebar = ({
         </li>
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "verification-submenu1" ||
-            activeLink === "verification-submenu2"
+
+          className={`custom-nav-item ${activeLink === "verification-submenu1" ||
+              activeLink === "verification-submenu2"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -762,12 +1116,12 @@ const Sidebar = ({
         </li>
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "patient-submenu1" ||
-            activeLink === "patient-submenu2"
+
+          className={`custom-nav-item ${activeLink === "patient-submenu1" ||
+              activeLink === "patient-submenu2"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handlepatientClick}>
             <span>
@@ -805,11 +1159,11 @@ const Sidebar = ({
         </li>
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "dynamicReport-submenu1"
+
+          className={`custom-nav-item ${activeLink === "dynamicReport-submenu1"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -828,12 +1182,12 @@ const Sidebar = ({
         </li>
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "oprationTheatre-submenu1" ||
-            activeLink === "oprationTheatre-submenu2"
+
+          className={`custom-nav-item ${activeLink === "oprationTheatre-submenu1" ||
+              activeLink === "oprationTheatre-submenu2"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -875,11 +1229,11 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "doctor-submenu1" || activeLink === "doctor-submenu2"
+
+          className={`custom-nav-item ${activeLink === "doctor-submenu1" || activeLink === "doctor-submenu2"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleDoctor}>
             <span>
@@ -926,12 +1280,12 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "clinical-submenu1" ||
-            activeLink === "clinical-submenu2"
+
+          className={`custom-nav-item ${activeLink === "clinical-submenu1" ||
+              activeLink === "clinical-submenu2"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleClinical}>
             <span>
@@ -961,16 +1315,16 @@ const Sidebar = ({
         </li>
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "accounting-submenu1" ||
-            activeLink === "accounting-submenu2" ||
-            activeLink === "accounting-submenu3" ||
-            activeLink === "accounting-submenu4" ||
-            activeLink === "accounting-submenu5" ||
-            activeLink === "accounting-submenu6"
+
+          className={`custom-nav-item ${activeLink === "accounting-submenu1" ||
+              activeLink === "accounting-submenu2" ||
+              activeLink === "accounting-submenu3" ||
+              activeLink === "accounting-submenu4" ||
+              activeLink === "accounting-submenu5" ||
+              activeLink === "accounting-submenu6"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleAccounting}>
             <span>
@@ -1048,16 +1402,16 @@ const Sidebar = ({
         </li>
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "nursing-submenu1" ||
-            activeLink === "nursing-submenu2" ||
-            activeLink === "nursing-submenu3" ||
-            activeLink === "nursing-submenu4" ||
-            activeLink === "nursing-submenu5" ||
-            activeLink === "nursing-submenu6"
+
+          className={`custom-nav-item ${activeLink === "nursing-submenu1" ||
+              activeLink === "nursing-submenu2" ||
+              activeLink === "nursing-submenu3" ||
+              activeLink === "nursing-submenu4" ||
+              activeLink === "nursing-submenu5" ||
+              activeLink === "nursing-submenu6"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleNurseClick}>
             <span>
@@ -1141,16 +1495,16 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "appointment-submenu1" ||
-            activeLink === "appointment-submenu2" ||
-            activeLink === "appointment-submenu3" ||
-            activeLink === "appointment-submenu4" ||
-            activeLink === "appointment-submenu5" ||
-            activeLink === "appointment-submenu6"
+
+          className={`custom-nav-item ${activeLink === "appointment-submenu1" ||
+              activeLink === "appointment-submenu2" ||
+              activeLink === "appointment-submenu3" ||
+              activeLink === "appointment-submenu4" ||
+              activeLink === "appointment-submenu5" ||
+              activeLink === "appointment-submenu6"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -1259,18 +1613,18 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "setting-submenu1" ||
-            activeLink === "setting-submenu2" ||
-            activeLink === "setting-submenu3" ||
-            activeLink === "setting-submenu4" ||
-            activeLink === "setting-submenu5" ||
-            activeLink === "setting-submenu6" ||
-            activeLink === "setting-submenu7" ||
-            activeLink === "setting-submenu8"
+
+          className={`custom-nav-item ${activeLink === "setting-submenu1" ||
+              activeLink === "setting-submenu2" ||
+              activeLink === "setting-submenu3" ||
+              activeLink === "setting-submenu4" ||
+              activeLink === "setting-submenu5" ||
+              activeLink === "setting-submenu6" ||
+              activeLink === "setting-submenu7" ||
+              activeLink === "setting-submenu8"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleSettingClick}>
             <span>
@@ -1399,15 +1753,15 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "inventory-submenu1" ||
-            activeLink === "inventory-submenu2" ||
-            activeLink === "inventory-submenu3" ||
-            activeLink === "inventory-submenu4" ||
-            activeLink === "inventory-submenu5"
+
+          className={`custom-nav-item ${activeLink === "inventory-submenu1" ||
+              activeLink === "inventory-submenu2" ||
+              activeLink === "inventory-submenu3" ||
+              activeLink === "inventory-submenu4" ||
+              activeLink === "inventory-submenu5"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -1497,13 +1851,13 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "incentive-submenu1" ||
-            activeLink === "incentive-submenu2" ||
-            activeLink === "incentive-submenu3"
+
+          className={`custom-nav-item ${activeLink === "incentive-submenu1" ||
+              activeLink === "incentive-submenu2" ||
+              activeLink === "incentive-submenu3"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -1563,18 +1917,18 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "laboratory-submenu1" ||
-            activeLink === "laboratory-submenu2" ||
-            activeLink === "laboratory-submenu3" ||
-            activeLink === "laboratory-submenu4" ||
-            activeLink === "laboratory-submenu5" ||
-            activeLink === "laboratory-submenu6" ||
-            activeLink === "laboratory-submenu7" ||
-            activeLink === "laboratory-submenu8"
+
+          className={`custom-nav-item ${activeLink === "laboratory-submenu1" ||
+              activeLink === "laboratory-submenu2" ||
+              activeLink === "laboratory-submenu3" ||
+              activeLink === "laboratory-submenu4" ||
+              activeLink === "laboratory-submenu5" ||
+              activeLink === "laboratory-submenu6" ||
+              activeLink === "laboratory-submenu7" ||
+              activeLink === "laboratory-submenu8"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -1709,14 +2063,14 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "utilites-submenu1" ||
-            activeLink === "utilites-submenu2" ||
-            activeLink === "utilites-submenu3" ||
-            activeLink === "utilites-submenu4"
+
+          className={`custom-nav-item ${activeLink === "utilites-submenu1" ||
+              activeLink === "utilites-submenu2" ||
+              activeLink === "utilites-submenu3" ||
+              activeLink === "utilites-submenu4"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -1791,12 +2145,12 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "emergency-submenu1" ||
-            activeLink === "emergency-submenu2"
+
+          className={`custom-nav-item ${activeLink === "emergency-submenu1" ||
+              activeLink === "emergency-submenu2"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -1838,7 +2192,9 @@ const Sidebar = ({
                 <Link
                   to="/triagedPatients"
                   className="appointment-booking-list-nav-link"
-                ></Link>
+                >
+                  Triaged Patients
+                </Link>
               </li>
               <li
                 onClick={() => handleItemClick("emergency", "submenu3")}
@@ -1876,14 +2232,14 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "systemAdmin-submenu1" ||
-            activeLink === "systemAdmin-submenu2" ||
-            activeLink === "systemAdmin-submenu3" ||
-            activeLink === "systemAdmin-submenu4"
+
+          className={`custom-nav-item ${activeLink === "systemAdmin-submenu1" ||
+              activeLink === "systemAdmin-submenu2" ||
+              activeLink === "systemAdmin-submenu3" ||
+              activeLink === "systemAdmin-submenu4"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -1961,11 +2317,11 @@ const Sidebar = ({
         </li>
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "socialService-submenu1"
+
+          className={`custom-nav-item ${activeLink === "socialService-submenu1"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -1984,9 +2340,9 @@ const Sidebar = ({
         </li>
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "queuemngt-submenu1" ? "custom-nav-item-active" : ""
-          }`}
+
+          className={`custom-nav-item ${activeLink === "queuemngt-submenu1" ? "custom-nav-item-active" : ""
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -2003,9 +2359,9 @@ const Sidebar = ({
         </li>
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "substore-submenu1" ? "custom-nav-item-active" : ""
-          }`}
+
+          className={`custom-nav-item ${activeLink === "substore-submenu1" ? "custom-nav-item-active" : ""
+            }`}
         >
           <div
             className="custom-nav-link-content"
@@ -2061,18 +2417,18 @@ const Sidebar = ({
         </li>
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "report-submenu1" ||
-            activeLink === "report-submenu2" ||
-            activeLink === "report-submenu3" ||
-            activeLink === "report-submenu4" ||
-            activeLink === "report-submenu5" ||
-            activeLink === "report-submenu6" ||
-            activeLink === "report-submenu7" ||
-            activeLink === "report-submenu8"
+
+          className={`custom-nav-item ${activeLink === "report-submenu1" ||
+              activeLink === "report-submenu2" ||
+              activeLink === "report-submenu3" ||
+              activeLink === "report-submenu4" ||
+              activeLink === "report-submenu5" ||
+              activeLink === "report-submenu6" ||
+              activeLink === "report-submenu7" ||
+              activeLink === "report-submenu8"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleReportClick}>
             <span>
@@ -2205,14 +2561,14 @@ const Sidebar = ({
         </li>
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "nhif-submenu1" ||
-            activeLink === "nhif-submenu2" ||
-            activeLink === "nhif-submenu3" ||
-            activeLink === "nhif-submenu4"
+
+          className={`custom-nav-item ${activeLink === "nhif-submenu1" ||
+              activeLink === "nhif-submenu2" ||
+              activeLink === "nhif-submenu3" ||
+              activeLink === "nhif-submenu4"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleNhifClick}>
             <span>
@@ -2276,15 +2632,15 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "adt-submenu1" ||
-            activeLink === "adt-submenu2" ||
-            activeLink === "adt-submenu3" ||
-            activeLink === "adt-submenu4" ||
-            activeLink === "adt-submenu5"
+
+          className={`custom-nav-item ${activeLink === "adt-submenu1" ||
+              activeLink === "adt-submenu2" ||
+              activeLink === "adt-submenu3" ||
+              activeLink === "adt-submenu4" ||
+              activeLink === "adt-submenu5"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleAdtClick}>
             <span>
@@ -2362,13 +2718,13 @@ const Sidebar = ({
         </li>
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "maternity-submenu1" ||
-            activeLink === "maternity-submenu2" ||
-            activeLink === "maternity-submenu3"
+
+          className={`custom-nav-item ${activeLink === "maternity-submenu1" ||
+              activeLink === "maternity-submenu2" ||
+              activeLink === "maternity-submenu3"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleMeternity}>
             <span>
@@ -2410,6 +2766,47 @@ const Sidebar = ({
                 }
               >
                 <Link to="/reports">Reports</Link>
+              </li>
+
+              <li
+                onClick={() => handleItemClick("maternity", "submenu3")}
+                className={
+                  activeLink === "maternity-submenu3"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/PostnatalCare">PostnatalCare</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("maternity", "submenu3")}
+                className={
+                  activeLink === "maternity-submenu3"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/Labourmgnt">LabourRoomMgnt</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("maternity", "submenu3")}
+                className={
+                  activeLink === "maternity-submenu3"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/BreastfeedingSupport">BreastfeedingSupport</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("maternity", "submenu3")}
+                className={
+                  activeLink === "maternity-submenu3"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/FamilyPlanningService">FamilyPlanningService</Link>
               </li>
             </ul>
           )}
@@ -2836,14 +3233,14 @@ const Sidebar = ({
 
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "radiology-submenu1" ||
-            activeLink === "radiology-submenu2" ||
-            activeLink === "radiology-submenu3" ||
-            activeLink === "radiology-submenu4"
+
+          className={`custom-nav-item ${activeLink === "radiology-submenu1" ||
+              activeLink === "radiology-submenu2" ||
+              activeLink === "radiology-submenu3" ||
+              activeLink === "radiology-submenu4"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleRadiology}>
             <span>
@@ -2901,13 +3298,13 @@ const Sidebar = ({
         </li>
 
         <li
-          className={`custom-nav-item ${
-            activeLink === "mkt-submenu1" ||
-            activeLink === "mkt-submenu2" ||
-            activeLink === "mkt-submenu3"
+
+          className={`custom-nav-item ${activeLink === "mkt-submenu1" ||
+              activeLink === "mkt-submenu2" ||
+              activeLink === "mkt-submenu3"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleMKTClick}>
             <span>
@@ -2956,16 +3353,69 @@ const Sidebar = ({
                   Reports
                 </Link>
               </li>
+
+              <li
+                onClick={() => handleItemClick("mkt", "submenu3")}
+                className={
+                  activeLink === "mkt-submenu3" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/refferaltracking"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Refferal Tracking
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("mkt", "submenu3")}
+                className={
+                  activeLink === "mkt-submenu3" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/patientrefferingreward"
+                  className="appointment-booking-list-nav-link"
+                >
+                 Patient Refferal Reward
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("mkt", "submenu3")}
+                className={
+                  activeLink === "mkt-submenu3" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/marketingcampaign"
+                  className="appointment-booking-list-nav-link"
+                >
+                Marketing Campaigns 
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("mkt", "submenu3")}
+                className={
+                  activeLink === "mkt-submenu3" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/patientoutreach"
+                  className="appointment-booking-list-nav-link"
+                >
+                Patient Outreach
+                </Link>
+              </li>
             </ul>
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "vaccination-submenu1" ||
-            activeLink === "vaccination-submenu2"
+
+          className={`custom-nav-item ${activeLink === "vaccination-submenu1" ||
+              activeLink === "vaccination-submenu2"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleVaccination}>
             <span>
@@ -3004,14 +3454,14 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "fixAssest-submenu1" ||
-            activeLink === "fixAssest-submenu2" ||
-            activeLink === "fixAssest-submenu3" ||
-            activeLink === "fixAssest-submenu4"
+
+          className={`custom-nav-item ${activeLink === "fixAssest-submenu1" ||
+              activeLink === "fixAssest-submenu2" ||
+              activeLink === "fixAssest-submenu3" ||
+              activeLink === "fixAssest-submenu4"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleFixAssests}>
             <span>
@@ -3073,11 +3523,11 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "cssd-submenu1" || activeLink === "css-submenu2"
+
+          className={`custom-nav-item ${activeLink === "cssd-submenu1" || activeLink === "css-submenu2"
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleCSSD}>
             <span>
@@ -3110,14 +3560,114 @@ const Sidebar = ({
           )}
         </li>
         <li
-          className={`custom-nav-item ${
-            activeLink === "helpdesk-submenu1" ||
-            activeLink === "helpdesk-submenu2" ||
-            activeLink === "helpdesk-submenu3" ||
-            activeLink === "helpdesk-submenu4"
+
+          className={`custom-nav-item ${activeLink === "hr-submenu1" ||
+              activeLink === "hr-submenu2" ||
+              activeLink === "hr-submenu3" ||
+              activeLink === "hr-submenu4" ||
+              activeLink === "hr-submenu5" ||
+              activeLink === "hr-submenu6" ||
+              activeLink === "hr-submenu7"
+
               ? "custom-nav-item-active"
               : ""
-          }`}
+            }`}
+        >
+          <div className="custom-nav-link-content" onClick={handleHr}>
+            <span>
+              <TbUsers />
+            </span>
+            {isOpen && <span className="custom-nav-link-text">HR</span>}
+            <span className="custom-dropdown-icon">
+              {openMenus.hr ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.hr && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("hr", "submenu1")}
+                className={
+                  activeLink === "hr-submenu1"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/employee-list">Employee List</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("hr", "submenu2")}
+                className={
+                  activeLink === "hr-submenu2"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/employee-attendance">Attendance</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("hr", "submenu3")}
+                className={
+                  activeLink === "hr-submenu3"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/employee-schedule">Employee Schedule</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("hr", "submenu4")}
+                className={
+                  activeLink === "hr-submenu4"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/employee-leave">Employee Leave</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("hr", "submenu5")}
+                className={
+                  activeLink === "hr-submenu5"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/employee-performance">Performance Evaluation</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("hr", "submenu6")}
+                className={
+                  activeLink === "hr-submenu6"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/employee-payroll">Payroll</Link>
+              </li>
+
+              <li
+                onClick={() => handleItemClick("hr", "submenu7")}
+                className={
+                  activeLink === "hr-submenu7"
+                    ? "custom-submenu-active"
+                    : ""
+                }
+              >
+                <Link to="/employee-recruitment">Recruitment Management</Link>
+              </li>
+
+
+            </ul>
+          )}
+        </li>
+        <li
+          className={`custom-nav-item ${activeLink === "helpdesk-submenu1" ||
+              activeLink === "helpdesk-submenu2" ||
+              activeLink === "helpdesk-submenu3" ||
+              activeLink === "helpdesk-submenu4"
+              ? "custom-nav-item-active"
+              : ""
+            }`}
         >
           <div className="custom-nav-link-content" onClick={handleHelpdesk}>
             <span>

@@ -88,13 +88,14 @@ const ManageWardSubstoreMap = () => {
           show={showEditModal}
           onHide={handleCloseModal}
           size="lg"
-          centered
           dialogClassName="manage-ward-modal"
         >
+          <div className='manage-ward-model-content'>
           <Modal.Header closeButton className="manage-ward-modal-header"></Modal.Header>
           <Modal.Body className="manage-ward-modal-body">
             <WardSubstoreMap selectedWard={selectedWard} onClose={handleCloseModal} />
           </Modal.Body>
+          </div>
         </Modal>
       )}
     </div>

@@ -1,11 +1,7 @@
 
 
    .pendingReports-work-list {
-     background-color: var(--background-color);
      padding: 10px;
-     height: 80vh;
-     font-family: Arial, sans-serif;
-     
     }
     .pendingReports-work-list h4 {
       margin-top: 8px;
@@ -68,20 +64,21 @@
     background-color: var(--button-hover-background-color);
   }
   .pendingReports-search-bar{
-    margin-left: -15px;
+    background-color: #f2f2f2;
+    display: flex;
+    align-items: center;
     position: relative;
-    /* margin-bottom: 10px; */
-    /* padding-left: -10px; */
-    /* opacity: 0; */
-    /* animation: slideIn 1s forwards 0.8s; */
+  }
+  .pendingReports-search-bar input{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    width: 200px;
   }
   .pendingReports-search-bar i{
     position: absolute;
-    top: 7px;
-    left: 210px;
-    /* display: flex;
-    justify-content: ; */
-    color: gray;
+    color:gray;
+    right: 5px;
   }
   .pendingReports-category-select {
     display: flex;
@@ -95,9 +92,6 @@ font-size: var(--font-size);
   }
   .pendingReports-category-select select{
 font-size: var(--font-size);
-padding: 30px;
-/* font-weight: bold; */
-/* color: #333232; */
   }
   
   .pendingReports-load-button {
@@ -235,4 +229,17 @@ padding: 30px;
   max-height: 60%;
   width: 1100px;
   overflow: auto;
+}
+
+.pendingReports-table-btn{
+  background-color: var(--button-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+.pendingReports-table-btn:hover{
+  background-color: var(--button-hover-background-color);
+  color:1px solid var(--button-hover-text-color);
+  border: 1px solid var(--button-hover-border-color);
 }

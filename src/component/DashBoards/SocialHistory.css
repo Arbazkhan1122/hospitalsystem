@@ -1,3 +1,4 @@
+/* swapnil Rokade social-history Adding className And color and table css 18/09 */
 .social-history-container {
     padding: 20px;
     font-family: Arial, sans-serif;
@@ -9,6 +10,13 @@
     width: 100%;
   }
   
+  .social-history-subdiv{
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .socialhist {
     display: flex;
     justify-content: space-between;
@@ -24,13 +32,19 @@
     font-weight: bold;
   }
   
-  .add-button {
+  /* .add-button {
     background-color: #4c5baf;
     color: white;
     border: none;
     padding: 8px;
     cursor: pointer;
-  }
+  } */
+  .social-history-subdiv
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
   
   .social-history-table {
     width: 100%;
@@ -72,7 +86,7 @@
     right: 10px;
     background: none;
     border: none;
-    font-size: 16px;
+    font-size: var(--heading-font);
     cursor: pointer;
   }
   
@@ -97,10 +111,11 @@
   }
   
   .social-history-add-button {
-    background-color: #4c82af;
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 8px;
+    padding: 5px;
+    border-radius: 5px;
     cursor: pointer;
   }
   

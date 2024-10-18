@@ -1,0 +1,115 @@
+/* Ravindra_Sanap_PerformanceEvaluation.css_04_10_2024_Start */
+
+
+.performance-evaluation-container {
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--background-color);
+
+}
+
+.performance-evaluation-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 18px;
+}
+
+.evaluation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #f2f2f2;
+}
+
+.evaluation-table th,
+.evaluation-table td {
+    border: 1px solid #ccc;
+    padding: 6px;
+    text-align: left;
+    padding: 8px;
+    font-size: var(--font-size);
+}
+
+.evaluation-table th {
+    background-color: #eaeaea;
+    color: black;
+}
+
+.evaluation-table tr:hover {
+    background-color: #ddd;
+}
+
+.evaluation-table td {
+    color: #555;
+}
+
+@media (max-width: 600px) {
+
+    .evaluation-table,
+    .evaluation-table th,
+    .evaluation-table td {
+        font-size: 12px;
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.pagination button {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.pagination button.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination button.active {
+    background-color: #333;
+    color: white;
+}
+
+
+.performance-header {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+}
+
+.performance-button {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+
+.nodatatoshow {
+    text-align: center;
+    background-color: rgba(212, 194, 29, 0.582);
+    padding: 10px;
+}
+
+
+/* Ravindra_Sanap_PerformanceEvaluation.css_04_10_2024_End */

@@ -8,6 +8,8 @@
     padding: 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    z-index: 150;
 }
 
 .update-subledger-popup-content {
@@ -20,8 +22,8 @@
 }
 
 .update-subledger-popup-content h2 {
-    color: #4a4af4;
-    font-size: 16px;
+    color: black;
+    font-size: var(--heading-font);
     margin-bottom: 20px;
 }
 
@@ -43,6 +45,7 @@
     white-space: nowrap;
     margin-bottom: 5px;
     width: 250px;
+    font-size: var(--font-size);
 }
 
 .uslp-button-row {
@@ -50,14 +53,20 @@
 }
 
 .uslp-save-btn {
-    background-color: #4a4af4;
+    background-color: var(--button-color);
     color: white;
-    padding: 10px 20px;
+    padding: 5px 10px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
     margin: 10px;
     float: left;
+    font-size: var(--font-size);
+}
+.uslp-save-btn:hover {
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+    border: 1px solid var(--button-hover-border-color);
 }
 
 .uslp-close-btn {
@@ -68,7 +77,7 @@
     color: white;
     border: none;
     border-radius: 50%;
-    padding: 8px 12px;
+    padding: 5px 12px;
     font-size: 16px;
 }
 

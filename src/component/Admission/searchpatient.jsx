@@ -1,28 +1,31 @@
-/* // neha-ADT-search-patient-19/09/24 */
-import React, { useState, useEffect,useRef } from 'react';
-import { Modal, Button } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './searchpatient.css';
-import { FaSearch } from 'react-icons/fa';
-import { startResizing } from '../../TableHeadingResizing/ResizableColumns';
+import React, { useState, useEffect, useRef } from "react";
+import { Modal, Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./searchpatient.css";
+import { FaSearch } from "react-icons/fa";
+import { startResizing } from "../../TableHeadingResizing/ResizableColumns";
+import { API_BASE_URL } from "../api/api";
+import AdmissionForm from "./AdmissionForm";
 
 const SearchPatient = () => {
   const [patients, setPatients] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [patientsPerPage] = useState(20);
   const [showModal, setShowModal] = useState(false);
   const [selectedPatient, setSelectedPatient] = useState(null);
   const tableRef = useRef(null);
   const [columnWidths, setColumnWidths] = useState(0);
+  const [admitted, setAdmitted] = useState([]);
+
+  const [admittedPatientsMap, setAdmittedPatientsMap] = useState({}); // To store admission status
 
   // Fetch data from the new API
   useEffect(() => {
-
-    fetch('http://localhost:1415/api/new-patient-visits', {
-      method: 'GET',
+    fetch(`${API_BASE_URL}/patients/getAllPatients`, {
+      method: "GET",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     })
       .then((response) => {
@@ -32,30 +35,42 @@ const SearchPatient = () => {
         return response.json();
       })
       .then((data) => {
-        console.log('Fetched Patients:', data); // Log the fetched data
+        console.log("Fetched Patients:", data); // Log the fetched data
         setPatients(data);
       })
       .catch((error) => {
-        console.error('Error fetching patient data:', error);
-        alert(`Error fetching patient data: ${error.message}`);
+        console.error("Error fetching patient data:", error);
+
+        // alert(`Error fetching patient data: ${error.message}`);
       });
   }, []);
+
+  useEffect(() => {
+    fetch(`${API_BASE_URL}/admissions/fetch`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setAdmitted(data);
+        mapAdmittedPatients(data);
+      })
+      .catch((error) => console.error("failed to fetch"));
+  }, [showModal]);
 
   // Pagination logic
   const indexOfLastPatient = currentPage * patientsPerPage;
   const indexOfFirstPatient = indexOfLastPatient - patientsPerPage;
-  const currentPatients = patients.slice(indexOfFirstPatient, indexOfLastPatient);
+  const currentPatients = patients.slice(
+    indexOfFirstPatient,
+    indexOfLastPatient
+  );
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
-
-
-  const filteredPatients = currentPatients.filter((patient) => {
-    if (!patient || !patient.firstName) return false; // Ensure patient and firstName exist
-    return patient.firstName.toLowerCase().includes(searchTerm.toLowerCase());
-  });
-
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -64,208 +79,162 @@ const SearchPatient = () => {
     setShowModal(true);
   };
 
+  const mapAdmittedPatients = (admittedPatients) => {
+    const admittedMap = {};
+    admittedPatients.forEach((admittedPatient) => {
+      admittedMap[admittedPatient.patientDTO.patientId] = true; // Mark admitted patients
+    });
+    setAdmittedPatientsMap(admittedMap); // Store the map
+  };
+
   const handleClose = () => setShowModal(false);
 
   const submitAdmission = async () => {
     if (!selectedPatient) {
-      console.error('No patient selected');
+      console.error("No patient selected");
       return;
     }
 
     // Define the admission details
-    const admissionDetails = {
-      membership: "Premium",
-      priceCategory: "Category A",
-      caseType: "Emergency",
-      requestingDepartment: "Cardiology",
-      price: 5000.00,
-      admissionDate: new Date().toISOString().split('T')[0], // YYYY-MM-DD format
-      admissionNotes: "Urgent care required",
-      careOfPersonName: selectedPatient.careOfPerson,
-      careOfPersonPhone: selectedPatient.careOfPersonContact,
-      careOfPersonRelation: selectedPatient.relationWithPatient,
-      depositBalance: 2000.00,
-      depositAmount: 1000.00,
-      depositRemarks: "Initial deposit",
-      paymentOption: "Cash",
-      nhifno: selectedPatient.nhifno || 'N/A',
-      admissionStatus: "Reserved",
-      address: selectedPatient.address,
-      wardDepatment: {
-        wardDepartmentId: 2 // Replace with actual ID if needed
-      },
-      wardBedFeature: {
-        wardBedFeatureId: 1 // Replace with actual ID if needed
-      },
-      manageBed: {
-        bedId: 1 // Replace with actual ID if needed
-      },
-      admittedDoctor: {
-        employeeId: 1 // Replace with actual ID if needed
-      },
-      allocatedNurse: {
-        employeeId: 2 // Replace with actual ID if needed
-      },
-      newPatientVisit: {
-        newPatientVisitId: selectedPatient.newPatientVisitId
-      },
-      patient: {
-        patientId: selectedPatient.patientId
-      }
-    };
+
+    const admissionDetails = {};
 
     try {
-      const response = await fetch('http://localhost:1415/api/admissions/add-admission-details', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(admissionDetails)
-      });
+      const response = await fetch(
+        `${API_BASE_URL}/admissions/add-admission-details`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(admissionDetails),
+        }
+      );
 
       const text = await response.text(); // Get raw text to debug
 
-      console.log('Raw response:', text); // Log raw response for debugging
+      console.log("Raw response:", text); // Log raw response for debugging
 
       try {
         const data = JSON.parse(text); // Attempt to parse JSON
-        console.log('Parsed JSON:', data);
+        console.log("Parsed JSON:", data);
         handleClose(); // Close modal after successful admission
       } catch (error) {
-        console.error('Failed to parse JSON:', error);
-        // Optionally display a user-friendly error message
+        console.error("Failed to parse JSON:", error);
       }
     } catch (error) {
-      console.error('Error adding admission details:', error);
-      // Optionally display a user-friendly error message
+      console.error("Error adding admission details:", error);
     }
   };
 
-
   return (
     <div className="search-patient-container">
-      <h5>Search Patient</h5>
-      <div >
-        <input
-          type="text"
-          placeholder="Search by patient name..."
-          value={searchTerm}
-          onChange={handleSearch}
-          className="search-input"
-        />
-        
-      </div>
+      {showModal ? (
+        <>
+          <AdmissionForm patient={selectedPatient} onClose={handleClose} />
+        </>
+      ) : (
+        <>
+          <h5>Search Patient</h5>
+          <div>
+            <input
+              type="text"
+              placeholder="Search by patient name..."
+              value={searchTerm}
+              onChange={handleSearch}
+              className="search-input"
+            />
+          </div>
 
-      <div className='table-container'>
-      <table className="patient-table" ref={tableRef}>
-        <thead>
-          <tr>
-         { [
-                'Hospital No', 
-                'Name', 
-                'Age', 
-                'Gender', 
-                'Phone', 
-                'Address', 
-                'Visit Type', 
-                'Status'
-            ].map((header, index) => (
-              <th
-                key={index}
-                style={{ width: columnWidths[index] }}
-                className="rd-resizable-th"
+          <div className="table-container">
+            <table className="patient-table" ref={tableRef}>
+              <thead>
+                <tr>
+                  {[
+                    "Patient Id",
+                    "Name",
+                    "Age",
+                    "Gender",
+                    "Phone",
+                    "Address",
+                    "Visit Type",
+                    "Status",
+                  ].map((header, index) => (
+                    <th
+                      key={index}
+                      style={{ width: columnWidths[index] }}
+                      className="rd-resizable-th"
+                    >
+                      <div className="rd-header-content">
+                        <span>{header}</span>
+                        <div
+                          className="rd-resizer"
+                          onMouseDown={startResizing(
+                            tableRef,
+                            setColumnWidths
+                          )(index)}
+                        ></div>
+                      </div>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {patients
+                  ?.filter((patient) => {
+                    const searchLowerCase = searchTerm.toLowerCase();
+                    const firstNameMatch = patient.firstName
+                      ?.toLowerCase()
+                      .includes(searchLowerCase);
+                    const lastNameMatch = patient.lastName
+                      ?.toLowerCase()
+                      .includes(searchLowerCase);
+                    const patientIdMatch = patient.patientId == searchTerm;
+
+                    return firstNameMatch || lastNameMatch || patientIdMatch;
+                  })
+                  .map((patient) => (
+                    <tr key={patient.patientId}>
+                      <td>{patient.patientId || "N/A"}</td>
+                      <td>
+                        {`${patient.firstName} ${
+                          patient.middleName ? patient.middleName + " " : ""
+                        }${patient.lastName}`}
+                      </td>
+                      <td>{patient.age}</td>
+                      <td>{patient.gender}</td>
+                      <td>{patient.phoneNumber}</td>
+                      <td>{patient.address}</td>
+                      <td>{patient.isIPD ? "InPatient" : ""}</td>
+                      <td>
+                        {admittedPatientsMap[patient.patientId] ? (
+                          <span className="Addmitted-btn">Admitted</span> // Display if admitted
+                        ) : (
+                          <button onClick={() => handleAdmit(patient)}>
+                            Admit
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Pagination */}
+          {/* <div className="pagination">
+            {Array.from({ length: Math.ceil(patients.length / patientsPerPage) }, (_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => paginate(i + 1)}
+                className={`page-button ${currentPage === i + 1 ? 'active' : ''}`}
               >
-                <div className="rd-header-content">
-                  <span>{header}</span>
-                  <div
-                    className="rd-resizer"
-                    onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
-                  ></div>
-                </div>
-              </th>
+                {i + 1}
+              </button>
             ))}
-          </tr>
-        </thead>
-        <tbody>
-          {filteredPatients.map((patient) => (
-            <tr key={patient.newPatientVisitId}>
-              <td>{patient.patientQueue?.hospitalNumber || 'N/A'}</td>
-              <td>{`${patient.firstName} ${patient.middleName ? patient.middleName + ' ' : ''}${patient.lastName}`}</td>
-              <td>{patient.age}</td>
-              <td>{patient.gender}</td>
-              <td>{patient.phoneNumber}</td>
-              <td>{patient.address}</td>
-              <td>{patient.visitType}</td>
-              <td>
-                <button className="admit-button" onClick={() => handleAdmit(patient)}>
-                  Admit
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      </div>
-
-      {/* Pagination */}
-      <div className="pagination">
-        {Array.from({ length: Math.ceil(patients.length / patientsPerPage) }, (_, i) => (
-          <button
-            key={i + 1}
-            onClick={() => paginate(i + 1)}
-            className={`page-button ${currentPage === i + 1 ? 'active' : ''}`}
-          >
-            {i + 1}
-          </button>
-        ))}
-      </div>
-
-      {/* Admit Modal */}
-      <Modal show={showModal} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Admit Patient</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {selectedPatient && (
-            <form>
-
-              <div className="form-group">
-                <label>Patient Name:</label>
-                <input type="text" value={`${selectedPatient.firstName} ${selectedPatient.middleName || ''} ${selectedPatient.lastName}`} readOnly />
-              </div>
-              <div className="form-group">
-                <label>Age:</label>
-                <input type="text" value={selectedPatient.age} readOnly />
-              </div>
-              <div className="form-group">
-                <label>Gender:</label>
-                <input type="text" value={selectedPatient.gender} readOnly />
-              </div>
-              <div className="form-group">
-                <label>Phone Number:</label>
-                <input type="text" value={selectedPatient.phoneNumber} readOnly />
-              </div>
-              <div className="form-group">
-                <label>Address:</label>
-                <input type="text" value={selectedPatient.address} readOnly />
-              </div>
-              <div className="form-group">
-                <label>Visit Type:</label>
-                <input type="text" value={selectedPatient.visitType} readOnly />
-              </div>
-              {/* Add more fields as needed */}
-              <Button variant="primary" onClick={submitAdmission}>
-                Submit Admission
-              </Button>
-            </form>
-          )}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+          </div> */}
+        </>
+      )}
     </div>
   );
 };

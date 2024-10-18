@@ -1,66 +1,93 @@
 // SwapnilRokade_MedicationOrder_Adding_New_MedicationOrder_13/09
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 import "./MedicationOrder.css";
+import { API_BASE_URL } from "../api/api";
+import { startResizing } from "../TableHeadingResizing/resizableColumns";
 
-const MedicationOrder = ({ selectedOrders, patientId, newPatientVisitId }) => {
+const MedicationOrder = ({
+  selectedOrders,
+  patientId,
+  newPatientVisitId,
+  setActiveSection,
+}) => {
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
+  console.log(patientId + "" + newPatientVisitId);
+
   const [medicationList, setMedicationList] = useState(
-    selectedOrders.map(order => ({
-      type: order?.genericNameDTO?.genericName || "", // Pre-fill generic name from selected order
+    selectedOrders.map((order) => ({
+      type: order?.genericNameDTO?.genericName || "",
       medicationName: order?.itemName || "",
       dose: "",
       route: "mouth",
       frequency: 0,
       lastTaken: "",
       comments: "",
-      status:"pending",
-      currentDate:new Date.now()
+      status: "pending",
+      medicationDate: new Date().toISOString().slice(0, 10),
+      ...(patientId
+        ? { patientDTO: { patientId } }
+        : { newPatientVisitDTO: { newPatientVisitId } }),
     }))
   );
 
   const handleInputChange = (index, e) => {
     const { name, value } = e.target;
-    const updatedMedications = medicationList.map((medication, i) => 
+    const updatedMedications = medicationList.map((medication, i) =>
       i === index ? { ...medication, [name]: value } : medication
     );
     setMedicationList(updatedMedications);
   };
 
   const handleSubmit = async () => {
-    // Loop through each medication and make individual API calls
-    for (let i = 0; i < medicationList.length; i++) {
-      const medication = medicationList[i];
-      const formData =
-        patientId > 0
-          ? { ...medication, patientDTO: { patientId } }
-          : { ...medication, newPatientVisitDTO: { newPatientVisitId } };
+    console.log(medicationList);
 
-      try {
-        const response = await axios.post(
-          "http://localhost:1415/api/medications/save-medication-details",
-          formData
-        );
-        console.log(`Success for medication ${i + 1}:`, response.data);
-      } catch (error) {
-        console.error(`Error submitting medication ${i + 1}:`, error);
-      }
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}/medications/save-medication-details`,
+        medicationList // Sending the entire formData array as the payload
+      );
+      setActiveSection("dashboard");
+      console.log("Success:", response.data);
+    } catch (error) {
+      console.error("Error submitting medication list:", error);
     }
   };
 
   return (
     <div className="MedicationOrder-form">
       <h3>Medication Order</h3>
-      <table className="MedicationOrder-table">
+      <table className="patientList-table" ref={tableRef}>
         <thead>
           <tr>
-            <th></th>
-            <th>Generic</th>
-            <th>Brand Name</th>
-            <th>Dose</th>
-            <th>Route</th>
-            <th>Frequency</th>
-            <th>Duration (days)</th>
-            <th>Remarks</th>
+            {[
+              "",
+              "Generic",
+              "Brand Name",
+              "Dose",
+              "Route",
+              "Frequency",
+              "Duration (days)",
+              "Remarks",
+            ].map((header, index) => (
+              <th
+                key={index}
+                style={{ width: columnWidths[index] }}
+                className="resizable-th"
+              >
+                <div className="header-content">
+                  <span>{header}</span>
+                  <div
+                    className="resizer"
+                    onMouseDown={startResizing(
+                      tableRef,
+                      setColumnWidths
+                    )(index)}
+                  ></div>
+                </div>
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>

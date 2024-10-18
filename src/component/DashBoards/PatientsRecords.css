@@ -1,127 +1,117 @@
-/* .patient-record {
-  font-family: Arial, sans-serif;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #e6f3ff;
-}
 
-/* nav {
-  display: flex;
-  margin-bottom: 10px;
-} */
-/* 
-nav button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #4a90e2;
-  color: white;
-  cursor: pointer;
-}
-
-nav button.active {
-  background-color: var(--button-bg-color);
-}
-
-.date-range {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.date-range input[type="date"] {
-  margin-right: 10px;
-}
-
-.date-range button {
-  margin-left: 5px;
-  padding: 5px 10px;
-  border: none;
-  cursor: pointer;
-}
-
-.date-range .star, .date-range .reset {
-  background-color: #f0f0f0;
-}
-
-.date-range .ok {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.actions button, .department-filter select, .print {
-  padding: 5px 10px;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.search-bar {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.search-bar input {
-  flex-grow: 1;
-  padding: 5px;
-  margin-right: 5px;
-}
-
-.results {
-  margin-left: auto;
-  margin-right: 10px;
-  color: #4a90e2;
-}
-
-table {
+/* swapnil Rokade patient-record Adding className And color and table css 18/09 */
+.patient-record-date-range{
   width: 100%;
-  border-collapse: collapse;
-  background-color: white;
+  display: flex;
+  justify-content: start;
 }
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
+.patient-date-ranges
+{
+  width: 400px;
+  display: flex;
+  justify-content: space-around;
 }
-
-th {
-  background-color: #f2f2f2;
+.patient-record-favorites
+{
+  padding: 5px;
+  margin-right: 2px;
+  border-radius: 5px;
+  border: 1px solid var(--button-color);
+  background-color: var(--button-color);
+  color: white;
+  font-size: var(--font-size);
 }
-
-td button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 0 2px;
+.patient-record-favorites:hover
+{
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
 }
-
-.pagination {
+.patient-record-pending
+{
+  padding: 5px;
+  margin-right: 2px;
+  border-radius: 5px;
+  border: 1px solid var(--button-color);
+  background-color: var(--button-color);
+  color: white;
+  font-size: var(--font-size);
+}
+.patient-record-pending:hover
+{
+  border: 1px solid var( --button-hover-border-color);
+  color: var(--button-hover-text-color);
+  background-color: var(--button-hover-background-color);
+}
+.patient-record-department-filter
+{
+  width: 40%;
+  padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
 }
-
-.pagination button {
-  margin: 0 5px;
-  padding: 5px 10px;
-  background-color: #4a90e2;
+.patient-record-select
+{
+  width: 30%;
+  padding: var(--input-box-padding);
+}
+.patient-record-actions
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.patient-record-actions-subdiv{
+  width: 40%;
+  padding: 5px;
+}
+.patient-record-date-range
+{
+  width: 50%;
+  padding: var(--input-box-padding);
+  display: flex;
+  justify-content:start;
+  gap: 5px;
+}
+.patient-record-search-bar
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.patient-record-sub-div
+{
+  width: 40%;
+  padding: 5px;
+  display: flex;
+}
+.patient-record-print
+{
+  padding: 5px;
+  margin-right: 2px;
+  border-radius: 5px;
+  border: 1px solid var(--button-color);
+  background-color: var(--button-color);
   color: white;
-  border: none;
-  cursor: pointer;
+  font-size: var(--font-size);
 }
-
-.print{
-  color: black;
-
-}  */
+.patient-record-action
+{
+  border: none;
+}
+.patient-record-star,.patient-record-reset
+{
+  border: none;
+}
+.patient-record-ok
+{
+  background-color: var(--button-color);
+  border: 1px solid var(--button-color);
+  border-radius: 5px;
+  color: white;
+}
+.patient-record-button{
+  background: none;
+  border: none;
+}

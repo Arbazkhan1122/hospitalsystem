@@ -1,0 +1,106 @@
+/* Full-screen overlay for modal */
+.verifyModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999; /* Makes sure the modal is above all other content */
+  }
+  
+  /* Modal container */
+  .verifyModalContainer {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: modalFadeIn 0.3s ease; /* Modal fade-in effect */
+  }
+  
+  /* Header styling */
+  .verifyModalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Modal content styling */
+  .verifyModalContent {
+    margin-top: 10px;
+  }
+  
+  /* Table styling */
+  .verifyDataTable {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .verifyDataTable th,
+  .verifyDataTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  /* Close button styling */
+  .verifyCloseButton {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* Remarks section */
+  .verifyRemarksSection {
+    margin-top: 20px;
+  }
+  
+  .verifyRemarksInput {
+    width: 100%;
+    height: 60px;
+    padding: 8px;
+  }
+  
+  /* Footer with action buttons */
+  .verifyModalFooter {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .verifyApproveButton,
+  .verifyRejectButton {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .verifyApproveButton {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .verifyRejectButton {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  /* Modal fade-in animation */
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

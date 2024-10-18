@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './WriteOffItemList.css';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../../api/api';
 
 
 const WriteOffItemsList = () => {
@@ -14,7 +15,7 @@ const WriteOffItemsList = () => {
     // Fetch data from the API
     const fetchWriteOffGoods = async () => {
       try {
-        const response = await fetch('http://192.168.1.39:8888/api/writeoffgoods/getAllWriteOffGoods');
+        const response = await fetch(`${API_BASE_URL}/writeoffgoods/getAllWriteOffGoods`);
         if (response.ok) {
           const data = await response.json();
           setWriteOffGoods(data);
@@ -50,7 +51,7 @@ const WriteOffItemsList = () => {
   return (
     <div className='writeOffList-inventory-content'>
       <div className="writeOffList-inventory-results">
-      <div>
+      <div className='writeOffList-inventory-results-search-container'>
         <input 
           type="text" 
           placeholder="Search" 

@@ -23,8 +23,7 @@ function PendingItemList() {
     },
     {
       requestDate: "2024-08-11",
-      itemName:
-        "MRI Machine Maintenance fgsahdashdfgvsahbhjsdbfasgdgdgfyfhasbjbdhfajgtyeghdhbshcvahsdgfvygdhsbghsdvgdasfgfhdsghcvasdghvasghdvghc",
+      itemName: "MRI Machine",
       code: "MRI456",
       tagNumber: "TAG002",
       requestFrom: "Radiology",
@@ -273,14 +272,8 @@ function PendingItemList() {
           <tbody>
             {dummyData.map((item, index) => (
               <tr key={index}>
-                <td>
-                  {item.requestDate}
-                  <span class="table-tooltiptext">{item.requestDate}</span>
-                </td>
-                <td>
-                  {item.itemName}
-                  <span class="table-tooltiptext">{item.itemName}</span>
-                </td>
+                <td>{item.requestDate}</td>
+                <td>{item.itemName}</td>
                 <td>{item.code}</td>
                 <td>{item.tagNumber}</td>
                 <td>{item.requestFrom}</td>

@@ -2,75 +2,133 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './ManageWard.css';
 import { startResizing } from '../../TableHeadingResizing/resizableColumns';
+import axios from 'axios';
+import { API_BASE_URL } from '../../api/api';
 
 const ManageBed = () => {
-  const [showModal, setShowModal] = useState(false);  // Unified modal for both Add/Edit
+  const [showModal, setShowModal] = useState(false);
   const [selectedBed, setSelectedBed] = useState(null);
   const [bedFeatures, setBedFeatures] = useState('');
   const [bedNumber, setBedNumber] = useState('');
   const [bedCode, setBedCode] = useState('');
   const [isActive, setIsActive] = useState(false);
+  const [data, setData] = useState([]);
+  const [wardDepartments, setWardDepartments] = useState([]);
+  const [bedFeaturesList, setBedFeaturesList] = useState([]);
+  const [selectedWardDepartment, setSelectedWardDepartment] = useState('');
+  const [selectedBedFeature, setSelectedBedFeature] = useState('');
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
 
-  // Function to handle opening the form for adding a new bed
+  useEffect(() => {
+    fetchBeds(); // Fetch bed data when component mounts
+    fetchWardDepartments(); // Fetch ward departments
+    fetchBedFeatures(); // Fetch bed features
+  }, []);
+
+  const fetchBeds = async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/manage-bed/AllManageBed`);
+      setData(response.data);
+      console.log(response.data);
+      
+    } catch (error) {
+      console.error("Error fetching bed data:", error);
+    }
+  };
+
+  const fetchWardDepartments = async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/ward-department/get-all-ward`);
+      setWardDepartments(response.data);
+    } catch (error) {
+      console.error("Error fetching ward departments:", error);
+    }
+  };
+
+  const fetchBedFeatures = async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/ward-bedFeature/getAllWardBed`);
+      setBedFeaturesList(response.data);
+      
+    } catch (error) {
+      console.error("Error fetching bed features:", error);
+    }
+  };
+
   const handleAddClick = () => {
-    setSelectedBed(null); // Clear selected bed (indicates adding a new bed)
+    setSelectedBed(null);
     setBedFeatures('');
     setBedNumber('');
     setBedCode('');
     setIsActive(false);
-    setShowModal(true);  // Show the form modal
+    setSelectedWardDepartment('');
+    setSelectedBedFeature('');
+    setShowModal(true);
   };
 
-  // Function to handle opening the form for editing an existing bed
   const handleEditClick = (bed) => {
-    setSelectedBed(bed);  // Set the selected bed (indicates editing)
+    setSelectedBed(bed);
     setBedFeatures(bed.bedFeatures);
     setBedNumber(bed.bedNumber);
     setBedCode(bed.bedCode);
     setIsActive(bed.isActive);
-    setShowModal(true);  // Show the form modal
+    setSelectedWardDepartment(bed.wardDepatmentDTO?.wardDepartmentId || '');
+    setSelectedBedFeature(bed.wardBedFeatureDTO?.bedId || '');
+    setShowModal(true);
   };
 
-  // Close the modal and clear form fields
   const handleCloseModal = () => {
     setShowModal(false);
     setSelectedBed(null);
   };
 
-  // Handle the submission of the form for both adding and editing beds
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (selectedBed) {
-      // Logic for updating bed details goes here
-      console.log('Updated:', { bedFeatures, bedNumber, bedCode, isActive });
-    } else {
-      // Logic for adding a new bed goes here
-      console.log('Added new bed:', { bedFeatures, bedNumber, bedCode, isActive });
-    }
-    handleCloseModal(); // Close the modal after submission
-  };
+   
 
-  const data = [  { ward: 'Male Ward', bedFeatures: 'Male Ward', bedNumber: '001', bedCode: 'Male Ward-001', isActive: true, status: 'Available' },
-    { ward: 'Male Ward', bedFeatures: 'Male Ward', bedNumber: '002', bedCode: 'Male Ward-002', isActive: true, status: 'Occupied' },
-    { ward: 'Male Ward', bedFeatures: 'Male Ward', bedNumber: '003', bedCode: 'Male Ward-003', isActive: true, status: 'Occupied' },
-    { ward: 'Male Ward', bedFeatures: 'Male Ward', bedNumber: '004', bedCode: 'Male Ward-004', isActive: true, status: 'Occupied' },
-    { ward: 'Male Ward', bedFeatures: 'Male Ward', bedNumber: '005', bedCode: 'Male Ward-005', isActive: true, status: 'Available' },
-    { ward: 'Female Ward', bedFeatures: 'FEMALE WARD', bedNumber: '001', bedCode: 'Female Ward-001', isActive: true, status: 'Occupied' },
-    { ward: 'Female Ward', bedFeatures: 'FEMALE WARD', bedNumber: '002', bedCode: 'Female Ward-002', isActive: true, status: 'Occupied' },
-    { ward: 'Female Ward', bedFeatures: 'Bed 10', bedNumber: '003', bedCode: 'Female Ward-003', isActive: true, status: 'Available' },
-    { ward: 'Female Ward', bedFeatures: 'Bed 7', bedNumber: '004', bedCode: 'Female Ward-004', isActive: true, status: 'Occupied' },
-    { ward: 'Female Ward', bedFeatures: 'Bed 4', bedNumber: '005', bedCode: 'Female Ward-005', isActive: true, status: 'Occupied' },
-    { ward: 'Maternity Ward', bedFeatures: 'Bed 10', bedNumber: '006', bedCode: 'Maternity Ward-006', isActive: true, status: 'Available' },
-    { ward: 'Maternity Ward', bedFeatures: 'Bed 10', bedNumber: '002', bedCode: 'Maternity Ward-002', isActive: true, status: 'Available' },
-    { ward: 'Maternity Ward', bedFeatures: 'Bed 10', bedNumber: '003', bedCode: 'Maternity Ward-003', isActive: true, status: 'Available' },
-    { ward: 'Maternity Ward', bedFeatures: 'Bed 10', bedNumber: '004', bedCode: 'Maternity Ward-004', isActive: true, status: 'Available' },
-    { ward: 'Maternity Ward', bedFeatures: 'Bed 4', bedNumber: '005', bedCode: 'Maternity Ward-005', isActive: true, status: 'Occupied' },
-    { ward: 'Maternity Ward', bedFeatures: 'Bed 3', bedNumber: '006', bedCode: 'Maternity Ward-006', isActive: true, status: 'Occupied' },
-    { ward: 'Maternity Ward', bedFeatures: 'Maternity', bedNumber: 'MAT001', bedCode: 'Maternity-MAT001', isActive: true, status: 'Occupied' },
-    { ward: 'Maternity Ward', bedFeatures: 'Maternity', bedNumber: 'MAT002', bedCode: 'Maternity-MAT002', isActive: true, status: 'Available' },
-    { ward: 'ICU', bedFeatures: 'Bed 10', bedNumber: '01', bedCode: '006-01', isActive: true, status: 'Available' }, ];
+    try {
+      if (selectedBed) {
+        const bedData = {
+          bedFeatures,
+          bedNumber,
+          isActive,
+          wardDepatmentDTO:{
+            wardDepartmentId:selectedWardDepartment
+          },
+          wardBedFeatureDTO: {
+            bedId:selectedBedFeature
+          }
+        };
+        console.log(bedData);
+        
+        
+        await axios.put(`${API_BASE_URL}/manage-bed/update/${selectedBed.manageBedId}`, bedData);
+        console.log('Updated:', bedData);
+      } else {
+        const bedData = {
+          bedFeatures,
+          bedNumber,
+          isActive,
+          wardDepatment:{
+            wardDepartmentId:selectedWardDepartment
+          },
+          wardBedFeature: {
+            wardBedFeatureId:selectedBedFeature
+          }
+        };
+        
+        console.log();
+        
+        await axios.post(`${API_BASE_URL}/manage-bed/add-Manage-bed-data`, bedData);
+        console.log('Added new bed:', bedData);
+      }
+      handleCloseModal();
+      fetchBeds(); // Refresh bed data after submit
+    } catch (error) {
+      console.error("Error submitting bed data:", error);
+    }
+  };
 
   return (
     <div className="manage-add-ward-page">
@@ -82,31 +140,16 @@ const ManageBed = () => {
         </div>
         <input type="text" placeholder="Search" className="manage-add-ward-search-input" />
         <div className="manage-add-ward-results-info">Showing {data.length} results</div>
-        
+
         <div className="table-container">
           <table ref={tableRef}>
             <thead>
-              <tr>
-                {[
-                  "Ward",
-                  "Bed Features",
-                  "Bed Number",
-                  "Bed Code",
-                  "Is Active",
-                  "Status",
-                  "Action"
-                ].map((header, index) => (
-                  <th
-                    key={index}
-                    style={{ width: columnWidths[index] }}
-                    className="resizable-th"
-                  >
+            <tr>
+                {["Ward", "Bed Features", "Bed Number", "Bed Code", "Is Active", "Status", "Action"].map((header, index) => (
+                  <th key={index} style={{ width: columnWidths[index] }} className="resizable-th">
                     <div className="header-content">
                       <span>{header}</span>
-                      <div
-                        className="resizer"
-                        onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
-                      ></div>
+                      <div className="resizer" onMouseDown={startResizing(tableRef, setColumnWidths)(index)}></div>
                     </div>
                   </th>
                 ))}
@@ -115,21 +158,18 @@ const ManageBed = () => {
             <tbody>
               {data.map((item, index) => (
                 <tr key={index}>
-                  <td>{item.ward}</td>
-                  <td>{item.bedFeatures}</td>
-                  <td>{item.bedNumber}</td>
-                  <td>{item.bedCode}</td>
-                  <td>{item.isActive ? 'true' : 'false'}</td>
-                  <td>{item.status}</td>
-                  <td>
-                    <Button
-                      className="manage-add-ward-edit-btn"
-                      onClick={() => handleEditClick(item)}
-                    >
-                      Edit
-                    </Button>
-                  </td>
-                </tr>
+                <td>{item?.wardDepatmentDTO?.wardName}</td>
+                <td>{item.wardBedFeatureDTO.featureName}</td>
+                <td>{item.bedNumber}</td>
+                <td>{item.wardBedFeatureDTO.bedFeatureCode}</td>
+                <td>{item.isActive ? 'true' : 'false'}</td>
+                <td>{item.isActive ? 'Active' : 'Deactive'}</td>
+                <td>
+                  <Button className="manage-add-ward-edit-btn" onClick={() => handleEditClick(item)}>
+                    Edit
+                  </Button>
+                </td>
+              </tr>
               ))}
             </tbody>
           </table>
@@ -149,18 +189,40 @@ const ManageBed = () => {
           </div>
           <div className="manage-modal-modal-body">
             <Form onSubmit={handleSubmit}>
-              <Form.Group controlId="bedFeatures">
-                <Form.Label className="manage-modal-form-label">
-                  Bed Features <span className="manage-modal-text-danger">*</span>:
-                </Form.Label>
+              <Form.Group controlId="wardDepartment">
+                <Form.Label className="manage-modal-form-label">Ward Department:</Form.Label>
                 <Form.Control
-                  type="text"
-                  value={bedFeatures}
-                  onChange={(e) => setBedFeatures(e.target.value)}
-                  placeholder="Bed Features"
+                  as="select"
+                  value={selectedWardDepartment}
+                  onChange={(e) => setSelectedWardDepartment(e.target.value)}
                   required
                   className="manage-modal-form-control"
-                />
+                >
+                  <option value="">Select Ward Department</option>
+                  {wardDepartments.map((dept) => (
+                    <option key={dept.wardDepartmentId} value={dept.wardDepartmentId}>
+                      {dept.wardName}
+                    </option>
+                  ))}
+                </Form.Control>
+              </Form.Group>
+
+              <Form.Group controlId="bedFeature">
+                <Form.Label className="manage-modal-form-label">Bed Feature:</Form.Label>
+                <Form.Control
+                  as="select"
+                  value={selectedBedFeature}
+                  onChange={(e) => setSelectedBedFeature(e.target.value)}
+                  required
+                  className="manage-modal-form-control"
+                >
+                  <option value="">Select Bed Feature</option>
+                  {bedFeaturesList.map((feature) => (
+                    <option key={feature.wardBedFeatureId} value={feature.wardBedFeatureId}>
+                      {feature.featureFullName}
+                    </option>
+                  ))}
+                </Form.Control>
               </Form.Group>
 
               <Form.Group controlId="bedNumber">
@@ -191,13 +253,15 @@ const ManageBed = () => {
                   type="checkbox"
                   checked={isActive}
                   onChange={(e) => setIsActive(e.target.checked)}
-                  className="manage-modal-form-check-input"
+                  className="manage-modal-form-control-checkbox"
                 />
               </Form.Group>
 
-              <Button type="submit" className="manage-modal-employee-btn">
-                {selectedBed ? 'Update' : 'Add'}
-              </Button>
+              <div className="manage-modal-form-group-btn">
+                <Button type="submit" className="manage-modal-save-btn">
+                  {selectedBed ? 'Update' : 'Save'}
+                </Button>
+              </div>
             </Form>
           </div>
         </div>

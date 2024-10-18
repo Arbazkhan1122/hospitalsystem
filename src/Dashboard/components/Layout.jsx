@@ -12,14 +12,14 @@ import Emergency from "../../component/Emergency/Emergency";
 import Utilitiesmain from "../../component/UTILITIES/utilitiesmain"
 import SystemAdmin from "../../component/SystemAdmin/SystemAdmin";
 
+
 import SocialServicePage from "../../component/SocialServicesMain/SocialServicePage";
 import Disprensary from "../../component/DispensaryPage/disprensaryRoute";
 import DynamicReport from "../../component/DynamicReport/DynamicReport";
 import Report from "../../component/Reports/Layout";
-
 // import ReportMainRouting from "../../component/Reports/ReportMainRouting";
-import NursingMainRouting from "../../component/Nursing/NursingMainRouting"
-import DoctorDashBoard from "../../component/DashBoards/DoctorDashBoard"
+import NursingMainRouting from "../../component/Nursing/NursingMainRouting";
+import DoctorDashBoard from "../../component/DashBoards/DoctorDashBoard";
 import Otmain from "../../component/OT/otmain";
 import Nhif from "../../component/NHIF/nhif";
 import HomePage from "../../component/Admission/adt-main";
@@ -45,10 +45,17 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRouting";
 import ReportRoute from "../../component/Reports/ReportRoute";
 import Billing from "../../component/Billing/billing";
+
 import HomehealthCare from "../../component/HomeHealthCareModule/HomeHealthRoutes";
 import Pediatricoutpatient from "../../component/PediatricOutpatient/PaediatricOutpatientRoutes";
 import Pediatricinpatient from "../../component/pediatricModule/AppRoutes";
 import PhysiotherapyRotes from "../../component/PhysiotherapyModule/PhysiotherapyRotes";
+
+import BloodBank from "../../component/BloodBank/bloodBankRoute";
+
+import TransportMainRouting from "../../component/TransportMain/transportMainRoute"
+import SuperUserMain from "../../component/SuperUserMain/superUserMainRoute";
+import HRHome from "../../component/HRHome/HRHome"
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -91,7 +98,11 @@ const Layout = () => {
   const [showonpediatricinpatient,setshowonpediatricinpatient]=useState(false);
   const [showphysiotherapy,setshowphysiotherapy]=useState(false);
 
- 
+
+  const [showBloodBank, setShowBloodBank] = useState(false)
+  const [showTransport, setShowTransport] = useState(false)
+  const [showSuperUser, setShowSuperUser] = useState(false)
+  const [showHR, setShowHR] = useState(false)
 
 
   const resetAllToggles = () => {
@@ -133,6 +144,13 @@ const Layout = () => {
     setshowonpediatricoutpatient(false);
     setshowonpediatricinpatient(false);
     setshowphysiotherapy(false);
+
+    setShowBloodBank(false)
+    setShowTransport(false)
+    setShowSuperUser(false)
+    setShowHR(false)
+
+
 
   };
  
@@ -266,13 +284,31 @@ const Layout = () => {
     resetAllToggles();
     setShowMedicalRecord(!showMedicalRecord);
   };
-  const toggelProcurement=()=>{
+  const toggelProcurement = () => {
     resetAllToggles();
     setShowProcurement(!showProcurement);
-  }
-  const toggelBilling=()=>{
+  };
+  const toggelBilling = () => {
     resetAllToggles();
     setShowBilling(!showBilling);
+  };
+  const toggelBloodBank = () => {
+    resetAllToggles();
+    setShowBloodBank(!showBloodBank);
+
+  }
+  const toggelTransport = () => {
+    resetAllToggles();
+    setShowTransport(!showTransport)
+  }
+  const toggleSuperUser = () => {
+    resetAllToggles();
+    setShowSuperUser(!showSuperUser)
+  }
+
+  const toggleHR = () => {
+    resetAllToggles();
+    setShowHR(!showHR)
   }
 
   const toggleHomehealthcare=()=>{
@@ -332,6 +368,11 @@ const Layout = () => {
         onMedicalRecord={toggelMedicalRecord}
         onProcurement={toggelProcurement}
         onBilling={toggelBilling}
+        onBloodbank={toggelBloodBank}
+        onTransport={toggelTransport}
+        onSuperUser={toggleSuperUser}
+
+        onHr={toggleHR}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         onHomehealthcare={toggleHomehealthcare}
@@ -340,11 +381,11 @@ const Layout = () => {
         onphysiotherapy={togglephysiotherapy}
       />
       <div
-        className={`hrmsLayoutMainContent ${
-          isOpen ? "hrmsLayoutMainContentOpen" : "hrmsLayoutMainContentClosed"
-        }`}
+
+        className={`hrmsLayoutMainContent ${isOpen ? "hrmsLayoutMainContentOpen" : "hrmsLayoutMainContentClosed"
+          }`}
       >
-        <Header />
+        <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         <main className="hrmsLayoutMainPadding">
           {showAppointment && <AppointmentRouting />}
           {showSetting && <AppRoutes />}
@@ -378,11 +419,17 @@ const Layout = () => {
           {showVerification && <VerificationRouting />}
           {showSubStore && <SubstoreRouting />}
           {showMedicalRecord && <MedicalReportRouting />}
-          {showBilling && <Billing/>}
           {showHomehealthcare && <HomehealthCare/>}
           {showonpediatricoutpatient && <Pediatricoutpatient/>}
           {showonpediatricinpatient && <Pediatricinpatient/>}
           {showphysiotherapy && <PhysiotherapyRotes/>}
+          {showBilling && <Billing />}
+          {showBloodBank && <BloodBank />}
+          {showTransport && <TransportMainRouting />}
+          {showSuperUser && <SuperUserMain />}
+
+          {showHR && <HRHome />}
+
 
         </main>
       </div>

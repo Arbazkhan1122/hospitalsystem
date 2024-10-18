@@ -64,12 +64,6 @@ function AccountComponent() {
             </li>
           </ul>
         </nav>
-        <div className="accounting-component-header-right">
-          <button className="accounting-component-refresh-btn">↻</button>
-          <span className="accounting-component-active-account">
-            Active: HIMS
-          </span>
-        </div>
       </header>
       <div className="accounting-component-content">
         <Routes>

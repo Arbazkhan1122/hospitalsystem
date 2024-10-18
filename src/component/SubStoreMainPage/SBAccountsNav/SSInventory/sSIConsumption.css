@@ -38,9 +38,9 @@
   align-items: center;
 }
 .sSIConsumption-new-patient-button {
-  background-color: #5867DD;
+  background-color: var(--button-color);
   color: white;
-  padding: 10px 20px;
+  padding: 5px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -79,7 +79,7 @@
 .sSIConsumption-checkBox label {
 font-size: 14px;
 font-weight: bold;
-color: green;
+color: var(--button-color);
 }
 
 .sSIConsumption-controls {
@@ -112,12 +112,12 @@ color: green;
   background: none;
   border: none;
   font-size: 1.2em;
-  color: #0011ff;
+  color: var(--button-color);
   cursor: pointer;
 }
 
 .sSIConsumption-ok-button {
-  background-color: #4CAF50;
+  background-color: var(--button-color);
   color: white;
   border: none;
   border-radius: 5px;
@@ -151,14 +151,14 @@ left: 205px;
 
 .sSIConsumption-results-info {
   text-align: right;
-  color: #0011ff;
+  color: var(--button-color);
   font-size: 12px;
   font-weight: bold;
 }
 .sSIConsumption-print-btn{
     margin-left: 10px;
     /* gap: 10px; */
-  background-color: #2D68EA ;
+  background-color: var(--button-color);
   color: white;
   border: none;
   border-radius: 5px;
@@ -289,19 +289,19 @@ font-size: 24px;
 cursor: pointer;
 }
 .sSIConsumption-view-btn button{
-  background-color: #0F63AF;
+  background-color: var(--button-color);
   color: white;
   border: none;
   border-radius: 12px;
   margin-left: 10px;
-  padding: 5px 10px;
+  padding: 5px;
   font-size: 11px;
 
 }
 .sSIConsumption-view-btn button:hover{
-  background-color: white;
-  color: #0F63AF;
-  border: 1px solid #0F63AF;
+  background-color: var(--button-hover-color);
+  color: var(--button-color);
+  border: 1px solid var(--button-color);
   
 
 }
@@ -335,6 +335,7 @@ cursor: pointer;
   top: 10px;
   right: 10px;
   background: none;
+  padding: 5px;
   border: none;
   font-size: 18px;
   cursor: pointer;

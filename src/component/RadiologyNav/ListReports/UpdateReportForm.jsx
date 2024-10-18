@@ -4,42 +4,14 @@ import "../ListRequest/rdlAddReport.css";
 function UpdateReportForm({ onClose, selectedRequest }) {
   const [formData, setFormData] = useState({
     indication: selectedRequest?.indication || "",
-    mriNumber: selectedRequest?.mriNumber || "",
-    uploadFile: selectedRequest?.uploadFile || "",
+    mrixrayctno: selectedRequest?.mrixrayctno || "",
     selectedSignatory: selectedRequest?.signatureList,
-    patientVisitId: selectedRequest?.patientVisitId || 0,
-    patientId: selectedRequest?.patientId || 0,
-    prescriberName: selectedRequest?.prescriberName || "",
-    imagingTypeId: selectedRequest?.imagingItemId || 0,
-    imagingTypeName: selectedRequest?.imagingTypeName || "",
-    imagingItemId: selectedRequest?.imagingItemId || 0,
-    imagingItemName: selectedRequest?.imagingItemName || "",
-    procedureCode: selectedRequest?.procedureCode || "",
-    requisitionRemark: selectedRequest?.requisitionRemark || "",
-    orderStatus: selectedRequest?.orderStatus || "",
     imagingDate: selectedRequest?.imagingDate || "",
     prescriberId: selectedRequest?.prescriberId || 0,
-    billingStatus: selectedRequest?.billingStatus || "",
-    urgency: selectedRequest?.urgency || "",
-    createdOn: selectedRequest?.createdOn || "",
-    createdBy: "",
-    modifiedOn: "",
-    modifiedBy: "",
-    diagnosisId: 0,
-    hasInsurance: false,
-    wardName: "",
-    isActive: true,
-    isScanned: false,
-    scannedBy: "",
-    scannedOn: "",
-    scanRemark: "",
-    filmType: 0,
-    quantity: 0,
-    remark: "",
-    type: "",
-    status: "",
-    signatureList: "",
+    notes: selectedRequest?.notes,
   });
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,22 +23,19 @@ function UpdateReportForm({ onClose, selectedRequest }) {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setFormData((prevState) => ({
-      ...prevState,
-      imageFile: file,
-      imagePreview: URL.createObjectURL(file),
-    }));
+    setImageFile(file);
+    setImagePreview(URL.createObjectURL(file));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { imageFile, ...restData } = formData;
+    const { ...restData } = formData;
     const formDataToSend = new FormData();
     formDataToSend.append("file", imageFile);
     formDataToSend.append("requisition", JSON.stringify(restData));
 
     fetch(
-      `http://localhost:1415/api/patient-imaging-requisitions/update/${selectedRequest?.id}`,
+      `http://localhost:1415/api/imaging-requisitions/update/${selectedRequest.imagingId}`,
       {
         method: "PUT",
         body: formDataToSend,
@@ -75,10 +44,7 @@ function UpdateReportForm({ onClose, selectedRequest }) {
       .then((response) => {
         if (!response.ok)
           throw new Error(`HTTP error! Status: ${response.status}`);
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Update successful:", data);
+        console.log("Updated Successfully");
         onClose(); // Close the modal on successful update
       })
       .catch((error) => console.error("Error updating report:", error));
@@ -86,14 +52,19 @@ function UpdateReportForm({ onClose, selectedRequest }) {
 
   return (
     <div className="rDLListRequest-add-report-form">
-      <h2>Update Report of USG Chest (X-RAY)</h2>
+      <h2>
+        Update report of {selectedRequest.imagingItemDTO?.imagingItemName} (
+        {selectedRequest.imagingTypeDTO?.imagingTypeName})
+      </h2>
       <div className="rDLListRequest-add-report-patient-info">
         {/* Display patient information */}
         <div className="rDLListRequest-add-report-info-row">
           <span>
             <strong>Patient Name:</strong>{" "}
-            {selectedRequest?.firstName + " " + selectedRequest?.lastName ||
-              "N/A"}
+            {selectedRequest.patientDTO?.firstName ||
+              selectedRequest.newPatientVisitDTO?.firstName}{" "}
+            {selectedRequest.patientDTO?.lastName ||
+              selectedRequest.newPatientVisitDTO?.lastName}
           </span>
           <span>
             <strong>Prescriber:</strong>{" "}
@@ -108,24 +79,26 @@ function UpdateReportForm({ onClose, selectedRequest }) {
         <div className="rDLListRequest-add-report-info-row">
           <span>
             <strong>Address:</strong>{" "}
-            {selectedRequest?.addresses?.street1 +
-              ", " +
-              selectedRequest?.addresses?.street2 +
-              " ," +
-              selectedRequest?.addresses?.city || "N/A"}{" "}
+            {selectedRequest.patientDTO?.address ||
+              selectedRequest.newPatientVisitDTO?.address}
           </span>
           <span>
-            <strong>Phone No:</strong> {selectedRequest?.phoneNumber || "N/A"}
+            <strong>Phone No:</strong>{" "}
+            {selectedRequest.patientDTO?.phoneNumber ||
+              selectedRequest.newPatientVisitDTO?.phoneNumber}
           </span>
           <span>
-            <strong>Scanned On:</strong> {selectedRequest?.scannedOn || "N/A"}
+            <strong>Req. On:</strong> {selectedRequest.requestedDate}
+          </span>
+          <span>
+            <strong>Scanned On:</strong> {formData.scannedDate}
           </span>
         </div>
       </div>
       <div className="rDLListRequest-add-report-report-details">
         <div className="rDLListRequest-add-report-info-row">
           <span>
-            <strong>Report Template:</strong> USG Chest{" "}
+            {/* <strong>Report Template:</strong> USG Chest{" "} */}
             {/* <a href="#" className="rDLListRequest-add-report-link">
               Select Different Template?
             </a>
@@ -143,7 +116,7 @@ function UpdateReportForm({ onClose, selectedRequest }) {
               type="text"
               name="indication"
               placeholder="Indication"
-              value={selectedRequest?.indication}
+              value={formData.indication}
               onChange={handleChange}
             />
           </span>
@@ -151,9 +124,9 @@ function UpdateReportForm({ onClose, selectedRequest }) {
             <strong>MRI/CT/X-ray No:</strong>{" "}
             <input
               type="text"
-              name="mriNumber"
+              name="mrixrayctno"
               placeholder="MRI/CT/X-ray Number"
-              value={selectedRequest?.mriNumber}
+              value={formData?.mrixrayctno}
               onChange={handleChange}
             />
           </span>
@@ -165,9 +138,9 @@ function UpdateReportForm({ onClose, selectedRequest }) {
         </div>
         <textarea
           rows="10"
-          name="remark"
+          name="notes"
           className="rDLListRequest-add-report-textarea"
-          value={selectedRequest?.remark}
+          value={formData?.notes}
           onChange={handleChange}
         ></textarea>
       </div>

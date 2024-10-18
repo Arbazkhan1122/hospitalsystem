@@ -47,7 +47,7 @@ function Ot_machine() {
   // Handle add new machine
   const handleAdd = async () => {
     try {
-      const response = await fetch('http://localhost:8888/api/ot-machines', {
+      const response = await fetch('http://localhost:1415/api/ot-machines', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ function Ot_machine() {
     if (!editingMachine) return;
 
     try {
-      const response = await fetch(`http://localhost:8888/api/ot-machines/${editingMachine.id}`, {
+      const response = await fetch(`http://localhost:1415/api/ot-machines/${editingMachine.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

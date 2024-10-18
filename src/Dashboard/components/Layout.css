@@ -1,25 +1,29 @@
 /* Layout.css */
-
 .hrmsLayout {
  display: flex;
- height: 100%;
-/* height: 100%; */
-height: 100vh;
-overflow: hidden;
+ height: 100vh;
+overflow-x: scroll;
+}
+
+.hrmsLayout::-webkit-scrollbar{
+   display:none;
 }
 .hrmsLayout-center{
    width: 100%;
    background-color: var(--background-color);
    overflow: auto;
-   height: 92lvh;
-
 }
 .hrmsLayoutMainContent {
    flex: 1;
    transition: all 0.3s ease;
-   width: 80%;
-   height: 70vh;
+   width: 100%;
+   overflow: auto;
+   background-color: var(--background-color);
 }
+.hrmsLayoutMainContent::-webkit-scrollbar {
+   display: none;
+}
+
 
 /* .hrmsLayoutMainContentClosed {
   margin-left: 4rem;

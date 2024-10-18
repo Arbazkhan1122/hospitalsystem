@@ -4,11 +4,15 @@ import { FaStar, FaListAlt, FaSearch } from 'react-icons/fa';
 import './InPatient.css';
 import PatientDashboard from './PatientDashboard';
 import InPatientPage from './InPatientPage';
+import { API_BASE_URL } from '../api/api';
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const PatientList = () => {
+  const [columnWidths,setColumnWidths] = useState({});
   const [patients, setPatients] = useState([]);
   const [selectedPatient, setSelectedPatient] = useState(null);
-  const [showOrders, setShowOrders] = useState(false);
+  const [isPatientOPEN,setIsPatientOPEN] = useState(false)
+  const [showOrders, setShowOrders] = useState(false || isPatientOPEN);
   const [selectedDept, setSelectedDept] = useState('');
   const [filterFavourite, setFilterFavourite] = useState(false);
   const [filterPending, setFilterPending] = useState(false);
@@ -18,8 +22,10 @@ const PatientList = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await fetch('http://localhost:1415/api/new-patient-visits');
+        const response = await fetch(`${API_BASE_URL}/admissions/fetch`);
         const data = await response.json();
+        console.log(data);
+        
         setPatients(data);
       } catch (error) {
         console.error('Error fetching patient data:', error);
@@ -37,6 +43,7 @@ const PatientList = () => {
 
   const handlePatientClick = (patient) => {
     setSelectedPatient(patient);
+    setIsPatientOPEN(!isPatientOPEN)
     setShowOrders(false);
   };
 
@@ -56,21 +63,20 @@ const PatientList = () => {
     setFilterPending(!filterPending);
     setFilterFavourite(false); // Reset favourite filter if needed
   };
-
   if (showOrders && selectedPatient) {
     return <InPatientPage patient={selectedPatient} />;
   }
 
-  if (selectedPatient && !showOrders) {
-    return <PatientDashboard patient={selectedPatient} />;
+  if (isPatientOPEN) {
+    return <PatientDashboard patient={selectedPatient} setIsPatientOPEN={setIsPatientOPEN}/>;
   }
 
   return (
-    <div className="PatientList">
-      <div className="PatientContainer">
-        <div className="PatientLeftSection">
-          <div className="PatientFilterSection">
-            <div className="PatientFilterItem" onClick={toggleFavouriteFilter}>
+    <div className="InPatient-PatientList">
+      <div className="InPatient-PatientContainer">
+        <div className="InPatient-PatientLeftSection">
+          <div className="InPatient-PatientFilterSection">
+            <div className="InPatient-PatientFilterItem" onClick={toggleFavouriteFilter}>
               <FaStar className={`PatientIcon ${filterFavourite ? 'active' : ''}`} />
               <label>★ My Favourite</label>
             </div>
@@ -80,10 +86,10 @@ const PatientList = () => {
             </div>
           </div>
         </div>
-        <div className="PatientRightSection">
-          <div className="PatientSearchBar">
+        <div className="InPatient-PatientRightSection">
+          <div className="InPatient-PatientSearchBar">
             <select
-              className="PatientDepartmentFilter"
+              className="InPatient-PatientDepartmentFilter"
               value={selectedDept}
               onChange={(e) => setSelectedDept(e.target.value)}
             >
@@ -97,47 +103,67 @@ const PatientList = () => {
             </select>
 
             <input type="text" placeholder="Search..." />
-            <FaSearch className="PatientSearchIcon" />
           </div>
         </div>
       </div>
 
-      <table ref={tableRef} className="PatientTable">
-        <thead>
-          <tr>
-            <th>Hospital No</th>
-            <th>Name</th>
-            <th>Age/Sex</th>
-            <th>Admission Status</th>
-            <th>Admitted On</th>
-            <th>Ward/Bed</th>
-            <th>Department</th>
-            <th>Provider Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+   <div className='patientList-table-container'>
+      <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                 "Hospital No",
+                 "Name",
+                 "Age/Sex",
+                 "Admission Status",
+                 "Admitted On",
+                 "Ward/Bed",
+                 "Department",
+                 "Provider Name",
+                 "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
-          {filteredPatients.map((patient, index) => (
+          {patients.map((patient, index) => (
             <tr key={index}>
-              <td>{patient.hospitalNo}</td>
-              <td>{`${patient.firstName} ${patient.lastName}`}</td>
-              <td>{patient.age}/{patient.sex}</td>
+              <td>{patient.patientDTO.hospitalNo}</td>
+              <td>{`${patient.patientDTO.firstName} ${patient.patientDTO.lastName}`}</td>
+              <td>{ patient.patientDTO.age}/{patient.patientDTO.gender}</td>
               <td>{patient.admissionStatus}</td>
-              <td>{patient.admittedOn}</td>
-              <td>{patient.wardBed}</td>
-              <td>{patient.dept}</td>
-              <td>{patient.providerName}</td>
+              <td>{patient.admissionDate}</td>
+              <td>{patient?.manageBedDTO?.bedNumber}</td>
+              <td>{patient?.wardDepartmentDTO?.wardName}</td>
+              <td>{patient?.admittedDoctorDTO?.firstName}</td>
               <td>
-                <button onClick={() => handlePatientClick(patient)}>👤</button>
-                <button>🔔</button>
-                <button>🖼</button>
-                <button onClick={() => handleOrdersClick(patient)}>📄</button>
-                <button>♥</button>
+                <button className='in-patient-button' onClick={() => handlePatientClick(patient)}>👤</button>
+                <button className='in-patient-button' >🔔</button>
+                <button className='in-patient-button' >🖼</button>
+                <button className='in-patient-button' onClick={() => handleOrdersClick(patient)}>📄</button>
+                <button className='in-patient-button' >♥</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      </div>
     </div>
   );
 };

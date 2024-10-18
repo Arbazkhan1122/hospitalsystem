@@ -1,78 +1,67 @@
-
 .labTestComponentsAddNewLTC-container {
-  padding: 10px;
+  padding: 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  /* width: 100%; */
-  /* max-width: 1300px; */
-  /* margin: 20px auto; */
-  background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 20px auto;
 }
 
 .labTestComponentsAddNewLTC-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #ddd;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .labTestComponentsAddNewLTC-header h3 {
   margin: 0;
-  font-size: var(--heading-font);
-/* color: #3a3a3a; */
+  font-size: 1.5rem;
+  color: #333;
 }
+
 .labTestComponentsAddNewLTC-close-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
   background-color: #E52F3E;
   color: white;
   border: none;
-  border-radius:  14px;
+  border-radius: 14px;
   cursor: pointer;
-  padding: 1px 8px;
+  padding: 5px 10px;
+  font-size: 14px;
 }
-
 
 .labTestComponentsAddNewLTC-table {
-  display: flex;
-  flex-direction: column;
-  background-color: #FBFCFD;
-}
-.labTestComponentsAddNewLTC-table:hover {
-  background-color: #f2f2f2;
-  
-
-}
-.labTestComponentsAddNewLTC-fsttable table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
-  font-size: var(--font-size);
-  background-color: white;
 }
 
-.labTestComponentsAddNewLTC-fsttable th, .labTestComponentsAddNewLTC-fsttable td {
-  /* color: red; */
-  padding: 5px;
-  text-align: center;
-  border: 1px solid #ddd;
-  /* color: #4e4e4e; */
-  font-size: var(--font-size);
+.labTestComponentsAddNewLTC-table th, 
+.labTestComponentsAddNewLTC-table td {
+  border: 1px solid #ccc;
   padding: 10px;
+  text-align: left;
 }
 
-.labTestComponentsAddNewLTC-fsttable th {
-  background-color: #f2f2f2;
+.labTestComponentsAddNewLTC-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  text-align: center;
+  white-space: wrap;
 }
 
 .labTestComponentsAddNewLTC-row {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.5fr 2fr 2.5fr 1.5fr 2fr 2fr 0.5fr;
+  grid-template-columns: repeat(10, 1fr); /* Adjust the number of columns as needed */
   gap: 10px;
   align-items: center;
-  padding: 8px;
-  font-size: var(--font-size);
+  padding: 8px 0;
+  font-size: 14px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -80,75 +69,95 @@
   display: flex;
   align-items: center;
 }
-.labTestComponentsAddNewLTC-cell-sub{
+
+.labTestComponentsAddNewLTC-cell-sub {
   display: flex;
   flex-direction: column;
 }
 
-.labTestComponentsAddNewLTC-cell input,
-.labTestComponentsAddNewLTC-cell select,
-.labTestComponentsAddNewLTC-cell textarea {
+.labTestInput,
+.labTestSelect,
+.labTestTextarea {
   width: 100%;
-  padding: 4px 6px;
+  padding: 8px;
+  box-sizing: border-box;
   border: 1px solid #ccc;
-  border-radius: 3px;
-  font-size: var(--font-size);
+  border-radius: 4px;
+  font-size: 14px;
 }
 
-.labTestComponentsAddNewLTC-cell textarea {
-  resize: none;
-  height: 36px;
+.labTestTextarea {
+  resize: vertical;
+  min-height: 60px;
 }
 
 .labTestComponentsAddNewLTC-range-buttons button {
   margin-right: 5px;
-  padding: 4px 8px;
+  padding: 6px 10px;
   background-color: #f0f0f0;
   border: 1px solid #ccc;
   border-radius: 3px;
   cursor: pointer;
-  font-size: var(--font-size);
 }
 
 .labTestComponentsAddNewLTC-range-buttons button:hover {
   background-color: #e0e0e0;
 }
 
-.labTestComponentsAddNewLTC-add-button {
-  background-color:var( --button-color);
-  border: 1px solid var( --button-hover-border-color);
+.labTestComponentsAddNewLTC-add-button, .labTestComponentAddedUpdateBTN {
+  background-color: var(--button-color);
+  border: 1px solid var(--button-color);
   color: white;
-  /* border: none; */
-  /* margin-right: 10px; */
   border-radius: 5px;
   cursor: pointer;
-  font-size: var(--font-size);
-  margin: 1px;
+  padding: 5px 10px;
+  font-size: 14px;
   transition: background-color 0.3s ease;
-  padding: 5px 5px;
 }
-.labTestComponentsAddNewLTC-add-button:hover {
-  border: 1px solid var( --button-hover-border-color);
-  color: var(--button-hover-text-color);
+
+.labTestComponentsAddNewLTC-add-button:hover, .labTestComponentAddedUpdateBTN:hover {
   background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+  border:1px solid var(--button-hover-border-color);
 }
 
 .labTestComponentsAddNewLTC-add-footer-button {
-  margin-top: 10px;
-  float: right;
+  background-color: var(--button-color);
+  border: 1px solid var(--button-color);
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-.labTestComponentsAddNewLTC-component-name {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.labTestComponentsAddNewLTC-description textarea {
-  width: calc(100% - 10px);
+.labTestComponentsAddNewLTC-add-footer-button:hover {
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-text-color);
+  border:1px solid var(--button-hover-border-color);
 }
 
 .labTestComponentsAddNewLTC-footer {
-  padding-top: 8px;
+  margin-top: 20px;
   text-align: right;
+}
+.labTestComponentAddedComponentContainer h4{
+  font-size: var(--heading-font);
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .labTestComponentsAddNewLTC-row {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
+
+  .labTestComponentsAddNewLTC-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .labTestComponentsAddNewLTC-add-button, .labTestComponentAddedUpdateBTN {
+    width: 100%;
+    margin-top: 10px;
+  }
 }

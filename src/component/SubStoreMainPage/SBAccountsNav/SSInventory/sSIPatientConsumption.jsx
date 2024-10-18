@@ -6,6 +6,7 @@ import "../SSInventory/sSIPatientConsumption.css";
 import { useReactToPrint } from 'react-to-print';
 import SSIPatientConsumNewPCbtn from './sSIPatientConsumNewPCbtn';
 import { useParams } from 'react-router-dom';
+import { API_BASE_URL } from '../../../api/api';
 
 function SSIPatientConsumption() {
   const printRef = useRef();
@@ -38,7 +39,7 @@ function SSIPatientConsumption() {
   useEffect(() => {
     const fetchPatientConsumptions = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/patient-consumption/getAll');
+        const response = await fetch(`${API_BASE_URL}/patient-consumption/getAll`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

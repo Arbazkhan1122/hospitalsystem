@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import './OpdRecordMyFavourite.css';
-import PatientDashboard from '../DashBoards/InPatientAction'; 
+import PatientDashboard from './PatientDashboard'; 
+import { startResizing } from '../TableHeadingResizing/resizableColumns';
 
 const OpdRecordMyFavourites = () => {
+  const [columnWidths,setColumnWidths] = useState({});
+  const tableRef = useRef(null);
   const [selectedPatient, setSelectedPatient] = useState(null);
 
   const patients = [
@@ -42,11 +45,6 @@ const OpdRecordMyFavourites = () => {
 
   return (
     <div className="OpdRec-patient-list">
-      <div className="OpdRec-top-buttons">
-        <button className="OpdRec-favorites">★ My Favorites</button>
-        <button className="OpdRec-follow-up">Follow Up List</button>
-      </div>
-
       <div className="OpdRec-filters">
         <select defaultValue="This Month">
           <option>This Month</option>
@@ -59,18 +57,37 @@ const OpdRecordMyFavourites = () => {
         <button className="OpdRec-print" onClick={printTable}>Print</button>
       </div>
 
-      <table className='opd-record-my-favourite'>
-        <thead>
-          <tr>
-            <th>Hospital No.</th>
-            <th>Name</th>
-            <th>Age/Sex</th>
-            <th>VisitType</th>
-            <th>Admitted On</th>
-            <th>Performer Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
+      <table className="patientList-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+               "Hospital No.",
+  "Name",
+  "Age/Sex",
+  "VisitType",
+  "Admitted On",
+  "Performer Name",
+  "Actions"
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
         <tbody>
           {patients.map((patient, index) => (
             <tr key={index}>
@@ -81,9 +98,9 @@ const OpdRecordMyFavourites = () => {
               <td>{patient.admittedOn}</td>
               <td>{patient.performerName}</td>
               <td>
-                <button onClick={() => handlePatientClick(patient)}>👤</button>
-                <button>📄</button>
-                <button>♡</button>
+                <button className='opd-record-action' onClick={() => handlePatientClick(patient)}>👤</button>
+                <button className='opd-record-action'>📄</button>
+                <button className='opd-record-action'>♡</button>
               </td>
             </tr>
           ))}

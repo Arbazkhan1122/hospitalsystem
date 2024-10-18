@@ -19,7 +19,7 @@ function NurisingMainRouting() {
                 <Routes>
                   <Route path='/' element={<NursingMainComponent/>}></Route>
                   <Route path="/Inpatient" element={<Inpatient />} />
-                  <Route path='/MyPatients'element={<MyPatientsTable/>}></Route>
+                  {/* <Route path='/MyPatients'element={<MyPatientsTable/>}></Route> */}
                   <Route path='/Outpatient' element={<OutPatient/>}></Route>
                   <Route path='/Nephrology' element={<Nephrology/>}></Route>
                   <Route path='/RequisitionList' element={<RequisitionList/>}></Route>

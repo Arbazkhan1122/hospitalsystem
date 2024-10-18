@@ -5,6 +5,7 @@ import UnitOfMeasurement from "./UnitOfMeasurement"; // Popup component for Unit
 import ItemCompany from "./ItemCompany"; // Popup component for Item Company
 import PackagingFile from "./PackagingFile"; // Popup component for Packaging Type
 import "./AddItem.css"; // Import the CSS file
+import { API_BASE_URL } from "../../api/api";
 
 const AddItem = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -63,7 +64,7 @@ const AddItem = ({ isOpen, onClose }) => {
   const fetchSubCategories = async () => {
     try {
       const response = await fetch(
-        "http://192.168.1.38:8080/api/subcategories/fetchAll"
+        "http://localhost:1415/api/subcategories/fetchAll"
       );
       const data = await response.json();
       setSubCategories(data);
@@ -75,7 +76,7 @@ const AddItem = ({ isOpen, onClose }) => {
   const fetchUnitMeasurements = async () => {
     try {
       const response = await fetch(
-        "http://192.168.1.38:8080/api/unitofmeasurement/fetchAll"
+        `${API_BASE_URL}/unitofmeasurement/fetchAll`
       );
       const data = await response.json();
       setUnitMeasurements(data);
@@ -86,9 +87,7 @@ const AddItem = ({ isOpen, onClose }) => {
 
   const fetchCompanies = async () => {
     try {
-      const response = await fetch(
-        "http://192.168.1.38:8080/api/company/allCompany"
-      );
+      const response = await fetch(`${API_BASE_URL}/company/allCompany`);
       const data = await response.json();
       setCompanies(data);
     } catch (error) {
@@ -99,7 +98,7 @@ const AddItem = ({ isOpen, onClose }) => {
   const fetchPackagingTypes = async () => {
     try {
       const response = await fetch(
-        "http://192.168.1.38:8080/api/packageType/getAllPackageType"
+        `${API_BASE_URL}/packageType/getAllPackageType`
       );
       const data = await response.json();
       setPackagingTypes(data);
@@ -117,20 +116,26 @@ const AddItem = ({ isOpen, onClose }) => {
   };
 
   const handleSubmit = async () => {
-    const requiredFields = ["itemCategory", "itemName", "itemSubCategory", "itemCompany"];
+    const requiredFields = [
+      "itemCategory",
+      "itemName",
+      "itemSubCategory",
+      "itemCompany",
+    ];
     const newErrors = {};
-  
+
     requiredFields.forEach((field) => {
       if (!formValues[field]) {
         newErrors[field] = `${field.replace(/([A-Z])/g, " $1")} is required`;
       }
     });
-  
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
     } else {
       // Prepare the data object in the required format
-      const requestData = { // Assuming `id` might be provided
+      const requestData = {
+        // Assuming `id` might be provided
         itemName: formValues.itemName,
         minStockQuantity: Number(formValues.minStockQuantity),
         description: formValues.description,
@@ -143,24 +148,26 @@ const AddItem = ({ isOpen, onClose }) => {
         isVatApplicable: formValues.isVatApplicable,
         isCssdApplicable: formValues.isCssdApplicable,
         isColdStorageApplicable: formValues.isColdStorageApplicable,
-        isPatientConsumptionApplicable: formValues.isPatientConsumptionApplicable,
+        isPatientConsumptionApplicable:
+          formValues.isPatientConsumptionApplicable,
         isActive: formValues.isActive,
-        packagingType: formValues.packagingType.packagingTypeName || "",
-        unitOfMeasurement: formValues.unitOfMeasurement.unitOfMeasurementName || "",
-        subCategory: formValues.itemSubCategory.subCategoryName || "",
-        company: formValues.itemCompany.companyName || "",
+        packagingType: formValues.packagingType,
+        unitOfMeasurement:
+          formValues.unitOfMeasurement,
+        subCategory: formValues.itemSubCategory,
+        company: formValues.itemCompany,
       };
       console.log(requestData);
-      
+
       try {
-        const response = await fetch("http://192.168.1.39:8080/api/items/addItem", {
+        const response = await fetch(`${API_BASE_URL}/items/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(requestData),
         });
-  
+
         if (response.ok) {
           alert("Item added successfully!");
           setFormValues({
@@ -196,7 +203,6 @@ const AddItem = ({ isOpen, onClose }) => {
       }
     }
   };
-  
 
   return (
     <div className="inventory-modal-overlay">
@@ -208,169 +214,183 @@ const AddItem = ({ isOpen, onClose }) => {
         <div className="inventory-aadddFormContainer">
           <div className="inventory-aadddColumn">
             <div className="inventory-aadddColumn-part">
-            <AadddFormRow
-              label="Item Category"
-              name="itemCategory"
-              required
-              value={formValues.itemCategory}
-              onChange={handleInputChange}
-              placeholder="Item Category"
-              error={errors.itemCategory}
-            />
-            <AadddFormRow
-              label="Item Name"
-              name="itemName"
-              required
-              value={formValues.itemName}
-              onChange={handleInputChange}
-              placeholder="Item Name"
-              error={errors.itemName}
-            />
-            <AadddFormRow
-              label="Item Sub Category"
-              name="itemSubCategory"
-              required
-              value={formValues.itemSubCategory.subCategoryName || ""}
-              onChange={(e) =>
-                handleDropdownChange(
-                  "itemSubCategory",
-                  subCategories.find((sub) => sub.subCategoryName === e.target.value)
-                )
-              }
-              options={subCategories}
-              placeholder="Item Sub Category"
-              error={errors.itemSubCategory}
-              popupComponent={AddItemSubCategory}
-              onModalOpen={() => setIsSubCategoryModalOpen(true)} // Open modal
-            />
-            <AadddFormRow
-              label="Unit of Measurement"
-              name="unitOfMeasurement"
-              value={formValues.unitOfMeasurement.unitOfMeasurementName || ""}
-              onChange={(e) =>
-                handleDropdownChange(
-                  "unitOfMeasurement",
-                  unitMeasurements.find((unit) => unit.unitOfMeasurementName === e.target.value)
-                )
-              }
-              options={unitMeasurements}
-              placeholder="Unit of Measurement"
-              popupComponent={UnitOfMeasurement}
-              onModalOpen={() => setIsUnitModalOpen(true)}
-            />
-            <AadddFormRow
-              label="Item Company"
-              name="itemCompany"
-              required
-              value={formValues.itemCompany.companyName || ""}
-              onChange={(e) =>
-                handleDropdownChange(
-                  "itemCompany",
-                  companies.find((comp) => comp.companyName === e.target.value)
-                )
-              }
-              options={companies}
-              placeholder="Item Company"
-              error={errors.itemCompany}
-              popupComponent={ItemCompany}
-              onModalOpen={() => setIsCompanyModalOpen(true)}
-            />
-            <AadddFormRow
-              label="Packaging Type"
-              name="packagingType"
-              value={formValues.packagingType.packagingTypeName || ""}
-              onChange={(e) =>
-                handleDropdownChange(
-                  "packagingType",
-                  packagingTypes.find((pkg) => pkg.packagingTypeName === e.target.value)
-                )
-              }
-              options={packagingTypes}
-              placeholder="Packaging Type"
-              popupComponent={PackagingFile}
-              onModalOpen={() => setIsPackagingModalOpen(true)}
-            />
-            <AadddFormRow
-              label="Min Stock Quantity"
-              name="minStockQuantity"
-              value={formValues.minStockQuantity}
-              onChange={handleInputChange}
-              placeholder="Min Stock Quantity"
-            />
-            <AadddFormRow
-              label="Is VAT Applicable"
-              name="isVatApplicable"
-              elementType="checkbox"
-              checked={formValues.isVatApplicable}
-              onChange={handleInputChange}
-            />
-            <AadddFormRow
-              label="Description"
-              name="description"
-              value={formValues.description}
-              onChange={handleInputChange}
-              placeholder="Description"
-            />
+              <AadddFormRow
+                label="Item Category"
+                name="itemCategory"
+                required
+                value={formValues.itemCategory}
+                onChange={handleInputChange}
+                placeholder="Item Category"
+                error={errors.itemCategory}
+              />
+              <AadddFormRow
+                label="Item Name"
+                name="itemName"
+                required
+                value={formValues.itemName}
+                onChange={handleInputChange}
+                placeholder="Item Name"
+                error={errors.itemName}
+              />
+              <AadddFormRow
+                label="Item Sub Category"
+                name="itemSubCategory"
+                onChange={handleInputChange}
+                required
+                value={formValues.itemSubCategory}
+                // onChange={(e) =>
+                //   handleDropdownChange(
+                //     "itemSubCategory",
+                //     subCategories.find(
+                //       (sub) => sub.subCategoryName === e.target.value
+                //     )
+                //   )
+                // }
+                // options={subCategories}
+                placeholder="Item Sub Category"
+                error={errors.itemSubCategory}
+                onModalOpen={() => setIsSubCategoryModalOpen(true)}
+              />
+
+              <AadddFormRow
+                label="Unit of Measurement"
+                name="unitOfMeasurement"
+                onChange={handleInputChange}
+                value={
+                  formValues.unitOfMeasurement
+                }
+                // onChange={(e) =>
+                //   handleDropdownChange(
+                //     "unitOfMeasurement",
+                //     unitMeasurements.find(
+                //       (unit) => unit.unitOfMeasurementName === e.target.value
+                //     )
+                //   )
+                // }
+                // options={unitMeasurements}
+                placeholder="Unit of Measurement"
+                onModalOpen={() => setIsUnitModalOpen(true)}
+              />
+
+              <AadddFormRow
+                label="Item Company"
+                name="itemCompany"
+                required
+                onChange={handleInputChange}
+                value={formValues.itemCompany}
+                // onChange={(e) =>
+                //   handleDropdownChange(
+                //     "itemCompany",
+                //     companies.find(
+                //       (comp) => comp.companyName === e.target.value
+                //     )
+                //   )
+                // }
+                // options={companies}
+                placeholder="Item Company"
+                error={errors.itemCompany}
+                onModalOpen={() => setIsCompanyModalOpen(true)}
+              />
+
+              <AadddFormRow
+                label="Packaging Type"
+                name="packagingType"
+        
+                value={formValues.packagingType}
+                onChange={handleInputChange}
+                // onChange={(e) =>
+                //   handleDropdownChange(
+                //     "packagingType",
+                //     packagingTypes.find(
+                //       (pkg) => pkg.packagingTypeName === e.target.value
+                //     )
+                //   )
+                // }
+                // options={packagingTypes}
+                placeholder="Packaging Type"
+                onModalOpen={() => setIsPackagingModalOpen(true)}
+              />
+              <AadddFormRow
+                label="Min Stock Quantity"
+                name="minStockQuantity"
+                value={formValues.minStockQuantity}
+                onChange={handleInputChange}
+                placeholder="Min Stock Quantity"
+              />
+              <AadddFormRow
+                label="Is VAT Applicable"
+                name="isVatApplicable"
+                elementType="checkbox"
+                checked={formValues.isVatApplicable}
+                onChange={handleInputChange}
+              />
+              <AadddFormRow
+                label="Description"
+                name="description"
+                value={formValues.description}
+                onChange={handleInputChange}
+                placeholder="Description"
+              />
             </div>
             <div className="inventory-aadddColumn-part">
-            <AadddFormRow
-              label="Item Code"
-              name="itemCode"
-              value={formValues.itemCode}
-              onChange={handleInputChange}
-              placeholder="Item Code"
-            />
-            <AadddFormRow
-              label="Re-Order Quantity"
-              name="reOrderQuantity"
-              value={formValues.reOrderQuantity}
-              onChange={handleInputChange}
-              placeholder="Re-Order Quantity"
-            />
-            <AadddFormRow
-              label="Unit Quantity"
-              name="unitQuantity"
-              value={formValues.unitQuantity}
-              onChange={handleInputChange}
-              placeholder="Unit Quantity"
-              error={errors.unitQuantity}
-            />
-            <AadddFormRow
-              label="Vendor Name"
-              name="vendorName"
-              value={formValues.vendorName}
-              onChange={handleInputChange}
-              placeholder="Vendor Name"
-              error={errors.vendorName}
-            />
-            <AadddFormRow
-              label="Is Cssd Applicable"
-              name="isCssdApplicable"
-              elementType="checkbox"
-              checked={formValues.isCssdApplicable}
-              onChange={handleInputChange}
-            />
-            <AadddFormRow
-              label="Is Cold Storage Applicable"
-              name="isColdStorageApplicable"
-              elementType="checkbox"
-              checked={formValues.isColdStorageApplicable}
-              onChange={handleInputChange}
-            />
-            <AadddFormRow
-              label="Is Patient Consumption Applicable"
-              name="isPatientConsumptionApplicable"
-              elementType="checkbox"
-              checked={formValues.isPatientConsumptionApplicable}
-              onChange={handleInputChange}
-            />
-            <AadddFormRow
-              label="Is Active"
-              name="isActive"
-              elementType="checkbox"
-              checked={formValues.isActive}
-              onChange={handleInputChange}
-            />
+              <AadddFormRow
+                label="Item Code"
+                name="itemCode"
+                value={formValues.itemCode}
+                onChange={handleInputChange}
+                placeholder="Item Code"
+              />
+              <AadddFormRow
+                label="Re-Order Quantity"
+                name="reOrderQuantity"
+                value={formValues.reOrderQuantity}
+                onChange={handleInputChange}
+                placeholder="Re-Order Quantity"
+              />
+              <AadddFormRow
+                label="Unit Quantity"
+                name="unitQuantity"
+                value={formValues.unitQuantity}
+                onChange={handleInputChange}
+                placeholder="Unit Quantity"
+                error={errors.unitQuantity}
+              />
+              <AadddFormRow
+                label="Vendor Name"
+                name="vendorName"
+                value={formValues.vendorName}
+                onChange={handleInputChange}
+                placeholder="Vendor Name"
+                error={errors.vendorName}
+              />
+              <AadddFormRow
+                label="Is Cssd Applicable"
+                name="isCssdApplicable"
+                elementType="checkbox"
+                checked={formValues.isCssdApplicable}
+                onChange={handleInputChange}
+              />
+              <AadddFormRow
+                label="Is Cold Storage Applicable"
+                name="isColdStorageApplicable"
+                elementType="checkbox"
+                checked={formValues.isColdStorageApplicable}
+                onChange={handleInputChange}
+              />
+              <AadddFormRow
+                label="Is Patient Consumption Applicable"
+                name="isPatientConsumptionApplicable"
+                elementType="checkbox"
+                checked={formValues.isPatientConsumptionApplicable}
+                onChange={handleInputChange}
+              />
+              <AadddFormRow
+                label="Is Active"
+                name="isActive"
+                elementType="checkbox"
+                checked={formValues.isActive}
+                onChange={handleInputChange}
+              />
             </div>
           </div>
         </div>
@@ -381,18 +401,24 @@ const AddItem = ({ isOpen, onClose }) => {
         </div>
       </div>
       <Popup open={isSubCategoryModalOpen} onClose={() => setIsSubCategoryModalOpen(false)}>
-        <AddItemSubCategory onClose={() => setIsSubCategoryModalOpen(false)} />
-      </Popup>
+  <AddItemSubCategory onClose={() => setIsSubCategoryModalOpen(false)} />
+</Popup>
 
-      <Popup open={isUnitModalOpen} onClose={() => setIsUnitModalOpen(false)}>
+      <Popup  open={isUnitModalOpen} onClose={() => setIsUnitModalOpen(false)}>
         <UnitOfMeasurement onClose={() => setIsUnitModalOpen(false)} />
       </Popup>
-
-      <Popup open={isCompanyModalOpen} onClose={() => setIsCompanyModalOpen(false)}>
+      <Popup 
+        open={isCompanyModalOpen}
+        onClose={() => setIsCompanyModalOpen(false)}
+      >
         <ItemCompany onClose={() => setIsCompanyModalOpen(false)} />
       </Popup>
 
-      <Popup open={isPackagingModalOpen} onClose={() => setIsPackagingModalOpen(false)}>
+      <Popup
+      className="Inv-custom-popup"
+        open={isPackagingModalOpen}
+        onClose={() => setIsPackagingModalOpen(false)}
+      >
         <PackagingFile onClose={() => setIsPackagingModalOpen(false)} />
       </Popup>
     </div>
@@ -400,13 +426,26 @@ const AddItem = ({ isOpen, onClose }) => {
 };
 
 // Component to render form rows
-const AadddFormRow = ({ label, name, value, onChange, options = [], placeholder, required, elementType = "text", error, checked,onModalOpen }) => {
+const AadddFormRow = ({
+  label,
+  name,
+  value,
+  onChange,
+  options = [],
+  placeholder,
+  required,
+  elementType = "text",
+  error,
+  checked,
+  onModalOpen,
+}) => {
   return (
     <div className="inventory-aadddFormRow">
       <label className="inventory-aadddLabel">
         {label} {required && <span className="inventory-required">*</span>}
       </label>
-      {elementType === "checkbox" ? (
+
+      {elementType === "checkbox" && (
         <input
           type="checkbox"
           name={name}
@@ -414,34 +453,36 @@ const AadddFormRow = ({ label, name, value, onChange, options = [], placeholder,
           onChange={onChange}
           className="inventory-aadddCheckbox"
         />
-      ) : options.length > 0 ? (
-        <div className="inventory-aadddSelect">
-        <select
-          name={name}
-          value={value}
-          onChange={onChange}
-          className="inventory-aadddInput"
-        >
-          <option value="">{`Select ${label}`}</option>
-          {options.map((option) => (
-            <option key={option.id} value={option.subCategoryName || option.unitOfMeasurementName || option.companyName || option.packagingTypeName}>
-              {option.subCategoryName || option.unitOfMeasurementName || option.companyName || option.packagingTypeName}
-            </option>
-          ))}
-        </select>
-        <span className="inventory-aadddSelect-span" onClick={onModalOpen}>?</span>
-        </div>
-      ) : (
+      )}
+
+      {elementType === "text" && (
         <input
-          type={elementType}
+          type="text"
           name={name}
-          value={value}
+          value={value} // Ensure you're using value here for text input
           onChange={onChange}
-          placeholder={placeholder}
-          className="inventory-aadddInput"
+          placeholder={placeholder} // Optional: add placeholder
+          className="inventory-aadddInput" // Changed to a more appropriate class name
         />
       )}
-      {error && <p className="inventory-error">{error}</p>}
+
+      {/* {["Unit of Measurement", "Item Company", "Packaging Type", "Item Sub Category"].includes(label) && (
+        <div className="inventory-aadddInputContainer">
+          <input
+            type="text"
+            name={name}
+            value={value} // Use value for the text input
+            onChange={onChange}
+            placeholder={`Enter ${label}`} // Use label in placeholder
+            className="inventory-aadddInput"
+          />
+          {/* <span className="inventory-aadddSelect-span" onClick={onModalOpen}>
+            ?
+          </span> */}
+        {/* </div>
+      )} */}
+
+      {error && <span className="inventory-error">{error}</span>} {/* Optional: display error message */}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import "../SSPharmacy/sSPRequisition.css";
 import { useParams } from 'react-router-dom';
 import SSPharmacyReqCreateReq from './sSPharmacyReqCreateReq';
+import { API_BASE_URL } from '../../../api/api';
 
 function SSPRequisition() {
   const { store } = useParams();
@@ -24,12 +25,14 @@ function SSPRequisition() {
   useEffect(() => {
     const fetchRequisitions = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/pharmacyRequisitions/getAll');
+        const response = await fetch(`${API_BASE_URL}/pharmacyRequisitions/getAll`);
         if (!response.ok) {
           throw new Error('Failed to fetch requisitions');
         }
         const data = await response.json();
         const filteredData = data.filter(item => item.storeName === store);
+        console.log(filteredData);
+        
         setRequisitions(filteredData);
         setLoading(false);
       } catch (error) {
@@ -53,7 +56,7 @@ function SSPRequisition() {
             <button className="sSPRequisition-close-button" onClick={handleClosePopup}>
               &times;
             </button>
-            <SSPharmacyReqCreateReq />
+            <SSPharmacyReqCreateReq onClose={handleClosePopup} />
           </div>
         </div>
       )}
@@ -95,7 +98,7 @@ function SSPRequisition() {
           <tbody>
             {requisitions.map((req) => (
               <tr key={req.id}>
-                <td>{req.id}</td>
+                <td>{req.pharmacyRequisitionId}</td>
                 <td>{req.requestedBy}</td>
                 <td>{req.requestedDate}</td>
                 <td>{req.status}</td>

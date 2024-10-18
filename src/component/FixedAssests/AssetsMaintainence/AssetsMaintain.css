@@ -66,13 +66,18 @@
 
 
   .assetsMaintainance-editButton, .assetsMaintainance-deactivateButton {
-    background-color: var(--button-bg-color);
+    background-color: var(--button-color);
     color: white;
     border: none;
-    padding: 2px 10px;
+    padding: 5px 10px;
     margin-right: 5px;
-    border-radius: 15px;
+    border-radius: 5px;
     cursor: pointer;
+  }
+  .assetsMaintainance-editButton:hover, .assetsMaintainance-deactivateButton:hover {
+    background-color: var(--button-hover-background-color);
+    color: var(--button-hover-text-color);
+     border: 1px solid var(--button-hover-border-color);
   }
 
   .assetsMaintainance-cancelButton{

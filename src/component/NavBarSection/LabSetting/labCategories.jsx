@@ -29,7 +29,7 @@
 //       <table className="lookup-table">
 //         <thead>
 //           <tr>
-         
+
 //             <th>Category Name</th>
 //             <th>Actions</th>
 //           </tr>
@@ -37,9 +37,9 @@
 //         <tbody>
 //           {lookupData.map((item) => (
 //             <tr key={item.id}>
-             
+
 //               <td>{item.name}</td>
-            
+
 //               <td>
 //                 <button className="edit-btn">Edit</button>
 //                 <button className="edit-btn">Deactivate</button>
@@ -54,77 +54,126 @@
 
 // export default LabCategories;
 
-
-import React, { useState } from 'react';
-import "../LabSetting/labCategories.css"
-import LabCategoryAddNewLC from './labCategoryAddNewLC';
+import React, { useState, useRef, useEffect } from "react";
+import "../LabSetting/labCategories.css";
+import LabCategoryAddNewLC from "./labCategoryAddNewLC";
+import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
+import LabCategoryUpdateNewLC from "./LabCategoryUpdateNewLC";
 // import LSLabTestAddNLTest from './lSLabTestAddNLTest';
-const labTests = [
-  // { vendorCode:'INTERNAL',vendorName: "Lab Internal", address: "", contactNo: "normal",  isExternal: "false", isActive:'true', isDefault:'true' },
-  { categoryName: 'Biochemistry', },
-  { categoryName: 'Hematology', },
-  { categoryName: 'Microbiology', },
-  { categoryName: 'Parasitology', },
-
-  // Add more rows as needed
-  
-
-];
-
 const LabCategories = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [showUpdatePopup, setShowUpdatePopup] = useState(false);
+  const [labCategories, setLabCategories] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [labCategory, setLabCategory] = useState({});
+  const [columnWidths, setColumnWidths] = useState({});
+  const tableRef = useRef(null);
+
+  useEffect(() => {
+    fetch(`http://localhost:1415/api/lab-test-categories/getAll-testCategory`)
+      .then((res) => res.json())
+
+      .then((data) => setLabCategory(data))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch(`http://localhost:1415/api/lab-test-categories/getAll-testCategory`)
+      .then((res) => res.json())
+      .then((data) => setLabCategories(data))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [showPopup, showUpdatePopup]);
 
   const handleAddNewLabTestClick = () => {
     setShowPopup(true); // Show the popup
   };
 
   const handleClosePopup = () => {
-    setShowPopup(false); // Hide the popup
+    setShowPopup(false);
+    setShowUpdatePopup(false);
+  };
+  const handleUpdateNewLabTestClick = (category) => {
+    setLabCategory(category);
+    setShowUpdatePopup(true); // Show the popup
+    setShowPopup(false);
   };
 
   return (
     <div className="labCategories-container">
-    <div className="labCategories-firstRow">
-    <div className="labCategories-addBtn">
-      <button className="labCategories-add-button" onClick={handleAddNewLabTestClick}>+ Add New Lab Categories</button>
+      <div className="labCategories-firstRow">
+        <div className="labCategories-addBtn">
+          <button
+            className="labCategories-add-button"
+            onClick={handleAddNewLabTestClick}
+          >
+            + Add New Lab Categories
+          </button>
+        </div>
       </div>
-        
-      </div>
-      <div className='labCategories-search-N-result'>
-      <div className="labCategories-search-bar">
+      <div className="labCategories-search-N-result">
+        <div className="labCategories-search-bar">
           <i className="fa-solid fa-magnifying-glass"></i>
-          <input 
-            type="text" 
-            placeholder="Search..." 
-            
-          />
+          <input type="text" placeholder="Search..." />
         </div>
         <div className="labCategories-results-info">
-          <span>Showing 0 / 0 results</span>
-          <button className="labCategories-print-button"><i class="fa-solid fa-print"></i> Print</button>
+          <span>
+            Showing {labCategories?.length} / {labCategories?.length} results
+          </span>
+          <button className="labCategories-print-button">
+            <i class="fa-solid fa-print"></i> Print
+          </button>
         </div>
-        </div>
-      <table >
-        <thead>
-          <tr>
-            <th> Category Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {labTests.map((test, index) => (
-            <tr key={index}>
-              <td>{test.categoryName}</td>
-             
-              
-              <td>
-                <button className="labCategories-edit-button"onClick={handleAddNewLabTestClick}>Edit</button>
-                <button className="labCategories-deactivate-button">Deactivate</button>
-              </td>
+      </div>
+      <div className="table-container">
+        <table ref={tableRef}>
+          <thead>
+            <tr>
+              {["Category", "Action"].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
+                >
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {labCategories != null &&
+              labCategories?.map((category, index) => (
+                <tr key={index}>
+                  <td>{category.labTestCategoryName}</td>
+
+                  <td>
+                    <button
+                      className="labCategories-edit-button"
+                      onClick={() => handleUpdateNewLabTestClick(category)}
+                    >
+                      Edit
+                    </button>
+                    {/* <button className="labCategories-deactivate-button">
+                      Deactivate
+                    </button> */}
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
       {/* <div className="labCategories-pagination">
           <span>0 to 0 of 0</span>
           <button>First</button>
@@ -138,6 +187,16 @@ const LabCategories = () => {
         <div className="labCategories-modal">
           <div className="labCategories-modal-content">
             <LabCategoryAddNewLC onClose={handleClosePopup} />
+          </div>
+        </div>
+      )}
+      {showUpdatePopup && (
+        <div className="labCategories-modal">
+          <div className="labCategories-modal-content">
+            <LabCategoryUpdateNewLC
+              labCategory={labCategory}
+              onClose={handleClosePopup}
+            />
           </div>
         </div>
       )}

@@ -19,7 +19,7 @@
 }
 
 .dist-back-button {
-  background-color: #4a90e2;
+  background-color: var(--button-color);
   color: white;
   border: none;
   padding: 10px;
@@ -84,9 +84,9 @@
   border-radius: 5px;
 }
 
-textarea {
+/* textarea {
   resize: vertical;
-}
+} */
 
 .dist-investigations {
   display: flex;

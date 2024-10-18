@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./LedgerList.css";
 import CreateLedgerPopup from "./NewLedgerPopup";
 import UpdateLedgerPopup from "./UpdateLedgerPopup";
+import { startResizing } from "../../../../TableHeadingResizing/ResizableColumns";
 
 const dummyData = [
   {
@@ -101,32 +102,6 @@ function LedgerList() {
 
   const [columnWidths, setColumnWidths] = useState({});
   const tableRef = useRef(null);
-
-  const startResizing = (index) => (e) => {
-    e.preventDefault();
-
-    const startX = e.clientX;
-    const startWidth = tableRef.current
-      ? tableRef.current.querySelector(`th:nth-child(${index + 1})`).offsetWidth
-      : 0;
-
-    const onMouseMove = (e) => {
-      const newWidth = startWidth + (e.clientX - startX);
-      setColumnWidths((prevWidths) => ({
-        ...prevWidths,
-        [index]: `${newWidth}px`,
-      }));
-    };
-
-    const onMouseUp = () => {
-      document.removeEventListener("mousemove", onMouseMove);
-      document.removeEventListener("mouseup", onMouseUp);
-    };
-
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
-
   return (
     <div className="lg">
       <div className="lg-create">
@@ -146,65 +121,65 @@ function LedgerList() {
           <button className="lg-print-btn">Print</button>
         </div>
       </div>
-      <table className="lg-table" ref={tableRef}>
-        <thead>
-          <tr>
-            {[
-              "Code",
-              "Ledger Name",
-              "primary Group",
-              "Chart Of Account",
-              "Ledger Group",
-              "Is Active",
-              "Action",
-            ].map((header, index) => (
-              <th
-                key={index}
-                style={{ width: columnWidths[index] }}
-                className="resizable-th"
-              >
-                <div className="header-content">
-                  <span>{header}</span>
-                  <div
-                    className="resizer"
-                    onMouseDown={startResizing(index)}
-                  ></div>
-                </div>
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {dummyData?.map((item, index) => (
-            <tr key={index}>
-              <td>{item.code}</td>
-              <td>{item.ledgerName}</td>
-              <td>{item.primaryGroup}</td>
-              <td>{item.chartOfAccount}</td>
-              <td>{item.ledgerGroup}</td>
-              <td>{item.isActive}</td>
-              <td>
-                <button className="lg-table-btn" type="button">
-                  Deactivate
-                </button>
-                <button
-                  onClick={() => handleUpdateLedger(item)}
-                  className="lg-table-btn"
-                  type="button"
+      <div className="table-container">
+        <table className="lg-table" ref={tableRef}>
+          <thead>
+            <tr>
+              {[
+                "Code",
+                "Ledger Name",
+                "primary Group",
+                "Chart Of Account",
+                "Ledger Group",
+                "Is Active",
+                "Action",
+              ].map((header, index) => (
+                <th
+                  key={index}
+                  style={{ width: columnWidths[index] }}
+                  className="resizable-th"
                 >
-                  Edit
-                </button>
-              </td>
+                  <div className="header-content">
+                    <span>{header}</span>
+                    <div
+                      className="resizer"
+                      onMouseDown={startResizing(
+                        tableRef,
+                        setColumnWidths
+                      )(index)}
+                    ></div>
+                  </div>
+                </th>
+              ))}
             </tr>
-          ))}
+          </thead>
+          <tbody>
+            {dummyData?.map((item, index) => (
+              <tr key={index}>
+                <td>{item.code}</td>
+                <td>{item.ledgerName}</td>
+                <td>{item.primaryGroup}</td>
+                <td>{item.chartOfAccount}</td>
+                <td>{item.ledgerGroup}</td>
+                <td>{item.isActive}</td>
+                <td>
+                  <button className="lg-table-btn" type="button">
+                    Deactivate
+                  </button>
+                  <button
+                    onClick={() => handleUpdateLedger(item)}
+                    className="lg-table-btn"
+                    type="button"
+                  >
+                    Edit
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-          {/* <tr>
-            <td className="no-show-coa" colSpan="15">
-              No Rows To Show
-            </td>
-          </tr> */}
-        </tbody>
-      </table>
       {showCreateLedgerPopup && (
         <CreateLedgerPopup onClose={handleClosePopup} />
       )}

@@ -19,18 +19,18 @@
 }
 
 .report-stock-report-icon {
-  font-size: 24px;
+  font-size: var(--heading-font);
   margin-right: 10px;
 }
 
 .report-stock-report-text h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: var(--heading-font);
   color: #333;
 }
 
 .report-stock-report-text p {
   margin: 0;
-  font-size: 14px;
+  font-size: var(--font-size);
   color: #666;
 }

@@ -4,6 +4,7 @@ import React, { useState, useEffect,useRef } from 'react';
 import axios from 'axios';
 import './RequisitionList.css'; // Update to match the new CSS file
 import { startResizing } from '../TableHeadingResizing/resizableColumns';
+import { API_BASE_URL } from '../api/api';
 
 const RequisitionList = () => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -11,17 +12,19 @@ const RequisitionList = () => {
     const [requisitions, setRequisitions] = useState([]);
     const itemsPerPage = 10; // Adjust this as needed
     const [columnWidths, setColumnWidths] = useState({});
+    const [selectedItem,setSelectedItem]=useState();
+    const [showTable,setShowTable] = useState(false);
   const tableRef = useRef(null);
 
 
     useEffect(() => {
         const fetchRequisitions = async () => {
             try {
-                const response = await axios.get('http://localhost:1415/api/medications');
+                const response = await axios.get(`${API_BASE_URL}/medications`);
                 const data = response.data;
-                // Assuming you have pagination data in API response
-                // Update this logic based on actual API response
                 setRequisitions(data); 
+                console.log(data);
+                
                 setTotalPages(Math.ceil(data.length / itemsPerPage)); // Example logic for total pages
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -35,7 +38,13 @@ const RequisitionList = () => {
         if (page > 0 && page <= totalPages) {
             setCurrentPage(page);
         }
+
     };
+
+    const handleClick=(item)=>{
+        setSelectedItem(item);
+        setShowTable(true);
+    }
 
     // Calculate the data to show on current page
     const currentItems = requisitions.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
@@ -61,7 +70,7 @@ const RequisitionList = () => {
                 "Date",
                 "Status",
                 "Item Name",
-                "Quantity"
+                "Action"
               ].map((header, index) => (
                 <th
                   key={index}
@@ -86,13 +95,13 @@ const RequisitionList = () => {
                         {currentItems.map((item, index) => (
                             <tr key={index} className="RequisitionList-tableRow">
                                 
-                                 <td>{item.patientDTO?.firstName} {item.patientDTO?.lastName}</td>
+                                 <td>{item.newPatientVisitDTO?.firstName} {item.newPatientVisitDTO?.lastName}</td>
                                  <td>{item.patientDTO?.phoneNumber || '7239876658'}</td>
 
-                                <td>{item.lastTaken || 'N/A'}</td>
+                                <td>{item.medicationDate || 'N/A'}</td>
                                 <td>pending</td>
                                 <td>{item.medicationName || 'N/A'}</td>
-                                <td>1</td>
+                                <td><button className='RequisitionList-button' onClick={()=>handleClick(item)}>View</button></td>
                                 {/* <td>{item.comments || 'N/A'}</td> */}
                                
                             </tr>
@@ -100,39 +109,27 @@ const RequisitionList = () => {
                     </tbody>
                 </table>
             </div>
-            {/* <div className="RequisitionList-pagination">
-                <button 
-                    className="RequisitionList-pagination-btn" 
-                    onClick={() => handlePageChange(1)}
-                    disabled={currentPage === 1}
-                >
-                    First
-                </button>
-                <button 
-                    className="RequisitionList-pagination-btn" 
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={currentPage === 1}
-                >
-                    Previous
-                </button>
-                <span className="RequisitionList-pagination-info">
-                    {`Page ${currentPage} of ${totalPages}`}
-                </span>
-                <button 
-                    className="RequisitionList-pagination-btn" 
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                >
-                    Next
-                </button>
-                <button 
-                    className="RequisitionList-pagination-btn" 
-                    onClick={() => handlePageChange(totalPages)}
-                    disabled={currentPage === totalPages}
-                >
-                    Last
-                </button>
-            </div> */}
+            
+            {showTable && <div className='RequisitionList-Model'>
+                <div className='RequisitionList-view-table'>
+                    <div className='RequisitionList-conatiner'>
+                    <h1 className='RequisitionList-h1'>Requesting Item List</h1>
+                    <button className='RequisitionList-back-btn' onClick={()=>setShowTable(false)}>X</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <th>Item Name</th>
+                            <th>Requested Qunatity</th>
+                        </thead>
+                        <tbody>
+                                <tr >
+                                    <td>{selectedItem.medicationName}</td>
+                                    <td>{selectedItem.medicationName}</td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> }           
         </>
     );
 };

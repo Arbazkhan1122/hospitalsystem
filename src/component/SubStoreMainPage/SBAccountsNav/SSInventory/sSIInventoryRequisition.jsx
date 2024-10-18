@@ -7,6 +7,7 @@ import { useReactToPrint } from 'react-to-print';
 import SSSIInvenReqCreateReq from './sSSIInvenReqCreateReq';
 import SSSIInvenReqView from './sSSIInvenReqView';
 import { useParams } from 'react-router-dom';
+import { API_BASE_URL } from '../../../api/api';
 
 function SSIInventoryRequisition() {
   const {store} = useParams();
@@ -19,7 +20,7 @@ function SSIInventoryRequisition() {
   const [storeFilter, setStoreFilter] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/inventory-requisitions/getAll')
+    fetch(`${API_BASE_URL}/inventory-requisitions/getAll`)
       .then(response => response.json())
       .then(data => {
         const filteredData = data.filter(item => item.storeName === store)

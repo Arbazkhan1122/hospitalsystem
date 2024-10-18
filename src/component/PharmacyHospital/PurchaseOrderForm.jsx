@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PurchaseOrderForm.css';
+import { API_BASE_URL } from '../api/api';
 
 const PurchaseOrderForm = () => {
   const [formVisible, setFormVisible] = useState(true);
@@ -31,7 +32,7 @@ const PurchaseOrderForm = () => {
   const [suppliers, setSuppliers] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:1415/api/suppliers')
+    axios.get(`${API_BASE_URL}/suppliers`)
       .then(response => {
         setSuppliers(response.data);
       })
@@ -107,7 +108,7 @@ const PurchaseOrderForm = () => {
       }))
     };
 
-    axios.post('http://localhost:1415/api/order-purchase-orders', data)
+    axios.post(`${API_BASE_URL}/order-purchase-orders`, data)
       .then(response => {
         alert('Purchase order saved successfully!');
       })

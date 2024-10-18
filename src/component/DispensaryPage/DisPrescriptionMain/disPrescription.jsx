@@ -133,6 +133,7 @@ import PrescriptionDetails from "../DisPrescriptionMain/viewAvailability";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import axios from 'axios';
+import { API_BASE_URL } from '../../api/api';
 
 const DisPrescription = () => {
   const [startDate, setStartDate] = useState(new Date());
@@ -147,18 +148,17 @@ const DisPrescription = () => {
     fetchPrescriptions();
   }, []);
 
-  const fetchPrescriptions = async () => {
-    try {
-      const response = await axios.get('http://localhost:1415/api/medications');
-      console.log(response.data);
-      
-      // setPrescriptions(response.data);
-      setLoading(false);
-    } catch (err) {
-      setError('Failed to fetch prescriptions');
-      setLoading(false);
-    }
-  };
+ const fetchPrescriptions = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/medications`);
+    setPrescriptions(response.data);  // assuming response is an array of medications
+    setLoading(false);
+  } catch (err) {
+    setError('Failed to fetch prescriptions');
+    setLoading(false);
+  }
+};
+
 
   const handleViewAvailability = (prescription) => {
     setSelectedPrescription(prescription);
@@ -215,10 +215,13 @@ const DisPrescription = () => {
   };
   
 
-  const filteredPrescriptions = prescriptions.filter(prescription =>
-    prescription.patientName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    prescription.code.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+const filteredPrescriptions = prescriptions.filter(prescription =>
+  prescription?.patientDTO?.firstName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  prescription?.medicationName?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  prescription?.medicationId.toString().includes(searchTerm)  // search by medication ID
+);
+
+
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
@@ -252,24 +255,34 @@ const DisPrescription = () => {
               <th className="disPrescription-action-column">Actions</th>
             </tr>
           </thead>
-          {/* <tbody className="disPrescription-requisition-tableBody">
-            {filteredPrescriptions.map((prescription, index) => (
-              <tr key={index}>
-                <td>{prescription.code}</td>
-                <td>{prescription.patientName}</td>
-                <td>{prescription.requestedBy}</td>
-                <td>{prescription.date}</td>
-                <td className="disPrescription-action-column">
-                  <button 
-                    className="disPrescription-Availability-button"
-                    onClick={() => handleViewAvailability(prescription)}
-                  >
-                    View Availability
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody> */}
+   <tbody className="disPrescription-requisition-tableBody">
+  {filteredPrescriptions.map((prescription, index) => (
+    <tr key={index}>
+      <td>{prescription.medicationId}</td>
+      <td>
+        {/* Check if the prescription has patientDTO or newPatientVisitDTO and display accordingly */}
+        {prescription.patientDTO 
+          ? `${prescription.patientDTO.salutation || ''} ${prescription.patientDTO.firstName || ''} ${prescription.patientDTO.lastName || ''}`
+          : prescription.newPatientVisitDTO 
+            ? `${prescription.newPatientVisitDTO.firstName || ''} ${prescription.newPatientVisitDTO.middleName || ''} ${prescription.newPatientVisitDTO.lastName || ''}`
+            : 'Unknown Patient'
+        }
+      </td>
+      <td>{prescription.requestedBy || 'Unknown Requester'}</td>
+      <td>{prescription.medicationDate || 'Unknown Date'}</td>
+      <td className="disPrescription-action-column">
+        <button 
+          className="disPrescription-Availability-button"
+          onClick={() => handleViewAvailability(prescription)}
+        >
+          View Availability
+        </button>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
+
         </table>
 
         {/* <div className="disPrescription-pagination">

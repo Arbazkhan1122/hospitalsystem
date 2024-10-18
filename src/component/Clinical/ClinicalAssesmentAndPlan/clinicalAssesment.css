@@ -1,9 +1,7 @@
 /* ClinicalAssessment.css */
 .ClinicalAssessment {
-    font-family: Arial, sans-serif;
     margin: 0 auto;
     padding: 20px;
-    background-color: #e6f3ff;
   }
   
   .ClinicalAssessment-header {
@@ -49,14 +47,7 @@
     width: 100%;
     overflow: hidden;
   }
-  .ClinicalAssessment-displayName textarea {
-    width: 100%;
-    margin-bottom: 20px;
-    resize: none;
-    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
-    overflow: hidden; /* Prevent overflow within the input field */
-  }
-  
+
   .ClinicalAssessment-investigation,
   .ClinicalAssessment-medication {
     background-color: #ffffff;
@@ -83,7 +74,7 @@
   }
   
   .ClinicalAssessment-tab.active {
-    background-color: #4a90e2;
+    background-color: var(--button-color);
     color: #ffffff;
   }
   
@@ -98,10 +89,6 @@
     font-size: 14px;
     padding: 8px;
     text-align: left;
-  }
-  
-  .ClinicalAssessment-table th {
-    background-color: #b6e098;
   }
   
   .ClinicalAssessment-followUp {
@@ -124,14 +111,63 @@
   }
   
   .ClinicalAssessment-button {
-    padding: 5px 20px;
-    background-color: #6a5acd;
+    padding: 5px 10px;
+    background-color: var(--button-color);
     color: #ffffff;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
+    border-radius: 5px;
   }
   
   .ClinicalAssessment-button:hover {
-    background-color: #483d8b;
+    background-color: var(--button-hover-background-color);
+    border: 1px solid var(--button-hover-border-color);
+    color: var(--button-hover-text-color);
   }
+
+  /* Style for the patient list container */
+.ClinicalAssessment-patientList {
+  max-height: 200px; /* Limit the height, with scrolling for overflow */
+  overflow-y: auto;
+  border-radius: 4px;
+  /* padding: 10px; */
+  /* margin-top: 10px; */
+  background-color: white;
+  position: relative;
+  width: 200px;
+}
+
+/* Style for each patient item */
+.ClinicalAssessment-patientItem {
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for patient items */
+.ClinicalAssessment-patientItem:hover {
+  background-color: #e0f7fa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Active/Selected patient item (you can add a class for active state) */
+.ClinicalAssessment-patientItem.selected {
+ display: none;
+}
+
+/* Optional: Scrollbar styling */
+.ClinicalAssessment-patientList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ClinicalAssessment-patientList::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.ClinicalAssessment-patientList::-webkit-scrollbar-track {
+  background-color: #f9f9f9;
+}

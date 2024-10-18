@@ -9,7 +9,7 @@
     border: none;
     background: none;
     text-align: center;
-    font-size: 16px;
+    font-size: var(--heading-font);
   }
   
   .report-report-tabs .active {

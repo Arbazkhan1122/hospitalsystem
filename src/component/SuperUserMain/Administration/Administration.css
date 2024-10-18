@@ -1,0 +1,127 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.administration-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: center;
+
+}
+
+.administration-table th {
+    font-size: 16px;
+}
+
+.administration-table td {
+    font-size: 14px;
+}
+
+.administration-table th,
+.administration-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.administration-button {
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007b6f;
+    color: white;
+}
+
+.administration-button :hover {
+    background-color: white;
+    color: #007b6f;
+}
+
+.administration-modalOverlay {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modalContent {
+    background: #333;
+    color: #fff;
+    width: 200px;
+    margin: auto;
+    border: none;
+    border-radius: 8px;
+}
+
+.administration-closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.administration-requestDetail-title {
+    font-size: 16px;
+}
+
+.administration-app-rej-btn {
+
+    text-align: center;
+    padding: 20px;
+}
+
+.administration-approve-button {
+    padding: 5px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.administration-approve-button:hover {
+    background-color: white;
+    color: green;
+}
+
+.administration-button-reject {
+    padding: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.administration-button-reject:hover {
+    background-color: white;
+    color: red;
+}
+
+.administration-outerDiv {
+
+    padding: 10px;
+}
+
+.administration-heading-text {
+    font-size: 16px;
+
+}
+
+.administration-modalTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.administration-modalTable td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.administration-modalTable td:first-child {
+    font-weight: bold;
+}

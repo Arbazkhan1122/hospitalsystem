@@ -93,6 +93,7 @@
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
   }
   .FinalizedItem-export-btn:hover, .FinalizedItem-print-btn:hover {
     background-color: var(--button-hover-background-color);

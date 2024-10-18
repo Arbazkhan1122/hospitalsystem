@@ -22,7 +22,7 @@ const ItemCompany = ({onClose}) => {
     };
 
     try {
-      const response = await fetch('http://192.168.1.39:8080/api/company/saveCompany', {
+      const response = await fetch(`${API_BASE_URL}/company/saveCompany`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

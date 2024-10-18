@@ -1,11 +1,10 @@
-// neha-utilities-SchemeRefundList-14-9-24
-import React, { useState, useEffect,useRef } from "react";
+import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { Modal, Button } from "react-bootstrap";
-import './list.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./list.css";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
-import { startResizing } from "../../../TableHeadingResizing/ResizableColumns";
 
 const SchemeRefundList = () => {
   const [schemeRefundList, setSchemeRefundList] = useState([]);
@@ -16,18 +15,22 @@ const SchemeRefundList = () => {
 
   const [searchPatient, setSearchPatient] = useState("");
   const [ipNo, setIpNo] = useState("");
-  const [refundScheme, setRefundScheme] = useState("");
+  const [refuntScheme, setRefuntScheme] = useState("");
   const [amount, setAmount] = useState("");
   const [remark, setRemark] = useState("");
-  const tableRef = useRef(null);
-  const [columnWidths, setColumnWidths] = useState(0);
+  const [formData, setFormData] = useState({
+    inpatientNumber: "",
+    refundScheme: "NHIF General",
+    amount: 0,
+    remarks: "",
+  });
 
   useEffect(() => {
     // Fetch data from API
     const fetchRefundData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1415/api/Search-Patient/fetch-all-search-patient"
+          "http://localhost:5000/api/Search-Patient/fetch-all-search-patient"
         );
         setSchemeRefundList(response.data);
       } catch (error) {
@@ -62,21 +65,27 @@ const SchemeRefundList = () => {
       const payload = {
         searchPatient,
         ipNo,
-        refundScheme,
+        refuntScheme,
         amount,
         remark,
       };
 
-      const response = await axios.post("http://localhost:1415/api/Search-Patient/save-search-patient", payload);
+      const response = await axios.post("http://localhost:5000/api/Search-Patient/save-search-patient", payload);
 
       if (response.status === 200) {
         alert("Data saved successfully!");
+
+        // Update the state with the new data
         setSchemeRefundList((prevList) => [...prevList, payload]);
+
+        // Clear input fields after saving
         setSearchPatient("");
         setIpNo("");
         setAmount("");
         setRemark("");
-        setRefundScheme("");
+        setRefuntScheme("");
+
+        // Close the modal after saving
         closeSchemeReturnEntryModal(); 
       }
     } catch (error) {
@@ -85,66 +94,93 @@ const SchemeRefundList = () => {
     }
   };
 
+
+  const previousRefunds = [
+    { date: "2024-08-29", scheme: "NHIF General", amount: 6755, user: "Mr. admin", remarks: "fhgf" },
+    { date: "2024-08-27", scheme: "NHIF General", amount: 1000, user: "Mr. admin", remarks: "test" }
+  ];
+    // Handle input change
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted", formData);
+    // Handle submission logic here
+  };
   return (
-    <div className="scheme-refund-list">
-      
-        <button className="new-entry-btn" onClick={openSchemeReturnEntryModal}>
+    <div className="utltlist">
+      <div className="modelbtn">
+        <button className="btn btn-success" onClick={openSchemeReturnEntryModal}>
           <i className="fa fa-plus"></i> New Scheme Refund Entry
         </button>
-     
-
-      <div className="date-range-container">
-        <label>From: </label>
-        <input type="date" value="2024-08-05" />
-        <label> To: </label>
-        <input type="date" value="2024-08-12" />
-        <button className="star-btn">★</button>
-        <button className="plus-btn">+</button>
-        <button className="ok-btn">OK</button>
       </div>
 
-      <div className="scheme-refund-search-bar">
-        <input type="text" placeholder="Search by patient name" className="input-search-bar" />
+      <div className="date-utlt">
+        <div className="utltdatemiddle">
+          <div className="date-range">
+            <label>From: </label>
+            <input type="date" value="2024-08-05" />
+            <label> To: </label>
+            <input type="date" value="2024-08-12" />
+            <button style={{ marginLeft: "5px" }}>★</button>
+            <button style={{ marginLeft: "5px" }}>+</button>
+            <button
+              style={{
+                marginLeft: "5px",
+                backgroundColor: "#4CAF50",
+                color: "white",
+                border: "none",
+                padding: "5px 10px",
+              }}
+            >
+              OK
+            </button>
+          </div>
+        </div>
       </div>
 
-      <table className="scheme-refund-table" ref={tableRef}>
+      <div className="utlt-search-bar">
+        <input type="text" placeholder="Search by patient name" className="inputsearchbar" />
+        {/* <button className="utltlistsearchbar">
+          <FaSearch style={{ color: "gray", fontSize: "18px" }} />
+        </button> */}
+      </div>
+
+      <table className="utlt-table">
         <thead>
           <tr>
-          {[
-            "Refund Date",
-            "Reception No",
-            "Scheme",
-            "Patient",
-            "Refund Amount",
-            "Inpatient No",
-            "Remark",
-            "Actions"
-].map((header, index) => (
-  <th
-    key={index}
-    style={{ width: columnWidths[index] }}
-    className="rd-resizable-th"
-  >
-    <div className="header-content">
-      <span>{header}</span>
-      <div
-        className="resizer"
-        onMouseDown={startResizing(tableRef, setColumnWidths)(index)}
-      ></div>
-    </div>
-  </th>
-))}
-</tr>
-</thead>
-<tbody>
+            {/* <th>Receipt No</th> */}
+            <th>Refund Date</th>
+            <th>Reception No</th>
+            <th>Scheme</th>
+            {/* <th>Hospital No</th> */}
+            <th>Patient</th>
+            {/* <th>Age/Sex</th> */}
+            <th>Refund Amount</th>
+            <th>Inpatient No</th>
+            {/* <th>Entered By</th> */}
+            <th>Remark</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
           {schemeRefundList.map((item, index) => (
             <tr key={index}>
+              {/* <td>{item.receiptNo}</td> */}
               <td>{moment(item.refundDate).format("YYYY-MM-DD")}</td>
               <td>{item.receiptNo}</td>
-              <td>{item.refundScheme}</td>
+              <td>{item.refuntScheme}</td>
+              {/* <td>{item.hosNo}</td> */}
               <td>{item.searchPatient}</td>
+              {/* <td>{item.ageSex}</td> */}
               <td>{item.amount}</td>
               <td>{item.ipNo}</td>
+              {/* <td>{item.enteredBy}</td> */}
               <td>{item.remark}</td>
               <td>
                 <button className="btn btn-primary" onClick={() => printSchemeRefundDetails(item.receiptNo)}>
@@ -156,79 +192,157 @@ const SchemeRefundList = () => {
         </tbody>
       </table>
 
+      {/* <div className="utlt-pagination">
+        <Button>First</Button>
+        <Button>Previous</Button>
+        <span>Page 1 of 4</span>
+        <Button>Next</Button>
+        <Button>Last</Button>
+      </div> */}
+
       {/* Modal for New Scheme Refund Entry */}
       {showSchemeReturnEntryModal && (
-        <Modal show={true} onHide={closeSchemeReturnEntryModal} className="scheme-modal">
-          <Modal.Header closeButton>
-            <Modal.Title>New Scheme Refund Entry</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <div className="form-group">
-              <label>Patient Name:</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter patient name"
-                value={searchPatient}
-                onChange={(e) => setSearchPatient(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label>Inpatient No:</label>
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Enter inpatient no"
-                value={ipNo}
-                onChange={(e) => setIpNo(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label>Scheme:</label>
-              <select
-                className="form-control"
-                value={refundScheme}
-                onChange={(e) => setRefundScheme(e.target.value)}
-              >
-                <option value="">Select Scheme</option>
-                <option value="ASTRA">ASTRA</option>
-                <option value="BRITAM">BRITAM</option>
-                <option value="GENERAL">GENERAL</option>
-                <option value="MTABTA">MTABTA</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <label>Amount:</label>
-              <input
-                type="number"
-                className="form-control"
-                placeholder="Enter amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-              />
-            </div>
-            <div className="form-group">
-              <label>Remark:</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter remark"
-                value={remark}
-                onChange={(e) => setRemark(e.target.value)}
-              />
-            </div>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={closeSchemeReturnEntryModal}>
-              Close
-            </Button>
-            <Button variant="primary" onClick={handleSave}>
-              Save
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      )}
+            <div className="new-scheme-refund-modal-container">
+            <div className="new-scheme-refund-modal-box">
+              {/* Modal Header */}
+              <div className="new-scheme-refund-modal-header">
+                <h2>Scheme Refund Entry</h2>
+                <button className="close" onClick={() => console.log('Close modal')}>×</button>
+              </div>
       
+              {/* Patient Information */}
+              <div className="new-scheme-refund-modal-patient">
+                <label htmlFor="selectedpatientname">Select patient</label>
+                <input type="text" placeholder="Enter Patient Name "
+                style={{padding:"2px"}} />
+              </div>
+      
+              <div className="new-scheme-refund-modal-patient-info">
+                <p>Hospital Number: 2408003807</p>
+                <p>Age/Sex: 25Y / Male</p>
+                <p>Address: India, Maharashtra, Pune, Maharashtra</p>
+                <p>Name: Arbaz S Pathan</p>
+                <p>Contact Number: 8382883822</p>
+              </div>
+      
+              {/* Form */}
+              <form className="new-scheme-refund-modal-form" onSubmit={handleSubmit}>
+                <div className="new-scheme-refund-modal-form-data">
+                  <label>Enter Inpatient No (If Applicable): </label>
+                  <input
+                    type="text"
+                    name="inpatientNumber"
+                    value={formData.inpatientNumber}
+                    onChange={handleChange}
+                  />
+                </div>
+      
+                <div className="new-scheme-refund-modal-form-data">
+                  <label>Select Refund Scheme: </label>
+                  <select
+                    name="refundScheme"
+                    value={formData.refundScheme}
+                    onChange={handleChange}
+                  >
+                    <option value="NHIF General">NHIF General</option>
+                    {/* Add more options here if needed */}
+                  </select>
+                </div>
+      
+                <div className="new-scheme-refund-modal-form-data">
+                  <label>Amount: </label>
+                  <input
+                    type="number"
+                    name="amount"
+                    value={formData.amount}
+                    onChange={handleChange}
+                  />
+                </div>
+      
+                <div className="new-scheme-refund-modal-form-data">
+                  <label>In Words: </label>
+                  <input
+                    type="text"
+                    name="inWords"
+                    value={formData.inWords}
+                    onChange={handleChange}
+                    style={{padding:"2px"}}
+                  />
+                </div>
+      
+                <div className="new-scheme-refund-modal-form-data">
+                  <label>Remarks: </label>
+                  <input
+                    type="text"
+                    name="remarks"
+                    value={formData.remarks}
+                    onChange={handleChange}
+                    style={{padding:"2px"}}
+                  />
+                </div>
+      
+                <button type="submit">Save</button>
+              </form>
+      
+              {/* Previous Scheme Refunds Table */}
+              <h5>Previous Scheme Refunds</h5>
+              <table className="new-scheme-refund-modal-table">
+                <thead>
+                  <tr>
+                    <th>S.N.</th>
+                    <th>Refund Date</th>
+                    <th>Scheme</th>
+                    <th>Amount</th>
+                    <th>User</th>
+                    <th>Remarks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {previousRefunds.map((refund, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>{refund.date}</td>
+                      <td>{refund.scheme}</td>
+                      <td>{refund.amount}</td>
+                      <td>{refund.user}</td>
+                      <td>{refund.remarks}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+      )}
+
+      {/* Modal for Print Scheme Refund */}
+      {showReceipt && (
+        <div className="utlt modal show d-block" tabIndex="-1" role="dialog">
+          <div className="utlt-modal-dialog" role="document">
+            <div className="utlt-modal-content">
+              <div className="utlt-modal-header">
+                <h5 className="utlt-modal-title">Scheme Refund Receipt</h5>
+              </div>
+              <div className="utlt-modal-body">
+                {printSchemeRefund && (
+                  <div>
+                    <p>Receipt No: {receiptNo}</p>
+                    <p>Refund Date: {schemeRefundList.find((item) => item.receiptNo === receiptNo)?.refundDate}</p>
+                    <p>Amount: {schemeRefundList.find((item) => item.receiptNo === receiptNo)?.amount}</p>
+                  </div>
+                )}
+              </div>
+              <div className="utlt-modal-footer">
+                <button type="button" className="utlt-btn btn btn-secondary" onClick={closeSchemeRefundReceiptPopUp}>
+                  Close
+                </button>
+                <button type="button" className="utlt-btn btn btn-primary">
+                  Print
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
