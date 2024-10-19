@@ -10,7 +10,6 @@ import Incentive from "../../component/IncentiveMain/incentiveApp";
 import Lab from "../../component/NavBarSection/Lab";
 import Emergency from "../../component/Emergency/Emergency";
 import Utilitiesmain from "../../component/UTILITIES/utilitiesmain"
-import Utilitiesmain from "../../component/UTILITIES/utilitiesmain"
 import SystemAdmin from "../../component/SystemAdmin/SystemAdmin";
 
 
@@ -54,11 +53,6 @@ import Pediatricoutpatient from "../../component/PediatricOutpatient/PaediatricO
 import Pediatricinpatient from "../../component/pediatricModule/AppRoutes";
 import PhysiotherapyRotes from "../../component/PhysiotherapyModule/PhysiotherapyRotes";
 
-
-import HomehealthCare from "../../component/HomeHealthCareModule/HomeHealthRoutes";
-import Pediatricoutpatient from "../../component/PediatricOutpatient/PaediatricOutpatientRoutes";
-import Pediatricinpatient from "../../component/pediatricModule/AppRoutes";
-import PhysiotherapyRotes from "../../component/PhysiotherapyModule/PhysiotherapyRotes";
 
 import BloodBank from "../../component/BloodBank/bloodBankRoute";
 
@@ -108,13 +102,6 @@ const Layout = () => {
   const [showonpediatricinpatient,setshowonpediatricinpatient]=useState(false);
   const [showphysiotherapy,setshowphysiotherapy]=useState(false);
 
-
-  const [showProcurement,setShowProcurement]=useState(false);
-  const [showBilling,setShowBilling]=useState(false);
-  const [showHomehealthcare,setshowHomehealthcare]=useState(false);
-  const [showonpediatricoutpatient,setshowonpediatricoutpatient]=useState(false);
-  const [showonpediatricinpatient,setshowonpediatricinpatient]=useState(false);
-  const [showphysiotherapy,setshowphysiotherapy]=useState(false);
 
 
   const [showBloodBank, setShowBloodBank] = useState(false)
@@ -396,10 +383,9 @@ const Layout = () => {
         onpediatricoutpatient={togglePediatricoutpatient}
         onpediatricinpatient={togglePediatricinpatient}
         onphysiotherapy={togglephysiotherapy}
-        onHomehealthcare={toggleHomehealthcare}
-        onpediatricoutpatient={togglePediatricoutpatient}
-        onpediatricinpatient={togglePediatricinpatient}
-        onphysiotherapy={togglephysiotherapy}
+        
+       
+    
       />
       <div
 
