@@ -47,6 +47,11 @@ const Sidebar = ({
   onMedicalRecord,
   onProcurement,
   onBilling,
+
+  onHomehealthcare,
+  onpediatricoutpatient,
+  onpediatricinpatient,
+  onphysiotherapy,
   onBloodbank,
   onTransport,
   onSuperUser,
@@ -226,6 +231,32 @@ const Sidebar = ({
     onTransport()
   }
 
+
+  const handlehomehealthcareClick=()=>{
+    handleLinkClick("homehealthcare");
+    onHomehealthcare();
+  }
+
+  
+  const handlePaediatricOutPatientClick=()=>{
+    handleLinkClick("pediatricoutpatient");
+    onpediatricoutpatient();
+  }
+
+
+
+  const handlepediatricinpatientClick=()=>{
+    handleLinkClick("pediatricinpatient");
+    onpediatricinpatient();
+  }
+
+
+
+  const handlephysiotherapyClick=()=>{
+    handleLinkClick("physiotherapy");
+    onphysiotherapy();
+  }
+
   const handleSuperUserClick = () => {
     handleLinkClick('superUser')
     onSuperUser()
@@ -240,6 +271,7 @@ const Sidebar = ({
     handleLinkClick('radiationTherapy')
     onRadiationTherapy()
   }
+
 
   return (
     <div className={`custom-sidebar ${isOpen ? '' : 'custom-sidebar-closed'}`}>
@@ -2757,6 +2789,426 @@ const Sidebar = ({
             </ul>
           )}
         </li>
+
+
+        {/* Prachi HomehealthCare */}
+
+        <li
+          className={`custom-nav-item ${
+            activeLink === "homehealthcare-submenu1" ||
+            activeLink === "homehealthcare-submenu2" ||
+            activeLink === "homehealthcare-submenu3" ||
+            activeLink === "homehealthcare-submenu4" ||
+            activeLink === "homehealthcare-submenu5" ||
+            activeLink === "homehealthcare-submenu6" 
+              ? "custom-nav-item-active"
+              : ""
+          }`}
+        >
+          <div className="custom-nav-link-content" onClick={handlehomehealthcareClick}>
+            <span>
+              <TbUsers />
+            </span>
+            {isOpen && <span className="custom-nav-link-text">homehealthcare</span>}
+            <span className="custom-dropdown-icon">
+              {openMenus.homehealthcare ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.homehealthcare && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("homehealthcare", "submenu1")}
+                className={
+                  activeLink === "homehealthcare-submenu1" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link to="patient-registeration">Patient Registration</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("homehealthcare", "submenu2")}
+                className={
+                  activeLink === "homehealthcare-submenu2" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="medication"
+                  className="appointment-booking-list-nav-link"
+                >
+                 Medication Management
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("homehealthcare", "submenu3")}
+                className={
+                  activeLink === "homehealthcare-submenu3" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="careplan"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Care Plan
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("homehealthcare", "submenu4")}
+                className={
+                  activeLink === "homehealthcare-submenu4" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="visitscheduling"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Visit Scheduling
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("homehealthcare", "submenu4")}
+                className={
+                  activeLink === "homehealthcare-submenu5" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="healthmonitoring"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Health Monitoring
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("homehealthcare", "submenu4")}
+                className={
+                  activeLink === "homehealthcare-submenu6" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="billing"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Billing and Insurance
+                </Link>
+              </li>
+            </ul>
+          )}
+        </li>
+        {/* Prachi */}
+
+          {/* Prachi paediatric Out patient */}
+
+          <li
+          className={`custom-nav-item ${
+            activeLink === "pediatricoutpatient-submenu1" ||
+            activeLink === "pediatricoutpatient-submenu2" ||
+            activeLink === "pediatricoutpatient-submenu3" ||
+            activeLink === "pediatricoutpatient-submenu4" ||
+            activeLink === "pediatricoutpatient-submenu5" ||
+            activeLink === "pediatricoutpatient-submenu6" ||
+            activeLink === "pediatricoutpatient-submenu7" 
+              ? "custom-nav-item-active"
+              : ""
+          }`}
+        >
+          <div className="custom-nav-link-content" onClick={handlePaediatricOutPatientClick}>
+            <span>
+              <TbUsers />
+            </span>
+            {isOpen && <span className="custom-nav-link-text">Pediatric Out Patient</span>}
+            <span className="custom-dropdown-icon">
+              {openMenus.pediatricoutpatient ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.pediatricoutpatient && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("pediatricoutpatient", "submenu1")}
+                className={
+                  activeLink === "pediatricoutpatient-submenu1" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link to="/registration-outpatient-form">Basic Information</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricoutpatient", "submenu2")}
+                className={
+                  activeLink === "pediatricoutpatient-submenu2" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/vital-signs-inpatient"
+                  className="appointment-booking-list-nav-link"
+                >
+                 Vital Signs
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricoutpatient", "submenu3")}
+                className={
+                  activeLink === "pediatricoutpatient-submenu3" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/chief-complaint-outpatient"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Chief Complaint
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricoutpatient", "submenu4")}
+                className={
+                  activeLink === "pediatricoutpatient-submenu4" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/examination-diagnosis-outpatient"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Examination
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricoutpatient", "submenu4")}
+                className={
+                  activeLink === "pediatricoutpatient-submenu5" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/treatment-prescription-Outpatient"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Treatment
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricoutpatient", "submenu4")}
+                className={
+                  activeLink === "pediatricoutpatient-submenu6" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/immunization-outpatient-form"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Immunization
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricoutpatient", "submenu4")}
+                className={
+                  activeLink === "pediatricoutpatient-submenu7" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/follow-up-review-Outpatient"
+                  className="appointment-booking-list-nav-link"
+                >
+                  FollowUp
+                </Link>
+              </li>
+            </ul>
+          )}
+        </li>
+        {/* Prachi */}
+
+         {/* Prachi paediatric In patient */}
+
+         <li
+          className={`custom-nav-item ${
+            activeLink === "pediatricinpatient-submenu1" ||
+            activeLink === "pediatricinpatient-submenu2" ||
+            activeLink === "pediatricinpatient-submenu3" ||
+            activeLink === "pediatricinpatient-submenu4" ||
+            activeLink === "pediatricinpatient-submenu5" ||
+            activeLink === "pediatricinpatient-submenu6" ||
+            activeLink === "pediatricinpatient-submenu7" ||
+            activeLink === "pediatricinpatient-submenu8" ||
+            activeLink === "pediatricinpatient-submenu9" 
+              ? "custom-nav-item-active"
+              : ""
+          }`}
+        >
+          <div className="custom-nav-link-content" onClick={handlepediatricinpatientClick}>
+            <span>
+              <TbUsers />
+            </span>
+            {isOpen && <span className="custom-nav-link-text">Pediatric In Patient</span>}
+            <span className="custom-dropdown-icon">
+              {openMenus.pediatricinpatient ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.pediatricinpatient && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("pediatricinpatient", "submenu1")}
+                className={
+                  activeLink === "pediatricinpatient-submenu1" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link to="/patient-history-form">Patient History Form</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricinpatient", "submenu2")}
+                className={
+                  activeLink === "pediatricinpatient-submenu2" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/admission-form"
+                  className="appointment-booking-list-nav-link"
+                >
+                 Admission Form
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricinpatient", "submenu3")}
+                className={
+                  activeLink === "pediatricinpatient-submenu3" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/paediatric-vitals-examination-Form"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Paediatric Vitals Examination Form
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricinpatient", "submenu4")}
+                className={
+                  activeLink === "pediatricinpatient-submenu4" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/paediatric-treatment-plan-form"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Paediatric Treatment Plan Form
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricinpatient", "submenu4")}
+                className={
+                  activeLink === "pediatricinpatient-submenu5" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/nursing-care-plan-form"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Nursing Care Plan Form
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricinpatient", "submenu4")}
+                className={
+                  activeLink === "pediatricinpatient-submenu6" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/paediatric-progress-notes-form"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Paediatric Progress Notes Form
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricinpatient", "submenu4")}
+                className={
+                  activeLink === "pediatricinpatient-submenu7" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/discharge"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Discharge Summary
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricinpatient", "submenu4")}
+                className={
+                  activeLink === "pediatricinpatient-submenu8" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/pediatric-immunization-form"
+                  className="appointment-booking-list-nav-link"
+                >
+                  Pediatric Immunization Form
+                </Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("pediatricinpatient", "submenu4")}
+                className={
+                  activeLink === "pediatricinpatient-submenu9" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/nutrition"
+                  className="appointment-booking-list-nav-link"
+                >
+                 Nutrition Form
+                </Link>
+              </li>
+            </ul>
+          )}
+        </li>
+        {/* Prachi */}
+
+
+
+        {/* Prachi physiotherapy */}
+
+        <li
+          className={`custom-nav-item ${
+            activeLink === "physiotherapy-submenu1" ||
+            activeLink === "physiotherapy-submenu2" 
+         
+              ? "custom-nav-item-active"
+              : ""
+          }`}
+        >
+          <div className="custom-nav-link-content" onClick={handlephysiotherapyClick}>
+            <span>
+              <TbUsers />
+            </span>
+            {isOpen && <span className="custom-nav-link-text">Physiotherapy</span>}
+            <span className="custom-dropdown-icon">
+              {openMenus.physiotherapy ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.physiotherapy && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick("physiotherapy", "submenu1")}
+                className={
+                  activeLink === "physiotherapy-submenu1" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link to="/physiotherapy-session-form">Session Form</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick("physiotherapy", "submenu2")}
+                className={
+                  activeLink === "physiotherapy-submenu2" ? "custom-submenu-active" : ""
+                }
+              >
+                <Link
+                  to="/physiotherapy-session-list"
+                  className="appointment-booking-list-nav-link"
+                >
+                 Session List
+                </Link>
+              </li>
+              
+            </ul>
+          )}
+        </li>
+        {/* Prachi */}
+
+
+
 
         <li
           className={`custom-nav-item ${
