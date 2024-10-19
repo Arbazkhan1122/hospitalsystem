@@ -49,6 +49,7 @@ import BloodBank from "../../component/BloodBank/bloodBankRoute";
 import TransportMainRouting from "../../component/TransportMain/transportMainRoute"
 import SuperUserMain from "../../component/SuperUserMain/superUserMainRoute";
 import HRHome from "../../component/HRHome/HRHome"
+import Radiationtherapy from "../../component/RadiationTherapy/radiationtherapy";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -91,6 +92,7 @@ const Layout = () => {
   const [showTransport, setShowTransport] = useState(false)
   const [showSuperUser, setShowSuperUser] = useState(false)
   const [showHR, setShowHR] = useState(false)
+  const [shoeRadiationtherapy,setShowRadiationTherapy] = useState(false)
 
 
   const resetAllToggles = () => {
@@ -133,6 +135,7 @@ const Layout = () => {
     setShowTransport(false)
     setShowSuperUser(false)
     setShowHR(false)
+    setShowRadiationTherapy(false)
 
   };
 
@@ -292,6 +295,10 @@ const Layout = () => {
     resetAllToggles();
     setShowHR(!showHR)
   }
+  const toggleRadiationTherapy = () =>{
+    resetAllToggles();
+    setShowRadiationTherapy(!shoeRadiationtherapy)
+  }
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -334,6 +341,7 @@ const Layout = () => {
         onSuperUser={toggleSuperUser}
 
         onHr={toggleHR}
+        onRadiationTherapy={toggleRadiationTherapy}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
@@ -382,6 +390,7 @@ const Layout = () => {
           {showSuperUser && <SuperUserMain />}
 
           {showHR && <HRHome />}
+          {shoeRadiationtherapy && <Radiationtherapy/>}
 
         </main>
       </div>
