@@ -52,6 +52,11 @@ const Sidebar = ({
   onpediatricoutpatient,
   onpediatricinpatient,
   onphysiotherapy,
+
+  onHomehealthcare,
+  onpediatricoutpatient,
+  onpediatricinpatient,
+  onphysiotherapy,
   onBloodbank,
   onTransport,
   onSuperUser,
