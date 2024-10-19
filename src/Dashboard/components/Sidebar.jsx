@@ -50,7 +50,6 @@ const Sidebar = ({
   onBloodbank,
   onTransport,
   onSuperUser,
-
   onHr
 
 }) => {
