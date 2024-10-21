@@ -15,6 +15,8 @@ import Utilitiesmain from "../../component/Utilities/utilitiesmain";
 import SystemAdmin from "../../component/SystemAdmin/SystemAdmin";
 
 
+
+
 import SocialServicePage from "../../component/SocialServicesMain/SocialServicePage";
 import Disprensary from "../../component/DispensaryPage/disprensaryRoute";
 import DynamicReport from "../../component/DynamicReport/DynamicReport";
@@ -53,11 +55,13 @@ import Pediatricoutpatient from "../../component/PediatricOutpatient/PaediatricO
 import Pediatricinpatient from "../../component/pediatricModule/AppRoutes";
 import PhysiotherapyRotes from "../../component/PhysiotherapyModule/PhysiotherapyRotes";
 
+
 import BloodBank from "../../component/BloodBank/bloodBankRoute";
 
 import TransportMainRouting from "../../component/TransportMain/transportMainRoute"
 import SuperUserMain from "../../component/SuperUserMain/superUserMainRoute";
 import HRHome from "../../component/HRHome/HRHome"
+import Radiationtherapy from "../../component/RadiationTherapy/radiationtherapy";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -101,10 +105,12 @@ const Layout = () => {
   const [showphysiotherapy,setshowphysiotherapy]=useState(false);
 
 
+
   const [showBloodBank, setShowBloodBank] = useState(false)
   const [showTransport, setShowTransport] = useState(false)
   const [showSuperUser, setShowSuperUser] = useState(false)
   const [showHR, setShowHR] = useState(false)
+  const [shoeRadiationtherapy,setShowRadiationTherapy] = useState(false)
 
 
   const resetAllToggles = () => {
@@ -146,16 +152,18 @@ const Layout = () => {
     setshowonpediatricoutpatient(false);
     setshowonpediatricinpatient(false);
     setshowphysiotherapy(false);
-
+    
     setShowBloodBank(false)
     setShowTransport(false)
     setShowSuperUser(false)
     setShowHR(false)
-
-
+    setShowRadiationTherapy(false)
 
   };
- 
+  const toggleHomehealthcare=()=>{
+    resetAllToggles();
+    setshowHomehealthcare(!showHomehealthcare);
+  }
   const toggelAppointment = () => {
     resetAllToggles();
     setShowAppointment(!showAppointment);
@@ -312,27 +320,22 @@ const Layout = () => {
     resetAllToggles();
     setShowHR(!showHR)
   }
-
-  const toggleHomehealthcare=()=>{
+  const toggleRadiationTherapy = () =>{
     resetAllToggles();
-    setshowHomehealthcare(!showHomehealthcare);
+    setShowRadiationTherapy(!shoeRadiationtherapy)
   }
- 
   const togglePediatricoutpatient=()=>{
     resetAllToggles();
     setshowonpediatricoutpatient(!showonpediatricoutpatient);
   }
-
   const togglePediatricinpatient=()=>{
     resetAllToggles();
     setshowonpediatricinpatient(!showonpediatricinpatient);
   }
- 
   const togglephysiotherapy=()=>{
     resetAllToggles();
     setshowphysiotherapy(!showphysiotherapy);
   }
-
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -375,12 +378,16 @@ const Layout = () => {
         onSuperUser={toggleSuperUser}
 
         onHr={toggleHR}
+        onRadiationTherapy={toggleRadiationTherapy}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         onHomehealthcare={toggleHomehealthcare}
         onpediatricoutpatient={togglePediatricoutpatient}
         onpediatricinpatient={togglePediatricinpatient}
         onphysiotherapy={togglephysiotherapy}
+        
+       
+    
       />
       <div
 
@@ -425,13 +432,17 @@ const Layout = () => {
           {showonpediatricoutpatient && <Pediatricoutpatient/>}
           {showonpediatricinpatient && <Pediatricinpatient/>}
           {showphysiotherapy && <PhysiotherapyRotes/>}
+          {showHomehealthcare && <HomehealthCare/>}
+          {showonpediatricoutpatient && <Pediatricoutpatient/>}
+          {showonpediatricinpatient && <Pediatricinpatient/>}
+          {showphysiotherapy && <PhysiotherapyRotes/>}
           {showBilling && <Billing />}
           {showBloodBank && <BloodBank />}
           {showTransport && <TransportMainRouting />}
           {showSuperUser && <SuperUserMain />}
 
           {showHR && <HRHome />}
-
+          {shoeRadiationtherapy && <Radiationtherapy/>}
 
         </main>
       </div>

@@ -1,10 +1,10 @@
-.maternity-antenatalcare {
+.appointment-scheduling-container {
     padding: 20px;
     background-color: var(--background-color);
-}
-
-.maternity-antenatalcare-btn, .maternity-antenatalcare-edit-btn {
-    margin-bottom: 20px;
+  }
+  
+  .schedule-add-button,
+  .schedule-edit-button {
     color: white;
     background-color: var(--button-color);
     text-align: center;
@@ -13,15 +13,19 @@
     font-size: 14px;
     border-radius: 5px;
     border: none;
-}
-.maternity-antenatalcare-btn:hover , .maternity-antenatalcare-edit-btn:hover{
+    margin: 5px;
+  }
+  
+  .schedule-add-button:hover,
+  .schedule-edit-button:hover {
     background-color: var(--button-hover-background-color);
     color: var(--button-hover-text-color);
     border: 1px solid var(--button-hover-border-color);
-
-}
-
-.maternity-antenatalcare-modal {
+  }
+  
+ 
+  
+  .schedule-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -32,55 +36,59 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-
-}
-
-.maternity-antenatalcare-modal-content {
+  }
+  
+  .schedule-modal-content {
     background: white;
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
-    width: 80%;
-
-}
-
-.antenatalmaturnity-modalform{
+    width: 70%;
+    height: auto;
+  }
+  
+  .schedule-close {
+    position: absolute;
+    top: 1px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .schedule-form-group {
+    margin-bottom: 15px;
     display: flex;
-    padding: 10px;
+    
+
+  }
+  
+  .schedule-form-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    width: 150px;
+  }
+  
+  .schedule-form-group input,
+  .schedule-form-group textarea {
     width: 100%;
-}
-
-.antenatalmaturnity-modalform label {
-    display: block;
-    margin:  5px;
-    width: 200px;
-}
-
-.antenatalmaturnity-modalform input, .antenatalmaturnity-modalform textarea {
-    width: 100%;
-    padding: 1px;
-    margin-bottom: 1px;
-}
-
-.antenatalmaturnity-modalform input[type="date"] {
     padding: 5px;
-}
-
-.antenatalmodalbtn {
-    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .schedule-submit-button {
     color: white;
     background-color: var(--button-color);
     text-align: center;
-    padding: 5px;
+    padding: 10px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     border-radius: 5px;
     border: none;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-.antenatalmodalbtn:hover{
+  }
+  
+  .schedule-submit-button:hover {
     background-color: var(--button-hover-background-color);
     color: var(--button-hover-text-color);
     border: 1px solid var(--button-hover-border-color);
-
-}
+  }
+  
