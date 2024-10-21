@@ -11,7 +11,10 @@ import Lab from "../../component/NavBarSection/Lab";
 import Emergency from "../../component/Emergency/Emergency";
 
 import Utilitiesmain from "../../component/Utilities/utilitiesmain";
+
 import SystemAdmin from "../../component/SystemAdmin/SystemAdmin";
+
+
 import SocialServicePage from "../../component/SocialServicesMain/SocialServicePage";
 import Disprensary from "../../component/DispensaryPage/disprensaryRoute";
 import DynamicReport from "../../component/DynamicReport/DynamicReport";
@@ -44,6 +47,12 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRouting";
 import ReportRoute from "../../component/Reports/ReportRoute";
 import Billing from "../../component/Billing/billing";
+
+import HomehealthCare from "../../component/HomeHealthCareModule/HomeHealthRoutes";
+import Pediatricoutpatient from "../../component/PediatricOutpatient/PaediatricOutpatientRoutes";
+import Pediatricinpatient from "../../component/pediatricModule/AppRoutes";
+import PhysiotherapyRotes from "../../component/PhysiotherapyModule/PhysiotherapyRotes";
+
 import BloodBank from "../../component/BloodBank/bloodBankRoute";
 
 import TransportMainRouting from "../../component/TransportMain/transportMainRoute"
@@ -84,9 +93,14 @@ const Layout = () => {
   const [showVerification, setShowVerification] = useState(false);
   const [showSubStore, setShowSubStore] = useState(false);
   const [showMedicalRecord, setShowMedicalRecord] = useState(false);
+  const [showProcurement,setShowProcurement]=useState(false);
+  const [showBilling,setShowBilling]=useState(false);
+  const [showHomehealthcare,setshowHomehealthcare]=useState(false);
+  const [showonpediatricoutpatient,setshowonpediatricoutpatient]=useState(false);
+  const [showonpediatricinpatient,setshowonpediatricinpatient]=useState(false);
+  const [showphysiotherapy,setshowphysiotherapy]=useState(false);
 
-  const [showProcurement, setShowProcurement] = useState(false)
-  const [showBilling, setShowBilling] = useState(false)
+
   const [showBloodBank, setShowBloodBank] = useState(false)
   const [showTransport, setShowTransport] = useState(false)
   const [showSuperUser, setShowSuperUser] = useState(false)
@@ -127,15 +141,21 @@ const Layout = () => {
     setShowSubStore(false);
     setShowMedicalRecord(false);
     setShowProcurement(false);
+    setShowBilling(false);
+    setshowHomehealthcare(false);
+    setshowonpediatricoutpatient(false);
+    setshowonpediatricinpatient(false);
+    setshowphysiotherapy(false);
 
-    setShowBilling(false)
     setShowBloodBank(false)
     setShowTransport(false)
     setShowSuperUser(false)
     setShowHR(false)
 
-  };
 
+
+  };
+ 
   const toggelAppointment = () => {
     resetAllToggles();
     setShowAppointment(!showAppointment);
@@ -292,6 +312,27 @@ const Layout = () => {
     resetAllToggles();
     setShowHR(!showHR)
   }
+
+  const toggleHomehealthcare=()=>{
+    resetAllToggles();
+    setshowHomehealthcare(!showHomehealthcare);
+  }
+ 
+  const togglePediatricoutpatient=()=>{
+    resetAllToggles();
+    setshowonpediatricoutpatient(!showonpediatricoutpatient);
+  }
+
+  const togglePediatricinpatient=()=>{
+    resetAllToggles();
+    setshowonpediatricinpatient(!showonpediatricinpatient);
+  }
+ 
+  const togglephysiotherapy=()=>{
+    resetAllToggles();
+    setshowphysiotherapy(!showphysiotherapy);
+  }
+
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -336,6 +377,10 @@ const Layout = () => {
         onHr={toggleHR}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
+        onHomehealthcare={toggleHomehealthcare}
+        onpediatricoutpatient={togglePediatricoutpatient}
+        onpediatricinpatient={togglePediatricinpatient}
+        onphysiotherapy={togglephysiotherapy}
       />
       <div
 
@@ -376,12 +421,17 @@ const Layout = () => {
           {showVerification && <VerificationRouting />}
           {showSubStore && <SubstoreRouting />}
           {showMedicalRecord && <MedicalReportRouting />}
+          {showHomehealthcare && <HomehealthCare/>}
+          {showonpediatricoutpatient && <Pediatricoutpatient/>}
+          {showonpediatricinpatient && <Pediatricinpatient/>}
+          {showphysiotherapy && <PhysiotherapyRotes/>}
           {showBilling && <Billing />}
           {showBloodBank && <BloodBank />}
           {showTransport && <TransportMainRouting />}
           {showSuperUser && <SuperUserMain />}
 
           {showHR && <HRHome />}
+
 
         </main>
       </div>
