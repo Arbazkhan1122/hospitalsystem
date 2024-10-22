@@ -60,7 +60,7 @@ import TransportMainRouting from "../../component/TransportMain/transportMainRou
 import SuperUserMain from "../../component/SuperUserMain/superUserMainRoute";
 import HRHome from "../../component/HRHome/HRHome"
 import Radiationtherapy from "../../component/RadiationTherapy/radiationtherapy";
-
+import ChemotherapyRouting from "../../component/ChemotherapyModule/ChemotherapyRoute";
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
@@ -109,7 +109,7 @@ const Layout = () => {
   const [showSuperUser, setShowSuperUser] = useState(false)
   const [showHR, setShowHR] = useState(false)
   const [shoeRadiationtherapy,setShowRadiationTherapy] = useState(false)
-
+  const [showChemotherapy,setshowChemotherapy]=useState(false)
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -156,7 +156,7 @@ const Layout = () => {
     setShowSuperUser(false)
     setShowHR(false)
     setShowRadiationTherapy(false)
-
+    setshowChemotherapy(false)
   };
   const toggleHomehealthcare=()=>{
     resetAllToggles();
@@ -334,6 +334,11 @@ const Layout = () => {
     resetAllToggles();
     setshowphysiotherapy(!showphysiotherapy);
   }
+  
+  const toggelChemotherapy =()=>{
+    resetAllToggles();
+    setshowChemotherapy(!showChemotherapy);
+  }
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -383,7 +388,7 @@ const Layout = () => {
         onpediatricoutpatient={togglePediatricoutpatient}
         onpediatricinpatient={togglePediatricinpatient}
         onphysiotherapy={togglephysiotherapy}
-        
+        onChemotherapy={toggelChemotherapy}
        
     
       />
@@ -441,7 +446,7 @@ const Layout = () => {
 
           {showHR && <HRHome />}
           {shoeRadiationtherapy && <Radiationtherapy/>}
-
+          {showChemotherapy && <ChemotherapyRouting/>}
         </main>
       </div>
     </div>
