@@ -58,9 +58,11 @@ const Sidebar = ({
   onTransport,
   onSuperUser,
 
+
   onHr,
   onRadiationTherapy,
   onChemotherapy,
+
 }) => {
   const [openMenus, setOpenMenus] = useState({})
   const [activeLink, setActiveLink] = useState(null)
