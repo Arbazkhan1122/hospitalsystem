@@ -9,9 +9,9 @@ import Inventory from "../../component/Inventory1/Inventory";
 import Incentive from "../../component/IncentiveMain/incentiveApp";
 import Lab from "../../component/NavBarSection/Lab";
 import Emergency from "../../component/Emergency/Emergency";
-
 import Utilitiesmain from "../../component/UTILITIES/Utilitiesmain";
 import SystemAdmin from "../../component/SystemAdmin/SystemAdmin";
+
 import SocialServicePage from "../../component/SocialServicesMain/SocialServicePage";
 import Disprensary from "../../component/DispensaryPage/disprensaryRoute";
 import DynamicReport from "../../component/DynamicReport/DynamicReport";
@@ -44,11 +44,18 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRouting";
 import ReportRoute from "../../component/Reports/ReportRoute";
 import Billing from "../../component/Billing/billing";
+
+import HomehealthCare from "../../component/HomeHealthCareModule/HomeHealthRoutes";
+import Pediatricoutpatient from "../../component/PediatricOutpatient/PaediatricOutpatientRoutes";
+import Pediatricinpatient from "../../component/pediatricModule/AppRoutes";
+import PhysiotherapyRotes from "../../component/PhysiotherapyModule/PhysiotherapyRotes";
+
 import BloodBank from "../../component/BloodBank/bloodBankRoute";
 
-import TransportMainRouting from "../../component/TransportMain/transportMainRoute"
+import TransportMainRouting from "../../component/TransportMain/transportMainRoute";
 import SuperUserMain from "../../component/SuperUserMain/superUserMainRoute";
-import HRHome from "../../component/HRHome/HRHome"
+import HRHome from "../../component/HRHome/HRHome";
+import Radiationtherapy from "../../component/RadiationTherapy/radiationtherapy";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -84,14 +91,20 @@ const Layout = () => {
   const [showVerification, setShowVerification] = useState(false);
   const [showSubStore, setShowSubStore] = useState(false);
   const [showMedicalRecord, setShowMedicalRecord] = useState(false);
+  const [showProcurement, setShowProcurement] = useState(false);
+  const [showBilling, setShowBilling] = useState(false);
+  const [showHomehealthcare, setshowHomehealthcare] = useState(false);
+  const [showonpediatricoutpatient, setshowonpediatricoutpatient] =
+    useState(false);
+  const [showonpediatricinpatient, setshowonpediatricinpatient] =
+    useState(false);
+  const [showphysiotherapy, setshowphysiotherapy] = useState(false);
 
-  const [showProcurement, setShowProcurement] = useState(false)
-  const [showBilling, setShowBilling] = useState(false)
-  const [showBloodBank, setShowBloodBank] = useState(false)
-  const [showTransport, setShowTransport] = useState(false)
-  const [showSuperUser, setShowSuperUser] = useState(false)
-  const [showHR, setShowHR] = useState(false)
-
+  const [showBloodBank, setShowBloodBank] = useState(false);
+  const [showTransport, setShowTransport] = useState(false);
+  const [showSuperUser, setShowSuperUser] = useState(false);
+  const [showHR, setShowHR] = useState(false);
+  const [shoeRadiationtherapy, setShowRadiationTherapy] = useState(false);
 
   const resetAllToggles = () => {
     setShowAppointment(false);
@@ -127,15 +140,22 @@ const Layout = () => {
     setShowSubStore(false);
     setShowMedicalRecord(false);
     setShowProcurement(false);
+    setShowBilling(false);
+    setshowHomehealthcare(false);
+    setshowonpediatricoutpatient(false);
+    setshowonpediatricinpatient(false);
+    setshowphysiotherapy(false);
 
-    setShowBilling(false)
-    setShowBloodBank(false)
-    setShowTransport(false)
-    setShowSuperUser(false)
-    setShowHR(false)
-
+    setShowBloodBank(false);
+    setShowTransport(false);
+    setShowSuperUser(false);
+    setShowHR(false);
+    setShowRadiationTherapy(false);
   };
-
+  const toggleHomehealthcare = () => {
+    resetAllToggles();
+    setshowHomehealthcare(!showHomehealthcare);
+  };
   const toggelAppointment = () => {
     resetAllToggles();
     setShowAppointment(!showAppointment);
@@ -277,21 +297,36 @@ const Layout = () => {
   const toggelBloodBank = () => {
     resetAllToggles();
     setShowBloodBank(!showBloodBank);
-
-  }
+  };
   const toggelTransport = () => {
     resetAllToggles();
-    setShowTransport(!showTransport)
-  }
+    setShowTransport(!showTransport);
+  };
   const toggleSuperUser = () => {
     resetAllToggles();
-    setShowSuperUser(!showSuperUser)
-  }
+    setShowSuperUser(!showSuperUser);
+  };
 
   const toggleHR = () => {
     resetAllToggles();
-    setShowHR(!showHR)
-  }
+    setShowHR(!showHR);
+  };
+  const toggleRadiationTherapy = () => {
+    resetAllToggles();
+    setShowRadiationTherapy(!shoeRadiationtherapy);
+  };
+  const togglePediatricoutpatient = () => {
+    resetAllToggles();
+    setshowonpediatricoutpatient(!showonpediatricoutpatient);
+  };
+  const togglePediatricinpatient = () => {
+    resetAllToggles();
+    setshowonpediatricinpatient(!showonpediatricinpatient);
+  };
+  const togglephysiotherapy = () => {
+    resetAllToggles();
+    setshowphysiotherapy(!showphysiotherapy);
+  };
   return (
     <div className="hrmsLayout">
       <Sidebar
@@ -332,15 +367,19 @@ const Layout = () => {
         onBloodbank={toggelBloodBank}
         onTransport={toggelTransport}
         onSuperUser={toggleSuperUser}
-
         onHr={toggleHR}
+        onRadiationTherapy={toggleRadiationTherapy}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
+        onHomehealthcare={toggleHomehealthcare}
+        onpediatricoutpatient={togglePediatricoutpatient}
+        onpediatricinpatient={togglePediatricinpatient}
+        onphysiotherapy={togglephysiotherapy}
       />
       <div
-
-        className={`hrmsLayoutMainContent ${isOpen ? "hrmsLayoutMainContentOpen" : "hrmsLayoutMainContentClosed"
-          }`}
+        className={`hrmsLayoutMainContent ${
+          isOpen ? "hrmsLayoutMainContentOpen" : "hrmsLayoutMainContentClosed"
+        }`}
       >
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         <main className="hrmsLayoutMainPadding">
@@ -376,13 +415,21 @@ const Layout = () => {
           {showVerification && <VerificationRouting />}
           {showSubStore && <SubstoreRouting />}
           {showMedicalRecord && <MedicalReportRouting />}
+          {showHomehealthcare && <HomehealthCare />}
+          {showonpediatricoutpatient && <Pediatricoutpatient />}
+          {showonpediatricinpatient && <Pediatricinpatient />}
+          {showphysiotherapy && <PhysiotherapyRotes />}
+          {showHomehealthcare && <HomehealthCare />}
+          {showonpediatricoutpatient && <Pediatricoutpatient />}
+          {showonpediatricinpatient && <Pediatricinpatient />}
+          {showphysiotherapy && <PhysiotherapyRotes />}
           {showBilling && <Billing />}
           {showBloodBank && <BloodBank />}
           {showTransport && <TransportMainRouting />}
           {showSuperUser && <SuperUserMain />}
 
           {showHR && <HRHome />}
-
+          {shoeRadiationtherapy && <Radiationtherapy />}
         </main>
       </div>
     </div>
