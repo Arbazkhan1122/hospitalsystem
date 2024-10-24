@@ -47,19 +47,16 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import MedicalReportRouting from "../../component/MedicalRec/MedicalRecordRouting";
 import ReportRoute from "../../component/Reports/ReportRoute";
 import Billing from "../../component/Billing/billing";
-
 import HomehealthCare from "../../component/HomeHealthCareModule/HomeHealthRoutes";
 import Pediatricoutpatient from "../../component/PediatricOutpatient/PaediatricOutpatientRoutes";
 import Pediatricinpatient from "../../component/pediatricModule/AppRoutes";
 import PhysiotherapyRotes from "../../component/PhysiotherapyModule/PhysiotherapyRotes";
-
-
 import BloodBank from "../../component/BloodBank/bloodBankRoute";
-
 import TransportMainRouting from "../../component/TransportMain/transportMainRoute"
 import SuperUserMain from "../../component/SuperUserMain/superUserMainRoute";
 import HRHome from "../../component/HRHome/HRHome"
 import Radiationtherapy from "../../component/RadiationTherapy/radiationtherapy";
+import Pulmonology from "../../component/Pulmonology/Pulmonology";
 
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
@@ -109,6 +106,7 @@ const Layout = () => {
   const [showSuperUser, setShowSuperUser] = useState(false)
   const [showHR, setShowHR] = useState(false)
   const [shoeRadiationtherapy,setShowRadiationTherapy] = useState(false)
+  const [showPulmonology,setShowPulmonology] = useState(false)
 
 
   const resetAllToggles = () => {
@@ -156,6 +154,7 @@ const Layout = () => {
     setShowSuperUser(false)
     setShowHR(false)
     setShowRadiationTherapy(false)
+    setShowPulmonology(false);
 
   };
   const toggleHomehealthcare=()=>{
@@ -322,6 +321,11 @@ const Layout = () => {
     resetAllToggles();
     setShowRadiationTherapy(!shoeRadiationtherapy)
   }
+
+  const togglePulmonology = () => {
+    resetAllToggles();
+    setShowPulmonology(!showPulmonology)
+  }
   const togglePediatricoutpatient=()=>{
     resetAllToggles();
     setshowonpediatricoutpatient(!showonpediatricoutpatient);
@@ -377,6 +381,7 @@ const Layout = () => {
 
         onHr={toggleHR}
         onRadiationTherapy={toggleRadiationTherapy}
+        onPulmonology={togglePulmonology}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         onHomehealthcare={toggleHomehealthcare}
@@ -441,6 +446,7 @@ const Layout = () => {
 
           {showHR && <HRHome />}
           {shoeRadiationtherapy && <Radiationtherapy/>}
+          {showPulmonology&& <Pulmonology/>}
 
         </main>
       </div>

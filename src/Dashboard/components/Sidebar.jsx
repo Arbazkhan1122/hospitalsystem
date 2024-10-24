@@ -60,6 +60,7 @@ const Sidebar = ({
 
   onHr,
   onRadiationTherapy,
+  onPulmonology,
 }) => {
   const [openMenus, setOpenMenus] = useState({})
   const [activeLink, setActiveLink] = useState(null)
@@ -272,6 +273,12 @@ const Sidebar = ({
   const handleRadiationTherapy = () => {
     handleLinkClick('radiationTherapy')
     onRadiationTherapy()
+  }
+  const handlePulmonology = () =>{
+    handleLinkClick('pulmonology')
+    onPulmonology()
+
+
   }
 
 
@@ -3684,7 +3691,78 @@ const Sidebar = ({
                
             </ul>
           )}
+          </li>
+
+          <li
+          className={`custom-nav-item ${
+            activeLink === 'pulmonology-submenu1' ||
+            activeLink === 'pulmonology-submenu2' ||
+            activeLink === 'pulmonology-submenu3' ||
+            activeLink === 'pulmonology-submenu4' ||
+            activeLink === 'pulmonology-submenu5' ? 'custom-nav-item-active'
+              : ''
+          }`}
+           >
+          <div className="custom-nav-link-content" onClick={handlePulmonology}>
+            <span>
+              <TbUsers />
+            </span>
+            {isOpen && <span className="custom-nav-link-text">Pulmoology</span>}
+            <span className="custom-dropdown-icon">
+              {openMenus.pulmonology ? <LuChevronUp /> : <LuChevronDown />}
+            </span>
+          </div>
+          {openMenus.pulmonology && isOpen && (
+            <ul className="custom-submenu">
+              <li
+                onClick={() => handleItemClick('pulmonology', 'submenu1')}
+                className={
+                  activeLink === 'pulmonology-submenu1' ? 'custom-submenu-active' : ''
+                }
+              >
+                <Link to="/respiratory-function-tests">Respiratory Function Tests</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick('pulmonology', 'submenu2')}
+                className={
+                  activeLink === 'pulmonology-submenu2' ? 'custom-submenu-active' : ''
+                }
+              >
+                <Link to="/pulmonary-rehabilitation">Pulmonary Rehabilitation</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick('pulmonology', 'submenu3')}
+                className={
+                  activeLink === 'pulmonology-submenu3' ? 'custom-submenu-active' : ''
+                }
+              >
+                <Link to="/imaging-lab-reports">Imaging and Lab Reports</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick('pulmonology', 'submenu4')}
+                className={
+                  activeLink === 'pulmonology-submenu4' ? 'custom-submenu-active' : ''
+                }
+              >
+                <Link to="/medication-management">Medication Management</Link>
+              </li>
+              <li
+                onClick={() => handleItemClick('pulmonology', 'submenu5')}
+                className={
+                  activeLink === 'pulmonology-submenu5' ? 'custom-submenu-active' : ''
+                }
+              >
+                <Link to="/follow-up-scheduling">Follow-Up Scheduling</Link>
+              </li>
+              
+               
+            </ul>
+          )}
         </li>
+
+
+
+
         <li
           className={`custom-nav-item ${
             activeLink === 'helpdesk-submenu1' ||
@@ -3694,7 +3772,7 @@ const Sidebar = ({
               ? 'custom-nav-item-active'
               : ''
           }`}
-        >
+        > 
           <div className="custom-nav-link-content" onClick={handleHelpdesk}>
             <span>
               <TbUsers />
