@@ -9,7 +9,7 @@ import Inventory from "../../component/Inventory1/Inventory";
 import Incentive from "../../component/IncentiveMain/incentiveApp";
 import Lab from "../../component/NavBarSection/Lab";
 import Emergency from "../../component/Emergency/Emergency";
-import Utilitiesmain from "../../component/UTILITIES/Utilitiesmain";
+import Utilitiesmain from "../../component/UTILITIES/utilitiesmain";
 import SystemAdmin from "../../component/SystemAdmin/SystemAdmin";
 
 import SocialServicePage from "../../component/SocialServicesMain/SocialServicePage";
@@ -57,6 +57,8 @@ import SuperUserMain from "../../component/SuperUserMain/superUserMainRoute";
 import HRHome from "../../component/HRHome/HRHome";
 import Radiationtherapy from "../../component/RadiationTherapy/radiationtherapy";
 import ChemotherapyRouting from "../../component/ChemotherapyModule/ChemotherapyRoute";
+import Pulmonology from "../../component/Pulmonology/Pulmonology";
+
 const Layout = () => {
   const [showAppointment, setShowAppointment] = useState(false);
   const [showSetting, setShowSetting] = useState(false);
@@ -105,8 +107,8 @@ const Layout = () => {
   const [showSuperUser, setShowSuperUser] = useState(false)
   const [showHR, setShowHR] = useState(false)
   const [shoeRadiationtherapy,setShowRadiationTherapy] = useState(false)
-
-
+  const [showChemotherapy, setshowChemotherapy] = useState(false);
+  const [showPulmonology,setShowPulmonology] = useState(false)
   const resetAllToggles = () => {
     setShowAppointment(false);
     setShowSetting(false);
@@ -444,7 +446,8 @@ const Layout = () => {
 
           {showHR && <HRHome />}
           {shoeRadiationtherapy && <Radiationtherapy />}
-          {showChemotherapy && <ChemotherapyRouting />}          {showPulmonology&& <Pulmonology/>}
+          {showChemotherapy && <ChemotherapyRouting />}   
+           {showPulmonology&& <Pulmonology/>}
 
         </main>
       </div>
